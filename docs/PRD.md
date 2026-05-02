@@ -115,6 +115,7 @@ Lifted from `BRD.md` §6.1 and S2 D-010 in functional language. The system shall
 - **Malt depth**: Statement of Composition (SoC) and formula-matching validators where a TTB Formula ID is supplied.
 - **Batch-mode demo at importer-drop scale**: 200–300 labels demonstrating non-degraded latency.
 - **Calibrated needs-review routing**: confidence calibration empirically validated on a held-out sample.
+- **Automated threshold re-calibration**: the brand-match Jaro-Winkler cutoffs (`pass_threshold`, `needs_review_threshold` per ARCHITECTURE.md §6.11), confidence-band edges (high/medium/low), and BRISQUE/NIQE legibility gates are tuned from eval-corpus performance via a held-out re-calibration sweep, rather than the hand-tuned rule-pack defaults shipped in MVP. Output is a regenerated rule-pack diff for human review, not a runtime auto-update.
 - **Network-failure recovery demo**: graceful degradation on transient upstream loss.
 - **Supervisor calibration view**: aggregate dispositions and override patterns across a session (no MVP write actions).
 - **Templated applicant-message send**: outbound messaging from the needs-better-photo path.
@@ -913,3 +914,4 @@ WCAG 2.1 / 2.2 success criteria honored as design targets beyond the WCAG 2.0 AA
 |---|---|---|---|
 | 0.1 | 2026-05-02 | Project team | Initial issue. |
 | 0.2 | 2026-05-02 | Project team | Self-review pass. Added §3.4 Success Metrics (BO→FR map); added i18n out-of-scope; added NFR-UX-004 (browser/viewport), NFR-SEC-001 through NFR-SEC-004 (security baseline), NFR-OBS-001/002 (observability). Softened FR-503 component naming, FR-704 algorithm leak, NFR-DET-002 mechanism leak. Trimmed §9.4 (paths/env vars) and §10.3 (endpoints/timing) to behavior; implementation specifics moved to `PRD-deferred-content.md` for downstream docs. Removed redundant §11.2; folded compliance-derived flags into §13 traceability matrix. Compacted NFR-A11Y-003 SC list to §15.2 appendix. Annotated §6.1 JSONC block as illustrative. |
+| 0.3 | 2026-05-02 | Project team | Added §3.2 stretch bullet: automated threshold re-calibration (brand-match cutoffs, confidence-band edges, BRISQUE/NIQE gates) sweeping from eval-corpus performance. |
