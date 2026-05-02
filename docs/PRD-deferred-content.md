@@ -1,0 +1,128 @@
+# PRD-deferred-content.md — Implementation Specifics Trimmed from PRD v0.2
+
+**Purpose.** During the v0.1 → v0.2 PRD self-review pass, several pieces of useful, correct content were identified as implementation-level rather than requirement-level and trimmed from the PRD. This doc captures that content so it is available to the downstream docs that should own it: `ARCHITECTURE.md`, the eval-harness design, and the demo runbook.
+
+**Status:** Reference. Not authoritative. The owning downstream doc supersedes anything here once it lands.
+**Companion to:** `PRD.md` v0.2.
+**Created:** 2026-05-02.
+
+---
+
+## 1. For `ARCHITECTURE.md`
+
+### 1.1 Confidence aggregation algorithm
+
+PRD FR-704 specifies the *behavior* (disposition-level confidence cannot exceed lowest contributing per-field confidence; downward propagation only). The *implementation* commitment from S5 §11 is:
+
+- **Min-aggregation across per-field confidences.** The disposition-level numeric confidence is the minimum of the contributing per-field numeric confidences.
+- **Rationale (per S5):** multiplication aggregation under-states confidence on labels with many independent fields and over-rewards labels with few; min-aggregation is conservative, monotonic in the worst-field, and easy to explain to reviewers ("the disposition is only as confident as the field we are least sure about").
+
+### 1.2 Cross-session determinism mechanism
+
+PRD NFR-DET-002 specifies that cross-session determinism is out of scope. The *mechanism* the prototype uses internally (and that ARCHITECTURE.md should document) is:
+
+- **Session-only canonicalized cache.** Per T5 §Q5.10 mitigation #2: an in-memory cache keyed on a canonicalized representation of the input (image hash + application JSON normalized to a stable key order) returns identical disposition objects for repeat submissions within the same session.
+- **No persistence.** Cache evicts on session end; cross-session repeat submissions produce a fresh evaluation.
+
+### 1.3 Audit-trail per-rule duration field
+
+PRD §6.2 currently includes `audit_trail.per_rule_trace[].duration_ms`. This is telemetry, not audit:
+
+- **Audit-trail purpose:** reconstruction of the disposition during a regulatory audit.
+- **Telemetry purpose:** operator visibility into perf characteristics.
+- **Architecture decision needed:** either (a) keep `duration_ms` in the audit trail and document it as an incidental telemetry field, or (b) split into a separate `metrics` block on the disposition envelope. Recommend (b) for cleaner separation; trivial to implement.
+
+### 1.4 Lookahead window default
+
+PRD FR-402 specifies k=2–3 as a configurable parameter without naming the default. T6 Q6.8 lookahead-sizing math recommends k=3 as the central case for a single-agent prototype. ARCHITECTURE.md should document `LOOKAHEAD_K` default = 3 with the override mechanism.
+
+### 1.5 Logging field schema
+
+PRD NFR-OBS-001 requires structured logs at engine-failure events with the T3 §Q3.10 field schema. The full per-failure-mode field schema lives in T3 §Q3.10; ARCHITECTURE.md should reproduce it as the canonical log-emission schema with field types and required-vs-optional flags.
+
+---
+
+## 2. For the eval-harness design
+
+### 2.1 Trimmed paths and env-flag names
+
+PRD §9.4 was trimmed of path-level specifics. The intended implementation:
+
+- **Smoke subset path:** ~20 labels run on every PR; CI integration via the project's chosen CI system.
+- **Full eval cadence:** on merge to `main` branch.
+- **Scheduled cadence:** nightly full run with metrics persisted to `eval/history/` (timestamped JSON files, one per run, aggregated by `eval/history/summary.json`).
+- **Dashboard route:** `/eval` HTTP route renders the disposition confusion matrix and per-rule precision/recall table.
+- **Gate:** `DEV_MODE` environment variable (truthy → dashboard route registered; falsy → 404).
+
+### 2.2 Eval manifest format
+
+S4 specifies the eval manifest at `eval/manifest.jsonl` conforming to `eval/datasheet.md`. The eval-harness design should adopt this schema directly.
+
+---
+
+## 3. For the demo runbook
+
+### 3.1 Pre-warm specifics
+
+PRD §10.3 was trimmed of timing and endpoint specifics. The intended implementation (per D-011 §3 and T8 §Demo failure-recovery):
+
+- **Endpoint:** `/healthz` GET endpoint that loads models, opens database connections (none in MVP), and exercises the full extraction → rule-engine → orchestration pipeline against a sentinel input.
+- **Timing:** invoke at T-5 minutes pre-recording.
+- **Sentinel input:** fixture-01 (clean spirits happy path).
+- **Success criterion:** `/healthz` returns 200 within 2 seconds on a warm system.
+
+### 3.2 Cache strategy specifics
+
+- **Cache scope:** the six demo fixtures (fixture-01 through fixture-06).
+- **Cache mechanism:** in-memory canonicalized-input cache per T5 Q5.10 mitigation #2 (same mechanism as session-determinism cache; see §1.2).
+- **Cache pre-population:** generated by `scripts/regenerate_fixtures.py` (per S3 D-015) and committed to `demo/cached/` with explicit cache-key matching.
+- **Disclosure script:** narration text:
+  > "we cached the LLM call for the demo fixtures so the walkthrough is reproducible — the orchestration and rule engine run live."
+
+### 3.3 Stage-2 narration update (per S2 §Recommendation)
+
+The fixture-02 (STONE'S THROW) demo case should normalize at the case-only-difference policy stage and pass cleanly *without* requiring reviewer override. This contradicts the original T8 stage-2 narration which had the reviewer demonstrating the override flow on this fixture. The override flow is demonstrated on fixture-06 (ABV out-of-tolerance) instead.
+
+### 3.4 Demo runbook structure
+
+A standalone `DEMO-RUNBOOK.md` should cover:
+
+- **T-30 minutes**: environment check (deployed URL reachable, API credentials valid in cloud mode).
+- **T-5 minutes**: pre-warm via `/healthz`.
+- **T-1 minute**: fixture-01 dry run.
+- **T-0**: begin recording; six-stage path per PRD §10.2.
+- **Failure recovery patterns**: per T8 §Demo failure-recovery items 1–5 (network toggle, LLM timeout, OCR low-confidence on demo image, etc.).
+
+---
+
+## 4. For future PRD revisions
+
+### 4.1 Items to revisit at pilot phase
+
+- **OQ-PRD-1** (override drawer free-text justification) — pilot phase may surface a need for justification on high-impact overrides.
+- **OQ-PRD-4** (multi-image disposition aggregation) — provisional rule needs reviewer validation.
+- **NFR-DET-002** — production may require cross-session determinism for repeat-submission idempotency; the mechanism in §1.2 of this doc would need persistence.
+
+### 4.2 Items deferred to production phase (informational)
+
+- PIV/SAML federation (BRD §8.3).
+- FedRAMP package (BRD §8.3).
+- COLAs Online integration (BRD §6.4 Phase 4).
+- Production retention policy for audit records (currently in-memory only per NFR-DATA-002).
+
+---
+
+## 5. Provenance
+
+Items in this doc were extracted during the v0.1 → v0.2 PRD self-review, May 2, 2026. Original locations in PRD v0.1:
+
+| Item | Original PRD v0.1 location | Reason for trim |
+|---|---|---|
+| Min-aggregation algorithm | FR-704 | Algorithm leak |
+| Canonicalized cache mechanism | NFR-DET-002 | Mechanism leak |
+| `eval/history/` path, `/eval` route, `DEV_MODE` flag | §9.4 | Implementation specifics |
+| `/healthz` endpoint, T-5 timing, fixture-01 warm-up | §10.3 | Implementation specifics |
+| Compliance-mapped FR list | §11.2 | Redundant with §13 traceability matrix |
+| WCAG 2.1/2.2 SC enumeration | NFR-A11Y-003 | Compacted to §15.2 appendix |
+
+All items here are correct and useful — they were trimmed from the PRD because they belong to a downstream doc, not because they are wrong.

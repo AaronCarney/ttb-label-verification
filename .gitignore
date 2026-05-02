@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.tox/
+build/
+dist/
+
+# uv
+.python-version
+
+# Coverage
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Logs
+*.log
+
+# Node / frontend tooling
+# (Built React island under app/ui/static/island/ IS committed per D-013.)
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/src/**/*.tsbuildinfo
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
+
+# Secrets & local env (per ARCHITECTURE.md §12.2; .env.example is committed)
+.env
+.env.local
+.env.*.local
+
+# Eval-harness runtime artifacts (DEV_MODE only; per ARCHITECTURE.md §12.5)
+eval/history/*.json
+!eval/history/.gitkeep
+
+# Model / inference caches (local mode; caches typically live outside the repo,
+# but exclude project-local overrides if a developer sets HF_HOME / PADDLE_HOME
+# to a path under the repo)
+.cache/
+hf_cache/
+.huggingface/
+.paddleocr/
