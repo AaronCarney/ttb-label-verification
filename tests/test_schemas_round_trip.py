@@ -322,3 +322,25 @@ def test_item_state_transitions_documented() -> None:
         ItemState.FAILED,
     }
     assert set(ItemState) == expected
+
+
+def test_call_record_round_trip() -> None:
+    from datetime import datetime, timezone
+
+    from app.schemas.calls import CallRecord
+
+    rec = CallRecord(
+        ts=datetime(2026, 4, 1, 12, 0, 0, tzinfo=timezone.utc),
+        batch_id="b1",
+        label_id="l1",
+        stage="orch.brand_disambig",
+        request={"prompt_hash": "abc", "params": {"temperature": 0}},
+        response={"text": "match"},
+        latency_ms=420,
+        model="gpt-4o-2024-08-06",
+        provider="openai",
+        prompt_version="v1",
+        output_hash="0" * 64,
+    )
+    rec2 = CallRecord.model_validate_json(rec.model_dump_json())
+    assert rec2 == rec
