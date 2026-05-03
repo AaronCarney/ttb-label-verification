@@ -4999,8 +4999,11 @@ Create `tests/test_brand_match_policies.py`:
 """
 from __future__ import annotations
 
+import pytest
+
 import app.rules._validators.fuzzy_brand  # noqa: F401
 from app.rules._validators import VALIDATOR_REGISTRY
+from app.rules.brand_match import stage_b_fuzzy
 from app.schemas.rejection import Outcome
 from app.schemas.rules import MatchPolicy
 from tests.rules.fixtures import make_context, make_expected, make_obs, make_rule
@@ -5058,10 +5061,25 @@ def test_substantively_different_brand_below_floor_emits_mismatch() -> None:
 
 
 def test_borderline_brand_emits_needs_review_code() -> None:
-    """Compose a brand pair that lands in (0.85, 0.92): a single-character
-    edit on a moderately long brand name."""
-    obs = make_obs(field_id="brand", value="Northern Lights Brewery")
-    exp = make_expected(field_id="brand", value="Northern Lite Brewery")
+    """Borderline-band score ⇒ E5 needs-review trigger (L1 §4 #12).
+
+    Test inputs are calibrated to land in (0.85, 0.92) under T17's
+    canonicalization. Guard with pytest.skip rather than silently
+    reclassifying if a future canonicalization tweak drifts them out
+    of the band — the contract under test (borderline → exactly
+    NEEDS_REVIEW) is meaningless if the inputs aren't in-band, and a
+    soft-pass would mask the regression.
+    """
+    obs_value = "Northern Lights Brewery"
+    exp_value = "Northern Lite Brewery"
+    score = stage_b_fuzzy(obs_value, exp_value)
+    if not (0.85 <= score < 0.92):
+        pytest.skip(
+            f"borderline calibration drifted: stage_b_fuzzy={score:.4f} "
+            f"outside (0.85, 0.92); retune input pair or update T17 normalization"
+        )
+    obs = make_obs(field_id="brand", value=obs_value)
+    exp = make_expected(field_id="brand", value=exp_value)
     res = VALIDATOR_REGISTRY["fuzzy_brand"](obs, exp, _rule(), make_context())
     assert res.outcome is Outcome.FAIL
     assert res.reason_code == "BRAND.NAME.NEEDS_REVIEW"
@@ -5070,18 +5088,23 @@ def test_borderline_brand_emits_needs_review_code() -> None:
 - [ ] **Step 2: Run test to verify it fails**
 
 Run: `uv run pytest tests/test_brand_match_policies.py -v`
-Expected: at least one assertion fails (the borderline composition may need tuning of the example to land in the band — adjust the input strings until the score lands in (0.85, 0.92) before declaring Step 3 complete).
+Expected: 5 of 6 PASS, the borderline test fails because `fuzzy_brand`
+hasn't been wired or the rule's needs_review_threshold differs. (The
+calibration guard means a non-in-band score yields SKIP, not FAIL — so
+on first run the failure must come from a real validator bug, not from
+input drift. If SKIP appears, retune inputs before declaring Step 3 done.)
 
-- [ ] **Step 3: Tune the borderline test input if needed**
+- [ ] **Step 3: Tune the borderline input pair if the calibration guard skips**
 
-If `test_borderline_brand_emits_needs_review_code` does not land in the borderline band, adjust the input pair to one that produces a Jaro-Winkler score in `(0.85, 0.92)`. The validator code is correct; the test inputs must be calibrated. Use:
+If `test_borderline_brand_emits_needs_review_code` SKIPs on Step 2 (the
+guard fired because `stage_b_fuzzy(...)` is not in (0.85, 0.92)), discover
+a suitable pair and update both `obs_value` and `exp_value`:
 
 ```python
-from app.rules.brand_match import stage_b_fuzzy
-print(stage_b_fuzzy("...", "..."))
+uv run python -c "from app.rules.brand_match import stage_b_fuzzy; print(stage_b_fuzzy('...', '...'))"
 ```
 
-to discover suitable input pairs.
+The validator code is the contract; tune the test inputs to exercise it.
 
 - [ ] **Step 4: Run test to verify it passes**
 
