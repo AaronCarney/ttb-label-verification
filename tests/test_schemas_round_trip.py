@@ -216,3 +216,75 @@ def test_metrics_round_trip() -> None:
     )
     m2 = Metrics.model_validate_json(m.model_dump_json())
     assert m2 == m
+
+
+def test_rule_set_round_trip() -> None:
+    from app.schemas.expected import BeverageClass
+    from app.schemas.rejection import Severity
+    from app.schemas.rules import (
+        AssetRef,
+        DecisionTable,
+        MatchPolicy,
+        ReasonCodeEntry,
+        RuleDefinition,
+        RuleSet,
+    )
+
+    rule = RuleDefinition(
+        rule_id="spirits.alcohol.tolerance_band",
+        cfr_citation="27 CFR §5.65(c)",
+        applies_to_classes=(BeverageClass.SPIRITS,),
+        reason_code="ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND",
+        severity=Severity.REJECT,
+        match_policy=MatchPolicy.TOLERANCE,
+        validator="abv_band",
+        evidence_required=("abv",),
+        confidence_floor=0.5,
+        parameters={"tolerance_pp": 0.3, "arithmetic": "decimal"},
+        tolerance=None,
+        decision_table=None,
+        decision_table_ref=None,
+        asset=None,
+        effective_date="2022-02-09",
+        supersedes=(),
+        rule_pack_version="0.1.0",
+        rule_pack="spirits",
+        test_fixtures=("F-SPIRITS-ALC-36-PASS-01",),
+        disabled=False,
+        notes=None,
+    )
+
+    rs = RuleSet(
+        version="0.1.0",
+        effective_date="2026-04-01",
+        rules=(rule,),
+        reason_codes={
+            "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND": ReasonCodeEntry(
+                description="ABV outside the regulatory tolerance band.",
+                cfr_anchors=("27 CFR §5.65(c)",),
+                severity=Severity.REJECT,
+            ),
+        },
+        assets={
+            "warning_16_21": AssetRef(
+                path="assets/warnings/govt_warning_16_21.txt",
+                sha256="0" * 64,
+            ),
+        },
+        decision_tables={
+            "cpi_16_22_a_4": DecisionTable(
+                interpolation="none",
+                entries=({"min_ml": 50, "max_ml": 100, "cpi": 0.4},),
+            ),
+        },
+    )
+    rs2 = RuleSet.model_validate_json(rs.model_dump_json())
+    assert rs2 == rs
+
+
+def test_match_policy_enum_values() -> None:
+    from app.schemas.rules import MatchPolicy
+
+    assert MatchPolicy("tolerance") is MatchPolicy.TOLERANCE
+    assert MatchPolicy("verbatim_hash") is MatchPolicy.VERBATIM_HASH
+    assert MatchPolicy("fuzzy") is MatchPolicy.FUZZY
