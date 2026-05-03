@@ -288,3 +288,37 @@ def test_match_policy_enum_values() -> None:
     assert MatchPolicy("tolerance") is MatchPolicy.TOLERANCE
     assert MatchPolicy("verbatim_hash") is MatchPolicy.VERBATIM_HASH
     assert MatchPolicy("fuzzy") is MatchPolicy.FUZZY
+
+
+def test_batch_state_round_trip() -> None:
+    from datetime import datetime, timezone
+
+    from app.schemas.batch import BatchInFlightState, BatchItem, ItemState
+
+    item = BatchItem(
+        label_id="label-001",
+        application_ref="app-001",
+        state=ItemState.QUEUED,
+        result=None,
+        enqueued_at=datetime(2026, 4, 1, 12, 0, 0, tzinfo=timezone.utc),
+    )
+    state = BatchInFlightState(
+        batch_id="00000000-0000-4000-8000-00000000b001",
+        agent_id="session-abc",
+        items=(item,),
+        current_index=0,
+        lookahead_k=3,
+    )
+    s2 = BatchInFlightState.model_validate_json(state.model_dump_json())
+    assert s2 == state
+
+
+def test_item_state_transitions_documented() -> None:
+    from app.schemas.batch import ItemState
+
+    expected = {
+        ItemState.QUEUED, ItemState.PROCESSING, ItemState.READY,
+        ItemState.PRESENTED, ItemState.REVIEWED, ItemState.DISPOSED,
+        ItemState.FAILED,
+    }
+    assert set(ItemState) == expected
