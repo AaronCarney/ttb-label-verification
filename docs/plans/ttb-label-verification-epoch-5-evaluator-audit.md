@@ -139,7 +139,7 @@ The epoch lands when **all of these pass**:
 6. AC-FR-704 / D-017 min-aggregation passes; AC-D-018 audit/metrics split passes.
 7. AC-FR-703 / NFR-AUDIT-001/002 — every audit-trail field is present; `input_hash` and `output_hash` populated; `per_rule_trace` populated.
 8. **AC-NFR-PERF-001 / NFR-PERF-003** — fixture-01 P50 ≤ 2.7 s, P99 ≤ 5.0 s under demo conditions (mocked vision recordings + cached orchestrator). The L2 plan settles the exact methodology (30+ trials, deterministic warmup); this AC must hold before E5 closes.
-9. `/healthz` runs the full sentinel pipeline against fixture-01 and returns 200 within 2 s on a warm system (cold-start ~30–45 s on GPU profile is acceptable).
+9. `/healthz` runs the full sentinel pipeline against fixture-01 and returns 200 within 2 s on a warm system (cold-start ~30–45 s on GPU profile is acceptable). **The demo runbook's T-5-minute pre-warm contract (per `PRD-deferred-content.md` §3.1, owned by E8 `DEMO-RUNBOOK.md`) depends on this exit gate; if E5 closes without satisfying it, E8's recorded walkthrough is at risk.**
 10. FR-303 invariant **at runtime**: a synthetic test where the orchestrator's `Refined` "disagrees" with a rule-engine `fail` → the disposition stays `fail`; the disagreement is recorded in audit; the disposition is unchanged.
 11. `grep -rn 'raise' app/services/evaluator.py | grep -v 'NotImplementedError\|programmer'` returns no hits — the chokepoint catches everything (P4 enforcement).
 12. The request → `evaluate()` → response path uses `evaluation_id` consistently (input hash, output hash, audit, metrics, log lines all share the same UUID).
