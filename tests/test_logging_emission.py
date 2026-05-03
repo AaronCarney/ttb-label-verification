@@ -84,3 +84,24 @@ def test_call_record_ring_buffer_evicts_fifo_at_capacity() -> None:
     rb.append("c")
     rb.append("d")  # evicts "a"
     assert list(rb) == ["b", "c", "d"]
+
+
+def test_configure_logging_wires_formatter_and_redaction(capsys) -> None:
+    import logging as stdlib_logging
+
+    from app.logging import configure_logging
+
+    # Caller-provided settings shim — config.py is created in T22.
+    class _StubSettings:
+        log_level: str = "INFO"
+
+    configure_logging(_StubSettings())
+    logger = stdlib_logging.getLogger("app.test")
+    logger.info("healthz_invoked", extra={"evaluation_id": "evt-001"})
+    captured = capsys.readouterr()
+    assert captured.out.count("\n") == 1
+    import json
+
+    parsed = json.loads(captured.out.strip())
+    assert parsed["msg"] == "healthz_invoked"
+    assert parsed["evaluation_id"] == "evt-001"
