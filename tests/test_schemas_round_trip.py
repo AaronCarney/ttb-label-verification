@@ -387,3 +387,15 @@ def test_disposition_envelope_round_trip(wire_fixtures_dir) -> None:
     # D-018: durations live in the metrics block.
     assert "metrics" in dumped
     assert dumped["metrics"]["per_rule_durations_ms"][0]["duration_ms"] == 8
+
+
+def test_batch_envelope_round_trip(wire_fixtures_dir) -> None:
+    import json
+
+    from app.schemas.wire.batch import BatchEnvelope
+
+    raw = json.loads((wire_fixtures_dir / "batch.json").read_text())
+    env = BatchEnvelope.model_validate(raw)
+    dumped = json.loads(env.model_dump_json())
+    assert dumped["batch_id"] == raw["batch_id"]
+    assert len(dumped["items"]) == len(raw["items"])
