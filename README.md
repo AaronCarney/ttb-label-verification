@@ -1,41 +1,61 @@
-# TTB AI-Powered Alcohol Label Verification Prototype
+# TTB Label Verification — Prototype
 
-Standalone, web-deployable proof-of-concept for AI-orchestrated, deterministic-rule-core
-COLA label verification with a human-in-the-loop disposition. See `docs/BRD.md` for
-business context, `docs/PRD.md` for behavior, `docs/ARCHITECTURE.md` for design.
+A standalone, web-deployable proof-of-concept for AI-orchestrated, deterministic-rule-core
+TTB COLA label verification. **Prototype tier** per BRD §8.2 — not a production ATO claim,
+no COLAs Online integration, no persistence beyond the current process.
 
-## Repository layout
+See `docs/PRD.md` (v0.6) and `docs/ARCHITECTURE.md` (v0.3) for the full spec; see
+`docs/plans/ttb-label-verification-epochs.md` for the L1 epoch plan.
+
+## Reviewer profiles (ARCH §9.1)
+
+Three one-command setup profiles target the deployed-URL and on-prem trajectories.
+
+### Profile A — Hosted demo (preferred)
+
+The deployed URL serves the cloud-mode default (GPT-4o on crop, Structured Outputs
+`strict:true`). No local install; no API key needed for review against cached fixtures.
+
+### Profile B — Local cloud-mode boot
+
+```bash
+git clone <repo>
+cd ttb-label-verification
+cp .env.example .env  # then fill OPENAI_API_KEY
+uv sync               # CPU profile; ≤90s on a 5 Mbps connection
+uv run task demo      # uvicorn app.main:app on :8000
+curl http://localhost:8000/healthz
+```
+
+### Profile C — Local GPU mode (on-prem-trajectory)
+
+```bash
+uv sync --extra gpu   # adds paddlepaddle-gpu (CUDA 12.6) + torch
+VISION_MODE=local uv run task demo
+```
+
+GPU profile boot adds ~30–45 s for first-`/healthz` (model load); subsequent
+`/healthz` warm calls are ≤2 s. See `DEMO-RUNBOOK.md` for the demo timeline.
+
+## Project structure
 
 ```
-app/                 FastAPI single-process application (Web, Application Service,
-                     Vision Extractor seam, Rule Engine, AI Orchestrator seam,
-                     Batch Processor, Audit Recorder, schemas, UI shell)
-frontend/            React + Vite island sources (built bundle committed to
-                     app/ui/static/island/)
-rules/               Canonical YAML rule pack + reason-codes registry + tables
-assets/              Hash-pinned regulatory assets (e.g. §16.21 verbatim warning)
-fixtures/            6 demo fixtures
-demo/cached/         Pre-warmed LLM responses for the demo fixtures
-eval/                Eval-harness manifest, datasheet, and DEV_MODE-only history
-configs/             Per-mode TOML defaults (vision.local, vision.cloud, orchestrator)
-scripts/             Operational scripts (e.g. regenerate_fixtures.py)
-docs/                Living documents — BRD, PRD, ARCHITECTURE, decisions log,
-                     PRD-deferred-content, planning history, research outputs
-tests/               Pytest suite
+app/                    FastAPI single-process app
+  schemas/              Pydantic v2 internal + wire (PRD §6.x) types
+  logging/              JSON-line stdout, OTel GenAI attribute names
+  api/                  Route handlers (E1: /healthz; E5–E8 add the rest)
+  config.py             Pydantic Settings (single source of truth for env vars)
+  deps.py               DI container; selects VisionExtractor / Orchestrator
+  main.py               App factory
+tests/                  pytest suite
+docs/                   PRD, ARCHITECTURE, decisions, epoch plans
 ```
 
-## Documentation
+## Testing
 
-| Doc | Purpose |
-|---|---|
-| `docs/BRD.md` | Business case, stakeholders, value, scope envelope |
-| `docs/PRD.md` | User journeys, FRs/NFRs, wire contracts, acceptance criteria |
-| `docs/ARCHITECTURE.md` | Components, interfaces, internal models, deployment, ADRs |
-| `docs/03-decisions.md` | Decision log (D-001 onward) |
-| `docs/PRD-deferred-content.md` | PRD trimmings, absorbed by ARCHITECTURE.md |
-| `docs/planning/` | Pre-research planning + per-topic research plans (T1–T12, R0) |
-| `docs/research/` | Research outputs (T1–T12) and synthesis briefs (S1–S8) |
+```bash
+uv run pytest -v
+```
 
-## Status
-
-Pre-implementation. Repository scaffold only — code lands per ARCHITECTURE.md §14.1.
+The exit-gate integration suite is `tests/test_e1_exit_gate.py` (E1) and the
+analogous `test_e<N>_exit_gate.py` for later epochs.
