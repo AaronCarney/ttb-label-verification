@@ -2616,8 +2616,11 @@ the orchestrator.
 """
 from __future__ import annotations
 
+import pytest
+
 from app.rules._validators import VALIDATOR_REGISTRY
 from app.rules._validators.fuzzy_brand import fuzzy_brand  # noqa: F401
+from app.rules.brand_match import stage_b_fuzzy
 from app.schemas.rejection import Outcome
 from app.schemas.rules import MatchPolicy
 from tests.rules.fixtures import make_context, make_expected, make_obs, make_rule
@@ -2653,11 +2656,27 @@ def test_stage_b_above_pass_threshold_passes() -> None:
 
 
 def test_stage_b_borderline_emits_needs_review() -> None:
-    obs = make_obs(field_id="brand", value="Stone's Throw Bourbon")
-    exp = make_expected(field_id="brand", value="Stone's Throw Distilling Company")
+    """Borderline-band score ⇒ E5 needs-review trigger.
+
+    Strict assertion: outcome is FAIL with reason_code BRAND.NAME.NEEDS_REVIEW.
+    The disjunction (FAIL or PASS or reason==NEEDS_REVIEW) would admit every
+    Outcome the validator can return and pass regardless of behaviour — the
+    contract is "borderline → exactly NEEDS_REVIEW", so the test must enforce
+    that. If a future canonicalization tweak drifts the chosen input pair
+    out of (0.85, 0.92), `pytest.skip` rather than silently reclassify;
+    T27 covers the same contract with its own calibration step.
+    """
+    obs = make_obs(field_id="brand", value="Acme Brewing Company")
+    exp = make_expected(field_id="brand", value="Acme Brewer Company")
+    score = stage_b_fuzzy("Acme Brewing Company", "Acme Brewer Company")
+    if not (0.85 <= score < 0.92):
+        pytest.skip(
+            f"borderline calibration drifted: stage_b_fuzzy={score:.4f} "
+            f"outside (0.85, 0.92); retune the input pair or update T17 normalization"
+        )
     res = fuzzy_brand(obs, exp, _rule(), make_context())
-    # Distinct words → fuzzy match in (0.85, 0.92); E5 trigger contract:
-    assert res.outcome is Outcome.FAIL or res.outcome is Outcome.PASS or res.reason_code == "BRAND.NAME.NEEDS_REVIEW"
+    assert res.outcome is Outcome.FAIL
+    assert res.reason_code == "BRAND.NAME.NEEDS_REVIEW"
 
 
 def test_stage_b_below_threshold_fails_with_mismatch() -> None:
