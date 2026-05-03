@@ -2806,9 +2806,14 @@ Create `tests/test_validator_registry.py`:
 """Cross-cutting registry invariants:
 
   1. Importing app.rules._validators populates VALIDATOR_REGISTRY with at least
-     the names this epoch ships (10 functions across 9 files; 12 registered names).
+     the names this epoch ships (15 functions across 10 files; 15 registered
+     names — L1 §2.1's '12 registered names' is the original target; the surface
+     grew to 15 during L2 decomposition because abv_band split into 3 names per
+     D-006 and layout_check split into 2 per FR-206/FR-226).
   2. Every *.py file under app/rules/_validators/ (excluding __init__) registers
-     at least one name (orphan-validator detection).
+     at least one name (orphan-validator detection — file→registry direction).
+     The companion check (registry→YAML: every registered name is referenced
+     by ≥1 rule) lives in T28 because it requires the loaded RuleSet.
   3. No file under app/rules/_validators/ contains the literal 'CFR' outside
      a docstring (L1 §4 exit-gate item 10).
   4. No file under app/rules/ imports openai, anthropic, or httpx
@@ -4966,6 +4971,23 @@ def test_real_rule_tree_round_trips() -> None:
     dumped = json.loads(rs.model_dump_json())
     rs2 = RuleSet.model_validate(dumped)
     assert rs == rs2
+
+
+def test_no_orphan_validators_in_registry() -> None:
+    """Bidirectional orphan check (registry→YAML direction).
+
+    Every registered validator name MUST be referenced by ≥1 rule in the loaded
+    RuleSet. The companion check (file→registry: every validator file registers
+    ≥1 name) lives in T19. Together they prevent dead validator code shipping
+    silently. Test-only stubs registered with __dunder__ names by T30 are
+    excluded so per-test fixtures don't pollute the production surface.
+    """
+    from app.rules._validators import VALIDATOR_REGISTRY
+    rs = YamlRuleLoader().load(Path("rules"))
+    referenced = {r.validator for r in rs.rules}
+    production_names = {n for n in VALIDATOR_REGISTRY if not n.startswith("__")}
+    orphans = production_names - referenced
+    assert not orphans, f"validators registered but never referenced: {sorted(orphans)}"
 ```
 
 - [ ] **Step 2: Run test to verify it fails**
@@ -4978,13 +5000,13 @@ Expected: at this point all rule packs and the loader exist; this should pass on
 - [ ] **Step 4: Run test to verify it passes**
 
 Run: `uv run pytest tests/test_rules_yaml_round_trip.py -v`
-Expected: 2 PASSED.
+Expected: 3 PASSED.
 
 - [ ] **Step 5: Commit**
 
 ```bash
 git add tests/test_rules_yaml_round_trip.py
-git commit -m "test(e2): real rule tree loads >=33 rules + RuleSet round-trips"
+git commit -m "test(e2): real tree loads >=33 rules + round-trips + no orphan validators"
 ```
 
 ---
