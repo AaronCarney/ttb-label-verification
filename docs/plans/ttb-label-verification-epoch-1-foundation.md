@@ -91,6 +91,7 @@ The epoch lands when **all of these pass**:
 6. Every NFR-SEC-002 secret name in ARCH §12.2 is read by `app/config.py` and **only** `app/config.py` (`grep -rn 'os.environ' app/ | grep -v 'config.py'` returns no hits).
 7. The structured log emits a single JSON line on `GET /healthz` containing at minimum `{evaluation_id|null, ts, level, msg}` plus the OpenTelemetry GenAI attribute conventions for any LLM calls (none in E1, but the formatter is exercised).
 8. `app/deps.py` providers raise `NotImplementedError("seam not wired in E1")` on any path that would invoke `VisionExtractor.extract()` or `Orchestrator.refine()` — proving the DI shape is right without committing to a real implementation.
+9. `RuleSet`, `RuleDefinition`, `MatchPolicy`, `ReasonCodeEntry`, `AssetRef`, `DecisionTable` are canonically declared in `app/schemas/rules.py` (E1); `app/rules/models.py` (E2) re-exports them for namespace ergonomics. Asserted by an import-path test: `from app.schemas.rules import RuleSet` and `from app.rules.models import RuleSet` resolve to the same class object (`is` identity, not just structural equality).
 
 ---
 
