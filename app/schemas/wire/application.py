@@ -74,7 +74,7 @@ class ApplicationEnvelope(BaseModel):
     rep_id: str | None = None
     permit_number: str
     source_of_product: Literal["domestic", "imported"]
-    serial_number: str = Field(max_length=7)
+    serial_number: str = Field(max_length=6)
     type_of_product: Literal["wine", "distilled_spirits", "malt_beverages"]
     brand_name: str
     fanciful_name: str | None = None
