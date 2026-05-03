@@ -1764,6 +1764,41 @@ def test_spirits_just_outside_tolerance_fails() -> None:
     assert abv_band(obs, exp, rule, make_context()).outcome is Outcome.FAIL
 
 
+# --- wine class-aware tolerance per FR-214 / L1 §2.2 (±1.0 pp >14% / ±1.5 pp ≤14%) ---
+
+_WINE_CLASS_AWARE_PARAMS = {
+    "class_boundary_pct": 14.0,
+    "tolerance_by_class_boundary": {
+        "<=": {"plus_pp": 1.5, "minus_pp": 1.5},
+        ">":  {"plus_pp": 1.0, "minus_pp": 1.0},
+    },
+}
+
+
+def test_wine_under_14_uses_wide_band_pass() -> None:
+    """12% labeled, 13.5% actual → inside ≤14% bucket's ±1.5 pp."""
+    obs = make_obs(field_id="abv", value=None, beverage_class=BeverageClass.WINE)
+    exp = make_expected(field_id="abv", abv_labeled_pct=Decimal("12.0"), abv_actual_pct=Decimal("13.5"))
+    rule = _rule("abv_band", "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND", params=_WINE_CLASS_AWARE_PARAMS)
+    assert abv_band(obs, exp, rule, make_context()).outcome is Outcome.PASS
+
+
+def test_wine_over_14_uses_tight_band_fail() -> None:
+    """16% labeled, 17.2% actual → outside >14% bucket's ±1.0 pp."""
+    obs = make_obs(field_id="abv", value=None, beverage_class=BeverageClass.WINE)
+    exp = make_expected(field_id="abv", abv_labeled_pct=Decimal("16.0"), abv_actual_pct=Decimal("17.2"))
+    rule = _rule("abv_band", "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND", params=_WINE_CLASS_AWARE_PARAMS)
+    assert abv_band(obs, exp, rule, make_context()).outcome is Outcome.FAIL
+
+
+def test_wine_over_14_within_tight_band_pass() -> None:
+    """16% labeled, 16.8% actual → inside >14% bucket's ±1.0 pp."""
+    obs = make_obs(field_id="abv", value=None, beverage_class=BeverageClass.WINE)
+    exp = make_expected(field_id="abv", abv_labeled_pct=Decimal("16.0"), abv_actual_pct=Decimal("16.8"))
+    rule = _rule("abv_band", "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND", params=_WINE_CLASS_AWARE_PARAMS)
+    assert abv_band(obs, exp, rule, make_context()).outcome is Outcome.PASS
+
+
 # --- wine §4.36(c) class-boundary anti-overlap (FR-215) ---
 
 def test_wine_no_class_boundary_cross_fail() -> None:
@@ -1874,6 +1909,27 @@ def _result(rule, ctx, obs, exp, ok: bool) -> ValidationResult:
     )
 
 
+def _select_tolerance(rule: RuleDefinition, labeled: Decimal) -> tuple[Decimal, Decimal]:
+    """Resolve (plus_pp, minus_pp) for this labeled value.
+
+    Class-aware path (D-006 + L1 §2.2 — wine FR-214 wants ±1.0 pp >14% /
+    ±1.5 pp ≤14%): when ``parameters['tolerance_by_class_boundary']`` is
+    present, pick the bucket keyed by ``"<="`` or ``">"`` based on
+    ``parameters['class_boundary_pct']``. Tolerance values stay in YAML,
+    not in Python (per D-006).
+
+    Flat-band path (spirits, malt): fall back to ``rule.tolerance``.
+    """
+    by_boundary = rule.parameters.get("tolerance_by_class_boundary")
+    if by_boundary:
+        boundary = Decimal(str(rule.parameters["class_boundary_pct"]))
+        bucket = by_boundary[">"] if labeled > boundary else by_boundary["<="]
+        return Decimal(str(bucket["plus_pp"])), Decimal(str(bucket["minus_pp"]))
+    plus = Decimal(str((rule.tolerance or {}).get("plus_pp", 0)))
+    minus = Decimal(str((rule.tolerance or {}).get("minus_pp", 0)))
+    return plus, minus
+
+
 @register("abv_band")
 def abv_band(
     obs: FieldObservation,
@@ -1883,10 +1939,9 @@ def abv_band(
 ) -> ValidationResult:
     labeled = _decimal(exp.abv_labeled_pct)
     actual = _decimal(exp.abv_actual_pct)
-    plus = Decimal(str((rule.tolerance or {}).get("plus_pp", 0)))
-    minus = Decimal(str((rule.tolerance or {}).get("minus_pp", 0)))
     if labeled is None or actual is None:
         return _result(rule, ctx, obs, exp, ok=False)
+    plus, minus = _select_tolerance(rule, labeled)
     ok = (labeled - minus) <= actual <= (labeled + plus)
     return _result(rule, ctx, obs, exp, ok)
 
@@ -1924,13 +1979,13 @@ def abv_hard_floor(
 - [ ] **Step 4: Run test to verify it passes**
 
 Run: `uv run pytest tests/rules/_validators/test_abv_band.py -v`
-Expected: 7 PASSED.
+Expected: 10 PASSED.
 
 - [ ] **Step 5: Commit**
 
 ```bash
 git add app/rules/_validators/abv_band.py tests/rules/_validators/test_abv_band.py
-git commit -m "feat(e2): abv_band + class_boundary + hard_floor validators (D-006)"
+git commit -m "feat(e2): abv_band (incl. class-aware FR-214) + boundary + hard_floor (D-006)"
 ```
 
 ---
@@ -3701,7 +3756,8 @@ def test_fr213_wine_alcohol_format_neg(ruleset) -> None:
     assert res.outcome is Outcome.FAIL
 
 
-def test_fr214_wine_alcohol_tolerance_pos(ruleset) -> None:
+def test_fr214_wine_alcohol_tolerance_under14_pos(ruleset) -> None:
+    """≤14% bucket: 12.0% labeled, 12.5% actual — inside ±1.5 pp."""
     rule = _r(ruleset, "wine.alcohol.tolerance_band")
     obs = make_obs(field_id="abv", value=None, beverage_class=BeverageClass.WINE)
     exp = make_expected(field_id="abv", abv_labeled_pct=Decimal("12.0"), abv_actual_pct=Decimal("12.5"))
@@ -3709,10 +3765,29 @@ def test_fr214_wine_alcohol_tolerance_pos(ruleset) -> None:
     assert res.outcome is Outcome.PASS
 
 
-def test_fr214_wine_alcohol_tolerance_neg(ruleset) -> None:
+def test_fr214_wine_alcohol_tolerance_under14_neg(ruleset) -> None:
+    """≤14% bucket: 12.0% labeled, 14.0% actual — outside ±1.5 pp."""
     rule = _r(ruleset, "wine.alcohol.tolerance_band")
     obs = make_obs(field_id="abv", value=None, beverage_class=BeverageClass.WINE)
     exp = make_expected(field_id="abv", abv_labeled_pct=Decimal("12.0"), abv_actual_pct=Decimal("14.0"))
+    res = VALIDATOR_REGISTRY[rule.validator](obs, exp, rule, _ctx(ruleset))
+    assert res.outcome is Outcome.FAIL
+
+
+def test_fr214_wine_alcohol_tolerance_over14_pos(ruleset) -> None:
+    """>14% bucket: 16.0% labeled, 16.8% actual — inside the tighter ±1.0 pp band."""
+    rule = _r(ruleset, "wine.alcohol.tolerance_band")
+    obs = make_obs(field_id="abv", value=None, beverage_class=BeverageClass.WINE)
+    exp = make_expected(field_id="abv", abv_labeled_pct=Decimal("16.0"), abv_actual_pct=Decimal("16.8"))
+    res = VALIDATOR_REGISTRY[rule.validator](obs, exp, rule, _ctx(ruleset))
+    assert res.outcome is Outcome.PASS
+
+
+def test_fr214_wine_alcohol_tolerance_over14_neg(ruleset) -> None:
+    """>14% bucket: 16.0% labeled, 17.2% actual — outside the tighter ±1.0 pp band."""
+    rule = _r(ruleset, "wine.alcohol.tolerance_band")
+    obs = make_obs(field_id="abv", value=None, beverage_class=BeverageClass.WINE)
+    exp = make_expected(field_id="abv", abv_labeled_pct=Decimal("16.0"), abv_actual_pct=Decimal("17.2"))
     res = VALIDATOR_REGISTRY[rule.validator](obs, exp, rule, _ctx(ruleset))
     assert res.outcome is Outcome.FAIL
 
@@ -3837,14 +3912,21 @@ rules:
     severity: reject
     match_policy: tolerance
     validator: abv_band
-    tolerance:
-      plus_pp: 1.5
-      minus_pp: 1.5
     parameters:
+      # FR-214 / L1 §2.2: tolerance is class-aware. ≤14% labeled gets ±1.5 pp;
+      # >14% labeled gets the tighter ±1.0 pp band. Encoded in YAML per D-006
+      # (tolerance values come from the rule pack, not Python constants).
       class_boundary_pct: 14.0
+      tolerance_by_class_boundary:
+        "<=": {plus_pp: 1.5, minus_pp: 1.5}
+        ">":  {plus_pp: 1.0, minus_pp: 1.0}
     evidence_required: [abv]
     effective_date: "1988-07-18"
-    test_fixtures: [F-WINE-ALC-12-PASS-01, F-WINE-ALC-12-FAIL-LOW-01]
+    test_fixtures:
+      - F-WINE-ALC-12-PASS-01
+      - F-WINE-ALC-12-FAIL-LOW-01
+      - F-WINE-ALC-16-PASS-01
+      - F-WINE-ALC-16-FAIL-OVER-01
 
   - rule_id: wine.alcohol.no_class_boundary_cross
     cfr_citation: "27 CFR §4.36(c)"
@@ -3885,13 +3967,13 @@ rules:
 - [ ] **Step 4: Run test to verify it passes**
 
 Run: `uv run pytest tests/rules/test_wine_rules.py -v`
-Expected: 16 PASSED.
+Expected: 18 PASSED.
 
 - [ ] **Step 5: Commit**
 
 ```bash
 git add rules/wine/wine.yaml tests/rules/test_wine_rules.py
-git commit -m "feat(e2): wine (Part 4) rule pack — FR-210..FR-217 + §4.36(c) anti-overlap"
+git commit -m "feat(e2): wine pack — FR-210..FR-217 + class-aware FR-214 + §4.36(c)"
 ```
 
 ---
@@ -5325,8 +5407,8 @@ git commit -m "feat(e2): CLI smoke `python -m app.rules.loader rules/` (ARCH §8
 | L1 §4 Exit-gate AC | Satisfied by |
 |---|---|
 | 1. `RuleLoader.load(Path("rules/"))` returns `RuleSet` with `len(rules) >= 33` | T28 (`test_real_rule_tree_loads`) — asserts `>= 33` |
-| 2. Every PRD FR-200/210/220/230 series rule has pos+neg AC; ≥ 70 test cases | T21 (11) + T22 (16) + T23 (16) + T24 (16) + T25 (4) = 63 per-rule + T8–T18 unit cases (~25) ≥ 88 total |
-| 3. ABV tolerance boundary cases (FR-214/225/234) — exactly at PASS, exactly outside FAIL; FR-215 anti-overlap fires | T22 (FR-214 pos+neg, FR-215 pos+neg), T23 (FR-225 boundary pair), T24 (FR-234 pos+neg) |
+| 2. Every PRD FR-200/210/220/230 series rule has pos+neg AC; ≥ 70 test cases | T21 (11) + T22 (18) + T23 (16) + T24 (16) + T25 (4) = 65 per-rule + T8–T18 unit cases (~28) ≥ 90 total |
+| 3. ABV tolerance boundary cases (FR-214/225/234) — exactly at PASS, exactly outside FAIL; FR-215 anti-overlap fires | T22 (FR-214 ≤14% pos+neg AND >14% pos+neg via class-aware band; FR-215 pos+neg), T23 (FR-225 boundary pair), T24 (FR-234 pos+neg) |
 | 4. Brand-match Stage A: `STONE'S THROW` ↔ `Stone's Throw` → PASS (`match_kind: normalized`) | T27 (`test_stones_throw_case_difference_resolves_at_stage_a`) |
 | 5. Brand-match Stage B: `[0.85, 0.92)` → `needs_review`; `< 0.85` → FAIL with `BRAND.NAME.MISMATCH` | T18 + T27 (`test_borderline...`, `test_substantively_different_brand_below_floor_emits_mismatch`) |
 | 6. RuleLoader fail-closes on every S5 §d cross-check (≥ 8 violation modes) | T20 (`tests/test_rule_loader_failclose.py` — 10 cases: unknown_validator, unknown_reason_code, duplicate_rule_id, empty_test_fixtures, version_outside_range, invalid_semver, yaml_parse, asset_hash_drift, asset_missing, decision_table_ref_dangling) |
