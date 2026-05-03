@@ -135,3 +135,30 @@ def test_validation_result_round_trip() -> None:
     )
     vr2 = ValidationResult.model_validate_json(vr.model_dump_json())
     assert vr2 == vr
+
+
+def test_refined_round_trip() -> None:
+    from app.schemas.refined import Refined
+
+    r = Refined(
+        evaluation_id="00000000-0000-4000-8000-000000000001",
+        task="brand_borderline",
+        text="Stone's Throw vs Stones Throw — punctuation only.",
+        model_disposition="pass",
+    )
+    r2 = Refined.model_validate_json(r.model_dump_json())
+    assert r2 == r
+
+
+def test_refined_has_no_disposition_field_fr303() -> None:
+    """FR-303 invariant: the orchestrator output schema must NOT carry a top-level
+    ``disposition`` field — AI never decides pass/fail.
+    ``model_disposition`` is permitted (it is the model's *suggestion*, not the
+    deterministic verdict). The forbidden field is the bare ``disposition``.
+    """
+    from app.schemas.refined import Refined
+
+    fields = Refined.model_fields
+    assert "disposition" not in fields, (
+        "FR-303 violation: Refined.disposition would let the AI decide pass/fail."
+    )
