@@ -162,3 +162,42 @@ def test_refined_has_no_disposition_field_fr303() -> None:
     assert "disposition" not in fields, (
         "FR-303 violation: Refined.disposition would let the AI decide pass/fail."
     )
+
+
+def test_audit_record_round_trip() -> None:
+    from datetime import datetime, timezone
+
+    from app.schemas.audit import AuditRecord, OverrideEntry, PerRuleTraceEntry
+
+    rec = AuditRecord(
+        evaluation_id="00000000-0000-4000-8000-000000000001",
+        rule_set_version="0.1.0",
+        model_version="gpt-4o-2024-08-06",
+        prompt_version="v1",
+        input_hash="0" * 64,
+        output_hash="1" * 64,
+        started_at=datetime(2026, 4, 1, 12, 0, 0, tzinfo=timezone.utc),
+        completed_at=datetime(2026, 4, 1, 12, 0, 1, 230000, tzinfo=timezone.utc),
+        per_rule_trace=(
+            PerRuleTraceEntry(
+                rule_id="common.brand.exact_or_normalized",
+                disposition="pass",
+                evidence_ref="crop-001",
+            ),
+        ),
+        overrides=(),
+    )
+    rec2 = AuditRecord.model_validate_json(rec.model_dump_json())
+    assert rec2 == rec
+
+
+def test_per_rule_trace_entry_has_no_duration_ms_d018() -> None:
+    """ADR D-018: per-rule durations live in metrics, not in audit."""
+    from app.schemas.audit import PerRuleTraceEntry
+
+    fields = PerRuleTraceEntry.model_fields
+    assert "duration_ms" not in fields, (
+        "D-018 violation: per-rule duration belongs in app.schemas.metrics, "
+        "not in audit_trail.per_rule_trace[]."
+    )
+    assert set(fields.keys()) == {"rule_id", "disposition", "evidence_ref"}
