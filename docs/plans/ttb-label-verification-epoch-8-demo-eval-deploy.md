@@ -103,7 +103,7 @@ Per `PRD-deferred-content.md` §3.4 / ARCH §14.4:
 ### 2.9 README upgrade
 
 - One-command setup for reviewer profiles A (WSL2 + GPU), B (macOS no-GPU), C (Linux no-GPU) per ARCH §9.1.
-- Headline trade-off section per D-008 — combines economic + policy stories with a tornado-style range-bar visualization referenced from `docs/T11-economic-analysis.md` and `docs/T7-federal-deployment.md`.
+- Headline trade-off section per D-008 — combines economic + policy stories with a tornado-style range-bar visualization referenced from `docs/research/T11-output.md` and `docs/research/T7-output.md`.
 - Links to BRD / PRD / ARCHITECTURE / decisions log / DEMO-RUNBOOK.
 - Loom link.
 
