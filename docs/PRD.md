@@ -638,6 +638,7 @@ Format: AC-FR-### linked to FR-###. Each AC is testable. Hard-tier FRs have at l
 | **Fixture-04** (low-res / glare image) | AC-FR-603 needs-better-photo with structured legibility reason. |
 | **Fixture-05** (batch of 50) | AC-FR-401 first label returns under NFR-PERF-001; AC-FR-402 lookahead behavior is observable. |
 | **Fixture-06** (ABV out-of-tolerance) | AC-FR-225 fail with citation 27 CFR §5.65(c); AC-FR-803 override completes in three keystrokes. |
+| **Fixture-07** (borderline-confidence `needs_review`) | AC-FR-704 disposition-level confidence lands in medium band; AC-FR-501 / FR-502 affected fields and evidence are surfaced; reviewer confirms or overrides via the same FR-800-series path. |
 
 *Source: S2 D-011; T8 fixtures 01–06; S2 §Recommend updating T8 Stage 2 narration.*
 
@@ -693,6 +694,7 @@ The PRD specifies what the eval looks like and what passes. The Architecture Doc
 - ≥ 250 labels (worst-case Wald math).
 - Class balance: wine 40–50%, malt 35–45%, spirits 10–20%.
 - Synthetic share ≤ 15% with C2PA metadata; `provenance.source` matches `^synthetic-`.
+- **Borderline-confidence slice (≥ 20 labels):** images intentionally degraded into the medium-confidence band so the disposition lands at `needs_review` rather than clean pass/fail. Sources: (a) controlled synthetic degradation of clean COLA Registry images (mild blur, glare, JPEG compression, rotation, perspective transforms tuned to drop OCR confidence into the borderline band); (b) hand-curated retail/mobile product photography with real-world quality issues (reflections, partial occlusion, motion blur); (c) ICDAR Robust Reading Challenge derivations applied to label crops. This slice exercises FR-704 confidence aggregation and the human-in-the-loop disposition path.
 - Intra-rater reliability via solo-annotator double-pass with ≥ 48-hour gap; Krippendorff's α ≥ 0.80 reported with explicit limitation note.
 - Datasheet follows Gebru et al. (2021) seven-section template.
 
@@ -751,9 +753,10 @@ Demo is a delivered acceptance artifact, not a marketing exercise. Lifts D-011 d
 1. **Clean spirits pass** (fixture-01) — Sarah signal: speed + simplicity, < 2s observable.
 2. **STONE'S THROW Bourbon** (fixture-02) — Dave signal: case-only normalization passes cleanly per S2 recommendation; no override needed.
 3. **Title-case "Government Warning" fail** (fixture-03) — Jenny signal: exact reason code + citation chain.
-4. **Needs-better-photo** (fixture-04) — honest failure mode.
+4. **Needs-better-photo** (fixture-04) — honest failure mode (legibility-gate fail; system declines to evaluate).
 5. **Batch of 50** (fixture-05) — lookahead + queue position + batch table.
 6. **ABV out-of-tolerance** (fixture-06) — override demo, three keystrokes.
+7. **Borderline-confidence `needs_review`** (fixture-07) — a label image with mild quality degradation (e.g., light glare on the Government Warning region) such that OCR confidence drops into the medium band. The system completes a full disposition with a numeric confidence below the auto-pass threshold, surfaces the affected fields with their per-evidence confidences, and routes to `needs_review` — demonstrating the human-in-the-loop slice between clean pass/fail. The reviewer eyeballs the flagged region and confirms or overrides.
 
 *Source: D-011 §1; T8 Q8.8; S2 §13a.*
 
@@ -915,3 +918,4 @@ WCAG 2.1 / 2.2 success criteria honored as design targets beyond the WCAG 2.0 AA
 | 0.1 | 2026-05-02 | Project team | Initial issue. |
 | 0.2 | 2026-05-02 | Project team | Self-review pass. Added §3.4 Success Metrics (BO→FR map); added i18n out-of-scope; added NFR-UX-004 (browser/viewport), NFR-SEC-001 through NFR-SEC-004 (security baseline), NFR-OBS-001/002 (observability). Softened FR-503 component naming, FR-704 algorithm leak, NFR-DET-002 mechanism leak. Trimmed §9.4 (paths/env vars) and §10.3 (endpoints/timing) to behavior; implementation specifics moved to `PRD-deferred-content.md` for downstream docs. Removed redundant §11.2; folded compliance-derived flags into §13 traceability matrix. Compacted NFR-A11Y-003 SC list to §15.2 appendix. Annotated §6.1 JSONC block as illustrative. |
 | 0.3 | 2026-05-02 | Project team | Added §3.2 stretch bullet: automated threshold re-calibration (brand-match cutoffs, confidence-band edges, BRISQUE/NIQE gates) sweeping from eval-corpus performance. |
+| 0.4 | 2026-05-02 | Project team | Added borderline-confidence corpus slice (§9.1) and demo fixture-07 (§10.2 / §8.1) — images that land in the medium-confidence `needs_review` band, demonstrating the human-in-the-loop slice between clean pass/fail. |

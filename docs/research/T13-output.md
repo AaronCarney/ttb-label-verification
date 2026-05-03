@@ -1,15 +1,18 @@
 # T13-output.md — Labeled Fail-Data Sourcing Survey
 
+> **Status: PRODUCTION-APP REFERENCE.** Not used by the prototype. Captures sources we surveyed for a future production-app eval corpus (post-prototype, v1+). Borderline-confidence imagery — what the prototype actually needs — is handled in PRD §9 / §10.2, not here.
+
 > **Source posture.** This output is produced from authoritative training knowledge of FOIA mechanics, TTB organizational structure, federal-records access patterns, PACER/CourtListener, and academic OCR corpora. It is **not** a live web survey; specific URLs, recent FOIA logs, and current Market Compliance bulletins are flagged for spot-verification. Honest yield estimates beat optimistic ones — every count below is a **realistic floor**, not a pitch.
 
 ## TL;DR
 
-- **No bulk public corpus of labeled fail-images of TTB COLAs exists.** TTB's Public COLA Registry contains only approved labels; rejection records are not published. This was T9's working assumption, and T13 confirms it across nine candidate sources.
-- **The only path to a real, large labeled-fail corpus is a TTB FOIA submission** under 5 U.S.C. § 552 / 31 CFR Part 1, with a realistic processing window of 6–12 weeks for a complex-track request. **This is incompatible with the prototype timeline (4–6 weeks); it is the right v1 path.**
-- **One source not in T9's framing is viable for the prototype:** PACER / CourtListener litigation records yield a small but real labeled-fail subset (~10–40 labels) for `BRAND.NAME.MISMATCH` and geographic-claim rules, drawn from documented Lanham Act §43(a) and state UDAP cases. Hand-curatable inside the prototype window.
-- **Synthetic remains the primary fill for negatives**, but the share should drop from "≤15% by default" to **"~12% as a defended choice after T13"**, with the freed slots going to PACER-curated litigation labels.
-- **Academic OCR/document corpora** (FUNSD, IIT-CDIP, RVL-CDIP, DocLayNet) are usable **only for the OCR-robustness slice** (BRISQUE/NIQE gates), not for rule evaluation. Their failure modes are document-quality, not regulatory-content.
-- **Datasheet update text** drafted in §6 below; drop-in for `eval/datasheet.md` "Collection Process" section.
+- **No bulk public corpus of labeled fail-images of TTB COLAs exists.** TTB's Public COLA Registry contains only approved labels; rejection records are not published.
+- **TTB FOIA** (5 U.S.C. § 552) is the only path to a real, large labeled-fail corpus. Processing window: 6–12 weeks for a complex-track request. Production-app v1 work.
+- **PACER / CourtListener litigation records** yield a small but real labeled-fail subset (~10–40 labels) for `BRAND.NAME.MISMATCH` and geographic-claim rules, drawn from Lanham Act §43(a) and state UDAP cases. Hand-curatable.
+- **Federal Register, Market Compliance, Industry Circulars, State ABC** — text descriptions of violations, no images.
+- **Academic OCR/document corpora** (FUNSD, IIT-CDIP, RVL-CDIP, DocLayNet) — useful for OCR robustness only, not rule evaluation.
+- **Industry/trade associations** — closed data, NDA-bound.
+- **Synthetic generation** with C2PA tagging — sole option for filling the prototype's negative-case slice.
 
 ---
 
@@ -170,9 +173,9 @@ These are all primarily **brand and geographic-origin** disputes — they exerci
 - Verisimilitude is improving but imperfect — synthetic labels can have subtle artifacts (font irregularities, layout artifacts) that don't appear in real labels.
 - Coverage is bounded by what we think to generate; we won't catch failure modes we didn't anticipate.
 
-**Realistic yield.** ~30–37 labels at the recommended 12% share of a 250-label corpus.
+**Realistic yield.** Bounded only by compute time and prompt-engineering effort.
 
-**Recommendation.** **Use as primary negative-case fill, share reduced from ≤15% (T9 default) to ~12% (T13 defended).**
+**Recommendation.** **Continue as primary negative-case fill** for the production-app eval corpus until FOIA-sourced real-fail data is available.
 
 ---
 
@@ -191,55 +194,9 @@ These are all primarily **brand and geographic-origin** disputes — they exerci
 | **Synthetic generation** | **Primary negative fill, ~12%** | Reduce share as FOIA lands | **~30** | **~30** (proportionally smaller) |
 | **Public COLA Registry (positives)** | **Primary positive source** | Same | **~210** | **~600** |
 
-**Total MVP corpus:** ~210 positives + ~30 synthetic negatives + ~10 PACER-curated negatives = **~250**, satisfying T9's worst-case-Wald floor.
-
-**Total v1 corpus:** ~600 positives + ~30 synthetic + ~80 PACER + ~200 FOIA + ~50–100 image-quality stress = **~1,000+**.
-
 ---
 
-## 3. Recommended corpus construction
-
-### 3.1 MVP (prototype timeline)
-
-| Slice | Count | Source | Failure modes covered |
-|---|---|---|---|
-| Happy-path positives | ~210 | Public COLA Registry | All rules, pass cases |
-| Hand-curated litigation negatives | ~10 | PACER / CourtListener | `BRAND.NAME.MISMATCH`, geographic-claim rules |
-| Synthetic negatives | ~30 | DALL-E 3 / GPT-Image with C2PA | All other rule-fail modes (warning text, ABV tolerance, type-size, etc.) |
-| **Total** | **~250** | | |
-
-Class balance per T9: wine 40–50%, malt 35–45%, spirits 10–20%. Negative slice distributes proportionally.
-
-A separate **OCR-robustness slice** (~50–100 images) is sourced from ICDAR robust-reading datasets and used exclusively for the legibility-gate path (FR-603 / `WARNING.LEGIBILITY.*`). This slice is documented separately in the datasheet because its purpose is image-quality testing, not rule evaluation.
-
-### 3.2 v1 (post-prototype, 6–12 months)
-
-| Slice | Count | Source |
-|---|---|---|
-| Happy-path positives | ~600 | Public COLA Registry (expanded sample) |
-| FOIA-released rejections | ~200 | TTB FOIA (filed day 1 of v1) |
-| Litigation negatives | ~80 | PACER / CourtListener (expanded) |
-| Hand-curated retail photography | ~70 | Distillery websites, retail product pages (with use-rights review) |
-| Synthetic negatives | ~30 | DALL-E 3 / GPT-Image with C2PA (kept for failure-mode coverage even with real-data slices) |
-| OCR-robustness slice | ~100–200 | Academic OCR corpora (ICDAR, FUNSD, etc.) |
-| **Total** | **~1,000+** | |
-
-The synthetic share is **kept** at ~3% of v1 (vs. ~12% of MVP) specifically to ensure failure-mode coverage of edge cases not represented in the real corpus.
-
----
-
-## 4. Production tasks for v1
-
-**File these on day 1 of the v1 effort:**
-
-1. **Draft TTB FOIA request now** (during prototype work). Specify: 100–200 representative COLA rejection records across wine/spirits/malt, with reviewer rejection letters and (where applicable) revision-cycle correspondence. Request fee waiver under non-commercial scientific category. Submit on v1 day 1.
-2. **Expand the PACER hand-curation effort** to ~80 cases. Spot-budget ~$200 for exhibit retrieval where CourtListener doesn't carry the case.
-3. **Stand up the OCR-robustness slice as a separate eval surface.** Document in `eval/datasheet.md` that this slice tests image-quality gates only and is not commensurable with rule-eval metrics.
-4. **Negotiate one trade-association partnership** if v1 budget supports it. WSWA or Wine Institute are the most plausible based on their published research collaborations; this is a long lead-time effort.
-
----
-
-## 5. Caveats
+## 3. Caveats
 
 - **No live verification in this output.** Specific URLs (federalregister.gov API endpoints, CourtListener case URLs, TTB FOIA submission portal) and specific recent statistics (current Annual Report enforcement counts, current FOIA processing times) should be spot-verified at execution time. The framework, mechanisms, and legal authorities cited are stable; the surface details drift.
 - **PACER yield is the soft number.** "10–40 labels" depends heavily on which case lines a curator focuses on and whether exhibits attached to specific filings carry usable image quality. The number could be as low as 5 or as high as 60. The right move is to budget the curation effort, not the count.
@@ -247,20 +204,3 @@ The synthetic share is **kept** at ~3% of v1 (vs. ~12% of MVP) specifically to e
 - **Reuse rights on hand-curated retail photography (v1 slice) are not free.** A v1 datasheet entry needs an explicit use-rights determination per source. Default conservative posture: cite product photography as fair-use research/review; document reasoning.
 - **The Lanham Act / UDAP cases skew toward consumer-deception framings** (handmade, geographic origin, age statements) and away from technical compliance failures (warning formatting, ABV tolerance numerics). PACER negatives won't help with most of the rule pack — they help with the brand and geographic rules specifically.
 
----
-
-## 6. Datasheet update text (drop-in for `eval/datasheet.md`)
-
-The following paragraph belongs in the **Collection Process** section of the eval datasheet, satisfying Gebru et al. (2021) §3.3:
-
-> The negative-case slice of the eval corpus was sourced after surveying nine candidate paths (TTB FOIA, TTB Market Compliance Office, Federal Register adverse-action notices, TTB Industry Circulars, state ABC commissions, PACER / CourtListener litigation records, academic OCR/document corpora, industry/trade-association data partnerships, and synthetic generation) — see `docs/research/T13-output.md` for the full survey and per-source yield estimates. Of these, only TTB FOIA is likely to deliver a representative real-fail corpus at scale, but its 6–12 week processing window is incompatible with the prototype timeline and is deferred to v1 work. PACER litigation records yield a small but real labeled-fail subset for brand-claim and geographic-origin rules; we hand-curated approximately 10 such cases for inclusion in the MVP corpus. The remaining negative-case slice (~12% of corpus, ~30 labels) is synthetically generated using DALL-E 3 / GPT-Image with C2PA Content Credentials embedded by default per OpenAI policy effective February 2024. The OCR-robustness slice is sourced separately from the ICDAR Robust Reading Challenge datasets and exercises only the BRISQUE/NIQE legibility gates (FR-603); it is not commensurable with rule-evaluation metrics and is reported separately.
-
----
-
-## 7. What this changes upstream
-
-- **PRD §9.1 corpus shape** — synthetic share annotated as "≤12% (defended after T13)" rather than "≤15% (T9 default)".
-- **PRD §3.2 stretch goal** — automated re-calibration (added in v0.3) becomes more defensible once a v1 FOIA-sourced corpus exists, because the calibration curve is then anchored on real reviewer dispositions.
-- **`docs/planning/T13-labeled-fail-data.md`** — status moves from `READY TO RESEARCH` to `EXECUTED — see T13-output.md`.
-- **Datasheet** — gets the §6 paragraph above on creation.
-- **No ARCHITECTURE.md change required.** The corpus mix is data-shape, not code-shape.

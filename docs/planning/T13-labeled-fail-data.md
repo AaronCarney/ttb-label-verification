@@ -1,9 +1,9 @@
 # T13 — Labeled Fail-Data Sourcing
 
 **Phase:** 4 (User-facing & Eval)
-**Status:** EXECUTED — see `docs/research/T13-output.md`
+**Status:** EXECUTED — production-app reference. See `docs/research/T13-output.md`. Not used by the prototype; informs decisions for the production-app trajectory.
 **Prerequisites:** T2 (Public COLA Registry access), T9 (corpus design + datasheet posture)
-**Blocks:** Final eval-corpus construction; datasheet "Collection Process" section.
+**Blocks:** Production-app eval-corpus construction (post-prototype).
 
 ## Synopsis
 
