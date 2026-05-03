@@ -7,7 +7,7 @@
 **Audience (secondary):** Take-home reviewer evaluating translation of stakeholder constraints into a buildable specification
 **Status:** Draft for review — prototype phase
 **Companion documents:** `BRD.md` (why we're building it), `ARCHITECTURE.md` (how it's built), `03-decisions.md` (decision log)
-**Document version:** 0.4 (D-018 audit/metrics split applied to §6.2 wire example)
+**Document version:** 0.5 (eval corpus right-sized for prototype tier; D-018 wire-example erratum applied)
 
 ---
 
@@ -668,12 +668,14 @@ For each MVP rule in §5.3, an AC pair: (a) positive case passes; (b) canonical 
 
 ### 8.4 Evaluation acceptance (corpus-level)
 
-- Disposition macro-F1 ≥ 0.70 on full eval (MVP gate); ≥ 0.85 (v1 gate).
-- Per-rule recall ≥ 0.80 on government-health-warning rules (FR-200 through FR-205).
-- Per-rule positive coverage ≥ 43 cases per rule (95% CI ±15 pp).
-- Happy-path coverage ≥ 97 fully-compliant labels.
+Right-sized for prototype tier per the v0.4 review (the original S4 targets are stretch — see §9.1 note):
 
-*Source: S4 §Evaluation acceptance criteria.*
+- Disposition macro-F1 ≥ 0.70 on the full eval corpus (MVP gate). The 0.85 v1 gate is deferred to pilot phase, where corpus expansion enables tighter confidence intervals.
+- Per-rule recall ≥ 0.80 on government-health-warning rules (FR-200 through FR-205) — these rules carry the highest cost-of-error asymmetry per T9 Q9.1 and warrant a dedicated recall floor even at prototype N.
+- Per-rule positive coverage: ≥ 1 positive AC per rule (statistical-defensibility expansion to ≥ 43 per rule is pilot-phase work; flagged in §9.1 right-sizing note).
+- Happy-path coverage: ≥ 10 fully-compliant labels in the full corpus (was ≥ 97 — pilot-phase target).
+
+*Source: S4 §Evaluation acceptance criteria, right-sized at v0.4 to match prototype-tier corpus (see §9.1).*
 
 ### 8.5 Performance acceptance
 
@@ -699,14 +701,20 @@ The PRD specifies what the eval looks like and what passes. The Architecture Doc
 
 ### 9.1 Test corpus shape
 
-- ≥ 250 labels (worst-case Wald math).
-- Class balance: wine 40–50%, malt 35–45%, spirits 10–20%.
-- Synthetic share ≤ 15% with C2PA metadata; `provenance.source` matches `^synthetic-`.
-- **Borderline-confidence slice (≥ 20 labels):** images intentionally degraded into the medium-confidence band so the disposition lands at `needs_review` rather than clean pass/fail. Sources: (a) controlled synthetic degradation of clean COLA Registry images (mild blur, glare, JPEG compression, rotation, perspective transforms tuned to drop OCR confidence into the borderline band); (b) hand-curated retail/mobile product photography with real-world quality issues (reflections, partial occlusion, motion blur); (c) ICDAR Robust Reading Challenge derivations applied to label crops. This slice exercises FR-704 confidence aggregation and the human-in-the-loop disposition path.
-- Intra-rater reliability via solo-annotator double-pass with ≥ 48-hour gap; Krippendorff's α ≥ 0.80 reported with explicit limitation note.
-- Datasheet follows Gebru et al. (2021) seven-section template.
+**Right-sizing note (v0.4).** The original S4 spec called for ≥ 250 hand-labeled labels with worst-case Wald math, ≥ 43 cases per rule, and Krippendorff's α ≥ 0.80 from a 48-hour-gap solo-annotator double-pass. That is pilot-phase scope. Prototype tier ships a defensible-but-smaller corpus:
 
-*Source: S4 §Evaluation acceptance criteria; T9 Q9.1–Q9.4.*
+- **Smoke subset:** ~ 20 labels — runs on every PR; ≤ 60 s wall clock.
+- **Full corpus:** ~ 50 labels (smoke is a strict subset). Stratified across class × difficulty × rule families so every MVP rule is exercised by ≥ 1 positive case.
+- **Class balance:** spirits 30–40%, wine 30–40%, malt 20–30%. (Spirits is the largest rule surface per S5; wine and malt are weighted to absolute coverage rather than industry mix in the prototype corpus.)
+- **Synthetic share ≤ 30%** of the full corpus with `provenance.source` matching `^synthetic-` (relaxed from 15% — at N=50, controlled synthetic degradations are the only practical way to exercise the borderline slice without compromising provenance honesty).
+- **Borderline-confidence slice (≥ 10 labels)**, scaled from the original ≥ 20: images intentionally degraded into the medium-confidence band so the disposition lands at `needs_review` rather than clean pass/fail. Sources: (a) controlled synthetic degradation of clean COLA Registry images (mild blur, glare, JPEG compression, rotation, perspective transforms tuned to drop OCR confidence into the borderline band); (b) hand-curated retail/mobile product photography with real-world quality issues (reflections, partial occlusion, motion blur); (c) ICDAR Robust Reading Challenge derivations applied to label crops. This slice exercises FR-704 confidence aggregation and the human-in-the-loop disposition path.
+- **Happy-path coverage ≥ 10** fully-compliant labels in the full corpus.
+- **Intra-rater reliability:** the original Krippendorff's α ≥ 0.80 target is **deferred to pilot phase** — at N=50 the statistic's confidence interval is too wide to support a hard gate, and the expected pilot-phase corpus expansion is the right place to land it. The MVP corpus is single-pass with the labeling protocol documented in `eval/datasheet.md` for transparency.
+- **Datasheet** still follows Gebru et al. (2021) seven-section template — the documentation discipline holds at any N.
+
+The pilot-phase expansion path (≥ 250 labels, ≥ 43 per rule, Krippendorff's α gate) remains the production-trajectory target and is recorded in §12.2 OQ-PRD-5.
+
+*Source: S4 §Evaluation acceptance criteria, right-sized at v0.4 for prototype tier; T9 Q9.1–Q9.4.*
 
 ### 9.2 Metrics framework
 
@@ -814,6 +822,7 @@ Compliance-derived FRs are tagged in the §13 traceability matrix; see the "Comp
 | **OQ-PRD-2** | Are batch-mode failed-label retries automatic or reviewer-initiated? | **Decided MVP**: reviewer-initiated. Automatic retry would require a retry policy with backoff and would complicate the audit trail without persona signal demand. |
 | **OQ-PRD-3** | Does the audit-trail object include the LLM prompt and response verbatim? | **Decided MVP**: yes for `DEV_MODE` raw-JSON drawer (FR-508), via T5 / S3 ring-buffer pattern; production posture may redact for PII review. |
 | **OQ-PRD-4** | For multi-image labels (front + back + neck), what's the disposition-aggregation rule? | **Open.** MVP supports single front-label submissions; multi-image aggregation deferred to stretch. Provisional rule: any-fail aggregates to fail; any-needs-review without fail aggregates to needs-review; otherwise pass. To validate with reviewers in pilot phase. |
+| **OQ-PRD-5** | When does the eval corpus expand to the original S4 statistical-defensibility targets (≥ 250 labels, ≥ 43 cases per rule, Krippendorff's α ≥ 0.80, ≥ 97 happy-path)? | **Pilot phase.** §9.1 right-sized the prototype corpus to ~ 50 labels + ~ 20 smoke; the original S4 targets remain the production-trajectory target and ship with the pilot. |
 
 ---
 
@@ -927,4 +936,5 @@ WCAG 2.1 / 2.2 success criteria honored as design targets beyond the WCAG 2.0 AA
 | 0.2 | 2026-05-02 | Project team | Self-review pass. Added §3.4 Success Metrics (BO→FR map); added i18n out-of-scope; added NFR-UX-004 (browser/viewport), NFR-SEC-001 through NFR-SEC-004 (security baseline), NFR-OBS-001/002 (observability). Softened FR-503 component naming, FR-704 algorithm leak, NFR-DET-002 mechanism leak. Trimmed §9.4 (paths/env vars) and §10.3 (endpoints/timing) to behavior; implementation specifics moved to `PRD-deferred-content.md` for downstream docs. Removed redundant §11.2; folded compliance-derived flags into §13 traceability matrix. Compacted NFR-A11Y-003 SC list to §15.2 appendix. Annotated §6.1 JSONC block as illustrative. |
 | 0.3 | 2026-05-02 | Project team | Added §3.2 stretch bullet: automated threshold re-calibration (brand-match cutoffs, confidence-band edges, BRISQUE/NIQE gates) sweeping from eval-corpus performance. |
 | 0.4 | 2026-05-03 | Project team | Applied ARCH ADR D-018 erratum to §6.2 wire example: moved per-rule `duration_ms` out of `audit_trail.per_rule_trace[]` (audit) into a sibling `metrics` block (telemetry). `audit_trail` retains regulatory-reconstruction fields only; `metrics` carries `total_duration_ms`, `per_rule_durations_ms[]`, `vision_duration_ms`, `orchestrator_duration_ms`. |
+| 0.5 | 2026-05-03 | Project team | Eval corpus right-sized for prototype tier: §8.4 acceptance and §9.1 corpus shape revised — full corpus ~ 50 labels (was ≥ 250), smoke ~ 20, borderline slice ≥ 10 (was ≥ 20), happy-path ≥ 10 (was ≥ 97), per-rule positive coverage ≥ 1 (was ≥ 43), Krippendorff's α gate deferred to pilot. macro-F1 ≥ 0.70 MVP gate held; 0.85 v1 gate deferred. New OQ-PRD-5 records the pilot-phase expansion target. Synthetic share cap relaxed from 15% to 30%. Class balance rebalanced for absolute rule coverage at the smaller N. |
 | 0.4 | 2026-05-02 | Project team | Added borderline-confidence corpus slice (§9.1) and demo fixture-07 (§10.2 / §8.1) — images that land in the medium-confidence `needs_review` band, demonstrating the human-in-the-loop slice between clean pass/fail. |
