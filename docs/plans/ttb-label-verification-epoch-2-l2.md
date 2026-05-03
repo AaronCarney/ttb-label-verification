@@ -1630,17 +1630,22 @@ Create `app/rules/_validators/verbatim_hash.py`:
 ```python
 """verbatim_hash validator: sha256 of canonicalized observed text vs. asset hash.
 
-Per S5 §a, canonicalization ops applied (in order):
-  - NFKC unicode normalization
-  - ASCII-quote replacement
-  - whitespace collapse to single spaces
-  - outer whitespace strip
+Canonicalization ops are taken from ``rule.asset.normalization`` (a list of
+op names, applied in order). When the rule declares no asset block (e.g.,
+unit tests using ``make_rule``), the default op list applies. The loader
+(T20 ``_load_assets``) imports ``canonicalize_text`` from this module and
+runs the SAME op pipeline before hashing the asset bytes, so loader and
+validator produce identical hashes (S5 §d cross-check 5(c)).
+
+Supported ops (S5 §d/(d)): ``nfkc``, ``ascii_quotes``, ``collapse_whitespace``,
+``strip_outer_ws``.
 """
 from __future__ import annotations
 
 import hashlib
 import re
 import unicodedata
+from typing import Sequence
 
 from app.rules._validators import ValidatorContext, register
 from app.rules._validators.equality_match import _build_meta, _conf
@@ -1650,11 +1655,28 @@ from app.schemas.rejection import Outcome, ValidationResult
 from app.schemas.rules import RuleDefinition
 
 
-def _canonicalize(s: str) -> str:
-    s = unicodedata.normalize("NFKC", s)
-    s = (s.replace("“", '"').replace("”", '"')
-            .replace("‘", "'").replace("’", "'"))
-    s = re.sub(r"\s+", " ", s).strip()
+DEFAULT_NORMALIZATION_OPS: tuple[str, ...] = (
+    "nfkc", "ascii_quotes", "collapse_whitespace", "strip_outer_ws",
+)
+
+
+def canonicalize_text(s: str, ops: Sequence[str] = DEFAULT_NORMALIZATION_OPS) -> str:
+    """Apply normalization ops in declaration order. Loader and validator MUST
+    use this same helper so verbatim hashes match (S5 §d cross-check 5(c)).
+    Raises ValueError on an unknown op name (fail-closed).
+    """
+    for op in ops:
+        if op == "nfkc":
+            s = unicodedata.normalize("NFKC", s)
+        elif op == "ascii_quotes":
+            s = (s.replace("“", '"').replace("”", '"')
+                  .replace("‘", "'").replace("’", "'"))
+        elif op == "collapse_whitespace":
+            s = re.sub(r"\s+", " ", s)
+        elif op == "strip_outer_ws":
+            s = s.strip()
+        else:
+            raise ValueError(f"unknown normalization op: {op!r}")
     return s
 
 
@@ -1667,7 +1689,8 @@ def verbatim_hash(
 ) -> ValidationResult:
     key = rule.parameters.get("asset_key")
     asset = ctx.assets.get(key) if key else None
-    observed = _canonicalize(str(obs.observed_value or ""))
+    ops = (rule.asset or {}).get("normalization", DEFAULT_NORMALIZATION_OPS)
+    observed = canonicalize_text(str(obs.observed_value or ""), ops=ops)
     matched = (
         asset is not None
         and hashlib.sha256(observed.encode("utf-8")).hexdigest() == asset.sha256
@@ -3339,6 +3362,12 @@ class YamlRuleLoader:
         rules_root: Path,
         acc: _LoadAccumulator,
     ) -> dict[str, AssetRef]:
+        # Imported here (not at module top) so the loader doesn't force the
+        # validator subpackage to import before the registry walk completes.
+        from app.rules._validators.verbatim_hash import (
+            DEFAULT_NORMALIZATION_OPS,
+            canonicalize_text,
+        )
         anchor = self.rules_root_for_assets or rules_root.parent
         out: dict[str, AssetRef] = {}
         for rd in rules:
@@ -3346,6 +3375,7 @@ class YamlRuleLoader:
                 continue
             ap = rd.asset.get("path")
             pin = rd.asset.get("sha256_pin")
+            ops = rd.asset.get("normalization", None)
             if not ap or not pin:
                 acc.errors.append(f"{rd.rule_id}: asset must declare path + sha256_pin")
                 continue
@@ -3353,7 +3383,24 @@ class YamlRuleLoader:
             if not full.exists():
                 acc.errors.append(f"{rd.rule_id}: asset file not found: {full}")
                 continue
-            actual = hashlib.sha256(full.read_bytes()).hexdigest()
+            # When the asset declares a normalization op list, hash the
+            # CANONICALIZED form (S5 §d cross-check 5(c)). Empty list ([])
+            # explicitly opts out and hashes raw bytes (used by tmp_path
+            # fixtures in T20's failclose suite). Omitted (None) defaults to
+            # the standard 4-op pipeline so production assets are never
+            # silently broken by a stray trailing newline.
+            if ops is None:
+                ops = list(DEFAULT_NORMALIZATION_OPS)
+            if ops:
+                try:
+                    text = full.read_text(encoding="utf-8")
+                except UnicodeDecodeError as e:
+                    acc.errors.append(f"{rd.rule_id}: asset is not utf-8: {e}")
+                    continue
+                normalized = canonicalize_text(text, ops=ops)
+                actual = hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+            else:
+                actual = hashlib.sha256(full.read_bytes()).hexdigest()
             if actual != pin:
                 acc.errors.append(f"{rd.rule_id}: asset hash drift; pinned={pin} actual={actual}")
                 continue
@@ -3531,13 +3578,22 @@ Expected: FAIL — `rules/common/health_warning.yaml` does not exist (loader fai
 
 - [ ] **Step 3: Create the rule pack**
 
-Compute the asset hash first:
+Compute the asset hash from the CANONICALIZED bytes (the loader applies the
+4-op normalization pipeline before hashing per S5 §d cross-check 5(c)):
 
 ```bash
-sha256sum assets/warnings/govt_warning_16_21.txt
+uv run python -c "
+from app.rules._validators.verbatim_hash import canonicalize_text
+import hashlib
+text = open('assets/warnings/govt_warning_16_21.txt', encoding='utf-8').read()
+print(hashlib.sha256(canonicalize_text(text).encode('utf-8')).hexdigest())
+"
 ```
 
-Capture the hex digest as `<HASH>`.
+Capture the hex digest as `<HASH>`. (T4 ships the asset file in already-
+canonical form so this digest equals plain `sha256sum` of the file —
+declaring `normalization` in the rule guarantees consistency if the file
+ever drifts to non-canonical, e.g., trailing newline.)
 
 Create `rules/common/health_warning.yaml` (substitute the digest):
 
@@ -3569,6 +3625,8 @@ rules:
     asset:
       path: assets/warnings/govt_warning_16_21.txt
       sha256_pin: "<HASH>"
+      # Loader and validator hash the canonicalized form (S5 §d 5(c)).
+      normalization: [nfkc, ascii_quotes, collapse_whitespace, strip_outer_ws]
     evidence_required: [warning_block]
     confidence_floor: 0.60
     effective_date: "1989-11-18"
