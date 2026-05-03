@@ -39,15 +39,15 @@ Rate-limit and bulkhead per ARCH §11.2: at most 4 outstanding calls (asyncio.Se
 
 ### 2.3 Local implementation (`app/vision/local.py`) — on-prem-trajectory companion
 
-`LocalVisionExtractor` runs:
+Per D-021 prototype-tier scope reduction, `LocalVisionExtractor` runs only:
 
 1. **PaddleOCR PP-OCRv5 (GPU)** via `app/vision/paddle_runner.py` — coarse text + bbox extraction.
 2. **Stroke-Width-Transform (SWT) bold detector** via `app/vision/swt.py` — heading-bold for FR-202.
-3. **Florence-2-large** via `app/vision/florence2.py` (HuggingFace Transformers + `accelerate`) — layout analysis, region proposals.
-4. **GPT-4o-on-crop tiebreaker** via `app/vision/tiebreak_gpt4o.py` — only invoked when local signals disagree (per ARCH §4.2.3); strict:true Structured Outputs.
-5. **Qwen2.5-VL-7B-AWQ fallback** via `app/vision/qwen_vl.py` — when Florence-2 + GPT-4o are both unavailable.
+3. **GPT-4o-on-crop tiebreaker** via `app/vision/tiebreak_gpt4o.py` — only invoked when local signals are uncertain; strict:true Structured Outputs.
 
-All five components implement a small internal sub-interface (`async run(crop) -> Candidate`) so the local pipeline composes them deterministically. The local impl lives behind the `[gpu]` optional dependency group and degrades gracefully if `paddlepaddle-gpu` / `torch` / `transformers` are not installed (raises `RuntimeError` at `ensure_loaded()`).
+The three components implement a small internal sub-interface (`async run(crop) -> Candidate`) so the local pipeline composes them deterministically. The local impl lives behind the `[gpu]` optional dependency group and degrades gracefully if `paddlepaddle-gpu` / `torch` are not installed (raises `RuntimeError` at `ensure_loaded()`).
+
+**Scoped out of MVP per D-021:** `florence2.py` (Florence-2-large layout via HuggingFace Transformers + `accelerate`) and `qwen_vl.py` (Qwen2.5-VL-7B-AWQ fallback). The Protocol seam is preserved so future re-introduction of either is a new module without architectural change. Reason: their value is "preserve the on-prem trajectory" which a single local impl + tiebreaker already proves; the second-and-third impls add ~9 GB GPU resident set and HuggingFace Transformers + accelerate + bitsandbytes deps for no validated demo behavior.
 
 ### 2.4 Quality gates (`app/vision/quality.py`)
 
@@ -80,7 +80,7 @@ def get_vision_extractor(settings: Settings) -> VisionExtractor:
 - `tests/test_vision_cloud_extraction.py` — cloud impl extracts FR-001 through FR-008 against canned multipart JPEG/PNG fixtures using **recorded OpenAI responses** (HTTP-level fixtures via `respx` or `httpx_mock`); `LLM_MODEL_SNAPSHOT` and `PROMPT_VERSION` pinned so recordings stay valid.
 - `tests/test_vision_quality_gates.py` — BRISQUE/NIQE scores on `fixtures/04-low-res-blurry/` triggers `needs_better_photo` with `WARNING.LEGIBILITY.LOW_RESOLUTION`; glare fixture triggers `WARNING.LEGIBILITY.GLARE`; motion blur triggers `WARNING.LEGIBILITY.MOTION_BLUR`.
 - `tests/test_vision_dpi_extraction.py` — DPI extracted from EXIF, PNG pHYs, JFIF, and applicant-supplied `dimensions.dpi`; missing DPI emits `ENGINE.MEASUREMENT.MISSING_DPI` (FR-602 / FR-910).
-- `tests/test_vision_local_protocol.py` — local impl satisfies the Protocol with all five sub-runners interface-mocked; `ensure_loaded()` raises a clear error if `--extra gpu` deps are missing.
+- `tests/test_vision_local_protocol.py` — local impl satisfies the Protocol with the three sub-runners (PaddleOCR + SWT + GPT-4o tiebreaker) interface-mocked; `ensure_loaded()` raises a clear error if `--extra gpu` deps are missing.
 - `tests/test_vision_bulkhead.py` — concurrency budget (asyncio.Semaphore at 4) is honored; concurrent calls beyond the budget queue without raising.
 - `tests/test_vision_ring_buffer_records.py` — every call writes a `CallRecord` to the per-batch ring buffer with the right `stage` enum value and `latency_ms` populated.
 
@@ -103,9 +103,9 @@ The epoch lands when **all of these pass**:
 5. Quality gates emit `WARNING.LEGIBILITY.*` reason codes on the degraded fixtures (low-res, glare, motion-blur); on a clean fixture they pass through with `disposition=ok`.
 6. `VISION_MODE=auto` falls back to cloud when no CUDA device is detected; falls back to local when CUDA is present (CI runs both code paths via env-var override).
 7. The asyncio.Semaphore bulkhead caps concurrent vision calls at 4; a 5th request queues without raising.
-8. `grep -rn 'openai\|paddle\|florence\|qwen' app/ | grep -v 'app/vision/'` returns no hits — the vision dependencies are isolated to the seam directory.
+8. `grep -rn 'openai\|paddle' app/ | grep -v 'app/vision/'` returns no hits — the vision dependencies are isolated to the seam directory. (Per D-021: Florence-2 and Qwen2.5-VL imports are scoped out of MVP entirely.)
 9. `LocalVisionExtractor.ensure_loaded()` on a CPU-only machine raises a clear `RuntimeError` naming the missing `--extra gpu` deps (instead of an obscure `ImportError`).
-10. Every successful `extract()` call writes one `CallRecord` per inference leg (≥ 1 for cloud, up to 5 for local); ring-buffer `maxlen=200` is honored.
+10. Every successful `extract()` call writes one `CallRecord` per inference leg (≥ 1 for cloud, up to 3 for local under the D-021 trimmed pipeline: PaddleOCR + SWT + GPT-4o tiebreak); ring-buffer `maxlen=200` is honored.
 
 ---
 
@@ -114,7 +114,7 @@ The epoch lands when **all of these pass**:
 **Mockable** —
 
 - **OpenAI HTTP responses:** recorded via `respx` (or `httpx_mock`) at the HTTP layer, **not** at the SDK level. Recording at the HTTP layer survives SDK upgrades; recording at the SDK level requires test rewrites on every SDK bump.
-- **PaddleOCR / Florence-2 / Qwen runners:** interface-mocked via `monkeypatch` setting the runner's `run()` method.
+- **PaddleOCR runner:** interface-mocked via `monkeypatch` setting the runner's `run()` method.
 - **`nvidia-smi` subprocess:** mocked with `subprocess.run` patched.
 
 **Real** —
@@ -143,8 +143,7 @@ The epoch lands when **all of these pass**:
 |---|---|---|---|
 | OpenAI Structured Outputs `strict:true` rejects edge inputs (e.g., a label with no clear `brand_name` region) | Medium | Medium | Schema design favors permissive optionality (every extracted field is `optional` in the schema); failure surfaces as `null` field which the Application Service routes to `needs_review` via FR-302 ocr-reconcile (E4) |
 | HTTP recordings drift after `LLM_MODEL_SNAPSHOT` rotates and tests silently use stale data | Medium | Medium | Recording filename includes the snapshot tag; CI fails if the active snapshot has no recording |
-| Local-mode imports inflate `uv sync` time on the cloud profile | Low | Medium | Local-only imports gated by `[gpu]` optional dependency group; CPU profile excludes `torch` / `transformers` / `paddlepaddle-gpu` |
-| Florence-2 license incompatibility | Low | High | Florence-2 ships under MIT (per HuggingFace model card); license check in CI |
+| Local-mode imports inflate `uv sync` time on the cloud profile | Low | Medium | Local-only imports gated by `[gpu]` optional dependency group; CPU profile excludes `torch` / `paddlepaddle-gpu` (per D-021, `transformers` / `accelerate` / `bitsandbytes` removed entirely) |
 | BRISQUE / NIQE Python ports underperform on real-world fixtures, false-flagging clean labels as low-quality | Medium | Medium | Quality-gate thresholds are configurable in `configs/vision.local.toml` and `configs/vision.cloud.toml`; tuned during E8 against the eval corpus |
 | Cloud bulkhead at 4 outstanding calls bottlenecks under fixture-05 (50-label batch) | Low | Medium | The batch processor's `LOOKAHEAD_K=3` (E6) limits in-flight items to 4 anyway; cloud bulkhead is a defense-in-depth, not the throughput governor |
 
@@ -154,7 +153,7 @@ The epoch lands when **all of these pass**:
 
 When E3 lands:
 
-1. Decompose into 7 tasks: Protocol declaration → Cloud impl → Local impl pipeline (5 sub-tasks: paddle_runner, swt, florence2, tiebreak_gpt4o, qwen_vl) → quality.py → DI wiring → ring-buffer integration. Local pipeline tasks are parallelizable (each sub-runner is independent).
+1. Decompose into ~5 tasks (per D-021 trimmed pipeline): Protocol declaration → Cloud impl → Local impl pipeline (3 sub-tasks: paddle_runner, swt, tiebreak_gpt4o) → quality.py → DI wiring → ring-buffer integration. Local pipeline tasks are parallelizable (each sub-runner is independent).
 2. **Wave structure:** base.py → cloud.py + local sub-runners (parallel) → local.py composes them (sequential after sub-runners) → quality.py + DI + ring-buffer integration (parallel).
 3. The L2 plan **must** include a task that runs `python -m app.vision.cloud --label fixtures/01-spirits-clean/label.png` as a CLI smoke against the recorded responses.
 4. The L2 plan **must** include a task that exercises `_autodetect()` on both a CUDA-present and CUDA-absent machine via subprocess monkeypatching.
@@ -167,3 +166,4 @@ When E3 lands:
 | Version | Date | Author | Notes |
 |---|---|---|---|
 | 0.1 | 2026-05-02 | Project team | Initial epoch-3 L1 doc. |
+| 0.2 | 2026-05-03 | Project team | Applied D-021 prototype-tier scope reduction: dropped Florence-2 + Qwen2.5-VL from local pipeline (kept PaddleOCR + SWT + GPT-4o tiebreaker); updated §2.3 component description, §2.6 test surface, §4 exit-gate items 8 + 10, §5 mockable list, §7 risks, §8 L2 hand-off. Substitutability seam unchanged. |

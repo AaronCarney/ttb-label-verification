@@ -7,7 +7,7 @@
 **Audience (simulated, write for this one):** A senior engineer joining the team and reading this to understand the codebase before opening the repo.
 **Status:** Draft for review — prototype phase.
 **Companion documents:** `BRD.md` (why), `PRD.md` v0.2 (what), `03-decisions.md` (decision log).
-**Document version:** 0.2 (self-review pass; see §19.4 change log).
+**Document version:** 0.3 (D-021 scope reduction; see §19.4 change log).
 
 ---
 
@@ -223,7 +223,7 @@ The components below are listed in the order an evaluation flows through them. E
 
 **Responsibility.** Accepts a label image (bytes + content-type + optional dimensions) and returns a list of `FieldObservation` objects (T3 §Q3.2 input contract; PRD §5.1 FR-001–008). Each observation includes raw and normalized text, optional numeric value, OCR confidence, bounding box, alternative candidate reads, font attributes, and an image URI for evidence packaging.
 
-**Dependencies.** None inside the project. Concrete implementations call out: the local implementation invokes PaddleOCR PP-OCRv5 (GPU), Florence-2-large via HuggingFace Transformers, GPT-4o-on-crop as strict-mode tiebreaker, and Qwen2.5-VL-7B-AWQ as fallback (S1 stack); the cloud implementation invokes GPT-4o-on-crop with Structured Outputs `strict:true` for every leg.
+**Dependencies.** None inside the project. Concrete implementations call out: the local implementation invokes PaddleOCR PP-OCRv5 (GPU) and GPT-4o-on-crop as strict-mode tiebreaker (per D-021 prototype-tier scope reduction — Florence-2 and Qwen2.5-VL skeletons are dropped from MVP; the seam is preserved for future re-introduction); the cloud implementation invokes GPT-4o-on-crop with Structured Outputs `strict:true` for every leg.
 
 **Substitutability.** **Yes (D-004 swap point #1).** The abstract `VisionExtractor` (a Python `Protocol`) lives at `app/vision/base.py`; concrete implementations at `app/vision/local.py` and `app/vision/cloud.py`. Selection is by `VISION_MODE={local,cloud,auto}` — `auto` probes for a CUDA device and falls back to cloud (D-015).
 
@@ -255,12 +255,11 @@ The components below are listed in the order an evaluation flows through them. E
 
 **Dependencies.** Called from the Application Service when, and only when, a Rule Engine result triggers one of the three task conditions. Records every prompt/response into the per-batch ring buffer (S3 Q14).
 
-**Substitutability.** **Yes (D-004 swap point #2).** The abstract `Orchestrator` (an ABC with one async method `refine`) lives at `app/orchestrator/base.py`. Three implementations exist in the tree, with explicit honesty about which is exercised:
+**Substitutability.** **Yes (D-004 swap point #2).** The abstract `Orchestrator` (an ABC with one async method `refine`) lives at `app/orchestrator/base.py`. Two implementations ship in MVP per D-021 prototype-tier scope reduction:
 - `OpenAIStrictOrchestrator` (`openai_strict.py`) — **default in MVP; the only implementation validated against the demo fixtures and eval corpus.** OpenAI Structured Outputs `strict:true`, `temperature=0`, fixed seed, snapshot-pinned model.
 - `AnthropicStrictOrchestrator` (`anthropic_strict.py`) — **swap-path skeleton.** Declares the seam; exercises Anthropic `tool_use` strict mode in unit tests; **not** validated against the demo fixtures or the eval corpus in MVP.
-- `VllmXgrammarOrchestrator` (`vllm_xgrammar.py`) — **swap-path skeleton, preserved for the production-trajectory on-prem path** per D-016 consequences. Declares the seam; not run by default; not validated.
 
-The two skeletons exist to demonstrate the seam holds — they prove substitutability without claiming production-readiness for backends the prototype does not exercise.
+The Anthropic skeleton exists to demonstrate the seam holds — it proves provider-agnostic substitutability without claiming production-readiness for a backend the prototype does not exercise. A `VllmXgrammarOrchestrator` was scoped out per D-021 (production-trajectory federal on-prem); the existing ABC permits future re-introduction without rework.
 
 **Failure mode.** When the LLM endpoint is unreachable, returns `needs_review` with `ENGINE.MODEL.UNAVAILABLE` (FR-304 / FR-912). When the structured response fails schema validation after one retry, returns `needs_review` with a `LLM_OUTPUT_INVALID` qualifier on the task-specific reason code (T5 Task 1 / 2 / 3 malformed-output behavior). Manual review (FR-802) is preserved against the Rule Engine output alone — the Application Service's assembly does not require a successful orchestrator call.
 
@@ -583,9 +582,9 @@ The full rule-pack content lives in S5 §a (~1100 lines of YAML across the four 
 
 **Fields:**
 - `ts: datetime`, `batch_id: str`, `label_id: str`.
-- `stage: Literal["vision.paddleocr", "vision.swt", "vision.florence2", "vision.gpt4o_tiebreak", "vision.qwen_fallback", "rule.evaluate", "orch.brand_disambig", "orch.reasoning_enrich", "orch.ocr_reconcile"]`.
+- `stage: Literal["vision.paddleocr", "vision.swt", "vision.gpt4o_tiebreak", "rule.evaluate", "orch.brand_disambig", "orch.reasoning_enrich", "orch.ocr_reconcile"]`.
 - `request: dict` (full prompt / image-hash / params), `response: dict` (full structured output).
-- `latency_ms: int`, `model: str | None`, `provider: str | None` (`"openai" | "anthropic" | "local.transformers"`).
+- `latency_ms: int`, `model: str | None`, `provider: str | None` (`"openai" | "anthropic" | "local.paddleocr"`).
 - `prompt_version: str | None`, `output_hash: str`.
 
 **Lifecycle.** Appended on every LLM/vision call; bounded to `maxlen=200` per batch (~2.4 MB at ~12 KB/record, OOM-safe per S3 Q14). Evicted on FIFO basis when the ring fills.
@@ -630,7 +629,7 @@ The stack below is settled by D-013 through D-016 (S3) and S1 (vision stack surv
 | Bbox overlay | **SVG `<svg>` over `<img>`** with `<g role="button" tabindex="0" aria-pressed>` per box | D-013 | Canvas, `react-image-annotate`, Konva | SVG is in the DOM and supports ARIA natively; Canvas content is "not part of the DOM except for fallback content"; Konva acknowledges its keyboard-accessibility gap. |
 | Rule data | **Real YAML** under `rules/` + Pydantic v2 `RuleSet` model + Python validator registry | D-014 | Pydantic-only with stub YAML, JSON Schema files, Drools, OPA | Per-field match policies (D-005) are visible to a reviewer in one `cat` command. |
 | Vision (cloud mode) | **GPT-4o-on-crop with Structured Outputs `strict:true`** | D-015 | Claude Sonnet 4.5, Gemini, Azure OpenAI | Default for the deployed URL; one-LLM-call-per-leg. |
-| Vision (local mode) | **PaddleOCR PP-OCRv5 (GPU) + Florence-2-large + Qwen2.5-VL-7B-AWQ** via HuggingFace Transformers + `accelerate` | S1, D-016 | vLLM, Ollama, llama.cpp | In-process; one venv, one CUDA context, ~10–11 GB resident on a 24 GB device. Florence-2 has no Ollama / llama.cpp support so single-framework in-process Transformers wins. |
+| Vision (local mode) | **PaddleOCR PP-OCRv5 (GPU) + GPT-4o-on-crop tiebreaker** | S1, D-016, D-021 | Florence-2-large, Qwen2.5-VL-7B-AWQ, vLLM, Ollama, llama.cpp | Florence-2 + Qwen scoped out per D-021 prototype-tier reduction; the local seam is preserved for re-introduction. ~1.5 GB resident on a 24 GB device. |
 | LLM orchestrator | **OpenAI Structured Outputs** (`temperature=0`, fixed seed, snapshot-pinned model) | D-013, T5 | Multi-step agents (ReAct, LangGraph), Anthropic-only, vLLM-only | Single-shot tool calls only (T5 §Recommendation #1); Anthropic strict mode is the documented swap-in (`AnthropicStrictOrchestrator`). |
 | Deployment (public URL) | **Hugging Face Spaces, Docker SDK, `cpu-basic` default** | D-015 | Vercel, fly.io, Railway, Replit, AWS/GCP custom | fly.io GPUs deprecated; ZeroGPU is Gradio-only; cached fixtures cover the demo so cpu-basic is sufficient. Optional A10G-small upgrade (~$1/hr, billed per minute) for live local-vision demos. |
 | Package management | **uv** (`pyproject.toml` + `uv.lock`) | D-013 (consequence) | pip, poetry, conda | Astral's uv resolves and installs ~10–100× faster; brings `uv run task demo` under 30 s on a fresh box. |
@@ -663,7 +662,7 @@ class VisionExtractor(Protocol):
 ```
 
 **Concrete implementations shipped:**
-- `LocalVisionExtractor` (`app/vision/local.py`) — PaddleOCR PP-OCRv5 (GPU) → Florence-2-large cross-check → GPT-4o-on-crop tiebreaker (only when local signals disagree) → Qwen2.5-VL-7B-AWQ fallback. Per S1 primary recommendation.
+- `LocalVisionExtractor` (`app/vision/local.py`) — PaddleOCR PP-OCRv5 (GPU) → GPT-4o-on-crop tiebreaker (only when local signals disagree). Per D-021 prototype-tier scope reduction; Florence-2 and Qwen2.5-VL skeletons are dropped from MVP, with the seam preserved for future re-introduction.
 - `CloudVisionExtractor` (`app/vision/cloud.py`) — GPT-4o-on-crop with Structured Outputs `strict:true` for every leg.
 
 **Selection mechanism.** The `VISION_MODE` environment variable, read at process start by `app/config.py`. Values: `local`, `cloud`, `auto` (default). `auto` probes for a CUDA device via `nvidia-smi` and falls back to cloud if not present (D-015).
@@ -695,14 +694,13 @@ class Orchestrator(ABC):
     ) -> Refined: ...
 ```
 
-**Implementations in the tree:**
+**Implementations in the tree (per D-021 prototype-tier scope):**
 - `OpenAIStrictOrchestrator` (`app/orchestrator/openai_strict.py`) — **default in MVP; the only implementation validated against the demo fixtures and eval corpus.** OpenAI Structured Outputs `strict:true`, `temperature=0`, fixed seed, snapshot pinned via env var.
 - `AnthropicStrictOrchestrator` (`app/orchestrator/anthropic_strict.py`) — **swap-path skeleton.** Anthropic `tool_use` strict mode; unit-tested; not validated against the demo fixtures or eval corpus in MVP.
-- `VllmXgrammarOrchestrator` (`app/orchestrator/vllm_xgrammar.py`) — **swap-path skeleton, preserved for the production-trajectory on-prem path** per D-016 consequences. Permits the federal on-prem deployment story in §9.4 without requiring rework.
 
-The two skeletons exercise the seam (each implements `refine()` end-to-end against its respective SDK / framework); they are not claimed as production-ready substitutes. Adding a real production path means writing the eval suite for the chosen backend and re-running the corpus.
+A `VllmXgrammarOrchestrator` was scoped out per D-021; the federal on-prem deployment story in §9.4 is preserved by the existing ABC, which permits future re-introduction as a new module without architectural change. The Anthropic skeleton exercises the seam (it implements `refine()` end-to-end against its SDK); it is not claimed as a production-ready substitute. Adding a real production path means writing the eval suite for the chosen backend and re-running the corpus.
 
-**Selection mechanism.** DI in `app/deps.py`; default = `OpenAIStrictOrchestrator`. An env var `ORCHESTRATOR_BACKEND={openai,anthropic,vllm}` selects an alternative without code changes.
+**Selection mechanism.** DI in `app/deps.py`; default = `OpenAIStrictOrchestrator`. An env var `ORCHESTRATOR_BACKEND={openai,anthropic}` selects an alternative without code changes.
 
 **Contract guarantees:**
 - Single-shot pattern only (T5 §Recommendation #1) — no ReAct, no multi-step.
@@ -749,7 +747,7 @@ uv run task demo      # uvicorn app.main:app --port 8000
 # open http://localhost:8000
 ```
 
-Uses `LocalVisionExtractor` by default (auto-detects CUDA). First-run time: ~30–45 s for model loads (D-016 cold-start), ~2–3 minutes for `uv sync --extra gpu` on a fresh box (paddlepaddle-gpu + torch + transformers wheels).
+Uses `LocalVisionExtractor` by default (auto-detects CUDA). First-run time: ~10–15 s for PaddleOCR model load on the GPU profile (per D-021 trimmed local stack), ~60–90 s for `uv sync --extra gpu` on a fresh box (paddlepaddle-gpu + torch wheels).
 
 Optional Docker path (requires NVIDIA Container Toolkit + Docker Desktop WSL2 backend per S3 Q11):
 ```bash
@@ -808,7 +806,9 @@ This is documentation of how the same architecture maps to an on-prem federal de
 | FastAPI process (this prototype, unchanged) |
 |                                             |
 |  VISION_MODE=local                          |
-|  ORCHESTRATOR_BACKEND=vllm                  |  <-- uses VllmXgrammarOrchestrator
+|  ORCHESTRATOR_BACKEND=openai (or future     |
+|    on-prem swap-in via the Orchestrator ABC |
+|    per D-021 / §8.4)                        |
 |                                             |
 |  No outbound calls (firewall verified)      |
 +---------------------------------------------+
@@ -817,7 +817,7 @@ This is documentation of how the same architecture maps to an on-prem federal de
 [Local model store: HuggingFace cache + vLLM server, on-prem GPU]
 ```
 
-Concretely: `VISION_MODE=local` selects `LocalVisionExtractor`, which reads model weights from a local registry mounted into the container. `ORCHESTRATOR_BACKEND=vllm` selects `VllmXgrammarOrchestrator` (preserved per D-016 consequences). No outbound calls; the firewall whitelist contains nothing for this service. Audit-trail retention (currently in-memory) is OQ-ARCH-4 in §16 — the boundary is where a persistence-backed Audit Recorder lands. T7 owns the staging-map, ATO posture, and FedRAMP work; this document does not redraw any of it.
+Concretely: `VISION_MODE=local` selects `LocalVisionExtractor`, which reads PaddleOCR weights from a local cache mounted into the container. The orchestrator side of the seam is the `Orchestrator` ABC; production-trajectory on-prem deployment introduces a new implementation against that ABC (e.g., a future vLLM/XGrammar module — scoped out of MVP per D-021 but unblocked architecturally). No outbound calls; the firewall whitelist contains nothing for this service. Audit-trail retention (currently in-memory) is OQ-ARCH-4 in §16 — the boundary is where a persistence-backed Audit Recorder lands. T7 owns the staging-map, ATO posture, and FedRAMP work; this document does not redraw any of it.
 
 ---
 
@@ -906,10 +906,10 @@ Override mechanism: `LOOKAHEAD_K` env var at process start. Hot reconfiguration 
 
 Per T6 §Q6.10:
 
-- **GPU (local mode):** single 24 GB device sufficient. Resident set ~10–11 GB (Florence-2 ~3 GB FP16 + Qwen2.5-VL-7B-AWQ ~6 GB 4-bit + PaddleOCR ~1.5 GB) leaving headroom for KV-cache and Python overhead. RTX 3090 / RTX A4000 / A10G-small all qualify.
+- **GPU (local mode):** any modest GPU sufficient per D-021 trimmed stack. Resident set ~1.5 GB (PaddleOCR PP-OCRv5). RTX 3060 / RTX A4000 / A10G-small all qualify; the 24 GB ceiling assumed by the original four-model stack is not required in MVP.
 - **GPU (cloud mode, public URL):** none. `cpu-basic` HF Spaces tier sufficient because cached fixtures cover demo flow.
 - **CPU:** 2 vCPUs sufficient at the prototype concurrency profile.
-- **Memory:** ~1 GB working set in cloud mode; ~12 GB in local mode (model resident).
+- **Memory:** ~1 GB working set in cloud mode; ~3 GB in local mode (PaddleOCR resident plus Python overhead, per D-021).
 - **Disk:** ephemeral, logs only. The eval harness writes to `eval/history/` (the only sanctioned write outside session memory).
 - **Network (cloud mode):** outbound to the configured LLM endpoint; latency-sensitive (every 100 ms RTT eats into the SLA).
 
@@ -939,7 +939,7 @@ The full env-var inventory (consolidated from §9.2, §13.4, ADR D-019, D-020):
 | Env var | Default | Type | Where read | Purpose |
 |---|---|---|---|---|
 | `VISION_MODE` | `auto` | enum `{local,cloud,auto}` | `app/deps.py` | Selects `VisionExtractor` (D-015). `auto` probes for CUDA. |
-| `ORCHESTRATOR_BACKEND` | `openai` | enum `{openai,anthropic,vllm}` | `app/deps.py` | Selects `Orchestrator` implementation. |
+| `ORCHESTRATOR_BACKEND` | `openai` | enum `{openai,anthropic}` | `app/deps.py` | Selects `Orchestrator` implementation (per D-021). |
 | `OPENAI_API_KEY` | (none — required in cloud mode / when `ORCHESTRATOR_BACKEND=openai`) | secret | `app/config.py` | Authenticates outbound LLM calls. |
 | `ANTHROPIC_API_KEY` | (none — required when `ORCHESTRATOR_BACKEND=anthropic`) | secret | `app/config.py` | Authenticates Anthropic SDK. |
 | `LLM_MODEL_SNAPSHOT` | `gpt-4o-2024-08-06` (example) | string | `configs/orchestrator.toml` override | Pinned snapshot per T5 Recommendation #6. Drift triggers cache regeneration (ADR D-020). |
@@ -1110,12 +1110,10 @@ ttb-label-prototype/
 │  │
 │  ├─ vision/                           # === D-004 SWAP SEAM #1 ===
 │  │  ├─ base.py                        # class VisionExtractor (Protocol)
-│  │  ├─ local.py                       # LocalVisionExtractor — PaddleOCR + Florence-2 + GPT-4o tiebreak + Qwen
+│  │  ├─ local.py                       # LocalVisionExtractor — PaddleOCR + GPT-4o tiebreak (per D-021)
 │  │  ├─ cloud.py                       # CloudVisionExtractor — GPT-4o-on-crop for all legs
 │  │  ├─ paddle_runner.py               # in-process PP-OCRv5 wrapper
 │  │  ├─ swt.py                         # stroke-width-transform bold detector
-│  │  ├─ florence2.py                   # transformers-based Florence-2 wrapper
-│  │  ├─ qwen_vl.py                     # transformers-based Qwen2.5-VL-AWQ fallback
 │  │  └─ tiebreak_gpt4o.py              # strict:true Structured Outputs tiebreak
 │  │
 │  ├─ rules/
@@ -1137,8 +1135,7 @@ ttb-label-prototype/
 │  ├─ orchestrator/                     # === D-004 SWAP SEAM #2 ===
 │  │  ├─ base.py                        # class Orchestrator (ABC)
 │  │  ├─ openai_strict.py               # OpenAI strict:true, temp=0, snapshot-pinned model (default)
-│  │  ├─ anthropic_strict.py            # Anthropic tool_use strict:true (swap-in)
-│  │  ├─ vllm_xgrammar.py               # vLLM + XGrammar (production-trajectory swap-in; not used by default)
+│  │  ├─ anthropic_strict.py            # Anthropic tool_use strict:true (swap-in; per D-021)
 │  │  └─ tasks/
 │  │     ├─ brand_disambig.py           # FR-300
 │  │     ├─ reasoning_enrich.py         # FR-301
@@ -1308,6 +1305,7 @@ The following ADRs are *referenced* from this document and live in `03-decisions
 - **D-014** Rule data format: real YAML under `rules/` + Pydantic v2 RuleSet + Python validator registry.
 - **D-015** Dual deployment mode (`VISION_MODE={local,cloud,auto}`); HF Spaces Docker SDK; `cpu-basic` default.
 - **D-016** Local model serving: HuggingFace Transformers + accelerate, in-process.
+- **D-021** Trim local vision and orchestrator scope to prototype tier — drops Florence-2, Qwen2.5-VL, and vLLM from MVP; preserves seams for future re-introduction.
 
 The following **new** ADRs are surfaced during authoring this document. They are appended to `03-decisions.md` (not buried in the prose).
 
@@ -1582,14 +1580,13 @@ dependencies = [
 gpu = [
     # GPU paddleocr — CUDA 12.6 wheel from PaddlePaddle's pinned index
     # See README for index URL configuration.
+    # Per D-021 (prototype-tier scope): only PaddleOCR runs locally.
+    # transformers / accelerate / bitsandbytes (Florence-2 / Qwen) are removed.
     "paddlepaddle-gpu == 3.0.0",
     "torch >= 2.5",
-    "transformers >= 4.46",
-    "accelerate >= 1.1",
-    "bitsandbytes >= 0.44",  # for AWQ Qwen2.5-VL fallback
 ]
-anthropic = ["anthropic >= 0.39"]   # for AnthropicStrictOrchestrator
-vllm = ["vllm >= 0.7", "outlines >= 0.1"]   # for VllmXgrammarOrchestrator (production-trajectory)
+anthropic = ["anthropic >= 0.39"]   # for AnthropicStrictOrchestrator (swap-path skeleton)
+# vllm extra removed per D-021; future re-introduction is a new module against the existing Orchestrator ABC.
 
 [tool.taskipy.tasks]
 demo = "uvicorn app.main:app --port 8000 --reload"
@@ -1626,6 +1623,7 @@ Versions are illustrative; the canonical pin lives in `uv.lock` and `frontend/pn
 |---|---|---|---|
 | 0.1 | 2026-05-02 | Project team | Initial issue. Authors §§1–19; absorbs `PRD-deferred-content.md` §§1–3 (marked `[consumed]` at point of absorption); appends ADRs D-017 through D-020 to `03-decisions.md`. |
 | 0.2 | 2026-05-02 | Project team | Self-review pass. Replaced P5 (legibility coding-convention) with P5 (state is session-scoped — architecturally load-bearing). Renamed §6.5 (RejectionReason absorbed into ValidationResult per S5). Added §6.11 (brand-name match policy: Stage A normalized exact / Stage B Jaro-Winkler with 0.85 / 0.92 thresholds carried in YAML). Distinguished `OpenAIStrictOrchestrator` (default, validated) from `AnthropicStrictOrchestrator` / `VllmXgrammarOrchestrator` (swap-path skeletons, not validated) in §4.2.6 and §8.2. Added consolidated env-var inventory table to §12.2. Added disabled-rule note + sample YAML rule to §6.6. Compressed pre-warm sequence diagram to prose in §5.3. Added cross-topic X-3 / X-5 resolution rows to §19.1. Distinguished genuinely-architectural ADRs (D-017, D-018) from operational decisions captured in ADR form (D-019, D-020) in §15 introduction. |
+| 0.3 | 2026-05-03 | Project team | Applied D-021 prototype-tier scope reduction. Local vision stack trimmed to PaddleOCR + GPT-4o tiebreaker (Florence-2-large and Qwen2.5-VL-7B-AWQ dropped). Orchestrator implementations reduced to OpenAI default + Anthropic skeleton (vLLM/XGrammar dropped). Updated §4.2.3, §4.2.6, §6.9, §7, §8.1, §8.2, §9.1, §9.4, §11.5, §12.2, §14.1, §15, §19.3. Substitutability seams unchanged — future re-introduction of any dropped backend is a new module against the existing Protocol/ABC. |
 
 ---
 

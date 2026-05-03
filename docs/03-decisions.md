@@ -167,6 +167,38 @@ The headline recommendation in the README's trade-off section combines both (syn
 
 ---
 
+## D-021 — Trim local vision and orchestrator scope to prototype tier
+
+**Status:** Accepted
+**Date:** 2026-05-03
+
+**Context.** ARCH §4.2.3 originally specified a four-model local vision pipeline (PaddleOCR + Florence-2-large + GPT-4o-on-crop tiebreaker + Qwen2.5-VL-7B-AWQ fallback) and §4.2.6 specified three orchestrator implementations (`OpenAIStrictOrchestrator` validated default, `AnthropicStrictOrchestrator` skeleton, `VllmXgrammarOrchestrator` skeleton). A spec-vs-L1 review flagged this as over-engineered for prototype tier: the cloud path is the only validated default, the local path exists to prove D-004 substitutability holds, and the seam is provably substitutable with one local impl + one alternate-provider skeleton.
+
+**Decision.** Reduce shipped impls to:
+- **Vision (local mode):** PaddleOCR PP-OCRv5 (GPU) + GPT-4o-on-crop tiebreaker only. Florence-2-large and Qwen2.5-VL-7B-AWQ are dropped from MVP.
+- **Orchestrator:** `OpenAIStrictOrchestrator` (validated default) + `AnthropicStrictOrchestrator` (swap-path skeleton) only. `VllmXgrammarOrchestrator` is dropped from MVP.
+
+The federal on-prem trajectory (BR-015 / BR-016 / NFR-PORT-001/002) is preserved by the existing seams: `VisionExtractor` Protocol and `Orchestrator` ABC stay, the local vision impl still proves the seam, and a future vLLM swap-in is a new module against the same ABC — no rework. The Anthropic skeleton is sufficient evidence the orchestrator seam is provider-agnostic.
+
+**Rationale.**
+- **Calendar.** Florence-2 + Qwen2.5-VL together require ~9 GB GPU resident set, HuggingFace Transformers + accelerate + bitsandbytes, ~2–3 min `uv sync --extra gpu` time. They contribute no validated behavior to the prototype demo (cloud is the validated default per ARCH §4.2.6); the local path's value is **proving the seam holds**, which one local impl does.
+- **Reviewer cognitive load.** A skeleton orchestrator the reviewer never sees executed is decoration; one is sufficient to prove the seam.
+- **Substitutability proof unchanged.** D-004 is satisfied by ≥1 cloud impl + ≥1 local impl behind the same Protocol. vLLM's value is "production-trajectory federal on-prem" which is already documented in ARCH §9.4 as informational, not committed.
+- **No FR/NFR regression.** No PRD FR or NFR cites Florence-2, Qwen, or vLLM by name; all are ARCH-tier choices.
+
+**Alternatives considered.**
+- **Keep all three orchestrator impls and four-model vision stack.** Rejected — ARCH §4.2.6 already concedes Anthropic and vLLM are skeletons; shipping two skeletons is no more substitutable than shipping one.
+- **Drop the local vision path entirely; cloud-only.** Rejected — would forfeit the on-prem-trajectory proof that BR-015 / NFR-PORT-001 demands.
+- **Cut Anthropic instead of vLLM.** Rejected — Anthropic's `tool_use` strict mode is a closer analogue to OpenAI Structured Outputs and is the more legible swap-path for a take-home reviewer; vLLM's value is federal-trajectory-only.
+
+**Consequences.**
+- ARCH §4.2.3, §4.2.6, §6.9 (CallRecord stage enum), §7 (tech-stack table), §8.1, §8.2, §9.1, §9.4, §11.5, §14.1, §19.3 update to reflect the trimmed surface.
+- L1 epoch-3 / epoch-4 sub-files update; coverage matrix in L1 §11 unchanged.
+- `pyproject.toml` `[gpu]` extra drops `transformers`, `accelerate`, `bitsandbytes`; `[vllm]` extra is removed.
+- Future re-introduction of any dropped backend is a new ADR, a new module against the existing seam, and a new validation pass — no architectural change.
+
+---
+
 ## D-009 — Adopt federal cost-analysis conventions for the economic analysis
 
 **Status:** Accepted
