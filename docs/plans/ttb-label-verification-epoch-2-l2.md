@@ -3190,6 +3190,16 @@ Cross-checks (S5 §d):
   8. asset.path exists and sha256 matches asset.sha256_pin.
   9. test_fixtures non-empty.
  10. decision_table_ref points at an existing decision-table YAML.
+
+**Forward note for E5 (FastAPI wiring task).** The cross-check #6 registry
+gate refuses to start unless every ``RuleDefinition.validator`` name is in
+``VALIDATOR_REGISTRY``, which is populated only on validator-module import.
+The CLI in T31 walks ``app.rules._validators`` with ``pkgutil.iter_modules``
+to force-import every module before ``YamlRuleLoader().load()`` runs. E5's
+FastAPI startup hook MUST do the same — explicit per-module imports are
+brittle when a new validator lands. Without this, every production startup
+fail-closes with N "unknown validator" violations even though the unit
+tests pass.
 """
 from __future__ import annotations
 
@@ -3235,7 +3245,7 @@ class YamlRuleLoader:
 
     def load(self, rules_root: Path) -> RuleSet:
         acc = _LoadAccumulator()
-        registry = self._load_registry(rules_root, acc)
+        registry_version, registry = self._load_registry(rules_root, acc)
         self._load_decision_tables(rules_root, acc)
         rule_files = sorted(p for p in rules_root.rglob("*.yaml") if p.name != "reason_codes.yaml" and "/tables/" not in p.as_posix())
         for path in rule_files:
@@ -3251,9 +3261,17 @@ class YamlRuleLoader:
                 f"RuleLoader refused to start (asset stage): {len(acc.errors)} violation(s):\n  - "
                 + "\n  - ".join(acc.errors)
             )
+        # RuleSet.version comes from rules/reason_codes.yaml (the registry IS
+        # the rule pack's manifest in MVP — no separate manifest.yaml). Effective
+        # date is the latest among loaded rules so the RuleSet reports a date
+        # consistent with what's actually shipped.
+        effective_date = max(
+            (rd.effective_date for rd in acc.rules),
+            default="2026-01-01",
+        )
         return RuleSet(
-            version="0.1.0",
-            effective_date="2026-01-01",
+            version=registry_version,
+            effective_date=effective_date,
             rules=tuple(sorted(acc.rules, key=lambda r: r.rule_id)),
             reason_codes=registry,
             assets=assets,
@@ -3262,17 +3280,21 @@ class YamlRuleLoader:
 
     # ------------------------------------------------------------------
 
-    def _load_registry(self, root: Path, acc: _LoadAccumulator) -> dict[str, ReasonCodeEntry]:
+    def _load_registry(self, root: Path, acc: _LoadAccumulator) -> tuple[str, dict[str, ReasonCodeEntry]]:
         path = root / "reason_codes.yaml"
         if not path.exists():
             acc.errors.append(f"{path}: reason_codes.yaml not found")
-            return {}
+            return "0.0.0", {}
         try:
             data = yaml.safe_load(path.read_text(encoding="utf-8"))
         except yaml.YAMLError as e:
             acc.errors.append(f"{path}: YAML parse error: {e}")
-            return {}
-        codes = (data or {}).get("codes", {})
+            return "0.0.0", {}
+        data = data or {}
+        version = str(data.get("version", "0.0.0"))
+        if not _SEMVER_RE.match(version):
+            acc.errors.append(f"{path}: registry version {version!r} is not semver")
+        codes = data.get("codes", {})
         out: dict[str, ReasonCodeEntry] = {}
         for code, entry in codes.items():
             if not _REASON_CODE_RE.match(code):
@@ -3286,7 +3308,7 @@ class YamlRuleLoader:
                 )
             except (KeyError, ValidationError) as e:
                 acc.errors.append(f"{path}/{code}: invalid registry entry: {e}")
-        return out
+        return version, out
 
     def _load_decision_tables(self, root: Path, acc: _LoadAccumulator) -> None:
         tables_dir = root / "tables"
@@ -5438,16 +5460,23 @@ def test_loader_cli_smoke_passes_on_real_tree() -> None:
 
 
 def test_loader_cli_smoke_breaks_on_asset_mutation(tmp_path: Path) -> None:
-    asset = Path("assets/warnings/govt_warning_16_21.txt")
-    backup = tmp_path / "backup.txt"
-    shutil.copy2(asset, backup)
-    try:
-        asset.write_text(asset.read_text(encoding="utf-8") + " EXTRA", encoding="utf-8")
-        code, _, err = _run([sys.executable, "-m", "app.rules.loader", "rules/"])
-        assert code != 0
-        assert "asset hash drift" in err or "asset hash drift" in err.lower()
-    finally:
-        shutil.copy2(backup, asset)
+    """Mutating the §16.21 asset breaks the loader (asset hash drift cross-check).
+
+    Mutate a tmp_path COPY of rules/ + assets/, NEVER the tracked working-tree
+    file — a killed test (Ctrl-C, OOM, pytest --collect-only abort) would
+    otherwise leave the repo with a corrupt asset and the loader broken.
+    The loader resolves asset paths relative to ``rules_root.parent``; copying
+    both trees under tmp_path preserves that relationship.
+    """
+    rules_copy = tmp_path / "rules"
+    assets_copy = tmp_path / "assets"
+    shutil.copytree("rules", rules_copy)
+    shutil.copytree("assets", assets_copy)
+    asset = assets_copy / "warnings" / "govt_warning_16_21.txt"
+    asset.write_text(asset.read_text(encoding="utf-8") + " EXTRA", encoding="utf-8")
+    code, _, err = _run([sys.executable, "-m", "app.rules.loader", str(rules_copy)])
+    assert code != 0
+    assert "asset hash drift" in err.lower()
 ```
 
 - [ ] **Step 2: Run test to verify it fails**
