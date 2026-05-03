@@ -43,3 +43,25 @@ def test_otel_genai_formatter_uses_gen_ai_attribute_names() -> None:
     parsed = json.loads(line)
     assert parsed["gen_ai.request.model"] == "gpt-4o-2024-08-06"
     assert parsed["gen_ai.usage.input_tokens"] == 1234
+
+
+def test_redaction_filter_strips_application_content_and_label_bytes() -> None:
+    from app.logging.redaction import RedactionFilter
+
+    filter_ = RedactionFilter()
+    record = logging.LogRecord(
+        name="app", level=logging.INFO, pathname=__file__, lineno=1,
+        msg="leakage_attempt", args=None, exc_info=None,
+    )
+    record.application_content = {"brand_name": "secret"}
+    record.label_bytes = b"\xff\xd8\xff..."
+    record.extracted_text = "verbatim contents that should not log"
+    record.evaluation_id = "00000000-0000-4000-8000-000000000001"
+    record.reason_code = "ENGINE.OK.NONE"
+    assert filter_.filter(record) is True  # filter does not drop the record
+    assert not hasattr(record, "application_content") or record.application_content is None
+    assert not hasattr(record, "label_bytes") or record.label_bytes is None
+    assert not hasattr(record, "extracted_text") or record.extracted_text is None
+    # Preserved fields
+    assert record.evaluation_id == "00000000-0000-4000-8000-000000000001"
+    assert record.reason_code == "ENGINE.OK.NONE"
