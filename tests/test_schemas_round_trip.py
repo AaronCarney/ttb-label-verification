@@ -201,3 +201,18 @@ def test_per_rule_trace_entry_has_no_duration_ms_d018() -> None:
         "not in audit_trail.per_rule_trace[]."
     )
     assert set(fields.keys()) == {"rule_id", "disposition", "evidence_ref"}
+
+
+def test_metrics_round_trip() -> None:
+    from app.schemas.metrics import Metrics, PerRuleDurationEntry
+
+    m = Metrics(
+        total_duration_ms=1230,
+        per_rule_durations_ms=(
+            PerRuleDurationEntry(rule_id="common.brand.exact_or_normalized", duration_ms=8),
+        ),
+        vision_duration_ms=720,
+        orchestrator_duration_ms=480,
+    )
+    m2 = Metrics.model_validate_json(m.model_dump_json())
+    assert m2 == m
