@@ -3200,6 +3200,16 @@ FastAPI startup hook MUST do the same — explicit per-module imports are
 brittle when a new validator lands. Without this, every production startup
 fail-closes with N "unknown validator" violations even though the unit
 tests pass.
+
+**Versioning semantics.** ``RuleSet.version`` is sourced from
+``rules/reason_codes.yaml`` (the registry IS the rule pack's manifest in
+MVP). Per-pack semver lives on ``EngineMeta.rule_pack_version`` for each
+emitted ``ValidationResult``. If a wine-only pack bump (e.g. ``wine.yaml``
+0.1.0 → 0.2.0) ever needs to surface at the RuleSet level without bumping
+the registry, introduce a separate ``rules/manifest.yaml`` and source
+``RuleSet.version`` from it. ARCH §6.6 calls ``version`` "semver, pinned
+to engine-supported range" without distinguishing registry-version from
+pack-aggregate; the distinction is operationally insignificant in MVP.
 """
 from __future__ import annotations
 
@@ -3387,8 +3397,12 @@ class YamlRuleLoader:
         rules_root: Path,
         acc: _LoadAccumulator,
     ) -> dict[str, AssetRef]:
-        # Imported here (not at module top) so the loader doesn't force the
-        # validator subpackage to import before the registry walk completes.
+        # Lazy-imported to avoid a top-level loader→_validators coupling. The
+        # registry itself is populated by the caller (T31 CLI / T26 test /
+        # E5 startup hook) before load() runs at all — see this module's
+        # docstring forward note. By the time _load_assets fires, every rule
+        # has already passed cross-check #6, so verbatim_hash is guaranteed
+        # to be importable.
         from app.rules._validators.verbatim_hash import (
             DEFAULT_NORMALIZATION_OPS,
             canonicalize_text,
