@@ -91,6 +91,7 @@ The epoch lands when **all of these pass**:
 9. The reason-code registry has zero orphans (warning emitted at startup if any) and zero unreferenced codes that aren't explicitly marked stretch.
 10. `grep -rn 'CFR' app/rules/_validators/ | grep -v 'docstring'` returns no hits — citation strings live in YAML, not in Python (P3 enforcement).
 11. `grep -rn 'openai\|anthropic\|httpx' app/rules/` returns no hits — the rule engine has no inference dependencies (P1 enforcement).
+12. The brand-match Stage B borderline band (`needs_review`) emits the **exact reason code `BRAND.NAME.NEEDS_REVIEW`** — this is the contract E5 consumes to decide whether to invoke the orchestrator's `brand_disambig` task (FR-300 trigger). Asserted by `tests/test_brand_match_policies.py` and entered into `rules/reason_codes.yaml` registry.
 
 ---
 
