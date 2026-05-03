@@ -88,3 +88,50 @@ def test_extracted_models_forbid_extra_fields() -> None:
             notes=None,
             unexpected_extra="bad",  # type: ignore[call-arg]
         )
+
+
+def test_reason_code_grammar() -> None:
+    from app.schemas.rejection import ReasonCode
+
+    assert ReasonCode.validate_grammar("BRAND.NAME.MATCH") == "BRAND.NAME.MATCH"
+    assert (
+        ReasonCode.validate_grammar("ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND")
+        == "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND"
+    )
+    assert (
+        ReasonCode.validate_grammar("ENGINE.MODEL.UNAVAILABLE.LLM_OUTPUT_INVALID")
+        == "ENGINE.MODEL.UNAVAILABLE.LLM_OUTPUT_INVALID"
+    )
+    import pytest
+
+    for bad in ["lower.case.code", "TOO.SHORT", "FIVE.PARTS.IS.TOO.MANY.NOPE", ""]:
+        with pytest.raises(ValueError):
+            ReasonCode.validate_grammar(bad)
+
+
+def test_validation_result_round_trip() -> None:
+    from app.schemas.expected import BeverageClass
+    from app.schemas.rejection import EngineMeta, Outcome, Severity, ValidationResult
+
+    vr = ValidationResult(
+        rule_id="common.brand.exact_or_normalized",
+        cfr_citation="27 CFR §4.33(a)",
+        beverage_class=BeverageClass.SPIRITS,
+        outcome=Outcome.PASS,
+        severity=Severity.INFO,
+        reason_code="BRAND.NAME.MATCH",
+        aggregated_confidence=0.94,
+        evidence=(),
+        expected=None,
+        observed=None,
+        message="Brand name matches.",
+        engine_meta=EngineMeta(
+            engine_version="0.1.0",
+            rule_pack_version="0.1.0",
+            rule_pack="common",
+            started_at_ms=1714579200000,
+            elapsed_ms=8,
+        ),
+    )
+    vr2 = ValidationResult.model_validate_json(vr.model_dump_json())
+    assert vr2 == vr
