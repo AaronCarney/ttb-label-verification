@@ -399,3 +399,16 @@ def test_batch_envelope_round_trip(wire_fixtures_dir) -> None:
     dumped = json.loads(env.model_dump_json())
     assert dumped["batch_id"] == raw["batch_id"]
     assert len(dumped["items"]) == len(raw["items"])
+
+
+def test_error_envelope_round_trip(wire_fixtures_dir) -> None:
+    import json
+
+    from app.schemas.wire.error import ErrorEnvelope
+
+    raw = json.loads((wire_fixtures_dir / "error.json").read_text())
+    env = ErrorEnvelope.model_validate(raw)
+    dumped = json.loads(env.model_dump_json())
+    assert dumped["error_kind"] == raw["error_kind"]
+    assert dumped["reason_code"] == raw["reason_code"]
+    assert dumped["details"]["expected_inputs"] == ["brand_name"]
