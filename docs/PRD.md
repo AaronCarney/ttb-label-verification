@@ -155,7 +155,7 @@ The MVP gate is BO-4 (100% citation grounding) plus BO-2 (macro-F1 ≥ 0.70 on t
 This PRD does not re-argue what the BRD has settled. It treats as established:
 
 - **Scope envelope** (BRD §6): wine / spirits / malt at the common-fields level; class-specific deferrals; explicit out-of-scope list.
-- **Value framing** (BRD §1.3, §7.8): labor-capacity rather than budget-cut framing; range-based, sensitivity-tested recommendation.
+- **Value framing** (BRD §1 "Headline value" paragraph, §7.8): labor-capacity rather than budget-cut framing; range-based, sensitivity-tested recommendation.
 - **Compliance posture** (BRD §8.2): prototype-tier, no PII, no production data, no ATO claim, no FedRAMP package.
 - **Stakeholder priority** (BRD §4.3 / D-001): phase-dependent — Sarah, Dave, Jenny, Marcus dominate at prototype phase; CIO/FedRAMP/OMB emerge at production phase.
 - **Constraints register** (BRD §9.1): time-boxed build, federal firewall, five-second latency ceiling, senior-friendly UX bar, standalone deployment.
