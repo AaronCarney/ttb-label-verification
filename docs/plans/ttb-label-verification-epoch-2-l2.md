@@ -4745,6 +4745,7 @@ from __future__ import annotations
 
 import asyncio
 import importlib
+import inspect
 import pkgutil
 from pathlib import Path
 
@@ -4773,8 +4774,16 @@ def ruleset():
     return YamlRuleLoader().load(Path("rules"))
 
 
-def test_engine_is_abc_with_evaluate_method() -> None:
-    assert hasattr(RuleEngine, "evaluate")
+def test_engine_is_abc_with_async_abstract_evaluate() -> None:
+    """ARCH §8.4 contract: RuleEngine.evaluate is an async abstract method.
+
+    `hasattr(RuleEngine, "evaluate")` would pass for a non-abstract
+    `evaluate = None`, defeating the contract. Assert both:
+      - it is a coroutine function (async def)
+      - it is marked @abstractmethod (subclasses must override)
+    """
+    assert inspect.iscoroutinefunction(RuleEngine.evaluate)
+    assert getattr(RuleEngine.evaluate, "__isabstractmethod__", False)
 
 
 @pytest.mark.asyncio
@@ -4846,6 +4855,29 @@ Create `app/rules/yaml_engine.py`:
 """YamlRuleEngine — the only concrete implementation in MVP. Per L1 §2.1
 the per-rule timeout is 250 ms (FR-908) and validator exceptions are caught
 into FR-907 results so other rules continue.
+
+**Timeout semantics — DECISION DEADLINE, NOT EXECUTION STOP.**
+``asyncio.wait_for`` cancels the awaited coroutine, but ``asyncio.to_thread``
+runs synchronous code in a thread that cannot be cancelled by the event
+loop. A runaway sync validator continues to consume CPU and a thread slot
+in the default executor until it returns on its own. The 250 ms budget is
+therefore a contract on **the result the engine returns to the caller**
+(after which a TIMEOUT result is emitted and rule evaluation continues),
+not a hard stop on the validator's CPU time. Implications:
+
+  - Validators MUST be CPU-bounded by construction (every loop must have a
+    finite bound; no unbounded retries; no subprocess.call without a
+    timeout). The validator-registry test (T19) does not enforce this; it
+    is a per-validator code-review responsibility.
+  - Under load, an unbounded number of stuck threads can accumulate in the
+    asyncio default executor. E5's request-cancellation path (FR-907 callsite)
+    SHOULD bound the executor and surface saturation as a circuit-breaker
+    state. Forward note: ARCH §8.4 should be updated to mark the timeout
+    as 'decision deadline' and to call out the executor-bounding requirement
+    on the E5 wiring task.
+  - True hard-stop semantics would require ``concurrent.futures.ProcessPoolExecutor``
+    or signal-based interruption. Both add deployment complexity beyond MVP
+    scope (D-014 names YAML rule data; nothing here mandates CPU isolation).
 """
 from __future__ import annotations
 
