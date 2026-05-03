@@ -10,6 +10,18 @@
 
 **Tech stack (fixed by D-013–D-016).** Python 3.12 / FastAPI / Pydantic v2 / uv / asyncio / PyYAML / RapidFuzz / OpenAI Structured Outputs (`strict:true`) / sse-starlette / Jinja2 / React 18 + TypeScript + Vite + shadcn/ui (Radix + Tailwind) + USWDS color tokens / pnpm / pytest / axe-core (CI a11y) / HF Spaces (Docker SDK, `cpu-basic`).
 
+**Time budgets (three distinct quantities — do not conflate).**
+
+| Budget | What it is | Target | Owning epoch |
+|---|---|---|---|
+| `uv sync` time | One-time dependency installation on a fresh checkout | ≤ 90 s on cloud profile (CPU); ~2–3 min on `--extra gpu` profile | E1 |
+| App boot time | `uv run task demo` → uvicorn ready to accept connections | ≤ 30 s on cloud profile; rule-pack load + Pydantic validation only | E1 |
+| First `/healthz` (cold-start) | First successful sentinel pipeline run after boot — vision model load + LLM client warm | ~1 s in cloud mode; ~30–45 s on GPU profile (model resident) | E5 |
+| Subsequent `/healthz` (warm) | Sentinel pipeline against fixture-01 with models resident | ≤ 2 s | E5 |
+| Single-label evaluation (warm) | `POST /labels` against fixture-01 | P50 ≤ 2.7 s, P99 ≤ 5.0 s (NFR-PERF-001/003) | E5, E6, E8 |
+
+The 30–45 s GPU cold-start is *not* the boot time — it's the first `/healthz` after boot. The demo runbook's T-5-minute pre-warm absorbs this.
+
 ---
 
 ## 1. L1 ↔ L2 ↔ L3 boundary
@@ -192,8 +204,67 @@ Each linked file owns its epoch's L1 detail (goal, components delivered, seam ow
 
 ---
 
-## 11. Change log
+## 11. FR / NFR coverage matrix
+
+Every PRD FR and NFR maps to at least one epoch's exit gate. Where coverage is **implicit** (handled by an epoch's structural choice rather than cited by ID), the cell notes the mechanism.
+
+### 11.1 FR coverage
+
+| FR series | Owning epoch(s) | Mechanism |
+|---|---|---|
+| **FR-001 – FR-008** Field extraction | E3 | `VisionExtractor` per-field manifest; both impls satisfy contract |
+| **FR-100 – FR-106** Application-data ingest | E1 (schema), E5 (boundary) | PRD §6.1 wire schema in E1; multipart parsing + magic-byte sniff in E5 (`POST /labels`) |
+| **FR-200 – FR-206** Common warning rules | E2 | Rule pack `rules/common/health_warning.yaml`; per-rule pos/neg ACs |
+| **FR-210 – FR-217** Wine rules | E2 | Rule pack `rules/wine/wine.yaml`; per-rule pos/neg ACs |
+| **FR-220 – FR-229** Spirits rules | E2 | Rule pack `rules/spirits/spirits.yaml` + `rules/spirits-deep.yaml`; per-rule pos/neg ACs |
+| **FR-230 – FR-237** Malt rules | E2 | Rule pack `rules/malt/malt.yaml`; per-rule pos/neg ACs |
+| **FR-240** Brand-name match policy | E2 | `app/rules/brand_match.py` Stage A normalize + Stage B Jaro-Winkler |
+| **FR-300 – FR-302** AI orchestration tasks | E4 | `app/orchestrator/tasks/{brand_disambig,reasoning_enrich,ocr_reconcile}.py` |
+| **FR-303** AI never decides pass/fail | E4 (type-level), E5 (runtime) | `Refined` schema has no `disposition` field (E4); evaluator never patches dispositions from Refined (E5) |
+| **FR-304** AI fallback to needs_review | E4 (orchestrator), E5 (composition) | Fallback returned by orchestrator on outage; evaluator passes through |
+| **FR-400 – FR-406** Batch processing | E6 | `app/batch/*` + `app/api/batches.py` SSE stream |
+| **FR-500 – FR-511** UX surfaces | E7 | 17 React components + Jinja2 shell |
+| **FR-600 – FR-604** Image handling | E1 (allowlist), E3 (DPI + quality), E5 (no-persist enforcement) | Pydantic strict + magic-byte (E1/E5); BRISQUE/NIQE + DPI extraction (E3) |
+| **FR-700 – FR-704** Disposition output | E1 (envelope schema), E5 (assembly) | PRD §6.2 envelope in E1 schemas; Application Service assembly in E5 |
+| **FR-800 – FR-804** Override + manual review | E6 (server endpoint), E7 (drawer UX) | `POST /labels/{eid}/overrides` (E6) + `OverrideDrawer` keyboard model (E7) |
+| **FR-900 – FR-912** Engine failure taxonomy | E5 | Full 13-row coverage in `tests/test_evaluator_failure_modes.py` |
+
+### 11.2 NFR coverage
+
+| NFR | Owning epoch(s) | Mechanism |
+|---|---|---|
+| **NFR-PERF-001** Single-label ≤5 s | E5, E6, E8 | Three gates: E5 single-label, E6 first-label-of-batch, E8 deployed `/healthz` |
+| **NFR-PERF-002** Pull-based demand | E6 | `BatchInFlightState` bounded asyncio.Queue + SSE consumer cadence |
+| **NFR-PERF-003** P50 ≤ 2.7s, P99 ≤ 5.0s | E5 | 30+ trials with statistics in `tests/test_post_labels_perf.py` |
+| **NFR-UX-001** Senior-friendly UI | E7 | 73-year-old benchmark — high contrast, predictable layout, explicit affordances |
+| **NFR-UX-002** Keyboard-operable end-to-end | E7 | `useKeyboardShortcuts` hook + Playwright keyboard-model tests |
+| **NFR-UX-003** 3-keystroke override | E2 (registry prefix uniqueness), E7 (picker resolves on first keystroke) | Joint contract |
+| **NFR-UX-004** Browser support + 320px viewport | E7 | Playwright reflow test at 320 CSS px |
+| **NFR-A11Y-001** WCAG 2.0 AA / Section 508 | E7 | axe-core CI; zero AA violations on demo fixtures |
+| **NFR-A11Y-002** VPAT/ACR authoring | **Deferred to production phase** | See §7 "Out of MVP" — VPAT is production-trajectory paperwork; prototype tier per BRD §8.2 |
+| **NFR-A11Y-003** WCAG 2.1/2.2 design targets | E7 | Implemented as design targets; see PRD §15.2 SC list (reflow, non-text contrast, focus-not-obscured, etc.) |
+| **NFR-A11Y-004** Reduced motion | E7 | `prefers-reduced-motion: reduce` honored; Playwright media-feature override test |
+| **NFR-A11Y-005** Reflow at 320 CSS px | E7 | Playwright reflow test at 320 px viewport |
+| **NFR-AUDIT-001** Audit record per disposition | E5 | `AuditRecord` assembled per FR-703 |
+| **NFR-AUDIT-002** Sufficient for regulatory audit | E5 | input_hash + output_hash + rule_set_version + per_rule_trace + override history |
+| **NFR-PORT-001** Firewall-deployable | E3 (vision seam), E4 (orchestrator seam), E8 (deployment) | `VllmXgrammarOrchestrator` skeleton + `LocalVisionExtractor` prove the on-prem path; deployed URL uses cloud mode |
+| **NFR-PORT-002** On-prem inference path preserved | E3, E4 | Local-mode impl + vLLM swap-in |
+| **NFR-DET-001** Within-session determinism | E5 | Session-only canonicalized cache in `app.state` |
+| **NFR-DET-002** Cross-session determinism out of scope | (deferred — OQ-ARCH-2) | Documented; no MVP work |
+| **NFR-DATA-001** No persistent artwork | E1 (no DB deps), E5 (no file writes outside eval/history/) | Structural — no persistence libs in `pyproject.toml` |
+| **NFR-DATA-002** Audit in-memory only | E5, E6 | `app.state.batches` dict; evicted on session end |
+| **NFR-SEC-001** TLS | E8 | HF Spaces edge handles TLS termination |
+| **NFR-SEC-002** Secrets from env vars | E1 | `app/config.py` Pydantic Settings; grep enforcement |
+| **NFR-SEC-003** Input validation | E1, E5 | Pydantic `extra="forbid"` + magic-byte sniff in `POST /labels` |
+| **NFR-SEC-004** Logging redaction | E1 | `app/logging/redaction.py` filter |
+| **NFR-OBS-001** Structured logs at engine-failure events | E1 (formatter), E5 (emission per failure mode) | T3 §Q3.10 field schema |
+| **NFR-OBS-002** Latency P50/P95/P99 exposure | E5 | `/metrics` or structured-log emission on every evaluation |
+
+---
+
+## 12. Change log
 
 | Version | Date | Author | Notes |
 |---|---|---|---|
 | 0.1 | 2026-05-02 | Project team | Initial L1 epoch slicing. 8 epochs, 3 substitutability seams, sequential plan-of-record with parallelism noted. |
+| 0.2 | 2026-05-02 | Project team | Plan-review address-pass: added §11 FR/NFR coverage matrix; reconciled boot-time vs. cold-start budgets in §2; added VPAT/ACR deferral to §7; added boot-time clarification. Per-epoch sub-files updated separately. |
