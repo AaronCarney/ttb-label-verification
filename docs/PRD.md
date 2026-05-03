@@ -7,7 +7,7 @@
 **Audience (secondary):** Take-home reviewer evaluating translation of stakeholder constraints into a buildable specification
 **Status:** Draft for review — prototype phase
 **Companion documents:** `BRD.md` (why we're building it), `ARCHITECTURE.md` (how it's built), `03-decisions.md` (decision log)
-**Document version:** 0.1 (initial issue)
+**Document version:** 0.4 (D-018 audit/metrics split applied to §6.2 wire example)
 
 ---
 
@@ -488,7 +488,7 @@ The shape returned per label:
     "started_at": "ISO-8601",
     "completed_at": "ISO-8601",
     "per_rule_trace": [
-      { "rule_id": "...", "duration_ms": 0, "disposition": "...", "evidence_ref": "..." }
+      { "rule_id": "...", "disposition": "...", "evidence_ref": "..." }
     ],
     "overrides": [
       {
@@ -501,6 +501,14 @@ The shape returned per label:
         "timestamp": "ISO-8601"
       }
     ]
+  },
+  "metrics": {
+    "total_duration_ms": 0,
+    "per_rule_durations_ms": [
+      { "rule_id": "...", "duration_ms": 0 }
+    ],
+    "vision_duration_ms": 0,
+    "orchestrator_duration_ms": 0
   }
 }
 ```
@@ -918,4 +926,5 @@ WCAG 2.1 / 2.2 success criteria honored as design targets beyond the WCAG 2.0 AA
 | 0.1 | 2026-05-02 | Project team | Initial issue. |
 | 0.2 | 2026-05-02 | Project team | Self-review pass. Added §3.4 Success Metrics (BO→FR map); added i18n out-of-scope; added NFR-UX-004 (browser/viewport), NFR-SEC-001 through NFR-SEC-004 (security baseline), NFR-OBS-001/002 (observability). Softened FR-503 component naming, FR-704 algorithm leak, NFR-DET-002 mechanism leak. Trimmed §9.4 (paths/env vars) and §10.3 (endpoints/timing) to behavior; implementation specifics moved to `PRD-deferred-content.md` for downstream docs. Removed redundant §11.2; folded compliance-derived flags into §13 traceability matrix. Compacted NFR-A11Y-003 SC list to §15.2 appendix. Annotated §6.1 JSONC block as illustrative. |
 | 0.3 | 2026-05-02 | Project team | Added §3.2 stretch bullet: automated threshold re-calibration (brand-match cutoffs, confidence-band edges, BRISQUE/NIQE gates) sweeping from eval-corpus performance. |
+| 0.4 | 2026-05-03 | Project team | Applied ARCH ADR D-018 erratum to §6.2 wire example: moved per-rule `duration_ms` out of `audit_trail.per_rule_trace[]` (audit) into a sibling `metrics` block (telemetry). `audit_trail` retains regulatory-reconstruction fields only; `metrics` carries `total_duration_ms`, `per_rule_durations_ms[]`, `vision_duration_ms`, `orchestrator_duration_ms`. |
 | 0.4 | 2026-05-02 | Project team | Added borderline-confidence corpus slice (§9.1) and demo fixture-07 (§10.2 / §8.1) — images that land in the medium-confidence `needs_review` band, demonstrating the human-in-the-loop slice between clean pass/fail. |
