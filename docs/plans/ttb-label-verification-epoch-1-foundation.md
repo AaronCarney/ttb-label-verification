@@ -18,7 +18,7 @@ This epoch is the only epoch that does not consume any other epoch's output.
 
 ### 2.1 Project setup
 
-- `pyproject.toml` (uv-managed) with **runtime deps only** (FastAPI, uvicorn, pydantic, pydantic-settings, jinja2, python-multipart, pyyaml, rapidfuzz, pillow, openai, httpx, sse-starlette, paddleocr, paddlepaddle, opencv-python-headless, numpy) per ARCH §19.3, plus `[project.optional-dependencies]` `gpu`, `anthropic`, `vllm`, and `[tool.taskipy.tasks]` `demo`, `demo-prod`, `eval-smoke`, `eval-full`, `eval-dashboard`.
+- `pyproject.toml` (uv-managed) with **runtime deps only** (FastAPI, uvicorn, pydantic, pydantic-settings, jinja2, python-multipart, pyyaml, rapidfuzz, pillow, openai, httpx, sse-starlette, paddleocr, paddlepaddle, opencv-python-headless, numpy) per ARCH §19.3, plus `[project.optional-dependencies]` `gpu`, `anthropic` (the `vllm` extra was removed per D-021 — see ARCH §19.3), and `[tool.taskipy.tasks]` `demo`, `demo-prod`, `eval-smoke`, `eval-full`, `eval-dashboard`.
 - `uv.lock` (committed).
 - `Dockerfile` (CPU/cloud-mode) and `Dockerfile.gpu` (CUDA 12.6).
 - `docker-compose.yml`, `docker-compose.gpu.yml`.
@@ -160,3 +160,4 @@ The L2 plan **must** include a final task that runs the full epoch exit-gate che
 | Version | Date | Author | Notes |
 |---|---|---|---|
 | 0.1 | 2026-05-02 | Project team | Initial epoch-1 L1 doc. |
+| 0.2 | 2026-05-03 | Project team | D-021 cascade clean-up: dropped `vllm` from the §2.1 `pyproject.toml` extras list (ARCH §19.3 already removed it). No exit-gate change. |
