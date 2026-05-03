@@ -109,6 +109,9 @@
 - **Commit message style.** Conventional Commits with subject ≤ 72 chars. Body lines ≤ 100 chars optional. No co-authored trailers (per project convention; see E1 commits).
 - **Reading order for an executor subagent.** The L1 sub-doc (`docs/plans/ttb-label-verification-epoch-2-rule-engine.md`) and ARCH §6.6 / §6.11 / §8.3 / §8.4 are the contract. This plan lifts the exact field shapes and validator names — but if any cell here disagrees with ARCH, ARCH wins and the task should flag the divergence in its commit message.
 - **Test file location for validators.** Per-validator tests live under `tests/rules/_validators/test_<name>.py`. The directory must contain `tests/rules/_validators/__init__.py` (created lazily inside the first validator-test task — T8).
+- **`evaluate()` return type — `tuple` not `list` (deliberate tightening of L1 §2.1).** L1 §2.1 line 22 and ARCH §3 sequence diagram both name `list[ValidationResult]`. This L2 returns `tuple[ValidationResult, ...]` so the engine output is immutable end-to-end (matches the §6.6 frozen-RuleSet discipline; lets downstream callers pass results through caches without defensive copies). T26's commit message MUST flag this divergence per the "if any cell here disagrees with ARCH, ARCH wins and the task should flag the divergence" rule. ARCH and L1 should be reconciled to `tuple` next time they're touched.
+- **`needs_review` disposition triple.** L1 §1 names `needs_review` as a disposition value alongside pass/fail/not_applicable, but E1's `Outcome` enum has no `NEEDS_REVIEW` variant (E1-fixed). The plan encodes the disposition as the triple `(Outcome.FAIL, Severity.WARN, reason_code="BRAND.NAME.NEEDS_REVIEW")` — emitted by `fuzzy_brand` (T18) for scores in [needs_review_threshold, pass_threshold). E5 keys its orchestrator-trigger off this exact triple; do NOT change any of the three components without updating E5's filter logic in lockstep.
+- **T8 shared helper signatures (private API consumed by T9–T16, T18).** Pinned here so reviewers and consumers don't have to spelunk: `_build_meta(rule: RuleDefinition, ctx: ValidatorContext, elapsed_ms: int = 0) -> EngineMeta` returns the per-call EngineMeta; `_conf(obs: FieldObservation) -> float` returns `min(c for c in obs.evidence.confidences) if obs.evidence else 0.0` (D-017 min-aggregation); `_normalize(s: str) -> str` returns the case-folded, whitespace-collapsed form used by `equality_match` and `enumerated_match`. These are private to the validator subpackage — do NOT export from `app/rules/__init__.py` or `app/rules/models.py`.
 
 ---
 
@@ -4972,7 +4975,16 @@ Expected: 3 PASSED.
 
 ```bash
 git add app/rules/engine.py app/rules/yaml_engine.py tests/test_yaml_rule_engine.py
-git commit -m "feat(e2): RuleEngine ABC + YamlRuleEngine with timeout + exception isolation"
+git commit -m "feat(e2): RuleEngine ABC + YamlRuleEngine (timeout + exception isolation)
+
+Returns tuple[ValidationResult, ...] — deliberate tightening of L1 §2.1's
+list[ValidationResult] for end-to-end immutability (matches §6.6 frozen
+RuleSet discipline). Documented in L2 plan §Conventions; ARCH/L1 should
+be reconciled to tuple next time they're touched.
+
+PER_RULE_TIMEOUT_S is a decision deadline, not an execution stop —
+asyncio.wait_for cancels the awaited coroutine but asyncio.to_thread
+cannot cancel sync code. See yaml_engine module docstring."
 ```
 
 ---
