@@ -4580,19 +4580,28 @@ exceptions. Output is a tuple of ValidationResult, sorted by rule_id.
 from __future__ import annotations
 
 import asyncio
+import importlib
+import pkgutil
 from pathlib import Path
 
 import pytest
 
-import app.rules._validators.equality_match  # noqa: F401
-import app.rules._validators.fuzzy_brand  # noqa: F401
-import app.rules._validators.presence_check  # noqa: F401
-from app.rules.engine import RuleEngine
-from app.rules.loader import YamlRuleLoader
-from app.rules.yaml_engine import YamlRuleEngine
-from app.schemas.expected import BeverageClass
-from app.schemas.rejection import Outcome, ValidationResult
-from tests.rules.fixtures import make_context, make_expected, make_obs
+# Populate VALIDATOR_REGISTRY by walking the validator subpackage. The loader's
+# S5 §d cross-check 6 (unknown-validator detection) refuses to start unless
+# every RuleDefinition.validator name is registered; explicit per-validator
+# imports (as in T28) are equivalent but brittle as new validators land.
+# Mirror the production CLI (T31) so this test exercises the same import path
+# the runtime takes.
+_pkg = importlib.import_module("app.rules._validators")
+for _mod in pkgutil.iter_modules(_pkg.__path__):
+    importlib.import_module(f"app.rules._validators.{_mod.name}")
+
+from app.rules.engine import RuleEngine  # noqa: E402
+from app.rules.loader import YamlRuleLoader  # noqa: E402
+from app.rules.yaml_engine import YamlRuleEngine  # noqa: E402
+from app.schemas.expected import BeverageClass  # noqa: E402
+from app.schemas.rejection import Outcome, ValidationResult  # noqa: E402
+from tests.rules.fixtures import make_context, make_expected, make_obs  # noqa: E402
 
 
 @pytest.fixture(scope="module")
