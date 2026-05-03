@@ -103,14 +103,25 @@ def test_ac7_healthz_emits_one_json_log_line(capsys) -> None:
     from app.main import create_app
 
     app_obj = create_app()
-    client = TestClient(app_obj)
-    capsys.readouterr()  # clear startup banner
-    r = client.get("/healthz")
-    assert r.status_code == 200
-    captured = capsys.readouterr().out
-    json_lines = [ln for ln in captured.splitlines() if ln.strip().startswith("{")]
-    assert json_lines, captured
-    parsed = json.loads(json_lines[-1])
+    with TestClient(app_obj) as client:
+        # `with` triggers the lifespan startup — drain its log line(s)
+        # so the next capsys read isolates the /healthz request emission.
+        capsys.readouterr()
+        r = client.get("/healthz")
+        assert r.status_code == 200
+        captured = capsys.readouterr().out
+    # AC #7: the /healthz route itself emits a single structured log line.
+    # Filter to the app.healthz logger — third-party libraries (e.g., httpx
+    # in TestClient) may emit their own lines through the root handler;
+    # those are not what AC #7 asserts.
+    json_lines = [
+        json.loads(ln)
+        for ln in captured.splitlines()
+        if ln.strip().startswith("{")
+    ]
+    healthz_lines = [p for p in json_lines if p.get("logger") == "app.healthz"]
+    assert len(healthz_lines) == 1, json_lines
+    parsed = healthz_lines[0]
     assert "ts" in parsed
     assert "level" in parsed
     assert "msg" in parsed

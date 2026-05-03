@@ -12,6 +12,8 @@ override/eval routes, UI mounts, SSE.
 from __future__ import annotations
 
 import logging
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
@@ -24,14 +26,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or Settings()
     configure_logging(settings)
 
-    application = FastAPI(
-        title="TTB Label Verification (prototype)",
-        version=settings.app_version,
-    )
-    application.include_router(healthz_router)
-
-    @application.on_event("startup")
-    async def _on_startup() -> None:
+    @asynccontextmanager
+    async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
         logging.getLogger("app.main").info(
             "app_startup",
             extra={
@@ -41,6 +37,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 "prompt_version": settings.prompt_version,
             },
         )
+        yield
+
+    application = FastAPI(
+        title="TTB Label Verification (prototype)",
+        version=settings.app_version,
+        lifespan=_lifespan,
+    )
+    application.include_router(healthz_router)
 
     return application
 
