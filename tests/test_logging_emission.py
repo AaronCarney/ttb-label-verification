@@ -65,3 +65,22 @@ def test_redaction_filter_strips_application_content_and_label_bytes() -> None:
     # Preserved fields
     assert record.evaluation_id == "00000000-0000-4000-8000-000000000001"
     assert record.reason_code == "ENGINE.OK.NONE"
+
+
+def test_call_record_ring_buffer_default_maxlen_is_200() -> None:
+    from app.logging.ring_buffer import new_call_ring_buffer
+
+    rb = new_call_ring_buffer()
+    assert rb.maxlen == 200
+    assert len(rb) == 0
+
+
+def test_call_record_ring_buffer_evicts_fifo_at_capacity() -> None:
+    from app.logging.ring_buffer import new_call_ring_buffer
+
+    rb = new_call_ring_buffer(maxlen=3)
+    rb.append("a")
+    rb.append("b")
+    rb.append("c")
+    rb.append("d")  # evicts "a"
+    assert list(rb) == ["b", "c", "d"]
