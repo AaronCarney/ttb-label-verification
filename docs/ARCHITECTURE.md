@@ -166,7 +166,7 @@ flowchart TB
     end
 
     subgraph LocalImpl[Local-mode implementations]
-        VL[LocalVisionExtractor<br/>PaddleOCR + Florence-2 + Qwen2.5-VL]
+        VL[LocalVisionExtractor<br/>PaddleOCR + GPT-4o tiebreak]
         OL[OpenAIStrictOrchestrator<br/>GPT-4o tiebreak only]
     end
 
@@ -814,7 +814,7 @@ This is documentation of how the same architecture maps to an on-prem federal de
 +---------------------------------------------+
         |
         v
-[Local model store: HuggingFace cache + vLLM server, on-prem GPU]
+[Local model store: HuggingFace cache + on-prem orchestrator (future vLLM-shaped module per D-021), on-prem GPU]
 ```
 
 Concretely: `VISION_MODE=local` selects `LocalVisionExtractor`, which reads PaddleOCR weights from a local cache mounted into the container. The orchestrator side of the seam is the `Orchestrator` ABC; production-trajectory on-prem deployment introduces a new implementation against that ABC (e.g., a future vLLM/XGrammar module — scoped out of MVP per D-021 but unblocked architecturally). No outbound calls; the firewall whitelist contains nothing for this service. Audit-trail retention (currently in-memory) is OQ-ARCH-4 in §16 — the boundary is where a persistence-backed Audit Recorder lands. T7 owns the staging-map, ATO posture, and FedRAMP work; this document does not redraw any of it.
@@ -1495,7 +1495,7 @@ Architecture-Doc-only terms not in the BRD or PRD glossaries; one-line definitio
 | **ABC** | Abstract Base Class — Python's `abc.ABC` base for declaring abstract methods that subclasses must implement. |
 | **ASGI** | Asynchronous Server Gateway Interface — the async successor to WSGI; FastAPI runs on ASGI servers (uvicorn, hypercorn). |
 | **asyncio** | Python's standard library for asynchronous I/O via cooperative coroutines on a single event loop. |
-| **AWQ** | Activation-Aware Weight Quantization — a 4-bit quantization scheme used for the Qwen2.5-VL local fallback. |
+| **AWQ** | Activation-Aware Weight Quantization — a 4-bit quantization scheme; was the quant choice for the Qwen2.5-VL fallback that was scoped out per D-021. Retained for the alternatives-considered table only. |
 | **axe-core** | An open-source accessibility-testing engine; used in CI to check WCAG conformance on every PR. |
 | **EWMA** | Exponentially Weighted Moving Average — a smoothing technique referenced for adaptive lookahead sizing in T6 (open-loop fixed `k=3` is the prototype default; EWMA is the closed-loop production trajectory). |
 | **HF Spaces** | Hugging Face Spaces — the deployment platform hosting the public-URL prototype with the Docker SDK. |
@@ -1509,7 +1509,7 @@ Architecture-Doc-only terms not in the BRD or PRD glossaries; one-line definitio
 | **shadcn/ui** | A copy-paste component library built on Radix UI + Tailwind; provides WAI-ARIA-correct primitives. |
 | **uv** | Astral's Python package manager; resolves and installs ~10–100× faster than pip; the project's primary dependency tool. |
 | **USWDS tokens** | The U.S. Web Design System's design tokens (color, spacing, typography) — the prototype adopts the color palette without inheriting USWDS components. |
-| **vLLM** | A high-throughput inference server for large language models; preserved as the production-trajectory swap-in for the orchestrator (D-016 consequences). |
+| **vLLM** | A high-throughput inference server for large language models; preserved as the production-trajectory swap-in for the orchestrator (D-016 consequences; scoped out of MVP per D-021, future re-introduction is a new module against the existing ABC). |
 
 ---
 
@@ -1543,7 +1543,7 @@ This Arch Doc section ↔ companion artifacts.
 | Cross-topic question | Resolved across these sections |
 |---|---|
 | **X-3** — How the deterministic core and AI orchestrator coexist at runtime (concurrency, timeouts, fallback) | §4.2.6 (orchestrator component + invocation discipline) + §10 (failure-mode taxonomy rows 4, 8, 13; cross-cutting LLM-unreachable behavior) + §11 (5 s budget allocation including conditional orchestrator slice) |
-| **X-5** — Substitutability story for federal-context production deployment | §8 (substitutability seams: VisionExtractor, Orchestrator, RuleLoader) + §9.4 (production-trajectory deployment topology with `VISION_MODE=local` and `ORCHESTRATOR_BACKEND=vllm`) + §12 (security: outbound-call posture, no persistence, env-var secret loading) |
+| **X-5** — Substitutability story for federal-context production deployment | §8 (substitutability seams: VisionExtractor, Orchestrator, RuleLoader) + §9.4 (production-trajectory deployment topology with `VISION_MODE=local`; on-prem orchestrator is a future module against the existing ABC, scoped out of MVP per D-021) + §12 (security: outbound-call posture, no persistence, env-var secret loading) |
 
 ### 19.2 Repository layout
 
@@ -1624,6 +1624,7 @@ Versions are illustrative; the canonical pin lives in `uv.lock` and `frontend/pn
 | 0.1 | 2026-05-02 | Project team | Initial issue. Authors §§1–19; absorbs `PRD-deferred-content.md` §§1–3 (marked `[consumed]` at point of absorption); appends ADRs D-017 through D-020 to `03-decisions.md`. |
 | 0.2 | 2026-05-02 | Project team | Self-review pass. Replaced P5 (legibility coding-convention) with P5 (state is session-scoped — architecturally load-bearing). Renamed §6.5 (RejectionReason absorbed into ValidationResult per S5). Added §6.11 (brand-name match policy: Stage A normalized exact / Stage B Jaro-Winkler with 0.85 / 0.92 thresholds carried in YAML). Distinguished `OpenAIStrictOrchestrator` (default, validated) from `AnthropicStrictOrchestrator` / `VllmXgrammarOrchestrator` (swap-path skeletons, not validated) in §4.2.6 and §8.2. Added consolidated env-var inventory table to §12.2. Added disabled-rule note + sample YAML rule to §6.6. Compressed pre-warm sequence diagram to prose in §5.3. Added cross-topic X-3 / X-5 resolution rows to §19.1. Distinguished genuinely-architectural ADRs (D-017, D-018) from operational decisions captured in ADR form (D-019, D-020) in §15 introduction. |
 | 0.3 | 2026-05-03 | Project team | Applied D-021 prototype-tier scope reduction. Local vision stack trimmed to PaddleOCR + GPT-4o tiebreaker (Florence-2-large and Qwen2.5-VL-7B-AWQ dropped). Orchestrator implementations reduced to OpenAI default + Anthropic skeleton (vLLM/XGrammar dropped). Updated §4.2.3, §4.2.6, §6.9, §7, §8.1, §8.2, §9.1, §9.4, §11.5, §12.2, §14.1, §15, §19.3. Substitutability seams unchanged — future re-introduction of any dropped backend is a new module against the existing Protocol/ABC. |
+| 0.4 | 2026-05-03 | Project team | D-021 cascade clean-up: §3 mermaid LocalVisionExtractor label, §9.4 ASCII bottom-box vLLM annotation, §19.1 X-5 row `ORCHESTRATOR_BACKEND=vllm` claim, glossary AWQ + vLLM entries — all updated to reflect the prototype-tier scope reduction and remove contradictions with E4's `ORCHESTRATOR_BACKEND=vllm` ValueError contract. No section moved or renumbered; pure cleanup. |
 
 ---
 
