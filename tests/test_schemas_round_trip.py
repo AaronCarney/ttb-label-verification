@@ -344,3 +344,28 @@ def test_call_record_round_trip() -> None:
     )
     rec2 = CallRecord.model_validate_json(rec.model_dump_json())
     assert rec2 == rec
+
+
+def test_application_envelope_round_trip(wire_fixtures_dir) -> None:
+    import json
+
+    from app.schemas.wire.application import ApplicationEnvelope
+
+    raw = json.loads((wire_fixtures_dir / "application.json").read_text())
+    env = ApplicationEnvelope.model_validate(raw)
+    rt = json.loads(env.model_dump_json(exclude_none=False))
+    # Compare on the keys present in the input — model_dump emits canonical order;
+    # round-trip means input keys/values survive a parse + dump cycle.
+    assert rt["permit_number"] == raw["permit_number"]
+    assert rt["brand_name"] == raw["brand_name"]
+    assert rt["labels"][0]["face_tag"] == raw["labels"][0]["face_tag"]
+
+
+def test_application_envelope_rejects_extra_keys() -> None:
+    import pytest
+    from pydantic import ValidationError
+
+    from app.schemas.wire.application import ApplicationEnvelope
+
+    with pytest.raises(ValidationError):
+        ApplicationEnvelope.model_validate({"permit_number": "x", "rogue_key": 1})
