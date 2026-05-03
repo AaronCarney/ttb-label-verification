@@ -369,3 +369,21 @@ def test_application_envelope_rejects_extra_keys() -> None:
 
     with pytest.raises(ValidationError):
         ApplicationEnvelope.model_validate({"permit_number": "x", "rogue_key": 1})
+
+
+def test_disposition_envelope_round_trip(wire_fixtures_dir) -> None:
+    import json
+
+    from app.schemas.wire.disposition import DispositionEnvelope
+
+    raw = json.loads((wire_fixtures_dir / "disposition.json").read_text())
+    env = DispositionEnvelope.model_validate(raw)
+    dumped = json.loads(env.model_dump_json())
+    assert dumped["disposition"] == raw["disposition"]
+    assert dumped["audit_trail"]["evaluation_id"] == raw["audit_trail"]["evaluation_id"]
+    # D-018: audit_trail.per_rule_trace[] entries must NOT carry duration_ms.
+    for entry in dumped["audit_trail"]["per_rule_trace"]:
+        assert "duration_ms" not in entry
+    # D-018: durations live in the metrics block.
+    assert "metrics" in dumped
+    assert dumped["metrics"]["per_rule_durations_ms"][0]["duration_ms"] == 8
