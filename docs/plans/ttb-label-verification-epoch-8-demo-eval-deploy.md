@@ -12,7 +12,7 @@
 Deliver everything the take-home reviewer touches:
 
 1. The **seven demo fixtures** PRD §8.1 names — fixture-01 (clean spirits), fixture-02 (STONE'S THROW Bourbon), fixture-03 (title-case warning), fixture-04 (low-res / glare), fixture-05 (batch of 50), fixture-06 (ABV out-of-tolerance), fixture-07 (borderline-confidence `needs_review`) — with cached LLM responses (D-020).
-2. The **eval harness** running `eval-smoke` (~20 labels, every PR) and `eval-full` (~50 labels, merge to main, right-sized for prototype tier per PRD v0.5 §9.1) with the §9.1 corpus shape (Wine 40–50%, Malt 35–45%, Spirits 10–20%, ≥20 borderline-confidence labels, datasheet per Gebru et al. 2021).
+2. The **eval harness** running `eval-smoke` (~20 labels, every PR) and `eval-full` (~50 labels, merge to main, right-sized for prototype tier per PRD v0.5 §9.1) with the §9.1 corpus shape (spirits 30–40%, wine 30–40%, malt 20–30%, ≥10 borderline-confidence labels, synthetic share ≤30%, datasheet per Gebru et al. 2021).
 3. The **`/eval` dashboard** rendering disposition confusion matrix and per-rule precision/recall.
 4. The **public URL deployment** on Hugging Face Spaces with the Docker SDK and `cpu-basic` tier (D-015) — TLS, env-var-driven secrets, public-readable per OQ-2 prototype-tier.
 5. The **`DEMO-RUNBOOK.md`** operator timeline (T-30 / T-5 / T-1 / T-0 per `PRD-deferred-content.md` §3.4).
@@ -223,3 +223,4 @@ When E8 lands:
 |---|---|---|---|
 | 0.1 | 2026-05-02 | Project team | Initial epoch-8 L1 doc. |
 | 0.2 | 2026-05-03 | Project team | Aligned with PRD v0.5 eval-corpus right-sizing: full corpus ~50 (was ≥250), borderline ≥10 (was ≥20), happy-path ≥10 (was ≥97), per-rule coverage ≥1 (was ≥43), Krippendorff α gate deferred to pilot per OQ-PRD-5; class balance rebalanced. macro-F1 ≥ 0.70 MVP gate held. |
+| 0.3 | 2026-05-03 | Project team | §1 Goal item 2 follow-up: aligned in-line §9.1 corpus shape with PRD v0.5 (spirits 30–40%, wine 30–40%, malt 20–30%; borderline ≥10; synthetic share ≤30%). Removes internal contradiction between §1 and §4 exit-gate item 4 introduced in 0.2. |
