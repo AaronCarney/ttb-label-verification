@@ -103,6 +103,10 @@ function SingleApp({ envelope }: { envelope: DispositionEnvelope | null }): Reac
         onOpenChange={setOverrideOpen}
         codes={_REASON_CODES}
         onSubmit={(p) => {
+          // TODO(post-E6): POST { evaluation_id, reason_code, justification }
+          // to E6's /overrides endpoint, surface failures via Toast, refresh
+          // audit_trail.overrides on success. See docs/followups/post-e6-merge.md §1.
+          // Today this is local-only (FR-507 satisfied; FR-801 audit not yet).
           setAnnouncement(`Override saved: ${p.reasonCode}`);
           setOverrideOpen(false);
         }}

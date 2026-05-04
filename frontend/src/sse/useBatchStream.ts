@@ -33,6 +33,11 @@ export function useBatchStream(batchId: string): BatchStreamState {
   // `event:` / `id:` / `retry:` framed multi-line records, attach
   // `addEventListener('label-update', …)` and friends per `event:` name and
   // re-parse here. Test corpus today is single-line `data:` only.
+  //
+  // TODO(post-E6): verify against E6's actual emit format (read app/batch/**
+  // and app/api/batches.py once E6 lands on main); switch to addEventListener
+  // per emitted event name if E6 uses named framing. See
+  // docs/followups/post-e6-merge.md §2.
   React.useEffect(() => {
     if (!batchId) return;
     const url = `/batches/${encodeURIComponent(batchId)}/stream`;
