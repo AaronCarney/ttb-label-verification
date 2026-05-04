@@ -21,8 +21,7 @@ def test_readme_links_decisions_and_runbook():
         assert ref in content, f"README missing link to {ref}"
 
 
-def test_readme_has_live_demo_and_narration():
+def test_readme_has_live_demo():
     content = Path("README.md").read_text()
-    # T16 descoped the recorded walkthrough; live demo URL + narration script stand in.
+    # Recorded walkthrough is descoped; the live demo URL is the demo.
     assert "context31415-ttb-label.hf.space" in content
-    assert "docs/demo-narration.md" in content

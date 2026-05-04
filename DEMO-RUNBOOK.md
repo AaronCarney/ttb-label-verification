@@ -66,11 +66,6 @@ Bonus (deployed but cut from recording for time): fixture-07 borderline-band `ne
 | HF Space cold-start exceeds 5 s | T-5 pre-warm absorbs this; if it recurs mid-demo, point at the `/healthz` curl in T-30 as evidence the deploy is healthy |
 | Cache stale relative to active LLM_MODEL_SNAPSHOT | `uv run --python 3.12 python scripts/snapshot_demo_envelopes.py` (requires OPENAI_API_KEY); commit the diff |
 
-## Re-record protocol
-
-If the recording goes long or the cursor lands on the wrong control, re-shoot following the same six-stage path. The narration script lives at `docs/demo-narration.md` (authored by post-merge T16 along with the recording itself).
-
-
 ---
 
 ## Initial deployment setup (one-time, executed 2026-05-04)

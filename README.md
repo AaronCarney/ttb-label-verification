@@ -13,7 +13,7 @@ pinned: false
 
 A reviewer drops an alcohol-label image into the page; in about five seconds the system extracts the regulated fields, checks them against the federal rule pack, and returns a single verdict — `pass`, `fail`, or `needs_review` — with a citation for every check. A second screen handles batch uploads of up to a few hundred labels with a streaming progress feed and a three-keystroke override.
 
-> **Live demo:** https://context31415-ttb-label.hf.space — the seven demo fixtures are loaded; drop them onto the upload area or paste their paths. A spoken-narration walkthrough is in `docs/demo-narration.md`.
+> **Live demo:** https://context31415-ttb-label.hf.space — the seven demo fixtures are loaded; drop them onto the upload area or paste their paths.
 
 ## The problem in one screen
 
@@ -106,8 +106,7 @@ The `/eval` dashboard route is gated by `DEV_MODE=1` so production builds never 
 - [`docs/PRD.md`](docs/PRD.md) — what the system does, the FR/NFR list, acceptance criteria
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — components, data flow, deployment
 - [`docs/03-decisions.md`](docs/03-decisions.md) — every architectural decision, dated, with rationale
-- [`DEMO-RUNBOOK.md`](DEMO-RUNBOOK.md) — five-minute reviewer walkthrough
-- [`docs/demo-narration.md`](docs/demo-narration.md) — the spoken script for that walkthrough
+- [`DEMO-RUNBOOK.md`](DEMO-RUNBOOK.md) — operational checks and HF Space provisioning
 
 ## License
 
