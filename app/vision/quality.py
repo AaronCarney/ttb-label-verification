@@ -11,7 +11,7 @@ from typing import Literal
 
 import cv2
 import numpy as np
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 from pydantic import BaseModel, ConfigDict
 
 from app.schemas.label import Dimensions, Label
@@ -37,8 +37,11 @@ class QualityReport(BaseModel):
     dpi: int | None
 
 
-def _decode_grayscale(image_bytes: bytes) -> np.ndarray:
-    img = Image.open(io.BytesIO(image_bytes)).convert("L")
+def _decode_grayscale(image_bytes: bytes) -> np.ndarray | None:
+    try:
+        img = Image.open(io.BytesIO(image_bytes)).convert("L")
+    except (UnidentifiedImageError, OSError, Exception):  # noqa: BLE001
+        return None
     return np.array(img)
 
 
@@ -58,7 +61,12 @@ def _highfreq_ratio(gray: np.ndarray) -> float:
 def _extract_dpi(image_bytes: bytes, dimensions: Dimensions | None) -> int | None:
     """Try sources in order: PIL info["dpi"] (PNG pHYs / JFIF) → EXIF
     XResolution/YResolution → applicant Dimensions.dpi → None."""
-    img = Image.open(io.BytesIO(image_bytes))
+    try:
+        img = Image.open(io.BytesIO(image_bytes))
+    except (UnidentifiedImageError, OSError, Exception):  # noqa: BLE001
+        if dimensions is not None and dimensions.dpi is not None:
+            return dimensions.dpi
+        return None
 
     info_dpi = img.info.get("dpi")
     if info_dpi:
@@ -86,6 +94,13 @@ def assess(label: Label) -> QualityReport:
     """Run vision quality gates against a Label and return a QualityReport."""
     gray = _decode_grayscale(label.image_bytes)
     dpi = _extract_dpi(label.image_bytes, label.dimensions)
+
+    if gray is None:
+        return QualityReport(
+            disposition="needs_better_photo",
+            reason_code="WARNING.LEGIBILITY.LOW_RESOLUTION",
+            dpi=dpi,
+        )
 
     if cv2.Laplacian(gray, cv2.CV_64F).var() < LOW_RES_VARIANCE_MIN:
         return QualityReport(
