@@ -58,6 +58,7 @@ async def test_refine_against_fixture_01():
     assert all(r.stage.startswith("orch.") for r in ring)
 
 
+# Cycle B: FR-304 fallback tests
 @pytest.mark.asyncio
 async def test_refine_fr304_fallback_on_connect_error():
     """Transport-level failure (httpx.RequestError subclass) → ENGINE.MODEL.UNAVAILABLE."""
