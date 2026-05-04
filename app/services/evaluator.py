@@ -111,7 +111,7 @@ class Evaluator:
                 extra={
                     "reason_code": "ENGINE.EXTRACTION.UNAVAILABLE",
                     "evaluation_id": application.evaluation_id,
-                    "exception_class": type(e).__name__,
+                    "error_class": type(e).__name__,
                 },
             )
             observations = []
@@ -130,7 +130,7 @@ class Evaluator:
                 extra={
                     "reason_code": quality.reason_code,
                     "evaluation_id": application.evaluation_id,
-                    "exception_class": "N/A",
+                    "error_class": "N/A",
                 },
             )
             return self._short_circuit(application, label, timeline, quality.reason_code, t_total)
@@ -151,7 +151,7 @@ class Evaluator:
                 extra={
                     "reason_code": "ENGINE.RULES.UNAVAILABLE",
                     "evaluation_id": application.evaluation_id,
-                    "exception_class": type(e).__name__,
+                    "error_class": type(e).__name__,
                 },
             )
             results = ()
@@ -174,7 +174,7 @@ class Evaluator:
                     extra={
                         "reason_code": "ENGINE.MODEL.UNAVAILABLE",
                         "evaluation_id": application.evaluation_id,
-                        "exception_class": type(e).__name__,
+                        "error_class": type(e).__name__,
                     },
                 )
             finally:
@@ -278,7 +278,7 @@ class Evaluator:
             extra={
                 "reason_code": "ENGINE.SLA.TIMEOUT",
                 "evaluation_id": application.evaluation_id,
-                "exception_class": "TimeoutError",
+                "error_class": "TimeoutError",
             },
         )
         envelope_for_hash = {"evaluation_id": application.evaluation_id, "disposition": "needs_review",
