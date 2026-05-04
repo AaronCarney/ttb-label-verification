@@ -101,6 +101,14 @@ codes:
     description: "Image quality insufficient to verify warning legibility."
     cfr_anchors: ["27 CFR §16.22(a)(1)"]
     severity: warn
+  WARNING.LEGIBILITY.GLARE:
+    description: "Specular highlights or overexposed regions in the warning area prevent reliable extraction."
+    cfr_anchors: ["27 CFR §16.21"]
+    severity: warn
+  WARNING.LEGIBILITY.MOTION_BLUR:
+    description: "Motion blur in the warning area exceeds the legibility gate; extraction unreliable."
+    cfr_anchors: ["27 CFR §16.21"]
+    severity: warn
   WARNING.TYPE_SIZE.UNDER_MIN:
     description: "Warning text height is under the §16.22(b) minimum for the container size."
     cfr_anchors: ["27 CFR §16.22(b)"]

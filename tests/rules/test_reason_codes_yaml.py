@@ -48,3 +48,16 @@ def test_brand_needs_review_code_present() -> None:
     (per E2 L1 §4 exit-gate item 12)."""
     data = yaml.safe_load(REGISTRY.read_text(encoding="utf-8"))
     assert "BRAND.NAME.NEEDS_REVIEW" in data["codes"]
+
+
+EXPECTED_LEGIBILITY_WARN_CODES = {
+    "WARNING.LEGIBILITY.GLARE",
+    "WARNING.LEGIBILITY.MOTION_BLUR",
+}
+
+
+def test_legibility_warn_codes_present() -> None:
+    """E3 contract: GLARE and MOTION_BLUR warn codes must be in the registry."""
+    data = yaml.safe_load(REGISTRY.read_text(encoding="utf-8"))
+    missing = EXPECTED_LEGIBILITY_WARN_CODES - set(data["codes"])
+    assert missing == set(), f"missing legibility warn codes: {missing}"
