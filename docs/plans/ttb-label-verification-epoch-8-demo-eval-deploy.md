@@ -82,13 +82,14 @@ Per ARCH §9 / D-015:
 - `docker-compose.yml` — `demo` service (CPU image).
 - `docker-compose.gpu.yml` — `demo-gpu` service with `deploy.resources.reservations.devices`.
 - HF Spaces config — `README.md` frontmatter (HF Spaces YAML metadata): `sdk: docker`, `app_port: 8000`, `hardware: cpu-basic`, `pinned: false`. Space secrets configured via the HF UI: `OPENAI_API_KEY`, `LLM_MODEL_SNAPSHOT`, `ORCHESTRATOR_BACKEND`, `LOOKAHEAD_K`, `DEV_MODE` (unset for the public URL).
-- TLS provided by HF Spaces edge (NFR-SEC-001).
+- Custom domain — Cloudflare DNS adds `CNAME ttb → aaroncarney-ttb-label.hf.space` with proxy status **DNS only** (grey cloud); HF Space → Settings → "Custom Domain" registers `ttb.aaroncarney.me`; HF auto-provisions a Let's Encrypt cert. Reviewer-canonical URL is `https://ttb.aaroncarney.me`; the HF subdomain remains a fallback. One-time manual setup; no code changes.
+- TLS provided by HF Spaces edge (NFR-SEC-001) — Cloudflare grey-cloud means Cloudflare does no TLS termination; HF cert is end-to-end.
 
 ### 2.7 Demo runbook (`DEMO-RUNBOOK.md`)
 
 Per `PRD-deferred-content.md` §3.4 / ARCH §14.4:
 
-- **T-30 minutes** — environment check: deployed URL reachable; API credentials valid in cloud mode; `gh release list` and `git diff` clean; cache regeneration script idempotency confirmed.
+- **T-30 minutes** — environment check: `curl -I https://ttb.aaroncarney.me/healthz` returns 200 with a valid HF-issued cert (no `--insecure`); API credentials valid in cloud mode; `gh release list` and `git diff` clean; cache regeneration script idempotency confirmed.
 - **T-5 minutes** — pre-warm `GET /healthz` (sentinel pipeline against fixture-01); confirm 200 within 2 s.
 - **T-1 minute** — fixture-01 dry run against the deployed URL (a single browser load).
 - **T-0** — begin recording; six-stage path per PRD §10.2.

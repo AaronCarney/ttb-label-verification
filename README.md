@@ -13,8 +13,7 @@ Three one-command setup profiles target the deployed-URL and on-prem trajectorie
 
 ### Profile A — Hosted demo (preferred)
 
-The deployed URL serves the cloud-mode default (GPT-4o on crop, Structured Outputs
-`strict:true`). No local install; no API key needed for review against cached fixtures.
+The deployed URL — **<https://ttb.aaroncarney.me>** — serves the cloud-mode default (GPT-4o on crop, Structured Outputs `strict:true`). No local install; no API key needed for review against cached fixtures. Hosted on Hugging Face Spaces (Docker SDK, `cpu-basic`); Cloudflare DNS-only CNAME fronts the HF custom domain. The HF subdomain `aaroncarney-ttb-label.hf.space` is a fallback.
 
 ### Profile B — Local cloud-mode boot
 

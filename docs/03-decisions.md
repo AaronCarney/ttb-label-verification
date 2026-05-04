@@ -233,3 +233,35 @@ The conventions are captured in `R0-federal-cost-conventions.md` as a reference 
 - README and any deliverables to the take-home reviewer cite A-94 and GAO-20-195G where they ground methodology choices.
 - The discount-rate question is settled, not researchable — saves T11 effort.
 
+## D-022 — Front the HF Spaces public URL with `ttb.aaroncarney.me`
+
+**Status:** Accepted
+**Date:** 2026-05-04
+
+**Context.** D-015 named Hugging Face Spaces (Docker SDK, `cpu-basic`) as the public-URL host because the architecture is a long-running FastAPI process with stateful in-memory components (asyncio batch worker per FR-400, ring-buffer `CallRecord`, session-scoped `app.state.batches`) — a poor fit for Vercel Fluid Compute's best-effort instance reuse. D-015 left the reviewer-facing URL as the bare HF subdomain (`<owner>-<space>.hf.space`). The candidate maintains a personal portfolio at `aaroncarney.me` (Cloudflare DNS, separate Vercel-hosted Next.js site); a hostname under that domain is preferable for reviewer optics without changing the runtime.
+
+**Decision.** The canonical public URL for the take-home prototype is `https://ttb.aaroncarney.me`. It is implemented as:
+
+- **Cloudflare DNS:** `CNAME ttb → aaroncarney-ttb-label.hf.space`, proxy status **DNS only** (grey cloud). DNS-only is required so HF can provision its own Let's Encrypt cert at the HF edge; orange-cloud would interpose a Cloudflare cert and break HF's challenge.
+- **HF Space → Settings → Custom Domain:** `ttb.aaroncarney.me`. HF auto-issues + auto-renews the Let's Encrypt cert.
+- **Fallback:** the HF subdomain `aaroncarney-ttb-label.hf.space` remains reachable for diagnostics.
+
+Cloudflare performs no TLS termination, no caching, no WAF — it is a dumb DNS pointer. TLS is end-to-end HF (NFR-SEC-001).
+
+**Rationale.**
+- **Optics.** A take-home URL on the candidate's own domain reads as a deliberate deliverable; the bare HF subdomain reads as scratch infrastructure.
+- **No runtime change.** The seam is DNS, not the host. Architecture posture (D-015), env vars, secrets, container image, and reviewer profiles are all unchanged.
+- **No new vendors.** Cloudflare and the apex domain already exist for the candidate's portfolio; this is one CNAME row, not a new account.
+- **TLS owner is unchanged.** HF still owns the cert; the prototype process still runs HTTP behind the HF edge per ARCH §13. NFR-SEC-001 unaffected.
+
+**Alternatives considered.**
+- **Deploy on Vercel under `aaroncarney.me`** (or its subdomain, replacing HF entirely) → Rejected. Vercel Fluid Compute supports Python, but instance reuse across requests is best-effort, not guaranteed. The FR-400 batch worker holds asyncio queue + per-batch state across multiple requests in a single user's session; losing that state mid-batch is a contract violation, not a perf regression. Also forfeits the A10G-small GPU upgrade escape hatch (ARCH §9.3).
+- **Cloudflare proxy (orange cloud) instead of DNS-only** → Rejected. Would require origin-cert provisioning between Cloudflare and HF (HF doesn't accept arbitrary client certs at its edge), or full-strict TLS with Cloudflare-issued cert. Adds a moving part, breaks HF's automatic Let's Encrypt renewal, and Cloudflare caching/WAF in front of an SSE batch stream is a known footgun (long-lived connections, response buffering).
+- **Bare HF subdomain only** → Rejected per Decision rationale above.
+
+**Consequences.**
+- ARCH §8 stack-table deployment row, ARCH §9.2, PRD §10.1, README Profile A, and the E8 deploy plan §2.6 + T-30 runbook step name `ttb.aaroncarney.me` as canonical.
+- The candidate must perform the one-time DNS + HF custom-domain setup before the E8 deployment-smoke step (`tests/test_deploy_healthz.py`) is meaningful against the canonical URL. The smoke test stays gated by the `TTB_DEPLOY_URL` env var so local runs are unaffected.
+- If the HF Space is ever recreated under a different subdomain, the Cloudflare CNAME target updates; the canonical URL does not. This is the durability win of the indirection.
+- No change to `.env.example`, no change to ARCH §12 env-var inventory, no change to reviewer profiles B/C boot commands.
+

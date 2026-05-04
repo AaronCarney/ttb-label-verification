@@ -758,7 +758,7 @@ Demo is a delivered acceptance artifact, not a marketing exercise. Lifts D-011 d
 ### 10.1 Length and channels
 
 - **5-minute recorded walkthrough** (Loom or equivalent), linked from README.
-- **Deployed URL** (public-readable, no auth gymnastics) reachable for the full 7-stage path including network-failure recovery (which is cut from the 5-min recording for time).
+- **Deployed URL** (public-readable, no auth gymnastics) reachable for the full 7-stage path including network-failure recovery (which is cut from the 5-min recording for time). Canonical URL: `https://ttb.aaroncarney.me` (Cloudflare DNS → HF Space custom domain). HF subdomain `aaroncarney-ttb-label.hf.space` remains as a fallback.
 - **Source repo + README** per take-home deliverable.
 - **Hybrid live/cached**: pre-warmed orchestrator at T-5 minutes pre-recording; LLM responses cached for the six demo fixtures, narrated transparently.
 
