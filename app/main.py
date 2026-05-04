@@ -46,6 +46,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     )
     application.include_router(healthz_router)
 
+    from app.api import labels as labels_module
+    application.include_router(labels_module.router)
+
     return application
 
 

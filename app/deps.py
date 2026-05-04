@@ -59,3 +59,15 @@ def build_orchestrator(settings: Settings) -> Orchestrator:
             settings=settings, ring_buffer=ring, api_key=settings.anthropic_api_key or "",
         )
     raise ValueError(f"Unknown orchestrator_backend: {backend!r}")
+
+
+def build_evaluator(settings: "Settings") -> "Evaluator":
+    """Construct an Evaluator wired to all four real dependencies."""
+    from app.rules import build_rule_engine
+    from app.services.cache import SessionCache
+    from app.services.evaluator import Evaluator
+    vision = build_vision_extractor(settings)
+    rules = build_rule_engine(settings)
+    orchestrator = build_orchestrator(settings)
+    cache = SessionCache(maxsize=128)
+    return Evaluator(vision=vision, rules=rules, orchestrator=orchestrator, settings=settings, cache=cache)
