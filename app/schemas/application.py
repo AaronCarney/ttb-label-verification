@@ -11,6 +11,8 @@ from __future__ import annotations
 
 from pydantic import BaseModel, ConfigDict
 
+from app.schemas.expected import ExpectedValue
+
 
 class Application(BaseModel):
     """Identity surface for an in-flight evaluation. Extend in E5 if needed."""
@@ -19,3 +21,4 @@ class Application(BaseModel):
 
     application_id: str
     evaluation_id: str
+    expected_values: tuple[ExpectedValue, ...] = ()
