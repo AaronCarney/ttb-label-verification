@@ -12,20 +12,12 @@ def test_cpu_dockerfile_uses_python_312_slim():
     assert "COPY app ./app" in content
 
 
-def test_gpu_dockerfile_uses_cuda():
-    content = Path("Dockerfile.gpu").read_text()
-    assert "nvidia/cuda" in content
-    assert "uv sync" in content and "--extra gpu" in content
-
-
-def test_compose_files_exist_and_share_model_snapshot():
+def test_compose_file_pins_model_snapshot():
     cpu = Path("docker-compose.yml").read_text()
-    gpu = Path("docker-compose.gpu.yml").read_text()
-    assert "LLM_MODEL_SNAPSHOT" in cpu and "LLM_MODEL_SNAPSHOT" in gpu
+    assert "LLM_MODEL_SNAPSHOT" in cpu
     import re
     cpu_pin = re.search(r"LLM_MODEL_SNAPSHOT.*\$\{LLM_MODEL_SNAPSHOT:-([^}]+)\}", cpu)
-    gpu_pin = re.search(r"LLM_MODEL_SNAPSHOT.*\$\{LLM_MODEL_SNAPSHOT:-([^}]+)\}", gpu)
-    assert cpu_pin and gpu_pin and cpu_pin.group(1) == gpu_pin.group(1)
+    assert cpu_pin and cpu_pin.group(1)
 
 
 def test_dockerignore_excludes_frontend_source():

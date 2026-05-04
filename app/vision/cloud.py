@@ -22,7 +22,90 @@ from app.schemas.expected import BeverageClass
 from app.schemas.extracted import Evidence, EvidenceSource, FieldObservation, MatchKind
 from app.schemas.label import Label
 from app.vision import quality
-from app.vision.tiebreak_gpt4o import _SCHEMAS
+
+_SCHEMAS = {
+    "brand_name": {
+        "type": "object",
+        "properties": {"brand_name": {"type": "string"}},
+        "required": ["brand_name"],
+        "additionalProperties": False,
+    },
+    "class_type": {
+        "type": "object",
+        "properties": {"class_type": {"type": "string"}},
+        "required": ["class_type"],
+        "additionalProperties": False,
+    },
+    "abv": {
+        "type": "object",
+        "properties": {
+            "abv_pct": {"type": "number"},
+            "unit": {"type": "string"},
+        },
+        "required": ["abv_pct", "unit"],
+        "additionalProperties": False,
+    },
+    "net_contents": {
+        "type": "object",
+        "properties": {
+            "net_contents_value": {"type": "number"},
+            "unit": {"type": "string"},
+        },
+        "required": ["net_contents_value", "unit"],
+        "additionalProperties": False,
+    },
+    "gov_warning": {
+        "type": "object",
+        "properties": {"text": {"type": "string"}},
+        "required": ["text"],
+        "additionalProperties": False,
+    },
+    "heading_typography": {
+        "type": "object",
+        "properties": {
+            "all_caps": {"type": "boolean"},
+            "bold": {"type": "boolean"},
+            "type_size_pt": {"type": "number"},
+        },
+        "required": ["all_caps", "bold", "type_size_pt"],
+        "additionalProperties": False,
+    },
+    "name_address": {
+        "type": "object",
+        "properties": {
+            "name": {"type": "string"},
+            "city": {"type": "string"},
+            "state": {"type": "string"},
+        },
+        "required": ["name", "city", "state"],
+        "additionalProperties": False,
+    },
+    "country_origin": {
+        "type": "object",
+        "properties": {"country": {"type": "string"}},
+        "required": ["country"],
+        "additionalProperties": False,
+    },
+    "layout": {
+        "type": "object",
+        "properties": {
+            "fields": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {"type": "string"},
+                        "bbox": {"type": "array", "items": {"type": "integer"}},
+                    },
+                    "required": ["id", "bbox"],
+                    "additionalProperties": False,
+                },
+            }
+        },
+        "required": ["fields"],
+        "additionalProperties": False,
+    },
+}
 
 _FIELD_NAMES = (
     "brand_name",

@@ -40,7 +40,7 @@ def test_settings_defaults_when_only_required_provided() -> None:
         PROMPT_VERSION=None,
     ):
         s = Settings()
-        assert s.vision_mode == "auto"
+        assert s.vision_mode == "cloud"
         assert s.orchestrator_backend == "openai"
         assert s.lookahead_k == 3
         assert s.dev_mode is False

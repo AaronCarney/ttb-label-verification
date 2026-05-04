@@ -6,13 +6,11 @@ from pathlib import Path
 import pytest
 import respx
 from httpx import Response
-from unittest.mock import AsyncMock, MagicMock
 
 from app.config import Settings
 from app.schemas.label import Dimensions, Label
 from app.vision.base import VisionExtractor
 from app.vision.cloud import CloudVisionExtractor
-from app.vision.local import LocalVisionExtractor
 
 EXPECTED_FIELD_IDS = {
     "brand_name", "class_type", "abv", "net_contents",
@@ -32,16 +30,14 @@ def _label() -> Label:
 
 
 @pytest.mark.asyncio
-async def test_both_impls_satisfy_protocol():
+async def test_cloud_satisfies_protocol():
     settings = Settings()
     cloud = CloudVisionExtractor(settings=settings, ring_buffer=deque(maxlen=200), api_key="sk-test")
-    local = LocalVisionExtractor(settings=settings, ring_buffer=deque(maxlen=200))
     assert isinstance(cloud, VisionExtractor)
-    assert isinstance(local, VisionExtractor)
 
 
 @pytest.mark.asyncio
-async def test_both_impls_produce_same_field_id_set():
+async def test_cloud_produces_expected_field_id_set():
     settings = Settings()
     cloud_ring = deque(maxlen=200)
     cloud = CloudVisionExtractor(settings=settings, ring_buffer=cloud_ring, api_key="sk-test")
@@ -60,17 +56,6 @@ async def test_both_impls_produce_same_field_id_set():
         router.post("/v1/chat/completions").mock(side_effect=_dispatch)
         cloud_obs = await cloud.extract(_label())
 
-    local_ring = deque(maxlen=200)
-    local = LocalVisionExtractor(settings=settings, ring_buffer=local_ring)
-    # Mock the three sub-runners to return the same field set Cloud produces.
-    local._paddle = MagicMock(run=AsyncMock(return_value=[]))
-    local._swt = MagicMock(run=AsyncMock(return_value=MagicMock(is_bold=True, width_height_ratio=0.5)))
-    local._tiebreak = MagicMock(run=AsyncMock(return_value={"brand_name": "ACME"}))
-    local._quality_assess = MagicMock(return_value=MagicMock(disposition="ok"))
-    local_obs = await local.extract(_label())
-
     cloud_ids = {o.field_id for o in cloud_obs}
-    local_ids = {o.field_id for o in local_obs}
-    # L1 §4 #3: same field_id set, values may differ.
+    # L1 §4 #3: the FR-001..008 field_id set must round-trip through the seam.
     assert cloud_ids == EXPECTED_FIELD_IDS
-    assert local_ids == EXPECTED_FIELD_IDS

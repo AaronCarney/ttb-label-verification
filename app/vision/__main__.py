@@ -21,7 +21,6 @@ from app.config import Settings
 def _build_argparser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="python -m app.vision")
     p.add_argument("--label", required=True, type=Path)
-    p.add_argument("--mode", choices=("cloud", "local"), default="cloud")
     p.add_argument("--use-recordings", action="store_true",
                    help="Mount tests/recordings/openai/<snapshot>/<prompt-version>/<fixture>/* via respx.")
     return p

@@ -1,4 +1,4 @@
-"""DI container: VisionExtractor / Orchestrator placeholder providers.
+"""DI container: VisionExtractor / Orchestrator providers.
 
 Per L1 §4 AC #8: providers raise NotImplementedError("seam not wired in E1")
 on any path that would invoke ``VisionExtractor.extract()`` or
@@ -38,16 +38,13 @@ def test_vision_extractor_provider_returns_object_when_called() -> None:
     assert extractor is not None
 
 
-def test_vision_extractor_provider_dispatches_on_mode() -> None:
-    """E3 D-015: build_vision_extractor returns a real extractor selected by mode."""
+def test_vision_extractor_provider_returns_cloud() -> None:
+    """The submission ships cloud-only; build_vision_extractor returns a CloudVisionExtractor."""
     from app.deps import build_vision_extractor
     from app.vision.cloud import CloudVisionExtractor
-    from app.vision.local import LocalVisionExtractor
 
-    s_cloud = _settings_with(OPENAI_API_KEY="sk", VISION_MODE="cloud")
-    s_local = _settings_with(OPENAI_API_KEY="sk", VISION_MODE="local")
-    assert isinstance(build_vision_extractor(s_cloud), CloudVisionExtractor)
-    assert isinstance(build_vision_extractor(s_local), LocalVisionExtractor)
+    s = _settings_with(OPENAI_API_KEY="sk", VISION_MODE="cloud")
+    assert isinstance(build_vision_extractor(s), CloudVisionExtractor)
 
 
 def test_orchestrator_provider_dispatches_on_backend() -> None:

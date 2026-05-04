@@ -31,7 +31,7 @@ The seven required fields are all extracted, checked, and cited: brand name, cla
 
 **2. Rules live in YAML, not Python.** Each regulation is a row in a YAML file with the CFR citation, the validator name, and the parameters. Updating the spirits ABV tolerance or adding a class-of-product rule is a config change and a test, not a code change. Python only contains the validators these rules call by name. This is what makes the rule pack auditable by a non-programmer reviewer and what keeps "rules as data" from being marketing copy.
 
-**3. The two AI dependencies are swappable.** OCR (vision) and the language model both sit behind a small project-owned interface. The cloud path is GPT-4o with structured outputs; the on-prem path is PaddleOCR plus the same model. A second LLM backend (Anthropic) is wired as a working skeleton to prove the seam — it is not run live for cost reasons. Switching is an environment-variable flip, not a refactor. This was an explicit response to Marcus's "our network blocks a lot of outbound traffic" — the architecture cannot be cloud-only.
+**3. The two AI dependencies are swappable.** OCR (vision) and the language model both sit behind a small project-owned interface. This submission ships only the cloud vision path (GPT-4o with structured outputs); the on-prem path is preserved as a typed `VisionExtractor` Protocol (`app/vision/base.py`) that any future local extractor implements without touching downstream code. A second LLM backend (Anthropic) is wired as a working skeleton on the orchestrator side to prove that seam — it is not run live for cost reasons. Switching either seam is an environment-variable flip, not a refactor. This was an explicit response to Marcus's "our network blocks a lot of outbound traffic" — the architecture cannot be cloud-only by design, even though the live demo is.
 
 **4. Batch reuses the single-label engine, on the same five-second budget.** I refused to split into "fast single, slow batch" — that produces two code paths, two SLAs, and two sets of bugs. The batch worker runs the same per-label evaluator, with a small lookahead (default 3) that pre-fetches the next labels while the reviewer is reading the current one. The first label of a batch is processed individually so the reviewer feels the same latency they would feel from `POST /labels`. The brief asked for batch *and* the 5s SLA; I treated them as the same requirement.
 
@@ -47,7 +47,7 @@ The seven required fields are all extracted, checked, and cited: brand name, cla
 
 ## Code organization
 
-The substitutability boundaries are visible at the directory level: `app/vision/{base.py, cloud.py, local.py}`, `app/orchestrator/{base.py, openai_strict.py, anthropic_strict.py}`, `app/rules/{loader.py, engine.py, _validators/}`. The wire contracts are in `app/schemas/wire/` (PRD §6.x). The application service in `app/services/evaluator.py` is where the seams compose. Frontend is `frontend/src/` (TS + Vite); the built bundle is committed under `app/ui/static/island/` so reviewers without a Node toolchain can still run the demo.
+The substitutability boundaries are visible at the directory level: `app/vision/{base.py, cloud.py}` (Protocol + cloud impl; the seam supports a future on-prem extractor without changes downstream), `app/orchestrator/{base.py, openai_strict.py, anthropic_strict.py}`, `app/rules/{loader.py, engine.py, _validators/}`. The wire contracts are in `app/schemas/wire/` (PRD §6.x). The application service in `app/services/evaluator.py` is where the seams compose. Frontend is `frontend/src/` (TS + Vite); the built bundle is committed under `app/ui/static/island/` so reviewers without a Node toolchain can still run the demo.
 
 ## UX and error handling
 
@@ -64,22 +64,12 @@ Every negative disposition includes a structured `reason_code` from a single tax
 
 If you just want to try it, the live demo above already has the key configured server-side — no local setup required. Local boot is for reading code and running the eval harness.
 
-**You will need an OpenAI API key for any local profile.** The orchestrator (LLM) always runs against GPT-4o; only the vision model can run locally. Get a key at https://platform.openai.com/api-keys.
+**You will need an OpenAI API key.** Both the vision call and the orchestrator hit GPT-4o. Get a key at https://platform.openai.com/api-keys.
 
-In every profile: `cp .env.example .env`, then put your key on the `OPENAI_API_KEY=` line. Every other variable in `.env.example` has a sensible default and can stay as-is.
+`cp .env.example .env`, then put your key on the `OPENAI_API_KEY=` line. Every other variable in `.env.example` has a sensible default and can stay as-is.
 
-The React UI bundle is pre-built and committed under `app/ui/static/island/`, so Profiles B and C do not need a Node toolchain.
+The React UI bundle is pre-built and committed under `app/ui/static/island/`, so the setup below does not need a Node toolchain.
 
-### Profile A — WSL2 + GPU (local vision path, GPU-extras install)
-```bash
-git clone https://github.com/AaronCarney/ttb-label-verification && cd ttb-label-verification
-cp .env.example .env  # fill OPENAI_API_KEY
-uv sync --extra gpu
-uv run task demo
-# Open http://localhost:8000
-```
-
-### Profile B — macOS, no GPU (cloud vision path)
 ```bash
 git clone https://github.com/AaronCarney/ttb-label-verification && cd ttb-label-verification
 cp .env.example .env  # fill OPENAI_API_KEY
@@ -88,8 +78,7 @@ uv run task demo
 # Open http://localhost:8000
 ```
 
-### Profile C — Linux, no GPU (cloud vision path)
-Same as Profile B.
+Works on macOS and Linux; no GPU required. Python 3.12 + `uv`.
 
 ## Eval
 

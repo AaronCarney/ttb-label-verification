@@ -77,7 +77,7 @@ Bonus (deployed but cut from recording for time): fixture-07 borderline-band `ne
    - `LLM_MODEL_SNAPSHOT` = `gpt-4o-2024-08-06`
    - `LOOKAHEAD_K` = `3`
    - `PROMPT_VERSION` = `v1`
-   - `VISION_MODE` = `cloud` (cpu-basic has no GPU; `auto` would degrade)
+   - `VISION_MODE` = `cloud` (the only supported mode; the on-prem extractor seam is preserved but no on-prem implementation ships in this submission)
    - `DEMO_CACHE` = `1`
    - `DEV_MODE` — leave unset for the public URL
 4. **Secrets** (UI-only — Space → Settings → Variables and secrets → New secret):

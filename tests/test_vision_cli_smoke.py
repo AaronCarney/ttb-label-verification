@@ -7,7 +7,6 @@ def test_cli_smoke_exits_zero_on_synthetic_fixture():
     result = subprocess.run(
         [sys.executable, "-m", "app.vision",
          "--label", "fixtures/01-spirits-clean/label.png",
-         "--mode", "cloud",
          "--use-recordings"],
         capture_output=True,
         timeout=30,
@@ -19,7 +18,7 @@ def test_cli_smoke_exits_zero_on_synthetic_fixture():
 
 def test_cli_smoke_missing_fixture_exits_2():
     result = subprocess.run(
-        [sys.executable, "-m", "app.vision", "--label", "/does/not/exist.png", "--mode", "cloud"],
+        [sys.executable, "-m", "app.vision", "--label", "/does/not/exist.png"],
         capture_output=True,
         timeout=10,
     )

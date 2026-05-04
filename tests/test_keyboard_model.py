@@ -105,7 +105,10 @@ def test_three_keystroke_override_posts_to_endpoint(page: Page, live_server_url:
     assert f"/labels/{envelope['evaluation_id']}/overrides" in captured["url"]
     body = captured["body"]
     assert body["reason_code"] == "WARNING.STYLE.HEADING_NOT_BOLD_CAPS"
-    assert body["applied_disposition"] == "needs_review"
+    # Per V15 (commit d1a4895): override applied_disposition is pinned per-code
+    # via _REASON_CODES instead of prefix-matching. This code's registry severity
+    # is `reject` → applied_disposition="fail", not "needs_review".
+    assert body["applied_disposition"] == "fail"
     assert body["field_name"] is None
     assert "evaluation_id" not in body
     assert "reviewer_id" not in body

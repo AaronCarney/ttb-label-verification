@@ -39,8 +39,8 @@ _TASK_WIRE_NAME = {
 # PRD §5.1 field id → wire field_name enum. Two input forms route to the
 # same wire slot: the long PRD canonical (`alcohol_content`, …) used by
 # Application input + hand-built fixtures, and the short extractor form
-# (`abv`, `gov_warning`, …) emitted by CloudVisionExtractor / LocalVision-
-# Extractor. Both forms map onto the seven wire slots in `FieldFindingWire`.
+# (`abv`, `gov_warning`, …) emitted by CloudVisionExtractor.
+# Both forms map onto the seven wire slots in `FieldFindingWire`.
 _FIELD_CANONICAL_TO_WIRE = {
     # Long PRD-canonical form
     "brand_name": "brand_name",

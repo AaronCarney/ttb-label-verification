@@ -9,10 +9,12 @@ def test_readme_preserves_hf_frontmatter():
         assert marker in content
 
 
-def test_readme_has_reviewer_profiles():
+def test_readme_has_setup_section():
     content = Path("README.md").read_text()
-    assert "Profile A" in content and "Profile B" in content and "Profile C" in content
-    assert "WSL2" in content
+    assert "## Setup" in content
+    assert "OPENAI_API_KEY" in content
+    assert "uv sync" in content
+    assert "uv run task demo" in content
 
 
 def test_readme_links_decisions_and_runbook():

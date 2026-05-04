@@ -30,8 +30,10 @@ class Settings(BaseSettings):
         populate_by_name=True,
     )
 
-    # Vision selection (D-015).
-    vision_mode: Literal["local", "cloud", "auto"] = Field(default="auto", alias="VISION_MODE")
+    # Vision selection. The submission ships only the cloud extractor;
+    # the seam (app/vision/base.py:VisionExtractor) is preserved so an
+    # on-prem implementation can land without changes downstream.
+    vision_mode: Literal["cloud"] = Field(default="cloud", alias="VISION_MODE")
 
     # Orchestrator selection (D-021).
     orchestrator_backend: Literal["openai", "anthropic"] = Field(
