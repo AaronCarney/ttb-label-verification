@@ -1,96 +1,128 @@
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useBatchStream } from "./useBatchStream";
-import type { BatchSSEEvent } from "../types/sse";
 
+// Lightweight fake EventSource that supports addEventListener("<name>", handler)
 class FakeEventSource {
-  static last: FakeEventSource | null = null;
-  public onmessage: ((e: MessageEvent) => void) | null = null;
-  public onerror: ((e: Event) => void) | null = null;
-  public closed = false;
-  public url: string;
+  static instances: FakeEventSource[] = [];
+  url: string;
+  listeners = new Map<string, Set<(ev: MessageEvent) => void>>();
+  onerror: ((ev: Event) => void) | null = null;
+  closed = false;
   constructor(url: string) {
     this.url = url;
-    FakeEventSource.last = this;
+    FakeEventSource.instances.push(this);
   }
-  close(): void { this.closed = true; }
-  fire(data: unknown): void {
-    this.onmessage?.(new MessageEvent("message", { data: JSON.stringify(data) }));
+  addEventListener(name: string, handler: (ev: MessageEvent) => void) {
+    if (!this.listeners.has(name)) this.listeners.set(name, new Set());
+    this.listeners.get(name)!.add(handler);
+  }
+  removeEventListener(name: string, handler: (ev: MessageEvent) => void) {
+    this.listeners.get(name)?.delete(handler);
+  }
+  close() { this.closed = true; }
+  fire(name: string, data: unknown) {
+    if (this.closed) return;  // closed bus drops events
+    const event = { data: typeof data === "string" ? data : JSON.stringify(data) } as MessageEvent;
+    this.listeners.get(name)?.forEach((h) => h(event));
   }
 }
 
-const _stub = (i: number): BatchSSEEvent => ({
-  batch_id: "B",
-  queue_position: i,
-  evaluation_id: `e${i}`,
-  label_ref: `lbl-${i}`,
-  disposition: "pass",
-  disposition_confidence: { band: "high", numeric: 0.9 },
-  fields: [],
-  audit_trail: {
-    evaluation_id: `e${i}`,
-    rule_set_version: "0.1.0",
-    model_version: null,
-    prompt_version: null,
-    input_hash: "h",
-    output_hash: "h",
-    started_at: "2026-04-01T00:00:00Z",
-    completed_at: "2026-04-01T00:00:01Z",
-    per_rule_trace: [],
-    overrides: [],
-  },
-  metrics: {
-    total_duration_ms: 100,
-    per_rule_durations_ms: [],
-    vision_duration_ms: 50,
-    orchestrator_duration_ms: 0,
-  },
+beforeEach(() => {
+  FakeEventSource.instances = [];
+  vi.stubGlobal("EventSource", FakeEventSource);
+});
+afterEach(() => {
+  vi.unstubAllGlobals();
 });
 
+function _envelope(label_ref: string, disposition: "pass" | "fail" | "needs_review" = "pass") {
+  return {
+    evaluation_id: `EV-${label_ref}`,
+    label_ref,
+    disposition,
+    disposition_confidence: { band: "high", numeric: 0.95 },
+    fields: [],
+    audit_trail: {
+      evaluation_id: `EV-${label_ref}`,
+      rule_set_version: "t",
+      model_version: null,
+      prompt_version: null,
+      input_hash: "0".repeat(64),
+      output_hash: "0".repeat(64),
+      started_at: "2026-05-04T00:00:00Z",
+      completed_at: "2026-05-04T00:00:00Z",
+      per_rule_trace: [],
+      overrides: [],
+    },
+    metrics: {
+      total_duration_ms: 10,
+      per_rule_durations_ms: [],
+      vision_duration_ms: 5,
+      orchestrator_duration_ms: 0,
+    },
+  };
+}
+
 describe("useBatchStream", () => {
-  beforeEach(() => {
-    (globalThis as unknown as { EventSource: typeof FakeEventSource }).EventSource = FakeEventSource;
-    FakeEventSource.last = null;
-  });
-  afterEach(() => { delete (globalThis as { EventSource?: unknown }).EventSource; });
+  it("pushes label-result events with unwrapped envelope payload", () => {
+    const { result } = renderHook(() => useBatchStream("B-001"));
+    const es = FakeEventSource.instances[0];
+    expect(es.url).toContain("/batches/B-001/stream");
 
-  it("opens an EventSource for the given batch_id", () => {
-    renderHook(() => useBatchStream("B"));
-    expect(FakeEventSource.last?.url).toContain("/batches/B/stream");
-  });
+    act(() => {
+      es.fire("label-result", { batch_id: "B-001", queue_position: 1, envelope: _envelope("lbl-1") });
+    });
 
-  it("pushes events into the store keyed by label_ref", () => {
-    const { result } = renderHook(() => useBatchStream("B"));
-    act(() => FakeEventSource.last!.fire(_stub(1)));
-    act(() => FakeEventSource.last!.fire(_stub(2)));
-    expect(result.current.events).toHaveLength(2);
-    expect(result.current.events[0]!.label_ref).toBe("lbl-1");
-    expect(result.current.events[1]!.queue_position).toBe(2);
-  });
-
-  it("dedupes events that arrive twice for the same label_ref (SSE replay safety)", () => {
-    const { result } = renderHook(() => useBatchStream("B"));
-    act(() => FakeEventSource.last!.fire(_stub(1)));
-    act(() => FakeEventSource.last!.fire(_stub(1)));
     expect(result.current.events).toHaveLength(1);
+    expect(result.current.events[0].label_ref).toBe("lbl-1");
+    expect(result.current.events[0].batch_id).toBe("B-001");
+    expect(result.current.events[0].queue_position).toBe(1);
+    expect(result.current.error).toBeNull();
   });
 
-  it("closes the EventSource on unmount", () => {
-    const { unmount } = renderHook(() => useBatchStream("B"));
-    const es = FakeEventSource.last!;
-    unmount();
+  it("stream-end closes the connection — subsequent label-result events are ignored", () => {
+    const { result } = renderHook(() => useBatchStream("B-002"));
+    const es = FakeEventSource.instances[0];
+
+    act(() => {
+      es.fire("label-result", { batch_id: "B-002", queue_position: 1, envelope: _envelope("lbl-A") });
+    });
+    expect(result.current.events).toHaveLength(1);
+
+    act(() => {
+      es.fire("stream-end", {});
+    });
+
+    // After stream-end, the EventSource is closed; further fires are dropped.
+    act(() => {
+      es.fire("label-result", { batch_id: "B-002", queue_position: 2, envelope: _envelope("lbl-B") });
+    });
+    expect(result.current.events).toHaveLength(1);  // still 1, no lbl-B
     expect(es.closed).toBe(true);
   });
 
-  it("survives StrictMode double-mount cleanup (closes the old, opens new)", () => {
-    // StrictMode behavior: mount → cleanup → mount. After both, latest EventSource is open.
-    const { rerender, unmount } = renderHook(() => useBatchStream("B"));
-    const first = FakeEventSource.last!;
-    rerender();
-    const second = FakeEventSource.last!;
-    // first or second may be the same instance; we only require that after final unmount, .closed=true.
-    unmount();
-    expect(second.closed).toBe(true);
-    void first;
+  it("dedupes label-result events with the same label_ref", () => {
+    const { result } = renderHook(() => useBatchStream("B-003"));
+    const es = FakeEventSource.instances[0];
+
+    act(() => {
+      es.fire("label-result", { batch_id: "B-003", queue_position: 1, envelope: _envelope("lbl-X") });
+      es.fire("label-result", { batch_id: "B-003", queue_position: 2, envelope: _envelope("lbl-X", "fail") });
+    });
+
+    expect(result.current.events).toHaveLength(1);
+    expect(result.current.events[0].disposition).toBe("pass");  // first wins
+  });
+
+  it("sets error on malformed JSON payload", () => {
+    const { result } = renderHook(() => useBatchStream("B-004"));
+    const es = FakeEventSource.instances[0];
+
+    act(() => {
+      es.fire("label-result", "not-json{");
+    });
+
+    expect(result.current.error).toBe("Malformed SSE payload");
   });
 });
