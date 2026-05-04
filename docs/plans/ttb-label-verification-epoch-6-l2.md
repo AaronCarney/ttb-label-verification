@@ -27,7 +27,7 @@ The Evaluator (E5) is the inner per-item engine; the BatchWorker is the outer or
 
 **TDD posture.** Each task is one Red→Green→Commit cycle on a single narrow file (or one tightly coupled file group). The `task-executor` skill body (injected by `parallel-plan-executor`) enforces "one behavior per commit". One task bundles three cycles by necessity (T6 BatchWorker = 3 cycles: skeleton + lookahead/pull-demand + anomaly/override/completion) — that is the only multi-cycle task in the plan. Each commit is atomic and Conventional (`feat:`/`test:`/`chore:`/`docs:`/`fix:`). Pre-existing main is fast-forwarded after each task.
 
-**Hard scope boundary.** This plan owns: `app/batch/{__init__,state,queue,anomaly,worker}.py`, `app/api/{batches,overrides,_sse_bus}.py`, **two additive single-line registration appends to `app/main.py` (T7 registers `batches.router`; T8 registers `overrides.router`) plus a single-line lifespan-teardown call to evict `app.state.batches`**, **a single additive change to `app/schemas/audit.py::OverrideEntry`: `field_name: str` → `field_name: str | None = None` so the override endpoint can record whole-envelope overrides per L1 §2.6 (the L1 spec describes `field_name | null`; the existing E1 schema is required-only; the relaxation defaults to `None` so every existing E5 test stays green)**, a new `tests/_fakes/evaluator.py` Evaluator-fake module + a `_fake_evaluator` factory append to `tests/conftest.py`, and ~12 new test files. It does **NOT** modify any E5 file (`app/services/{evaluator,audit,disposition,patcher,cache,...}.py`, `app/api/{labels,healthz,raw}.py`, `app/deps.py`, `app/vision/quality.py`, the `expected_values` field on `app/schemas/application.py`), the entire E2/E3/E4 surface (`app/rules/*`, `app/vision/*`, `app/orchestrator/*`), or the in-progress E7 surface (whatever currently lives in `app/main.py`'s static-mount + Jinja routes if E7 has merged them, plus the entire `frontend/` tree — inspect via `git show origin/main:<path>` if you need to read a frontend file without touching the working tree).
+**Hard scope boundary.** This plan owns: `app/batch/{__init__,state,queue,anomaly,worker}.py`, `app/api/{batches,overrides,_sse_bus}.py`, **two additive single-line registration appends to `app/main.py` (T7 registers `batches.router`; T8 registers `overrides.router`) plus four lifespan-hook lines initializing and clearing `app.state.batches` and `app.state.buses`**, **a single additive change to `app/schemas/audit.py::OverrideEntry`: `field_name: str` → `field_name: str | None = None` so the override endpoint can record whole-envelope overrides per L1 §2.6 (the L1 spec describes `field_name | null`; the existing E1 schema is required-only; the relaxation defaults to `None` so every existing E5 test stays green)**, a new `tests/_fakes/evaluator.py` Evaluator-fake module + a `_fake_evaluator` factory append to `tests/conftest.py`, and ~12 new test files. It does **NOT** modify any E5 file (`app/services/{evaluator,audit,disposition,patcher,cache,...}.py`, `app/api/{labels,healthz,raw}.py`, `app/deps.py`, `app/vision/quality.py`, the `expected_values` field on `app/schemas/application.py`), the entire E2/E3/E4 surface (`app/rules/*`, `app/vision/*`, `app/orchestrator/*`), or the in-progress E7 surface (whatever currently lives in `app/main.py`'s static-mount + Jinja routes if E7 has merged them, plus the entire `frontend/` tree — inspect via `git show origin/main:<path>` if you need to read a frontend file without touching the working tree).
 
 **Locked-surface additions are deliberately additive only.** The `OverrideEntry.field_name` relaxation preserves every existing call site: callers that pass a string-typed `field_name` continue to work bit-for-bit; the default `None` covers the new whole-envelope override case. No public method signature changes; no field renames; no existing-test rewrites. The `app/main.py` registration appends are mechanical router-include lines that mirror E5's T15/T17 pattern.
 
@@ -80,7 +80,7 @@ The Evaluator (E5) is the inner per-item engine; the BatchWorker is the outer or
 - **DI.** `BatchWorker.__init__` takes the four dependencies + the `InFlightBatch` companion explicitly: `(in_flight: InFlightBatch, evaluator: Evaluator, anomaly: AnomalyDetector, bus: SSEBus, lookahead_k: int = 3)`. Web layer constructs via FastAPI `Depends` factories that mirror E5's pattern (no `Settings()` reads inside the worker).
 - **`app.state.batches` access.** The dict lives at `app.state.batches: dict[str, InFlightBatch]` and is created in the FastAPI lifespan startup hook (T7 modifies `app/main.py` to add the `app.state.batches = {}` line + the teardown clear). Endpoint handlers read/write via `request.app.state.batches`; tests construct via `app.state.batches[batch_id] = InFlightBatch(...)` directly when wiring the in-process app under `httpx.AsyncClient`.
 - **Reviewer identifier.** `reviewer_id = "session-" + uuid.uuid4().hex[:12]` is generated per-override on the server side (no client trust). The L1 spec calls this "session-scoped — for prototype, a placeholder" (L1 §2.6); E6 implements that as the canonical string format. Production trajectory replaces with a real identity claim (OQ-PRD-1 / OQ-ARCH-3); MVP carries the convention.
-- **Reason-code validation pattern.** The override endpoint loads `rules/reason_codes.yaml` once at module import (FastAPI Depends-factory cached value) into a frozenset of accepted codes. Validation is verbatim-equality (`code in _ACCEPTED_REASON_CODES`) — no substring fallback, no fuzzy match. Mirrors E5 T18-UNBLOCK's lesson: the chokepoint must actively forward what upstream emits, not implicitly accept anything.
+- **Reason-code validation pattern.** The override endpoint loads `rules/reason_codes.yaml` lazily on first request (cached for the process) into a frozenset of accepted codes. The lazy-init avoids a module-import side effect that would fail opaquely if any test imports the module from a non-repo-root cwd. Validation is verbatim-equality (`code in _accepted_reason_codes()`) — no substring fallback, no fuzzy match. Mirrors E5 T18-UNBLOCK's lesson: the chokepoint must actively forward what upstream emits, not implicitly accept anything. Missing registry file fails LOUDLY (FileNotFoundError) on first request rather than silently rejecting all requests with 400.
 - **SSE event shape.** Each SSE event is a dict with `event` (string label) and `data` (JSON-serialized payload). Three event types: `label-result` (per-label `DispositionEnvelope` dict + `queue_position` + `batch_id`), `anomaly-advisory` (`{"reason_code": str, "count": int, "window": int}`), `stream-end` (`{"batch_id": str, "total_count": int}`). The `sse_starlette.EventSourceResponse` formats each as `event: <label>\ndata: <json>\n\n` over the wire.
 - **`queue_position` semantics.** `queue_position` is the 0-indexed position in the original submission order — it equals `BatchItem`'s position in `BatchInFlightState.items`. Not the order of SSE delivery (which is also submission order, since the worker processes serially behind a `BoundedQueue` of `maxsize=k+1`).
 - **First-label-individual** (FR-401, T6 Cycle A). The worker's intake fills the queue eagerly up to `lookahead_k=3` items, but **does not wait** for those puts to complete before yielding to processing. The first `await queue.get()` returns item 0 the moment item 0 is enqueued; the producer's `await queue.put(item_1)` runs concurrently. Concretely: `asyncio.create_task(producer())` runs the producer in the background; the worker's main loop awaits `queue.get()` directly. Item 0's evaluation latency = evaluator latency + epsilon. Test asserts absolute time-to-first SSE event under NFR-PERF-001.
@@ -170,18 +170,17 @@ def _stub_disposition_envelope(idx: int = 0, *, disposition: str = "pass") -> Di
             per_rule_trace=(),
         ),
         metrics=Metrics(
-            evaluation_id=f"EV-{idx:04d}",
             total_duration_ms=10,
+            per_rule_durations_ms=(),
             vision_duration_ms=5,
             orchestrator_duration_ms=0,
-            per_rule_durations={},
         ),
     )
 ```
 
 **Where the factory lives.** T5 (which lands in Wave 1 alongside the modules) appends `_FakeEvaluator`, `_fake_evaluator`, and `_stub_disposition_envelope` to `tests/conftest.py`. Subsequent tasks `from tests.conftest import _fake_evaluator, _stub_disposition_envelope, _stub_label`. T5's pre-flight check: if any of the three names are already defined (e.g. an earlier task slipped them in via Rule 1-3), reuse the existing definitions.
 
-> **Pre-flight inspection note for T5.** Before writing the `Metrics(...)` constructor in `_stub_disposition_envelope`, the executor MUST grep for the actual `Metrics` field set: `grep -nE "^\s*[a-z_]+:" app/schemas/metrics.py`. If `Metrics` requires fields beyond the ones listed (e.g. `model_version`, `prompt_version`, `failures`), add them to the stub with the simplest schema-conforming defaults (`None`, `()`, etc.). Same applies to `AuditRecord`. The plan's stub is correct as of E5 v0.6 closure (commit `9a9a7df`); a future schema add could break it, in which case Rule 1-3 the addition.
+> **Pre-flight inspection note for T5.** Stub fields above match the schemas as of E5 v0.6 closure (commit `9a9a7df`): `Metrics` requires `total_duration_ms`, `per_rule_durations_ms: tuple[PerRuleDurationEntry, ...]`, `vision_duration_ms`, `orchestrator_duration_ms` (no `evaluation_id`); `AuditRecord` requires `evaluation_id`, `rule_set_version`, `input_hash`, `output_hash`, `started_at`, `completed_at`, `per_rule_trace`. Both are frozen + `extra="forbid"` — adding extras fails construction. Before writing the constructor the executor MUST grep `grep -nE "^\s*[a-z_]+:" app/schemas/metrics.py app/schemas/audit.py` to confirm — if either schema gained a new required field since E5 closure, add it to the stub with the simplest schema-conforming default (`None`, `()`, etc.) and Rule 1-3 the addition into this task's Files block.
 
 ### `BatchInFlightState` snapshot vs. `InFlightBatch` mutable companion
 
@@ -339,7 +338,6 @@ Wave 1 root. No deps. The mutable companion to the frozen `BatchInFlightState` �
 ```python
 # tests/test_in_flight_batch.py
 """InFlightBatch — mutable companion to the frozen BatchInFlightState."""
-import asyncio
 from collections import deque
 from datetime import datetime, timezone
 
@@ -377,7 +375,6 @@ def test_in_flight_batch_constructs_with_items_and_lookahead():
     assert in_flight.recent_dispositions.maxlen == 10
     assert isinstance(in_flight.calls, deque)
     assert in_flight.calls.maxlen == 200
-    assert in_flight.subscribers == set()
 
 
 def test_in_flight_batch_queue_is_bounded_by_lookahead_plus_one():
@@ -416,17 +413,13 @@ def test_in_flight_batch_snapshot_returns_frozen_pydantic_state():
         snap.batch_id = "X"  # type: ignore[misc]
 
 
-def test_in_flight_batch_subscribers_set_supports_add_remove():
+def test_in_flight_batch_does_not_carry_subscriber_state():
+    """SSE subscribers live on the per-batch SSEBus stored in
+    ``app.state.buses[batch_id]``, not on InFlightBatch. This test pins the
+    boundary so a future drift back into the dataclass fails loudly."""
     items = (_stub_item("lbl-0", position=0),)
     in_flight = InFlightBatch(batch_id="B-005", agent_id="a", items=items, lookahead_k=3)
-
-    q1 = asyncio.Queue()
-    q2 = asyncio.Queue()
-    in_flight.subscribers.add(q1)
-    in_flight.subscribers.add(q2)
-    assert in_flight.subscribers == {q1, q2}
-    in_flight.subscribers.discard(q1)
-    assert in_flight.subscribers == {q2}
+    assert not hasattr(in_flight, "subscribers")
 ```
 
 - [ ] **Step 2: Run focused → RED**
@@ -455,10 +448,10 @@ NFR-DATA-001/002 (no persistence). Lifespan teardown evicts.
 """
 from __future__ import annotations
 
-import asyncio
 from collections import deque
 from dataclasses import dataclass, field
 
+from app.batch.queue import BoundedQueue
 from app.schemas.batch import BatchInFlightState, BatchItem
 from app.schemas.calls import CallRecord
 from app.schemas.wire.disposition import DispositionEnvelope
@@ -467,7 +460,12 @@ from app.schemas.wire.disposition import DispositionEnvelope
 @dataclass
 class InFlightBatch:
     """Mutable per-batch state. Owned by the call frame of the worker and
-    surfaced via ``app.state.batches``."""
+    surfaced via ``app.state.batches``.
+
+    SSE subscribers are NOT tracked here — they live on the per-batch
+    ``SSEBus`` (T4), which is stored separately in ``app.state.buses[batch_id]``
+    so the substitutability seam (BoundedQueue + SSEBus) stays uncoupled from
+    in-flight per-batch state."""
 
     batch_id: str
     agent_id: str
@@ -479,14 +477,15 @@ class InFlightBatch:
         default_factory=lambda: deque(maxlen=10)
     )
     calls: deque = field(default_factory=lambda: deque(maxlen=200))
-    subscribers: set = field(default_factory=set)
-    queue: asyncio.Queue = field(init=False)
+    queue: "BoundedQueue[BatchItem]" = field(init=False)
 
     def __post_init__(self) -> None:
-        # maxsize = k+1 is the structural enforcement of pull-based demand
-        # (FR-403) — the producer's `await queue.put(item)` blocks when the
-        # consumer holds.
-        self.queue = asyncio.Queue(maxsize=self.lookahead_k + 1)
+        # maxsize = k+1 (in BoundedQueue) is the structural enforcement of
+        # pull-based demand (FR-403) — the producer's `await queue.put(item)`
+        # blocks when the consumer holds. Wiring through BoundedQueue (T2)
+        # preserves the substitutability seam called out in L1 §2.3 / ARCH
+        # §4.2.7 (future swap to Kafka consumer-group / RabbitMQ prefetch=1).
+        self.queue = BoundedQueue(lookahead_k=self.lookahead_k)
 
     def record_result(self, label_id: str, envelope: DispositionEnvelope) -> None:
         """Record a per-label result. Advances ``current_index`` if the result
@@ -743,24 +742,18 @@ def test_detector_fires_when_m_of_last_n_share_a_reason_code():
     assert advisories[0].advisory_id  # uuid4 string
 
 
-def test_detector_does_not_fire_with_mixed_reason_codes():
+def test_detector_does_not_fire_when_no_code_reaches_threshold():
+    """Heterogeneous batch: no single code accumulates M=5 in any 10-obs window.
+    With 4 As + 4 Bs + 2 Cs, each code peaks at count 4 < threshold 5 — detector
+    must stay silent. Confirms the threshold is per-code, not per-window-fill."""
     det = AnomalyDetector(window_n=10, threshold_m=5)
-    codes = ["A", "B", "A", "B", "A", "B", "A", "B", "A", "B"]
+    codes = ["A", "B", "C", "A", "B", "A", "B", "C", "A", "B"]  # 4A 4B 2C
+    advisories = []
     for c in codes:
         adv = det.observe(c)
-        assert adv is None  # 5 each — neither reaches M=5 simultaneously, but
-        # actually 5 of 10 share each... re-read the spec.
-    # The spec is "5 of the last 10 share THE SAME code". Two codes at 5 each
-    # both meet the threshold simultaneously on the 10th observation. Both
-    # advisories fire? Implementation must pick one — first by alphabetical
-    # order of reason_code? Or first to reach the threshold?
-    # Per L1 §2.4: "fires when M-of-N (default M=5, N=10) consecutive labels
-    # have the SAME reason code." Spec says "consecutive" — but that conflicts
-    # with "sliding window". Resolution per the implementation contract:
-    # observe returns the FIRST code that reaches threshold within the window;
-    # ties broken by insertion order (first-to-appear wins).
-    # Re-test with explicit alternating: neither code reaches threshold of 5
-    # CONSECUTIVE. Re-test with 5-then-5:
+        if adv is not None:
+            advisories.append(adv)
+    assert advisories == []
 
 
 def test_detector_fires_on_first_code_that_reaches_threshold_after_window_fills():
@@ -1283,11 +1276,10 @@ def _stub_disposition_envelope(idx: int = 0, *, disposition: str = "pass") -> Di
             per_rule_trace=(),
         ),
         metrics=Metrics(
-            evaluation_id=f"EV-{idx:04d}",
             total_duration_ms=10,
+            per_rule_durations_ms=(),
             vision_duration_ms=5,
             orchestrator_duration_ms=0,
-            per_rule_durations={},
         ),
     )
 
@@ -1627,9 +1619,13 @@ class BatchWorker:
                 },
             })
 
-            # Anomaly observation (Cycle C will surface advisory broadcasts)
-            self._in_flight.recent_dispositions.append(_headline_reason_code(envelope))
-            advisory = self._anomaly.observe(_headline_reason_code(envelope))
+            # Anomaly observation (Cycle C will surface advisory broadcasts).
+            # Bind once: the helper is pure today, but binding here pins the
+            # contract that ``recent_dispositions`` and ``observe`` see the
+            # same code, even if the helper later acquires side effects.
+            headline_code = _headline_reason_code(envelope)
+            self._in_flight.recent_dispositions.append(headline_code)
+            advisory = self._anomaly.observe(headline_code)
             if advisory is not None:
                 self._bus.broadcast({
                     "event": "anomaly-advisory",
@@ -1655,10 +1651,15 @@ class BatchWorker:
         try:
             await self._consume()
         finally:
-            await producer_task
+            # Cancel the producer (which may be parked on a saturated
+            # ``queue.put``) and drain any pending exception. Without the
+            # cancel, a ``_consume`` error would leave the producer parked
+            # forever and ``await producer_task`` would deadlock.
+            producer_task.cancel()
+            await asyncio.gather(producer_task, return_exceptions=True)
 ```
 
-> **Note (Cycle A vs production wiring).** `_resolve_application` and `_resolve_label` are deliberately stubbed in Cycle A so the worker can be unit-tested without a `app.state.applications` registry that does not yet exist in this codebase. T7 (Wave 3) is responsible for wiring the real `app.state.applications: dict[str, Application]` and `app.state.labels: dict[str, Label]` from the `POST /batches` multipart payload, then injecting `self._app_lookup` / `self._label_lookup` into the worker via the FastAPI Depends factory. The unit tests in T6 use the synthesized stubs.
+> **Note (Cycle A `_resolve_application` / `_resolve_label`).** These two helpers synthesize a minimal `Application` and `Label` directly from the `application_ref` / `label_id` strings carried on each `BatchItem`. This IS the production wiring for the MVP — the `BatchEnvelope` (PRD §6.3) is JSON-only with reference strings; no separate applications/labels registry exists in this codebase. The Evaluator's chokepoint contract only needs the refs to compute `input_hash`, so synthesizing the minimal schema-conforming instances is sufficient. A future production trajectory (multi-tenant storage, identity claims) would replace the synthesized instances with a real lookup; that swap is OQ-PRD-1 / OQ-ARCH-3 territory and is **out of scope** for E6.
 
 - [ ] **Step A.4: Run Cycle A focused → GREEN (3 passed)**
 
@@ -1812,9 +1813,7 @@ git commit -m "feat(e6): BatchWorker lookahead pre-fetch + cooperative yield (FR
 """BatchWorker — anomaly broadcast (FR-405), override-aware-non-stopping (FR-404),
 completion semantics (stream-end fires once after last per-label event)."""
 import asyncio
-import re
 from datetime import datetime, timezone
-from pathlib import Path
 
 import pytest
 
@@ -1893,11 +1892,10 @@ def _envelope_with_reason_code(idx: int, code: str) -> DispositionEnvelope:
             ),
         ),
         metrics=Metrics(
-            evaluation_id=f"EV-{idx:04d}",
             total_duration_ms=10,
+            per_rule_durations_ms=(),
             vision_duration_ms=5,
             orchestrator_duration_ms=0,
-            per_rule_durations={},
         ),
     )
 
@@ -1929,11 +1927,10 @@ def _short_circuit_envelope_with_reason_code(idx: int, code: str) -> Disposition
             ),
         ),
         metrics=Metrics(
-            evaluation_id=f"EV-{idx:04d}",
             total_duration_ms=10,
+            per_rule_durations_ms=(),
             vision_duration_ms=5,
             orchestrator_duration_ms=0,
-            per_rule_durations={},
         ),
     )
 ```
@@ -1974,17 +1971,6 @@ async def test_worker_emits_anomaly_advisory_on_5_of_10_same_reason_code():
     advisory_idx = types.index("anomaly-advisory")
     stream_end_idx = types.index("stream-end")
     assert advisory_idx < stream_end_idx
-
-
-@pytest.mark.asyncio
-async def test_worker_does_not_inspect_overrides_on_results():
-    """FR-404 negative: the worker's source code must NOT poll, sleep, or
-    condition on `audit_trail.overrides`. Grep guard on the implementation."""
-    src = Path("app/batch/worker.py").read_text()
-    # No conditional check on overrides
-    assert not re.search(r"\.overrides", src), (
-        "BatchWorker must not inspect audit_trail.overrides — that is FR-404."
-    )
 
 
 @pytest.mark.asyncio
@@ -2069,17 +2055,11 @@ async def test_worker_emits_stream_end_exactly_once_after_last_label_result():
 
 - [ ] **Step C.2: Run Cycle C focused → RED**
 
-`uv run pytest tests/test_batch_worker_anomaly_override.py -v` → expect mixed: the override-grep test and the stream-end-exactly-once test should pass against Cycle A code; the anomaly test will RED if `PerRuleTraceEntry.reason_code` is missing (see iter-1 BLOCK note above).
+`uv run pytest tests/test_batch_worker_anomaly_override.py -v` → expect mixed: against Cycle A code, the override-non-stopping behavioral test + stream-end-exactly-once test pass; the anomaly test fails because Cycle A does not yet broadcast the advisory event over the bus when `AnomalyDetector.observe(...)` returns one. (Sanity check: `_headline_reason_code` reads `RuleFindingWire.reason_code` from `envelope.fields[]` and falls back to `per_rule_trace[0].rule_id` — both fields exist on the current schema, so no E1 schema extension is needed.)
 
 - [ ] **Step C.3: Implement Cycle C**
 
-The worker code from Cycle A already broadcasts anomaly advisories and emits stream-end exactly once. The remaining gap (anomaly test failure) is the schema-extension surfaced in the iter-1 BLOCK note.
-
-**Resolution path A (preferred — additive, mirror E5 pattern):** Wave 0 grows by one task to add `PerRuleTraceEntry.reason_code: str | None = None`. T6 Cycle C tests then pass against the Cycle A code without further worker changes.
-
-**Resolution path B (if reviewer prefers):** the worker reads from a side-channel — e.g. a `headline_reason_code` field added to the SSE event itself by the upstream Evaluator. Requires E5 Evaluator changes — LOCKED. Path A wins.
-
-**Cycle C committed work**: assume Wave 0 already includes the schema extension when the executor reaches Cycle C. The Cycle C commit is therefore code-only if any Rule 1-3 fix is needed; otherwise test-only.
+Cycle C is purely behavioral: bind the anomaly observation, broadcast the `anomaly-advisory` event when `observe(...)` returns non-None, and assert exactly one `stream-end` after the last per-label event. The worker code shown in Cycle A already includes this behavior — Cycle C's contribution is the test surface that pins it. No schema changes; no new files.
 
 - [ ] **Step C.4: Run Cycle C focused → GREEN (4 passed)**
 
@@ -2091,8 +2071,6 @@ The worker code from Cycle A already broadcasts anomaly advisories and emits str
 git add tests/test_batch_worker_anomaly_override.py
 git commit -m "test(e6): BatchWorker anomaly + override-non-stopping + stream-end semantics (FR-404, FR-405)"
 ```
-
-(If the Wave 0 schema extension was added during this cycle, include it in a separate prior commit per task-executor "one behavior per commit" — but per Wave-discipline, the schema extension belongs in Wave 0 anyway, so this Cycle C commit should be test-only.)
 
 ---
 
@@ -2260,13 +2238,48 @@ async def test_sse_subscriber_pruned_within_1s_on_client_disconnect(monkeypatch)
             await resp.aiter_lines().__anext__()  # read 1 line
             # context-manager exit closes connection
 
-        # Verify subscriber pruned within 1s
-        in_flight = app.state.batches["B-sse-002"]
+        # Verify subscriber pruned within 1s. SSE subscribers live on the
+        # per-batch SSEBus stored in `app.state.buses[batch_id]`, not on
+        # InFlightBatch.
+        bus = app.state.buses["B-sse-002"]
         for _ in range(20):  # poll up to 1 s @ 50ms
             await asyncio.sleep(0.05)
-            if len(in_flight.subscribers) == 0:
+            if len(bus.subscribers) == 0:
                 break
-        assert len(in_flight.subscribers) == 0
+        assert len(bus.subscribers) == 0
+
+
+@pytest.mark.asyncio
+async def test_post_batches_rejects_duplicate_batch_id_with_409(monkeypatch):
+    """409 collision: re-POST of an in-flight `batch_id` is rejected."""
+    from datetime import datetime, timezone
+
+    from app.schemas.wire.batch import BatchEnvelope, BatchItemRef
+    from tests.conftest import _fake_evaluator
+
+    monkeypatch.setattr(
+        "app.deps.build_evaluator",
+        lambda settings: _fake_evaluator(n_items=2, latency_s=0.5),
+    )
+    app = create_app()
+
+    transport = httpx.ASGITransport(app=app)
+    async with httpx.AsyncClient(transport=transport, base_url="http://test") as client:
+        async with app.router.lifespan_context(app):
+            payload = BatchEnvelope(
+                batch_id="B-dup",
+                agent_id="a",
+                submitted_at=datetime(2026, 5, 4, 12, 0, 0, tzinfo=timezone.utc),
+                items=tuple(
+                    BatchItemRef(label_ref=f"lbl-{i}", application_ref=f"app-{i:04d}")
+                    for i in range(2)
+                ),
+            ).model_dump(mode="json")
+            r1 = await client.post("/batches", json=payload)
+            assert r1.status_code == 202
+            r2 = await client.post("/batches", json=payload)
+            assert r2.status_code == 409
+            assert "B-dup" in r2.json()["detail"]
 ```
 
 - [ ] **Step 3: Run focused → RED**
@@ -2296,12 +2309,18 @@ from app.batch.anomaly import AnomalyDetector
 from app.batch.state import InFlightBatch
 from app.batch.worker import BatchWorker
 from app.config import Settings
-from app.deps import get_settings
 from app.schemas.batch import BatchItem, ItemState
 from app.schemas.wire.batch import BatchEnvelope
 
 router = APIRouter()
 _logger = logging.getLogger("app.api.batches")
+
+
+def _get_settings() -> Settings:
+    """Module-private Settings factory. Mirrors E5's app/api/healthz.py and
+    app/api/labels.py convention — `app/deps.py` exposes no `get_settings`
+    by design. Tests override via FastAPI's dependency_overrides[]."""
+    return Settings()
 
 
 def _build_in_flight_from_envelope(env: BatchEnvelope, *, lookahead_k: int) -> InFlightBatch:
@@ -2341,7 +2360,7 @@ def _resolve_lookahead_k(settings: Settings) -> int:
 async def post_batches(
     envelope: BatchEnvelope,
     request: Request,
-    settings: Settings = Depends(get_settings),
+    settings: Settings = Depends(_get_settings),
 ) -> dict[str, str]:
     """Spawn a worker and return the batch_id."""
     if envelope.batch_id in request.app.state.batches:
@@ -2350,8 +2369,8 @@ async def post_batches(
     lookahead_k = _resolve_lookahead_k(settings)
     in_flight = _build_in_flight_from_envelope(envelope, lookahead_k=lookahead_k)
     bus = SSEBus()
-    in_flight.bus = bus  # attach for stream endpoint discovery
     request.app.state.batches[envelope.batch_id] = in_flight
+    request.app.state.buses[envelope.batch_id] = bus
 
     # Build evaluator via the existing E5 factory; tests monkeypatch this.
     from app.deps import build_evaluator
@@ -2380,7 +2399,9 @@ async def get_batch_stream(batch_id: str, request: Request):
     in_flight = request.app.state.batches.get(batch_id)
     if in_flight is None:
         raise HTTPException(status_code=404, detail=f"batch_id {batch_id} not found")
-    bus: SSEBus = in_flight.bus
+    bus: SSEBus | None = request.app.state.buses.get(batch_id)
+    if bus is None:
+        raise HTTPException(status_code=404, detail=f"batch_id {batch_id} stream not registered")
     sub = bus.subscribe()
 
     async def _event_generator():
@@ -2409,8 +2430,10 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
         },
     )
     app.state.batches = {}  # E6 NFR-DATA-001/002 — process-local in-flight batches
+    app.state.buses = {}    # E6 — per-batch SSEBus registry, keyed by batch_id
     yield
     app.state.batches.clear()  # E6 lifespan teardown evicts all in-flight batches
+    app.state.buses.clear()    # E6 — drop bus subscribers + queues
 
 # ... existing labels and raw router includes ...
 
@@ -2418,20 +2441,11 @@ from app.api import batches as batches_module
 application.include_router(batches_module.router)
 ```
 
-`InFlightBatch.bus` attribute: the implementation above sets `in_flight.bus = bus` directly. `InFlightBatch` is a dataclass without `bus` declared — Python allows ad-hoc attribute assignment on `@dataclass` instances by default. To make this typed, modify `app/batch/state.py` (T1's file) to add `bus: SSEBus | None = None` as a default field. **Implement this edit as part of T7 — Rule 1-3 inline addition.**
+> **Boundary note.** The per-batch SSEBus is stored in a separate `app.state.buses: dict[str, SSEBus]` keyed by `batch_id`, NOT on `InFlightBatch`. Keeping the bus off the dataclass preserves the substitutability seam called out in the architecture (the bus could be swapped for a Redis Pub/Sub adapter without touching `InFlightBatch`) and avoids the circular-import risk between `app/batch/state.py` (T1) and `app/api/_sse_bus.py` (T4). T7 owns the lifespan-init and -teardown of `app.state.buses`.
 
-```python
-# app/batch/state.py — T7 inline addition
-from app.api._sse_bus import SSEBus  # already imported indirectly via app.api.batches
-# Add to InFlightBatch dataclass:
-    bus: "SSEBus | None" = field(default=None)
-```
+- [ ] **Step 5: Run focused → GREEN (7 passed across both test files)**
 
-> Note: forward reference `"SSEBus | None"` to avoid a circular import.
-
-- [ ] **Step 5: Run focused → GREEN (6 passed across both test files)**
-
-`uv run pytest tests/test_batch_endpoint_post.py tests/test_batch_endpoint_sse.py -v` → 6 passed.
+`uv run pytest tests/test_batch_endpoint_post.py tests/test_batch_endpoint_sse.py -v` → 7 passed.
 
 - [ ] **Step 6: Run full suite to confirm no regression**
 
@@ -2440,7 +2454,7 @@ from app.api._sse_bus import SSEBus  # already imported indirectly via app.api.b
 - [ ] **Step 7: Commit**
 
 ```bash
-git add app/api/batches.py app/main.py app/batch/state.py tests/test_batch_endpoint_post.py tests/test_batch_endpoint_sse.py
+git add app/api/batches.py app/main.py tests/test_batch_endpoint_post.py tests/test_batch_endpoint_sse.py
 git commit -m "feat(e6): POST /batches + GET /batches/{id}{/stream} — SSE wire surface"
 ```
 
@@ -2488,9 +2502,11 @@ def _seed_a_batch_with_one_completed_item(app):
     )
     env = _stub_disposition_envelope(0, disposition="needs_review")
     in_flight = InFlightBatch(batch_id="B-OV", agent_id="a", items=(item,), lookahead_k=3)
-    in_flight.bus = SSEBus()
     in_flight.results["lbl-0"] = env
     app.state.batches["B-OV"] = in_flight
+    if not hasattr(app.state, "buses"):
+        app.state.buses = {}
+    app.state.buses["B-OV"] = SSEBus()
     return env
 
 
@@ -2588,9 +2604,11 @@ def test_override_lands_on_in_flight_results_audit_trail_overrides_tuple():
     )
     env = _stub_disposition_envelope(0, disposition="needs_review")
     in_flight = InFlightBatch(batch_id="B-OV2", agent_id="a", items=(item,), lookahead_k=3)
-    in_flight.bus = SSEBus()
     in_flight.results["lbl-0"] = env
     app.state.batches["B-OV2"] = in_flight
+    if not hasattr(app.state, "buses"):
+        app.state.buses = {}
+    app.state.buses["B-OV2"] = SSEBus()
 
     client = TestClient(app)
     payload = {
@@ -2646,19 +2664,34 @@ _logger = logging.getLogger("app.api.overrides")
 def _load_accepted_reason_codes() -> frozenset[str]:
     """Load the canonical reason-code registry from rules/reason_codes.yaml.
 
-    Loaded once on module import; cached as a frozenset for O(1) lookup.
-    Mirrors E2's loader cross-check 7 — refuses any code not in the registry."""
+    Mirrors E2's loader cross-check 7 — refuses any code not in the registry.
+    Raises ``FileNotFoundError`` if the registry is missing; loud failure
+    is preferable to silently rejecting every override request with 400."""
     import yaml
     from pathlib import Path
 
     yaml_path = Path("rules/reason_codes.yaml")
     if not yaml_path.exists():
-        return frozenset()
+        raise FileNotFoundError(
+            f"reason-code registry not found at {yaml_path.resolve()} — "
+            "the override endpoint cannot validate codes without it"
+        )
     raw = yaml.safe_load(yaml_path.read_text())
     return frozenset((raw or {}).get("codes", {}).keys())
 
 
-_ACCEPTED_REASON_CODES = _load_accepted_reason_codes()
+_ACCEPTED_REASON_CODES_CACHE: frozenset[str] | None = None
+
+
+def _accepted_reason_codes() -> frozenset[str]:
+    """Lazy accessor — load on first call, cache for the process. Lazy
+    initialization avoids a module-import side effect that would fail
+    opaquely if any test imports this module before the cwd is repo-root.
+    Tests can reset the cache via ``app.api.overrides._ACCEPTED_REASON_CODES_CACHE = None``."""
+    global _ACCEPTED_REASON_CODES_CACHE
+    if _ACCEPTED_REASON_CODES_CACHE is None:
+        _ACCEPTED_REASON_CODES_CACHE = _load_accepted_reason_codes()
+    return _ACCEPTED_REASON_CODES_CACHE
 
 
 class OverrideRequest(BaseModel):
@@ -2675,13 +2708,19 @@ def _new_reviewer_id() -> str:
 
 
 def _find_label_in_batches(state_batches, evaluation_id: str):
-    """Locate the InFlightBatch + label_id whose result has the given
-    evaluation_id. O(N*M) — acceptable for prototype scale."""
+    """Locate the (batch_id, InFlightBatch, label_id, env) for an evaluation
+    that has a recorded ``result``. O(N*M) — acceptable for prototype scale.
+
+    Contract: a label that is queued but not yet evaluated has no entry in
+    ``in_flight.results`` and is therefore NOT findable. Callers MUST treat
+    that case as 404 (the override is rejected because the disposition the
+    reviewer is overriding does not yet exist). The UI guards by enabling
+    the override button only after the SSE ``label-result`` event lands."""
     for batch_id, in_flight in state_batches.items():
         for label_id, env in in_flight.results.items():
             if env.evaluation_id == evaluation_id:
-                return in_flight, label_id, env
-    return None, None, None
+                return batch_id, in_flight, label_id, env
+    return None, None, None, None
 
 
 @router.post("/labels/{evaluation_id}/overrides")
@@ -2690,19 +2729,23 @@ async def post_override(
     payload: OverrideRequest,
     request: Request,
 ) -> dict:
-    if payload.reason_code not in _ACCEPTED_REASON_CODES:
+    if payload.reason_code not in _accepted_reason_codes():
         raise HTTPException(
             status_code=400,
             detail=f"reason_code '{payload.reason_code}' is not in the loaded registry",
         )
 
-    in_flight, label_id, env = _find_label_in_batches(
+    batch_id, in_flight, label_id, env = _find_label_in_batches(
         request.app.state.batches, evaluation_id
     )
     if env is None:
+        # Two-of-three cases collapse to 404: (a) evaluation_id never existed
+        # in any batch; (b) label is queued but evaluator has not yet emitted
+        # a result. Per the contract above, the UI prevents (b) by gating the
+        # override button on the SSE label-result event.
         raise HTTPException(
             status_code=404,
-            detail=f"evaluation_id {evaluation_id} not found in any in-flight batch",
+            detail=f"evaluation_id {evaluation_id} not found in any in-flight batch result",
         )
 
     entry = OverrideEntry(
@@ -2721,15 +2764,20 @@ async def post_override(
     new_env = env.model_copy(update={"audit_trail": new_audit})
     in_flight.results[label_id] = new_env
 
-    # Surface on the SSE stream so the UI updates the timeline
-    in_flight.bus.broadcast({
-        "event": "override-applied",
-        "data": {
-            "batch_id": in_flight.batch_id,
-            "evaluation_id": evaluation_id,
-            "entry": entry.model_dump(mode="json"),
-        },
-    })
+    # Surface on the SSE stream so the UI updates the timeline. Bus may be
+    # absent if the lifespan registry has been torn down concurrently; treat
+    # the broadcast as best-effort — the audit-trail mutation is the
+    # source-of-truth contract.
+    bus = request.app.state.buses.get(batch_id)
+    if bus is not None:
+        bus.broadcast({
+            "event": "override-applied",
+            "data": {
+                "batch_id": batch_id,
+                "evaluation_id": evaluation_id,
+                "entry": entry.model_dump(mode="json"),
+            },
+        })
 
     return entry.model_dump(mode="json")
 ```
@@ -2784,6 +2832,12 @@ import pytest
 @pytest.mark.slow
 @pytest.mark.asyncio
 async def test_first_label_p50_under_2_7s_and_p99_under_5_0s_for_50_item_batch(monkeypatch):
+    """AC-FR-401 + AC #2 (50 + N + 1 event count) on the same fixture.
+
+    Methodology mirrors E5's T19: one app per session (not per trial), 2-trial
+    warmup (drops JIT / first-import cost), 30-trial measurement window. Fresh
+    `batch_id` per trial keeps `app.state.batches` from collapsing onto a
+    409 collision."""
     from datetime import datetime, timezone
 
     from app.main import create_app
@@ -2797,27 +2851,50 @@ async def test_first_label_p50_under_2_7s_and_p99_under_5_0s_for_50_item_batch(m
         lambda settings: _fake_evaluator(n_items=50, latency_s=0.3),
     )
 
-    samples_s: list[float] = []
-    for trial in range(30):
-        app = create_app()
-        transport = httpx.ASGITransport(app=app)
-        async with httpx.AsyncClient(transport=transport, base_url="http://test") as client:
-            envelope = BatchEnvelope(
-                batch_id=f"B-perf-{trial:03d}",
-                agent_id="a",
-                submitted_at=datetime(2026, 5, 4, 12, 0, 0, tzinfo=timezone.utc),
-                items=tuple(
-                    BatchItemRef(label_ref=f"lbl-{i}", application_ref=f"app-{i:04d}")
-                    for i in range(50)
-                ),
-            ).model_dump(mode="json")
-            t0 = time.perf_counter()
-            await client.post("/batches", json=envelope)
-            async with client.stream("GET", f"/batches/B-perf-{trial:03d}/stream") as resp:
-                async for line in resp.aiter_lines():
-                    if line.startswith("event: label-result"):
-                        break
-            samples_s.append(time.perf_counter() - t0)
+    app = create_app()  # one app, reused across trials — perf test target is
+                        # the worker, not app-startup cost
+    transport = httpx.ASGITransport(app=app)
+
+    async with httpx.AsyncClient(transport=transport, base_url="http://test") as client:
+        # Lifespan startup is required so app.state.{batches,buses} are init'd
+        async with app.router.lifespan_context(app):
+            samples_s: list[float] = []
+            event_counts: list[tuple[int, int]] = []  # (label_results, stream_ends)
+            for trial in range(32):  # 2 warmup + 30 measure
+                bid = f"B-perf-{trial:03d}"
+                envelope = BatchEnvelope(
+                    batch_id=bid,
+                    agent_id="a",
+                    submitted_at=datetime(2026, 5, 4, 12, 0, 0, tzinfo=timezone.utc),
+                    items=tuple(
+                        BatchItemRef(label_ref=f"lbl-{i}", application_ref=f"app-{i:04d}")
+                        for i in range(50)
+                    ),
+                ).model_dump(mode="json")
+                t0 = time.perf_counter()
+                await client.post("/batches", json=envelope)
+                first_event_t = None
+                lr = se = 0
+                async with client.stream("GET", f"/batches/{bid}/stream") as resp:
+                    async for line in resp.aiter_lines():
+                        if line.startswith("event: label-result"):
+                            if first_event_t is None:
+                                first_event_t = time.perf_counter() - t0
+                            lr += 1
+                        elif line.startswith("event: stream-end"):
+                            se += 1
+                            break
+                assert first_event_t is not None
+                if trial >= 2:  # drop warmup
+                    samples_s.append(first_event_t)
+                event_counts.append((lr, se))
+
+    # AC #2 — every trial saw 50 label-result events + 1 stream-end (anomaly
+    # advisories may add to lr but not stream-end; with FakeEvaluator emitting
+    # heterogeneous reason_codes the anomaly detector should not fire).
+    for lr, se in event_counts:
+        assert lr == 50, f"expected 50 label-result events per trial, got {lr}"
+        assert se == 1, f"expected exactly 1 stream-end event, got {se}"
 
     p50 = statistics.median(samples_s)
     p99 = statistics.quantiles(samples_s, n=100)[98]
@@ -3006,12 +3083,14 @@ async def test_lifespan_teardown_clears_app_state_batches():
             enqueued_at=datetime(2026, 5, 4, 12, 0, 0, tzinfo=timezone.utc),
         )
         in_flight = InFlightBatch(batch_id="B-EV", agent_id="a", items=(item,), lookahead_k=3)
-        in_flight.bus = SSEBus()
         app.state.batches["B-EV"] = in_flight
+        app.state.buses["B-EV"] = SSEBus()
         assert app.state.batches  # populated during lifespan-active
+        assert app.state.buses
 
-    # Lifespan exited — batches dict should be cleared
+    # Lifespan exited — both registries should be cleared
     assert app.state.batches == {}
+    assert app.state.buses == {}
 ```
 
 - [ ] **Step 2: Run focused → GREEN**
@@ -3136,9 +3215,9 @@ After T12 lands:
 
 **Spec coverage** — checked L1 §1 through §9 against tasks. All 11 exit-gate items have a task: AC #1 (POST 202) → T7; AC #2 (event count = 50+N+1) → T9 indirectly + T10 smoke (5-item proxy); AC #3 (FR-401 first-label perf) → T9; AC #4 (FR-402 lookahead inspection) → T6 Cycle B; AC #5 (FR-403 saturation) → T6 Cycle B; AC #6 (FR-404 mid-batch override) → T6 Cycle C + T10 smoke; AC #7 (FR-405 anomaly) → T3 unit + T6 Cycle C; AC #8 (FR-801 fields + SSE surface) → T8; AC #9 (1-s disconnect cleanup) → T7 SSE test; AC #10 (LOOKAHEAD_K env) → T12; AC #11 (lifespan eviction) → T11.
 
-**Wave 0 coverage** — T0 (`OverrideEntry.field_name` Optional) covers L1 §2.6 whole-envelope override expressibility. The Cycle C anomaly tests assume `PerRuleTraceEntry.reason_code` exists — this is flagged as an iter-1 BLOCK candidate; if the plan-reviewer surfaces it, Wave 0 grows to T0 + T0b (additive `reason_code: str | None = None` on `PerRuleTraceEntry`).
+**Wave 0 coverage** — T0 (`OverrideEntry.field_name` Optional) covers L1 §2.6 whole-envelope override expressibility; T2 (`BoundedQueue`) is a Wave 0 root because T1 imports it (substitutability seam preserved per L1 §2.3 / ARCH §4.2.7). No `PerRuleTraceEntry` schema extension is required — `_headline_reason_code` reads `RuleFindingWire.reason_code` from `envelope.fields[]` (existing schema) with a fallback to `per_rule_trace[0].rule_id`.
 
-**Placeholder scan** — every code block is concrete. No "TBD"/"TODO"/"implement later". The `_resolve_application` and `_resolve_label` Cycle A stubs are deliberately documented as stubs that T7 upgrades; the ownership transition is explicit in the file map and the Cycle A note.
+**Placeholder scan** — every code block is concrete. No "TBD"/"TODO"/"implement later". `_resolve_application` and `_resolve_label` synthesize minimal schema-conforming instances from the `BatchItem` refs — that is the MVP wiring, not a stub (see Cycle A note for the production-trajectory rationale).
 
 **Type consistency** — `InFlightBatch` shape consistent across T1, T6, T7, T8, T11. `FakeEvaluator.evaluate(application, label) -> DispositionEnvelope` matches `Evaluator.evaluate` signature exactly. `OverrideEntry(field_name=..., original_disposition=..., applied_disposition=..., reason_code=..., justification_text=..., reviewer_id=..., timestamp=...)` consistent across T0, T8 (write) and T6 Cycle C, T8 (read).
 
@@ -3150,7 +3229,7 @@ After T12 lands:
 
 **Empty-batch / single-item case** — single-item is exercised in T6 Cycle A. Empty-batch (zero items) is not directly tested; the worker's `for queue_position in range(0)` loop simply does not iterate, and the producer also does not iterate, so `stream-end` fires immediately. Acceptable for prototype scale.
 
-**Rule 1-3 budget** — Wave 1 has 5 parallel tasks (executor cap is 6) — comfortable margin for inline fixups. Wave 2 has the worker (3 cycles) — single-task wave with no parallelism concern.
+**Rule 1-3 budget** — Wave 1 has 4 parallel tasks (executor cap is 6) — comfortable margin for inline fixups. Wave 2 has the worker (3 cycles) — single-task wave with no parallelism concern.
 
 ---
 
@@ -3191,6 +3270,7 @@ After T12 lands:
 | Version | Date | Author | Notes |
 |---|---|---|---|
 | 0.1 | 2026-05-04 | Project team | Initial E6 L2 plan. 13 tasks across 6 waves; bottlenecked on T6 worker (3 cycles, single file). Wave 0: T0 (additive `OverrideEntry.field_name = None`). Wave 1 parallel-5: T1-T5 (state, queue, anomaly, sse_bus, fakes). Wave 2 single 3-cycle: T6 worker. Wave 3 single: T7 batches endpoint. Wave 4 single: T8 overrides endpoint. Wave 5 parallel-4: T9 perf, T10 smoke, T11 eviction, T12 LOOKAHEAD_K. Wave 6 run-only check. Total tasks: 13; total waves: 6; max parallelism: 5 (Wave 1); expected commits: ~17 (13 base + 2 extra T6 cycles + 2 Rule 1-3 margin). Known iter-1 BLOCK candidate flagged inline: `PerRuleTraceEntry.reason_code` does not exist on the E1 schema and the worker's `_headline_reason_code` reads from it; reviewer-driven Wave 0 expansion (T0b) likely. |
+| 0.2 | 2026-05-04 | Plan-review iter 1 | **Structural fixes (4):** (1) `_stub_disposition_envelope.Metrics(...)` constructor used non-existent `evaluation_id` and `per_rule_durations` (dict) — corrected to actual schema (`total_duration_ms`, `per_rule_durations_ms` tuple, `vision_duration_ms`, `orchestrator_duration_ms`); (2) T7 imported `get_settings` from `app.deps` (does not exist) — replaced with module-private `_get_settings` factory mirroring E5's healthz/labels pattern; (3) T3 broken anomaly test (alternating A/B that fires by observation 9 contradicting its `assert adv is None`) replaced with a heterogeneous-batch test (4 As + 4 Bs + 2 Cs, no code reaches threshold). **Architectural fixes (5):** (4) `BatchWorker.run()` `await producer_task` in `finally` would deadlock on consumer exception — added `producer_task.cancel(); await asyncio.gather(..., return_exceptions=True)`; (5) `BoundedQueue` was dead code (T1 constructed bare `asyncio.Queue` directly) — wired `InFlightBatch.queue: BoundedQueue[BatchItem]` so the substitutability seam (L1 §2.3 / ARCH §4.2.7) is real; T2 moved to Wave 0 since T1 now depends on it; (6) Dropped dead `InFlightBatch.subscribers` field (duplicate of `SSEBus.subscribers`); (7) Replaced T7 retro-bolt of `bus` field on `InFlightBatch` with separate `app.state.buses: dict[str, SSEBus]` registry — same lifecycle, no circular-import risk, no dataclass mutation; (8) Made `_load_accepted_reason_codes` lazy + loud (no module-import side effect; missing registry now raises `FileNotFoundError` rather than silently returning an empty frozenset). **Cleanups:** dropped the spurious `PerRuleTraceEntry.reason_code` Wave 0-expansion warning (the helper reads `rule_id` from existing schema with a fallback to `RuleFindingWire.reason_code` — no extension needed); double-call of `_headline_reason_code(envelope)` collapsed to a single bind; override endpoint contract for "queued-not-yet-evaluated" labels documented (returns 404 by design — UI guards via SSE `label-result` event before enabling the override button); T7 lifespan teardown clears both `app.state.batches` and `app.state.buses`. **Wave restructure:** Wave 0 grows from `[T0]` to `[T0, T2]` (parallel-2); Wave 1 shrinks from `[T1, T2, T3, T4, T5]` to `[T1, T3, T4, T5]` (parallel-4). Total waves now 7. Critical path unchanged (T2 → T1 → T6 → T7 → T8 → T10 = 6 hops). |
 
 ---
 
@@ -3201,13 +3281,13 @@ After T12 lands:
 | Task | Depends On | Blocks | Files Owned |
 |------|-----------|--------|-------------|
 | T0: OverrideEntry.field_name Optional | — | T8 | `app/schemas/audit.py` (additive), `tests/test_override_entry_field_name_optional.py` |
-| T1: InFlightBatch | — | T6 (all cycles), T7, T8, T11, T12 | `app/batch/__init__.py`, `app/batch/state.py`, `tests/test_in_flight_batch.py` |
-| T2: BoundedQueue | — | T6, T12 | `app/batch/queue.py`, `tests/test_bounded_queue.py` |
+| T2: BoundedQueue | — | T1, T6, T12 | `app/batch/queue.py`, `tests/test_bounded_queue.py` |
+| T1: InFlightBatch | T2 | T6 (all cycles), T7, T8, T11, T12 | `app/batch/__init__.py`, `app/batch/state.py`, `tests/test_in_flight_batch.py` |
 | T3: AnomalyDetector | — | T6 (Cycle C) | `app/batch/anomaly.py`, `tests/test_anomaly_detector.py` |
 | T4: SSEBus | — | T6, T7 | `app/api/_sse_bus.py`, `tests/test_sse_bus.py` |
 | T5: FakeEvaluator + conftest helpers | — | T6, T7, T8, T9, T10, T12 | `tests/_fakes/evaluator.py`, `tests/conftest.py` (append), `tests/test_fake_evaluator.py` |
 | T6: BatchWorker (3 cycles A/B/C) | T1, T2, T3, T4, T5 | T7, T9, T10 | `app/batch/worker.py`, `tests/test_batch_worker_skeleton.py`, `tests/test_batch_worker_lookahead.py`, `tests/test_batch_worker_anomaly_override.py` |
-| T7: POST /batches + GET stream + GET snapshot | T6 | T8, T9, T10, T11, T12 | `app/api/batches.py`, `app/main.py` (additive register + lifespan state), `app/batch/state.py` (Rule 1-3 add `bus` field), `tests/test_batch_endpoint_post.py`, `tests/test_batch_endpoint_sse.py` |
+| T7: POST /batches + GET stream + GET snapshot | T6 | T8, T9, T10, T11, T12 | `app/api/batches.py`, `app/main.py` (additive register + `app.state.batches` and `app.state.buses` lifespan state), `tests/test_batch_endpoint_post.py`, `tests/test_batch_endpoint_sse.py` |
 | T8: POST /labels/{id}/overrides | T0, T7 | T10 (mid-batch override smoke) | `app/api/overrides.py`, `app/main.py` (additive append), `tests/test_override_endpoint.py`, `tests/test_override_audit_trail.py` |
 | T9: First-label perf canary | T7 | — | `tests/test_batch_first_label_perf.py` |
 | T10: Smoke integration | T7, T8 | — | `tests/test_batch_integration_smoke.py` |
@@ -3216,17 +3296,16 @@ After T12 lands:
 
 ### Shared Files
 
-- `app/batch/state.py` — created by T1; modified by T7 (Rule 1-3 add `bus: SSEBus | None` field). Sequential.
-- `app/main.py` — modified by T7 (writes batches.router include + lifespan state) AND T8 (appends overrides.router include). Sequential per E5's T15/T17 pattern.
+- `app/main.py` — modified by T7 (writes batches.router include + `app.state.batches` and `app.state.buses` lifespan state) AND T8 (appends overrides.router include). Sequential per E5's T15/T17 pattern.
 - `tests/conftest.py` — modified by T5 only (additive append).
 
 ### Execution Waves
 
 ```
-Wave 0 (single):       [T0]                    ← OverrideEntry.field_name additive
-Wave 1 (parallel, 5):  [T1, T2, T3, T4, T5]    ← state, queue, anomaly, sse_bus, fakes (5 root candidates)
+Wave 0 (parallel, 2):  [T0, T2]                ← OverrideEntry.field_name + BoundedQueue (both no-dep roots; T1 imports T2)
+Wave 1 (parallel, 4):  [T1, T3, T4, T5]        ← state (deps T2), anomaly, sse_bus, fakes
 Wave 2 (single, 3c):   [T6]                    ← BatchWorker (3 cycles A/B/C)
-Wave 3 (single):       [T7]                    ← POST /batches + GET stream + lifespan state
+Wave 3 (single):       [T7]                    ← POST /batches + GET stream + lifespan state (`batches` + `buses` dicts)
 Wave 4 (single):       [T8]                    ← POST /labels/{id}/overrides + main.py append
 Wave 5 (parallel, 4):  [T9, T10, T11, T12]     ← perf, smoke, eviction, LOOKAHEAD_K
 Wave 6 (run-only):     [final integration check]
@@ -3234,19 +3313,19 @@ Wave 6 (run-only):     [final integration check]
 
 **Resolved wave plan (final):**
 
-- Wave 0 (single): T0
-- Wave 1 (parallel, 5): T1, T2, T3, T4, T5
+- Wave 0 (parallel, 2): T0, T2
+- Wave 1 (parallel, 4): T1, T3, T4, T5
 - Wave 2 (single, 3-cycle bundle): T6
 - Wave 3 (single): T7
 - Wave 4 (single): T8
 - Wave 5 (parallel, 4): T9, T10, T11, T12
 - Wave 6 (run-only): final integration check
 
-**Total expected new commits on `main`:** 17 (T0+T1+T2+T3+T4+T5+T6(A,B,C)+T7+T8+T9+T10+T11+T12 = 13 task commits + 2 extra from T6's 3 cycles − 1 already counted = 15 minimum + small margin for inline Rule 1-3 fixes).
+**Total expected new commits on `main`:** ~15 (T0+T2+T1+T3+T4+T5+T6(A,B,C)+T7+T8+T9+T10+T11+T12 = 13 task commits + 2 extra from T6's 3 cycles − 1 already counted = 15 minimum + small margin for inline Rule 1-3 fixes).
 
-**Critical path (longest dependency chain):** T0 → T1 → T6 (3 cycles) → T7 → T8 → T10. **6 wave hops** (counting sub-cycle boundaries within Wave 2, the realized critical-path latency is 8 commit slots). T6's 3 cycles dominate the critical path because they're file-serialized.
+**Critical path (longest dependency chain):** T2 → T1 → T6 (3 cycles) → T7 → T8 → T10. **6 wave hops** (counting sub-cycle boundaries within Wave 2, the realized critical-path latency is 8 commit slots). T6's 3 cycles dominate the critical path because they're file-serialized.
 
-**Parallelism factor.** 13 tasks across 6 waves → effective parallelism ≈ 2.2× vs strict serial. Wave 1 is the densest (5 concurrent subagents — one slot below the executor cap of 6); Wave 5 holds 4.
+**Parallelism factor.** 13 tasks across 7 waves → effective parallelism ≈ 1.9× vs strict serial. Wave 1 holds 4 concurrent; Wave 5 holds 4; Wave 0 holds 2.
 
 **Pre-flight invariant** (parallel-plan-executor enforces): for each (sub-)wave, the union of file-ownership sets is strict-disjoint. Verified above in §Shared Files.
 
@@ -3254,8 +3333,8 @@ Wave 6 (run-only):     [final integration check]
 
 > **For Claude:** Use `parallel-plan-executor` to execute this plan. The executor dispatches every task in a wave concurrently (up to 6 at a time) and holds a barrier between waves. Each task runs as an isolated subagent with the `task-executor` skill body injected for TDD enforcement.
 
-- **Wave 0** — Dispatch [T0] alone. Barrier. Verify 1 commit.
-- **Wave 1** — Dispatch [T1, T2, T3, T4, T5] concurrently (5 subagents). Barrier. Verify 5 commits.
+- **Wave 0** — Dispatch [T0, T2] concurrently (2 subagents). Barrier. Verify 2 commits.
+- **Wave 1** — Dispatch [T1, T3, T4, T5] concurrently (4 subagents). Barrier. Verify 4 commits.
 - **Wave 2** — Dispatch [T6] alone (3-cycle bundle inside one subagent). Barrier. Verify 3 commits.
 - **Wave 3** — Dispatch [T7] alone. Barrier. Verify 1 commit.
 - **Wave 4** — Dispatch [T8] alone. Barrier. Verify 1 commit.
