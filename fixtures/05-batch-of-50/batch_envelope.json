@@ -1,0 +1,207 @@
+{
+  "batch_id": "00000000-0000-4000-8000-00000000b005",
+  "agent_id": "session-batch-005",
+  "submitted_at": "2026-04-01T12:10:00.000Z",
+  "items": [
+    {
+      "label_ref": "batch-005-item-001",
+      "application_ref": "app-batch-005-001"
+    },
+    {
+      "label_ref": "batch-005-item-002",
+      "application_ref": "app-batch-005-002"
+    },
+    {
+      "label_ref": "batch-005-item-003",
+      "application_ref": "app-batch-005-003"
+    },
+    {
+      "label_ref": "batch-005-item-004",
+      "application_ref": "app-batch-005-004"
+    },
+    {
+      "label_ref": "batch-005-item-005",
+      "application_ref": "app-batch-005-005"
+    },
+    {
+      "label_ref": "batch-005-item-006",
+      "application_ref": "app-batch-005-006"
+    },
+    {
+      "label_ref": "batch-005-item-007",
+      "application_ref": "app-batch-005-007"
+    },
+    {
+      "label_ref": "batch-005-item-008",
+      "application_ref": "app-batch-005-008"
+    },
+    {
+      "label_ref": "batch-005-item-009",
+      "application_ref": "app-batch-005-009"
+    },
+    {
+      "label_ref": "batch-005-item-010",
+      "application_ref": "app-batch-005-010"
+    },
+    {
+      "label_ref": "batch-005-item-011",
+      "application_ref": "app-batch-005-011"
+    },
+    {
+      "label_ref": "batch-005-item-012",
+      "application_ref": "app-batch-005-012"
+    },
+    {
+      "label_ref": "batch-005-item-013",
+      "application_ref": "app-batch-005-013"
+    },
+    {
+      "label_ref": "batch-005-item-014",
+      "application_ref": "app-batch-005-014"
+    },
+    {
+      "label_ref": "batch-005-item-015",
+      "application_ref": "app-batch-005-015"
+    },
+    {
+      "label_ref": "batch-005-item-016",
+      "application_ref": "app-batch-005-016"
+    },
+    {
+      "label_ref": "batch-005-item-017",
+      "application_ref": "app-batch-005-017"
+    },
+    {
+      "label_ref": "batch-005-item-018",
+      "application_ref": "app-batch-005-018"
+    },
+    {
+      "label_ref": "batch-005-item-019",
+      "application_ref": "app-batch-005-019"
+    },
+    {
+      "label_ref": "batch-005-item-020",
+      "application_ref": "app-batch-005-020"
+    },
+    {
+      "label_ref": "batch-005-item-021",
+      "application_ref": "app-batch-005-021"
+    },
+    {
+      "label_ref": "batch-005-item-022",
+      "application_ref": "app-batch-005-022"
+    },
+    {
+      "label_ref": "batch-005-item-023",
+      "application_ref": "app-batch-005-023"
+    },
+    {
+      "label_ref": "batch-005-item-024",
+      "application_ref": "app-batch-005-024"
+    },
+    {
+      "label_ref": "batch-005-item-025",
+      "application_ref": "app-batch-005-025"
+    },
+    {
+      "label_ref": "batch-005-item-026",
+      "application_ref": "app-batch-005-026"
+    },
+    {
+      "label_ref": "batch-005-item-027",
+      "application_ref": "app-batch-005-027"
+    },
+    {
+      "label_ref": "batch-005-item-028",
+      "application_ref": "app-batch-005-028"
+    },
+    {
+      "label_ref": "batch-005-item-029",
+      "application_ref": "app-batch-005-029"
+    },
+    {
+      "label_ref": "batch-005-item-030",
+      "application_ref": "app-batch-005-030"
+    },
+    {
+      "label_ref": "batch-005-item-031",
+      "application_ref": "app-batch-005-031"
+    },
+    {
+      "label_ref": "batch-005-item-032",
+      "application_ref": "app-batch-005-032"
+    },
+    {
+      "label_ref": "batch-005-item-033",
+      "application_ref": "app-batch-005-033"
+    },
+    {
+      "label_ref": "batch-005-item-034",
+      "application_ref": "app-batch-005-034"
+    },
+    {
+      "label_ref": "batch-005-item-035",
+      "application_ref": "app-batch-005-035"
+    },
+    {
+      "label_ref": "batch-005-item-036",
+      "application_ref": "app-batch-005-036"
+    },
+    {
+      "label_ref": "batch-005-item-037",
+      "application_ref": "app-batch-005-037"
+    },
+    {
+      "label_ref": "batch-005-item-038",
+      "application_ref": "app-batch-005-038"
+    },
+    {
+      "label_ref": "batch-005-item-039",
+      "application_ref": "app-batch-005-039"
+    },
+    {
+      "label_ref": "batch-005-item-040",
+      "application_ref": "app-batch-005-040"
+    },
+    {
+      "label_ref": "batch-005-item-041",
+      "application_ref": "app-batch-005-041"
+    },
+    {
+      "label_ref": "batch-005-item-042",
+      "application_ref": "app-batch-005-042"
+    },
+    {
+      "label_ref": "batch-005-item-043",
+      "application_ref": "app-batch-005-043"
+    },
+    {
+      "label_ref": "batch-005-item-044",
+      "application_ref": "app-batch-005-044"
+    },
+    {
+      "label_ref": "batch-005-item-045",
+      "application_ref": "app-batch-005-045"
+    },
+    {
+      "label_ref": "batch-005-item-046",
+      "application_ref": "app-batch-005-046"
+    },
+    {
+      "label_ref": "batch-005-item-047",
+      "application_ref": "app-batch-005-047"
+    },
+    {
+      "label_ref": "batch-005-item-048",
+      "application_ref": "app-batch-005-048"
+    },
+    {
+      "label_ref": "batch-005-item-049",
+      "application_ref": "app-batch-005-049"
+    },
+    {
+      "label_ref": "batch-005-item-050",
+      "application_ref": "app-batch-005-050"
+    }
+  ]
+}

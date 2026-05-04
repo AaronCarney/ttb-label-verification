@@ -1,0 +1,2052 @@
+[
+  {
+    "label_ref": "batch-005-item-001",
+    "application_ref": "app-batch-005-001",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "STILLHOUSE BOURBON",
+        "aliases": [
+          "STILLHOUSE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-002",
+    "application_ref": "app-batch-005-002",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "FRANKFORT SELECT",
+        "aliases": [
+          "FRANKFORT"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-003",
+    "application_ref": "app-batch-005-003",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "BLUE RIDGE RYE",
+        "aliases": [
+          "BLUE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-004",
+    "application_ref": "app-batch-005-004",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "RIVER MILL",
+        "aliases": [
+          "RIVER"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-005",
+    "application_ref": "app-batch-005-005",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "ACME BOURBON",
+        "aliases": [
+          "ACME"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-006",
+    "application_ref": "app-batch-005-006",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "STILLHOUSE BOURBON",
+        "aliases": [
+          "STILLHOUSE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-007",
+    "application_ref": "app-batch-005-007",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "FRANKFORT SELECT",
+        "aliases": [
+          "FRANKFORT"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-008",
+    "application_ref": "app-batch-005-008",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "BLUE RIDGE RYE",
+        "aliases": [
+          "BLUE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-009",
+    "application_ref": "app-batch-005-009",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "RIVER MILL",
+        "aliases": [
+          "RIVER"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-010",
+    "application_ref": "app-batch-005-010",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "ACME BOURBON",
+        "aliases": [
+          "ACME"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-011",
+    "application_ref": "app-batch-005-011",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "STILLHOUSE BOURBON",
+        "aliases": [
+          "STILLHOUSE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-012",
+    "application_ref": "app-batch-005-012",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "FRANKFORT SELECT",
+        "aliases": [
+          "FRANKFORT"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-013",
+    "application_ref": "app-batch-005-013",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "BLUE RIDGE RYE",
+        "aliases": [
+          "BLUE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-014",
+    "application_ref": "app-batch-005-014",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "RIVER MILL",
+        "aliases": [
+          "RIVER"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-015",
+    "application_ref": "app-batch-005-015",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "ACME BOURBON",
+        "aliases": [
+          "ACME"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-016",
+    "application_ref": "app-batch-005-016",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "STILLHOUSE BOURBON",
+        "aliases": [
+          "STILLHOUSE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-017",
+    "application_ref": "app-batch-005-017",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "FRANKFORT SELECT",
+        "aliases": [
+          "FRANKFORT"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-018",
+    "application_ref": "app-batch-005-018",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "BLUE RIDGE RYE",
+        "aliases": [
+          "BLUE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-019",
+    "application_ref": "app-batch-005-019",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "RIVER MILL",
+        "aliases": [
+          "RIVER"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-020",
+    "application_ref": "app-batch-005-020",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "ACME BOURBON",
+        "aliases": [
+          "ACME"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-021",
+    "application_ref": "app-batch-005-021",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "STILLHOUSE BOURBON",
+        "aliases": [
+          "STILLHOUSE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-022",
+    "application_ref": "app-batch-005-022",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "FRANKFORT SELECT",
+        "aliases": [
+          "FRANKFORT"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-023",
+    "application_ref": "app-batch-005-023",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "BLUE RIDGE RYE",
+        "aliases": [
+          "BLUE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-024",
+    "application_ref": "app-batch-005-024",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "RIVER MILL",
+        "aliases": [
+          "RIVER"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-025",
+    "application_ref": "app-batch-005-025",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "ACME BOURBON",
+        "aliases": [
+          "ACME"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-026",
+    "application_ref": "app-batch-005-026",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "STILLHOUSE BOURBON",
+        "aliases": [
+          "STILLHOUSE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-027",
+    "application_ref": "app-batch-005-027",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "FRANKFORT SELECT",
+        "aliases": [
+          "FRANKFORT"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-028",
+    "application_ref": "app-batch-005-028",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "BLUE RIDGE RYE",
+        "aliases": [
+          "BLUE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-029",
+    "application_ref": "app-batch-005-029",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "RIVER MILL",
+        "aliases": [
+          "RIVER"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-030",
+    "application_ref": "app-batch-005-030",
+    "expected_disposition": "pass",
+    "expected_reason_code": null,
+    "kind": "clean",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "ACME BOURBON",
+        "aliases": [
+          "ACME"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-031",
+    "application_ref": "app-batch-005-031",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-400-abv-tolerance",
+    "kind": "abv",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "STILLHOUSE BOURBON",
+        "aliases": [
+          "STILLHOUSE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "42.5"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-032",
+    "application_ref": "app-batch-005-032",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-400-abv-tolerance",
+    "kind": "abv",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "FRANKFORT SELECT",
+        "aliases": [
+          "FRANKFORT"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "42.5"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-033",
+    "application_ref": "app-batch-005-033",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-400-abv-tolerance",
+    "kind": "abv",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "BLUE RIDGE RYE",
+        "aliases": [
+          "BLUE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "42.5"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-034",
+    "application_ref": "app-batch-005-034",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-400-abv-tolerance",
+    "kind": "abv",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "RIVER MILL",
+        "aliases": [
+          "RIVER"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "42.5"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-035",
+    "application_ref": "app-batch-005-035",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-400-abv-tolerance",
+    "kind": "abv",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "ACME BOURBON",
+        "aliases": [
+          "ACME"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "42.5"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-036",
+    "application_ref": "app-batch-005-036",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-400-abv-tolerance",
+    "kind": "abv",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "STILLHOUSE BOURBON",
+        "aliases": [
+          "STILLHOUSE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "42.5"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-037",
+    "application_ref": "app-batch-005-037",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-400-abv-tolerance",
+    "kind": "abv",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "FRANKFORT SELECT",
+        "aliases": [
+          "FRANKFORT"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "42.5"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-038",
+    "application_ref": "app-batch-005-038",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-400-abv-tolerance",
+    "kind": "abv",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "BLUE RIDGE RYE",
+        "aliases": [
+          "BLUE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "42.5"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-039",
+    "application_ref": "app-batch-005-039",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-400-abv-tolerance",
+    "kind": "abv",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "RIVER MILL",
+        "aliases": [
+          "RIVER"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "42.5"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-040",
+    "application_ref": "app-batch-005-040",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-400-abv-tolerance",
+    "kind": "abv",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "ACME BOURBON",
+        "aliases": [
+          "ACME"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "42.5"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-041",
+    "application_ref": "app-batch-005-041",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-200-government-warning",
+    "kind": "warning",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "STILLHOUSE BOURBON",
+        "aliases": [
+          "STILLHOUSE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-042",
+    "application_ref": "app-batch-005-042",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-200-government-warning",
+    "kind": "warning",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "FRANKFORT SELECT",
+        "aliases": [
+          "FRANKFORT"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-043",
+    "application_ref": "app-batch-005-043",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-200-government-warning",
+    "kind": "warning",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "BLUE RIDGE RYE",
+        "aliases": [
+          "BLUE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-044",
+    "application_ref": "app-batch-005-044",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-200-government-warning",
+    "kind": "warning",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "RIVER MILL",
+        "aliases": [
+          "RIVER"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-045",
+    "application_ref": "app-batch-005-045",
+    "expected_disposition": "fail",
+    "expected_reason_code": "FR-200-government-warning",
+    "kind": "warning",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "ACME BOURBON",
+        "aliases": [
+          "ACME"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-046",
+    "application_ref": "app-batch-005-046",
+    "expected_disposition": "needs_review",
+    "expected_reason_code": null,
+    "kind": "borderline",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "STILLHOUSE BOURBON",
+        "aliases": [
+          "STILLHOUSE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-047",
+    "application_ref": "app-batch-005-047",
+    "expected_disposition": "needs_review",
+    "expected_reason_code": null,
+    "kind": "borderline",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "FRANKFORT SELECT",
+        "aliases": [
+          "FRANKFORT"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-048",
+    "application_ref": "app-batch-005-048",
+    "expected_disposition": "needs_review",
+    "expected_reason_code": null,
+    "kind": "borderline",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "BLUE RIDGE RYE",
+        "aliases": [
+          "BLUE"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-049",
+    "application_ref": "app-batch-005-049",
+    "expected_disposition": "needs_review",
+    "expected_reason_code": null,
+    "kind": "borderline",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "RIVER MILL",
+        "aliases": [
+          "RIVER"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  },
+  {
+    "label_ref": "batch-005-item-050",
+    "application_ref": "app-batch-005-050",
+    "expected_disposition": "needs_review",
+    "expected_reason_code": null,
+    "kind": "borderline",
+    "expected_values": [
+      {
+        "field_id": "brand_name",
+        "value": "ACME BOURBON",
+        "aliases": [
+          "ACME"
+        ]
+      },
+      {
+        "field_id": "class_type",
+        "value": "BOURBON WHISKEY"
+      },
+      {
+        "field_id": "alcohol_content",
+        "abv_labeled_pct": "40.0",
+        "abv_actual_pct": "40.0"
+      },
+      {
+        "field_id": "net_contents",
+        "container_volume_ml": "750"
+      },
+      {
+        "field_id": "name_and_address",
+        "value": "ACME DISTILLERIES, FRANKFORT, KY"
+      },
+      {
+        "field_id": "country_of_origin",
+        "value": "USA"
+      },
+      {
+        "field_id": "government_warning",
+        "value": "GOVERNMENT WARNING: (1) ACCORDING ..."
+      }
+    ]
+  }
+]
