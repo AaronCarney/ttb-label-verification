@@ -77,6 +77,10 @@
 - **Recording filenames.** `tests/recordings/openai/<LLM_MODEL_SNAPSHOT>/<PROMPT_VERSION>/<fixture-id>/<call-name>.json`. Default for E3: `gpt-4o-2024-08-06/v1/01-spirits-clean/{layout,brand_name,class_type,abv,net_contents,gov_warning,heading_typography,name_address,country_origin}.json` — 9 files.
 - **CallRecord population.** `provider` ∈ `{"openai", "anthropic", "local.paddleocr"}` (the only literals declared in the existing E1 schema). Per L1 §4 item 10, every successful extraction writes ≥1 CallRecord (cloud: 9, local: 1–3 trimmed pipeline).
 - **Bulkhead.** `asyncio.Semaphore(4)` is constructed in `CloudVisionExtractor.__init__` and held as an instance attribute; **not** a module-global (so multiple extractor instances don't share a bottleneck).
+- **Bulkhead-test seam.** `CloudVisionExtractor._call_per_field(self, *, field_name: str, crop: bytes, label: Label) -> dict` is the per-field OpenAI-call helper. `extract()` orchestrates the 1 layout + 8 per-field calls by routing through `_call_per_field`; each call is wrapped in `async with self._semaphore:`. T16 monkeypatches this method to assert the Semaphore caps in-flight calls at 4.
+- **Cloud CallRecord stage tag.** All 9 cloud-mode CallRecords use `stage="vision.gpt4o_tiebreak"` regardless of whether the call is the layout pre-pass or a per-field extraction. Layout-vs-extraction is encoded in `request['call_kind']` (`"layout"` or `"field"`), not in the stage tag — there is no `vision.gpt4o_layout` literal in the existing `CallStage` schema.
+- **Recording-replay closure pattern.** Tests that mount multiple recordings against the same OpenAI URL must use the closure-per-recording pattern: register one `respx` route per recording with a `side_effect` handler that inspects `body["response_format"]["json_schema"]["name"]` and returns `Response(200, json=payload)` on match or `None` to fall through to the next route. Same-URL `.mock(return_value=...)` calls in a loop will collapse — only the first registered route fires for all incoming calls. This pattern appears in T10 Cycle A test, T13 CLI smoke `_route_for`, T15 substitutability test, and T17 ring-buffer test.
+- **GPT-4o `_SCHEMAS` coverage.** `app/vision/tiebreak_gpt4o.py::_SCHEMAS` MUST contain a json-schema entry for every prompt name the local impl's FIELD_ROUTING dispatches to — that is, all 8 FR-001..008 field names (plus `layout`). Missing keys → `KeyError` at runtime in T11/T13/T15. T9 lands the full 9-key dict.
 - **CFR-citation discipline.** Vision modules don't emit CFR citations directly — they produce `FieldObservation` objects, and the rule engine (E2) attaches citations downstream. Vision modules MAY include CFR comments in docstrings for `FR-602` rationale.
 - **Inference-dep ban — vision direction.** This is the inverse of E2's invariant. E2 said `app/rules/` may not import `openai/anthropic/httpx/paddle`. E3 says only `app/vision/` may import them; T19 enforces with a grep test.
 - **Failing-test verification.** Every task's Step 2 runs the test and confirms the expected failure mode. If the test passes accidentally on Step 2, re-author the test.
@@ -921,7 +925,81 @@ _SCHEMAS = {
         "required": ["brand_name"],
         "additionalProperties": False,
     },
-    # Other field schemas added in future tasks (cloud.py also uses them).
+    "class_type": {
+        "type": "object",
+        "properties": {"class_type": {"type": "string"}},
+        "required": ["class_type"],
+        "additionalProperties": False,
+    },
+    "abv": {
+        "type": "object",
+        "properties": {
+            "abv_pct": {"type": "number"},
+            "unit": {"type": "string"},
+        },
+        "required": ["abv_pct", "unit"],
+        "additionalProperties": False,
+    },
+    "net_contents": {
+        "type": "object",
+        "properties": {
+            "net_contents_value": {"type": "number"},
+            "unit": {"type": "string"},
+        },
+        "required": ["net_contents_value", "unit"],
+        "additionalProperties": False,
+    },
+    "gov_warning": {
+        "type": "object",
+        "properties": {"text": {"type": "string"}},
+        "required": ["text"],
+        "additionalProperties": False,
+    },
+    "heading_typography": {
+        "type": "object",
+        "properties": {
+            "all_caps": {"type": "boolean"},
+            "bold": {"type": "boolean"},
+            "type_size_pt": {"type": "number"},
+        },
+        "required": ["all_caps", "bold", "type_size_pt"],
+        "additionalProperties": False,
+    },
+    "name_address": {
+        "type": "object",
+        "properties": {
+            "name": {"type": "string"},
+            "city": {"type": "string"},
+            "state": {"type": "string"},
+        },
+        "required": ["name", "city", "state"],
+        "additionalProperties": False,
+    },
+    "country_origin": {
+        "type": "object",
+        "properties": {"country": {"type": "string"}},
+        "required": ["country"],
+        "additionalProperties": False,
+    },
+    "layout": {
+        "type": "object",
+        "properties": {
+            "fields": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {"type": "string"},
+                        "bbox": {"type": "array", "items": {"type": "integer"}},
+                    },
+                    "required": ["id", "bbox"],
+                    "additionalProperties": False,
+                },
+            }
+        },
+        "required": ["fields"],
+        "additionalProperties": False,
+    },
 }
 
 
@@ -1021,7 +1099,7 @@ git commit -m "feat(e3): GPT-4o tiebreaker with respx HTTP-layer recording"
 - Create: `tests/recordings/openai/gpt-4o-2024-08-06/v1/01-spirits-clean/{layout,brand_name,class_type,abv,net_contents,gov_warning,heading_typography,name_address,country_origin}.json` (9 recordings)
 - Test: `tests/test_vision_cloud_extraction.py`
 
-This task bundles 3 cycles:
+This task bundles 2 cycles (Semaphore + `_call_per_field` are folded into Cycle A — they're part of the extract() skeleton):
 **Cycle A**: layout pre-pass + per-field call dispatch (mocked to constants).
 **Cycle B**: `asyncio.Semaphore(4)` bulkhead enforcement.
 **Cycle C**: BRISQUE/NIQE short-circuit before extraction (`disposition=needs_better_photo` skips all 9 calls).
@@ -1076,12 +1154,21 @@ async def test_cloud_extracts_fr_001_to_008(monkeypatch):
         dimensions=Dimensions(width_px=200, height_px=200, dpi=300),
     )
     with respx.mock(base_url="https://api.openai.com") as mock_router:
-        # Map each per-field call to its recording. Implementation strategy:
-        # cloud.py issues calls in a deterministic order; tests mount per-name routes
-        # via the call's response_format.json_schema.name discriminator.
-        for path in RECORDINGS_DIR.glob("*.json"):
-            payload = json.loads(path.read_text())
-            mock_router.post("/v1/chat/completions").mock(return_value=Response(200, json=payload))
+        # Mount each recording as its OWN route, discriminated by the request body's
+        # `response_format.json_schema.name`. Same-URL respx routes match in
+        # registration order; a `side_effect` returning None falls through to the
+        # next route. This pattern is reused in T13/T15/T17 — see §Conventions.
+        def _mount(name: str, payload: dict) -> None:
+            def _handler(request):
+                body = json.loads(request.content)
+                if body.get("response_format", {}).get("json_schema", {}).get("name") == name:
+                    return Response(200, json=payload)
+                return None  # fall through
+            mock_router.post("/v1/chat/completions").mock(side_effect=_handler)
+
+        for path in sorted(RECORDINGS_DIR.glob("*.json")):
+            _mount(path.stem, json.loads(path.read_text()))
+
         observations = await extractor.extract(label)
     field_ids = {obs.field_id for obs in observations}
     assert field_ids == EXPECTED_FIELD_IDS
@@ -1103,15 +1190,11 @@ Each recording has the same shape as the T9 example with `content` as a JSON-enc
 | `name_address` | `{ "name": "ACME DISTILLERIES", "city": "FRANKFORT", "state": "KY" }` |
 | `country_origin` | `{ "country": "USA" }` |
 
-- [ ] **Cycle A — Step 3: Implement `CloudVisionExtractor.extract()`** issuing 1 layout call + 8 per-field calls in deterministic order; building `FieldObservation` from each response; populating `Evidence` with bbox from the layout call.
+- [ ] **Cycle A — Step 3: Implement `CloudVisionExtractor.extract()`** issuing 1 layout call + 8 per-field calls in deterministic order; building `FieldObservation` from each response; populating `Evidence` with bbox from the layout call. **Includes** the `asyncio.Semaphore(4)` instance attribute and the `_call_per_field(self, *, field_name: str, crop: bytes, label: Label) -> dict` private method (the bulkhead-test seam consumed by T16). Each call to `_call_per_field` does `async with self._semaphore:` around the OpenAI HTTP call. The Semaphore + helper land in this cycle (no separate cycle) — they're part of `extract()`'s skeleton, indirectly covered by the field-id-set assertion in this test, and directly tested by T16.
 
 - [ ] **Cycle A — Step 4: Run (PASS)** → **Step 5: Commit `feat(e3): CloudVisionExtractor with 9-call layout+per-field pipeline`**
 
-- [ ] **Cycle B — bulkhead**
-
-Add `tests/test_vision_bulkhead.py` test (covered in T16 — defer); for this cycle, just commit the `asyncio.Semaphore(4)` instance attribute and confirm the existing test still passes.
-
-- [ ] **Cycle C — quality short-circuit**
+- [ ] **Cycle B — quality short-circuit**
 
 Test: a `Label` with low-res image_bytes returns 1 `FieldObservation` carrying `disposition=needs_better_photo` and 0 OpenAI calls (assert `respx` route count == 0). Implementation: `extract()` calls `quality.assess()` first; if `disposition != "ok"`, returns `[FieldObservation(field_id="quality", upstream_meta={"disposition":..., "reason_code":...})]` without further calls. Commit: `feat(e3): cloud short-circuits on quality-gate failure`.
 
@@ -1190,7 +1273,8 @@ from __future__ import annotations
 from collections import deque
 
 from app.config import Settings
-from app.schemas.extracted import FieldObservation
+from app.schemas.expected import BeverageClass
+from app.schemas.extracted import Evidence, EvidenceSource, FieldObservation, MatchKind
 from app.schemas.label import Label
 from app.vision.paddle_runner import PaddleRunner
 from app.vision.swt import SWTRunner
@@ -1224,7 +1308,7 @@ class LocalVisionExtractor:
             return [
                 FieldObservation(
                     field_id="quality",
-                    beverage_class=label.face_tag,  # placeholder — refined when E5 wires beverage_class
+                    beverage_class=BeverageClass.SPIRITS,  # placeholder — refined when E5 wires beverage_class detection
                     observed_value=None,
                     evidence=(),
                     upstream_meta={
@@ -1296,8 +1380,6 @@ class LocalVisionExtractor:
         return max(matches, key=lambda c: c.score) if matches else None
 
     def _observation_from_candidate(self, field_id, cand, label):
-        from app.schemas.expected import BeverageClass
-        from app.schemas.extracted import Evidence, EvidenceSource, MatchKind
         return FieldObservation(
             field_id=field_id,
             beverage_class=BeverageClass.SPIRITS,  # E5 widens once class-detection lands
@@ -1316,8 +1398,6 @@ class LocalVisionExtractor:
         )
 
     def _observation_from_swt(self, field_id, swt_report, cands, label):
-        from app.schemas.expected import BeverageClass
-        from app.schemas.extracted import Evidence, EvidenceSource, MatchKind
         return FieldObservation(
             field_id=field_id,
             beverage_class=BeverageClass.SPIRITS,
@@ -1335,8 +1415,6 @@ class LocalVisionExtractor:
         )
 
     async def _tiebreak_field(self, label, field_id):
-        from app.schemas.expected import BeverageClass
-        from app.schemas.extracted import Evidence, EvidenceSource, MatchKind
         result = await self._tiebreak.run(crop=label.image_bytes, prompt=field_id)
         return FieldObservation(
             field_id=field_id,
@@ -1725,8 +1803,16 @@ async def test_both_impls_produce_same_field_id_set():
     cloud_ring = deque(maxlen=200)
     cloud = CloudVisionExtractor(settings=settings, ring_buffer=cloud_ring, api_key="sk-test")
     with respx.mock(base_url="https://api.openai.com") as router:
-        for path in RECORDINGS_DIR.glob("*.json"):
-            router.post("/v1/chat/completions").mock(return_value=Response(200, json=json.loads(path.read_text())))
+        # Closure-per-recording per §Conventions; same pattern as T10/T13/T17.
+        def _mount(name: str, payload: dict) -> None:
+            def _handler(request):
+                body = json.loads(request.content)
+                if body.get("response_format", {}).get("json_schema", {}).get("name") == name:
+                    return Response(200, json=payload)
+                return None
+            router.post("/v1/chat/completions").mock(side_effect=_handler)
+        for path in sorted(RECORDINGS_DIR.glob("*.json")):
+            _mount(path.stem, json.loads(path.read_text()))
         cloud_obs = await cloud.extract(_label())
 
     local_ring = deque(maxlen=200)
@@ -1849,8 +1935,16 @@ async def test_cloud_writes_9_call_records():
         dimensions=Dimensions(width_px=200, height_px=200, dpi=300),
     )
     with respx.mock(base_url="https://api.openai.com") as router:
-        for path in RECORDINGS_DIR.glob("*.json"):
-            router.post("/v1/chat/completions").mock(return_value=Response(200, json=json.loads(path.read_text())))
+        # Closure-per-recording per §Conventions; same pattern as T10/T13/T15.
+        def _mount(name: str, payload: dict) -> None:
+            def _handler(request):
+                body = json.loads(request.content)
+                if body.get("response_format", {}).get("json_schema", {}).get("name") == name:
+                    return Response(200, json=payload)
+                return None
+            router.post("/v1/chat/completions").mock(side_effect=_handler)
+        for path in sorted(RECORDINGS_DIR.glob("*.json")):
+            _mount(path.stem, json.loads(path.read_text()))
         await extractor.extract(label)
     assert len(ring) == 9
     stages = [r.stage for r in ring]
