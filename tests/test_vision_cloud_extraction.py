@@ -53,3 +53,35 @@ async def test_cloud_extracts_fr_001_to_008(monkeypatch):
     field_ids = {obs.field_id for obs in observations}
     assert field_ids == EXPECTED_FIELD_IDS
     assert len(ring) == 9  # 1 layout + 8 per-field calls
+
+
+@pytest.mark.asyncio
+async def test_cloud_short_circuits_on_quality_failure(monkeypatch):
+    settings = Settings()
+    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
+    ring = deque(maxlen=200)
+    extractor = CloudVisionExtractor(settings=settings, ring_buffer=ring, api_key="sk-test")
+    from PIL import Image
+    from io import BytesIO
+    img = Image.new("L", (32, 32), color=128)
+    buf = BytesIO()
+    img.save(buf, "PNG")
+    bad_bytes = buf.getvalue()
+
+    label = Label(
+        label_id="L-002",
+        batch_id="B-001",
+        image_bytes=bad_bytes,
+        content_type="image/png",
+        face_tag="front",
+        dimensions=None,
+    )
+    # assert_all_called=False because the whole point is that the route is
+    # registered but never hit (short-circuit fires before any HTTP call).
+    with respx.mock(base_url="https://api.openai.com", assert_all_called=False) as mock_router:
+        route = mock_router.post("/v1/chat/completions").mock(return_value=Response(200, json={}))
+        observations = await extractor.extract(label)
+        assert route.call_count == 0  # NO openai calls when quality fails
+    assert len(observations) == 1
+    assert observations[0].field_id == "quality"
+    assert observations[0].upstream_meta["disposition"] == "needs_better_photo"
