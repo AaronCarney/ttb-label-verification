@@ -1,0 +1,115 @@
+rule_pack: wine
+rule_pack_version: "0.1.0"
+rules:
+  - rule_id: wine.brand.present
+    cfr_citation: "27 CFR §4.32(a)(1), §4.33"
+    applies_to_classes: [wine]
+    reason_code: BRAND.PRESENCE.MISSING
+    severity: reject
+    match_policy: fuzzy
+    validator: fuzzy_brand
+    parameters:
+      pass_threshold: 0.92
+      needs_review_threshold: 0.85
+      needs_review_reason_code: BRAND.NAME.NEEDS_REVIEW
+    evidence_required: [brand]
+    effective_date: "1936-12-15"
+    test_fixtures: [F-WINE-BRAND-PASS-01, F-WINE-BRAND-MISSING-01]
+
+  - rule_id: wine.class_type.present
+    cfr_citation: "27 CFR §4.32(a)(2), §4.34"
+    applies_to_classes: [wine]
+    reason_code: CLASS_TYPE.PRESENCE.MISSING
+    severity: reject
+    match_policy: lookup
+    validator: enumerated_match
+    parameters:
+      allowed_values: ["Table Wine", "Light Wine", "Dessert Wine", "Sparkling Wine", "Sherry"]
+    evidence_required: [class_type]
+    effective_date: "1936-12-15"
+    test_fixtures: [F-WINE-CLASS-PASS-01, F-WINE-CLASS-MISSING-01]
+
+  - rule_id: wine.alcohol.present_or_table
+    cfr_citation: "27 CFR §4.32(b)(1), §4.36(a)"
+    applies_to_classes: [wine]
+    reason_code: ALCOHOL_CONTENT.PRESENCE.MISSING
+    severity: reject
+    match_policy: exact
+    validator: conditional_presence
+    parameters:
+      required_when: abv_required
+    evidence_required: [alc_text]
+    effective_date: "1936-12-15"
+    test_fixtures: [F-WINE-ALC-PRESENT-01, F-WINE-ALC-MISSING-01]
+
+  - rule_id: wine.alcohol.format
+    cfr_citation: "27 CFR §4.36(b)(1)"
+    applies_to_classes: [wine]
+    reason_code: ALCOHOL_CONTENT.FORMAT.INVALID
+    severity: reject
+    match_policy: regex
+    validator: regex_match
+    parameters:
+      pattern: '^\s*(?:alcohol|alc\.?)\s*[0-9]{1,2}(?:\.[0-9]+)?\s*%?\s*(?:by\s+volume|/\s*vol\.?|vol\.?)\s*$'
+      ignore_case: true
+    evidence_required: [alc_text]
+    effective_date: "1936-12-15"
+    test_fixtures: [F-WINE-ALC-FORMAT-PASS-01, F-WINE-ALC-FORMAT-FAIL-01]
+
+  - rule_id: wine.alcohol.tolerance_band
+    cfr_citation: "27 CFR §4.36(b)(1)"
+    applies_to_classes: [wine]
+    reason_code: ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND
+    severity: reject
+    match_policy: tolerance
+    validator: abv_band
+    parameters:
+      # FR-214 / L1 §2.2: tolerance is class-aware. ≤14% labeled gets ±1.5 pp;
+      # >14% labeled gets the tighter ±1.0 pp band. Encoded in YAML per D-006
+      # (tolerance values come from the rule pack, not Python constants).
+      class_boundary_pct: 14.0
+      tolerance_by_class_boundary:
+        "<=": {plus_pp: 1.5, minus_pp: 1.5}
+        ">":  {plus_pp: 1.0, minus_pp: 1.0}
+    evidence_required: [abv]
+    effective_date: "1988-07-18"
+    test_fixtures:
+      - F-WINE-ALC-12-PASS-01
+      - F-WINE-ALC-12-FAIL-LOW-01
+      - F-WINE-ALC-16-PASS-01
+      - F-WINE-ALC-16-FAIL-OVER-01
+
+  - rule_id: wine.alcohol.no_class_boundary_cross
+    cfr_citation: "27 CFR §4.36(c)"
+    applies_to_classes: [wine]
+    reason_code: ALCOHOL_CONTENT.TOLERANCE.CROSSES_CLASS_BOUNDARY
+    severity: reject
+    match_policy: tolerance
+    validator: abv_class_boundary_check
+    parameters:
+      class_boundary_pct: 14.0
+    evidence_required: [abv]
+    effective_date: "1988-07-18"
+    test_fixtures: [F-WINE-ALC-13-5-LABEL-14-5-ACTUAL-FAIL-01]
+
+  - rule_id: wine.name_address.present
+    cfr_citation: "27 CFR §4.32(a)(3), §4.35"
+    applies_to_classes: [wine]
+    reason_code: NAME_ADDRESS.PRESENCE.MISSING
+    severity: reject
+    match_policy: exact
+    validator: presence_check
+    evidence_required: [bottler]
+    effective_date: "1936-12-15"
+    test_fixtures: [F-WINE-NAME-PASS-01, F-WINE-NAME-MISSING-01]
+
+  - rule_id: wine.net_contents.present
+    cfr_citation: "27 CFR §4.32(b)(2), §4.37"
+    applies_to_classes: [wine]
+    reason_code: NET_CONTENTS.PRESENCE.MISSING
+    severity: reject
+    match_policy: exact
+    validator: presence_check
+    evidence_required: [net_contents]
+    effective_date: "1936-12-15"
+    test_fixtures: [F-WINE-NET-PASS-01, F-WINE-NET-MISSING-01]
