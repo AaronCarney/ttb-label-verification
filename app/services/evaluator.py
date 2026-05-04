@@ -62,7 +62,16 @@ class Evaluator:
             ).hexdigest()
             cached = self._cache.get(cache_key)
             if cached is not None:
-                return cached.model_copy(update={"evaluation_id": application.evaluation_id})
+                # AC #12: evaluation_id consistency requires patching the nested
+                # audit_trail too — top-level model_copy alone leaves
+                # audit_trail.evaluation_id pointing at the cold-path UUID.
+                new_audit = cached.audit_trail.model_copy(
+                    update={"evaluation_id": application.evaluation_id}
+                )
+                return cached.model_copy(update={
+                    "evaluation_id": application.evaluation_id,
+                    "audit_trail": new_audit,
+                })
 
         sla = getattr(self, "_sla_seconds", self._DEFAULT_SLA_SECONDS)
         try:

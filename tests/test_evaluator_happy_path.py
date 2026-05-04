@@ -74,4 +74,6 @@ async def test_cache_hit_replaces_evaluation_id():
 
     assert len(vision_calls) == 1, "cache miss: vision called twice"
     assert e2.evaluation_id == "EV-2"
+    assert e2.audit_trail.evaluation_id == "EV-2", \
+        "AC #12: cache hit must patch audit_trail.evaluation_id, not just envelope-level"
     assert e1.disposition == e2.disposition
