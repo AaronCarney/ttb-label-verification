@@ -52,6 +52,26 @@ async def test_orchestrator_invoked_on_brand_needs_review():
                   payload={"decision": "match", "justification": "phonetic"}),
     ))
     orch = FakeOrchestrator(refined_outputs=[canned])
-    e = Evaluator(vision=FakeVisionExtractor(observations=[]), rules=rules, orchestrator=orch, settings=Settings())
+    e = Evaluator(vision=FakeVisionExtractor(observations=[]), rules=rules, orchestrator=orch,
+                  settings=Settings(orchestrator_enabled=True))
     await e.evaluate(application=Application(application_id="A", evaluation_id="EV-001"), label=_stub_label())
     assert orch.call_count == 1
+
+
+@pytest.mark.asyncio
+async def test_orchestrator_skipped_when_disabled_even_on_trigger():
+    """Master-switch contract: settings.orchestrator_enabled=False bars
+    invocation even when the brand-needs-review trigger code is present.
+    Default for the demo path. FR-303 already locks the model out of the
+    verdict; this is defense-in-depth for the firewall + cost story."""
+    rules = FakeRuleEngine(results=(
+        ValidationResult(rule_id="X.brand.present", cfr_citation="27 CFR §5.42",
+                         beverage_class=BeverageClass.SPIRITS, outcome=Outcome.INSUFFICIENT_EVIDENCE,
+                         severity=Severity.WARN, reason_code="BRAND.NAME.NEEDS_REVIEW",
+                         aggregated_confidence=0.6, engine_meta=_em()),
+    ))
+    orch = FakeOrchestrator()
+    e = Evaluator(vision=FakeVisionExtractor(observations=[]), rules=rules, orchestrator=orch,
+                  settings=Settings(orchestrator_enabled=False))
+    await e.evaluate(application=Application(application_id="A", evaluation_id="EV-001"), label=_stub_label())
+    assert orch.call_count == 0

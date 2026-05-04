@@ -156,10 +156,17 @@ class Evaluator:
             )
             results = ()
 
-        # Step 5-6: orchestrator (conditional) + FR-303 patching
+        # Step 5-6: orchestrator (conditional) + FR-303 patching.
+        # Master switch: settings.orchestrator_enabled gates the entire
+        # AI-on-the-hot-path layer. Default OFF — the brief required AI but
+        # every check on the requirements list is deterministic, and Marcus
+        # flagged outbound-LLM traffic as firewall-hostile. FR-303 already
+        # bars the model from touching outcome/severity/reason_code; the
+        # switch is the additional defense-in-depth that keeps the demo
+        # zero-LLM-call by default.
         from app.services.patcher import patch_validation_results
         from app.services.triggers import should_invoke_orchestrator
-        if should_invoke_orchestrator(results):
+        if self._settings.orchestrator_enabled and should_invoke_orchestrator(results):
             t_orch = time.monotonic()
             try:
                 refined = await self._orchestrator.refine(application, list(observations), list(results))

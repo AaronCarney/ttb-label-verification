@@ -144,7 +144,8 @@ async def test_fr912_model_unavailable():
                          aggregated_confidence=0.6, engine_meta=_em()),
     ))
     orch = FakeOrchestrator(refined_outputs=[], raise_on_call=1)
-    e = Evaluator(vision=FakeVisionExtractor(observations=[]), rules=rules, orchestrator=orch, settings=Settings())
+    e = Evaluator(vision=FakeVisionExtractor(observations=[]), rules=rules, orchestrator=orch,
+                  settings=Settings(orchestrator_enabled=True))
     envelope = await e.evaluate(application=_stub_app(), label=_stub_label())
     assert envelope.disposition == "needs_review"
     rule_ids = {entry.rule_id for entry in envelope.audit_trail.per_rule_trace}

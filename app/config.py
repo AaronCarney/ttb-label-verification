@@ -38,6 +38,14 @@ class Settings(BaseSettings):
         default="openai", alias="ORCHESTRATOR_BACKEND"
     )
 
+    # Orchestrator-on-the-hot-path master switch. Default OFF: the brief
+    # called for AI-powered verification but every hard requirement is a
+    # deterministic check, and Marcus flagged outbound-LLM traffic as
+    # firewall-hostile. The seam is wired (FR-303 contract bars the model
+    # from touching outcome/severity/reason_code), but the model does not
+    # run during the default demo. Flip ORCHESTRATOR_ENABLED=1 to enable.
+    orchestrator_enabled: bool = Field(default=False, alias="ORCHESTRATOR_ENABLED")
+
     # Secrets — required at request time when the corresponding seam is invoked.
     openai_api_key: str | None = Field(default=None, alias="OPENAI_API_KEY")
     anthropic_api_key: str | None = Field(default=None, alias="ANTHROPIC_API_KEY")
