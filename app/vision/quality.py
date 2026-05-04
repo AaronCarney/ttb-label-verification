@@ -14,13 +14,17 @@ import numpy as np
 from PIL import Image
 from pydantic import BaseModel, ConfigDict
 
-from app.schemas.label import Label
+from app.schemas.label import Dimensions, Label
 
 LOW_RES_VARIANCE_MIN = 50.0
 GLARE_PIXEL_RATIO_MAX = 0.15
 GLARE_LUMINANCE_THRESHOLD = 240
 GLARE_BACKGROUND_MEDIAN_MAX = 240
 MOTION_BLUR_HIGHFREQ_MIN = 0.30
+
+_EXIF_X_RESOLUTION = 282
+_EXIF_Y_RESOLUTION = 283
+_EXIF_RESOLUTION_UNIT = 296  # 2=inch, 3=cm
 
 
 class QualityReport(BaseModel):
@@ -51,15 +55,43 @@ def _highfreq_ratio(gray: np.ndarray) -> float:
     return float(mag[high_mask].sum() / total) if total > 0 else 0.0
 
 
+def _extract_dpi(image_bytes: bytes, dimensions: Dimensions | None) -> int | None:
+    """Try sources in order: PIL info["dpi"] (PNG pHYs / JFIF) → EXIF
+    XResolution/YResolution → applicant Dimensions.dpi → None."""
+    img = Image.open(io.BytesIO(image_bytes))
+
+    info_dpi = img.info.get("dpi")
+    if info_dpi:
+        x = float(info_dpi[0])
+        if x > 0:
+            return int(round(x))
+
+    exif = img.getexif()
+    x_res = exif.get(_EXIF_X_RESOLUTION)
+    if x_res:
+        unit = exif.get(_EXIF_RESOLUTION_UNIT, 2)
+        x_val = float(x_res)
+        if x_val > 0:
+            if unit == 3:  # cm → convert to inch
+                x_val *= 2.54
+            return int(round(x_val))
+
+    if dimensions is not None and dimensions.dpi is not None:
+        return dimensions.dpi
+
+    return None
+
+
 def assess(label: Label) -> QualityReport:
     """Run vision quality gates against a Label and return a QualityReport."""
     gray = _decode_grayscale(label.image_bytes)
+    dpi = _extract_dpi(label.image_bytes, label.dimensions)
 
     if cv2.Laplacian(gray, cv2.CV_64F).var() < LOW_RES_VARIANCE_MIN:
         return QualityReport(
             disposition="needs_better_photo",
             reason_code="WARNING.LEGIBILITY.LOW_RESOLUTION",
-            dpi=300,
+            dpi=dpi,
         )
 
     overexposed_ratio = float((gray > GLARE_LUMINANCE_THRESHOLD).sum()) / gray.size
@@ -71,14 +103,14 @@ def assess(label: Label) -> QualityReport:
         return QualityReport(
             disposition="needs_better_photo",
             reason_code="WARNING.LEGIBILITY.GLARE",
-            dpi=300,
+            dpi=dpi,
         )
 
     if _highfreq_ratio(gray) < MOTION_BLUR_HIGHFREQ_MIN:
         return QualityReport(
             disposition="needs_better_photo",
             reason_code="WARNING.LEGIBILITY.MOTION_BLUR",
-            dpi=300,
+            dpi=dpi,
         )
 
-    return QualityReport(disposition="ok", reason_code=None, dpi=300)
+    return QualityReport(disposition="ok", reason_code=None, dpi=dpi)
