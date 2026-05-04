@@ -140,12 +140,7 @@ def test_validation_result_round_trip() -> None:
 def test_refined_round_trip() -> None:
     from app.schemas.refined import Refined
 
-    r = Refined(
-        evaluation_id="00000000-0000-4000-8000-000000000001",
-        task="brand_borderline",
-        text="Stone's Throw vs Stones Throw — punctuation only.",
-        model_disposition="pass",
-    )
+    r = Refined(evaluation_id="00000000-0000-4000-8000-000000000001")
     r2 = Refined.model_validate_json(r.model_dump_json())
     assert r2 == r
 
