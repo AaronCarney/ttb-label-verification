@@ -12,12 +12,22 @@ from __future__ import annotations
 import pytest
 from fastapi.testclient import TestClient
 
+from app.api.ui import _get_settings
+from app.config import Settings
 from app.main import create_app
 
 
 @pytest.fixture
 def client() -> TestClient:
     return TestClient(create_app())
+
+
+@pytest.fixture
+def dev_client() -> TestClient:
+    """Client with DEV_MODE=1 forced via dependency override (D-019)."""
+    app = create_app()
+    app.dependency_overrides[_get_settings] = lambda: Settings(DEV_MODE="1")
+    return TestClient(app)
 
 
 def test_healthz_still_passes(client: TestClient) -> None:
@@ -52,6 +62,21 @@ def test_static_island_mount(client: TestClient) -> None:
     response = client.get("/static/island/style.css")
     assert response.status_code == 200
     assert response.headers["content-type"].startswith("text/css")
+
+
+def test_dev_mode_off_by_default(client: TestClient) -> None:
+    """RawJSONDrawer guard (single.tsx) reads body[data-dev-mode] — default is '0'."""
+    response = client.get("/")
+    assert 'data-dev-mode="0"' in response.text
+
+
+def test_dev_mode_on_when_settings_enabled(dev_client: TestClient) -> None:
+    """When DEV_MODE=1, the body attribute lets the React island render the
+    RawJSONDrawer (D-019, FR-508). Single + batch shells both honour it."""
+    single = dev_client.get("/")
+    assert 'data-dev-mode="1"' in single.text
+    batch = dev_client.get("/batch/abc-123")
+    assert 'data-dev-mode="1"' in batch.text
 
 
 def test_uswds_skip_link_present(client: TestClient) -> None:

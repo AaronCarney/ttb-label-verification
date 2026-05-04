@@ -12,7 +12,7 @@
     <title>{% block title %}TTB Label Verification{% endblock %}</title>
     <link rel="stylesheet" href="/static/island/style.css" />
   </head>
-  <body>
+  <body data-dev-mode="{{ '1' if dev_mode else '0' }}">
     <a class="skip-link" href="#main">Skip to main content</a>
     <header role="banner">
       <h1>TTB Label Verification</h1>
