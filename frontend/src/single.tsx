@@ -145,13 +145,46 @@ function _readEnvelope(): DispositionEnvelope | null {
 export function mount(): void {
   const root = document.getElementById("root");
   if (!root) return;
-  const envelope = _readEnvelope();
-  createRoot(root).render(
-    <React.StrictMode>
-      <SingleApp envelope={envelope} />
-    </React.StrictMode>,
-  );
+  const reactRoot = createRoot(root);
+  const render = (envelope: DispositionEnvelope | null): void => {
+    reactRoot.render(
+      <React.StrictMode>
+        <SingleApp envelope={envelope} />
+      </React.StrictMode>,
+    );
+  };
+  const initial = _readEnvelope();
+  render(initial);
   root.setAttribute("data-mounted", "true");
+  if (initial === null) {
+    _waitForEnvelope((envelope) => render(envelope));
+  }
+}
+
+// Handles a race where the envelope <script> tag is injected after the island
+// module evaluates (e.g. Playwright's page.add_init_script with a
+// DOMContentLoaded listener, future SSE/router-driven hydration). Watches the
+// document for a <script id="envelope"> addition and re-renders. Self-cleans
+// after 5s to avoid leaking observers in production.
+function _waitForEnvelope(onArrival: (envelope: DispositionEnvelope) => void): void {
+  if (typeof MutationObserver === "undefined") return;
+  let settled = false;
+  const observer = new MutationObserver(() => {
+    if (settled) return;
+    const envelope = _readEnvelope();
+    if (envelope !== null) {
+      settled = true;
+      observer.disconnect();
+      onArrival(envelope);
+    }
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+  setTimeout(() => {
+    if (!settled) {
+      settled = true;
+      observer.disconnect();
+    }
+  }, 5000);
 }
 
 if (typeof document !== "undefined") {
