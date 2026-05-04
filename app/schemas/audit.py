@@ -30,7 +30,7 @@ class OverrideEntry(BaseModel):
 
     model_config = ConfigDict(extra="forbid", frozen=True)
 
-    field_name: str
+    field_name: str | None = None
     original_disposition: Literal["pass", "fail", "needs_review"]
     applied_disposition: Literal["pass", "fail", "needs_review"]
     reason_code: str
