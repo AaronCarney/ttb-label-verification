@@ -1,7 +1,8 @@
 {# app/ui/templates/base.html — global page shell.
    Owners: E7 (L1 §2.1).
    ARIA semantics — skip-link to #main, footer landmark. USWDS tokens preloaded
-   from /static/island/single.css (or batch.css; Jinja interpolates per page). #}
+   from /static/island/style.css (Vite emits one CSS bundle for all entries
+   with cssCodeSplit:false — see frontend/vite.config.ts). #}
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light only" />
     <title>{% block title %}TTB Label Verification{% endblock %}</title>
-    <link rel="stylesheet" href="/static/island/{% block bundle_name %}single{% endblock %}.css" />
+    <link rel="stylesheet" href="/static/island/style.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
