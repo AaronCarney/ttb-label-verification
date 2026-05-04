@@ -323,7 +323,7 @@ if __name__ == "__main__":
 
 **PRD §8.1 reference.** Image quality below threshold — Evaluator's legibility short-circuit fires before rules.
 
-**Exercises.** `app.vision.quality.assess` returns `needs_better_photo`; Evaluator routes disposition to `needs_review` with `ENGINE.EXTRACTION.UNAVAILABLE` reason code (per `app/services/evaluator.py` short-circuit branch).
+**Exercises.** `app.vision.quality.assess` returns `needs_better_photo`; Evaluator routes disposition to `needs_review` and propagates `quality.reason_code` — one of `WARNING.LEGIBILITY.{LOW_RESOLUTION, MOTION_BLUR, GLARE}` per `app/vision/quality.py` thresholds (low-res-variance < 50 or motion-blur high-frequency-energy < 0.30 fires for this canvas; the glare hotspot is decorative, not the trigger). See `app/services/evaluator.py:120-136` short-circuit branch.
 
 **Existing assets.** `expected.json` (committed; empty array `[]` — no expected values since OCR is not expected to succeed). This task ADDS `label.png` (built by `scripts/build_fixture_04.py`) + `notes.md`.
 
@@ -773,7 +773,12 @@ def test_canonicalization_idempotent_on_unchanged_snapshot(tmp_path):
             "per_rule_trace": [],
             "overrides": [],
         },
-        "metrics": {"total_duration_ms": 1, "per_rule": []},
+        "metrics": {
+            "total_duration_ms": 1,
+            "per_rule_durations_ms": [],
+            "vision_duration_ms": 0,
+            "orchestrator_duration_ms": 0,
+        },
     }
     (target / "envelope.json").write_text(
         json.dumps(seed, indent=2, sort_keys=True) + "\n"
@@ -1270,13 +1275,14 @@ async def test_fixture_07_borderline_band():
     )
 ```
 
-- [ ] **Step 2: Append fixture-02 + fixture-07 parametrize cases to existing AC test**
+- [ ] **Step 2: Extend the existing AC parametrize block with fixture-02 + fixture-07**
 
-Edit `tests/test_ac_fixture_coverage.py`. The current file parametrizes over fixtures 01/03/04/06 (line 60-65). Append two new rows to the parametrize list:
+Edit `tests/test_ac_fixture_coverage.py`. The current file parametrizes over fixtures 01/03/04/06 (line 60-65). Replace that block with the 6-row list below — the original 4 rows are preserved verbatim (same fixture IDs, dispositions, field counts, and `_UPSTREAM_VISION_REPLAY` markers); only fixture-02 and fixture-07 are new. Do NOT drop or reorder the existing rows.
 
 ```python
 # In tests/test_ac_fixture_coverage.py, replace the existing @pytest.mark.parametrize
-# block at line 60-65 with:
+# block at line 60-65 with the 6-row list below (4 existing rows preserved verbatim
+# + 2 new rows for fixture-02 and fixture-07):
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("fixture_id, expected_disposition, expected_field_count", [
