@@ -66,7 +66,35 @@ class Evaluator:
             )
             return self._short_circuit(application, label, timeline, quality.reason_code, t_total)
 
-        # Cycle B placeholder (will be replaced by Cycle C/D)
+        # Step 3-4: rules
+        started_at_ms = int(time.monotonic() * 1000)
+        ctx = self._rules.build_validator_context(started_at_ms=started_at_ms)
+        expected = tuple(application.expected_values)
+        results = await self._rules.evaluate(observations, expected, ctx)
+
+        # Step 5-6: orchestrator (conditional) + FR-303 patching
+        from app.services.patcher import patch_validation_results
+        from app.services.triggers import should_invoke_orchestrator
+        if should_invoke_orchestrator(results):
+            t_orch = time.monotonic()
+            try:
+                refined = await self._orchestrator.refine(application, list(observations), list(results))
+                results = patch_validation_results(results, refined)
+            except Exception as e:  # noqa: BLE001
+                timeline.record_failure(
+                    reason_code="ENGINE.MODEL.UNAVAILABLE",
+                    message=str(e), exception_class=type(e).__name__,
+                )
+            finally:
+                timeline.record_orchestrator_done(int((time.monotonic() - t_orch) * 1000))
+
+        # Surface failures into per_rule_trace so AuditRecorder picks them up.
+        for failure in timeline.failures:
+            timeline.record_rule_done(rule_id=failure.reason_code, duration_ms=0,
+                                      disposition="needs_review",
+                                      evidence_ref=f"engine_failure/{failure.exception_class}")
+
+        # Cycle B placeholder (will be replaced by Cycle D)
         timeline.finish(total_duration_ms=int((time.monotonic() - t_total) * 1000))
         envelope_for_hash = {"evaluation_id": application.evaluation_id, "disposition": "pass", "fields": []}
         audit = AuditRecorder().assemble(timeline=timeline, application=application, label=label,
