@@ -40,3 +40,12 @@ def test_low_resolution_triggers_warning():
     report = assess(_label(_png_bytes(arr)))
     assert report.disposition == "needs_better_photo"
     assert report.reason_code == "WARNING.LEGIBILITY.LOW_RESOLUTION"
+
+
+def test_glare_triggers_warning():
+    rng = np.random.default_rng(1)
+    arr = (rng.random((200, 200)) * 100 + 50).astype(np.uint8)
+    arr[:100, :100] = 255  # 25% overexposed (>15%)
+    report = assess(_label(_png_bytes(arr)))
+    assert report.disposition == "needs_better_photo"
+    assert report.reason_code == "WARNING.LEGIBILITY.GLARE"

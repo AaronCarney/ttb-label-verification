@@ -17,6 +17,9 @@ from pydantic import BaseModel, ConfigDict
 from app.schemas.label import Label
 
 LOW_RES_VARIANCE_MIN = 50.0
+GLARE_PIXEL_RATIO_MAX = 0.15
+GLARE_LUMINANCE_THRESHOLD = 240
+GLARE_BACKGROUND_MEDIAN_MAX = 240
 
 
 class QualityReport(BaseModel):
@@ -42,6 +45,18 @@ def assess(label: Label) -> QualityReport:
         return QualityReport(
             disposition="needs_better_photo",
             reason_code="WARNING.LEGIBILITY.LOW_RESOLUTION",
+            dpi=300,
+        )
+
+    overexposed_ratio = float((gray > GLARE_LUMINANCE_THRESHOLD).sum()) / gray.size
+    background_median = float(np.median(gray))
+    if (
+        overexposed_ratio > GLARE_PIXEL_RATIO_MAX
+        and background_median < GLARE_BACKGROUND_MEDIAN_MAX
+    ):
+        return QualityReport(
+            disposition="needs_better_photo",
+            reason_code="WARNING.LEGIBILITY.GLARE",
             dpi=300,
         )
 
