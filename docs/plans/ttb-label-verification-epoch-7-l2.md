@@ -198,16 +198,17 @@ Every file the plan creates or modifies, paired with the task that owns it. Disj
 | 3 | T8, T9, T10, T11, T12, T13 | **6 (cap)** | W2 |
 | 4 | T14, T15, T16, T17, T18, T19 | **6 (cap)** | W3 |
 | 5 | T20, T21, T22, T23, T24 | 5 | W3 (most), W4 (T23 reads DispositionPill from W3 only) |
-| 6 | T25, T26, T27, T28 | 4 | W5 |
-| 7 | T29, T30, T31, T32, T33 | 5 | W6 |
+| 6a | T25, T26 | 2 | W5 |
+| 6b | T27, T28 | 2 | W6a |
+| 7 | T29, T30, T31, T32, T33 | 5 | W6b |
 | 8 | T34 | 1 (sequential, final) | W7 |
 
 **Wave-level dependency notes:**
 - W3 primitives have **no inter-task dependencies** within the wave (each is a leaf component) — full executor parallelism.
 - W4 containers each depend on one or more W3 primitives. Within the wave, no two W4 tasks share a write surface (each task creates its own `Foo.tsx` + `Foo.test.tsx`).
 - W5: T20–T23 are leaf components or compose-only; T24 (`useKeyboardShortcuts`) is a pure hook with no component deps.
-- W6: T25 `OverrideDrawer` reads T20 `ReasonCodePicker` + T24 `useKeyboardShortcuts`. T26 `useBatchStream` is independent. T27 / T28 entry points read everything below them.
-- W7 tests depend on all components + entry points being on disk. T33 also depends on T34's build, so T33's test is structured to RUN the build itself (`pnpm build`) and assert the diff is clean — meaning T33 doesn't *depend* on a prior commit of `app/ui/static/island/`, it produces the diff fresh.
+- **W6 split into W6a / W6b** (parallel-planning audit, v0.2): T27 imports T25 `OverrideDrawer` and T28 imports T26 `useBatchStream` — running all four tasks in one wave is a same-wave race because T27 / T28 read symbols that T25 / T26 are creating concurrently. W6a (T25 `OverrideDrawer` reads T20 + T24; T26 `useBatchStream` reads T1 + T5) lands first; W6b (T27 single entry point; T28 batch entry point) follows.
+- W7 tests depend on all components + entry points being on disk. **Conftest race fix (v0.2):** the `pnpm_built_island` Playwright session fixture now lives in T7 (W2) alongside `live_server` — T29/T30/T31/T32 all consume it as a read-only dependency, so no two W7 tasks contend on `tests/conftest.py`. T33 also depends on T34's build, so T33's test is structured to RUN the build itself (`pnpm build`) and assert the diff is clean — meaning T33 doesn't *depend* on a prior commit of `app/ui/static/island/`, it produces the diff fresh.
 - **W8 is mechanical and sequential**: run `pnpm build`, stage the artifacts, commit. No new test code; ensures `tests/test_island_build_clean.py` is green on the *post-T34* state.
 
 ## 6. Pre-flight: verify worktree baseline
@@ -1871,10 +1872,13 @@ Add `playwright` and `pytest-playwright` to dev deps; add a session-scoped `live
   """Shared pytest fixtures."""
   from __future__ import annotations
   
+  import shutil
   import socket
+  import subprocess
   import threading
   import time
   from collections.abc import Iterator
+  from pathlib import Path
   
   import pytest
   import uvicorn
@@ -1937,9 +1941,29 @@ Add `playwright` and `pytest-playwright` to dev deps; add a session-scoped `live
   @pytest.fixture(scope="session")
   def live_server_url(live_server: _LiveServer) -> str:
       return live_server.url
+  
+  
+  @pytest.fixture(scope="session")
+  def pnpm_built_island() -> Path:
+      """Build the React island once per session; return the output dir.
+  
+      Consumed by T29/T30/T31/T32 (Wave 7). Lives in T7 (Wave 2) instead of
+      Wave 7 to keep tests/conftest.py owned by a single task — otherwise
+      multiple W7 tasks would race on the same file.
+      """
+      root = Path(__file__).resolve().parent.parent
+      frontend = root / "frontend"
+      pnpm = shutil.which("pnpm")
+      if pnpm is None:
+          pytest.skip("pnpm not on PATH")
+      subprocess.run([pnpm, "install", "--frozen-lockfile"], cwd=frontend, check=True)
+      subprocess.run([pnpm, "build"], cwd=frontend, check=True)
+      out_dir = root / "app" / "ui" / "static" / "island"
+      assert (out_dir / "single.js").exists(), "vite build did not produce single.js"
+      return out_dir
   ```
 
-  **Important:** check whether `tests/conftest.py` already exists with content. If yes, **append** the live-server block — do not overwrite the existing file. The Playwright `page` fixture comes from `pytest-playwright` (no manual definition needed).
+  **Important:** check whether `tests/conftest.py` already exists with content. If yes, **append** the three fixtures (`live_server`, `live_server_url`, `pnpm_built_island`) — do not overwrite the existing file. The Playwright `page` fixture comes from `pytest-playwright` (no manual definition needed). The `pnpm_built_island` fixture is consumed by Wave 7 tests (T29–T32) but introduced here in T7 (W2) to avoid a same-wave conftest race within W7.
 
 - [ ] **Step 6: Run the smoke test (Green).**
 
@@ -4854,14 +4878,13 @@ Mounts on `<div id="root" data-mode="batch" data-batch-id="…">`; subscribes vi
 
 All Wave 7 tests use the `live_server` + `page` fixtures from T7. They render real Jinja shells against the LIVE built island bundle in `app/ui/static/island/`. Since the bundle is committed only by Wave 8 (T34), Wave 7 includes a `pnpm build` invocation in each test's `live_server` fixture initialization (cheap — Vite is fast). The test bodies use Playwright `route.fulfill()` to stub server data calls (which would otherwise reach E5/E6 routes that don't exist).
 
-**Pre-test build hook.** A session-scoped autouse fixture in `tests/conftest.py` runs `pnpm build` once before the Playwright session. The Wave 7 tasks ADD this fixture to conftest.py (T29 owns the conftest edit; T30–T33 reuse it).
+**Pre-test build hook.** The session-scoped `pnpm_built_island` fixture in `tests/conftest.py` runs `pnpm build` once before the Playwright session. **It is owned by T7 (W2)** — the Wave 7 tasks (T29–T32) consume it as a read-only session fixture. This avoids a same-wave race on `tests/conftest.py` that would otherwise occur if multiple W7 tasks all tried to add fixtures to it.
 
 ### Task T29 — Playwright + axe-core full-page a11y test
 
 **Wave:** 7
-**Depends on:** T7 (live_server), all components, T27/T28 (entry points)
+**Depends on:** T7 (live_server + pnpm_built_island), all components, T27/T28 (entry points)
 **Owns (creates):** `tests/test_a11y_axe.py`.
-**Owns (modifies):** `tests/conftest.py` (additive — `pnpm_built_island` autouse session fixture).
 
 The test:
 1. The `pnpm_built_island` fixture runs `pnpm build` once at session start.
@@ -4873,30 +4896,9 @@ Because we can't modify `app/api/ui.py` to read query strings AFTER E7 ships (la
 
 The test asserts `axe.run({ runOnly: ['wcag2a', 'wcag2aa'] })` returns `violations.length === 0` for every envelope.
 
-- [ ] **Step 1: Add the build-once fixture to `tests/conftest.py` (additive append).**
+> **Note (v0.2):** the `pnpm_built_island` fixture is defined by T7 (W2). T29 only consumes it. No `tests/conftest.py` edit happens in this task.
 
-  ```python
-  import os
-  import shutil
-  import subprocess
-  from pathlib import Path
-  
-  @pytest.fixture(scope="session", autouse=False)
-  def pnpm_built_island(tmp_path_factory: pytest.TempPathFactory) -> Path:
-      """Build the React island once per session; return the output dir."""
-      root = Path(__file__).resolve().parent.parent
-      frontend = root / "frontend"
-      pnpm = shutil.which("pnpm")
-      if pnpm is None:
-          pytest.skip("pnpm not on PATH")
-      subprocess.run([pnpm, "install", "--frozen-lockfile"], cwd=frontend, check=True)
-      subprocess.run([pnpm, "build"], cwd=frontend, check=True)
-      out_dir = root / "app" / "ui" / "static" / "island"
-      assert (out_dir / "single.js").exists(), "vite build did not produce single.js"
-      return out_dir
-  ```
-
-- [ ] **Step 2: Write `tests/test_a11y_axe.py`.**
+- [ ] **Step 1: Write `tests/test_a11y_axe.py`.**
 
   ```python
   """T29: Playwright + axe-core — zero WCAG 2.0 AA violations on every fixture.
@@ -4981,11 +4983,11 @@ The test asserts `axe.run({ runOnly: ['wcag2a', 'wcag2aa'] })` returns `violatio
       assert result == [], f"axe violations on /batch: {result}"
   ```
 
-- [ ] **Step 3: Run + Commit.**
+- [ ] **Step 2: Run + Commit.**
 
   ```bash
   cd /home/context/projects/takehome-e7 && uv run --python 3.12 pytest tests/test_a11y_axe.py -v
-  git -C /home/context/projects/takehome-e7 add tests/test_a11y_axe.py tests/conftest.py
+  git -C /home/context/projects/takehome-e7 add tests/test_a11y_axe.py
   git -C /home/context/projects/takehome-e7 commit -m "test(e7): axe-core CI — zero WCAG 2.0 AA violations"
   ```
 
@@ -4994,7 +4996,7 @@ The test asserts `axe.run({ runOnly: ['wcag2a', 'wcag2aa'] })` returns `violatio
 ### Task T30 — Keyboard model (3-keystroke override + J/K)
 
 **Wave:** 7
-**Depends on:** T7, T29 (conftest fixture)
+**Depends on:** T7 (live_server + pnpm_built_island)
 **Owns (creates):** `tests/test_keyboard_model.py`.
 
 Loads the single-label shell with fixture-03 (a fail). Asserts: pressing `O → w → ENTER` (3 keystrokes total) opens the override drawer, types into the picker, and submits — verified by listening for the `LiveRegion` announcement "Override saved: WARNING.STYLE.HEADING_NOT_BOLD_CAPS".
@@ -5088,7 +5090,7 @@ Loads the single-label shell with fixture-03 (a fail). Asserts: pressing `O → 
 ### Task T31 — Reflow at 320 CSS px
 
 **Wave:** 7
-**Depends on:** T7, T29 (conftest fixture)
+**Depends on:** T7 (live_server + pnpm_built_island)
 **Owns (creates):** `tests/test_reflow_320px.py`.
 
 Sets viewport to 320×640; loads the single shell; asserts `document.documentElement.scrollWidth <= 320` (no horizontal 2-D scroll) per WCAG 1.4.10 / NFR-A11Y-005.
@@ -5149,7 +5151,7 @@ Sets viewport to 320×640; loads the single shell; asserts `document.documentEle
 ### Task T32 — DispositionPill WCAG 1.4.1 (color + shape + text)
 
 **Wave:** 7
-**Depends on:** T7, T29 (conftest fixture)
+**Depends on:** T7 (live_server + pnpm_built_island)
 **Owns (creates):** `tests/test_disposition_pill_wcag_141.py`.
 
 Loads each fixture; finds the disposition pill at the disposition level; asserts the pill node has:
@@ -5419,3 +5421,56 @@ Run `pnpm build`, stage the produced files, commit. After this task, T33 must be
 | Version | Date | Author | Notes |
 |---|---|---|---|
 | 0.1 | 2026-05-04 | Project team (parallel E7 session) | Initial draft. 34 tasks across 8 waves; canned-envelope-fixture-driven; all WCAG / keyboard / reflow gates wired. |
+| 0.2 | 2026-05-04 | Project team (parallel E7 session) | Parallel-planning audit. Split W6 into W6a (T25, T26) + W6b (T27, T28) — T27/T28 import symbols T25/T26 produce, so co-running them in a single wave was a same-wave race. Moved `pnpm_built_island` Playwright session fixture from T29 (W7) to T7 (W2) — having T29 own the conftest edit while T30/T31/T32 depended on it created a same-wave conftest race. Updated T29 (no longer modifies `tests/conftest.py`; Step 1 fixture-add removed; remaining steps renumbered) and T30/T31/T32 deps to point at T7 only. Appended §10 Dependency Graph (Task / Depends On / Blocks / Files Owned). |
+
+## 10. Dependency Graph
+
+Per `parallel-planning` skill §Step 6. "Blocks" lists direct downstream tasks only (transitive blocks omitted to keep the table readable).
+
+| Task | Depends On | Blocks | Files Owned |
+|---|---|---|---|
+| T1  | — | T5, T6, T7, T8, T9, T10, T11, T12, T13, T15, T16, T18, T19, T20, T21, T22, T24, T26, T33 | `frontend/package.json`, `frontend/pnpm-lock.yaml`, `frontend/tsconfig.json`, `frontend/tsconfig.node.json`, `frontend/vite.config.ts`, `frontend/tailwind.config.ts`, `frontend/postcss.config.js`, `frontend/index.html`, `frontend/vitest.config.ts`, `frontend/src/lib/cn.ts`, `frontend/src/test/setup.ts`, `frontend/src/test/render.tsx`, `frontend/src/test/smoke.test.tsx` |
+| T2  | — | T8, T9, T10, T11, T12, T13, T15, T16, T18, T19, T20, T21, T22 | `frontend/src/tokens/uswds-tokens.css`, `frontend/src/tokens/globals.css`, `frontend/src/tokens/uswds-tokens.test.ts` |
+| T3  | — | T29, T30, T31, T32 (consumers via fixture files) | `tests/fixtures/envelopes/single/*.json` (6 fixtures), `tests/fixtures/envelopes/batch/*.json` (1 fixture), `tests/fixtures/envelopes/sse-events.jsonl`, `tests/test_canned_envelopes_round_trip.py` |
+| T4  | — | T7 | `app/ui/templates/base.html`, `app/ui/templates/single.html`, `app/ui/templates/batch.html`, `app/api/ui.py` (new), `tests/test_ui_routes.py`; modifies `app/main.py` (additive) |
+| T5  | T1 | T26, T27, T28 (envelope types) | `frontend/src/types/envelopes.ts`, `frontend/src/types/sse.ts`, `tests/test_typescript_envelope_drift.py` |
+| T6  | T1 | — | `frontend/src/test/jest-dom.test.tsx` |
+| T7  | T1, T4 | T29, T30, T31, T32 (live_server + pnpm_built_island) | `tests/test_playwright_harness_smoke.py`; modifies `pyproject.toml`, `tests/conftest.py` |
+| T8  | T1, T2 | T14, T17, T23, T27, T32 | `frontend/src/components/DispositionPill.tsx`, `frontend/src/components/DispositionPill.test.tsx` |
+| T9  | T1, T2 | T14, T27 | `frontend/src/components/ConfidenceIndicator.tsx`, `frontend/src/components/ConfidenceIndicator.test.tsx` |
+| T10 | T1, T2 | T14, T27 | `frontend/src/components/CitationChip.tsx`, `frontend/src/components/CitationChip.test.tsx` |
+| T11 | T1, T2 | T27 | `frontend/src/components/Alert.tsx`, `frontend/src/components/Alert.test.tsx` |
+| T12 | T1, T2 | T27 | `frontend/src/components/Toast.tsx`, `frontend/src/components/Toast.test.tsx` |
+| T13 | T1, T2 | T27 | `frontend/src/components/LiveRegion.tsx`, `frontend/src/components/LiveRegion.test.tsx` |
+| T14 | T8, T9, T10 | T27 | `frontend/src/components/FieldCard.tsx`, `frontend/src/components/FieldCard.test.tsx` |
+| T15 | T1, T2 | T27 | `frontend/src/components/BboxOverlay.tsx`, `frontend/src/components/BboxOverlay.test.tsx` |
+| T16 | T1, T2 | T27 | `frontend/src/components/EvidencePanel.tsx`, `frontend/src/components/EvidencePanel.test.tsx` |
+| T17 | T8 | T27 | `frontend/src/components/RuleVerdict.tsx`, `frontend/src/components/RuleVerdict.test.tsx` |
+| T18 | T1, T2 | T27 | `frontend/src/components/AISuggestionBlock.tsx`, `frontend/src/components/AISuggestionBlock.test.tsx` |
+| T19 | T1, T2 | T27 | `frontend/src/components/NeedsBetterPhotoCard.tsx`, `frontend/src/components/NeedsBetterPhotoCard.test.tsx` |
+| T20 | T1, T2 | T25, T27 | `frontend/src/components/ReasonCodePicker.tsx`, `frontend/src/components/ReasonCodePicker.test.tsx` |
+| T21 | T1, T2 | T27 | `frontend/src/components/RawJSONDrawer.tsx`, `frontend/src/components/RawJSONDrawer.test.tsx` |
+| T22 | T1, T2 | T28 | `frontend/src/components/QueuePosition.tsx`, `frontend/src/components/QueuePosition.test.tsx` |
+| T23 | T8 | T28 | `frontend/src/components/BatchTable.tsx`, `frontend/src/components/BatchTable.test.tsx` |
+| T24 | T1 | T25, T27 | `frontend/src/hooks/useKeyboardShortcuts.ts`, `frontend/src/hooks/useKeyboardShortcuts.test.ts` |
+| T25 | T20, T24 | T27 | `frontend/src/components/OverrideDrawer.tsx`, `frontend/src/components/OverrideDrawer.test.tsx` |
+| T26 | T1, T5 | T28 | `frontend/src/sse/useBatchStream.ts`, `frontend/src/sse/useBatchStream.test.ts` |
+| T27 | T8–T19, T20, T24, T25 | T29, T34 | `frontend/src/single.tsx` |
+| T28 | T22, T23, T26 | T29, T34 | `frontend/src/batch.tsx`, `frontend/src/batch.test.tsx` |
+| T29 | T7, T27, T28 (and all components transitively) | T34 | `tests/test_a11y_axe.py` |
+| T30 | T7 | T34 | `tests/test_keyboard_model.py` |
+| T31 | T7 | T34 | `tests/test_reflow_320px.py` |
+| T32 | T7 | T34 | `tests/test_disposition_pill_wcag_141.py` |
+| T33 | T1 | T34 | `tests/test_island_build_clean.py`, `tests/manual/a11y-smoke.md` |
+| T34 | every prior task | — | `app/ui/static/island/single.js`, `single.css`, `single.js.map`, `batch.js`, `batch.css`, `batch.js.map`, `app/ui/static/island/chunks/*.js` (Vite output) |
+
+**Wave assignment (Task → Wave):**
+- W1: T1, T2, T3, T4
+- W2: T5, T6, T7
+- W3: T8, T9, T10, T11, T12, T13
+- W4: T14, T15, T16, T17, T18, T19
+- W5: T20, T21, T22, T23, T24
+- W6a: T25, T26
+- W6b: T27, T28
+- W7: T29, T30, T31, T32, T33
+- W8: T34
