@@ -1,0 +1,92 @@
+rule_pack: common
+rule_pack_version: "0.1.0"
+rules:
+  - rule_id: common.warning.present
+    cfr_citation: "27 CFR §16.21"
+    applies_to_classes: [wine, spirits, malt]
+    reason_code: WARNING.PRESENCE.MISSING
+    severity: reject
+    match_policy: exact
+    validator: presence_check
+    evidence_required: [warning_block]
+    confidence_floor: 0.50
+    effective_date: "1989-11-18"
+    test_fixtures: [F-COMMON-WARN-PASS-01, F-COMMON-WARN-MISSING-01]
+
+  - rule_id: common.warning.verbatim
+    cfr_citation: "27 CFR §16.21"
+    applies_to_classes: [wine, spirits, malt]
+    reason_code: WARNING.VERBATIM.MISMATCH
+    severity: reject
+    match_policy: verbatim_hash
+    validator: verbatim_hash
+    parameters:
+      asset_key: govt_warning_16_21
+    asset:
+      path: assets/warnings/govt_warning_16_21.txt
+      sha256_pin: "35e1f5d39ee341ac7c114f8159956cb0cc1981b94e4ffeee194ff5060bf99fbc"
+      normalization: [nfkc, ascii_quotes, collapse_whitespace, strip_outer_ws]
+    evidence_required: [warning_block]
+    confidence_floor: 0.60
+    effective_date: "1989-11-18"
+    test_fixtures: [F-COMMON-WARN-PASS-01, F-COMMON-WARN-PARAPHRASE-01]
+
+  - rule_id: common.warning.heading_caps_bold
+    cfr_citation: "27 CFR §16.22(a)(2)"
+    applies_to_classes: [wine, spirits, malt]
+    reason_code: WARNING.STYLE.HEADING_NOT_BOLD_CAPS
+    severity: reject
+    match_policy: layout
+    validator: heading_style_check
+    parameters:
+      target_phrase: "GOVERNMENT WARNING"
+      required_case: upper
+      required_weight: bold
+    evidence_required: [warning_block]
+    confidence_floor: 0.50
+    effective_date: "1989-11-18"
+    test_fixtures: [F-COMMON-WARN-STYLE-PASS-01, F-COMMON-WARN-STYLE-FAIL-01]
+
+  - rule_id: common.warning.contrasting_bg
+    cfr_citation: "27 CFR §16.22(a)(1)"
+    applies_to_classes: [wine, spirits, malt]
+    reason_code: WARNING.LEGIBILITY.NO_CONTRAST
+    severity: reject
+    match_policy: layout
+    validator: contrast_ratio_check
+    parameters:
+      min_contrast_ratio: 4.5
+    evidence_required: [warning_block]
+    confidence_floor: 0.40
+    effective_date: "1989-11-18"
+    test_fixtures: [F-COMMON-WARN-CONTRAST-PASS-01]
+
+  - rule_id: common.warning.cpi_max
+    cfr_citation: "27 CFR §16.22(a)(4)"
+    applies_to_classes: [wine, spirits, malt]
+    reason_code: WARNING.TYPE_SIZE.CPI_EXCEEDED
+    severity: reject
+    match_policy: lookup
+    validator: cpi_lookup
+    decision_table_ref: cpi_16_22_a_4
+    parameters:
+      observed_cpi_field: cpi
+      observed_height_field: height_mm
+    evidence_required: [warning_block]
+    confidence_floor: 0.50
+    effective_date: "1990-02-14"
+    test_fixtures: [F-COMMON-CPI-PASS-01, F-COMMON-CPI-FAIL-1MM-01]
+
+  - rule_id: common.warning.separate_apart
+    cfr_citation: "27 CFR §16.21"
+    applies_to_classes: [wine, spirits, malt]
+    reason_code: WARNING.PLACEMENT.NOT_SEPARATE
+    severity: reject
+    match_policy: layout
+    validator: layout_isolation_check
+    parameters:
+      min_isolation_px: 4
+    evidence_required: [warning_block]
+    confidence_floor: 0.40
+    effective_date: "1989-11-18"
+    test_fixtures: [F-COMMON-WARN-ISOLATION-PASS-01, F-COMMON-WARN-ISOLATION-FAIL-01]
