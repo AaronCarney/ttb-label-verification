@@ -28,6 +28,7 @@ not a hard stop on the validator's CPU time. Implications:
 from __future__ import annotations
 
 import asyncio
+import logging
 import time
 from typing import Sequence
 
@@ -40,6 +41,8 @@ from app.schemas.rules import RuleSet
 
 
 PER_RULE_TIMEOUT_S = 0.25
+
+_log = logging.getLogger(__name__)
 
 
 class YamlRuleEngine(RuleEngine):
@@ -54,13 +57,13 @@ class YamlRuleEngine(RuleEngine):
     ) -> tuple[ValidationResult, ...]:
         results: list[ValidationResult] = []
         exp_by_field = {e.field_id: e for e in expected}
-        obs_by_field = {o.field_id: o for o in observations}
         for rule in self._ruleset.rules:
             if rule.disabled:
                 continue
             applicable_obs = [
                 obs for obs in observations
                 if obs.beverage_class in rule.applies_to_classes
+                and (not rule.evidence_required or obs.field_id in rule.evidence_required)
             ]
             if not applicable_obs:
                 continue
@@ -71,39 +74,49 @@ class YamlRuleEngine(RuleEngine):
 
     async def _run_one(self, rule, obs, exp, ctx) -> ValidationResult:
         validator = VALIDATOR_REGISTRY.get(rule.validator)
-        meta = EngineMeta(
-            engine_version=ctx.engine_version,
-            rule_pack=rule.rule_pack or "unknown",
-            rule_pack_version=rule.rule_pack_version or "0.0.0",
-            started_at_ms=int(time.monotonic() * 1000),
-            elapsed_ms=0,
-        )
+        started_at_ms = int(time.monotonic() * 1000)
+        t0 = time.monotonic()
+
+        def _meta(elapsed_ms: int) -> EngineMeta:
+            return EngineMeta(
+                engine_version=ctx.engine_version,
+                rule_pack=rule.rule_pack or "unknown",
+                rule_pack_version=rule.rule_pack_version or "0.0.0",
+                started_at_ms=started_at_ms,
+                elapsed_ms=elapsed_ms,
+            )
+
         if validator is None:
             return ValidationResult(
                 rule_id=rule.rule_id, cfr_citation=rule.cfr_citation,
                 beverage_class=obs.beverage_class, outcome=Outcome.ERROR,
                 severity=Severity.REJECT, reason_code="ENGINE.VALIDATOR.EXCEPTION",
                 aggregated_confidence=0.0, evidence=obs.evidence,
-                expected=exp, observed=obs, engine_meta=meta,
+                expected=exp, observed=obs, engine_meta=_meta(0),
             )
         try:
-            return await asyncio.wait_for(
+            result = await asyncio.wait_for(
                 asyncio.to_thread(validator, obs, exp, rule, ctx),
                 timeout=PER_RULE_TIMEOUT_S,
             )
         except asyncio.TimeoutError:
+            elapsed_ms = int((time.monotonic() - t0) * 1000)
             return ValidationResult(
                 rule_id=rule.rule_id, cfr_citation=rule.cfr_citation,
                 beverage_class=obs.beverage_class, outcome=Outcome.TIMEOUT,
                 severity=Severity.WARN, reason_code="ENGINE.VALIDATOR.TIMEOUT",
                 aggregated_confidence=0.0, evidence=obs.evidence,
-                expected=exp, observed=obs, engine_meta=meta,
+                expected=exp, observed=obs, engine_meta=_meta(elapsed_ms),
             )
         except Exception:
+            elapsed_ms = int((time.monotonic() - t0) * 1000)
+            _log.exception("validator %r raised", rule.rule_id)
             return ValidationResult(
                 rule_id=rule.rule_id, cfr_citation=rule.cfr_citation,
                 beverage_class=obs.beverage_class, outcome=Outcome.ERROR,
                 severity=Severity.REJECT, reason_code="ENGINE.VALIDATOR.EXCEPTION",
                 aggregated_confidence=0.0, evidence=obs.evidence,
-                expected=exp, observed=obs, engine_meta=meta,
+                expected=exp, observed=obs, engine_meta=_meta(elapsed_ms),
             )
+        elapsed_ms = int((time.monotonic() - t0) * 1000)
+        return result.model_copy(update={"engine_meta": _meta(elapsed_ms)})

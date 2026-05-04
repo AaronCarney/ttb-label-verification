@@ -76,3 +76,24 @@ async def test_yaml_engine_skips_non_matching_classes(ruleset) -> None:
     results = await engine.evaluate(obs, exp, ctx)
     rule_ids = {r.rule_id for r in results}
     assert not any(rid.startswith("wine.") for rid in rule_ids)
+
+
+@pytest.mark.asyncio
+async def test_yaml_engine_records_per_rule_timing(ruleset) -> None:
+    """ARCH §6.4 / D-018 contract: every result carries engine-measured
+    started_at_ms (monotonic ms) and elapsed_ms (per-rule duration).
+
+    The validator-side `_build_meta` defaults elapsed_ms to 0; the engine
+    must overwrite it on the success path so audit consumers see real
+    per-rule timing rather than a uniform zero.
+    """
+    obs = [make_obs(field_id="brand", value="Acme Lager", beverage_class=BeverageClass.MALT)]
+    exp = [make_expected(field_id="brand", value="Acme Lager")]
+    ctx = make_context(assets=ruleset.assets, decision_tables=ruleset.decision_tables)
+    engine = YamlRuleEngine(ruleset)
+    results = await engine.evaluate(obs, exp, ctx)
+    assert results
+    for r in results:
+        assert r.engine_meta is not None
+        assert r.engine_meta.started_at_ms > 0, f"started_at_ms not set: {r.rule_id}"
+        assert r.engine_meta.elapsed_ms >= 0, f"elapsed_ms negative: {r.rule_id}"
