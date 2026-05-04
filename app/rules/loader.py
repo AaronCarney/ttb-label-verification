@@ -83,7 +83,11 @@ class YamlRuleLoader:
         acc = _LoadAccumulator()
         registry_version, registry = self._load_registry(rules_root, acc)
         self._load_decision_tables(rules_root, acc)
-        rule_files = sorted(p for p in rules_root.rglob("*.yaml") if p.name != "reason_codes.yaml" and "/tables/" not in p.as_posix())
+        rule_files = sorted(
+            p for p in rules_root.rglob("*.yaml")
+            if p.name != "reason_codes.yaml"
+            and "tables" not in p.relative_to(rules_root).parts
+        )
         for path in rule_files:
             self._load_rule_file(path, registry, acc)
         if acc.errors:
