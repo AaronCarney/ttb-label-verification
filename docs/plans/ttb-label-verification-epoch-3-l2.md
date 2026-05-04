@@ -1100,9 +1100,8 @@ git commit -m "feat(e3): GPT-4o tiebreaker with respx HTTP-layer recording"
 - Test: `tests/test_vision_cloud_extraction.py`
 
 This task bundles 2 cycles (Semaphore + `_call_per_field` are folded into Cycle A — they're part of the extract() skeleton):
-**Cycle A**: layout pre-pass + per-field call dispatch (mocked to constants).
-**Cycle B**: `asyncio.Semaphore(4)` bulkhead enforcement.
-**Cycle C**: BRISQUE/NIQE short-circuit before extraction (`disposition=needs_better_photo` skips all 9 calls).
+**Cycle A**: layout pre-pass + 8 per-field call dispatch + `asyncio.Semaphore(4)` bulkhead + `_call_per_field` helper.
+**Cycle B**: BRISQUE/NIQE short-circuit before extraction (`disposition=needs_better_photo` skips all 9 calls).
 
 - [ ] **Cycle A — Step 1: Write failing test**
 
@@ -1126,17 +1125,6 @@ EXPECTED_FIELD_IDS = {
     "brand_name", "class_type", "abv", "net_contents",
     "gov_warning", "heading_typography", "name_address", "country_origin",
 }
-
-
-def _all_recordings_router():
-    """Mount each recording as a respx route."""
-    router = respx.Router(assert_all_called=False)
-    for path in RECORDINGS_DIR.glob("*.json"):
-        payload = json.loads(path.read_text())
-        router.post("https://api.openai.com/v1/chat/completions").mock(
-            return_value=Response(200, json=payload)
-        )
-    return router
 
 
 @pytest.mark.asyncio
