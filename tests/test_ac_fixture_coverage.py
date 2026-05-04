@@ -20,6 +20,12 @@ def _label_from_fixture(fixture_id: str) -> Label:
     img = Path(f"fixtures/{fixture_id}/label.png")
     if not img.exists():
         img = Path(f"fixtures/{fixture_id}/label.jpg")
+    if not img.exists():
+        # Batch fixtures (e.g. 05-batch-of-50) carry label_001.png … label_050.png.
+        # Use the first as the AC representative — same content_type heuristic.
+        batch_first = Path(f"fixtures/{fixture_id}/label_001.png")
+        if batch_first.exists():
+            img = batch_first
     suffix = img.suffix.lower()
     content_type = "image/png" if suffix == ".png" else "image/jpeg"
     return Label(
@@ -33,11 +39,17 @@ def _label_from_fixture(fixture_id: str) -> Label:
 
 
 def _expected_from_fixture(fixture_id: str) -> tuple[ExpectedValue, ...]:
-    """Load the per-fixture sidecar and parse into ExpectedValue tuple."""
+    """Load the per-fixture sidecar and parse into ExpectedValue tuple.
+
+    Single-label fixtures store a flat list of ExpectedValue dicts.
+    Batch fixtures (05-batch-of-50) store per-label blocks with
+    ``expected_values`` keys — for AC purposes we use the first block."""
     sidecar = Path(f"fixtures/{fixture_id}/expected.json")
     if not sidecar.exists():
         return ()
     raw = json.loads(sidecar.read_text())
+    if raw and isinstance(raw[0], dict) and "expected_values" in raw[0]:
+        raw = raw[0]["expected_values"]
     return tuple(ExpectedValue(**entry) for entry in raw)
 
 
@@ -64,6 +76,10 @@ _UPSTREAM_VISION_REPLAY = pytest.mark.xfail(
     pytest.param("04-low-res-blurry",       "needs_review", 0),
     pytest.param("06-abv-out-of-tolerance", "fail",         7, marks=_UPSTREAM_VISION_REPLAY),
     pytest.param("07-borderline-confidence", "needs_review", 7, marks=_UPSTREAM_VISION_REPLAY),
+    # Batch fixture-05: AC representative is label_001 (clean variant) -> pass.
+    # The full batch is exercised via POST /batches integration tests; this
+    # parametrize entry just keeps the fixture in the AC sweep.
+    pytest.param("05-batch-of-50",          "pass",         7, marks=_UPSTREAM_VISION_REPLAY),
 ])
 async def test_ac_fixture_disposition(fixture_id, expected_disposition, expected_field_count):
     settings = Settings()
