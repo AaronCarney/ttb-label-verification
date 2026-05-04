@@ -7,6 +7,8 @@ from pathlib import Path
 import pytest
 from PIL import Image
 
+from app.schemas.label import Label
+
 
 @pytest.fixture
 def wire_fixtures_dir() -> Path:
@@ -32,3 +34,22 @@ def _redact_authorization_headers(payload: dict) -> dict:
             if key.lower() == "authorization" or key.lower() == "x-api-key":
                 headers[key] = "REDACTED"
     return out
+
+
+def _stub_label(
+    *,
+    label_id: str = "lbl-test",
+    batch_id: str = "B-test",
+    image_bytes: bytes = b"\x89PNG\r\n\x1a\n",
+    content_type: str = "image/png",
+    face_tag: str = "front",
+    dimensions=None,
+) -> Label:
+    return Label(
+        label_id=label_id,
+        batch_id=batch_id,
+        image_bytes=image_bytes,
+        content_type=content_type,
+        face_tag=face_tag,
+        dimensions=dimensions,
+    )
