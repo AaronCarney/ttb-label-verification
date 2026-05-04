@@ -108,11 +108,11 @@ def test_every_manifest_line_validates():
     for i, line in enumerate(path.read_text().splitlines(), start=1):
         if not line.strip():
             continue
-        ManifestEntry.model_validate_json(line), f"line {i}"
+        ManifestEntry.model_validate_json(line)  # raises ValidationError on malformed lines
 
 
 def test_class_balance_meets_prd_91():
-    """spirits 30–40%, wine 30–40%, malt 20–30%; synthetic ≤30%; borderline ≥10."""
+    """spirits 30–40%, wine 30–40%, malt 20–30%; synthetic ≤30%; borderline ≥4 (smoke 20-entry split; full ~50 corpus must hit PRD ≥10)."""
     path = Path("eval/manifest.jsonl")
     entries = [ManifestEntry.model_validate_json(l) for l in path.read_text().splitlines() if l.strip()]
     n = len(entries)
@@ -125,7 +125,7 @@ def test_class_balance_meets_prd_91():
     assert 0.30 <= wine / n <= 0.40, f"wine ratio {wine/n}"
     assert 0.20 <= malt / n <= 0.30, f"malt ratio {malt/n}"
     assert synth / n <= 0.30, f"synthetic ratio {synth/n}"
-    assert borderline >= 10, f"borderline count {borderline}"
+    assert borderline >= 4, f"borderline count {borderline}"  # smoke 20-entry scaling; full ~50 corpus retains PRD ≥10
 ```
 
 - [ ] **Step 2: Run; expect FAIL (no module / no manifest)**
@@ -185,7 +185,7 @@ class HistoryRecord(BaseModel):
     latency_p50_s: float
     latency_p95_s: float
     latency_p99_s: float
-    cost_of_error_weighted_f1: float
+    cost_weighted_score: float  # cost-weighted accuracy (T9 Q9.1); FP penalty 3×, FR 1×
 ```
 
 - [ ] **Step 4: Author `eval/manifest.jsonl` with the right-sized corpus per PRD v0.6 §9.1**
@@ -251,7 +251,7 @@ cd projects/takehome && uv run pytest tests/test_eval_manifest_schema.py -v
 ```
 Expected: PASS once the executor adds the rest of the ~50 entries to satisfy ratios.
 
-> **Manifest scope decision.** This L2 ships the **20-entry smoke subset** as the AC-gating manifest: the 6 fixture-derived entries authored above (FIX-01..FIX-04, FIX-06, FIX-07) **plus 14 additional entries** the executor authors in this task — 8 spirits / 4 wine / 2 malt — sourced from public COLA Registry IDs and locally cached under `fixtures/_corpus/<cola-id>/`. Class-balance assertions in the schema test cover this 20-entry shape (spirits 0.30–0.40 → 6–8/20; wine 0.30–0.40 → 6–8/20; malt 0.20–0.30 → 4–6/20; borderline ≥10 satisfied via the 6 fixture-borderline-derivatives generated from fixtures-04 / -07).
+> **Manifest scope decision.** This L2 ships the **20-entry smoke subset** as the AC-gating manifest: the 6 fixture-derived entries authored above (FIX-01..FIX-04, FIX-06, FIX-07) **plus 14 additional entries** the executor authors in this task — 8 spirits / 4 wine / 2 malt — sourced from public COLA Registry IDs and locally cached under `fixtures/_corpus/<cola-id>/`. Class-balance assertions in the schema test cover this 20-entry shape (spirits 0.30–0.40 → 6–8/20; wine 0.30–0.40 → 6–8/20; malt 0.20–0.30 → 4–6/20). **Borderline floor for the smoke split is ≥4** (down from PRD ≥10, which was sized against the ~50-entry full corpus): the executor satisfies it by setting `borderline_band: true` on FIX-07 (already), FIX-04 (re-classify the blur+glare entry as borderline — it inherently is), plus 2 of the 14 new entries (1 wine + 1 malt borderline-confidence variant). The PRD ≥10 floor is preserved for the wine/malt depth-expansion follow-up that lifts the corpus to ~50.
 >
 > **Wine/malt depth-expansion to ~50 entries is a tracked follow-up**, not part of this L2: see L1 §6 stretch ("Wine / Malt depth — stretch (parent §8); rule-pack additions; lands in E2 if pulled in"). When pulled in, a follow-up task expands the manifest under the same `ManifestEntry` schema; no L2 re-write needed.
 >
@@ -284,7 +284,7 @@ git commit -m "feat(eval): manifest line schema + datasheet + initial corpus (E8
 # tests/test_eval_metrics.py
 from eval.metrics import (
     macro_f1, per_rule_precision_recall, expected_calibration_error,
-    cost_of_error_weighted_f1, latency_percentiles,
+    cost_weighted_score, latency_percentiles,
 )
 
 
@@ -313,13 +313,13 @@ def test_per_rule_precision_recall_only_warning_rules():
     assert r == 0.5  # 1 TP / (1 TP + 1 FN)
 
 
-def test_cost_of_error_weighted_f1_penalizes_false_pass_more():
+def test_cost_weighted_score_penalizes_false_pass_more():
     """T9 Q9.1 — false-pass weighted higher than false-reject."""
-    # Same raw F1, but composition differs: false-pass dominates one, false-reject the other.
+    # Same raw error count, composition differs: false-pass dominates one, false-reject the other.
     fp_dominant = (["pass"] * 3 + ["fail"] * 1, ["fail"] * 3 + ["fail"] * 1)
     fn_dominant = (["fail"] * 3 + ["pass"] * 1, ["pass"] * 3 + ["pass"] * 1)
-    score_fp = cost_of_error_weighted_f1(*fp_dominant)
-    score_fn = cost_of_error_weighted_f1(*fn_dominant)
+    score_fp = cost_weighted_score(*fp_dominant)
+    score_fn = cost_weighted_score(*fn_dominant)
     assert score_fp < score_fn
 
 
@@ -348,7 +348,7 @@ Expected: ImportError.
 
 ```python
 # eval/metrics.py
-"""Eval metrics: macro-F1, per-rule P/R, ECE, latency, cost-of-error weighted F1."""
+"""Eval metrics: macro-F1, per-rule P/R, ECE, latency, cost-weighted score (cost-weighted accuracy per T9 Q9.1)."""
 from __future__ import annotations
 
 from collections import defaultdict
@@ -416,8 +416,13 @@ def per_rule_precision_recall(
     return out
 
 
-def cost_of_error_weighted_f1(pred: list[Disposition], actual: list[Disposition]) -> float:
-    """Weighted aggregate per T9 Q9.1: false_pass × 3 + false_reject × 1."""
+def cost_weighted_score(pred: list[Disposition], actual: list[Disposition]) -> float:
+    """Cost-weighted accuracy per T9 Q9.1: 1 - (3·false_pass + 1·false_reject) / (3·n).
+
+    Range [0, 1]; monotonic decreasing in each error count. Named "score", not "f1",
+    because it is not a precision/recall composition — it is a cost-scaled accuracy.
+    Reported on the dashboard alongside macro_f1 to surface the FP/FR asymmetry the
+    regulator-facing prototype tier (BRD §8.2) cares about."""
     cm = _confusion(pred, actual)
     # False pass: predicted "pass" but actual was fail / needs_review.
     false_pass = sum(cm.get(("pass", a), 0) for a in ("fail", "needs_review"))
@@ -513,7 +518,7 @@ def test_render_dashboard_against_synthetic_history(tmp_path):
         "latency_p50_s": 1.2,
         "latency_p95_s": 4.1,
         "latency_p99_s": 4.9,
-        "cost_of_error_weighted_f1": 0.79
+        "cost_weighted_score": 0.79
     }""")
 
     html = render_dashboard(history_dir=history)
@@ -584,7 +589,7 @@ def render_dashboard(history_dir: Path) -> str:
     <h2>Latest run — {{ latest.subset }} @ {{ latest.timestamp }}</h2>
     <p>n labels: <strong>{{ latest.n_labels }}</strong></p>
     <p>macro-F1: <span class="metric {% if latest.macro_f1 >= 0.70 %}ok{% else %}fail{% endif %}">{{ "%.3f"|format(latest.macro_f1) }}</span> (gate: 0.70)</p>
-    <p>cost-of-error weighted F1: <span class="metric">{{ "%.3f"|format(latest.cost_of_error_weighted_f1) }}</span></p>
+    <p>cost-weighted score: <span class="metric">{{ "%.3f"|format(latest.cost_weighted_score) }}</span></p>
     <p>ECE: {{ "%.3f"|format(latest.ece) }} · latency p50/p95/p99 s: {{ "%.2f"|format(latest.latency_p50_s) }} / {{ "%.2f"|format(latest.latency_p95_s) }} / {{ "%.2f"|format(latest.latency_p99_s) }}</p>
 
     <h3>Per-rule precision / recall</h3>
@@ -596,7 +601,7 @@ def render_dashboard(history_dir: Path) -> str:
         <tr>
           <td>{{ rule_id }}</td>
           <td>{{ "%.2f"|format(p) }}</td>
-          <td class="{% if r >= 0.80 and rule_id.startswith('FR-20') %}ok{% elif r >= 0.80 %}{% elif rule_id.startswith('FR-20') %}fail{% endif %}">{{ "%.2f"|format(r) }}</td>
+          <td class="{% if rule_id.startswith('FR-20') and r >= 0.80 %}ok{% elif rule_id.startswith('FR-20') %}fail{% endif %}">{{ "%.2f"|format(r) }}</td>
         </tr>
       {% endfor %}
       </tbody>
@@ -710,7 +715,7 @@ from typing import Callable
 
 from eval._schema import HistoryRecord, ManifestEntry
 from eval.metrics import (
-    cost_of_error_weighted_f1, expected_calibration_error,
+    cost_weighted_score, expected_calibration_error,
     latency_percentiles, macro_f1, per_rule_precision_recall,
 )
 
@@ -725,24 +730,30 @@ def _load_manifest(path: Path) -> list[ManifestEntry]:
 
 
 def _live_evaluator(entry: ManifestEntry) -> tuple[str, list, float, float]:
-    """Default evaluator — calls the live Application Service.
+    """Live `Evaluator` adapter — DEFERRED to T14 (post-merge close-out).
 
-    BLOCKED on E5: the import target `app.services.application` does not exist
-    until E5 ships. Until then, the harness is invoked with the `evaluator`
-    argument set to a fake (see tests/test_eval_harness_cli.py).
+    Why deferred: the real `app.services.evaluator.Evaluator` is **async**, takes
+    typed `Application` + `Label` Pydantic objects (not string paths), and
+    returns `DispositionEnvelope` with `disposition_confidence` +
+    `audit_trail.per_rule_trace[]` — there is no `per_rule` attribute and no
+    `aggregate_confidence` attribute. Building the manifest-ref → Application/Label
+    loaders + asyncio glue (`asyncio.run`) + envelope-mapper
+    (`audit_trail.per_rule_trace` → `[{rule_id, result}]`; confidence sourced from
+    `disposition_confidence.numeric`, the min-over-fields per the schema docstring)
+    is a meaningful chunk of work that doesn't gate this L2's tests:
+
+      - Smoke tests inject an explicit `evaluator` fake (see test_eval_harness_cli.py
+        and tests/test_eval_harness.py).
+      - Full eval (`tests/test_eval_full.py`) uses `pytest.importorskip` and
+        `@pytest.mark.slow` — it skips by default.
+
+    T14 (post-merge close-out, owned by whichever session merges last) wires this
+    adapter against the live pipeline.
     """
-    from app.services.application import Evaluator  # noqa: I001  E5 import
-
-    evaluator = Evaluator()
-    import time
-    t0 = time.perf_counter()
-    envelope = evaluator.evaluate(application_ref=entry.application_ref,
-                                  image_ref=entry.image_ref)
-    latency = time.perf_counter() - t0
-    return (envelope.disposition,
-            [{"rule_id": r.rule_id, "result": r.result} for r in envelope.per_rule],
-            latency,
-            envelope.aggregate_confidence)
+    raise NotImplementedError(
+        "Live evaluator adapter is implemented in T14 (post-merge close-out). "
+        "Pass an explicit `evaluator` argument to `run_subset` to use a fake."
+    )
 
 
 def run_subset(
@@ -792,7 +803,7 @@ def run_subset(
         latency_p50_s=lats["p50"],
         latency_p95_s=lats["p95"],
         latency_p99_s=lats["p99"],
-        cost_of_error_weighted_f1=cost_of_error_weighted_f1(pred_disp, actual_disp),
+        cost_weighted_score=cost_weighted_score(pred_disp, actual_disp),
     )
 
     history_dir.mkdir(parents=True, exist_ok=True)
@@ -816,7 +827,7 @@ def _main() -> int:
     args = parser.parse_args()
 
     record = run_subset(args.subset, args.manifest, args.history_dir)
-    print(f"macro_f1={record.macro_f1:.3f} cost_weighted_f1={record.cost_of_error_weighted_f1:.3f}")
+    print(f"macro_f1={record.macro_f1:.3f} cost_weighted_score={record.cost_weighted_score:.3f}")
     return 0
 
 
@@ -857,34 +868,28 @@ git commit -m "feat(eval): harness CLI + programmatic API + history persistence 
 
 ```python
 # tests/test_eval_dashboard_route.py
-import os
-
-import pytest
 from fastapi.testclient import TestClient
 
+from app.config import Settings
+from app.main import create_app
 
-def _make_client(dev_mode: bool) -> TestClient:
-    if dev_mode:
-        os.environ["DEV_MODE"] = "1"
-    else:
-        os.environ.pop("DEV_MODE", None)
-    # Re-import to pick up the new env
-    import importlib
-    import app.config
-    importlib.reload(app.config)
-    import app.main
-    importlib.reload(app.main)
-    return TestClient(app.main.create_app())
+
+def _client(dev_mode: bool) -> TestClient:
+    # Construct Settings explicitly and pass to the create_app factory — avoids
+    # importlib.reload + os.environ mutation, both of which leak into sibling
+    # tests via the module-level `app: FastAPI = create_app()` at the bottom of
+    # app/main.py.
+    return TestClient(create_app(settings=Settings(dev_mode=dev_mode)))
 
 
 def test_eval_route_404_when_dev_mode_off():
-    client = _make_client(dev_mode=False)
+    client = _client(dev_mode=False)
     r = client.get("/eval")
     assert r.status_code == 404
 
 
 def test_eval_route_200_when_dev_mode_on():
-    client = _make_client(dev_mode=True)
+    client = _client(dev_mode=True)
     r = client.get("/eval")
     assert r.status_code == 200
     assert "TTB Label Verification" in r.text
@@ -910,7 +915,9 @@ from fastapi.responses import HTMLResponse
 from eval.dashboard import render_dashboard
 
 router = APIRouter(tags=["eval"])
-_HISTORY_DIR = Path("eval/history")
+# Repo-root-relative; resolves correctly regardless of CWD or container WORKDIR.
+# app/api/eval.py → parents[0]=api, [1]=app, [2]=repo root.
+_HISTORY_DIR = Path(__file__).resolve().parents[2] / "eval" / "history"
 
 
 @router.get("/eval", response_class=HTMLResponse)
@@ -920,16 +927,16 @@ async def eval_dashboard() -> str:
 
 - [ ] **Step 4: Modify `app/main.py` to register conditionally**
 
-Locate the router registration block (after `app.include_router(healthz_router)`). Add:
+Post-rebase onto current `main`, `create_app(settings: Settings | None = None)` already includes 6 routers in this order: `healthz`, `ui`, `labels`, `raw`, `batches`, `overrides` (the `ui_router` was added by E7 in commit `60519d6`). Add the conditional `eval_router` include **after the existing block**, before any return statement:
 
 ```python
-# In create_app(), after existing router includes:
+# In create_app(), AFTER all existing application.include_router(...) lines:
 if settings.dev_mode:
     from app.api.eval import router as eval_router
     application.include_router(eval_router)
 ```
 
-(`Settings` already exposes `dev_mode: bool` per E1; verify in `app/config.py`. If absent, add it: `dev_mode: bool = Field(default=False, alias="DEV_MODE")`.)
+`Settings.dev_mode` already exists at `app/config.py:52` (`dev_mode: bool = Field(default=False, alias="DEV_MODE")`) — no schema change required.
 
 - [ ] **Step 5: Run; expect PASS**
 
@@ -1117,6 +1124,7 @@ git commit -m "test(eval): smoke + full subset gates (full skips until E5+E6) (E
 | Version | Date | Author | Notes |
 |---|---|---|---|
 | 0.1 | 2026-05-04 | Project team | Initial split — extracted T2/T3/T5/T6/T7/T12 from master `.draft` for parallel execution. |
+| 0.2 | 2026-05-04 | Project team (eval session) | Plan-review patches + rebase onto current `main` (post-E7). Changes: (a) **Rebased** branch from stale `feat/e8-backend` to current `origin/main` so E7's `ui_router` and frontend additions are present; T7's `app/main.py` insertion guidance updated for the post-E7 router list. (b) **T2** — fixed malformed `assert` (line 111 was a tuple expression); reduced borderline floor from ≥10 to ≥4 for the smoke 20-entry split (PRD ≥10 stays for the full ~50 corpus follow-up); enumerated which entries get `borderline_band=true`. (c) **T3** — renamed `cost_of_error_weighted_f1` → `cost_weighted_score` (the metric is a cost-weighted accuracy, not an F1 — name was misleading); rename propagates to `HistoryRecord` field, T5 imports/build, T6 dashboard. (d) **T5** — `_live_evaluator` now `raise NotImplementedError` with explicit deferral note; the real `Evaluator` is async + takes Pydantic objects + returns a different envelope shape (`disposition_confidence`, `audit_trail.per_rule_trace[]`, no `per_rule`/`aggregate_confidence`) — the adapter is T14 work. Smoke tests still inject fakes; full test still skips via `importorskip`. (e) **T6** — fixed dead `{% elif r >= 0.80 %}` branch in dashboard template (no class emitted). (f) **T7** — `_HISTORY_DIR` is now `Path(__file__).resolve().parents[2] / "eval" / "history"` (CWD-independent); test no longer reloads modules — uses `Settings(dev_mode=...)` + `create_app(settings=...)` directly. |
 
 ---
 
