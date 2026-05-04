@@ -3,9 +3,12 @@ from __future__ import annotations
 
 import subprocess
 from collections import deque
-from typing import Any, Literal
+from typing import Literal
 
 from app.config import Settings
+from app.orchestrator.base import Orchestrator
+from app.orchestrator.openai_strict import OpenAIStrictOrchestrator
+from app.orchestrator.anthropic_strict import AnthropicStrictOrchestrator
 from app.vision.base import VisionExtractor
 from app.vision.cloud import CloudVisionExtractor
 from app.vision.local import LocalVisionExtractor
@@ -44,26 +47,15 @@ def build_vision_extractor(settings: Settings) -> VisionExtractor:
     raise ValueError(f"Unknown vision_mode: {mode!r}")
 
 
-# Orchestrator placeholders preserved — E4 territory.
-class _PlaceholderOpenAIOrchestrator:
-    """``Orchestrator`` ABC placeholder. Real implementation lands at E4."""
-
-    backend = "openai"
-
-    async def refine(self, payload: Any) -> Any:
-        raise NotImplementedError("seam not wired in E1 (E4)")
-
-
-class _PlaceholderAnthropicOrchestrator:
-    backend = "anthropic"
-
-    async def refine(self, payload: Any) -> Any:
-        raise NotImplementedError("seam not wired in E1 (E4)")
-
-
-def build_orchestrator(
-    settings: Settings,
-) -> _PlaceholderOpenAIOrchestrator | _PlaceholderAnthropicOrchestrator:
-    if settings.orchestrator_backend == "anthropic":
-        return _PlaceholderAnthropicOrchestrator()
-    return _PlaceholderOpenAIOrchestrator()
+def build_orchestrator(settings: Settings) -> Orchestrator:
+    backend = settings.orchestrator_backend
+    ring: deque = deque(maxlen=200)
+    if backend == "openai":
+        return OpenAIStrictOrchestrator(
+            settings=settings, ring_buffer=ring, api_key=settings.openai_api_key or ""
+        )
+    if backend == "anthropic":
+        return AnthropicStrictOrchestrator(
+            settings=settings, ring_buffer=ring, api_key=settings.anthropic_api_key or "",
+        )
+    raise ValueError(f"Unknown orchestrator_backend: {backend!r}")
