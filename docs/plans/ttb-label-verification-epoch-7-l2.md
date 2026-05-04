@@ -1,6 +1,6 @@
 # TTB Label Verification — Epoch 7 (UI: Jinja2 Shell + React Island) — L2 Implementation Plan
 
-> **Version:** v0.3 (2026-05-04) — plan-review iter-1 (structural warnings + architectural critical + recs); see §9.
+> **Version:** v0.4 (2026-05-04) — plan-review iter-2 (§10 reciprocity warnings); architectural pass APPROVED; ready for parallel-plan-executor. See §9.
 >
 > **For agentic workers:** REQUIRED EXECUTOR: `parallel-plan-executor`. Per olorin CLAUDE.md, `superpowers:subagent-driven-development` is obsolete and fully replaced by `parallel-plan-executor` (which injects the `task-executor` skill body for TDD enforcement). Each task lands as one Red→Green→Commit cycle inside an isolated subagent (a few bundled tasks contain 2–3 cycles, called out explicitly). Steps use checkbox (`- [ ]`) syntax for tracking.
 >
@@ -5459,6 +5459,7 @@ Run `pnpm build`, stage the produced files, commit. After this task, T33 must be
 |---|---|---|---|
 | 0.1 | 2026-05-04 | Project team (parallel E7 session) | Initial draft. 34 tasks across 8 waves; canned-envelope-fixture-driven; all WCAG / keyboard / reflow gates wired. |
 | 0.2 | 2026-05-04 | Project team (parallel E7 session) | Parallel-planning audit. Split W6 into W6a (T25, T26) + W6b (T27, T28) — T27/T28 import symbols T25/T26 produce, so co-running them in a single wave was a same-wave race. Moved `pnpm_built_island` Playwright session fixture from T29 (W7) to T7 (W2) — having T29 own the conftest edit while T30/T31/T32 depended on it created a same-wave conftest race. Updated T29 (no longer modifies `tests/conftest.py`; Step 1 fixture-add removed; remaining steps renumbered) and T30/T31/T32 deps to point at T7 only. Appended §10 Dependency Graph (Task / Depends On / Blocks / Files Owned). |
+| 0.4 | 2026-05-04 | Project team (parallel E7 session) | Plan-review iter-2 — §10 reciprocity warnings: added T7 to T33 deps (and T33 to T7 blocks) since T33 now consumes the `pnpm_built_island` fixture; added T3 to T31 deps since `tests/test_reflow_320px.py` reads `tests/fixtures/envelopes/single/01-spirits-clean.json`. Architectural reviewer pass APPROVED with no remaining blockers (C1 mitigation deemed sufficient because T30 is itself the runtime invariant; C2/R1/R5 implementations clean; R2/R6 acceptably deferred for MVP). Plan is ready for parallel-plan-executor. |
 | 0.3 | 2026-05-04 | Project team (parallel E7 session) | Plan-review iter-1 — apply 7 structural warnings + 2 architectural critical + 2 recommendations. Structural: bumped per-task **Wave:** headers from `6` → `6a`/`6b` (T25–T28); added `frontend/src/single.test.tsx` to T27 Owns; corrected §4 conftest fixture list (`live_server`, `live_server_url`, `pnpm_built_island`); rewrote Wave 7 prologue first sentence to reflect once-per-session build via the T7 fixture (was: per-test); fixed T3 §10 row to list `batch/05-batch-of-50-envelope.json` + `batch/05-batch-of-50-events.jsonl`; added T3 dep to §10 rows for T29/T30/T32; added T5 dep to §10 row for T27; added `frontend/src/single.test.tsx` to T27 §10 Files Owned. Architectural critical: (C1) added ORDER INVARIANT comment to T27's `_REASON_CODES` array documenting the FR-803 3-keystroke path's dependence on insertion order — the picker (T20) auto-resolves only on a unique prefix, but ENTER lands on `filtered[highlight=0]`; the array order ensures that `O → w → ENTER` resolves to `WARNING.STYLE.HEADING_NOT_BOLD_CAPS`. Updated step 7 of `tests/manual/a11y-smoke.md` narration to match. (C2) Refactored T27's `single.tsx` and T28's `batch.tsx` to **export** `mount()` (renamed from internal `_mount`); test files now call `mount()` explicitly per `it` block to avoid Vitest's module cache silently skipping the second `it` block's render. Recommendations: (R1) T33 now consumes the `pnpm_built_island` fixture instead of running a second `pnpm install + pnpm build` per session — added T7 to T33's deps. (R5) Added FRAMING ASSUMPTION comment to T26's `useBatchStream` hook documenting the single-line `data:` JSON-envelope assumption per PRD §6.3. |
 
 ## 10. Dependency Graph
@@ -5473,7 +5474,7 @@ Per `parallel-planning` skill §Step 6. "Blocks" lists direct downstream tasks o
 | T4  | — | T7 | `app/ui/templates/base.html`, `app/ui/templates/single.html`, `app/ui/templates/batch.html`, `app/api/ui.py` (new), `tests/test_ui_routes.py`; modifies `app/main.py` (additive) |
 | T5  | T1 | T26, T27, T28 (envelope types) | `frontend/src/types/envelopes.ts`, `frontend/src/types/sse.ts`, `tests/test_typescript_envelope_drift.py` |
 | T6  | T1 | — | `frontend/src/test/jest-dom.test.tsx` |
-| T7  | T1, T4 | T29, T30, T31, T32 (live_server + pnpm_built_island) | `tests/test_playwright_harness_smoke.py`; modifies `pyproject.toml`, `tests/conftest.py` |
+| T7  | T1, T4 | T29, T30, T31, T32, T33 (live_server + pnpm_built_island) | `tests/test_playwright_harness_smoke.py`; modifies `pyproject.toml`, `tests/conftest.py` |
 | T8  | T1, T2 | T14, T17, T23, T27, T32 | `frontend/src/components/DispositionPill.tsx`, `frontend/src/components/DispositionPill.test.tsx` |
 | T9  | T1, T2 | T14, T27 | `frontend/src/components/ConfidenceIndicator.tsx`, `frontend/src/components/ConfidenceIndicator.test.tsx` |
 | T10 | T1, T2 | T14, T27 | `frontend/src/components/CitationChip.tsx`, `frontend/src/components/CitationChip.test.tsx` |
@@ -5497,9 +5498,9 @@ Per `parallel-planning` skill §Step 6. "Blocks" lists direct downstream tasks o
 | T28 | T22, T23, T26 | T29, T34 | `frontend/src/batch.tsx`, `frontend/src/batch.test.tsx` |
 | T29 | T3, T7, T27, T28 (and all components transitively) | T34 | `tests/test_a11y_axe.py` |
 | T30 | T3, T7 | T34 | `tests/test_keyboard_model.py` |
-| T31 | T7 | T34 | `tests/test_reflow_320px.py` |
+| T31 | T3, T7 | T34 | `tests/test_reflow_320px.py` |
 | T32 | T3, T7 | T34 | `tests/test_disposition_pill_wcag_141.py` |
-| T33 | T1 | T34 | `tests/test_island_build_clean.py`, `tests/manual/a11y-smoke.md` |
+| T33 | T1, T7 | T34 | `tests/test_island_build_clean.py`, `tests/manual/a11y-smoke.md` |
 | T34 | every prior task | — | `app/ui/static/island/single.js`, `single.css`, `single.js.map`, `batch.js`, `batch.css`, `batch.js.map`, `app/ui/static/island/chunks/*.js` (Vite output) |
 
 **Wave assignment (Task → Wave):**
