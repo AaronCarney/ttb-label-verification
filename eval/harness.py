@@ -10,8 +10,11 @@ Programmatic:  run_subset(subset, manifest_path, history_dir, evaluator)
 from __future__ import annotations
 
 import argparse
+import asyncio
 import json
 import sys
+import time
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable
@@ -26,37 +29,104 @@ SMOKE_SIZE = 20
 
 EvaluatorFn = Callable[[ManifestEntry], tuple[str, list, float, float]]
 
+_EVALUATOR_SINGLETON = None  # lazy-init module-level Evaluator (T14)
+
 
 def _load_manifest(path: Path) -> list[ManifestEntry]:
     return [ManifestEntry.model_validate_json(line)
             for line in path.read_text().splitlines() if line.strip()]
 
 
-def _live_evaluator(entry: ManifestEntry) -> tuple[str, list, float, float]:
-    """Live `Evaluator` adapter — DEFERRED to T14 (post-merge close-out).
+_EVAL_SLA_SECONDS = 60.0  # eval-time SLA (default 5s is too tight for live OpenAI)
 
-    Why deferred: the real `app.services.evaluator.Evaluator` is **async**, takes
-    typed `Application` + `Label` Pydantic objects (not string paths), and
-    returns `DispositionEnvelope` with `disposition_confidence` +
-    `audit_trail.per_rule_trace[]` — there is no `per_rule` attribute and no
-    `aggregate_confidence` attribute. Building the manifest-ref → Application/Label
-    loaders + asyncio glue (`asyncio.run`) + envelope-mapper
-    (`audit_trail.per_rule_trace` → `[{rule_id, result}]`; confidence sourced from
-    `disposition_confidence.numeric`, the min-over-fields per the schema docstring)
-    is a meaningful chunk of work that doesn't gate this L2's tests:
 
-      - Smoke tests inject an explicit `evaluator` fake (see test_eval_harness_cli.py
-        and tests/test_eval_harness.py).
-      - Full eval (`tests/test_eval_full.py`) uses `pytest.importorskip` and
-        `@pytest.mark.slow` — it skips by default.
+def _get_evaluator():
+    """Lazy module-level Evaluator so a harness run reuses one wiring."""
+    global _EVALUATOR_SINGLETON
+    if _EVALUATOR_SINGLETON is None:
+        from app.config import Settings
+        from app.deps import build_evaluator
+        # Force cloud vision: local Paddle/SWT path isn't validated for eval and
+        # nvidia-smi auto-detect can route to it on CUDA-present hosts.
+        settings = Settings(vision_mode="cloud")
+        _EVALUATOR_SINGLETON = build_evaluator(settings)
+        # Stretch the per-eval SLA — live OpenAI calls routinely exceed the
+        # production 5 s budget on cold paths.
+        _EVALUATOR_SINGLETON._sla_seconds = _EVAL_SLA_SECONDS
+    return _EVALUATOR_SINGLETON
 
-    T14 (post-merge close-out, owned by whichever session merges last) wires this
-    adapter against the live pipeline.
+
+def _build_application_from_entry(entry: ManifestEntry):
+    """Construct an `Application` from `<image_dir>/expected.json`.
+
+    The manifest's `application_ref` points at a non-existent `application.json`;
+    the real fixture layout is `<dir>/{expected.json, label.png, notes.md}`. We
+    derive the fixture dir from `image_ref` and parse `expected.json` (a list of
+    ExpectedValue dicts; may be empty).
     """
-    raise NotImplementedError(
-        "Live evaluator adapter is implemented in T14 (post-merge close-out). "
-        "Pass an explicit `evaluator` argument to `run_subset` to use a fake."
+    from app.schemas.application import Application
+    from app.schemas.expected import ExpectedValue
+
+    fixture_dir = Path(entry.image_ref).parent
+    expected_path = fixture_dir / "expected.json"
+    raw = json.loads(expected_path.read_text()) if expected_path.is_file() else []
+    expected_values = tuple(ExpectedValue(**item) for item in raw)
+    return Application(
+        application_id=f"app-{entry.label_id.lower()}",
+        evaluation_id=str(uuid.uuid4()),
+        expected_values=expected_values,
     )
+
+
+def _build_label_from_entry(entry: ManifestEntry):
+    """Construct a `Label` envelope by reading `entry.image_ref` bytes."""
+    from app.schemas.label import Label
+
+    image_path = Path(entry.image_ref)
+    image_bytes = image_path.read_bytes()
+    suffix = image_path.suffix.lower()
+    content_type = "image/jpeg" if suffix in {".jpg", ".jpeg"} else "image/png"
+    return Label(
+        label_id=entry.label_id,
+        batch_id=f"eval-{entry.label_id}",
+        image_bytes=image_bytes,
+        content_type=content_type,
+        face_tag="front",
+    )
+
+
+def _per_rule_from_envelope(envelope) -> list[dict]:
+    """Map `audit_trail.per_rule_trace[]` → `[{rule_id, result}]`.
+
+    `not_applicable` collapses to `pass` for harness comparison (the manifest
+    only carries pass/fail/needs_review).
+    """
+    out: list[dict] = []
+    for entry in envelope.audit_trail.per_rule_trace:
+        result = "pass" if entry.disposition == "not_applicable" else entry.disposition
+        out.append({"rule_id": entry.rule_id, "result": result})
+    return out
+
+
+def _live_evaluator(entry: ManifestEntry) -> tuple[str, list, float, float]:
+    """Live `Evaluator` adapter — runs the manifest entry through the real
+    Application Service (vision + rules + orchestrator) and projects the
+    `DispositionEnvelope` onto the harness contract.
+
+    Returns: (disposition, per_rule_results, latency_s, confidence)
+    """
+    evaluator = _get_evaluator()
+    application = _build_application_from_entry(entry)
+    label = _build_label_from_entry(entry)
+
+    t0 = time.monotonic()
+    envelope = asyncio.run(evaluator.evaluate(application, label))
+    latency_s = time.monotonic() - t0
+
+    disposition = str(envelope.disposition)
+    per_rule = _per_rule_from_envelope(envelope)
+    confidence = float(envelope.disposition_confidence.numeric)
+    return disposition, per_rule, latency_s, confidence
 
 
 def run_subset(
