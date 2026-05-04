@@ -9,6 +9,7 @@ from pathlib import Path
 
 import pytest
 
+import app.rules._validators.abv_band  # noqa: F401
 import app.rules._validators.contrast_ratio_check  # noqa: F401
 import app.rules._validators.cpi_lookup  # noqa: F401
 import app.rules._validators.equality_match  # noqa: F401
@@ -17,6 +18,7 @@ import app.rules._validators.fuzzy_brand  # noqa: F401
 import app.rules._validators.heading_style_check  # noqa: F401
 import app.rules._validators.layout_check  # noqa: F401
 import app.rules._validators.presence_check  # noqa: F401
+import app.rules._validators.type_size_check  # noqa: F401
 import app.rules._validators.verbatim_hash  # noqa: F401
 from app.rules._validators import VALIDATOR_REGISTRY
 from app.rules.loader import YamlRuleLoader

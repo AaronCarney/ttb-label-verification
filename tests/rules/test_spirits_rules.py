@@ -16,6 +16,7 @@ import app.rules._validators.fuzzy_brand  # noqa: F401
 import app.rules._validators.heading_style_check  # noqa: F401
 import app.rules._validators.layout_check  # noqa: F401
 import app.rules._validators.presence_check  # noqa: F401
+import app.rules._validators.type_size_check  # noqa: F401
 import app.rules._validators.verbatim_hash  # noqa: F401
 from app.rules._validators import VALIDATOR_REGISTRY
 from app.rules.loader import YamlRuleLoader
