@@ -147,7 +147,18 @@ def run_subset(
     per_rule_results: list[dict] = []
 
     for entry in entries:
-        p_disp, p_rules, latency, confidence = evaluator(entry)
+        # Skip entries whose underlying fixture is missing on disk. Manifest
+        # carries forward-looking refs (e.g. fixtures/_corpus/<cola-id>/) that
+        # T15 fills in; we don't want a single missing PNG to kill the run.
+        if not Path(entry.image_ref).is_file():
+            print(f"skip {entry.label_id}: image not found at {entry.image_ref}",
+                  file=sys.stderr)
+            continue
+        try:
+            p_disp, p_rules, latency, confidence = evaluator(entry)
+        except FileNotFoundError as e:
+            print(f"skip {entry.label_id}: fixture missing ({e})", file=sys.stderr)
+            continue
         pred_disp.append(p_disp)
         actual_disp.append(entry.expected_disposition)
         latencies.append(latency)
@@ -169,7 +180,7 @@ def run_subset(
     record = HistoryRecord(
         timestamp=datetime.now(timezone.utc).isoformat(),
         subset=subset,
-        n_labels=len(entries),
+        n_labels=len(pred_disp),
         macro_f1=macro_f1(pred_disp, actual_disp),
         per_rule_precision={k: v[0] for k, v in pr.items()},
         per_rule_recall={k: v[1] for k, v in pr.items()},

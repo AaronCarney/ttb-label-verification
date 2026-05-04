@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-05-04T20:41:27.255236+00:00",
+  "subset": "full",
+  "n_labels": 6,
+  "macro_f1": 0.1904761904761905,
+  "per_rule_precision": {},
+  "per_rule_recall": {},
+  "ece": 0.1111111111111111,
+  "latency_p50_s": 1.9199628820060752,
+  "latency_p95_s": 5.843562146998011,
+  "latency_p99_s": 5.843562146998011,
+  "cost_weighted_score": 0.9444444444444444
+}
