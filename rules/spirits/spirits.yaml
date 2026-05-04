@@ -1,0 +1,104 @@
+rule_pack: spirits
+rule_pack_version: "0.1.0"
+rules:
+  - rule_id: spirits.brand.present
+    cfr_citation: "27 CFR §5.63(a), §5.64"
+    applies_to_classes: [spirits]
+    reason_code: BRAND.PRESENCE.MISSING
+    severity: reject
+    match_policy: fuzzy
+    validator: fuzzy_brand
+    parameters:
+      pass_threshold: 0.92
+      needs_review_threshold: 0.85
+      needs_review_reason_code: BRAND.NAME.NEEDS_REVIEW
+    evidence_required: [brand]
+    effective_date: "2022-02-09"
+    test_fixtures: [F-SPIRITS-BRAND-PASS-01, F-SPIRITS-BRAND-MISSING-01]
+
+  - rule_id: spirits.class_type.present
+    cfr_citation: "27 CFR §5.63(a), Subpart I"
+    applies_to_classes: [spirits]
+    reason_code: CLASS_TYPE.PRESENCE.MISSING
+    severity: reject
+    match_policy: lookup
+    validator: enumerated_match
+    parameters:
+      allowed_values: ["Bourbon Whisky", "Rye Whisky", "Vodka", "Gin", "Tequila", "Rum", "Whisky"]
+    evidence_required: [class_type]
+    effective_date: "2022-02-09"
+    test_fixtures: [F-SPIRITS-CLASS-PASS-01, F-SPIRITS-CLASS-MISSING-01]
+
+  - rule_id: spirits.alcohol.present
+    cfr_citation: "27 CFR §5.63(a), §5.65(a)"
+    applies_to_classes: [spirits]
+    reason_code: ALCOHOL_CONTENT.PRESENCE.MISSING
+    severity: reject
+    match_policy: exact
+    validator: presence_check
+    evidence_required: [alc_text]
+    effective_date: "2022-02-09"
+    test_fixtures: [F-SPIRITS-ALC-PRESENT-01, F-SPIRITS-ALC-MISSING-01]
+
+  - rule_id: spirits.alcohol.format
+    cfr_citation: "27 CFR §5.65(b)"
+    applies_to_classes: [spirits]
+    reason_code: ALCOHOL_CONTENT.FORMAT.INVALID
+    severity: reject
+    match_policy: regex
+    validator: regex_match
+    parameters:
+      pattern: '^\s*(?:alcohol|alc\.?)\s*[0-9]{1,2}(?:\.[0-9]+)?\s*%?\s*(?:by\s+volume|/\s*vol\.?|vol\.?)\s*$'
+      ignore_case: true
+    evidence_required: [alc_text]
+    effective_date: "2022-02-09"
+    test_fixtures: [F-SPIRITS-ALC-FORMAT-PASS-01, F-SPIRITS-ALC-FORMAT-FAIL-01]
+
+  - rule_id: spirits.alcohol.tolerance_band
+    cfr_citation: "27 CFR §5.65(c)"
+    applies_to_classes: [spirits]
+    reason_code: ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND
+    severity: reject
+    match_policy: tolerance
+    validator: abv_band
+    tolerance:
+      plus_pp: 0.3
+      minus_pp: 0.3
+    evidence_required: [abv]
+    effective_date: "2022-02-09"
+    test_fixtures: [F-SPIRITS-ALC-PASS-01, F-SPIRITS-ALC-FAIL-LOW-01]
+
+  - rule_id: spirits.same_field_of_vision
+    cfr_citation: "27 CFR §5.63(a)"
+    applies_to_classes: [spirits]
+    reason_code: LEGIBILITY.FIELD_OF_VISION.SPLIT
+    severity: reject
+    match_policy: layout
+    validator: same_field_of_vision_check
+    parameters:
+      required_fields: [brand, class_type, abv, net_contents]
+    evidence_required: [layout]
+    effective_date: "2022-02-09"
+    test_fixtures: [F-SPIRITS-SOV-PASS-01, F-SPIRITS-SOV-FAIL-01]
+
+  - rule_id: spirits.name_address.present
+    cfr_citation: "27 CFR §5.63(b)(1)"
+    applies_to_classes: [spirits]
+    reason_code: NAME_ADDRESS.PRESENCE.MISSING
+    severity: reject
+    match_policy: exact
+    validator: presence_check
+    evidence_required: [bottler]
+    effective_date: "2022-02-09"
+    test_fixtures: [F-SPIRITS-NAME-PASS-01, F-SPIRITS-NAME-MISSING-01]
+
+  - rule_id: spirits.net_contents.present
+    cfr_citation: "27 CFR §5.63(b)(2), §5.70"
+    applies_to_classes: [spirits]
+    reason_code: NET_CONTENTS.PRESENCE.MISSING
+    severity: reject
+    match_policy: exact
+    validator: presence_check
+    evidence_required: [net_contents]
+    effective_date: "2022-02-09"
+    test_fixtures: [F-SPIRITS-NET-PASS-01, F-SPIRITS-NET-MISSING-01]
