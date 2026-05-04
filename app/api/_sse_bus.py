@@ -17,13 +17,24 @@ from collections.abc import AsyncIterator
 
 
 class SSEBus:
-    """Per-batch async event bus."""
+    """Per-batch async event bus with replay-on-subscribe.
+
+    The replay buffer fulfills the ARCH §5.2 reconnect contract: a late
+    subscriber (or a reconnecting consumer) sees the full event log from
+    the worker's start, not just events broadcast after subscribe time.
+    Buffer is bounded; per-batch event volume is small (~50 items × ~3
+    event types ≪ 1000)."""
+
+    _MAX_BUFFER = 1000
 
     def __init__(self) -> None:
         self.subscribers: set[asyncio.Queue] = set()
+        self._event_log: list[dict] = []
 
     def subscribe(self) -> asyncio.Queue:
         q: asyncio.Queue = asyncio.Queue()
+        for evt in self._event_log:
+            q.put_nowait(evt)
         self.subscribers.add(q)
         return q
 
@@ -31,6 +42,9 @@ class SSEBus:
         self.subscribers.discard(q)
 
     def broadcast(self, event: dict) -> None:
+        self._event_log.append(event)
+        if len(self._event_log) > self._MAX_BUFFER:
+            self._event_log = self._event_log[-self._MAX_BUFFER:]
         # Iterate over a copy so concurrent unsubscribe does not mutate during.
         for q in list(self.subscribers):
             q.put_nowait(event)

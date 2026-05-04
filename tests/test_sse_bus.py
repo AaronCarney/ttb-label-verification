@@ -68,6 +68,20 @@ async def test_bus_unsubscribe_unknown_queue_is_idempotent_noop():
 
 
 @pytest.mark.asyncio
+async def test_bus_replays_buffered_events_to_late_subscribers():
+    """ARCH §5.2 reconnect contract: a late subscriber sees prior events."""
+    bus = SSEBus()
+    bus.broadcast({"event": "label-result", "data": {"i": 0}})
+    bus.broadcast({"event": "label-result", "data": {"i": 1}})
+
+    q = bus.subscribe()  # subscribe AFTER broadcasts
+    e0 = await asyncio.wait_for(q.get(), timeout=0.1)
+    e1 = await asyncio.wait_for(q.get(), timeout=0.1)
+    assert e0["data"]["i"] == 0
+    assert e1["data"]["i"] == 1
+
+
+@pytest.mark.asyncio
 async def test_bus_iterate_subscriber_yields_events_until_sentinel():
     """Async iterator helper for sse_starlette.EventSourceResponse."""
     bus = SSEBus()
