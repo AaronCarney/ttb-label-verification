@@ -22,7 +22,7 @@ function BatchApp({ batchId }: { batchId: string }): React.JSX.Element {
         {latest && <QueuePosition current={latest.queue_position} total={total} />}
       </header>
       {error && (
-        <p role="alert" className="rounded-md border border-destructive bg-destructive/10 p-3 text-sm text-destructive">
+        <p role="alert" className="rounded-md border border-destructive bg-destructive/10 p-3 text-sm text-[hsl(var(--uswds-error-dark))]">
           {error}
         </p>
       )}
