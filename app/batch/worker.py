@@ -68,10 +68,10 @@ class BatchWorker:
         self._evaluator = evaluator
         self._anomaly = anomaly
         self._bus = bus
-        # Stub `_app_lookup` — production wires from app.state.applications;
-        # tests inject via attribute or rely on synthesized stubs. See note
-        # on `_resolve_application` below.
+        # Stub registries — production wires from `app.state.applications` /
+        # the submission registry; tests inject by populating these dicts.
         self._app_lookup: dict[str, Application] = {}
+        self._label_lookup: dict[str, Label] = {}
 
     def _resolve_application(self, item: BatchItem) -> Application:
         """Resolve the Application for a queued BatchItem.
@@ -90,11 +90,19 @@ class BatchWorker:
     def _resolve_label(self, item: BatchItem) -> Label:
         """Resolve the Label payload for a queued BatchItem.
 
-        Cycle A skeleton stub: synthesizes a minimal `Label` from the
-        `label_id`. The real payload (image_bytes etc.) lives in the submission
-        registry, not in `BatchItem`. Tests override via `self._label_lookup`."""
-        from tests.conftest import _stub_label  # ok in test path; production wires real registry
-        return _stub_label(label_id=item.label_id)
+        Cycle A skeleton stub: synthesizes a minimal schema-valid `Label` from
+        the `label_id`. The real payload (image_bytes etc.) lives in the
+        submission registry — Cycle C wires that. Tests override by populating
+        `self._label_lookup` directly."""
+        if item.label_id in self._label_lookup:
+            return self._label_lookup[item.label_id]
+        return Label(
+            label_id=item.label_id,
+            batch_id=self._in_flight.batch_id,
+            image_bytes=b"\x89PNG\r\n\x1a\n",
+            content_type="image/png",
+            face_tag="front",
+        )
 
     async def _producer(self) -> None:
         for item in self._in_flight.items:
