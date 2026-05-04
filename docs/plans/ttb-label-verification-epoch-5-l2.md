@@ -1,6 +1,6 @@
 # TTB Label Verification — Epoch 5 (Application Service + Audit + Single-Label Flow) — L2 Implementation Plan
 
-> **Version:** v0.4 (2026-05-04) — see Change log for iter-2 fixes.
+> **Version:** v0.5 (2026-05-04) — see Change log for the architectural-review pass (2 critical + 3 recommendations).
 >
 > **For agentic workers:** REQUIRED EXECUTOR: `parallel-plan-executor`. Per olorin CLAUDE.md, `superpowers:subagent-driven-development` is obsolete and fully replaced by `parallel-plan-executor` (which injects the `task-executor` skill body for TDD enforcement). Each task lands as one Red→Green→Commit cycle (or, for the few bundled tasks, multiple cycles) inside an isolated subagent. Steps use checkbox (`- [ ]`) syntax for tracking.
 >
@@ -1578,11 +1578,29 @@ git commit -m "feat(e5): pure orchestrator-trigger predicate (FR-300 exact match
 
 ---
 
-## Task 11: app/services/envelope_builder.py — pure envelope assembly
+## Task 11: app/services/envelope_builder.py — pure envelope assembly + FieldFindingWire projection
 
 **Files:**
 - Create: `app/services/envelope_builder.py`
 - Test: `tests/test_envelope_builder.py`
+
+> **v0.5 Critical-#1 fix (field-population gap).** v0.4 routed an empty `fields=()` tuple through `build_success_envelope` and deferred FieldFindingWire construction to T20. T20's recipe asserts only disposition outcomes — it never builds wire-side `FieldFindingWire` entries. L1 §4 AC #1 (all 7 PRD §5.1 fields populated for a successful evaluation) is therefore unreachable. v0.5 closes the gap inside this task by adding a pure projection from `(ValidationResult, FieldObservation, ExpectedValue)` → `FieldFindingWire`. T13 Cycle D's success-path call site is updated to pass the projected tuple to `build_success_envelope`; T20's done-criteria gain a length check on `envelope.fields` for fixtures 01 and 06. Task identifier and wave assignment are unchanged — this is an in-place expansion of T11's scope.
+>
+> **Input-side data already in scope.** Inside `Evaluator._evaluate_inner` after Cycle C lands, two tuples are live: `results: tuple[ValidationResult, ...]` (from the rule engine) and `observations: tuple[FieldObservation, ...]` (from the vision extractor). The application's `expected_values: tuple[ExpectedValue, ...]` (T20 additive field) is also in scope. T11 owns a pure helper `build_field_findings(results, observations, expected_values) -> tuple[FieldFindingWire, ...]` that consumes these three tuples and emits one `FieldFindingWire` per canonical field. No I/O; deterministic.
+>
+> **Per-field projection contract.** For each canonical field id, the projection sources values from the in-scope tuples:
+>
+> - `field_id` → matched against `FieldFindingWire.field_name` enum (mapping below).
+> - `extracted_value` → from `observation.observed_value` for the matching `field_id` (string-coerced).
+> - `expected_value` → from `expected_values[*]` matching on `field_id` (string-coerced; falls back to `""` if absent).
+> - `evidence` → from `observation.evidence[0]` for that field (per-field bbox + crop_ref + extraction_confidence). When the observation has no evidence, surface the field as a `needs_review` per-rule trace entry (the audit/metrics layer already records this) and skip emitting a wire entry.
+> - `rule_findings` → tuple of `RuleFindingWire` projected from each `ValidationResult` whose `rule_id` is associated with this field (rule_id-to-field mapping comes from the rule pack metadata; T11's recipe assumes the validator emits the field association via `evidence[0].field_id` matching the canonical id).
+> - `ai_suggestion` → constructed from any `Refined.tasks[*]` whose `rule_id` is in this field's rule set (`AISuggestionWire(present=True, task=_TASK_WIRE_NAME[task.task], text=..., model_disposition=None)`); else `AISuggestionWire(present=False)`.
+> - `field_confidence` → `ConfidenceBand` from the min `aggregated_confidence` across this field's `ValidationResult`s, mapped via `confidence.to_band(...)` (single source per Conventions §D-017).
+>
+> **Seven-field coverage assumption (PRD §5.1).** The canonical set is the seven user-visible fields: `brand_name`, `fanciful_name`, `beverage_class`, `alcohol_content`, `net_contents`, `government_warning`, `name_and_address`. The wire enum (`FieldFindingWire.field_name`, `app/schemas/wire/disposition.py:65-73`) carries seven slots — `brand_name`, `class_type`, `alcohol_content`, `net_contents`, `warning`, `name_address`, `country_of_origin`. The projection uses an internal mapping constant `_FIELD_CANONICAL_TO_WIRE = {"brand_name": "brand_name", "fanciful_name": "brand_name", "beverage_class": "class_type", "alcohol_content": "alcohol_content", "net_contents": "net_contents", "government_warning": "warning", "name_and_address": "name_address"}` — `country_of_origin` is reserved for imports (FR-008) and is included only when an observation surfaces it. The projection emits one wire entry per canonical field for which the input tuples carry either an observation OR an expected value; canonical fields that are not evaluated for the fixture are surfaced as `needs_review` synthetic entries on the audit `per_rule_trace` (re-using the same shape T13 Cycle C already builds for engine_failure rows) so the reviewer sees why a field was skipped, and they do NOT emit a wire `FieldFindingWire` entry. (Net: a fixture-01 happy path emits exactly seven wire entries; a fixture-04 legibility short-circuit emits zero.)
+>
+> **Where this lands in the build_success_envelope contract.** `build_success_envelope` keeps its `fields: Iterable[FieldFindingWire]` parameter unchanged; T13 Cycle D's call site now passes `build_field_findings(results=results, observations=observations, expected_values=tuple(application.expected_values))` instead of `()`. The short-circuit envelope (`build_short_circuit_envelope`) keeps `fields=()` because legibility/timeout/total-failure short-circuits never reach the rule engine and have no per-field results to project.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -1636,6 +1654,60 @@ def test_build_success_envelope_minimal():
     # Empty fields → ("low", 0.0) for disposition_confidence per aggregation.py
     assert env.disposition_confidence.numeric == 0.0
     assert env.disposition_confidence.band == "low"
+
+
+# v0.5 Critical-#1: FieldFindingWire projection from ValidationResult + FieldObservation.
+def test_build_field_findings_projects_canonical_seven():
+    """For a fixture-01-shaped happy path (one observation + one expected per
+    canonical field, one passing ValidationResult per field), the projection
+    emits exactly seven FieldFindingWire entries."""
+    from decimal import Decimal
+
+    from app.schemas.expected import BeverageClass, ExpectedValue
+    from app.schemas.extracted import Evidence, EvidenceSource, FieldObservation, MatchKind
+    from app.schemas.rejection import EngineMeta, Outcome, Severity, ValidationResult
+    from app.services.envelope_builder import build_field_findings
+
+    em = EngineMeta(engine_version="t", rule_pack_version="t", rule_pack="t",
+                    started_at_ms=0, elapsed_ms=0)
+    canonical = ("brand_name", "fanciful_name", "beverage_class", "alcohol_content",
+                 "net_contents", "government_warning", "name_and_address")
+    observations = tuple(
+        FieldObservation(
+            field_id=fid, beverage_class=BeverageClass.SPIRITS, observed_value=fid,
+            evidence=(Evidence(field_id=fid, source=EvidenceSource.OCR,
+                               bbox=(0, 0, 10, 10), match_kind=MatchKind.EXACT,
+                               confidence=0.95),),
+        ) for fid in canonical
+    )
+    expected = tuple(ExpectedValue(field_id=fid, value=fid) for fid in canonical)
+    results = tuple(
+        ValidationResult(
+            rule_id=f"R-{fid}", cfr_citation="27 CFR §x",
+            beverage_class=BeverageClass.SPIRITS,
+            outcome=Outcome.PASS, severity=Severity.INFO,
+            aggregated_confidence=0.95,
+            evidence=(observations[i].evidence[0],),
+            engine_meta=em,
+        ) for i, fid in enumerate(canonical)
+    )
+    fields = build_field_findings(results=results, observations=observations,
+                                  expected_values=expected)
+    assert len(fields) == 7, f"expected 7 wire entries, got {len(fields)}"
+    wire_names = {f.field_name for f in fields}
+    assert wire_names == {"brand_name", "class_type", "alcohol_content", "net_contents",
+                          "warning", "name_address"} | (
+        {"brand_name"} if "fanciful_name" in canonical else set()
+    ), f"wire names mismatch: {wire_names}"
+
+
+def test_build_field_findings_empty_when_no_observations():
+    """fixture-04-shaped legibility short-circuit: no observations → projection
+    emits zero wire entries (the short-circuit envelope passes fields=())."""
+    from app.services.envelope_builder import build_field_findings
+
+    fields = build_field_findings(results=(), observations=(), expected_values=())
+    assert fields == ()
 ```
 
 - [ ] **Step 2: Run focused → RED**
@@ -1644,7 +1716,8 @@ def test_build_success_envelope_minimal():
 
 ```python
 # app/services/envelope_builder.py
-"""Pure envelope assembly — success path + short-circuit path.
+"""Pure envelope assembly — success path + short-circuit path + per-field
+FieldFindingWire projection (v0.5 Critical-#1).
 
 No I/O, no clock; takes a pre-built AuditRecord + Metrics so audit/metrics
 ownership stays clean.
@@ -1655,10 +1728,21 @@ from typing import Iterable
 
 from app.schemas.application import Application
 from app.schemas.audit import AuditRecord, PerRuleTraceEntry
+from app.schemas.expected import ExpectedValue
+from app.schemas.extracted import FieldObservation
 from app.schemas.label import Label
 from app.schemas.metrics import Metrics
-from app.schemas.wire.disposition import ConfidenceBand, DispositionEnvelope, FieldFindingWire
+from app.schemas.rejection import ValidationResult
+from app.schemas.wire.disposition import (
+    AISuggestionWire,
+    ConfidenceBand,
+    DispositionEnvelope,
+    FieldEvidenceWire,
+    FieldFindingWire,
+    RuleFindingWire,
+)
 from app.services.aggregation import min_aggregate_confidence
+from app.services.confidence import to_band
 from app.services.engine_meta import EvaluationTimeline
 
 
@@ -1668,6 +1752,102 @@ _TASK_WIRE_NAME = {
     "reasoning_enrich": "reasoning_enrichment",
     "ocr_reconcile": "ocr_reconciliation",
 }
+
+
+# v0.5 Critical-#1: canonical PRD §5.1 field id → wire field_name enum.
+# `fanciful_name` collapses into the `brand_name` slot per ARCH §6.1; both are
+# brand-side observations and the wire surface carries one slot for them.
+_FIELD_CANONICAL_TO_WIRE = {
+    "brand_name": "brand_name",
+    "fanciful_name": "brand_name",
+    "beverage_class": "class_type",
+    "alcohol_content": "alcohol_content",
+    "net_contents": "net_contents",
+    "government_warning": "warning",
+    "name_and_address": "name_address",
+    "country_of_origin": "country_of_origin",
+}
+
+
+def _coerce_str(value) -> str:
+    if value is None:
+        return ""
+    return str(value)
+
+
+def build_field_findings(
+    *,
+    results: Iterable[ValidationResult],
+    observations: Iterable[FieldObservation],
+    expected_values: Iterable[ExpectedValue],
+) -> tuple[FieldFindingWire, ...]:
+    """Project (ValidationResult, FieldObservation, ExpectedValue) tuples
+    into the wire-side `FieldFindingWire` list.
+
+    One entry per canonical PRD §5.1 field for which there is either an
+    observation OR an expected value. Canonical fields with no observation
+    AND no expected value are omitted (they remain visible to the reviewer
+    via the audit `per_rule_trace` synthetic entries that T13 Cycle C builds
+    for engine_failure rows). The seven canonical ids are listed in
+    `_FIELD_CANONICAL_TO_WIRE`; `country_of_origin` (FR-008) is included
+    only when an observation surfaces it.
+    """
+    obs_by_field: dict[str, FieldObservation] = {o.field_id: o for o in observations}
+    exp_by_field: dict[str, ExpectedValue] = {e.field_id: e for e in expected_values}
+    # Group ValidationResults by the canonical field they touch (sourced from
+    # the first evidence's `field_id`). Validators that emit no evidence
+    # cannot be associated with a field — they surface in audit only.
+    results_by_field: dict[str, list[ValidationResult]] = {}
+    for vr in results:
+        if not vr.evidence:
+            continue
+        fid = vr.evidence[0].field_id
+        results_by_field.setdefault(fid, []).append(vr)
+
+    candidate_fields = list(_FIELD_CANONICAL_TO_WIRE.keys())
+    out: list[FieldFindingWire] = []
+    for fid in candidate_fields:
+        obs = obs_by_field.get(fid)
+        exp = exp_by_field.get(fid)
+        if obs is None and exp is None:
+            continue
+        if obs is None or not obs.evidence:
+            # Per the contract: needs_review trace entry handled in audit;
+            # skip the wire entry to keep the wire surface tight.
+            continue
+        ev = obs.evidence[0]
+        evidence_wire = FieldEvidenceWire(
+            bbox=ev.bbox if ev.bbox is not None else (0, 0, 0, 0),
+            crop_ref=ev.image_uri or "",
+            extraction_confidence=ev.confidence,
+        )
+        rule_findings_for_field = tuple(
+            RuleFindingWire(
+                rule_id=vr.rule_id,
+                cfr_citation=vr.cfr_citation,
+                disposition=(
+                    "pass" if vr.outcome.value == "pass" else
+                    "fail" if vr.outcome.value == "fail" else
+                    "needs_review"
+                ),
+                reason_code=vr.reason_code or "",
+                plain_language_explanation=vr.message or "",
+            ) for vr in results_by_field.get(fid, [])
+        )
+        # Min confidence over this field's validators; fall back to
+        # the observation's evidence confidence when no rule fired.
+        confidences = [vr.aggregated_confidence for vr in results_by_field.get(fid, [])]
+        numeric = min(confidences) if confidences else ev.confidence
+        out.append(FieldFindingWire(
+            field_name=_FIELD_CANONICAL_TO_WIRE[fid],  # type: ignore[arg-type]
+            extracted_value=_coerce_str(obs.observed_value),
+            expected_value=_coerce_str(exp.value if exp else None),
+            evidence=evidence_wire,
+            rule_findings=rule_findings_for_field,
+            ai_suggestion=AISuggestionWire(present=False),
+            field_confidence=ConfidenceBand(band=to_band(numeric), numeric=numeric),
+        ))
+    return tuple(out)
 
 
 def build_success_envelope(
@@ -1728,11 +1908,17 @@ def build_short_circuit_envelope(
 
 - [ ] **Step 4: Run focused → GREEN**
 
+- [ ] **Done-criteria (v0.5 Critical-#1).**
+  - `test_build_field_findings_projects_canonical_seven` asserts the projection emits seven wire entries against the fixture-01-shaped happy path (canonical observation + expected per field).
+  - `test_build_field_findings_empty_when_no_observations` asserts the projection emits zero wire entries against the fixture-04-shaped legibility short-circuit (no observations).
+  - `_FIELD_CANONICAL_TO_WIRE` covers the seven PRD §5.1 fields plus the optional `country_of_origin` for imports (FR-008); the eighth slot is opportunistic.
+  - The projection is pure (no I/O, no clock, no global state); confidence band sourcing routes through `confidence.to_band` (single-source per Conventions §D-017).
+
 - [ ] **Step 5: Commit**
 
 ```bash
 git add app/services/envelope_builder.py tests/test_envelope_builder.py
-git commit -m "feat(e5): pure envelope assembly (success + short-circuit)"
+git commit -m "feat(e5): envelope assembly + FieldFindingWire projection (success + short-circuit)"
 ```
 
 ---
@@ -1885,6 +2071,8 @@ git commit -m "feat(e5): SessionCache bounded LRU (NFR-DET-001)"
 - Test: `tests/test_evaluator_happy_path.py` (Cycle D)
 
 This is a 4-cycle bundle. Each cycle is one Red→Green→Commit on the same file. The Evaluator is THIN — it delegates to the helpers from T7-T12 and audit/metrics from T5/T6.
+
+> **Evaluator narrative (v0.5 recommendation #3).** A maintainer reading `evaluator.py` after T14 lands sees a script of L1 §2.1's ten steps, each delegating to a named helper. The request flow is: **cache check** (T12 `SessionCache.get`) → **vision extract** (`self._vision.extract(label)`) → **legibility short-circuit** (T13 Cycle B; `app.vision.quality.assess` returns `needs_better_photo` → `build_short_circuit_envelope` with empty fields) → **rule engine** (`self._rules.build_validator_context` + `self._rules.evaluate`) → **orchestrator trigger predicate** (T10 `should_invoke_orchestrator`) → **orchestrator refine** (conditional; `self._orchestrator.refine` only when triggered) → **patcher** (T9 `patch_validation_results` — the FR-303 keystone, never touches `outcome`/`severity`/`reason_code`) → **disposition computation** (T7 `compute_disposition`; honest §10.3 invariant) → **per-field wire projection** (T11 `build_field_findings` — v0.5 Critical-#1; sources `results` + `observations` + `application.expected_values`) → **aggregation** (T8 `min_aggregate_confidence` consumed inside `build_success_envelope`) → **envelope assembly** (T11 `build_success_envelope` consumes audit + metrics + projected fields) → **cache write** (T12 `SessionCache.put`). Cycle B in T13 lands steps 1-2; Cycle C lands steps 3-6; Cycle D lands steps 7-10. T14 Cycle A wraps the whole inner method in `asyncio.wait_for` (FR-909) and moves cache-write to the outer `evaluate`; T14 Cycle B wraps the vision and rules calls in chokepoint try/excepts. The eight helpers (T1, T2, T5-T12) compose into this flow without circular dependencies — the Evaluator imports them at module top and the helpers never import from `evaluator.py`.
 
 ### Cycle A — skeleton + DI signature
 
@@ -2304,24 +2492,32 @@ Replace the assembly section of `evaluate` (after Cycle C's failures-surface blo
 
         # Step 9-10: assembly
         from app.services.audit import AuditRecorder
-        from app.services.envelope_builder import build_success_envelope
+        from app.services.envelope_builder import build_field_findings, build_success_envelope
         from app.services.metrics_builder import MetricsBuilder
 
         timeline.finish(total_duration_ms=int((time.monotonic() - t_total) * 1000))
+        # v0.5 Critical-#1: project per-field wire entries from the in-scope
+        # tuples (results from rules, observations from vision, expected from
+        # the application). Empty inputs → empty tuple; the short-circuit
+        # path uses build_short_circuit_envelope and never reaches this line.
+        field_findings = build_field_findings(
+            results=results,
+            observations=observations,
+            expected_values=tuple(application.expected_values),
+        )
         envelope_for_hash = {
             "evaluation_id": application.evaluation_id,
             "label_ref": label.label_id,  # wire-side name <- internal name
             "disposition": disposition,
-            "fields": [],
+            "fields": [f.model_dump() for f in field_findings],
         }
         audit = AuditRecorder().assemble(timeline=timeline, application=application, label=label,
                                          envelope_for_hash=envelope_for_hash)
         metrics = MetricsBuilder().build(timeline)
         envelope = build_success_envelope(
             application=application, label=label, timeline=timeline,
-            disposition=disposition, fields=(), audit=audit, metrics=metrics,
+            disposition=disposition, fields=field_findings, audit=audit, metrics=metrics,
         )
-        # T20 (AC fixture coverage) lands the per-field FieldFindingWire construction.
 ```
 
 Also remove the Cycle B placeholder happy-path return (now superseded by the full assembly above).
@@ -2418,6 +2614,8 @@ async def test_whole_eval_timeout_routes_to_needs_review():
 
 - [ ] **Step A.3: Implement Cycle A**
 
+> **v0.5 recommendation #1 (Wave 4 → Wave 3 transition state).** Cycle A wraps T13 Cycle D's body verbatim, but two pieces of state must be threaded through the new try/except: (a) **cache-writes happen only after a successful disposition** (envelope returned by `_evaluate_inner`); when `asyncio.wait_for` raises `TimeoutError` the synthesized timeout envelope is NOT cached (the next request retries the slow path rather than serving a synthetic `needs_review` from cache). (b) **Any uncaught exception inside `_evaluate_inner` propagates to the chokepoint exception map** (Cycle B's outer try/except, applied to vision and rules), NOT to the wait_for wrapper — wait_for handles `TimeoutError` only. **Critically, when extracting Cycle D's body into `_evaluate_inner`, REMOVE the cache-write line at the end of the moved body** (`self._cache.put(cache_key, envelope)`) — that line moves to the outer `evaluate` method shown below. Without this removal the cache-write would land twice (once at end of `_evaluate_inner`, once at end of `evaluate`).
+
 Refactor `Evaluator.evaluate` to extract the body into `_evaluate_inner`. Wrap with `asyncio.wait_for`:
 
 ```python
@@ -2449,12 +2647,14 @@ import asyncio
 
     async def _evaluate_inner(self, application, label):
         # Move ALL the existing body of evaluate here (everything after the
-        # cache check from Cycle D). Capture timeline as self._last_timeline
-        # at the top so the timeout fallback can read partial state.
+        # cache check from Cycle D), EXCEPT the cache-write line at the end —
+        # cache-write moves to the outer `evaluate` method (v0.5 rec #1).
+        # Capture timeline as self._last_timeline at the top so the timeout
+        # fallback can read partial state.
         from app.services.engine_meta import EvaluationTimeline
         timeline = EvaluationTimeline(evaluation_id=application.evaluation_id)
         self._last_timeline = timeline
-        # ... (the rest of Cycle D's body verbatim)
+        # ... (the rest of Cycle D's body verbatim, MINUS the cache-write)
 
     def _timeout_envelope(self, application, label):
         from app.services.audit import AuditRecorder
@@ -2973,6 +3173,19 @@ git commit -m "feat(e5): DEV_MODE-gated /batches/.../calls endpoint (D-019)"
 **Files:**
 - Test: `tests/test_evaluator_failure_modes.py`
 
+> **v0.5 Critical-#2 fix (canonical reason-code taxonomy).** v0.4 wired the parametrized FR-90X cases to spellings (`ENGINE.OCR.AMBIGUOUS`, `ENGINE.CLASS.UNKNOWN`, `ENGINE.CLASS.DISAGREEMENT`, `ENGINE.DPI.MISSING`) that do not exist in the canonical taxonomy at `docs/ARCHITECTURE.md` §10.1 (lines 845-852). The chokepoint records whatever the upstream emits, so the v0.4 test was a tautology — it asserted that a fabricated string round-trips through, never exercising the production reason-code emission path. v0.5 replaces the spellings with the canonical strings:
+>
+> | FR | Canonical reason code (ARCH §10.1) | Production emitter |
+> |---|---|---|
+> | FR-903 (ambiguous OCR) | `ENGINE.OBSERVATION.AMBIGUOUS` | Defined in `rules/reason_codes.yaml:150`. Emitted by the OCR-reconcile orchestrator task path (`app/orchestrator/tasks/ocr_reconcile.py` per E4 — when `winner=None` the application service routes a `needs_review` ValidationResult carrying this code). The Evaluator's chokepoint surfaces the code via the rule engine's per-rule failure path. |
+> | FR-904 (unknown class) | `CLASS_TYPE.UNKNOWN` | Defined in ARCH §10.1 row 5; emitted by the rule engine's class-detection validator when `application.type_of_product` is not in the `BeverageClass` enum. (The rules YAML carries the longer-prefixed `CLASS_TYPE.INPUT.UNKNOWN`; ARCH §10.1 is the canonical taxonomy and is the source of truth for E5's wire-side surfacing.) |
+> | FR-905 (class disagreement) | `CLASS_TYPE.APPLICATION_LABEL_DISAGREE` | Defined in ARCH §10.1 row 6; emitted by the rule engine's class-comparison validator when the label-implied class disagrees with the application's declared class. (The rules YAML carries the longer-prefixed `CLASS_TYPE.MATCH.APPLICATION_LABEL_DISAGREE`; ARCH §10.1 is canonical.) |
+> | FR-910 (missing DPI) | `ENGINE.MEASUREMENT.MISSING_DPI` | Defined in `rules/reason_codes.yaml:174`. Emitted by E2's caps/bold/cpi/contrast validators when DPI metadata is absent (per E3 vision DPI extraction emits `dpi=None` and the rule engine attaches the canonical reason code at validation time). |
+>
+> **Production-path emission ownership.** Each canonical reason code is emitted by an existing component **upstream of the Evaluator** — none of these strings are net-new to E5. The Evaluator is the **routing chokepoint**, not the emission source. T18's test wires a `ValidationResult` carrying the canonical reason code (matching what the production rule engine actually produces) and asserts the chokepoint routes the disposition to `needs_review` with the canonical reason code intact in `per_rule_trace`. Because the test wires the same string the production rule engine emits, the test exercises the production routing path and is no longer a tautology.
+>
+> **No new task required.** All four canonical reason codes are already declared in either `rules/reason_codes.yaml` (the registry the rule loader hashes at startup, NFR-AUDIT-002) or in ARCH §10.1's published taxonomy. E2 owns the rule-engine emission code paths (locked); E3 owns the DPI absence detection (locked); E4 owns the OCR-reconcile abstain path (locked). E5's job is to surface what the upstream emits — which is what the chokepoint already does (`for failure in timeline.failures: ... record_rule_done(rule_id=failure.reason_code, ...)`). The v0.5 fix is a test-string change only.
+
 - [ ] **Step 1: Write the parametrized test (FR-902, FR-903, FR-904, FR-905, FR-907, FR-908, FR-909, FR-910, FR-911, FR-912 — Web-layer FR-900/901 covered by T15's endpoint tests; FR-906 deferred — see Hard Scope Boundary)**
 
 ```python
@@ -3015,21 +3228,37 @@ async def test_fr902_conflicting_rules():
     assert envelope.disposition == "fail"
 
 
-# iter-2 Warning #1: extend coverage to FR-903 / FR-904 / FR-905 / FR-910.
-# Each case wires a downstream signal (typically a ValidationResult with the
-# matching reason_code) and asserts the chokepoint routes the disposition to
-# `needs_review` and surfaces the reason code in `per_rule_trace`.
+# v0.5 Critical-#2: parametrize uses the canonical reason-code taxonomy from
+# ARCHITECTURE.md §10.1 (lines 845-852). Each case wires a ValidationResult
+# carrying the SAME reason code the production rule engine emits — so the
+# test exercises the production routing path, not a fabricated string. The
+# chokepoint records `failure.reason_code` verbatim into `per_rule_dispositions`,
+# so this assertion validates the production-trajectory surfacing.
 @pytest.mark.asyncio
 @pytest.mark.parametrize("reason_code, outcome, fr_label", [
-    ("ENGINE.OCR.AMBIGUOUS",            Outcome.INSUFFICIENT_EVIDENCE, "FR-903"),
-    ("ENGINE.CLASS.UNKNOWN",            Outcome.INSUFFICIENT_EVIDENCE, "FR-904"),
-    ("ENGINE.CLASS.DISAGREEMENT",       Outcome.INSUFFICIENT_EVIDENCE, "FR-905"),
-    ("ENGINE.DPI.MISSING",              Outcome.INSUFFICIENT_EVIDENCE, "FR-910"),
+    # FR-903: emitted by the OCR-reconcile orchestrator path (E4) when the
+    # tiebreak abstains; the rule engine surfaces it on the affected
+    # ValidationResult. Canonical: ARCH §10.1 row 4.
+    ("ENGINE.OBSERVATION.AMBIGUOUS",          Outcome.INSUFFICIENT_EVIDENCE, "FR-903"),
+    # FR-904: emitted by the class-detection validator when application's
+    # type_of_product is not in the BeverageClass enum. Canonical: ARCH §10.1 row 5.
+    ("CLASS_TYPE.UNKNOWN",                    Outcome.INSUFFICIENT_EVIDENCE, "FR-904"),
+    # FR-905: emitted by the class-comparison validator when label-implied
+    # class disagrees with application-declared class. Canonical: ARCH §10.1 row 6.
+    ("CLASS_TYPE.APPLICATION_LABEL_DISAGREE", Outcome.INSUFFICIENT_EVIDENCE, "FR-905"),
+    # FR-910: emitted by E2's caps/bold/cpi/contrast validators when DPI is
+    # absent (E3 quality.assess returns dpi=None; engine attaches the code).
+    # Canonical: ARCH §10.1 row 11.
+    ("ENGINE.MEASUREMENT.MISSING_DPI",        Outcome.INSUFFICIENT_EVIDENCE, "FR-910"),
 ])
 async def test_fr_900_series_routes_to_needs_review(reason_code, outcome, fr_label):
-    """FR-903 / FR-904 / FR-905 / FR-910 — when an upstream signal carries
-    one of these reason codes, the chokepoint must route to needs_review and
-    keep the reason code visible in the per-rule trace."""
+    """FR-903 / FR-904 / FR-905 / FR-910 — when an upstream component (vision
+    extractor, rule engine, or orchestrator task) emits one of the canonical
+    ARCH §10.1 reason codes on a ValidationResult, the Evaluator chokepoint
+    must route the disposition to needs_review and keep the reason code
+    visible in the per_rule_trace. The test exercises the production routing
+    path because the wired reason_code matches what the production component
+    emits — see the production-emitter table in this task's preamble."""
     rules = FakeRuleEngine(results=(
         ValidationResult(
             rule_id=f"R-{fr_label}", cfr_citation="27 CFR §x",
@@ -3044,8 +3273,11 @@ async def test_fr_900_series_routes_to_needs_review(reason_code, outcome, fr_lab
     envelope = await e.evaluate(application=_stub_app(), label=_stub_label())
     assert envelope.disposition == "needs_review", f"{fr_label} did not route to needs_review"
     rule_ids = {entry.rule_id for entry in envelope.audit_trail.per_rule_trace}
-    assert reason_code in rule_ids or any(reason_code.split(".")[1] in rid for rid in rule_ids), (
-        f"{fr_label}: reason_code {reason_code} not surfaced in per_rule_trace ({rule_ids})"
+    # v0.5 Critical-#2: assert the canonical reason code surfaces verbatim;
+    # no substring fallback (the production path emits the exact string).
+    assert reason_code in rule_ids, (
+        f"{fr_label}: canonical reason_code {reason_code} not surfaced in "
+        f"per_rule_trace ({rule_ids}) — production path emits this string verbatim"
     )
 
 
@@ -3127,11 +3359,16 @@ async def test_fr912_model_unavailable():
 
 If any case unexpectedly fails, that's a Rule 1-3 inline gap in T14's chokepoint surfacing — fix the surfacing minimally (do NOT change disposition logic, only ensure the failure code lands in `per_rule_dispositions`).
 
+- [ ] **Done-criteria (v0.5 Critical-#2).**
+  - All four parametrized cases assert the canonical ARCH §10.1 reason code surfaces VERBATIM in `audit_trail.per_rule_trace[*].rule_id`. No substring fallback (`reason_code.split(".")[1] in rid`) — the production path emits the exact string.
+  - Each case is the same string the production rule engine / vision extractor / orchestrator emits in production (per the production-emitter table in this task's preamble), so the chokepoint surfacing is exercised against production-shaped input rather than a fabricated test oracle.
+  - The reason-code-emission ownership is documented inline (which upstream component owns each canonical string). E5 introduces no new reason-code strings — every code already exists in `rules/reason_codes.yaml` or the canonical ARCH §10.1 taxonomy. If a future change introduces a new FR-90X code, the test parametrize entry MUST identify the production emitter (file path + line range) before the case is added.
+
 - [ ] **Step 3: Commit**
 
 ```bash
 git add tests/test_evaluator_failure_modes.py
-git commit -m "test(e5): full FR-902/903/904/905/907/908/909/910/911/912 coverage"
+git commit -m "test(e5): FR-902/903/904/905/907/908/909/910/911/912 coverage with canonical reason codes"
 ```
 
 ---
@@ -3142,6 +3379,8 @@ git commit -m "test(e5): full FR-902/903/904/905/907/908/909/910/911/912 coverag
 - Test: `tests/test_post_labels_perf.py`
 
 > **iter-1 fix (Warning #5):** the perf test must run against deterministic seams (canned vision observations + fake orchestrator) so it measures Application Service / Evaluator / serialization overhead — NOT vision-model load time, NOT real OpenAI latency. Use `vision_mode="cloud"` with respx-mocked endpoints if a closer-to-prod profile is needed; otherwise inject fakes via the same `monkeypatch` seams as T15.
+
+> **v0.5 recommendation #2 — Wave 7 placement.** T19 monkeypatches the same vision/orchestrator seams as T15 and could in principle land in Wave 5 alongside T18. v0.5 keeps T19 in Wave 7 because Wave 7 measures the **full POST /labels endpoint stack** (FastAPI request parsing, multipart upload, Pydantic v2 strict-mode validation, JSON serialization, response framing), which is a closer proxy to the demo-fixture latency the L1 §4 AC #8 budget actually gates. Wave 5 perf would measure the Evaluator-internal hot path only, missing serialization overhead. Net: Wave 5 reorder is viable but loses representativeness; Wave 7 stays.
 
 - [ ] **Step 1: Write the perf test**
 
@@ -3311,13 +3550,17 @@ def _expected_from_fixture(fixture_id: str) -> tuple[ExpectedValue, ...]:
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize("fixture_id, expected_disposition", [
-    ("01-spirits-clean", "pass"),
-    ("03-warning-title-case", "fail"),
-    ("04-low-res-blurry", "needs_review"),
-    ("06-abv-out-of-tolerance", "fail"),
+@pytest.mark.parametrize("fixture_id, expected_disposition, expected_field_count", [
+    # v0.5 Critical-#1: non-short-circuit fixtures emit seven FieldFindingWire
+    # entries (the canonical PRD §5.1 set, projected by T11). Short-circuit
+    # paths (legibility, missing-application, missing-image, corrupt-image)
+    # emit zero — the short-circuit envelope passes fields=().
+    ("01-spirits-clean",        "pass",         7),  # canonical pass — full projection
+    ("03-warning-title-case",   "fail",         7),  # rule fail with all fields populated
+    ("04-low-res-blurry",       "needs_review", 0),  # legibility short-circuit → fields=()
+    ("06-abv-out-of-tolerance", "fail",         7),  # ABV-fail with all fields populated
 ])
-async def test_ac_fixture_disposition(fixture_id, expected_disposition):
+async def test_ac_fixture_disposition(fixture_id, expected_disposition, expected_field_count):
     settings = Settings()
     evaluator = build_evaluator(settings)
     application = Application(
@@ -3329,6 +3572,13 @@ async def test_ac_fixture_disposition(fixture_id, expected_disposition):
     envelope = await evaluator.evaluate(application=application, label=label)
     assert envelope.disposition == expected_disposition, (
         f"fixture {fixture_id}: expected {expected_disposition}, got {envelope.disposition}"
+    )
+    # v0.5 Critical-#1: assert L1 §4 AC #1 ("all 7 PRD §5.1 fields populated")
+    # is structurally satisfied for non-short-circuit fixtures, and that
+    # short-circuit fixtures correctly emit zero wire entries.
+    assert len(envelope.fields) == expected_field_count, (
+        f"fixture {fixture_id}: expected {expected_field_count} wire fields, "
+        f"got {len(envelope.fields)} ({[f.field_name for f in envelope.fields]})"
     )
 ```
 
@@ -3412,7 +3662,7 @@ After T21 lands:
 
 **Wave 0 coverage** — T0a (`build_rule_engine`) covers FR-303/700-series indirectly by ensuring T15's deterministic startup; T0b (`build_validator_context`) covers FR-907/911 indirectly by ensuring T13/T14 can construct a valid context against the locked E2 dataclass. Neither task introduces new requirement coverage — both are construction-path determinism for tasks downstream.
 
-**Placeholder scan** — all code blocks are concrete. T13 leaves per-field `FieldFindingWire` construction to T20 (notes this explicitly in Cycle D Step 3); T20's tests will surface gaps if the construction logic is missing.
+**Placeholder scan** — all code blocks are concrete. v0.5 Critical-#1: T11 owns the per-field `FieldFindingWire` projection via `build_field_findings(results, observations, expected_values)`; T13 Cycle D's success-path call site passes the projected tuple to `build_success_envelope` (no longer `fields=()`). T20's done-criteria assert `len(envelope.fields)` matches the per-fixture expectation (7 for canonical pass/fail, 0 for short-circuit fixtures).
 
 **Type consistency** — `EvaluationTimeline` shape consistent across T1, T5, T6, T13, T14. `compute_disposition`/`min_aggregate_confidence`/`patch_validation_results`/`should_invoke_orchestrator` are pure module-level functions (no class state). `Evaluator.__init__` signature is `(*, vision, rules, orchestrator, settings, cache=None)` consistent across T13, T14, T15.
 
@@ -3424,7 +3674,7 @@ After T21 lands:
 
 **Empty-results case** — `compute_disposition(())` explicitly returns `needs_review` (T7). Vision-and-rules-both-fail path → empty results → needs_review per the chokepoint. No silent-pass risk.
 
-**`AISuggestionWire.task` rename** — wire enum and orchestrator names mismatch is encoded in the `_TASK_WIRE_NAME` constant in `envelope_builder.py` (T11). The actual rename happens in T20 when per-field FieldFindingWire construction lands; T11 sets up the constant.
+**`AISuggestionWire.task` rename** — wire enum and orchestrator names mismatch is encoded in the `_TASK_WIRE_NAME` constant in `envelope_builder.py` (T11). v0.5 Critical-#1: T11 owns both the constant and the `build_field_findings` projection that consumes it (when an `ai_suggestion` is constructed from a `Refined.tasks[*]` entry).
 
 **Cache key vs evaluation_id collision** — cache key uses `_input_hash` (canonical app + image bytes); same input → same key regardless of evaluation_id. Cached envelope's evaluation_id is replaced on hit so audit trails don't conflate. Tested in T13 Cycle D.
 
@@ -3446,21 +3696,22 @@ This map tracks every L1-named requirement (FR-/NFR-) and acceptance criterion a
 | FR-505 / FR-603 (legibility short-circuit) | Covered | T13 Cycle B (`assess_quality(label)` short-circuit). |
 | FR-700-series (audit) | Covered | T6 (`AuditRecorder` + canonical hashes); T13 Cycle D (assembly). |
 | FR-902 (conflicting rules) | Covered | T18 `test_fr902_conflicting_rules`. |
-| FR-903 (ambiguous OCR) | Covered (iter-2) | T18 parametrized — `test_fr_900_series_routes_to_needs_review[FR-903]`. |
-| FR-904 (unknown class) | Covered (iter-2) | T18 parametrized — `test_fr_900_series_routes_to_needs_review[FR-904]`. |
-| FR-905 (class disagreement) | Covered (iter-2) | T18 parametrized — `test_fr_900_series_routes_to_needs_review[FR-905]`. |
+| FR-903 (ambiguous OCR) | Covered (v0.5 canonical) | T18 parametrized — `test_fr_900_series_routes_to_needs_review[FR-903]`; canonical `ENGINE.OBSERVATION.AMBIGUOUS` (ARCH §10.1 row 4); production emitter: OCR-reconcile orchestrator path (E4). |
+| FR-904 (unknown class) | Covered (v0.5 canonical) | T18 parametrized — `test_fr_900_series_routes_to_needs_review[FR-904]`; canonical `CLASS_TYPE.UNKNOWN` (ARCH §10.1 row 5); production emitter: rule engine class-detection validator. |
+| FR-905 (class disagreement) | Covered (v0.5 canonical) | T18 parametrized — `test_fr_900_series_routes_to_needs_review[FR-905]`; canonical `CLASS_TYPE.APPLICATION_LABEL_DISAGREE` (ARCH §10.1 row 6); production emitter: rule engine class-comparison validator. |
 | FR-906 (ruleset version mismatch — loader-time refusal) | Deferred | Loader-time refusal lives in E2's loader test (`tests/rules/test_loader.py`); end-to-end exercised in E8 deployment readiness. T0a calls the existing E2 loader, so any FR-906 refusal surfaces at process startup before any E5 test runs. See Hard Scope Boundary. |
 | FR-907 (validator exception) | Covered | T14 Cycle B (rules try/except → `ENGINE.RULES.UNAVAILABLE`); T18 `test_fr907_validator_exception`. |
 | FR-908 (per-rule timeout) | Covered | T18 `test_fr908_per_rule_timeout_outcome_routes_to_needs_review` (semantics enforced by E2's `YamlRuleEngine`; E5 routes the resulting outcome). |
 | FR-909 (whole-eval timeout) | Covered | T14 Cycle A (`asyncio.wait_for` → `ENGINE.SLA.TIMEOUT`); T18 `test_fr909_whole_eval_timeout`. |
-| FR-910 (missing DPI) | Covered (iter-2) | T18 parametrized — `test_fr_900_series_routes_to_needs_review[FR-910]`. |
+| FR-910 (missing DPI) | Covered (v0.5 canonical) | T18 parametrized — `test_fr_900_series_routes_to_needs_review[FR-910]`; canonical `ENGINE.MEASUREMENT.MISSING_DPI` (ARCH §10.1 row 11; `rules/reason_codes.yaml:174`); production emitter: E2's caps/bold/cpi/contrast validators when E3 quality.assess returns `dpi=None`. |
 | FR-911 (reference-data unavailable) | Covered | T18 `test_fr911_reference_data_unavailable`. |
 | FR-912 (model unavailable) | Covered | T14 Cycle B (orchestrator try/except → `ENGINE.MODEL.UNAVAILABLE`); T18 `test_fr912_model_unavailable`. |
 | NFR-PERF-001 / NFR-PERF-003 (P50 / P99 SLA) | Covered | T19 perf test (30-trial P50/P99 budget). |
 | NFR-DET-001 (session determinism) | Covered | T12 (`SessionCache`); T13 Cycle D (cache integration). |
 | NFR-DET-002 (cross-process determinism) | Out of scope (MVP) | E5 does not persist the cache across restarts; documented in T12 module docstring. |
 | NFR-OBS-001 (FR-900 logs) | Covered (iter-2) | T14 Cycle B emits `_logger.info("engine_failure_routed", extra={"reason_code": ..., ...})` for every routed FR-900 event; Cycle B done-criteria assert via `caplog`. Same logging pattern applied to vision-exception, timeout, legibility, and orchestrator-exception branches. |
-| L1 §4 AC #1-4 (fixture dispositions) | Covered | T20 with per-fixture `expected.json` sidecars + additive `Application.expected_values`. |
+| L1 §4 AC #1 (all 7 PRD §5.1 fields populated for successful evaluation) | Covered (v0.5) | T11 `build_field_findings(results, observations, expected_values)` projects per-canonical-field `FieldFindingWire`; T13 Cycle D's success-path call site passes the projected tuple to `build_success_envelope`; T20 asserts `len(envelope.fields) == 7` for fixtures 01 / 03 / 06 and `== 0` for fixture 04 (legibility short-circuit). |
+| L1 §4 AC #2-4 (fixture dispositions) | Covered | T20 with per-fixture `expected.json` sidecars + additive `Application.expected_values`. |
 | L1 §4 AC #5 (FR-900 series) | Covered | T18 (parametrized — see FR rows above). |
 | L1 §4 AC #6 / AC #7 (audit / metrics split) | Covered | T6 + T13 Cycle D; D-018. |
 | L1 §4 AC #8 (perf) | Covered | T19. |
@@ -3479,6 +3730,7 @@ This map tracks every L1-named requirement (FR-/NFR-) and acceptance criterion a
 | 0.2 | 2026-05-04 | Project team | **Refactored for parallelism per user feedback**: extracted Evaluator helpers into 6 separate pure modules (T7 disposition, T8 aggregation, T9 patcher, T10 triggers, T11 envelope_builder, T12 cache) so Wave 3 fans out to 6 concurrent subagents. Evaluator (T13 + T14) is now thin — 4 cycles (core) + 2 cycles (resilience) instead of 6+4. Total tasks: 21; total waves: 8; max parallelism: 6 (Wave 3); expected commits: ~26. |
 | 0.3 | 2026-05-04 | Project team | **plan-review iter-1 fixes** (4 blockers + 3 warnings). **B1**: Added `_stub_label()` test factory in Conventions; swept test recipes to use real `Label` shape (`label_id`, `content_type`, `face_tag`); production code sources wire `label_ref` from `Label.label_id`. **B2**: New Wave 0 task **T0b** introduces `app/rules/context.py::build_validator_context(engine, started_at_ms)`; T13 Cycle C + T14 Cycle B use it instead of constructing `ValidatorContext(label=...)`. **B3**: New Wave 0 task **T0a** introduces `app/rules/__init__.py::build_rule_engine(settings)`; T15 imports it instead of relying on a runtime BLOCK escalation. **B4**: T13 Cycle B uses `app.vision.quality.assess(label)` instead of fake-only `getattr(vision, "needs_better_photo", False)`; FakeVisionExtractor drops the flag; Cycle B test monkeypatches `app.services.evaluator.assess_quality`. **W4**: T16 → T15 dependency added; T16 moved from Wave 5 to Wave 6 (Wave 6 now: T16 + T17, fanout 2). **W5**: T15 happy-path test + T19 perf test now monkeypatch `build_vision_extractor` + `build_orchestrator` (or use respx-mocked cloud) to remove flakiness against real vision. **W6 / B1 follow-on**: T20 fixture coverage uses `dimensions=None` (drops hardcoded `Dimensions(200, 200)`). Total tasks: 23; total waves: 9; max parallelism: 6 (Wave 1a); expected commits: ~28. |
 | 0.4 | 2026-05-04 | Project team | **plan-review iter-2 fixes** (1 blocker + 4 warnings + 3 info). **B-iter2** (v0.3-regression): the v0.3 free-function `build_validator_context` accessed `engine._ruleset` and crashed against the abstract `RuleEngine` seam used by `FakeRuleEngine`. T0b is rewritten so context construction lives on the rule-engine ABC itself (`RuleEngine.build_validator_context(self, *, started_at_ms)`); `YamlRuleEngine` implements it against `self._ruleset`; `FakeRuleEngine` (T3) implements a stub returning empty assets/tables and `engine_version="fake"`; the free-function in `app/rules/context.py` is kept as a thin shim. T13 Cycle C and T14 Cycle B call `self._rules.build_validator_context(...)` on the abstraction. Hard Scope Boundary acknowledges the additive abstract method. **W1-iter2** (FR-903/904/905/906/910 + NFR-OBS-001): T18 extends the parametrized FR-900 series with FR-903 (ambiguous OCR), FR-904 (unknown class), FR-905 (class disagreement), FR-910 (missing DPI) — each asserts the chokepoint routes disposition to needs-review with the matching reason code. FR-906 documented as deferred to E2 loader test + E8 deployment readiness. NFR-OBS-001 added: T14 Cycle B chokepoint emits a structured log line via `_logger.info("engine_failure_routed", extra={"reason_code": ..., ...})` for every routed FR-900 event; Cycle B done-criteria assert via `caplog`. **W2-iter2**: T20 acquires per-fixture `expected.json` sidecars; new additive optional `expected_values: tuple[ExpectedValue, ...] = ()` on `Application`; T13 Cycle C and T14 Cycle B forward `application.expected_values` to the rule engine; Hard Scope Boundary acknowledges the additive field. **W3-iter2**: T0a both tests now consume a `rules_root_env` fixture that pins `RULES_ROOT` to `Path("rules").resolve()` so neither relies on the import-time CWD. **W4-iter2**: T13 Cycle B test stub uses canonical `WARNING.LEGIBILITY.LOW_DPI` reason-code prefix (matches `app/vision/quality.py`). **I1-iter2**: T4 file-map row no longer mentions removed `needs_better_photo` flag. **I2-iter2**: stale Wave-1 inline header replaced with the split-header pointer to Wave 1a/1b. **I3-iter2**: Conventions §`_stub_label()` no longer claims `label_ref` is carried in audit `request_id` (audit identifies via `evaluation_id` + hashes; no such field). Total tasks: 23; total waves: 9; max parallelism: 6 (Wave 1a); expected commits: ~28 (unchanged — all v0.4 changes are doc-only edits within the existing tasks, no new tasks added). |
+| 0.5 | 2026-05-04 | Project team | **plan-review architectural pass** (2 critical + 3 recommendations; doc-only; no new tasks; identifiers T0a, T0b, T1–T21 unchanged). **C1 — field-population gap (L1 §4 AC #1).** v0.4 routed an empty `fields=()` tuple through `build_success_envelope` and deferred FieldFindingWire construction to T20, but T20 only asserted disposition outcomes — no task ever constructed wire-side `FieldFindingWire` entries, making the "all 7 PRD §5.1 fields populated" exit gate unreachable. v0.5 expands T11 in place to own a pure projection `build_field_findings(results, observations, expected_values) -> tuple[FieldFindingWire, ...]` over the seven canonical PRD §5.1 fields (`brand_name`, `fanciful_name`, `beverage_class`, `alcohol_content`, `net_contents`, `government_warning`, `name_and_address`); T13 Cycle D's success-path call site now passes the projected tuple to `build_success_envelope` instead of `()`; T20's parametrize gains a per-fixture `expected_field_count` column asserting `len(envelope.fields)` (7 for fixtures 01/03/06; 0 for fixture 04 legibility short-circuit). T11's task scope grows in place — no new task added; dependency graph unchanged. **C2 — reason-code taxonomy mismatch.** v0.4's T18 parametrize used fabricated spellings (`ENGINE.OCR.AMBIGUOUS`, `ENGINE.CLASS.UNKNOWN`, `ENGINE.CLASS.DISAGREEMENT`, `ENGINE.DPI.MISSING`) that do not exist in the canonical taxonomy at ARCHITECTURE.md §10.1 (lines 845-852). The chokepoint records whatever upstream emits, so the v0.4 test was a tautology — it asserted a fabricated string round-trips through, never exercising the production reason-code emission path. v0.5 replaces all four spellings with the canonical strings (`ENGINE.OBSERVATION.AMBIGUOUS` / `CLASS_TYPE.UNKNOWN` / `CLASS_TYPE.APPLICATION_LABEL_DISAGREE` / `ENGINE.MEASUREMENT.MISSING_DPI`) and inlines the production-emitter ownership table for each (which upstream component — vision extractor, rule engine, or orchestrator task — emits each canonical code). T18's done-criteria now require verbatim equality (no substring fallback). E5 introduces no new reason-code strings — every code already exists in `rules/reason_codes.yaml` or the canonical ARCH §10.1 taxonomy. **R1 — Wave 4 → Wave 3 cache-write coordination.** T14 Cycle A's recipe gains an explicit "remove cache-write from `_evaluate_inner` body when extracting it" instruction, threading two pieces of state: cache writes only after a successful disposition (timeout envelopes are NOT cached); uncaught exceptions in `_evaluate_inner` propagate to Cycle B's chokepoint exception map. **R2 — T19 perf placement.** T19 stays in Wave 7 (not moved to Wave 5 alongside T18) with a one-line justification: Wave 7 measures the full POST /labels endpoint stack including FastAPI serialization, which is more representative of the L1 §4 AC #8 demo-fixture target than an Evaluator-internal hot-path measurement would be. **R3 — Evaluator narrative.** A new "Evaluator narrative" paragraph at the top of T13's task body describes how the eight helpers (T1, T2, T5–T12) compose into the ten-step request flow, so a future maintainer can follow the flow without reverse-engineering the wave structure. Total tasks: **23** (unchanged); total waves: **9** (10 sub-waves, unchanged); max parallelism: 6 (Wave 1a, unchanged); expected commits: ~28 (unchanged — all v0.5 changes are doc-only edits within the existing tasks). |
 
 ---
 
