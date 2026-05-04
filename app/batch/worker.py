@@ -201,8 +201,12 @@ class BatchWorker:
 
     async def run(self) -> None:
         producer_task = asyncio.create_task(self._producer())
+        consume_error: BaseException | None = None
         try:
             await self._consume()
+        except BaseException as e:
+            consume_error = e
+            raise
         finally:
             # Cancel the producer (which may be parked on a saturated
             # ``queue.put``) and drain any pending exception. Without the
@@ -221,3 +225,16 @@ class BatchWorker:
                             "error_class": type(result).__name__,
                         },
                     )
+            # If _consume raised, it never broadcast stream-end — the SSE
+            # client would hang on `terminator_event="stream-end"`. Send a
+            # terminator carrying the error so the demo recovers.
+            if consume_error is not None:
+                self._bus.broadcast({
+                    "event": "stream-end",
+                    "data": {
+                        "batch_id": self._in_flight.batch_id,
+                        "total_count": len(self._in_flight.items),
+                        "error": "ENGINE.WORKER.UNHANDLED",
+                        "error_class": type(consume_error).__name__,
+                    },
+                })
