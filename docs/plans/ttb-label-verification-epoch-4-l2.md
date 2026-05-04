@@ -11,7 +11,7 @@
 
 **Goal.** Land D-004 swap point #2: the `Orchestrator` ABC and two conforming concrete implementations (`OpenAIStrictOrchestrator` validated default, `AnthropicStrictOrchestrator` swap-path skeleton) that produce a wire-compatible `Refined` for the same input. Both use OpenAI Structured Outputs `strict:true` (or Anthropic `tool_use` strict equivalent), `temperature=0`, fixed `seed`, snapshot-pinned models, single-shot pattern (no ReAct), and write per-call `CallRecord` ring-buffer entries. The orchestrator runs **three** tasks per PRD §5.4: brand-name borderline disambiguation (FR-300), reasoning-text enrichment (FR-301), OCR multi-reading reconciliation (FR-302). The structural FR-303 invariant — "the orchestrator never decides pass/fail" — is enforced at the type level: `Refined` carries no disposition-style field, no task-output schema carries `pass`/`fail` field names. FR-304 fallback (LLM unavailable → `ENGINE.MODEL.UNAVAILABLE`) is wired via httpx-error catching that returns a populated `Refined` instead of raising. After E4 closes, `ORCHESTRATOR_BACKEND=openai uv run task demo` and `ORCHESTRATOR_BACKEND=anthropic uv run task demo` (with the `[anthropic]` extra installed) both boot.
 
-**Architecture.** A single Python package `app/orchestrator/` owning the seam ABC (`base.py`), the OpenAI default impl (`openai_strict.py`), the Anthropic skeleton (`anthropic_strict.py`), three per-task schema+adapter modules (`tasks/{brand_disambig,reasoning_enrich,ocr_reconcile}.py`), and a CLI smoke entry (`__main__.py`). The ABC is a true `abc.ABC` (not a `Protocol`) so subclass-or-error is enforced at construction. Each per-task module declares an input dataclass (consumed from `Application`/`FieldObservation`/`ValidationResult`), a Pydantic v2 output schema (sliced into `Refined`), and an adapter function. `OpenAIStrictOrchestrator.refine()` issues one OpenAI Structured-Output call per task slice (up to 3 per `refine()`), wraps each call in an httpx-error try/except that surfaces `ENGINE.MODEL.UNAVAILABLE` on `httpx.RequestError`, and retries once on malformed structured output before surfacing `LLM_OUTPUT_INVALID`. The Anthropic skeleton mirrors the same shape using `tool_use` strict mode. Recorded HTTP responses live under `tests/recordings/{openai,anthropic}/<snapshot>/<prompt-version>/orchestrator/<task>/<fixture>.json`. DI wiring in `app/deps.py` replaces the E1 placeholder orchestrators (`_PlaceholderOpenAIOrchestrator`, `_PlaceholderAnthropicOrchestrator`) with `build_orchestrator(settings) -> Orchestrator` dispatching on `settings.orchestrator_backend`; an unknown backend raises `ValueError`.
+**Architecture.** A single Python package `app/orchestrator/` owning the seam ABC (`base.py`), the OpenAI default impl (`openai_strict.py`), the Anthropic skeleton (`anthropic_strict.py`), three per-task schema+adapter modules (`tasks/{brand_disambig,reasoning_enrich,ocr_reconcile}.py`), and a CLI smoke entry (`__main__.py`). The ABC is a true `abc.ABC` (not a `Protocol`) so subclass-or-error is enforced at construction. Each per-task module declares an input dataclass (consumed from `Application`/`FieldObservation`/`ValidationResult`), a Pydantic v2 output schema (sliced into `Refined`), and an adapter function. `OpenAIStrictOrchestrator.refine()` issues one OpenAI Structured-Output call per task slice (up to 3 per `refine()`), wraps each call in an httpx-error try/except that surfaces `ENGINE.MODEL.UNAVAILABLE` on **`httpx.HTTPError` (covers both `RequestError` transport failures and `HTTPStatusError` 4xx/5xx)**, and retries once on malformed structured output before surfacing `LLM_OUTPUT_INVALID`. The Anthropic skeleton mirrors the same shape using `tool_use` strict mode. Recorded HTTP responses live under `tests/recordings/{openai,anthropic}/<snapshot>/<prompt-version>/orchestrator/<task>/<fixture>.json`. DI wiring in `app/deps.py` replaces the E1 placeholder orchestrators (`_PlaceholderOpenAIOrchestrator`, `_PlaceholderAnthropicOrchestrator`) with `build_orchestrator(settings) -> Orchestrator` dispatching on `settings.orchestrator_backend`; an unknown backend raises `ValueError`.
 
 **Tech stack.** Python 3.12, Pydantic v2 (E1), `openai >= 1.50` (already pinned), `anthropic >= 0.39` in `[project.optional-dependencies.anthropic]` (already pinned), `httpx >= 0.27` (already pinned), `respx >= 0.21` (already in dev deps from E3-T4). **No new top-level dependencies.** A new `[dependency-groups]` is NOT required because `respx` is already in dev.
 
@@ -38,7 +38,7 @@
 | `app/orchestrator/tasks/brand_disambig.py` | T3 | `BrandDisambigInput` (frozen dataclass) + `BrandDisambigResult` (Pydantic v2 frozen, `additionalProperties:False`, fields: `decision: Literal["match","needs_review"]`, `justification: str`) + `to_input(...)` adapter + `apply_to_refined(...)` slicer. **No `pass`/`fail` field anywhere.** |
 | `app/orchestrator/tasks/reasoning_enrich.py` | T4 | `ReasoningEnrichInput` + `EnrichedReasoning` (Pydantic v2 frozen, `additionalProperties:False`, fields: `plain_language: str`, `citation_anchor: str`) + adapters. |
 | `app/orchestrator/tasks/ocr_reconcile.py` | T5 | `OcrReconcileInput` + `OcrReconcileResult` (Pydantic v2 frozen, `additionalProperties:False`, fields: `winner: str \| None`, `reasoning: str`) + adapters. `winner=None` ⇒ orchestrator abstains; downstream Application Service routes to `needs_review`. |
-| `app/orchestrator/openai_strict.py` | T8 | `OpenAIStrictOrchestrator(Orchestrator)`. `refine()` issues per-task OpenAI Structured Outputs calls via `httpx`. Records 1 `CallRecord` per task per attempt. FR-304 fallback (`httpx.RequestError`) and one-shot retry on malformed structured output. `temperature=0`, fixed `seed`, snapshot-pinned `model`. |
+| `app/orchestrator/openai_strict.py` | T8 | `OpenAIStrictOrchestrator(Orchestrator)`. `refine()` issues per-task OpenAI Structured Outputs calls via `httpx`. Records 1 `CallRecord` per task per attempt. FR-304 fallback on `httpx.HTTPError` (covers transport via `RequestError` and 4xx/5xx via `HTTPStatusError`) and one-shot retry on malformed structured output. `temperature=0`, fixed `seed`, snapshot-pinned `model`. |
 | `app/orchestrator/anthropic_strict.py` | T9 | `AnthropicStrictOrchestrator(Orchestrator)`. Same shape via Anthropic `tool_use` strict mode. Lazy-imports `anthropic` SDK inside `ensure_client()` so cloud-only profiles without `[anthropic]` extra raise a clear error. |
 | `app/orchestrator/__main__.py` | T14 | CLI smoke: `python -m app.orchestrator --task brand_disambig --fixture 02-bourbon-stones-throw --backend openai --use-recordings`. Mounts recordings via `respx` per the closure-per-recording pattern (see Conventions). Exit 0 on success, 2 on missing fixture/recording. |
 | `app/deps.py` | T10 | Replace `_PlaceholderOpenAIOrchestrator` + `_PlaceholderAnthropicOrchestrator` with `build_orchestrator(settings) -> Orchestrator` dispatching on `settings.orchestrator_backend`. Unknown backend raises `ValueError`. Anthropic dispatch raises clear error if `[anthropic]` extra missing. |
@@ -80,7 +80,7 @@
 - **Recording-replay closure pattern.** Tests that mount multiple recordings against the same OpenAI/Anthropic URL use the closure-per-recording pattern (same as E3 §Conventions): register one `respx` route with a `side_effect` handler that inspects the request body's per-provider task discriminator (`response_format.json_schema.name` for OpenAI, `tool_choice.name` for Anthropic) and returns `Response(200, json=payload)` on match or `None` to fall through. See E3-T13/T15/T17 for prior art.
 - **`_TASK_SCHEMAS` registry.** `app/orchestrator/openai_strict.py::_TASK_SCHEMAS` MUST contain a JSON-schema entry for every task name `refine()` dispatches to — i.e., all 3 task names (`brand_disambig`, `reasoning_enrich`, `ocr_reconcile`). Missing keys → `KeyError` at runtime. T8 lands the full 3-key dict. The Anthropic counterpart `app/orchestrator/anthropic_strict.py::_TASK_SCHEMAS` mirrors it.
 - **FR-303 invariant — schema-shape direction.** `Refined.model_fields` contains no field whose name starts with `disposition`. Every task output schema has no field whose name is `pass`, `fail`, or `disposition`, AND no field whose Literal value set contains `"fail"`. The structural test in T7 enforces this; future schema additions must satisfy it.
-- **FR-304 fallback shape.** When `httpx.RequestError` (timeout, ConnectError, etc.) raises during a per-task call, the orchestrator catches the error, populates a `Refined` slice with the task name and a special `error` qualifier `ENGINE.MODEL.UNAVAILABLE`, writes a `CallRecord` with `response={"error": "ENGINE.MODEL.UNAVAILABLE", "exception": str(e)}` and `latency_ms` populated, and proceeds to the next task. `refine()` does NOT raise; it returns a `Refined` whose task slices may carry `ENGINE.MODEL.UNAVAILABLE` qualifiers. The Application Service (E5) routes such qualifiers to `needs_review`.
+- **FR-304 fallback shape.** When `httpx.HTTPError` (the common ancestor of `RequestError` for transport failures *and* `HTTPStatusError` for 4xx/5xx surfaced by `raise_for_status()`) raises during a per-task call, the orchestrator catches the error, populates a `Refined` slice with the task name and the qualifier `ENGINE.MODEL.UNAVAILABLE`, writes a `CallRecord` with `response={"error": "ENGINE.MODEL.UNAVAILABLE", "exception": str(e)}` and `latency_ms` set to the **actual elapsed time** (captured via `time.monotonic()` snapshot taken before the try block, computed on the failure branch), and proceeds to the next task. `refine()` does NOT raise; it returns a `Refined` whose task slices may carry `ENGINE.MODEL.UNAVAILABLE` qualifiers. The Application Service (E5) routes such qualifiers to `needs_review`.
 - **Strict-retry shape.** When the LLM returns a structured response that fails Pydantic validation against the task output schema, the orchestrator retries the call exactly once with the same body. On second failure, it surfaces an `LLM_OUTPUT_INVALID` qualifier on the task slice (no raise). Both attempts produce `CallRecord` entries.
 - **Inference-dep ban — orchestrator direction.** This is parallel to E2's `app/rules/` invariant and E3's `app/vision/` invariant. E4 says: only `app/orchestrator/` may import the `anthropic` SDK; only `app/orchestrator/` and `app/vision/` may import the `openai` SDK. T16 enforces with a grep test.
 - **CFR-citation discipline.** Orchestrator modules don't emit CFR citations directly — the per-task output schemas may carry a `citation_anchor` field (the rule_id that anchored the LLM's reasoning), but the actual CFR string is attached downstream by the rule engine (E2) and the audit assembler (E5).
@@ -914,7 +914,7 @@ git commit -m "test(e4): FR-303 invariant — no disposition/pass/fail in orches
 
 This task bundles 3 cycles per the `task-executor` "one behavior per commit" rule:
 **Cycle A**: `refine()` skeleton — 3 per-task calls against fixture-01 recordings; populates `Refined.tasks`.
-**Cycle B**: FR-304 fallback on `httpx.RequestError` → `Refined` slice with `qualifier="ENGINE.MODEL.UNAVAILABLE"`; no raise.
+**Cycle B**: FR-304 fallback on `httpx.HTTPError` (covers `RequestError` transport AND `HTTPStatusError` 4xx/5xx) → `Refined` slice with `qualifier="ENGINE.MODEL.UNAVAILABLE"`; no raise. Two tests assert this branch — one for `ConnectError`, one for a 500 response.
 **Cycle C**: Strict-retry on malformed structured output → 1 retry → `qualifier="LLM_OUTPUT_INVALID"`.
 
 - [ ] **Cycle A — Step 1: Hand-author the 6 recordings**
@@ -1015,7 +1015,7 @@ async def test_refine_against_fixture_01():
 HTTP-layer only — does NOT import the openai SDK. Uses httpx so respx
 recordings cover the wire. Records 1 CallRecord per task per attempt.
 FR-303: never returns disposition; outputs are sliced into Refined.tasks.
-FR-304: catches httpx.RequestError → returns slice with ENGINE.MODEL.UNAVAILABLE.
+FR-304: catches httpx.HTTPError (RequestError transport + HTTPStatusError 4xx/5xx) → returns slice with ENGINE.MODEL.UNAVAILABLE; latency_ms reflects actual elapsed time.
 Strict-retry: on Pydantic ValidationError of LLM output, retries once;
 on second failure, surfaces LLM_OUTPUT_INVALID qualifier.
 """
@@ -1102,11 +1102,16 @@ class OpenAIStrictOrchestrator(Orchestrator):
     ) -> TaskSlice:
         schema_cls = _TASK_SCHEMAS[task_name]
         body = self._build_body(task_name, schema_cls)
-        # First attempt.
+        # First attempt. Catch the broader httpx.HTTPError so 4xx/5xx
+        # (HTTPStatusError raised by raise_for_status) also routes through
+        # the FR-304 fallback — RequestError covers transport, HTTPStatusError
+        # covers protocol-level failure; FR-304 spans both.
+        t0 = time.monotonic()
         try:
             content = await self._post_one(task_name, body)
-        except httpx.RequestError as e:
-            self._record(task_name, body, {"error": "ENGINE.MODEL.UNAVAILABLE", "exception": str(e)}, latency_ms=0)
+        except httpx.HTTPError as e:
+            elapsed_ms = int((time.monotonic() - t0) * 1000)
+            self._record(task_name, body, {"error": "ENGINE.MODEL.UNAVAILABLE", "exception": str(e)}, latency_ms=elapsed_ms)
             return TaskSlice(task=task_name, qualifier="ENGINE.MODEL.UNAVAILABLE")  # type: ignore[arg-type]
         # Validate; one retry on Pydantic ValidationError.
         try:
@@ -1117,7 +1122,7 @@ class OpenAIStrictOrchestrator(Orchestrator):
                 content = await self._post_one(task_name, body)
                 result = schema_cls.model_validate(content)
                 return TaskSlice(task=task_name, payload=result.model_dump())  # type: ignore[arg-type]
-            except (ValidationError, httpx.RequestError):
+            except (ValidationError, httpx.HTTPError):
                 return TaskSlice(task=task_name, qualifier="LLM_OUTPUT_INVALID")  # type: ignore[arg-type]
 
     def _build_body(self, task_name: str, schema_cls: type) -> dict[str, Any]:
@@ -1181,12 +1186,13 @@ git add app/orchestrator/openai_strict.py tests/recordings/openai/gpt-4o-2024-08
 git commit -m "feat(e4): OpenAIStrictOrchestrator with 3-task strict-mode pipeline"
 ```
 
-- [ ] **Cycle B — FR-304 fallback**
+- [ ] **Cycle B — FR-304 fallback (transport AND protocol failure)**
 
 Add to the test file:
 ```python
 @pytest.mark.asyncio
 async def test_refine_fr304_fallback_on_connect_error():
+    """Transport-level failure (httpx.RequestError subclass) → ENGINE.MODEL.UNAVAILABLE."""
     settings = Settings()
     ring: deque = deque(maxlen=200)
     orch = OpenAIStrictOrchestrator(settings=settings, ring_buffer=ring, api_key="sk-test")
@@ -1196,15 +1202,33 @@ async def test_refine_fr304_fallback_on_connect_error():
         refined = await orch.refine(app_, obs, vr)
     qualifiers = {t.qualifier for t in refined.tasks}
     assert qualifiers == {"ENGINE.MODEL.UNAVAILABLE"}
-    # 3 CallRecords with error responses + latency_ms populated (or 0 — acceptable).
+    # 3 CallRecords; latency_ms must reflect actual elapsed time (>= 0, not strictly 0).
     assert len(ring) == 3
     assert all(r.response.get("error") == "ENGINE.MODEL.UNAVAILABLE" for r in ring)
+    assert all(r.latency_ms >= 0 for r in ring)
+
+
+@pytest.mark.asyncio
+async def test_refine_fr304_fallback_on_5xx():
+    """Protocol-level failure (httpx.HTTPStatusError raised by raise_for_status)
+    must also route through FR-304. Catch widening: `except httpx.HTTPError`
+    covers both RequestError and HTTPStatusError."""
+    settings = Settings()
+    ring: deque = deque(maxlen=200)
+    orch = OpenAIStrictOrchestrator(settings=settings, ring_buffer=ring, api_key="sk-test")
+    app_, obs, vr = _stub_inputs()
+    with respx.mock(base_url="https://api.openai.com") as router:
+        router.post("/v1/chat/completions").mock(return_value=Response(500, json={"error": "internal"}))
+        refined = await orch.refine(app_, obs, vr)
+    qualifiers = {t.qualifier for t in refined.tasks}
+    assert qualifiers == {"ENGINE.MODEL.UNAVAILABLE"}
+    assert len(ring) == 3
 ```
 
-Implementation already in Cycle A's `_call_task`. Run focused → GREEN. Commit:
+Implementation already in Cycle A's `_call_task` (catches `httpx.HTTPError`, captures `t0` before the try-block, computes `elapsed_ms` on failure). Run focused → GREEN. Commit:
 ```bash
 git add tests/test_orchestrator_openai_strict.py
-git commit -m "test(e4): FR-304 fallback — httpx.RequestError → ENGINE.MODEL.UNAVAILABLE"
+git commit -m "test(e4): FR-304 fallback — httpx.HTTPError → ENGINE.MODEL.UNAVAILABLE"
 ```
 
 - [ ] **Cycle C — strict-retry on malformed structured output**
@@ -1439,14 +1463,22 @@ class AnthropicStrictOrchestrator(Orchestrator):
         return refined.model_copy(update={"tasks": tuple(slices)})
 
     async def _call_task(self, task_name: str) -> TaskSlice:
-        schema_cls = _TASK_SCHEMAS[task_name]
-        body = self._build_body(task_name, schema_cls)
+        # NOTE: signature is intentionally narrower than
+        # OpenAIStrictOrchestrator._call_task — the skeleton does not thread
+        # application/observations into the prompt body. Widen to match when
+        # a future epoch validates the Anthropic path against demo fixtures.
         # ValueError covers the "tool_use block missing from response" path
         # raised by _post_one — see note on `raise ValueError(...)` below.
+        # httpx.HTTPError covers both transport (RequestError) and protocol
+        # (HTTPStatusError from raise_for_status) failures — FR-304 spans both.
+        schema_cls = _TASK_SCHEMAS[task_name]
+        body = self._build_body(task_name, schema_cls)
+        t0 = time.monotonic()
         try:
             content = await self._post_one(task_name, body)
-        except httpx.RequestError as e:
-            self._record(task_name, body, {"error": "ENGINE.MODEL.UNAVAILABLE", "exception": str(e)}, latency_ms=0)
+        except httpx.HTTPError as e:
+            elapsed_ms = int((time.monotonic() - t0) * 1000)
+            self._record(task_name, body, {"error": "ENGINE.MODEL.UNAVAILABLE", "exception": str(e)}, latency_ms=elapsed_ms)
             return TaskSlice(task=task_name, qualifier="ENGINE.MODEL.UNAVAILABLE")  # type: ignore[arg-type]
         try:
             result = schema_cls.model_validate(content)
@@ -1456,7 +1488,7 @@ class AnthropicStrictOrchestrator(Orchestrator):
                 content = await self._post_one(task_name, body)
                 result = schema_cls.model_validate(content)
                 return TaskSlice(task=task_name, payload=result.model_dump())  # type: ignore[arg-type]
-            except (ValidationError, ValueError, httpx.RequestError):
+            except (ValidationError, ValueError, httpx.HTTPError):
                 return TaskSlice(task=task_name, qualifier="LLM_OUTPUT_INVALID")  # type: ignore[arg-type]
 
     def _build_body(self, task_name: str, schema_cls: type) -> dict[str, Any]:
@@ -1944,7 +1976,14 @@ def test_cli_smoke_bad_backend_exits_2():
 # app/orchestrator/__main__.py
 """CLI smoke: python -m app.orchestrator --task <name> --fixture <id> --backend <openai|anthropic>.
 
-Per L1 §8 #3, exercises the orchestrator against recorded responses for offline CI."""
+Per L1 §8 #3, exercises the orchestrator against recorded responses for offline CI.
+
+NOTE on path resolution: recording paths are anchored to the **repo root**, not
+to CWD. The CLI smoke test invokes `python -m app.orchestrator` via
+`subprocess.run` from pytest's CWD which equals the repo root, so this works
+in CI; running the CLI from any other directory also works because we resolve
+the anchor from this module's own filesystem location.
+"""
 from __future__ import annotations
 
 import argparse
@@ -1958,6 +1997,10 @@ from app.config import Settings
 
 
 _VALID_TASKS = ("brand_disambig", "reasoning_enrich", "ocr_reconcile")
+# Resolve the repo root from this module's location so recordings are found
+# regardless of the user's CWD. `__file__` is `<repo>/app/orchestrator/__main__.py`,
+# so parents[2] is `<repo>`.
+_REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
 def _build_argparser() -> argparse.ArgumentParser:
@@ -1972,7 +2015,7 @@ def _build_argparser() -> argparse.ArgumentParser:
 async def _run_openai(args, settings: Settings) -> int:
     from app.orchestrator.openai_strict import OpenAIStrictOrchestrator
     from app.schemas.application import Application
-    rec_root = Path("tests/recordings/openai") / settings.llm_model_snapshot \
+    rec_root = _REPO_ROOT / "tests" / "recordings" / "openai" / settings.llm_model_snapshot \
         / settings.prompt_version / "orchestrator" / args.task
     rec_path = rec_root / f"{args.fixture}.json"
     if not rec_path.exists():
@@ -2020,7 +2063,7 @@ async def _run(args) -> int:
     if args.backend == "anthropic":
         # Symmetric impl path; call Anthropic orchestrator's _call_task with recordings.
         from app.orchestrator.anthropic_strict import AnthropicStrictOrchestrator
-        rec_root = Path("tests/recordings/anthropic/claude-3-5-sonnet-20241022") \
+        rec_root = _REPO_ROOT / "tests" / "recordings" / "anthropic" / "claude-3-5-sonnet-20241022" \
             / settings.prompt_version / "orchestrator" / args.task
         rec_path = rec_root / f"{args.fixture}.json"
         if not rec_path.exists():
@@ -2451,6 +2494,7 @@ Verify:
 |---|---|---|---|
 | 0.1 | 2026-05-03 | Project team | Initial E4 L2 plan. 17 tasks. |
 | 0.2 | 2026-05-04 | Project team | plan-review iter-1 fixes: (B1) T2 absorbs `app/schemas/application.py` stub as Cycle A — single owner, removes 8-task race; (B2) T2's `Depends On` → `—` (T2 imports `Refined` by name only, not by shape); (B3) T1 now explicitly modifies `tests/test_schemas_round_trip.py::test_refined_round_trip` instead of hand-waving "Rule 1-3 inline fix"; (W1) dropped unused `monkeypatch.setenv` calls in T8/T9/T11/T12/T13 (api keys passed explicitly); (W2) T9 raises plain `ValueError` for missing `tool_use` block instead of misuse `ValidationError.from_exception_data(line_errors=[])`, retry catches widened to `(ValidationError, ValueError, …)`; (W3) T16 moved Wave 5 → Wave 6 to avoid `tests/conftest.py` co-residency with Wave 5 pytest collection; (W4) T13 seed assertion tightened to `body["seed"] == _DETERMINISTIC_SEED` (catches silent rotation); (W5) T7 adds JSON-schema substring check (defense-in-depth for nested models); (W6) dropped `# type: ignore[call-arg]` on every `Application(...)` stub call (no longer needed). Wave totals: 5+3+2+4+4+2 = 20 commits. |
+| 0.3 | 2026-05-04 | Project team | architectural-review polish: (R1) widened FR-304 fallback catch from `httpx.RequestError` to `httpx.HTTPError` in T8 + T9 so 4xx/5xx (`HTTPStatusError` raised by `raise_for_status`) also routes through `ENGINE.MODEL.UNAVAILABLE`; added new T8 Cycle B test `test_refine_fr304_fallback_on_5xx`; (R2) `latency_ms` on FR-304 fallback CallRecords now reflects actual elapsed time via `t0 = time.monotonic()` capture before the try block; T8 Cycle B asserts `r.latency_ms >= 0`; (R4) T9's `_call_task` carries an explicit NOTE documenting its intentionally-narrower signature vs T8 (skeleton-only — widen when validating against fixtures); (R5) T14 `__main__.py` resolves recording paths from `_REPO_ROOT = Path(__file__).resolve().parents[2]` instead of CWD-relative `Path("tests/recordings/...")`. **Recommendation R3 (thread `evaluation_id` into CallRecord request dict) deferred to E5** — it requires widening the substitutability test contract, which is forward-compat scope; the `request: dict[str, Any]` shape stays compatible. Plan still APPROVED across both passes. |
 
 ---
 
