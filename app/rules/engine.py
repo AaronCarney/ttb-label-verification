@@ -1,4 +1,11 @@
-"""RuleEngine ABC. Single async method per ARCH §8.4."""
+"""RuleEngine ABC. Single async method per ARCH §8.4.
+
+Return type is `tuple[ValidationResult, ...]` — a deliberate tightening of
+L1 §2.1 line 22 / ARCH §3 (which both name `list[ValidationResult]`) for
+end-to-end immutability that matches §6.6's frozen RuleSet discipline.
+ARCH/L1 should be reconciled to tuple at the next doc pass; do NOT relax
+this signature back to a list without updating the L1/ARCH contract first.
+"""
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
