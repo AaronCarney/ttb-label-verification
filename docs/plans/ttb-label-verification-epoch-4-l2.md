@@ -73,7 +73,7 @@
 - **Async signature.** `refine()` and `ensure_client()` are both `async def` — see L1 §2.1.
 - **Lazy SDK imports.** The `anthropic` SDK is imported inside `AnthropicStrictOrchestrator.ensure_client()`, not at module top-level. The default profile (no `[anthropic]` extra installed) must be importable. The `anthropic_strict.py` module itself imports only stdlib + `httpx`/`pydantic` at top level. The OpenAI default uses raw `httpx` (no `openai` SDK import), mirroring the E3 cloud-vision pattern.
 - **Recording filenames.** `tests/recordings/<provider>/<LLM_MODEL_SNAPSHOT>/<PROMPT_VERSION>/orchestrator/<task-name>/<fixture-id>.json`. Default for E4: `openai/gpt-4o-2024-08-06/v1/orchestrator/{brand_disambig,reasoning_enrich,ocr_reconcile}/{01-spirits-clean,02-bourbon-stones-throw}.json` — 6 files. Anthropic mirrors: `anthropic/claude-3-5-sonnet-20241022/v1/orchestrator/<task>/<fixture>.json` — 6 files.
-- **CallRecord population.** `provider` ∈ `{"openai", "anthropic", "local.paddleocr"}`. `stage` for orchestrator calls ∈ `{"orch.brand_disambig", "orch.reasoning_enrich", "orch.ocr_reconcile"}` — these literals already exist in `app/schemas/calls.py::CallStage` (no schema widening needed). Per L1 §4 #7, every successful `refine()` writes 3 CallRecords (1 per task); a failed call writes 1 with `latency_ms` populated.
+- **CallRecord population.** `provider` ∈ `{"openai", "anthropic", "local.paddleocr"}`. `stage` for orchestrator calls ∈ `{"orch.brand_disambig", "orch.reasoning_enrich", "orch.ocr_reconcile"}` — these literals already exist in `app/schemas/calls.py::CallStage` (no schema widening needed). Per L1 §4 #7: every successful `refine()` writes 3 CallRecords (1 per task); each failed **per-task** call writes 1 CallRecord with `latency_ms` populated (so an all-three-fail `refine()` writes 3 error records, not 1). T12's tests assert this granularity.
 - **Bulkhead.** Unlike E3 cloud vision, the orchestrator does not have an asyncio.Semaphore — orchestrator calls are issued from per-evaluation contexts (E5 batches across applications, not within a single refine()). The 3 task calls within one `refine()` MAY be dispatched via `asyncio.gather` for latency; the substitutability test does NOT depend on order. (Per ARCH §11.2: bulkhead lives at the batch layer in E6, not at the orchestrator layer.)
 - **OpenAI Structured Outputs body shape.** Mirrors E3's tiebreaker shape: `body["response_format"]={"type": "json_schema", "json_schema": {"name": <task-name>, "strict": True, "schema": <schema>}}`. The discriminator `response_format.json_schema.name` is the per-task name (`"brand_disambig"`, etc.).
 - **Anthropic strict-mode body shape.** Anthropic uses `tool_use` with `tools: [{name: <task-name>, input_schema: <schema>}]` and `tool_choice: {type: "tool", name: <task-name>}`. The schema goes through a small adapter (`_to_anthropic_schema(...)`) that strips OpenAI-specific keys not supported by Anthropic (e.g., the top-level `name` key). The adapter lives in `app/orchestrator/anthropic_strict.py` (private function) — no separate `_schema_adapters/` module shipped in E4 since both providers' strict modes are close enough that one private adapter suffices for the prototype.
@@ -949,6 +949,7 @@ import json
 from collections import deque
 from pathlib import Path
 
+import httpx  # used by Cycle B's httpx.ConnectError + Cycle C's malformed-payload paths
 import pytest
 import respx
 from httpx import Response
@@ -1202,10 +1203,20 @@ async def test_refine_fr304_fallback_on_connect_error():
         refined = await orch.refine(app_, obs, vr)
     qualifiers = {t.qualifier for t in refined.tasks}
     assert qualifiers == {"ENGINE.MODEL.UNAVAILABLE"}
-    # 3 CallRecords; latency_ms must reflect actual elapsed time (>= 0, not strictly 0).
+    # 3 CallRecords; each failed per-task call writes its own record.
+    # Verify latency_ms is captured on the failure path: it must be a non-negative
+    # int AND reflect ConnectError dispatch overhead (respx adds a few µs of routing,
+    # so the literal 0 sentinel from a forgotten t0-capture would still round to 0;
+    # we instead assert at least one record has a non-zero latency_ms — that's a
+    # genuine signal that `t0 = time.monotonic()` is being captured before the try
+    # block and elapsed is computed on the failure branch).
     assert len(ring) == 3
     assert all(r.response.get("error") == "ENGINE.MODEL.UNAVAILABLE" for r in ring)
-    assert all(r.latency_ms >= 0 for r in ring)
+    assert all(isinstance(r.latency_ms, int) and r.latency_ms >= 0 for r in ring)
+    assert any(r.latency_ms > 0 for r in ring), (
+        "FR-304 latency capture regressed to literal 0 — "
+        "verify t0 = time.monotonic() is captured BEFORE the try block in _call_task"
+    )
 
 
 @pytest.mark.asyncio
@@ -2495,6 +2506,7 @@ Verify:
 | 0.1 | 2026-05-03 | Project team | Initial E4 L2 plan. 17 tasks. |
 | 0.2 | 2026-05-04 | Project team | plan-review iter-1 fixes: (B1) T2 absorbs `app/schemas/application.py` stub as Cycle A — single owner, removes 8-task race; (B2) T2's `Depends On` → `—` (T2 imports `Refined` by name only, not by shape); (B3) T1 now explicitly modifies `tests/test_schemas_round_trip.py::test_refined_round_trip` instead of hand-waving "Rule 1-3 inline fix"; (W1) dropped unused `monkeypatch.setenv` calls in T8/T9/T11/T12/T13 (api keys passed explicitly); (W2) T9 raises plain `ValueError` for missing `tool_use` block instead of misuse `ValidationError.from_exception_data(line_errors=[])`, retry catches widened to `(ValidationError, ValueError, …)`; (W3) T16 moved Wave 5 → Wave 6 to avoid `tests/conftest.py` co-residency with Wave 5 pytest collection; (W4) T13 seed assertion tightened to `body["seed"] == _DETERMINISTIC_SEED` (catches silent rotation); (W5) T7 adds JSON-schema substring check (defense-in-depth for nested models); (W6) dropped `# type: ignore[call-arg]` on every `Application(...)` stub call (no longer needed). Wave totals: 5+3+2+4+4+2 = 20 commits. |
 | 0.3 | 2026-05-04 | Project team | architectural-review polish: (R1) widened FR-304 fallback catch from `httpx.RequestError` to `httpx.HTTPError` in T8 + T9 so 4xx/5xx (`HTTPStatusError` raised by `raise_for_status`) also routes through `ENGINE.MODEL.UNAVAILABLE`; added new T8 Cycle B test `test_refine_fr304_fallback_on_5xx`; (R2) `latency_ms` on FR-304 fallback CallRecords now reflects actual elapsed time via `t0 = time.monotonic()` capture before the try block; T8 Cycle B asserts `r.latency_ms >= 0`; (R4) T9's `_call_task` carries an explicit NOTE documenting its intentionally-narrower signature vs T8 (skeleton-only — widen when validating against fixtures); (R5) T14 `__main__.py` resolves recording paths from `_REPO_ROOT = Path(__file__).resolve().parents[2]` instead of CWD-relative `Path("tests/recordings/...")`. **Recommendation R3 (thread `evaluation_id` into CallRecord request dict) deferred to E5** — it requires widening the substitutability test contract, which is forward-compat scope; the `request: dict[str, Any]` shape stays compatible. Plan still APPROVED across both passes. |
+| 0.4 | 2026-05-04 | Project team | independent fresh-eyes review (third pass) — fixes: **(B1)** added `import httpx` to T8 Cycle A test imports — Cycle B's `httpx.ConnectError` reference would have surfaced `NameError` at test time (Cycle A imports only `from httpx import Response`); **(R1)** rewrote the Conventions CallRecord-population bullet to clarify "each failed per-task call writes 1 record" so an all-fail `refine()` writes 3 error records (not 1) — matches T12 assertions; **(R2)** strengthened T8 Cycle B latency assertion from the tautological `r.latency_ms >= 0` to `any(r.latency_ms > 0 for r in ring)` so the test actually catches a regression where `t0 = time.monotonic()` is forgotten and latency stays at literal 0. |
 
 ---
 
