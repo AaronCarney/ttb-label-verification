@@ -183,3 +183,27 @@ codes:
     description: "LLM endpoint unavailable when the orchestrator was invoked (FR-912)."
     cfr_anchors: []
     severity: reject
+  ENGINE.EXTRACTION.UNAVAILABLE:
+    description: "Vision extractor raised before producing any FieldObservation (chokepoint routes to needs_review per evaluator P4)."
+    cfr_anchors: []
+    severity: warn
+  ENGINE.RULES.UNAVAILABLE:
+    description: "Rule engine raised before producing any ValidationResult (chokepoint routes to needs_review per evaluator P4)."
+    cfr_anchors: []
+    severity: warn
+  ENGINE.WORKER.UNHANDLED:
+    description: "Batch worker caught an unhandled exception during per-label evaluation; SSE stream-end carries the error class."
+    cfr_anchors: []
+    severity: warn
+  ENGINE.BATCH.CONFLICT:
+    description: "POST /batches received a batch_id already in flight."
+    cfr_anchors: []
+    severity: reject
+  ENGINE.BATCH.NOT_FOUND:
+    description: "Snapshot or stream requested for an unknown batch_id."
+    cfr_anchors: []
+    severity: warn
+  ENGINE.OK.NONE:
+    description: "Sentinel for happy-path log lines that carry the structured reason_code field by convention."
+    cfr_anchors: []
+    severity: warn
