@@ -69,3 +69,26 @@ Bonus (deployed but cut from recording for time): fixture-07 borderline-band `ne
 ## Re-record protocol
 
 If the recording goes long or the cursor lands on the wrong control, re-shoot following the same six-stage path. The narration script lives at `docs/demo-narration.md` (authored by post-merge T16 along with the recording itself).
+
+
+---
+
+## Initial deployment setup (one-time, executed 2026-05-04)
+
+1. **HF Space create** — `hf repos create Context31415/ttb-label --type space --space-sdk docker --public`
+2. **Push** — `git remote add hf https://huggingface.co/spaces/Context31415/ttb-label && git push hf main`
+3. **Variables** (set via API at provisioning time; verify in HF Space → Settings → Variables and secrets):
+   - `ORCHESTRATOR_BACKEND` = `openai`
+   - `LLM_MODEL_SNAPSHOT` = `gpt-4o-2024-08-06`
+   - `LOOKAHEAD_K` = `3`
+   - `PROMPT_VERSION` = `v1`
+   - `VISION_MODE` = `cloud` (cpu-basic has no GPU; `auto` would degrade)
+   - `DEMO_CACHE` = `1`
+   - `DEV_MODE` — leave unset for the public URL
+4. **Secrets** (UI-only — Space → Settings → Variables and secrets → New secret):
+   - `OPENAI_API_KEY`
+5. **Custom domain** — **NOT USED.** HF custom domains require Pro ($9/mo). Per **D-DEPLOY-001** (decisions log), the demo uses the default `https://context31415-ttb-label.hf.space` URL; vanity `ttb.aaroncarney.me` is deferred to pilot phase. Cloudflare CNAME stays dangling — harmless.
+6. **Verify** — three smoke calls:
+   - `curl -I https://context31415-ttb-label.hf.space/healthz` → 200 with valid HF-issued cert
+   - `curl -I https://context31415-ttb-label.hf.space/` → 200 (UI shell)
+   - `curl -I https://context31415-ttb-label.hf.space/static/island/single.js` → 200 (asset serving)
