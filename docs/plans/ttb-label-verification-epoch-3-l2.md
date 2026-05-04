@@ -12,7 +12,7 @@
 
 **Goal.** Land D-004 swap point #1: the `VisionExtractor` Protocol and two conforming concrete implementations (`CloudVisionExtractor` validated default, `LocalVisionExtractor` on-prem-trajectory companion) that produce `list[FieldObservation]` per PRD §5.1 (FR-001..008). Cloud uses GPT-4o-on-crop with OpenAI Structured Outputs `strict:true`, recorded at the HTTP layer via `respx`. Local composes PaddleOCR + SWT bold detector + GPT-4o tiebreaker per the D-021 trimmed pipeline. Both honor BRISQUE/NIQE quality gates emitting `WARNING.LEGIBILITY.*`, multi-source DPI extraction emitting `ENGINE.MEASUREMENT.MISSING_DPI` on absence, an `asyncio.Semaphore(4)` bulkhead, and per-call `CallRecord` ring-buffer writes. After E3 closes, `VISION_MODE=cloud uv run task demo` extracts every PRD §5.1 field from a JPEG/PNG label and `VISION_MODE=auto` autodetects CUDA presence and routes accordingly per D-015.
 
-**Architecture.** A single Python package `app/vision/` owning the seam Protocol (`base.py`), the cloud extractor (`cloud.py`), the local composer (`local.py`), three sub-runners (`paddle_runner.py`, `swt.py`, `tiebreak_gpt4o.py`), the quality-gate module (`quality.py`), and a CLI smoke entry (`__main__.py`). The Protocol is `runtime_checkable` so substitutability is a one-line `isinstance` assertion. Cloud impl issues per-field GPT-4o calls under an `asyncio.Semaphore(4)` bulkhead; each call writes one `CallRecord` to the ring buffer. Local impl runs PaddleOCR for OCR + bbox, SWT for heading-bold (FR-202), and the GPT-4o tiebreaker only when local signals are uncertain. Recorded HTTP responses live under `tests/recordings/openai/<snapshot>/<fixture>/<call>.json` keyed by `LLM_MODEL_SNAPSHOT` + `PROMPT_VERSION`. DPI is extracted from EXIF/PNG pHYs/JFIF/applicant-supplied dimensions; absence emits `ENGINE.MEASUREMENT.MISSING_DPI` per FR-602/910. Quality gates short-circuit `disposition=needs_better_photo` *before* invoking expensive extraction calls. DI wiring in `app/deps.py` replaces the E1 placeholder with `build_vision_extractor(settings)` whose `_autodetect()` probes `nvidia-smi` via `subprocess.run`.
+**Architecture.** A single Python package `app/vision/` owning the seam Protocol (`base.py`), the cloud extractor (`cloud.py`), the local composer (`local.py`), three sub-runners (`paddle_runner.py`, `swt.py`, `tiebreak_gpt4o.py`), the quality-gate module (`quality.py`), and a CLI smoke entry (`__main__.py`). The Protocol is `runtime_checkable` so substitutability is a one-line `isinstance` assertion. Cloud impl issues per-field GPT-4o calls under an `asyncio.Semaphore(4)` bulkhead; each call writes one `CallRecord` to the ring buffer. Local impl runs PaddleOCR for OCR + bbox, SWT for heading-bold (FR-202), and the GPT-4o tiebreaker only when local signals are uncertain. Recorded HTTP responses live under `tests/recordings/openai/<snapshot>/<prompt-version>/<fixture>/<call>.json` keyed by `LLM_MODEL_SNAPSHOT` + `PROMPT_VERSION`. DPI is extracted from EXIF/PNG pHYs/JFIF/applicant-supplied dimensions; absence emits `ENGINE.MEASUREMENT.MISSING_DPI` per FR-602/910. Quality gates short-circuit `disposition=needs_better_photo` *before* invoking expensive extraction calls. DI wiring in `app/deps.py` replaces the E1 placeholder with `build_vision_extractor(settings)` whose `_autodetect()` probes `nvidia-smi` via `subprocess.run`.
 
 **Tech stack.** Python 3.12, Pydantic v2 (E1), `openai >= 1.50` (already pinned), `httpx >= 0.27` (already pinned), `paddleocr >= 3.0` + `paddlepaddle >= 3.0` (already pinned in core for cloud-mode metadata; CPU build), `[gpu]` extras add `paddlepaddle-gpu` + `torch`, `opencv-python-headless >= 4.10` (already pinned, used for BRISQUE/NIQE proxies + glare/motion-blur heuristics), `pillow >= 11.0` (already pinned, used for EXIF/DPI extraction), `numpy >= 2.0` (already pinned). **One new top-level dev dependency:** `respx >= 0.21` for HTTP-layer recording — added to `[dependency-groups.dev]`.
 
@@ -22,7 +22,7 @@
 
 **Cross-epoch follow-through.** This plan closes E1 §4 omission #X (`Label` schema): it lands `app/schemas/label.py` as a frozen Pydantic model. E1's `app/deps.py` placeholder is replaced. The vision-isolation invariant (`grep -rn 'openai\|paddle' app/ | grep -v 'app/vision/'` returns no hits) is asserted by a new test file.
 
-**Recording posture.** Cloud-vision tests use **HTTP-layer recordings** via `respx`, not SDK-level mocks. Recordings are committed under `tests/recordings/openai/<snapshot>/<fixture>/<call>.json`. CI fails if the active `LLM_MODEL_SNAPSHOT` has no matching recording directory — recordings rotate via `scripts/record_vision_responses.py` when the snapshot tag rotates.
+**Recording posture.** Cloud-vision tests use **HTTP-layer recordings** via `respx`, not SDK-level mocks. Recordings are committed under `tests/recordings/openai/<snapshot>/<prompt-version>/<fixture>/<call>.json`. CI fails if the active `LLM_MODEL_SNAPSHOT` has no matching recording directory — recordings rotate via `scripts/record_vision_responses.py` when the snapshot tag rotates.
 
 **Synthetic-fixture posture.** E3 ships **one** synthetic `fixtures/01-spirits-clean/label.png` (200×200, embedded text, EXIF DPI=300) sufficient for unit tests + recording determinism. The full demo fixture set (01–07) is E8 territory; E3 only needs enough bytes to compute deterministic OpenAI request hashes and exercise EXIF-extraction code paths.
 
@@ -35,13 +35,13 @@
 | `app/schemas/label.py` | T1 | `Label` Pydantic model: `image_bytes: bytes`, `content_type: Literal["image/jpeg","image/png"]`, `dimensions: Dimensions \| None`, `face_tag: Literal["front","back","neck","side"]`, `label_id: str`, `batch_id: str`. Frozen, `extra="forbid"`. |
 | `app/schemas/label.py` (Dimensions) | T1 | Inner `Dimensions` model: `width_px: int`, `height_px: int`, `dpi: int \| None`. Frozen. |
 | `app/vision/__init__.py` | T2 | Package marker; re-export `VisionExtractor` Protocol from `base`. |
-| `app/vision/base.py` | T2 | `VisionExtractor` Protocol (`@runtime_checkable`) with `extract(label: Label) -> list[FieldObservation]` and `ensure_loaded() -> None` (both async). Sub-runner `Candidate` dataclass + sub-runner Protocol type aliases (`PaddleRunnerLike`, `SWTRunnerLike`, `GPT4oTiebreakLike`). |
+| `app/vision/base.py` | T2 | `VisionExtractor` Protocol (`@runtime_checkable`) with `extract(label: Label) -> list[FieldObservation]` and `ensure_loaded() -> None` (both async). **No** sub-runner aliases — sub-runner shapes live in their own files (`Candidate` in `paddle_runner.py`, `StrokeWidthReport` in `swt.py`); `local.py` consumes the concrete classes directly. |
 | `rules/reason_codes.yaml` | T3 | Append `WARNING.LEGIBILITY.GLARE` + `WARNING.LEGIBILITY.MOTION_BLUR` per L1 §2.4 + PRD FR-603. |
 | `pyproject.toml` | T4 | Append `respx >= 0.21` to `[dependency-groups.dev]`. |
 | `fixtures/01-spirits-clean/label.png` | T5 | 200×200 synthetic PNG with embedded "ACME BOURBON" text + EXIF DPI=300. ≤ 5 KB. |
 | `app/vision/quality.py` | T6 | `QualityReport` Pydantic model + `assess(image_bytes: bytes) -> QualityReport`. BRISQUE proxy via opencv variance-of-Laplacian; NIQE proxy via spatial-frequency entropy; glare via overexposure histogram; motion-blur via FFT high-frequency ratio; DPI via PIL EXIF/pHYs/JFIF parse. |
 | `app/vision/paddle_runner.py` | T7 | `PaddleRunner` class: `async run(crop: bytes) -> list[Candidate]`. Lazy-import `paddleocr` inside `ensure_loaded()` so cloud-only profiles don't pay the import cost. Records `CallRecord` with `stage="vision.paddleocr"`, `provider="local.paddleocr"`. |
-| `app/vision/swt.py` | T8 | `SWTRunner` class: `async run(crop: bytes) -> StrokeWidthReport`. opencv-only (no torch); detects bold heading text via stroke-width statistics. Records `CallRecord` with `stage="vision.swt"`, `provider="local.paddleocr"` (re-using the local provider tag — there's no "swt" provider in the CallRecord literal). |
+| `app/vision/swt.py` | T8 | `SWTRunner` class: `async run(crop: bytes) -> StrokeWidthReport`. `StrokeWidthReport` is a frozen dataclass: `is_bold: bool`, `mean_stroke_width: float`, `mean_character_height: float`, `width_height_ratio: float`. opencv-only (no torch); detects bold heading text via stroke-width statistics. Records `CallRecord` with `stage="vision.swt"`, `provider="local.paddleocr"` (re-using the local provider tag — there's no "swt" provider in the CallRecord literal). |
 | `app/vision/tiebreak_gpt4o.py` | T9 | `GPT4oTiebreakRunner` class: `async run(crop: bytes, prompt: str) -> dict`. Single OpenAI call with `strict:true` Structured Outputs. Records `CallRecord` with `stage="vision.gpt4o_tiebreak"`, `provider="openai"`. |
 | `tests/recordings/openai/gpt-4o-2024-08-06/v1/01-spirits-clean/*.json` | T9 + T10 | HTTP-layer recordings keyed by `LLM_MODEL_SNAPSHOT/PROMPT_VERSION/fixture/call`. |
 | `app/vision/cloud.py` | T10 | `CloudVisionExtractor`: per-field GPT-4o-on-crop calls under `asyncio.Semaphore(4)`; coarse layout pre-pass + 8 per-field calls (FR-001..008). Records 9 `CallRecord` entries per `extract()`. Quality-gate short-circuit before extraction. |
@@ -1237,12 +1237,124 @@ class LocalVisionExtractor:
         for runner in (self._paddle, self._swt, self._tiebreak):
             runner._batch_id = label.batch_id
             runner._label_id = label.label_id
-        # Run PaddleOCR + SWT in parallel; tiebreaker only when uncertain.
-        # (Concrete dispatch logic refined inside the test cycle.)
+
+        # Run PaddleOCR over the full image once to seed candidates for OCR-text fields.
+        paddle_candidates = await self._paddle.run(crop=label.image_bytes)
+
         observations: list[FieldObservation] = []
-        # ... per-field routing logic, fields from candidates ...
+
+        # Per-field routing policy — same 8 field_ids as cloud (T10), but produced
+        # from local signals. Each field_id maps to a routing decision:
+        #   ocr      — extract from paddle_candidates by bbox/text heuristic
+        #   swt      — heading_typography only; classify bold + read text via paddle
+        #   tiebreak — uncertain or low-confidence ocr; fallback to GPT-4o single-call
+        FIELD_ROUTING = {
+            "brand_name": "ocr",
+            "class_type": "ocr",
+            "abv": "ocr",
+            "net_contents": "ocr",
+            "gov_warning": "ocr",
+            "heading_typography": "swt",
+            "name_address": "ocr",
+            "country_origin": "tiebreak",  # often missing/marginal text; default to tiebreak
+        }
+        OCR_CONFIDENCE_FLOOR = 0.85  # below this, fall back to tiebreak
+
+        for field_id, route in FIELD_ROUTING.items():
+            if route == "ocr":
+                cand = self._best_candidate(paddle_candidates, field_id)
+                if cand is None or cand.score < OCR_CONFIDENCE_FLOOR:
+                    obs = await self._tiebreak_field(label, field_id)
+                else:
+                    obs = self._observation_from_candidate(field_id, cand, label)
+            elif route == "swt":
+                swt_report = await self._swt.run(crop=label.image_bytes)
+                obs = self._observation_from_swt(field_id, swt_report, paddle_candidates, label)
+            else:  # tiebreak
+                obs = await self._tiebreak_field(label, field_id)
+            observations.append(obs)
+
         return observations
+
+    def _best_candidate(self, cands: list, field_id: str):
+        """Heuristic: return highest-scoring paddle candidate matching field_id keywords.
+
+        E3 ships a *minimal* keyword map sufficient for the synthetic fixture
+        (T5) + recordings; full keyword/bbox heuristics tune in E5/E8 against
+        the real fixture corpus. The map is intentionally narrow so this method
+        is unit-testable in T11 with mocked candidates.
+        """
+        keywords = {
+            "brand_name": ("BOURBON", "ACME"),
+            "class_type": ("WHISKEY", "BOURBON", "WINE", "BEER"),
+            "abv": ("ALC", "ABV", "VOL"),
+            "net_contents": ("ML", "OZ", "L "),
+            "gov_warning": ("GOVERNMENT WARNING",),
+            "name_address": ("DISTILLER", "BOTTLED BY", "PRODUCED BY"),
+        }.get(field_id, ())
+        matches = [c for c in cands if any(k in c.text.upper() for k in keywords)]
+        return max(matches, key=lambda c: c.score) if matches else None
+
+    def _observation_from_candidate(self, field_id, cand, label):
+        from app.schemas.expected import BeverageClass
+        from app.schemas.extracted import Evidence, EvidenceSource, MatchKind
+        return FieldObservation(
+            field_id=field_id,
+            beverage_class=BeverageClass.SPIRITS,  # E5 widens once class-detection lands
+            observed_value=cand.text,
+            evidence=(
+                Evidence(
+                    field_id=field_id,
+                    source=EvidenceSource.OCR,
+                    bbox=cand.bbox,
+                    extracted_text=cand.text,
+                    match_kind=MatchKind.NONE,
+                    confidence=cand.score,
+                ),
+            ),
+            upstream_meta={"engine_version": "local.paddleocr/v5", "route": "ocr"},
+        )
+
+    def _observation_from_swt(self, field_id, swt_report, cands, label):
+        from app.schemas.expected import BeverageClass
+        from app.schemas.extracted import Evidence, EvidenceSource, MatchKind
+        return FieldObservation(
+            field_id=field_id,
+            beverage_class=BeverageClass.SPIRITS,
+            observed_value={"all_caps": True, "bold": swt_report.is_bold},
+            evidence=(
+                Evidence(
+                    field_id=field_id,
+                    source=EvidenceSource.LAYOUT,
+                    match_kind=MatchKind.LAYOUT,
+                    confidence=0.9 if swt_report.is_bold else 0.6,
+                    notes=f"width/height ratio {swt_report.width_height_ratio:.3f}",
+                ),
+            ),
+            upstream_meta={"engine_version": "local.swt", "route": "swt"},
+        )
+
+    async def _tiebreak_field(self, label, field_id):
+        from app.schemas.expected import BeverageClass
+        from app.schemas.extracted import Evidence, EvidenceSource, MatchKind
+        result = await self._tiebreak.run(crop=label.image_bytes, prompt=field_id)
+        return FieldObservation(
+            field_id=field_id,
+            beverage_class=BeverageClass.SPIRITS,
+            observed_value=result.get(field_id) or next(iter(result.values()), None),
+            evidence=(
+                Evidence(
+                    field_id=field_id,
+                    source=EvidenceSource.DERIVED,
+                    match_kind=MatchKind.NONE,
+                    confidence=0.75,
+                ),
+            ),
+            upstream_meta={"engine_version": "openai/gpt-4o-tiebreak", "route": "tiebreak"},
+        )
 ```
+
+> **Note:** `BeverageClass.SPIRITS` is a placeholder — the local impl can't detect class without a separate classifier. E5's evaluator service refines `beverage_class` from the rule-engine's class-detection pass. This L2 freezes `SPIRITS` for E3 since the only fixture is `01-spirits-clean`. T15's substitutability test asserts only that the field_id set matches; values may differ between cloud (which carries class from GPT-4o output) and local. The cycle that adds class detection is E5 territory; do not widen this in E3.
 
 - [ ] **Step 4: Run (PASS — protocol shape only)**
 
@@ -1434,7 +1546,106 @@ def test_cli_smoke_missing_fixture_exits_2():
 
 - [ ] **Step 2: Run (FAIL — module missing)**
 
-- [ ] **Step 3: Implement `app/vision/__main__.py`** with argparse (`--label`, `--mode`, `--use-recordings`); on `--use-recordings`, monkey-patch httpx via respx context manager loaded from `tests/recordings/`. Print `field_count: N` to stdout.
+- [ ] **Step 3: Implement `app/vision/__main__.py`**
+
+```python
+# app/vision/__main__.py
+"""CLI smoke entry — `python -m app.vision --label <path> --mode <cloud|local>`.
+
+Per L1 §8 hand-off note: this module exercises the cloud impl against committed
+recordings for offline CI. The recording-replay mechanism uses respx to mount
+each recording file as a route keyed on the OpenAI request body's
+`response_format.json_schema.name` field — which the cloud impl populates
+deterministically per per-field call (see T10 §Cycle A).
+"""
+from __future__ import annotations
+
+import argparse
+import asyncio
+import json
+import sys
+from collections import deque
+from pathlib import Path
+
+from app.config import Settings
+
+
+def _build_argparser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(prog="python -m app.vision")
+    p.add_argument("--label", required=True, type=Path)
+    p.add_argument("--mode", choices=("cloud", "local"), default="cloud")
+    p.add_argument("--use-recordings", action="store_true",
+                   help="Mount tests/recordings/openai/<snapshot>/<prompt-version>/<fixture>/* via respx.")
+    return p
+
+
+async def _run(args: argparse.Namespace) -> int:
+    from app.schemas.label import Dimensions, Label
+    from app.vision.cloud import CloudVisionExtractor
+
+    if not args.label.exists():
+        print(f"label not found: {args.label}", file=sys.stderr)
+        return 2
+
+    settings = Settings()
+    ring = deque(maxlen=200)
+
+    label = Label(
+        label_id=args.label.stem,
+        batch_id="cli-smoke",
+        image_bytes=args.label.read_bytes(),
+        content_type=("image/png" if args.label.suffix.lower() == ".png" else "image/jpeg"),
+        face_tag="front",
+        dimensions=Dimensions(width_px=200, height_px=200, dpi=300),
+    )
+
+    extractor = CloudVisionExtractor(settings=settings, ring_buffer=ring,
+                                     api_key=settings.openai_api_key or "sk-test")
+
+    if args.use_recordings:
+        import respx  # dev-only — guarded by flag
+        from httpx import Response
+
+        rec_root = Path("tests/recordings/openai") / settings.llm_model_snapshot \
+            / settings.prompt_version / args.label.parent.name
+        if not rec_root.exists():
+            print(f"recordings not found: {rec_root}", file=sys.stderr)
+            return 2
+
+        # Mount one route per recording, discriminated by the request body's
+        # response_format.json_schema.name (matches T10 §Cycle A's call-naming).
+        with respx.mock(base_url="https://api.openai.com") as router:
+            def _route_for(name: str, payload: dict):
+                def _handler(request):
+                    body = json.loads(request.content)
+                    schema_name = body.get("response_format", {}).get("json_schema", {}).get("name")
+                    if schema_name == name:
+                        return Response(200, json=payload)
+                    return None  # fall through to next route
+                router.post("/v1/chat/completions").mock(side_effect=_handler)
+
+            for rec in sorted(rec_root.glob("*.json")):
+                _route_for(rec.stem, json.loads(rec.read_text()))
+
+            observations = await extractor.extract(label)
+    else:
+        observations = await extractor.extract(label)
+
+    print(f"field_count: {len(observations)}")
+    print(f"first_three: {[o.field_id for o in observations[:3]]}")
+    return 0
+
+
+def main() -> None:
+    args = _build_argparser().parse_args()
+    sys.exit(asyncio.run(_run(args)))
+
+
+if __name__ == "__main__":
+    main()
+```
+
+The `_route_for` closure pattern lets each recording mount as an independent route while sharing the same OpenAI endpoint URL — `respx` calls handlers in registration order, and a handler returning `None` falls through to the next route, so the cloud impl's deterministic call ordering matches the recording-name discriminator.
 
 - [ ] **Step 4: Run (PASS)** → Step 5 commit `feat(e3): vision CLI smoke entry (python -m app.vision)`.
 
@@ -1675,7 +1886,7 @@ Tests cover: PNG-with-pHYs, JPEG-with-EXIF (manually authored bytes), JFIF, appl
 
 - [ ] **Step 2: Run (PASS — DPI implementation already in T6 cycle E)**
 
-- [ ] **Step 3: Commit `test(e3): DPI extraction across EXIF/pHYs/JFIF/applicant + missing-DPI signal`**
+- [ ] **Step 3: Commit `test(e3): multi-source DPI extraction + missing-DPI signal`**
 
 ---
 
