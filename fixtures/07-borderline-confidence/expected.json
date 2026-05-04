@@ -1,0 +1,9 @@
+[
+  {"field_id": "brand_name", "value": "ACME BOURBON", "aliases": ["ACME"]},
+  {"field_id": "class_type", "value": "BOURBON WHISKEY"},
+  {"field_id": "alcohol_content", "abv_labeled_pct": "40.0", "abv_actual_pct": "40.0"},
+  {"field_id": "net_contents", "container_volume_ml": "750"},
+  {"field_id": "name_and_address", "value": "ACME DISTILLERIES, FRANKFORT, KY"},
+  {"field_id": "country_of_origin", "value": "USA"},
+  {"field_id": "government_warning", "value": "GOVERNMENT WARNING: (1) ACCORDING ..."}
+]
