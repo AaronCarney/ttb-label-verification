@@ -1,5 +1,4 @@
 import { describe, it, expect, vi } from "vitest";
-import userEvent from "@testing-library/user-event";
 import { fireEvent } from "@testing-library/react";
 import { axe } from "vitest-axe";
 import { renderWithProviders } from "../test/render";

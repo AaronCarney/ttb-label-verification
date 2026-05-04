@@ -27,7 +27,7 @@ describe("OverrideDrawer", () => {
 
   it("AC-FR-803: O→reason→ENTER completes in three keystrokes", async () => {
     const onSubmit = vi.fn();
-    const { getByRole } = renderWithProviders(
+    renderWithProviders(
       <OverrideDrawer open={true} onOpenChange={() => {}} codes={_codes} onSubmit={onSubmit} />,
     );
     const user = userEvent.setup();

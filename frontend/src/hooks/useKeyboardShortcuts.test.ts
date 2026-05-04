@@ -1,6 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
 import { renderHook } from "@testing-library/react";
-import * as React from "react";
 import { useKeyboardShortcuts } from "./useKeyboardShortcuts";
 
 const fireKey = (key: string, target: EventTarget = document) => {
