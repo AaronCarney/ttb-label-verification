@@ -15,7 +15,7 @@ def test_full_subset_macro_f1_gate(tmp_path):
     above exercises the harness mechanics with a fake; this test exercises
     the AC-§8.4 number with the real pipeline.
     """
-    pytest.importorskip("app.services.application", reason="E5+E6 required for live full eval")
+    pytest.importorskip("app.deps", reason="E5+E6 required for live full eval")
     history = tmp_path / "history"
     history.mkdir()
     record = run_subset("full", Path("eval/manifest.jsonl"), history)
