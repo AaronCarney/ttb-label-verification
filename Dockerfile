@@ -16,6 +16,11 @@ WORKDIR /app
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev
 
+# `uv sync` installs deps into /app/.venv; ensure its bin is on PATH so the
+# CMD resolves `uvicorn` directly. Earlier deploys ran a cached image that
+# already had this resolved; HF rebuilt fresh and tripped on PATH order.
+ENV PATH="/app/.venv/bin:$PATH"
+
 # E7 island bundle + templates ship under app/ui/. `COPY app ./app` is sufficient.
 COPY app ./app
 COPY rules ./rules
