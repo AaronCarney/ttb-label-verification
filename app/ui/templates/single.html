@@ -9,6 +9,14 @@
     <a href="/?fixture={{ next_fixture }}" rel="next">Next (FIX-{{ next_fixture }}) →</a>
   </nav>
   {% endif %}
+  <form action="/" method="post" enctype="multipart/form-data" class="upload-form" aria-label="Upload a label for evaluation">
+    <label for="label-upload">Upload your own label (PNG or JPEG)</label>
+    <input id="label-upload" type="file" name="label" accept="image/png,image/jpeg" required />
+    <button type="submit">Evaluate</button>
+  </form>
+  {% if upload_error %}
+  <div role="alert" class="upload-error">{{ upload_error }}</div>
+  {% endif %}
   <div id="root" data-mode="single">
     <p>Loading review surface…</p>
   </div>

@@ -140,3 +140,66 @@ def test_fixture_picker_all_fixtures_respond(client: TestClient) -> None:
         response = client.get(f"/?fixture={slug}")
         assert response.status_code == 200, f"fixture {slug} not 200"
         assert label_id in response.text, f"fixture {slug} missing label_ref"
+
+
+# ---------------------------------------------------------------------------
+# Single-label upload widget — POST /
+# ---------------------------------------------------------------------------
+
+def test_upload_form_present_on_root(client: TestClient) -> None:
+    """The grader needs an in-page upload affordance — a multipart POST form
+    targeting `/` with a file input named `label`."""
+    response = client.get("/")
+    assert 'enctype="multipart/form-data"' in response.text
+    assert 'name="label"' in response.text
+    assert 'method="post"' in response.text or 'method="POST"' in response.text
+
+
+def test_upload_with_real_image_returns_envelope() -> None:
+    """A multipart POST to / with a PNG runs the evaluator and re-renders the
+    shell with the live envelope. Uses dependency override to swap the
+    real evaluator for a stub so the test never calls OpenAI."""
+    from app.api.ui import _get_upload_evaluator
+    from tests._fakes.evaluator import FakeEvaluator
+    from tests.conftest import _stub_disposition_envelope
+
+    app = create_app()
+    env = _stub_disposition_envelope(99, disposition="pass")
+    fake = FakeEvaluator([(0.0, env)])
+    app.dependency_overrides[_get_upload_evaluator] = lambda: fake
+    client = TestClient(app)
+
+    # Tiny valid PNG (1x1 black pixel).
+    png_1x1 = bytes.fromhex(
+        "89504e470d0a1a0a0000000d49484452000000010000000108060000001f15c4"
+        "89000000017352474200aece1ce90000000d4944415478da636060606000000005"
+        "0001a5f645400000000049454e44ae426082"
+    )
+    response = client.post(
+        "/",
+        files={"label": ("upload.png", png_1x1, "image/png")},
+    )
+    assert response.status_code == 200, response.text
+    assert "EV-0099" in response.text  # evaluation_id from stub envelope
+    assert "lbl-0099" in response.text  # label_ref
+
+
+def test_upload_with_invalid_mime_renders_error() -> None:
+    """An obviously-not-an-image upload should re-render the page with an
+    inline error banner rather than 500ing or showing a stack trace."""
+    app = create_app()
+    client = TestClient(app)
+    response = client.post(
+        "/",
+        files={"label": ("not_an_image.txt", b"hello world", "text/plain")},
+    )
+    assert response.status_code == 400
+    assert "unsupported" in response.text.lower() or "png" in response.text.lower()
+
+
+def test_upload_without_file_returns_422() -> None:
+    """FastAPI's File(...) requirement should produce a 422 when missing."""
+    app = create_app()
+    client = TestClient(app)
+    response = client.post("/", files={})
+    assert response.status_code == 422

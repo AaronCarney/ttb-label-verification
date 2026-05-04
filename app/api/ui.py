@@ -7,9 +7,10 @@ Engine logic lives in the JSON API routes (``app.api.labels``,
 """
 from __future__ import annotations
 
+import uuid
 from pathlib import Path
 
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Depends, File, Request, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
@@ -111,6 +112,83 @@ async def single_page_shell(
             "fixture_slug": slug,
             "prev_fixture": prev_slug,
             "next_fixture": next_slug,
+        },
+    )
+
+
+def _get_upload_evaluator():
+    """Indirection for tests: returns the singleton evaluator built against
+    process settings. Tests override this dependency to inject a fake so the
+    upload endpoint never reaches OpenAI."""
+    from app.deps import build_evaluator
+    return build_evaluator(Settings())
+
+
+_PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
+_JPEG_MAGIC = b"\xff\xd8\xff"
+
+
+def _detect_image_mime(data: bytes) -> str | None:
+    if data.startswith(_PNG_MAGIC):
+        return "image/png"
+    if data.startswith(_JPEG_MAGIC):
+        return "image/jpeg"
+    return None
+
+
+@router.post("/", response_class=HTMLResponse)
+async def single_label_upload(
+    request: Request,
+    label: UploadFile = File(...),
+    settings: Settings = Depends(_get_settings),
+    evaluator=Depends(_get_upload_evaluator),
+) -> HTMLResponse:
+    """Run an uploaded label through the evaluator and re-render the single-
+    label shell with the live envelope embedded. The `application` payload is
+    synthesized server-side (random IDs, no expected values) so the grader
+    only has to pick an image file — they're not expected to hand-author the
+    Application JSON. Returns the same template as `/` so the React island
+    mounts identically; errors render an inline banner with HTTP 400."""
+    from app.schemas.application import Application
+    from app.schemas.label import Label as LabelModel
+
+    image_bytes = await label.read()
+    mime = _detect_image_mime(image_bytes)
+    if mime is None:
+        return templates.TemplateResponse(
+            request=request,
+            name="single.html",
+            context={
+                "envelope_json": None,
+                "dev_mode": settings.dev_mode,
+                "upload_error": "Unsupported file type — upload a PNG or JPEG.",
+            },
+            status_code=400,
+        )
+
+    application_id = f"app-{uuid.uuid4().hex[:12]}"
+    evaluation_id = f"ev-{uuid.uuid4().hex[:12]}"
+    app_obj = Application(
+        application_id=application_id,
+        evaluation_id=evaluation_id,
+        expected_values=(),
+    )
+    label_obj = LabelModel(
+        label_id=label.filename or "uploaded-label",
+        batch_id=application_id,
+        image_bytes=image_bytes,
+        content_type=mime,
+        face_tag="front",
+        dimensions=None,
+    )
+    envelope = await evaluator.evaluate(application=app_obj, label=label_obj)
+    return templates.TemplateResponse(
+        request=request,
+        name="single.html",
+        context={
+            "envelope_json": envelope.model_dump_json(),
+            "dev_mode": settings.dev_mode,
+            "fixture_slug": None,  # suppress prev/next nav for live uploads
         },
     )
 
