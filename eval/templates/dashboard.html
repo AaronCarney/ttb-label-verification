@@ -1,0 +1,59 @@
+<!-- eval/templates/dashboard.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TTB Label Verification — Eval Dashboard</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f7f7f7; }
+    .metric { font-size: 1.6rem; font-weight: 600; }
+    .ok { color: #1a7f37; }
+    .warn { color: #b08800; }
+    .fail { color: #cf222e; }
+  </style>
+</head>
+<body>
+  <h1>TTB Label Verification — Eval Dashboard</h1>
+
+  {% if not latest %}
+    <p>No eval runs recorded yet. Run <code>uv run task eval-smoke</code>.</p>
+  {% else %}
+    <h2>Latest run — {{ latest.subset }} @ {{ latest.timestamp }}</h2>
+    <p>n labels: <strong>{{ latest.n_labels }}</strong></p>
+    <p>macro-F1: <span class="metric {% if latest.macro_f1 >= 0.70 %}ok{% else %}fail{% endif %}">{{ "%.3f"|format(latest.macro_f1) }}</span> (gate: 0.70)</p>
+    <p>cost-weighted score: <span class="metric">{{ "%.3f"|format(latest.cost_weighted_score) }}</span></p>
+    <p>ECE: {{ "%.3f"|format(latest.ece) }} · latency p50/p95/p99 s: {{ "%.2f"|format(latest.latency_p50_s) }} / {{ "%.2f"|format(latest.latency_p95_s) }} / {{ "%.2f"|format(latest.latency_p99_s) }}</p>
+
+    <h3>Per-rule precision / recall</h3>
+    <table>
+      <thead><tr><th>Rule</th><th>Precision</th><th>Recall</th></tr></thead>
+      <tbody>
+      {% for rule_id, p in latest.per_rule_precision.items() %}
+        {% set r = latest.per_rule_recall[rule_id] %}
+        <tr>
+          <td>{{ rule_id }}</td>
+          <td>{{ "%.2f"|format(p) }}</td>
+          <td class="{% if rule_id.startswith('FR-20') and r >= 0.80 %}ok{% elif rule_id.startswith('FR-20') %}fail{% endif %}">{{ "%.2f"|format(r) }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    <h3>Run history</h3>
+    <table>
+      <thead><tr><th>Timestamp</th><th>Subset</th><th>macro-F1</th></tr></thead>
+      <tbody>
+      {% for run in summary.runs %}
+        <tr><td>{{ run.timestamp }}</td><td>{{ run.subset }}</td><td>{{ "%.3f"|format(run.macro_f1) }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+  <h3>Confusion matrix</h3>
+  <p><em>Rendered from latest run history; chart island deferred to T16 stretch.</em></p>
+</body>
+</html>
