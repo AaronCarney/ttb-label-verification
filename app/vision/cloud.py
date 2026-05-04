@@ -19,7 +19,7 @@ import httpx
 from app.config import Settings
 from app.schemas.calls import CallRecord
 from app.schemas.expected import BeverageClass
-from app.schemas.extracted import FieldObservation
+from app.schemas.extracted import Evidence, EvidenceSource, FieldObservation, MatchKind
 from app.schemas.label import Label
 from app.vision import quality
 from app.vision.tiebreak_gpt4o import _SCHEMAS
@@ -133,7 +133,9 @@ class CloudVisionExtractor:
                     field_id="quality",
                     beverage_class=BeverageClass.SPIRITS,
                     observed_value=None,
-                    evidence=(),
+                    evidence=(_make_evidence(
+                        field_id="quality", bbox=None, text=report.reason_code
+                    ),),
                     upstream_meta={
                         "disposition": report.disposition,
                         "reason_code": report.reason_code,
@@ -158,13 +160,48 @@ class CloudVisionExtractor:
         )
         observations: list[FieldObservation] = []
         for fname, content in zip(_FIELD_NAMES, contents):
+            text = _extract_text(content)
             observations.append(
                 FieldObservation(
                     field_id=fname,
                     beverage_class=BeverageClass.SPIRITS,
                     observed_value=content,
-                    evidence=(),
+                    evidence=(_make_evidence(
+                        field_id=fname, bbox=bbox_by_id.get(fname), text=text,
+                    ),),
                     upstream_meta={"bbox": bbox_by_id.get(fname)},
                 )
             )
         return observations
+
+
+def _extract_text(content: dict) -> str | None:
+    """Pull a representative string out of the per-field LLM JSON payload.
+    Schemas vary by field (text/name/country/abv); pick the first present."""
+    if not isinstance(content, dict):
+        return str(content) if content is not None else None
+    for key in ("text", "name", "country", "value"):
+        v = content.get(key)
+        if v is not None:
+            return str(v)
+    # Fall back to any non-None scalar value (e.g. abv numeric).
+    for v in content.values():
+        if isinstance(v, (str, int, float)):
+            return str(v)
+    return None
+
+
+def _make_evidence(
+    *, field_id: str, bbox: tuple[int, int, int, int] | None, text: str | None,
+) -> Evidence:
+    """Synthesize a single Evidence from the LLM's per-field payload + the
+    bbox surfaced by the layout call. confidence=0.7 is a deliberate stand-in
+    until E3 surfaces per-call confidence from the JSON-schema response."""
+    return Evidence(
+        field_id=field_id,
+        source=EvidenceSource.LAYOUT,
+        bbox=bbox,
+        extracted_text=text,
+        match_kind=MatchKind.NONE,
+        confidence=0.7,
+    )

@@ -36,12 +36,13 @@ _TASK_WIRE_NAME = {
 }
 
 
-# v0.5 Critical-#1 / v0.6 Warning-6: canonical PRD §5.1 field id → wire
-# field_name enum. Each canonical id maps to a distinct wire slot — no
-# duplicates. PRD §5.1 (FR-001 through FR-008) names exactly seven
-# user-visible fields; the wire enum (`FieldFindingWire.field_name`) carries
-# exactly seven slots; the mapping is one-to-one.
+# PRD §5.1 field id → wire field_name enum. Two input forms route to the
+# same wire slot: the long PRD canonical (`alcohol_content`, …) used by
+# Application input + hand-built fixtures, and the short extractor form
+# (`abv`, `gov_warning`, …) emitted by CloudVisionExtractor / LocalVision-
+# Extractor. Both forms map onto the seven wire slots in `FieldFindingWire`.
 _FIELD_CANONICAL_TO_WIRE = {
+    # Long PRD-canonical form
     "brand_name": "brand_name",
     "class_type": "class_type",
     "alcohol_content": "alcohol_content",
@@ -49,6 +50,11 @@ _FIELD_CANONICAL_TO_WIRE = {
     "government_warning": "warning",
     "name_and_address": "name_address",
     "country_of_origin": "country_of_origin",
+    # Short extractor form
+    "abv": "alcohol_content",
+    "gov_warning": "warning",
+    "name_address": "name_address",
+    "country_origin": "country_of_origin",
 }
 
 
@@ -89,7 +95,11 @@ def build_field_findings(
 
     candidate_fields = list(_FIELD_CANONICAL_TO_WIRE.keys())
     out: list[FieldFindingWire] = []
+    emitted_slots: set[str] = set()  # wire slot dedupe — both name forms route here
     for fid in candidate_fields:
+        wire_slot = _FIELD_CANONICAL_TO_WIRE[fid]
+        if wire_slot in emitted_slots:
+            continue
         obs = obs_by_field.get(fid)
         exp = exp_by_field.get(fid)
         if obs is None and exp is None:
@@ -98,6 +108,7 @@ def build_field_findings(
             # Per the contract: needs_review trace entry handled in audit;
             # skip the wire entry to keep the wire surface tight.
             continue
+        emitted_slots.add(wire_slot)
         ev = obs.evidence[0]
         evidence_wire = FieldEvidenceWire(
             bbox=ev.bbox if ev.bbox is not None else (0, 0, 0, 0),
