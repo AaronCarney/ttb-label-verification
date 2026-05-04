@@ -11,7 +11,7 @@ from __future__ import annotations
 from decimal import Decimal
 
 from app.rules._validators import ValidatorContext, register
-from app.rules._validators.equality_match import _build_meta, _conf
+from app.rules._validators._helpers import _build_meta, _conf
 from app.schemas.expected import ExpectedValue
 from app.schemas.extracted import FieldObservation
 from app.schemas.rejection import Outcome, ValidationResult

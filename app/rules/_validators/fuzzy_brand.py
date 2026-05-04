@@ -11,7 +11,7 @@
 from __future__ import annotations
 
 from app.rules._validators import ValidatorContext, register
-from app.rules._validators.equality_match import _build_meta, _conf
+from app.rules._validators._helpers import _build_meta, _conf
 from app.rules.brand_match import stage_a_normalized, stage_b_fuzzy
 from app.schemas.expected import ExpectedValue
 from app.schemas.extracted import FieldObservation
