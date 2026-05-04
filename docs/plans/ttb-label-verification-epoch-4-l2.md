@@ -94,6 +94,7 @@
 
 **Files:**
 - Modify: `app/schemas/refined.py`
+- Modify: `tests/test_schemas_round_trip.py` (the existing E1 round-trip test constructs `Refined(... task=..., text=..., model_disposition="pass")` — all three kwargs disappear under the new shape; this task updates that one test in lock-step so the suite stays green)
 - Test: `tests/test_refined_fr303_ready.py`
 
 **Why:** The L1 §1 spec says "the `Refined` schema (declared in E1) has no `disposition` field, so a misbehaving orchestrator literally cannot return one." E1 shipped `Refined` with a `model_disposition: Literal["pass", "needs_review"]` field that violates this invariant on a substring match (and conceptually, since the orchestrator should not even *suggest* a disposition). This task drops the field and adds the per-task slice surface the orchestrator will populate.
@@ -183,29 +184,128 @@ class Refined(BaseModel):
 Run: `uv run pytest tests/test_refined_fr303_ready.py -v`
 Expected: 3 passed.
 
-- [ ] **Step 5: Run full suite (no regression)**
+- [ ] **Step 5: Update the E1 round-trip test in lock-step**
+
+Open `tests/test_schemas_round_trip.py`. The function `test_refined_round_trip` (around line 140) currently constructs `Refined(evaluation_id=..., task="brand_borderline", text="...", model_disposition="pass")`. Replace the body with the new shape:
+
+```python
+def test_refined_round_trip() -> None:
+    from app.schemas.refined import Refined
+
+    r = Refined(evaluation_id="00000000-0000-4000-8000-000000000001")
+    r2 = Refined.model_validate_json(r.model_dump_json())
+    assert r2 == r
+```
+
+The companion `test_refined_has_no_disposition_field_fr303` test in the same file already passes against the new shape (it only asserts `"disposition" not in fields`); leave it untouched.
+
+- [ ] **Step 6: Run full suite (no regression)**
 
 Run: `uv run pytest -q`
-Expected: 302 baseline + 3 new = ~305 passing. **Watch for downstream breakage:** if any existing test in E1 imported `Refined.model_disposition`, that's a Rule 1-3 inline fix (those tests would be testing a placeholder field and should be updated to test the new shape).
+Expected: 302 baseline → 302 (the original `test_refined_round_trip` is rewritten in place) + 3 new = ~305 passing. **No remaining `model_disposition` references in the suite.** If the run surfaces any other E1/E2/E3 test that referenced `Refined.task` / `Refined.text` / `Refined.model_disposition`, that's a Rule 1-3 inline fix — update the test to the new shape, do not relax the schema.
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 7: Commit**
 
 ```bash
-git add app/schemas/refined.py tests/test_refined_fr303_ready.py
+git add app/schemas/refined.py tests/test_refined_fr303_ready.py tests/test_schemas_round_trip.py
 git commit -m "feat(e4): tighten Refined to FR-303 invariant — drop model_disposition"
 ```
 
 ---
 
-## Task 2: app/orchestrator/__init__.py + base.py — Orchestrator ABC
+## Task 2: Application stub + Orchestrator ABC (2-cycle bundle)
 
 **Files:**
-- Create: `app/orchestrator/__init__.py`
-- Create: `app/orchestrator/base.py`
-- Create: `app/orchestrator/tasks/__init__.py` (empty package marker)
-- Test: `tests/test_orchestrator_protocol.py`
+- Create: `app/schemas/application.py` — Cycle A. Closes the E1 omission: the orchestrator + downstream services key off `app/schemas/application.Application`, but only `app/schemas/wire/application.py::ApplicationEnvelope` exists today. T2 owns the single-source-of-truth stub so no other E4 task races to create one.
+- Create: `app/orchestrator/__init__.py` — Cycle B
+- Create: `app/orchestrator/base.py` — Cycle B
+- Create: `app/orchestrator/tasks/__init__.py` (empty package marker) — Cycle B
+- Test: `tests/test_application_stub.py` — Cycle A
+- Test: `tests/test_orchestrator_protocol.py` — Cycle B
 
-- [ ] **Step 1: Write the failing test**
+**Why two cycles in one task.** The Orchestrator ABC imports `from app.schemas.application import Application`. That module is missing at HEAD (only `app/schemas/wire/application.py::ApplicationEnvelope` exists). Eight downstream E4 tasks (T8/T9/T11/T12/T13/T14 + Cycle B itself) reference `Application(application_id=..., evaluation_id=...)` against this missing module. Letting each subagent invent the stub on demand creates a write race against the same path. The cleanest fix is to make T2 the single owner: Cycle A lands the stub, Cycle B lands the ABC that imports it. Two `task-executor` Red→Green→Commit cycles, one task.
+
+### Cycle A — `app/schemas/application.py` stub
+
+- [ ] **Step A.1: Write the failing test**
+
+```python
+# tests/test_application_stub.py
+"""Application stub — minimum surface E4 needs.
+
+The full Application contract is E5/E6 territory; this stub only closes the
+E1 omission so the Orchestrator seam (E4 T2 Cycle B) can import it.
+"""
+from app.schemas.application import Application
+
+
+def test_application_constructs_with_required_fields():
+    a = Application(application_id="A-001", evaluation_id="EV-001")
+    assert a.application_id == "A-001"
+    assert a.evaluation_id == "EV-001"
+
+
+def test_application_is_frozen_extra_forbid():
+    a = Application(application_id="A-001", evaluation_id="EV-001")
+    import pytest
+    from pydantic import ValidationError
+
+    with pytest.raises(ValidationError):
+        Application(application_id="A-001", evaluation_id="EV-001", unknown_field="x")  # type: ignore[call-arg]
+    with pytest.raises(ValidationError):
+        a.application_id = "A-002"  # type: ignore[misc]
+```
+
+- [ ] **Step A.2: Run → expect FAIL (`ModuleNotFoundError: app.schemas.application`)**
+
+Run: `uv run pytest tests/test_application_stub.py -v`
+
+- [ ] **Step A.3: Land minimal implementation**
+
+```python
+# app/schemas/application.py
+"""Application input identity (E1-omission closer for E4 orchestrator seam).
+
+The full Application contract — applicant, formula, type_of_application, labels,
+etc. — lives in `app/schemas/wire/application.py::ApplicationEnvelope`. This
+module exposes only the identity surface (`application_id`, `evaluation_id`) the
+Orchestrator + downstream services key off. E5 may extend this with additional
+fields; until then, keep the stub minimal so no orchestrator test depends on
+fields that aren't pinned by L1.
+"""
+from __future__ import annotations
+
+from pydantic import BaseModel, ConfigDict
+
+
+class Application(BaseModel):
+    """Identity surface for an in-flight evaluation. Extend in E5 if needed."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    application_id: str
+    evaluation_id: str
+```
+
+- [ ] **Step A.4: Run → expect PASS (2/2)**
+
+Run: `uv run pytest tests/test_application_stub.py -v`
+
+- [ ] **Step A.5: Run full suite (no regression)**
+
+Run: `uv run pytest -q`
+Expected: 305 (post-T1) + 2 = ~307 passing. If any existing E1/E2/E3 test imported `app.schemas.application` and asserted a different shape, that's a Rule 1-3 inline fix — extend this stub only with fields E4 will read. Do not paste the full `ApplicationEnvelope` shape in here; that's E5.
+
+- [ ] **Step A.6: Commit**
+
+```bash
+git add app/schemas/application.py tests/test_application_stub.py
+git commit -m "feat(e4): Application identity stub (closes E1 omission for orchestrator seam)"
+```
+
+### Cycle B — Orchestrator ABC
+
+- [ ] **Step B.1: Write the failing test**
 
 ```python
 # tests/test_orchestrator_protocol.py
@@ -237,12 +337,12 @@ def test_orchestrator_signature():
     assert params == ["self", "application", "observations", "validation_results"]
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [ ] **Step B.2: Run test to verify it fails**
 
 Run: `uv run pytest tests/test_orchestrator_protocol.py -v`
 Expected: FAIL — `ModuleNotFoundError: No module named 'app.orchestrator.base'`.
 
-- [ ] **Step 3: Write minimal implementation**
+- [ ] **Step B.3: Write minimal implementation**
 
 ```python
 # app/orchestrator/__init__.py
@@ -293,24 +393,22 @@ class Orchestrator(ABC):
 """Per-task schemas + adapters. Source: E4 L1 §2.5."""
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [ ] **Step B.4: Run test to verify it passes**
 
 Run: `uv run pytest tests/test_orchestrator_protocol.py -v`
 Expected: 4 passed.
 
-- [ ] **Step 5: Run full suite**
+- [ ] **Step B.5: Run full suite**
 
 Run: `uv run pytest -q`
-Expected: ~309 passing.
+Expected: ~311 passing (305 post-T1 + 2 Cycle A + 4 Cycle B).
 
-- [ ] **Step 6: Commit**
+- [ ] **Step B.6: Commit**
 
 ```bash
 git add app/orchestrator/__init__.py app/orchestrator/base.py app/orchestrator/tasks/__init__.py tests/test_orchestrator_protocol.py
 git commit -m "feat(e4): Orchestrator ABC seam (D-004 #2)"
 ```
-
-> **Note on `Application` schema import.** If `app/schemas/application.py` is empty or missing fields the import expects, classify as Rule 1-3 inline fix only if the missing surface is small (e.g., add a stub `Application(BaseModel)` with `evaluation_id: str`). If Application doesn't exist at all, that's a Rule 4 CHECKPOINT — escalate, since Application is E1 territory. Verify by reading `app/schemas/application.py` before relying on the import.
 
 ---
 
@@ -707,6 +805,8 @@ schema change that accidentally adds such a field. Per L1 §1, the invariant is
 that 'a misbehaving orchestrator literally cannot return a disposition because
 no such field exists on the schema'.
 """
+import json
+
 import pytest
 
 from app.orchestrator.tasks.brand_disambig import BrandDisambigResult
@@ -764,6 +864,29 @@ def test_no_fail_in_literal_values(schema_cls):
         if "fail" in values:
             leaks.append(f"{fname}: {values}")
     assert leaks == [], f"{schema_cls.__name__}: 'fail' Literal value leaked: {leaks}"
+
+
+@pytest.mark.parametrize(
+    "schema_cls",
+    [Refined, TaskSlice, BrandDisambigResult, EnrichedReasoning, OcrReconcileResult],
+)
+def test_no_fail_or_disposition_substring_in_json_schema(schema_cls):
+    """Defense-in-depth: serialize the JSON Schema and grep for forbidden tokens.
+
+    `_flatten_literal_values` only walks direct field annotations; if a future
+    schema embeds a sub-model whose own field carries 'fail'/'disposition' as a
+    Literal, the recursion misses it. Serializing the JSON Schema closes that
+    gap cheaply: the rendered schema includes nested `$defs` for any embedded
+    BaseModel, so substring presence is a hard signal of a leak.
+    """
+    rendered = json.dumps(schema_cls.model_json_schema(), sort_keys=True)
+    # `pass` is excluded from this substring grep — it appears commonly in
+    # schema metadata strings ("passes", "passenger", etc.) and the structural
+    # field-name/Literal-value tests above already cover it precisely.
+    for forbidden in ("\"fail\"", "disposition"):
+        assert forbidden not in rendered, (
+            f"{schema_cls.__name__}: forbidden substring {forbidden!r} surfaced in JSON Schema"
+        )
 ```
 
 - [ ] **Step 2: Run → expect PASS**
@@ -859,16 +982,17 @@ def _stub_inputs():
     The orchestrator only reads identifying fields (evaluation_id, brand match
     candidates, rule_ids, ocr candidates) — schema details beyond that don't
     affect call construction in E4. Adjust if Application requires more fields."""
-    app_ = Application(application_id="A-001", evaluation_id="EV-001")  # type: ignore[call-arg]
+    app_ = Application(application_id="A-001", evaluation_id="EV-001")
     obs: list[FieldObservation] = []
     vr: list[ValidationResult] = []
     return app_, obs, vr
 
 
 @pytest.mark.asyncio
-async def test_refine_against_fixture_01(monkeypatch):
+async def test_refine_against_fixture_01():
+    # No env-var monkeypatch needed: api_key is passed to the constructor
+    # explicitly, so neither Settings() nor the orchestrator reads $OPENAI_API_KEY.
     settings = Settings()
-    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
     ring: deque = deque(maxlen=200)
     orch = OpenAIStrictOrchestrator(settings=settings, ring_buffer=ring, api_key="sk-test")
     app_, obs, vr = _stub_inputs()
@@ -1062,9 +1186,8 @@ git commit -m "feat(e4): OpenAIStrictOrchestrator with 3-task strict-mode pipeli
 Add to the test file:
 ```python
 @pytest.mark.asyncio
-async def test_refine_fr304_fallback_on_connect_error(monkeypatch):
+async def test_refine_fr304_fallback_on_connect_error():
     settings = Settings()
-    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
     ring: deque = deque(maxlen=200)
     orch = OpenAIStrictOrchestrator(settings=settings, ring_buffer=ring, api_key="sk-test")
     app_, obs, vr = _stub_inputs()
@@ -1089,9 +1212,8 @@ git commit -m "test(e4): FR-304 fallback — httpx.RequestError → ENGINE.MODEL
 Add to the test file:
 ```python
 @pytest.mark.asyncio
-async def test_refine_retries_once_on_malformed(monkeypatch):
+async def test_refine_retries_once_on_malformed():
     settings = Settings()
-    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
     ring: deque = deque(maxlen=200)
     orch = OpenAIStrictOrchestrator(settings=settings, ring_buffer=ring, api_key="sk-test")
     app_, obs, vr = _stub_inputs()
@@ -1172,7 +1294,7 @@ REC_DIR = Path("tests/recordings/anthropic/claude-3-5-sonnet-20241022/v1/orchest
 
 
 def _stub_app():
-    return Application(application_id="A-001", evaluation_id="EV-001")  # type: ignore[call-arg]
+    return Application(application_id="A-001", evaluation_id="EV-001")
 
 
 def _mount_anthropic(router) -> None:
@@ -1190,9 +1312,8 @@ def _mount_anthropic(router) -> None:
 
 
 @pytest.mark.asyncio
-async def test_anthropic_skeleton_returns_refined(monkeypatch):
+async def test_anthropic_skeleton_returns_refined():
     settings = Settings()
-    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-test")
     ring: deque = deque(maxlen=200)
     orch = AnthropicStrictOrchestrator(
         settings=settings, ring_buffer=ring, api_key="sk-ant-test",
@@ -1320,6 +1441,8 @@ class AnthropicStrictOrchestrator(Orchestrator):
     async def _call_task(self, task_name: str) -> TaskSlice:
         schema_cls = _TASK_SCHEMAS[task_name]
         body = self._build_body(task_name, schema_cls)
+        # ValueError covers the "tool_use block missing from response" path
+        # raised by _post_one — see note on `raise ValueError(...)` below.
         try:
             content = await self._post_one(task_name, body)
         except httpx.RequestError as e:
@@ -1328,12 +1451,12 @@ class AnthropicStrictOrchestrator(Orchestrator):
         try:
             result = schema_cls.model_validate(content)
             return TaskSlice(task=task_name, payload=result.model_dump())  # type: ignore[arg-type]
-        except ValidationError:
+        except (ValidationError, ValueError):
             try:
                 content = await self._post_one(task_name, body)
                 result = schema_cls.model_validate(content)
                 return TaskSlice(task=task_name, payload=result.model_dump())  # type: ignore[arg-type]
-            except (ValidationError, httpx.RequestError):
+            except (ValidationError, ValueError, httpx.RequestError):
                 return TaskSlice(task=task_name, qualifier="LLM_OUTPUT_INVALID")  # type: ignore[arg-type]
 
     def _build_body(self, task_name: str, schema_cls: type) -> dict[str, Any]:
@@ -1370,7 +1493,11 @@ class AnthropicStrictOrchestrator(Orchestrator):
             None,
         )
         if tool_use is None:
-            raise ValidationError.from_exception_data(title="missing tool_use", line_errors=[])
+            # NB: do NOT use `ValidationError.from_exception_data(line_errors=[])`
+            # — pydantic v2 ≥ 2.6 raises `PydanticUserError` on an empty error list.
+            # `_call_task` above catches `ValueError` alongside `ValidationError`
+            # so the malformed-output retry path still kicks in.
+            raise ValueError(f"anthropic response missing tool_use block for task {task_name!r}")
         content = tool_use["input"]
         self._record(task_name, body, content, elapsed_ms=elapsed_ms)
         return content
@@ -1526,7 +1653,7 @@ from app.schemas.application import Application
 
 
 def _stub_app():
-    return Application(application_id="A-001", evaluation_id="EV-001")  # type: ignore[call-arg]
+    return Application(application_id="A-001", evaluation_id="EV-001")
 
 
 def test_both_subclass_orchestrator():
@@ -1540,10 +1667,8 @@ def test_both_refine_are_coroutines():
 
 
 @pytest.mark.asyncio
-async def test_both_produce_same_task_keys(monkeypatch):
+async def test_both_produce_same_task_keys():
     settings = Settings()
-    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
-    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-test")
 
     # Cloud (OpenAI) under recordings.
     openai_ring: deque = deque(maxlen=200)
@@ -1622,13 +1747,12 @@ REC_DIR = Path("tests/recordings/openai/gpt-4o-2024-08-06/v1/orchestrator")
 
 
 def _stub_app():
-    return Application(application_id="A-001", evaluation_id="EV-001")  # type: ignore[call-arg]
+    return Application(application_id="A-001", evaluation_id="EV-001")
 
 
 @pytest.mark.asyncio
-async def test_successful_refine_writes_3_call_records(monkeypatch):
+async def test_successful_refine_writes_3_call_records():
     settings = Settings()
-    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
     ring: deque = deque(maxlen=200)
     orch = OpenAIStrictOrchestrator(settings=settings, ring_buffer=ring, api_key="sk-test")
     with respx.mock(base_url="https://api.openai.com") as router:
@@ -1651,9 +1775,8 @@ async def test_successful_refine_writes_3_call_records(monkeypatch):
 
 
 @pytest.mark.asyncio
-async def test_failed_refine_writes_1_call_record_per_failed_task(monkeypatch):
+async def test_failed_refine_writes_1_call_record_per_failed_task():
     settings = Settings()
-    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
     ring: deque = deque(maxlen=200)
     orch = OpenAIStrictOrchestrator(settings=settings, ring_buffer=ring, api_key="sk-test")
     with respx.mock(base_url="https://api.openai.com") as router:
@@ -1710,13 +1833,12 @@ REC_DIR = Path("tests/recordings/openai/gpt-4o-2024-08-06/v1/orchestrator")
 
 
 def _stub_app():
-    return Application(application_id="A-001", evaluation_id="EV-001")  # type: ignore[call-arg]
+    return Application(application_id="A-001", evaluation_id="EV-001")
 
 
 @pytest.mark.asyncio
-async def test_request_body_has_temperature_zero_and_seed(monkeypatch):
+async def test_request_body_has_temperature_zero_and_seed():
     settings = Settings()
-    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
     captured_bodies: list[dict] = []
     ring: deque = deque(maxlen=200)
     orch = OpenAIStrictOrchestrator(settings=settings, ring_buffer=ring, api_key="sk-test")
@@ -1736,9 +1858,16 @@ async def test_request_body_has_temperature_zero_and_seed(monkeypatch):
 
     assert len(captured_bodies) >= 3
     successful = [b for b in captured_bodies if b.get("response_format", {}).get("json_schema", {}).get("name") in {"brand_disambig", "reasoning_enrich", "ocr_reconcile"}]
+    # Pull the seed value from the orchestrator module so the test catches
+    # both deletion ("seed" missing) AND silent rotation (e.g. someone wires
+    # `seed=time.time()`). _DETERMINISTIC_SEED lands as part of T8's openai_strict.py.
+    from app.orchestrator.openai_strict import _DETERMINISTIC_SEED
+
     for body in successful:
         assert body.get("temperature") == 0, f"determinism drift: temperature={body.get('temperature')!r}"
-        assert "seed" in body, "determinism drift: seed missing from request body"
+        assert body.get("seed") == _DETERMINISTIC_SEED, (
+            f"determinism drift: seed={body.get('seed')!r} (expected {_DETERMINISTIC_SEED})"
+        )
         assert body.get("model") == "gpt-4o-2024-08-06", f"snapshot drift: model={body.get('model')!r}"
 ```
 
@@ -1881,7 +2010,7 @@ async def _run_openai(args, settings: Settings) -> int:
 
 def _stub_app():
     from app.schemas.application import Application
-    return Application(application_id="A-001", evaluation_id="EV-cli-smoke")  # type: ignore[call-arg]
+    return Application(application_id="A-001", evaluation_id="EV-cli-smoke")
 
 
 async def _run(args) -> int:
@@ -2310,7 +2439,7 @@ Verify:
 
 **FR-303 enforcement caveat (T7)** — the structural test is grep-based on field names + Literal values. It's the canary for accidental schema additions; deeper semantic violations (e.g., a `payload: dict` field carrying `{"disposition": "fail"}` at runtime) are NOT caught here — those are caught by the Application Service's downstream type-narrowing in E5. T7 is sufficient for the seam-level invariant.
 
-**Application schema caveat (T2, T8, T9)** — the orchestrator imports `Application` from `app/schemas/application.py`. If E1 left this file empty/missing, T2's import will fail. Treat as Rule 1-3 inline fix only if a tiny stub `Application(BaseModel)` with `application_id: str` + `evaluation_id: str` suffices; if Application has a real schema with required fields the orchestrator doesn't supply, escalate to CHECKPOINT.
+**Application schema** — the `app/schemas/application.py` module is missing at HEAD (only `app/schemas/wire/application.py::ApplicationEnvelope` exists). T2 Cycle A is the **single owner** of the stub. Every downstream task that constructs `Application(application_id="A-001", evaluation_id="EV-001")` (T8, T9, T11, T12, T13, T14) reads from this stub — there is no race because only T2 writes the file. If E5 needs to extend the stub with additional fields (e.g., applicant identity), add them in E5; for E4 the identity surface is sufficient.
 
 **Recording wire-shape caveat (T8, T9)** — the OpenAI Structured-Outputs and Anthropic tool_use shapes are pinned to current API versions. If APIs drift before E8 demo, the recordings need re-rotation via T15's script. The `_to_anthropic_schema` adapter is intentionally minimal (strips `$schema`/`title`); deeper drift may require a per-impl schema adapter module under `app/orchestrator/_schema_adapters/` (parked for E5 if needed).
 
@@ -2321,6 +2450,7 @@ Verify:
 | Version | Date | Author | Notes |
 |---|---|---|---|
 | 0.1 | 2026-05-03 | Project team | Initial E4 L2 plan. 17 tasks. |
+| 0.2 | 2026-05-04 | Project team | plan-review iter-1 fixes: (B1) T2 absorbs `app/schemas/application.py` stub as Cycle A — single owner, removes 8-task race; (B2) T2's `Depends On` → `—` (T2 imports `Refined` by name only, not by shape); (B3) T1 now explicitly modifies `tests/test_schemas_round_trip.py::test_refined_round_trip` instead of hand-waving "Rule 1-3 inline fix"; (W1) dropped unused `monkeypatch.setenv` calls in T8/T9/T11/T12/T13 (api keys passed explicitly); (W2) T9 raises plain `ValueError` for missing `tool_use` block instead of misuse `ValidationError.from_exception_data(line_errors=[])`, retry catches widened to `(ValidationError, ValueError, …)`; (W3) T16 moved Wave 5 → Wave 6 to avoid `tests/conftest.py` co-residency with Wave 5 pytest collection; (W4) T13 seed assertion tightened to `body["seed"] == _DETERMINISTIC_SEED` (catches silent rotation); (W5) T7 adds JSON-schema substring check (defense-in-depth for nested models); (W6) dropped `# type: ignore[call-arg]` on every `Application(...)` stub call (no longer needed). Wave totals: 5+3+2+4+4+2 = 20 commits. |
 
 ---
 
@@ -2330,8 +2460,8 @@ Verify:
 
 | Task | Depends On | Blocks | Files Owned |
 |------|-----------|--------|-------------|
-| T1: Refined tighten (drop model_disposition) | — | T7, T8, T9, T11 | `app/schemas/refined.py`, `tests/test_refined_fr303_ready.py` |
-| T2: Orchestrator ABC | T1 | T3, T4, T5, T8, T9 | `app/orchestrator/__init__.py`, `app/orchestrator/base.py`, `app/orchestrator/tasks/__init__.py`, `tests/test_orchestrator_protocol.py` |
+| T1: Refined tighten (drop model_disposition) | — | T7, T8, T9, T11 | `app/schemas/refined.py`, `tests/test_refined_fr303_ready.py`, `tests/test_schemas_round_trip.py` (modify-in-place: rewrite `test_refined_round_trip` to new shape) |
+| T2: Application stub + Orchestrator ABC (2-cycle bundle) | — | T3, T4, T5, T8, T9, T11, T12, T13, T14 | `app/schemas/application.py` (Cycle A), `tests/test_application_stub.py` (Cycle A), `app/orchestrator/__init__.py`, `app/orchestrator/base.py`, `app/orchestrator/tasks/__init__.py`, `tests/test_orchestrator_protocol.py` (Cycle B). T2 is the **single owner** of `app/schemas/application.py`; no other E4 task may write it. |
 | T3: brand_disambig schema + adapter | T1, T2 | T6, T7, T8, T9, T11 | `app/orchestrator/tasks/brand_disambig.py`, `tests/test_orchestrator_brand_disambig.py` |
 | T4: reasoning_enrich schema + adapter | T1, T2 | T6, T7, T8, T9, T11 | `app/orchestrator/tasks/reasoning_enrich.py`, `tests/test_orchestrator_reasoning_enrich.py` |
 | T5: ocr_reconcile schema + adapter | T1, T2 | T6, T7, T8, T9, T11 | `app/orchestrator/tasks/ocr_reconcile.py`, `tests/test_orchestrator_ocr_reconcile.py` |
@@ -2360,24 +2490,26 @@ No cross-task file modifications within E4. Verified by inspection:
 - `tests/recordings/anthropic/claude-3-5-sonnet-20241022/v1/orchestrator/` — T9 owns all 3 files; no other task writes.
 - `fixtures/02-bourbon-stones-throw/` — created only by T17.
 
-### Execution Waves (preliminary; `parallel-planning` may refine)
+### Execution Waves
 
 ```
-Wave 1 (parallel, 4 tasks): [T1, T2, T15, T17]                          ← T1+T15+T17 are pure roots; T2 only depends on T1 — but their files don't overlap so they can run in parallel against the main tree
+Wave 1 (parallel, 4 tasks): [T1, T2, T15, T17]                          ← all four are pure roots after dropping T2's prior T1 dep (T2 imports `Refined` by name only, doesn't depend on its shape; T2 owns its own Application stub via Cycle A so no other Wave 1 task races it)
 Wave 2 (parallel, 3 tasks): [T3, T4, T5]                                 ← need T1+T2
 Wave 3 (parallel, 2 tasks): [T6, T7]                                     ← need T3-T5
 Wave 4 (parallel, 2 tasks): [T8, T9]                                     ← need T2 + T3-T5 (and T17 for T8)
-Wave 5 (parallel, 5 tasks): [T10, T11, T12, T13, T16]                    ← need T8/T9
-Wave 6 (single,   1 task ): [T14]                                        ← needs T8 + T9 + T17; broken out so it runs against a stable tree
+Wave 5 (parallel, 4 tasks): [T10, T11, T12, T13]                         ← need T8/T9; T16 moved to Wave 6 to avoid `tests/conftest.py` co-residency with T11/T12/T13's pytest collection
+Wave 6 (parallel, 2 tasks): [T14, T16]                                   ← T14 needs T8+T9+T17; T16 needs T8+T9; both run against a stable tree and have no inter-task dep
 ```
 
-**Wave 1 ownership pre-flight.** T1 owns `app/schemas/refined.py` + its test; T2 owns `app/orchestrator/{__init__.py, base.py, tasks/__init__.py}` + its test; T15 owns `scripts/record_orchestrator_responses.py` + its test; T17 owns `fixtures/02-bourbon-stones-throw/` + its build script + its test. Disjoint. T2's `app/orchestrator/base.py` imports the new `Refined` shape — but the import works against either the pre-T1 or post-T1 schema (the import names don't change), so the parallel race is safe.
+**Wave 1 ownership pre-flight.** T1 owns `app/schemas/refined.py` + `tests/test_refined_fr303_ready.py` + the in-place rewrite of `tests/test_schemas_round_trip.py::test_refined_round_trip`; T2 owns `app/schemas/application.py` (Cycle A — closes the E1 omission), `app/orchestrator/{__init__.py, base.py, tasks/__init__.py}` (Cycle B), and the two test files for those cycles; T15 owns `scripts/record_orchestrator_responses.py` + its test; T17 owns `fixtures/02-bourbon-stones-throw/` + its build script + its test. **All four tasks write strictly disjoint paths.** T2 has no functional dependency on T1: T2's Cycle B imports `Refined` by name only (the import works against either the pre-T1 or post-T1 schema), and T2's tests do not assert on `Refined`'s field shape. The dependency table reflects this — T2's `Depends On` is `—`.
 
 **Wave 4 ownership pre-flight.** T8 and T9 own disjoint module files + disjoint recording sub-trees + disjoint test files. Both import shared schema modules from T3-T5 (T8 imports `BrandDisambigResult`, etc.; T9 imports the same), but those are reads, not writes. Safe.
 
-**Wave 5 ownership pre-flight.** T10 owns `app/deps.py` (single writer); T11, T12, T13, T16 each own a single test file. T16 also extends `tests/conftest.py`. Disjoint. The 5 tasks fit under the executor's 6-concurrent cap.
+**Wave 5 ownership pre-flight.** T10 owns `app/deps.py` (single writer); T11, T12, T13 each own a single test file. Disjoint. 4 tasks under the executor's 6-concurrent cap.
 
-**Critical path (longest dependency chain):** T1 → T2 → T3 (or T4 or T5) → T8 → T11 (or T10/T12/T13/T16) → T14. **6 wave hops counting boundaries.**
+**Wave 6 ownership pre-flight.** T14 owns `app/orchestrator/__main__.py` + `tests/test_orchestrator_cli_smoke.py`; T16 owns `tests/test_orchestrator_isolation.py` and extends `tests/conftest.py`. Disjoint paths. T16 was moved out of Wave 5 because its append to `tests/conftest.py` is collected by every sibling pytest run; if T16 lands a syntactically broken conftest mid-wave, sibling Wave-5 tasks would fail their final pre-commit gate not because of their own diff. Putting T16 in Wave 6 means it lands against a stable tree alongside T14, which itself does not import anything T16 owns.
+
+**Critical path (longest dependency chain):** T2 (Cycle A then Cycle B) → T3 (or T4 or T5) → T8 → T11 (or T10/T12/T13) → T14. **6 wave hops counting boundaries.**
 
 **Parallelism factor.** 17 tasks across 6 waves → effective parallelism ≈ 2.8× vs strict serial. The two heaviest tasks (T8 cloud, T9 anthropic) are co-resident in Wave 4, so the wall-clock floor is `max(T8, T9)` for that wave rather than the sum.
 
@@ -2385,13 +2517,13 @@ Wave 6 (single,   1 task ): [T14]                                        ← nee
 
 > **For Claude:** Use `parallel-plan-executor` to execute this plan. The executor dispatches every task in a wave concurrently (up to 6 at a time) and holds a barrier between waves. Each task runs in an isolated worktree subagent with the `task-executor` skill body injected for TDD enforcement.
 
-**Wave 1** — Dispatch T1, T2, T15, T17 concurrently in one message. Barrier. Verify 4 commits.
+**Wave 1** — Dispatch T1, T2, T15, T17 concurrently in one message. Barrier. Verify 5 commits (T2 = 2 cycles).
 **Wave 2** — Dispatch T3, T4, T5 concurrently. Barrier. Verify 3 commits.
 **Wave 3** — Dispatch T6, T7 concurrently. Barrier. Verify 2 commits.
 **Wave 4** — Dispatch T8, T9 concurrently. Barrier. Verify 4 commits (T8 = 3 cycles, T9 = 1).
-**Wave 5** — Dispatch T10, T11, T12, T13, T16 concurrently. Barrier. Verify 5 commits.
-**Wave 6** — Dispatch T14 alone. Verify 1 commit.
+**Wave 5** — Dispatch T10, T11, T12, T13 concurrently. Barrier. Verify 4 commits.
+**Wave 6** — Dispatch T14, T16 concurrently. Barrier. Verify 2 commits.
 
-**Total expected new commits on `main`:** ~19 base, but T8's 3-cycle bundle expands the count to ~25 (T6+T7+T11+T12+T13+T16 each = 1; T1+T2+T3+T4+T5+T10+T14+T15+T17 each = 1; T8 = 3; T9 = 1).
+**Total expected new commits on `main`:** 17 task slots, expanded by multi-cycle bundles to ~20 (T1+T3+T4+T5+T6+T7+T9+T10+T11+T12+T13+T14+T15+T16+T17 each = 1 → 15 commits; T2 = 2 cycles → 2 commits; T8 = 3 cycles → 3 commits; total = 20).
 
 **Pre-flight invariant** (parallel-plan-executor enforces): for each wave, the union of file-ownership sets is a strict-disjoint set (no file appears twice). Verified above in §Shared Files.
