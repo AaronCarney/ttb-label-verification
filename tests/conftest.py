@@ -58,8 +58,6 @@ def _stub_label(
 # === E6 batch helpers (T5) — appended; do not edit above this marker ===
 from collections.abc import Iterable
 
-import pytest
-
 from app.schemas.wire.disposition import DispositionEnvelope
 
 
@@ -132,3 +130,95 @@ def _reset_reason_code_cache():
     _overrides_mod._ACCEPTED_REASON_CODES_CACHE = None
     yield
     _overrides_mod._ACCEPTED_REASON_CODES_CACHE = None
+
+
+# ---------------------------------------------------------------------------
+# T7 (E7 W2): live_server + pnpm_built_island fixtures
+# ---------------------------------------------------------------------------
+import shutil
+import socket
+import subprocess
+import threading
+import time
+from collections.abc import Iterator
+
+import uvicorn
+
+from app.main import create_app
+
+
+def _free_port() -> int:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.bind(("127.0.0.1", 0))
+        return s.getsockname()[1]
+
+
+class _LiveServer:
+    def __init__(self) -> None:
+        self.port = _free_port()
+        self.url = f"http://127.0.0.1:{self.port}"
+        self._server: uvicorn.Server | None = None
+        self._thread: threading.Thread | None = None
+
+    def start(self) -> None:
+        config = uvicorn.Config(
+            app=create_app(),
+            host="127.0.0.1",
+            port=self.port,
+            log_level="warning",
+            loop="asyncio",
+        )
+        self._server = uvicorn.Server(config)
+        self._thread = threading.Thread(
+            target=self._server.run, daemon=True
+        )
+        self._thread.start()
+        # Poll until the server accepts connections (≤2 s).
+        deadline = time.time() + 2.0
+        while time.time() < deadline:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                if s.connect_ex(("127.0.0.1", self.port)) == 0:
+                    return
+            time.sleep(0.05)
+        raise RuntimeError(
+            f"uvicorn did not bind to {self.port} within 2 s"
+        )
+
+    def stop(self) -> None:
+        if self._server is not None:
+            self._server.should_exit = True
+        if self._thread is not None:
+            self._thread.join(timeout=2.0)
+
+
+@pytest.fixture(scope="session")
+def live_server() -> Iterator[_LiveServer]:
+    server = _LiveServer()
+    server.start()
+    yield server
+    server.stop()
+
+
+@pytest.fixture(scope="session")
+def live_server_url(live_server: _LiveServer) -> str:
+    return live_server.url
+
+
+@pytest.fixture(scope="session")
+def pnpm_built_island() -> Path:
+    """Build the React island once per session; return the output dir.
+
+    Consumed by T29/T30/T31/T32 (Wave 7). Lives in T7 (Wave 2) instead of
+    Wave 7 to keep tests/conftest.py owned by a single task — otherwise
+    multiple W7 tasks would race on the same file.
+    """
+    root = Path(__file__).resolve().parent.parent
+    frontend = root / "frontend"
+    pnpm = shutil.which("pnpm")
+    if pnpm is None:
+        pytest.skip("pnpm not on PATH")
+    subprocess.run([pnpm, "install", "--frozen-lockfile"], cwd=frontend, check=True)
+    subprocess.run([pnpm, "build"], cwd=frontend, check=True)
+    out_dir = root / "app" / "ui" / "static" / "island"
+    assert (out_dir / "single.js").exists(), "vite build did not produce single.js"
+    return out_dir
