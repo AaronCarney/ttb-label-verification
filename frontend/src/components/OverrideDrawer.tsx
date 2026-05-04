@@ -26,6 +26,11 @@ export function OverrideDrawer({
 }: OverrideDrawerProps): React.JSX.Element {
   const [selectedCode, setSelectedCode] = React.useState<string | null>(null);
   const [justification, setJustification] = React.useState("");
+  // Latest justification kept in a ref so the picker's onSubmit (which fires
+  // synchronously inside ReasonCodePicker.handleKey) reads the current value
+  // without depending on React's batched re-render cycle.
+  const justificationRef = React.useRef(justification);
+  React.useEffect(() => { justificationRef.current = justification; }, [justification]);
 
   React.useEffect(() => {
     if (!open) {
@@ -34,17 +39,17 @@ export function OverrideDrawer({
     }
   }, [open]);
 
-  React.useEffect(() => {
-    if (!open) return;
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Enter" && selectedCode) {
-        e.preventDefault();
-        onSubmit({ reasonCode: selectedCode, justification });
-      }
-    };
-    document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
-  }, [open, selectedCode, justification, onSubmit]);
+  // Single source of truth for Enter: ReasonCodePicker fires onSubmit only
+  // on explicit Enter against the highlighted row. Auto-resolve (R-9) and
+  // click-to-pick still flow through onSelect for the "Selected: …" display.
+  // No document-level keydown listener — eliminates the timing race the
+  // 3-keystroke FR-803 path depended on.
+  const handlePickerSubmit = React.useCallback(
+    (code: string) => {
+      onSubmit({ reasonCode: code, justification: justificationRef.current });
+    },
+    [onSubmit],
+  );
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -67,7 +72,11 @@ export function OverrideDrawer({
             Type a reason-code prefix. The picker resolves on the first keystroke
             when the prefix is unique. Press <kbd>Enter</kbd> to submit.
           </p>
-          <ReasonCodePicker codes={codes} onSelect={setSelectedCode} />
+          <ReasonCodePicker
+            codes={codes}
+            onSelect={setSelectedCode}
+            onSubmit={handlePickerSubmit}
+          />
           {selectedCode && (
             <p className="rounded-md border border-border bg-muted p-2 text-sm">
               Selected: <span className="font-mono">{selectedCode}</span>

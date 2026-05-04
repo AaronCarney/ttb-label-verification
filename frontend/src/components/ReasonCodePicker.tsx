@@ -8,7 +8,14 @@ export interface ReasonCodeEntry {
 
 export interface ReasonCodePickerProps {
   codes: ReasonCodeEntry[];
+  /** Fires whenever the resolved code changes (auto-resolve on unique
+   *  prefix, click on a row, or Enter on the highlighted row). Use for
+   *  display state (e.g. "Selected: …" pill). */
   onSelect: (code: string) => void;
+  /** Fires only on explicit Enter against the highlighted row. Use for
+   *  the submit action (FR-803 third keystroke). When omitted, Enter
+   *  falls back to firing onSelect. */
+  onSubmit?: (code: string) => void;
   autoFocus?: boolean;
   className?: string;
 }
@@ -16,6 +23,7 @@ export interface ReasonCodePickerProps {
 export function ReasonCodePicker({
   codes,
   onSelect,
+  onSubmit,
   autoFocus = true,
   className,
 }: ReasonCodePickerProps): React.JSX.Element {
@@ -54,7 +62,9 @@ export function ReasonCodePicker({
     } else if (e.key === "Enter") {
       e.preventDefault();
       const sel = filtered[highlight];
-      if (sel) onSelect(sel.code);
+      if (!sel) return;
+      onSelect(sel.code);
+      if (onSubmit) onSubmit(sel.code);
     }
   };
 

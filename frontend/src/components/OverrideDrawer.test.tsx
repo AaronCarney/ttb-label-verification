@@ -42,6 +42,29 @@ describe("OverrideDrawer", () => {
     });
   });
 
+  // Mirrors the `_REASON_CODES` shape in single.tsx — three W-prefixed entries
+  // means typing 'w' does NOT trigger auto-resolve; ENTER must submit on
+  // filtered[highlight=0]. Locks down the Playwright-only path the original
+  // unit test masked.
+  it("AC-FR-803: highlight=0+ENTER submits when prefix is non-unique", async () => {
+    const codesMulti = [
+      { code: "WARNING.STYLE.HEADING_NOT_BOLD_CAPS", description: "Heading not bold caps" },
+      { code: "WARNING.LEGIBILITY.LOW_RESOLUTION", description: "Low resolution" },
+      { code: "WARNING.LEGIBILITY.GLARE", description: "Glare" },
+    ];
+    const onSubmit = vi.fn();
+    renderWithProviders(
+      <OverrideDrawer open={true} onOpenChange={() => {}} codes={codesMulti} onSubmit={onSubmit} />,
+    );
+    const user = userEvent.setup();
+    await user.keyboard("w");
+    await user.keyboard("{Enter}");
+    expect(onSubmit).toHaveBeenCalledWith({
+      reasonCode: "WARNING.STYLE.HEADING_NOT_BOLD_CAPS",
+      justification: "",
+    });
+  });
+
   it("ESC closes the drawer (calls onOpenChange(false))", async () => {
     const onOpenChange = vi.fn();
     renderWithProviders(
