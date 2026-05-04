@@ -23,13 +23,29 @@ async def test_run_records_call(monkeypatch):
     assert ring[0].provider == "local.paddleocr"
 
 
-@pytest.mark.asyncio
-async def test_lazy_paddleocr_import(monkeypatch):
-    """PaddleRunner must NOT import paddleocr at module top-level."""
-    import sys
-    import importlib
+def test_lazy_paddleocr_import():
+    """PaddleRunner must NOT import paddleocr at module top-level.
 
-    if "paddleocr" in sys.modules:
-        del sys.modules["paddleocr"]
-    importlib.reload(__import__("app.vision.paddle_runner", fromlist=["PaddleRunner"]))
-    assert "paddleocr" not in sys.modules
+    Runs the import in a fresh interpreter so it tests the actual contract
+    (a clean process importing paddle_runner does not pull paddleocr) and
+    has zero side effects on the parent test session — importlib.reload
+    in-process mutates module class attributes, stranding sibling tests'
+    top-level imports of ``Candidate`` / ``PaddleRunner`` and breaking
+    isinstance checks under random test ordering (pytest-randomly).
+    """
+    import subprocess
+    import sys
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-c",
+            "import sys; import app.vision.paddle_runner; "
+            "assert 'paddleocr' not in sys.modules, 'paddleocr imported as side effect'; "
+            "print('ok')",
+        ],
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, f"stderr: {result.stderr}"
+    assert result.stdout.strip() == "ok"
