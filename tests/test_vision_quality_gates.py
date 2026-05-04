@@ -49,3 +49,16 @@ def test_glare_triggers_warning():
     report = assess(_label(_png_bytes(arr)))
     assert report.disposition == "needs_better_photo"
     assert report.reason_code == "WARNING.LEGIBILITY.GLARE"
+
+
+def test_motion_blur_triggers_warning():
+    import cv2
+
+    arr = np.full((200, 200), 255, dtype=np.uint8)
+    arr[80:120, 30:170] = 0  # text-like dark bar
+    kernel = np.zeros((1, 31))
+    kernel[0, :] = 1.0 / 31
+    streaked = cv2.filter2D(arr, -1, kernel)
+    report = assess(_label(_png_bytes(streaked)))
+    assert report.disposition == "needs_better_photo"
+    assert report.reason_code == "WARNING.LEGIBILITY.MOTION_BLUR"

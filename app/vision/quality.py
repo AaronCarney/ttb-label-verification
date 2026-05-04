@@ -20,6 +20,7 @@ LOW_RES_VARIANCE_MIN = 50.0
 GLARE_PIXEL_RATIO_MAX = 0.15
 GLARE_LUMINANCE_THRESHOLD = 240
 GLARE_BACKGROUND_MEDIAN_MAX = 240
+MOTION_BLUR_HIGHFREQ_MIN = 0.30
 
 
 class QualityReport(BaseModel):
@@ -35,6 +36,19 @@ class QualityReport(BaseModel):
 def _decode_grayscale(image_bytes: bytes) -> np.ndarray:
     img = Image.open(io.BytesIO(image_bytes)).convert("L")
     return np.array(img)
+
+
+def _highfreq_ratio(gray: np.ndarray) -> float:
+    f = np.fft.fft2(gray.astype(np.float64))
+    fshift = np.fft.fftshift(f)
+    mag = np.abs(fshift)
+    h, w = gray.shape
+    cy, cx = h // 2, w // 2
+    radius = min(h, w) // 8
+    Y, X = np.ogrid[:h, :w]
+    high_mask = np.sqrt((Y - cy) ** 2 + (X - cx) ** 2) > radius
+    total = mag.sum()
+    return float(mag[high_mask].sum() / total) if total > 0 else 0.0
 
 
 def assess(label: Label) -> QualityReport:
@@ -57,6 +71,13 @@ def assess(label: Label) -> QualityReport:
         return QualityReport(
             disposition="needs_better_photo",
             reason_code="WARNING.LEGIBILITY.GLARE",
+            dpi=300,
+        )
+
+    if _highfreq_ratio(gray) < MOTION_BLUR_HIGHFREQ_MIN:
+        return QualityReport(
+            disposition="needs_better_photo",
+            reason_code="WARNING.LEGIBILITY.MOTION_BLUR",
             dpi=300,
         )
 
