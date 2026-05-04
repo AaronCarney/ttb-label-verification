@@ -18,6 +18,7 @@ from app.orchestrator.base import Orchestrator
 from app.rules.engine import RuleEngine
 from app.schemas.application import Application
 from app.schemas.label import Label
+from app.schemas.rejection import Outcome
 from app.schemas.wire.disposition import DispositionEnvelope
 from app.services.cache import SessionCache
 from app.vision.base import VisionExtractor
@@ -43,13 +44,28 @@ class Evaluator:
         self._cache = cache
 
     async def evaluate(self, application: Application, label: Label) -> DispositionEnvelope:
-        from app.services.audit import AuditRecorder
+        import hashlib
+
+        from app.services.audit import AuditRecorder, _canonical_json
         from app.services.engine_meta import EvaluationTimeline
-        from app.services.envelope_builder import build_success_envelope
+        from app.services.envelope_builder import build_field_findings, build_success_envelope
         from app.services.metrics_builder import MetricsBuilder
 
         t_total = time.monotonic()
         timeline = EvaluationTimeline(evaluation_id=application.evaluation_id)
+
+        # NFR-DET-001 cache check — key over canonicalized inputs MINUS the
+        # per-call evaluation_id (so two calls with the same app + label hit).
+        cache_key = None
+        if self._cache is not None:
+            app_for_key = application.model_dump(mode="json")
+            app_for_key.pop("evaluation_id", None)
+            cache_key = hashlib.sha256(
+                _canonical_json(app_for_key) + label.image_bytes
+            ).hexdigest()
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                return cached.model_copy(update={"evaluation_id": application.evaluation_id})
 
         # Step 1: vision
         t0 = time.monotonic()
@@ -94,16 +110,42 @@ class Evaluator:
                                       disposition="needs_review",
                                       evidence_ref=f"engine_failure/{failure.exception_class}")
 
-        # Cycle B placeholder (will be replaced by Cycle D)
+        # Step 7-8: disposition + per-rule timeline updates
+        from app.services.disposition import compute_disposition
+        for vr in results:
+            disposition_label = (
+                "pass" if vr.outcome == Outcome.PASS else
+                "fail" if vr.outcome == Outcome.FAIL else
+                "not_applicable" if vr.outcome == Outcome.NOT_APPLICABLE else
+                "needs_review"
+            )
+            timeline.record_rule_done(rule_id=vr.rule_id, duration_ms=vr.engine_meta.elapsed_ms,
+                                      disposition=disposition_label, evidence_ref=f"vr/{vr.rule_id}")
+        disposition = compute_disposition(results)
+
+        # Step 9-10: assembly
         timeline.finish(total_duration_ms=int((time.monotonic() - t_total) * 1000))
-        envelope_for_hash = {"evaluation_id": application.evaluation_id, "disposition": "pass", "fields": []}
+        field_findings = build_field_findings(
+            results=results,
+            observations=observations,
+            expected_values=tuple(application.expected_values),
+        )
+        envelope_for_hash = {
+            "evaluation_id": application.evaluation_id,
+            "label_ref": label.label_id,
+            "disposition": disposition,
+            "fields": [f.model_dump() for f in field_findings],
+        }
         audit = AuditRecorder().assemble(timeline=timeline, application=application, label=label,
                                          envelope_for_hash=envelope_for_hash)
         metrics = MetricsBuilder().build(timeline)
-        return build_success_envelope(
+        envelope = build_success_envelope(
             application=application, label=label, timeline=timeline,
-            disposition="pass", fields=(), audit=audit, metrics=metrics,
+            disposition=disposition, fields=field_findings, audit=audit, metrics=metrics,
         )
+        if self._cache is not None and cache_key is not None:
+            self._cache.put(cache_key, envelope)
+        return envelope
 
     def _short_circuit(self, application, label, timeline, reason_code: str, t_total: float):
         from app.services.audit import AuditRecorder
