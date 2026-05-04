@@ -53,3 +53,82 @@ def _stub_label(
         face_tag=face_tag,
         dimensions=dimensions,
     )
+
+
+# === E6 batch helpers (T5) — appended; do not edit above this marker ===
+from collections.abc import Iterable
+
+import pytest
+
+from app.schemas.wire.disposition import DispositionEnvelope
+
+
+def _stub_disposition_envelope(idx: int = 0, *, disposition: str = "pass") -> DispositionEnvelope:
+    """Minimal `DispositionEnvelope` for batch tests.
+
+    Pre-flight inspection note: if `Metrics` or `AuditRecord` schemas have
+    grown additional required fields since this plan was written, add them
+    with the simplest schema-conforming defaults (see plan §Conventions
+    `_fake_evaluator()`)."""
+    from datetime import datetime, timezone
+
+    from app.schemas.audit import AuditRecord
+    from app.schemas.metrics import Metrics
+    from app.schemas.wire.disposition import ConfidenceBand
+
+    now = datetime.now(timezone.utc)
+    return DispositionEnvelope(
+        evaluation_id=f"EV-{idx:04d}",
+        label_ref=f"lbl-{idx:04d}",
+        disposition=disposition,
+        disposition_confidence=ConfidenceBand(band="high", numeric=0.95),
+        fields=(),
+        audit_trail=AuditRecord(
+            evaluation_id=f"EV-{idx:04d}",
+            rule_set_version="t",
+            input_hash="0" * 64,
+            output_hash="0" * 64,
+            started_at=now,
+            completed_at=now,
+            per_rule_trace=(),
+        ),
+        metrics=Metrics(
+            total_duration_ms=10,
+            per_rule_durations_ms=(),
+            vision_duration_ms=5,
+            orchestrator_duration_ms=0,
+        ),
+    )
+
+
+def _fake_evaluator(
+    plan: Iterable[tuple[float, DispositionEnvelope]] | None = None,
+    *,
+    n_items: int = 1,
+    latency_s: float = 0.0,
+    envelope_factory=None,
+):
+    """Build a FakeEvaluator. If `plan` is None, repeats `(latency_s, envelope_factory(i))`
+    for `n_items` invocations."""
+    from tests._fakes.evaluator import FakeEvaluator
+
+    if plan is not None:
+        return FakeEvaluator(plan)
+    factory = envelope_factory or _stub_disposition_envelope
+    return FakeEvaluator((latency_s, factory(i)) for i in range(n_items))
+
+
+@pytest.fixture(autouse=True)
+def _reset_reason_code_cache():
+    """E6 isolation: the override endpoint caches the reason-code registry
+    on first request. Reset between tests so a test that monkeypatches the
+    YAML or cwd does not silently use the cached set from a prior test."""
+    try:
+        import app.api.overrides as _overrides_mod
+    except ImportError:
+        # T8 hasn't landed yet — skip
+        yield
+        return
+    _overrides_mod._ACCEPTED_REASON_CODES_CACHE = None
+    yield
+    _overrides_mod._ACCEPTED_REASON_CODES_CACHE = None
