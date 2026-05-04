@@ -90,7 +90,22 @@ class Evaluator:
 
         # Step 1: vision
         t0 = time.monotonic()
-        observations = await self._vision.extract(label)
+        try:
+            observations = await self._vision.extract(label)
+        except Exception as e:  # noqa: BLE001
+            timeline.record_failure(
+                reason_code="ENGINE.EXTRACTION.UNAVAILABLE",
+                message=str(e), exception_class=type(e).__name__,
+            )
+            _logger.info(
+                "engine_failure_routed",
+                extra={
+                    "reason_code": "ENGINE.EXTRACTION.UNAVAILABLE",
+                    "evaluation_id": application.evaluation_id,
+                    "exception_class": type(e).__name__,
+                },
+            )
+            observations = []
         timeline.record_vision_done(int((time.monotonic() - t0) * 1000))
 
         # Step 2: legibility short-circuit (L1 §2.1 step 2; FR-505/603)
@@ -112,10 +127,25 @@ class Evaluator:
             return self._short_circuit(application, label, timeline, quality.reason_code, t_total)
 
         # Step 3-4: rules
-        started_at_ms = int(time.monotonic() * 1000)
-        ctx = self._rules.build_validator_context(started_at_ms=started_at_ms)
-        expected = tuple(application.expected_values)
-        results = await self._rules.evaluate(observations, expected, ctx)
+        try:
+            started_at_ms = int(time.monotonic() * 1000)
+            ctx = self._rules.build_validator_context(started_at_ms=started_at_ms)
+            expected = tuple(application.expected_values)
+            results = await self._rules.evaluate(observations, expected, ctx)
+        except Exception as e:  # noqa: BLE001
+            timeline.record_failure(
+                reason_code="ENGINE.RULES.UNAVAILABLE",
+                message=str(e), exception_class=type(e).__name__,
+            )
+            _logger.info(
+                "engine_failure_routed",
+                extra={
+                    "reason_code": "ENGINE.RULES.UNAVAILABLE",
+                    "evaluation_id": application.evaluation_id,
+                    "exception_class": type(e).__name__,
+                },
+            )
+            results = ()
 
         # Step 5-6: orchestrator (conditional) + FR-303 patching
         from app.services.patcher import patch_validation_results
