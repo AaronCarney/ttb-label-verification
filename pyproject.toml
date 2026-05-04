@@ -34,6 +34,7 @@ dev = [
     "pytest >= 8.3",
     "pytest-asyncio >= 0.24",
     "taskipy >= 1.13",
+    "respx >= 0.21",
 ]
 
 [tool.taskipy.tasks]
