@@ -1,0 +1,34 @@
+{# app/ui/templates/base.html — global page shell.
+   Owners: E7 (L1 §2.1).
+   ARIA semantics — skip-link to #main, footer landmark. USWDS tokens preloaded
+   from /static/island/single.css (or batch.css; Jinja interpolates per page). #}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <title>{% block title %}TTB Label Verification{% endblock %}</title>
+    <link rel="stylesheet" href="/static/island/{% block bundle_name %}single{% endblock %}.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header role="banner">
+      <h1>TTB Label Verification</h1>
+      <p>Reviewer console — prototype</p>
+    </header>
+    <main id="main" role="main">
+      {% block content %}{% endblock %}
+    </main>
+    <noscript>
+      <p><strong>JavaScript is required for the reviewer UI.</strong> For
+      programmatic submissions, use the API at <code>POST /labels</code>.
+      See the project README for details.</p>
+    </noscript>
+    <footer role="contentinfo">
+      <p>TTB AI-Powered Alcohol Label Verification — prototype.
+      <a href="https://www.ttb.gov/labeling">TTB labeling regulations</a>.</p>
+    </footer>
+    <script type="module" src="/static/island/{% block bundle_name_script %}single{% endblock %}.js"></script>
+  </body>
+</html>

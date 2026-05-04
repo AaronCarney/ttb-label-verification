@@ -1,23 +1,27 @@
 """FastAPI application factory. Source: ARCH §14.3.
 
-Boot sequence (E1 subset; E2–E8 extend):
+Boot sequence (E1 + E7 additions):
 1. Read ``Settings``.
 2. Configure logging (JSON-line stdout + redaction filter).
 3. Construct the FastAPI app.
-4. Register the ``/healthz`` route.
+4. Register routers: /healthz (E1), UI page shells (E7).
+5. Mount static files at /static (E7).
 
 Later epochs add: rule-loader startup, vision/orchestrator wiring, label/batch/
-override/eval routes, UI mounts, SSE.
+override/eval routes, SSE.
 """
 from __future__ import annotations
 
 import logging
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
 from app.api.healthz import router as healthz_router
+from app.api.ui import router as ui_router
 from app.config import Settings
 from app.logging import configure_logging
 
@@ -56,6 +60,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         lifespan=_lifespan,
     )
     application.include_router(healthz_router)
+    application.include_router(ui_router)
+    _static_dir = Path(__file__).resolve().parent / "ui" / "static"
+    application.mount(
+        "/static",
+        StaticFiles(directory=str(_static_dir)),
+        name="static",
+    )
 
     from app.api import labels as labels_module
     application.include_router(labels_module.router)

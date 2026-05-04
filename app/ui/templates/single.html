@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Review label — TTB Label Verification{% endblock %}
+{% block bundle_name %}single{% endblock %}
+{% block bundle_name_script %}single{% endblock %}
+{% block content %}
+  <div id="root" data-mode="single">
+    <p>Loading review surface…</p>
+  </div>
+  {% if envelope_json %}
+  <script id="envelope" type="application/json">{{ envelope_json | safe }}</script>
+  {% endif %}
+{% endblock %}
