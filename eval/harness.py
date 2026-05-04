@@ -30,6 +30,23 @@ SMOKE_SIZE = 20
 EvaluatorFn = Callable[[ManifestEntry], tuple[str, list, float, float]]
 
 _EVALUATOR_SINGLETON = None  # lazy-init module-level Evaluator (T14)
+_REPLAY_BUNDLE = None        # lazy-init replay-mode dependencies
+
+# Per-fixture observation overrides for replay mode. Encodes rule violations
+# whose signal would normally come from OCR text/layout — we can't synthesize
+# pixel-derived evidence, so the violation is encoded as observation payload.
+_PER_FIXTURE_OVERRIDES: dict[str, dict[str, object]] = {
+    # Title-case heading → heading_caps_bold FAIL → disposition=fail.
+    "FIX-03-WARNING-TITLE-CASE": {
+        "warning_block": {
+            "heading_text": "Government Warning",
+            "heading_styles": {"case": "title", "weight": "bold"},
+        },
+    },
+    # FIX-07 (FR-704 borderline) is NOT replay-encodable — its signal lives
+    # in confidence-aggregation downstream of validators. Documented in
+    # docs/plans/...epoch-8-demo-eval-deploy.md §10.1.
+}
 
 
 def _load_manifest(path: Path) -> list[ManifestEntry]:
@@ -129,6 +146,133 @@ def _live_evaluator(entry: ManifestEntry) -> tuple[str, list, float, float]:
     return disposition, per_rule, latency_s, confidence
 
 
+def _get_replay_bundle():
+    """Lazy module-level replay deps: filtered RuleEngine + base orchestrator
+    + Settings. Vision is per-call (depends on the entry's expected_values).
+
+    The filtered RuleEngine has `REPLAY_DISABLED_RULES` marked `disabled`. See
+    `eval/_vision_replay.py` for the disabled set and rationale."""
+    global _REPLAY_BUNDLE
+    if _REPLAY_BUNDLE is None:
+        from app.config import Settings
+        from app.deps import build_orchestrator
+        from app.rules import build_rule_engine
+        from app.rules.yaml_engine import YamlRuleEngine
+        from eval._vision_replay import REPLAY_DISABLED_RULES
+
+        settings = Settings(vision_mode="cloud")  # vision overridden per-call
+        base_engine = build_rule_engine(settings)
+        ruleset = base_engine._ruleset
+        new_rules = tuple(
+            r.model_copy(update={"disabled": True})
+            if r.rule_id in REPLAY_DISABLED_RULES else r
+            for r in ruleset.rules
+        )
+        replay_engine = YamlRuleEngine(ruleset.model_copy(update={"rules": new_rules}))
+        _REPLAY_BUNDLE = {
+            "settings": settings,
+            "rules": replay_engine,
+            "orchestrator": build_orchestrator(settings),
+        }
+    return _REPLAY_BUNDLE
+
+
+def _build_application_for_replay(entry: ManifestEntry):
+    """Build an Application whose `expected_values` are keyed on RULE-SIDE
+    field_ids (brand, abv, alc_text, ...) rather than application-side ids
+    (brand_name, alcohol_content, ...). Without this remap, ExpectedValue
+    lookups in validators (`exp_by_field.get(obs.field_id)`) miss and rules
+    fail vacuously on truth.
+
+    Also injects a synthetic `warning_heading` so `equality_match` has a
+    non-None expected. Replay-only — under live OCR the heading text and
+    field-id mapping would be produced by the vision extractor."""
+    from app.schemas.application import Application
+    from app.schemas.expected import ExpectedValue
+
+    fixture_dir = Path(entry.image_ref).parent
+    expected_path = fixture_dir / "expected.json"
+    raw = json.loads(expected_path.read_text()) if expected_path.is_file() else []
+    by_app_field = {item["field_id"]: item for item in raw}
+
+    rule_side: list[ExpectedValue] = []
+    if "brand_name" in by_app_field:
+        rule_side.append(ExpectedValue(field_id="brand",
+                                       value=by_app_field["brand_name"].get("value"),
+                                       aliases=tuple(by_app_field["brand_name"].get("aliases", []))))
+    if "class_type" in by_app_field:
+        rule_side.append(ExpectedValue(field_id="class_type",
+                                       value=by_app_field["class_type"].get("value")))
+    if "alcohol_content" in by_app_field:
+        ac = by_app_field["alcohol_content"]
+        rule_side.append(ExpectedValue(
+            field_id="abv",
+            abv_labeled_pct=ac.get("abv_labeled_pct"),
+            abv_actual_pct=ac.get("abv_actual_pct"),
+        ))
+        rule_side.append(ExpectedValue(field_id="alc_text",
+                                       value=f"Alcohol {ac.get('abv_labeled_pct')}% by volume"))
+    if "net_contents" in by_app_field:
+        nc = by_app_field["net_contents"]
+        rule_side.append(ExpectedValue(field_id="net_contents",
+                                       container_volume_ml=nc.get("container_volume_ml")))
+    if "name_and_address" in by_app_field:
+        rule_side.append(ExpectedValue(field_id="bottler",
+                                       value=by_app_field["name_and_address"].get("value")))
+    if "government_warning" in by_app_field:
+        rule_side.append(ExpectedValue(field_id="warning_block",
+                                       value=by_app_field["government_warning"].get("value")))
+        rule_side.append(ExpectedValue(field_id="warning_heading",
+                                       value="GOVERNMENT WARNING"))
+
+    return Application(
+        application_id=f"app-{entry.label_id.lower()}",
+        evaluation_id=str(uuid.uuid4()),
+        expected_values=tuple(rule_side),
+    )
+
+
+def _replay_evaluator(entry: ManifestEntry) -> tuple[str, list, float, float]:
+    """Replay-mode adapter: runs the rules engine against synthesized
+    observations derived from the fixture's `expected.json`. Bypasses live
+    OCR; documented as a *diagnostic isolation* tool, not a §4 gate substitute.
+
+    Returns: (disposition, per_rule_results, latency_s, confidence)"""
+    from app.schemas.expected import BeverageClass
+    from app.services.evaluator import Evaluator
+    from eval._vision_replay import (
+        ReplayVisionExtractor, build_replay_observations,
+    )
+
+    bundle = _get_replay_bundle()
+    application = _build_application_for_replay(entry)
+    label = _build_label_from_entry(entry)
+
+    overrides = _PER_FIXTURE_OVERRIDES.get(entry.label_id, {})
+    observations = build_replay_observations(
+        application.expected_values,
+        beverage_class=BeverageClass.SPIRITS,  # all current single-label fixtures
+        overrides=overrides,
+    )
+    evaluator = Evaluator(
+        vision=ReplayVisionExtractor(observations),
+        rules=bundle["rules"],
+        orchestrator=bundle["orchestrator"],
+        settings=bundle["settings"],
+        cache=None,  # cache is irrelevant in replay
+    )
+    evaluator._sla_seconds = _EVAL_SLA_SECONDS
+
+    t0 = time.monotonic()
+    envelope = asyncio.run(evaluator.evaluate(application, label))
+    latency_s = time.monotonic() - t0
+
+    disposition = str(envelope.disposition)
+    per_rule = _per_rule_from_envelope(envelope)
+    confidence = float(envelope.disposition_confidence.numeric)
+    return disposition, per_rule, latency_s, confidence
+
+
 def run_subset(
     subset: str,
     manifest_path: Path,
@@ -209,10 +353,17 @@ def _main() -> int:
     parser.add_argument("--subset", choices=("smoke", "full"), required=True)
     parser.add_argument("--manifest", type=Path, default=Path("eval/manifest.jsonl"))
     parser.add_argument("--history-dir", type=Path, default=Path("eval/history"))
+    parser.add_argument("--mode", choices=("live", "replay"), default="live",
+                        help="live = real OCR + rules end-to-end (gates §4); "
+                             "replay = synthesized observations from expected.json, "
+                             "rules-isolated (diagnostic only — see §10.1).")
     args = parser.parse_args()
 
-    record = run_subset(args.subset, args.manifest, args.history_dir)
-    print(f"macro_f1={record.macro_f1:.3f} cost_weighted_score={record.cost_weighted_score:.3f}")
+    evaluator_fn = _live_evaluator if args.mode == "live" else _replay_evaluator
+    record = run_subset(args.subset, args.manifest, args.history_dir,
+                        evaluator=evaluator_fn)
+    print(f"mode={args.mode} macro_f1={record.macro_f1:.3f} "
+          f"cost_weighted_score={record.cost_weighted_score:.3f}")
     return 0
 
 
