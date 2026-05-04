@@ -25,6 +25,19 @@ def test_input_hash_is_deterministic():
     assert h1 == h2 and len(h1) == 64
 
 
+def test_input_hash_excludes_evaluation_id():
+    """D-018 warm-path invariant: input_hash must be a content fingerprint
+    independent of evaluation_id. Otherwise cache-hit envelopes (which patch
+    evaluation_id) would carry an input_hash that no longer matches the
+    serialized content, breaking tamper-detection re-computation."""
+    app1 = Application(application_id="A-001", evaluation_id="EV-1")
+    app2 = Application(application_id="A-001", evaluation_id="EV-2")
+    label = _stub_label()
+    assert _input_hash(app1, label) == _input_hash(app2, label), (
+        "input_hash must NOT vary with evaluation_id; same content → same fingerprint"
+    )
+
+
 def test_output_hash_is_deterministic():
     env_dict = {"evaluation_id": "EV-001", "disposition": "pass"}
     assert _output_hash(env_dict) == _output_hash(env_dict)

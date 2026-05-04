@@ -1,7 +1,13 @@
 """AuditRecorder — pure assembly + canonical hashing.
 
-input_hash  = sha256(canonical_application_json ‖ image_bytes)
+input_hash  = sha256(canonical_application_json_minus_evaluation_id ‖ image_bytes)
 output_hash = sha256(canonical_envelope_with_hashes_zeroed)
+
+evaluation_id is excluded from input_hash so the hash is a CONTENT fingerprint
+(not a call identity). This matches the SessionCache key (which also strips
+evaluation_id) and preserves the D-018 tamper-detection invariant on the
+warm path: a verifier recomputing input_hash from a cache-hit envelope's
+returned evaluation_id will get the same hash as the cold-path call.
 """
 from __future__ import annotations
 
@@ -21,8 +27,11 @@ def _canonical_json(obj: Any) -> bytes:
 
 
 def _input_hash(application: Application, label: Label) -> str:
-    app_bytes = _canonical_json(application.model_dump(mode="json"))
-    return hashlib.sha256(app_bytes + label.image_bytes).hexdigest()
+    app_dict = application.model_dump(mode="json")
+    # Exclude evaluation_id: input_hash is a content fingerprint, matching
+    # the SessionCache key. See module docstring (D-018 warm-path invariant).
+    app_dict.pop("evaluation_id", None)
+    return hashlib.sha256(_canonical_json(app_dict) + label.image_bytes).hexdigest()
 
 
 def _output_hash(envelope_for_hash: dict[str, Any]) -> str:
