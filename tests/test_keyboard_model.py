@@ -16,6 +16,19 @@ FIXTURE = (
 @pytest.mark.usefixtures("live_server", "pnpm_built_island")
 def test_three_keystroke_override(page: Page, live_server_url: str) -> None:
     envelope = json.loads(FIXTURE.read_text())
+
+    def _route(route, request):
+        route.fulfill(status=200, content_type="application/json", body=json.dumps({
+            "field_name": None,
+            "original_disposition": "pass",
+            "applied_disposition": "needs_review",
+            "reason_code": (request.post_data_json or {}).get("reason_code", ""),
+            "justification_text": (request.post_data_json or {}).get("justification_text"),
+            "reviewer_id": "session-test",
+            "timestamp": "2026-05-04T00:00:00Z",
+        }))
+    page.route("**/labels/*/overrides", _route)
+
     page.add_init_script(
         script=f"""
           window.addEventListener('DOMContentLoaded', () => {{
@@ -46,6 +59,56 @@ def test_three_keystroke_override(page: Page, live_server_url: str) -> None:
         'text=/Override saved: WARNING\\.STYLE\\.HEADING_NOT_BOLD_CAPS/',
         timeout=2000,
     )
+
+
+@pytest.mark.usefixtures("live_server", "pnpm_built_island")
+def test_three_keystroke_override_posts_to_endpoint(page: Page, live_server_url: str) -> None:
+    envelope = json.loads(FIXTURE.read_text())
+    captured: dict = {}
+
+    def _route(route, request):
+        captured["url"] = request.url
+        captured["method"] = request.method
+        captured["body"] = request.post_data_json
+        route.fulfill(status=200, content_type="application/json", body=json.dumps({
+            "field_name": None,
+            "original_disposition": "pass",
+            "applied_disposition": "needs_review",
+            "reason_code": (request.post_data_json or {}).get("reason_code", ""),
+            "justification_text": (request.post_data_json or {}).get("justification_text"),
+            "reviewer_id": "session-test",
+            "timestamp": "2026-05-04T00:00:00Z",
+        }))
+    page.route("**/labels/*/overrides", _route)
+
+    page.add_init_script(script=f"""
+      window.addEventListener('DOMContentLoaded', () => {{
+        const tag = document.createElement('script');
+        tag.id = 'envelope';
+        tag.type = 'application/json';
+        tag.textContent = {json.dumps(json.dumps(envelope))};
+        document.body.appendChild(tag);
+      }});
+    """)
+    page.goto(f"{live_server_url}/")
+    page.wait_for_selector('[data-mounted="true"]', timeout=5000)
+
+    page.keyboard.press("o")
+    page.wait_for_selector('[role="dialog"]', timeout=2000)
+    page.keyboard.type("w")
+    page.keyboard.press("Enter")
+    page.wait_for_selector(
+        'text=/Override saved: WARNING\\.STYLE\\.HEADING_NOT_BOLD_CAPS/',
+        timeout=2000,
+    )
+    assert captured["method"] == "POST"
+    assert f"/labels/{envelope['evaluation_id']}/overrides" in captured["url"]
+    body = captured["body"]
+    assert body["reason_code"] == "WARNING.STYLE.HEADING_NOT_BOLD_CAPS"
+    assert body["applied_disposition"] == "needs_review"
+    assert body["field_name"] is None
+    assert "evaluation_id" not in body
+    assert "reviewer_id" not in body
 
 
 @pytest.mark.usefixtures("live_server", "pnpm_built_island")
