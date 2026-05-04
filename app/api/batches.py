@@ -9,6 +9,8 @@ import logging
 import uuid
 from typing import Any
 
+import json
+
 from fastapi import APIRouter, Depends, HTTPException, Request
 from sse_starlette.sse import EventSourceResponse
 
@@ -139,7 +141,12 @@ async def get_batch_stream(batch_id: str, request: Request):
                 events_yielded += 1
                 if evt.get("event") == "stream-end":
                     terminated = True
-                yield {"event": evt["event"], "data": evt["data"]}
+                # sse_starlette str()s non-string data → Python repr breaks
+                # JSON.parse on the client. Serialize dicts ourselves.
+                data = evt["data"]
+                if not isinstance(data, (str, bytes)):
+                    data = json.dumps(data, default=str)
+                yield {"event": evt["event"], "data": data}
         finally:
             bus.unsubscribe(sub)
             _logger.info(
