@@ -54,14 +54,8 @@ def _build_in_flight_from_envelope(env: BatchEnvelope, *, lookahead_k: int) -> I
 
 
 def _resolve_lookahead_k(settings: Settings) -> int:
-    """LOOKAHEAD_K env override (AC #10). Default 3."""
-    import os
-    raw = os.environ.get("LOOKAHEAD_K", "3")
-    try:
-        k = int(raw)
-    except ValueError:
-        k = 3
-    return max(1, k)
+    """LOOKAHEAD_K resolved through Settings (NFR-SEC-002 — single env-read site)."""
+    return max(1, settings.lookahead_k)
 
 
 @router.post("/batches", status_code=202)
