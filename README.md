@@ -15,7 +15,7 @@ AI-powered alcohol label verification against TTB regulations. Returns a draft
 disposition (`pass` / `fail` / `needs_review`) for a COLA label in ≤5 s with
 citation-grounded reasoning.
 
-> **Live demo:** https://context31415-ttb-label.hf.space · **Recording:** `TODO-LOOM` (5 min)
+> **Live demo:** https://context31415-ttb-label.hf.space — interact with the seven demo fixtures (single-label) directly. A spoken-narration walkthrough is in `docs/demo-narration.md`.
 
 ## One-command setup (reviewer profiles)
 

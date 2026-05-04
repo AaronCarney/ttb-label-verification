@@ -21,7 +21,8 @@ def test_readme_links_decisions_and_runbook():
         assert ref in content, f"README missing link to {ref}"
 
 
-def test_readme_has_loom_placeholder():
+def test_readme_has_live_demo_and_narration():
     content = Path("README.md").read_text()
-    # Placeholder until post-merge T16 records and replaces with the real URL.
-    assert "loom.com" in content.lower() or "TODO-LOOM" in content
+    # T16 descoped the recorded walkthrough; live demo URL + narration script stand in.
+    assert "context31415-ttb-label.hf.space" in content
+    assert "docs/demo-narration.md" in content
