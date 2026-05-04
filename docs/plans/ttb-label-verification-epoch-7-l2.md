@@ -1,6 +1,6 @@
 # TTB Label Verification — Epoch 7 (UI: Jinja2 Shell + React Island) — L2 Implementation Plan
 
-> **Version:** v0.1 (2026-05-04) — initial draft.
+> **Version:** v0.3 (2026-05-04) — plan-review iter-1 (structural warnings + architectural critical + recs); see §9.
 >
 > **For agentic workers:** REQUIRED EXECUTOR: `parallel-plan-executor`. Per olorin CLAUDE.md, `superpowers:subagent-driven-development` is obsolete and fully replaced by `parallel-plan-executor` (which injects the `task-executor` skill body for TDD enforcement). Each task lands as one Red→Green→Commit cycle inside an isolated subagent (a few bundled tasks contain 2–3 cycles, called out explicitly). Steps use checkbox (`- [ ]`) syntax for tracking.
 >
@@ -157,7 +157,7 @@ Every file the plan creates or modifies, paired with the task that owns it. Disj
 | `tests/test_typescript_envelope_drift.py` | T5 | Greps Pydantic schema fields and asserts each appears in the .ts file. |
 | `frontend/src/types/sse.ts` | T5 | `BatchSSEEvent` type wrapping per-label envelope + `batch_id` + `queue_position`. |
 | `frontend/src/test/setup-vitest.test.tsx` | T6 | Vitest smoke (asserts `expect.toBeInTheDocument` extension is registered). (Folded into T1 if simpler — kept separate for parallel split.) |
-| `tests/conftest.py` | T7 | Additive: Playwright + uvicorn fixtures (`live_server`, `page_with_envelope`). |
+| `tests/conftest.py` | T7 | Additive: Playwright + uvicorn fixtures (`live_server`, `live_server_url`, `pnpm_built_island`). |
 | `pyproject.toml` | T7 | Additive: `playwright` + `pytest-playwright` in `[dependency-groups] dev`. |
 | `tests/test_playwright_harness_smoke.py` | T7 | Asserts the Playwright fixture launches and serves the Jinja shell. |
 | `frontend/src/components/DispositionPill.tsx` (+ `.test.tsx`) | T8 | FR-511 — color + shape + text. |
@@ -4163,11 +4163,13 @@ A single hook installing document-level listeners for `O`, `J`, `K`, `Escape`. E
 
 ---
 
-## Wave 6 — Composable + entry points (4 parallel)
+## Wave 6 — Composable + entry points (split into W6a + W6b after v0.2 audit)
+
+> **v0.2 split:** W6a (T25, T26) lands first; W6b (T27, T28) lands after W6a's commits. T27 imports T25 `OverrideDrawer`; T28 imports T26 `useBatchStream` — running all four tasks in one wave was a same-wave race. The §5 wave dependency table and §10 Dependency Graph both reflect the split.
 
 ### Task T25 — OverrideDrawer (FR-504/803)
 
-**Wave:** 6
+**Wave:** 6a
 **Depends on:** T20 (ReasonCodePicker), T24 (useKeyboardShortcuts)
 **Owns (creates):** `frontend/src/components/OverrideDrawer.tsx` + `.test.tsx`.
 
@@ -4364,7 +4366,7 @@ The drawer is a Radix Dialog. Closing the drawer (`onOpenChange(false)`) returns
 
 ### Task T26 — useBatchStream (SSE consumer)
 
-**Wave:** 6
+**Wave:** 6a
 **Depends on:** T1, T5
 **Owns (creates):** `frontend/src/sse/useBatchStream.ts` + `.test.ts`.
 
@@ -4506,6 +4508,11 @@ The test mocks `EventSource` globally and exercises connect / event push / close
   export function useBatchStream(batchId: string): BatchStreamState {
     const [state, dispatch] = React.useReducer(_reducer, { events: [], error: null });
   
+    // FRAMING ASSUMPTION (PRD §6.3): each `MessageEvent` carries one whole
+    // BatchSSEEvent envelope as JSON in `msg.data`. If E6 instead emits
+    // `event:` / `id:` / `retry:` framed multi-line records, attach
+    // `addEventListener('label-update', …)` and friends per `event:` name and
+    // re-parse here. Test corpus today is single-line `data:` only.
     React.useEffect(() => {
       if (!batchId) return;
       const url = `/batches/${encodeURIComponent(batchId)}/stream`;
@@ -4542,9 +4549,9 @@ The test mocks `EventSource` globally and exercises connect / event push / close
 
 ### Task T27 — Single-label island entry point
 
-**Wave:** 6
-**Depends on:** T8–T19, T20, T24, T25 (all single-mode components + hooks)
-**Owns (creates):** `frontend/src/single.tsx`.
+**Wave:** 6b
+**Depends on:** T5, T8–T19, T20, T24, T25 (envelope types + all single-mode components + hooks)
+**Owns (creates):** `frontend/src/single.tsx`, `frontend/src/single.test.tsx`.
 
 The entry point that mounts on `<div id="root" data-mode="single">`. Reads the canned envelope from `<script id="envelope" type="application/json">` (when present). Renders `LiveRegion`, the field-card grid (looping `FieldCard` with `RuleVerdict` + `AISuggestionBlock`), the disposition-level `DispositionPill` + `ConfidenceIndicator`, the override drawer (gated by `useKeyboardShortcuts({ onOverride })`), and `RawJSONDrawer` (gated by `data-dev-mode`).
 
@@ -4587,8 +4594,8 @@ When the envelope is absent (production-runtime case), shows a minimal "No data 
   
   describe("single.tsx entry point", () => {
     it("mounts on #root and sets data-mounted='true'", async () => {
-      await import("./single");
-      // Allow the React render to flush.
+      const { mount } = await import("./single");
+      mount();
       await new Promise((r) => setTimeout(r, 0));
       const root = document.getElementById("root");
       expect(root).not.toBeNull();
@@ -4596,11 +4603,17 @@ When the envelope is absent (production-runtime case), shows a minimal "No data 
     });
   
     it("has no axe violations on the rendered tree", async () => {
-      await import("./single");
+      const { mount } = await import("./single");
+      mount();
       await new Promise((r) => setTimeout(r, 50));
       expect(await axe(document.body)).toHaveNoViolations();
     });
   });
+  // NOTE: `mount()` is exported (see single.tsx) so each `it` block can
+  // explicitly re-mount on its own freshly-rebuilt DOM. Don't rely on the
+  // module's auto-mount side effect for tests — Vitest caches modules across
+  // tests and the second `it` would otherwise see an empty <div id="root">
+  // (because beforeEach wipes innerHTML but the cached module doesn't re-run).
   ```
 
 - [ ] **Step 2: Create `frontend/src/single.tsx`.**
@@ -4624,6 +4637,23 @@ When the envelope is absent (production-runtime case), shows a minimal "No data 
   
   // A minimal hard-coded reason-code catalog mirrors rules/reason_codes.yaml.
   // E7 ships a small subset; E8 (or a build step) can generate the full set.
+  //
+  // ORDER INVARIANT (FR-803 — 3-keystroke override path):
+  // For each fixture's canonical reason code, this array's FIRST entry that
+  // shares the same starting letter MUST be that canonical code. The picker
+  // (T20) auto-selects only when filter narrows to length === 1; otherwise
+  // ENTER picks `filtered[highlight]` and `highlight` resets to 0 on filter
+  // change. Combined, that means `O → <letter> → ENTER` lands on the first
+  // code with that prefix in this array.
+  //
+  // Canonical paths verified:
+  //  - fixture-03 (WARNING.STYLE.HEADING_NOT_BOLD_CAPS): 'w' → highlight 0
+  //    among 3 W-prefixed codes ↑ — this entry must stay at position 0
+  //    among W-prefixed entries.
+  //
+  // Reorder this array only after re-verifying T30's keyboard test still
+  // passes. T20 does not assert this invariant; future readers, see also
+  // the `tests/manual/a11y-smoke.md` step 7 narration.
   const _REASON_CODES = [
     { code: "BRAND.NAME.MISMATCH", description: "Brand mismatch" },
     { code: "BRAND.NAME.NEEDS_REVIEW", description: "Brand needs review" },
@@ -4730,7 +4760,10 @@ When the envelope is absent (production-runtime case), shows a minimal "No data 
     }
   }
   
-  function _mount(): void {
+  // Exported so the unit test can call it explicitly per-test (Vitest caches
+  // modules — relying on the auto-mount side effect would render only on the
+  // first `it` block). Production code path uses the auto-mount below.
+  export function mount(): void {
     const root = document.getElementById("root");
     if (!root) return;
     const envelope = _readEnvelope();
@@ -4744,9 +4777,9 @@ When the envelope is absent (production-runtime case), shows a minimal "No data 
   
   if (typeof document !== "undefined") {
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", _mount);
+      document.addEventListener("DOMContentLoaded", mount);
     } else {
-      _mount();
+      mount();
     }
   }
   ```
@@ -4763,7 +4796,7 @@ When the envelope is absent (production-runtime case), shows a minimal "No data 
 
 ### Task T28 — Batch island entry point
 
-**Wave:** 6
+**Wave:** 6b
 **Depends on:** T23 (BatchTable), T22 (QueuePosition), T26 (useBatchStream)
 **Owns (creates):** `frontend/src/batch.tsx` + `frontend/src/batch.test.tsx`.
 
@@ -4789,9 +4822,14 @@ Mounts on `<div id="root" data-mode="batch" data-batch-id="…">`; subscribes vi
     document.body.innerHTML = `<div id="root" data-mode="batch" data-batch-id="abc-123"></div>`;
   });
   
+  // NOTE: `mount()` is exported from batch.tsx so each `it` block can re-mount
+  // explicitly. Vitest caches modules, so relying on the auto-mount side
+  // effect would render only on the first `it` block (subsequent ones would
+  // see the empty <div id="root"> that beforeEach restored).
   describe("batch.tsx entry point", () => {
     it("mounts and reads data-batch-id", async () => {
-      await import("./batch");
+      const { mount } = await import("./batch");
+      mount();
       await new Promise((r) => setTimeout(r, 0));
       const root = document.getElementById("root");
       expect(root!.getAttribute("data-mounted")).toBe("true");
@@ -4799,7 +4837,8 @@ Mounts on `<div id="root" data-mode="batch" data-batch-id="…">`; subscribes vi
     });
   
     it("has no axe violations on the empty-state render", async () => {
-      await import("./batch");
+      const { mount } = await import("./batch");
+      mount();
       await new Promise((r) => setTimeout(r, 50));
       expect(await axe(document.body)).toHaveNoViolations();
     });
@@ -4843,7 +4882,10 @@ Mounts on `<div id="root" data-mode="batch" data-batch-id="…">`; subscribes vi
     );
   }
   
-  function _mount(): void {
+  // Exported so tests can call it explicitly per-test (Vitest caches modules
+  // — see corresponding NOTE in batch.test.tsx). Production uses the
+  // auto-mount block below.
+  export function mount(): void {
     const root = document.getElementById("root");
     if (!root) return;
     const batchId = root.getAttribute("data-batch-id") ?? "";
@@ -4857,9 +4899,9 @@ Mounts on `<div id="root" data-mode="batch" data-batch-id="…">`; subscribes vi
   
   if (typeof document !== "undefined") {
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", _mount);
+      document.addEventListener("DOMContentLoaded", mount);
     } else {
-      _mount();
+      mount();
     }
   }
   ```
@@ -4876,7 +4918,7 @@ Mounts on `<div id="root" data-mode="batch" data-batch-id="…">`; subscribes vi
 
 ## Wave 7 — Playwright a11y / keyboard / reflow / WCAG / build-clean (5 parallel)
 
-All Wave 7 tests use the `live_server` + `page` fixtures from T7. They render real Jinja shells against the LIVE built island bundle in `app/ui/static/island/`. Since the bundle is committed only by Wave 8 (T34), Wave 7 includes a `pnpm build` invocation in each test's `live_server` fixture initialization (cheap — Vite is fast). The test bodies use Playwright `route.fulfill()` to stub server data calls (which would otherwise reach E5/E6 routes that don't exist).
+All Wave 7 tests use the `live_server` + `page` + `pnpm_built_island` fixtures from T7. They render real Jinja shells against the LIVE built island bundle in `app/ui/static/island/`. Since the committed bundle lands only in Wave 8 (T34), the `pnpm_built_island` session fixture (defined in T7's conftest) runs `pnpm install --frozen-lockfile && pnpm build` once at session start to populate `app/ui/static/island/` for the W7 tests. The test bodies use Playwright `route.fulfill()` to stub server data calls (which would otherwise reach E5/E6 routes that don't exist).
 
 **Pre-test build hook.** The session-scoped `pnpm_built_island` fixture in `tests/conftest.py` runs `pnpm build` once before the Playwright session. **It is owned by T7 (W2)** — the Wave 7 tasks (T29–T32) consume it as a read-only session fixture. This avoids a same-wave race on `tests/conftest.py` that would otherwise occur if multiple W7 tasks all tried to add fixtures to it.
 
@@ -5238,7 +5280,7 @@ Loads each fixture; finds the disposition pill at the disposition level; asserts
 ### Task T33 — Built-island clean diff CI gate + manual a11y checklist
 
 **Wave:** 7
-**Depends on:** T1
+**Depends on:** T1, T7 (consumes `pnpm_built_island` fixture)
 **Owns (creates):** `tests/test_island_build_clean.py`, `tests/manual/a11y-smoke.md`.
 
 The R-5 mitigation: every PR runs `pnpm build` and asserts the diff against `app/ui/static/island/` is empty (so the committed bundle never drifts from sources). The manual a11y smoke checklist is committed for release-time NVDA + VoiceOver review.
@@ -5249,26 +5291,21 @@ The R-5 mitigation: every PR runs `pnpm build` and asserts the diff against `app
   """T33: R-5 mitigation — committed island bundle matches frontend sources."""
   from __future__ import annotations
   
-  import shutil
   import subprocess
   from pathlib import Path
   
-  import pytest
-  
   ROOT = Path(__file__).resolve().parent.parent
-  FRONTEND = ROOT / "frontend"
-  ISLAND = ROOT / "app" / "ui" / "static" / "island"
   
   
-  @pytest.mark.skipif(shutil.which("pnpm") is None, reason="pnpm not on PATH")
-  def test_pnpm_build_produces_clean_diff() -> None:
-      subprocess.run(
-          ["pnpm", "install", "--frozen-lockfile"],
-          cwd=FRONTEND, check=True,
-      )
-      subprocess.run(["pnpm", "build"], cwd=FRONTEND, check=True)
+  def test_pnpm_build_produces_clean_diff(pnpm_built_island: Path) -> None:
+      """The session-scoped `pnpm_built_island` fixture (defined in T7's
+      conftest.py) runs `pnpm install --frozen-lockfile && pnpm build` once
+      per session; this test just verifies that `git diff` against the
+      committed bundle is empty after that build. Reusing the fixture avoids
+      a second `pnpm install + pnpm build` invocation per session.
+      """
       result = subprocess.run(
-          ["git", "diff", "--exit-code", str(ISLAND)],
+          ["git", "diff", "--exit-code", str(pnpm_built_island)],
           cwd=ROOT, capture_output=True, text=True,
       )
       assert result.returncode == 0, (
@@ -5291,7 +5328,7 @@ The R-5 mitigation: every PR runs `pnpm build` and asserts the diff against `app
   4. Activate the skip link; focus lands on `#main`.
   5. Tab to a citation chip; activate it (Enter); the evidence dialog opens with focus on the close button.
   6. Press `O`; the override drawer opens; the reason-code picker is announced.
-  7. Type `W`; NVDA announces the auto-selected `WARNING.STYLE.HEADING_NOT_BOLD_CAPS`.
+  7. Type `W`; NVDA announces the picker filter narrowing to the WARNING.* codes; the first highlighted option is `WARNING.STYLE.HEADING_NOT_BOLD_CAPS`.
   8. Press `Enter`; NVDA announces the LiveRegion message "Override saved: WARNING.STYLE.HEADING_NOT_BOLD_CAPS".
   9. Press `Esc`; the drawer closes; focus returns to the trigger.
   10. With `prefers-reduced-motion: reduce` set in OS settings, verify no fade/slide animations on dialogs or toasts.
@@ -5422,6 +5459,7 @@ Run `pnpm build`, stage the produced files, commit. After this task, T33 must be
 |---|---|---|---|
 | 0.1 | 2026-05-04 | Project team (parallel E7 session) | Initial draft. 34 tasks across 8 waves; canned-envelope-fixture-driven; all WCAG / keyboard / reflow gates wired. |
 | 0.2 | 2026-05-04 | Project team (parallel E7 session) | Parallel-planning audit. Split W6 into W6a (T25, T26) + W6b (T27, T28) — T27/T28 import symbols T25/T26 produce, so co-running them in a single wave was a same-wave race. Moved `pnpm_built_island` Playwright session fixture from T29 (W7) to T7 (W2) — having T29 own the conftest edit while T30/T31/T32 depended on it created a same-wave conftest race. Updated T29 (no longer modifies `tests/conftest.py`; Step 1 fixture-add removed; remaining steps renumbered) and T30/T31/T32 deps to point at T7 only. Appended §10 Dependency Graph (Task / Depends On / Blocks / Files Owned). |
+| 0.3 | 2026-05-04 | Project team (parallel E7 session) | Plan-review iter-1 — apply 7 structural warnings + 2 architectural critical + 2 recommendations. Structural: bumped per-task **Wave:** headers from `6` → `6a`/`6b` (T25–T28); added `frontend/src/single.test.tsx` to T27 Owns; corrected §4 conftest fixture list (`live_server`, `live_server_url`, `pnpm_built_island`); rewrote Wave 7 prologue first sentence to reflect once-per-session build via the T7 fixture (was: per-test); fixed T3 §10 row to list `batch/05-batch-of-50-envelope.json` + `batch/05-batch-of-50-events.jsonl`; added T3 dep to §10 rows for T29/T30/T32; added T5 dep to §10 row for T27; added `frontend/src/single.test.tsx` to T27 §10 Files Owned. Architectural critical: (C1) added ORDER INVARIANT comment to T27's `_REASON_CODES` array documenting the FR-803 3-keystroke path's dependence on insertion order — the picker (T20) auto-resolves only on a unique prefix, but ENTER lands on `filtered[highlight=0]`; the array order ensures that `O → w → ENTER` resolves to `WARNING.STYLE.HEADING_NOT_BOLD_CAPS`. Updated step 7 of `tests/manual/a11y-smoke.md` narration to match. (C2) Refactored T27's `single.tsx` and T28's `batch.tsx` to **export** `mount()` (renamed from internal `_mount`); test files now call `mount()` explicitly per `it` block to avoid Vitest's module cache silently skipping the second `it` block's render. Recommendations: (R1) T33 now consumes the `pnpm_built_island` fixture instead of running a second `pnpm install + pnpm build` per session — added T7 to T33's deps. (R5) Added FRAMING ASSUMPTION comment to T26's `useBatchStream` hook documenting the single-line `data:` JSON-envelope assumption per PRD §6.3. |
 
 ## 10. Dependency Graph
 
@@ -5431,7 +5469,7 @@ Per `parallel-planning` skill §Step 6. "Blocks" lists direct downstream tasks o
 |---|---|---|---|
 | T1  | — | T5, T6, T7, T8, T9, T10, T11, T12, T13, T15, T16, T18, T19, T20, T21, T22, T24, T26, T33 | `frontend/package.json`, `frontend/pnpm-lock.yaml`, `frontend/tsconfig.json`, `frontend/tsconfig.node.json`, `frontend/vite.config.ts`, `frontend/tailwind.config.ts`, `frontend/postcss.config.js`, `frontend/index.html`, `frontend/vitest.config.ts`, `frontend/src/lib/cn.ts`, `frontend/src/test/setup.ts`, `frontend/src/test/render.tsx`, `frontend/src/test/smoke.test.tsx` |
 | T2  | — | T8, T9, T10, T11, T12, T13, T15, T16, T18, T19, T20, T21, T22 | `frontend/src/tokens/uswds-tokens.css`, `frontend/src/tokens/globals.css`, `frontend/src/tokens/uswds-tokens.test.ts` |
-| T3  | — | T29, T30, T31, T32 (consumers via fixture files) | `tests/fixtures/envelopes/single/*.json` (6 fixtures), `tests/fixtures/envelopes/batch/*.json` (1 fixture), `tests/fixtures/envelopes/sse-events.jsonl`, `tests/test_canned_envelopes_round_trip.py` |
+| T3  | — | T29, T30, T31, T32 (consumers via fixture files) | `tests/fixtures/envelopes/single/{01,02,03,04,06,07}-*.json` (6 single fixtures), `tests/fixtures/envelopes/batch/05-batch-of-50-envelope.json`, `tests/fixtures/envelopes/batch/05-batch-of-50-events.jsonl` (SSE event sequence), `tests/test_canned_envelopes_round_trip.py` |
 | T4  | — | T7 | `app/ui/templates/base.html`, `app/ui/templates/single.html`, `app/ui/templates/batch.html`, `app/api/ui.py` (new), `tests/test_ui_routes.py`; modifies `app/main.py` (additive) |
 | T5  | T1 | T26, T27, T28 (envelope types) | `frontend/src/types/envelopes.ts`, `frontend/src/types/sse.ts`, `tests/test_typescript_envelope_drift.py` |
 | T6  | T1 | — | `frontend/src/test/jest-dom.test.tsx` |
@@ -5455,12 +5493,12 @@ Per `parallel-planning` skill §Step 6. "Blocks" lists direct downstream tasks o
 | T24 | T1 | T25, T27 | `frontend/src/hooks/useKeyboardShortcuts.ts`, `frontend/src/hooks/useKeyboardShortcuts.test.ts` |
 | T25 | T20, T24 | T27 | `frontend/src/components/OverrideDrawer.tsx`, `frontend/src/components/OverrideDrawer.test.tsx` |
 | T26 | T1, T5 | T28 | `frontend/src/sse/useBatchStream.ts`, `frontend/src/sse/useBatchStream.test.ts` |
-| T27 | T8–T19, T20, T24, T25 | T29, T34 | `frontend/src/single.tsx` |
+| T27 | T5, T8–T19, T20, T24, T25 | T29, T34 | `frontend/src/single.tsx`, `frontend/src/single.test.tsx` |
 | T28 | T22, T23, T26 | T29, T34 | `frontend/src/batch.tsx`, `frontend/src/batch.test.tsx` |
-| T29 | T7, T27, T28 (and all components transitively) | T34 | `tests/test_a11y_axe.py` |
-| T30 | T7 | T34 | `tests/test_keyboard_model.py` |
+| T29 | T3, T7, T27, T28 (and all components transitively) | T34 | `tests/test_a11y_axe.py` |
+| T30 | T3, T7 | T34 | `tests/test_keyboard_model.py` |
 | T31 | T7 | T34 | `tests/test_reflow_320px.py` |
-| T32 | T7 | T34 | `tests/test_disposition_pill_wcag_141.py` |
+| T32 | T3, T7 | T34 | `tests/test_disposition_pill_wcag_141.py` |
 | T33 | T1 | T34 | `tests/test_island_build_clean.py`, `tests/manual/a11y-smoke.md` |
 | T34 | every prior task | — | `app/ui/static/island/single.js`, `single.css`, `single.js.map`, `batch.js`, `batch.css`, `batch.js.map`, `app/ui/static/island/chunks/*.js` (Vite output) |
 
