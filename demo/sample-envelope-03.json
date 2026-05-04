@@ -1,0 +1,307 @@
+{
+  "evaluation_id": "245d9fb5-8992-4b40-a2d4-cc2a214c34ca",
+  "label_ref": "FIX-03-WARNING-TITLE-CASE",
+  "disposition": "fail",
+  "disposition_confidence": {
+    "band": "medium",
+    "numeric": 0.7
+  },
+  "fields": [
+    {
+      "field_name": "brand_name",
+      "extracted_value": "{'brand_name': 'ACME BOURBON'}",
+      "expected_value": "ACME BOURBON",
+      "evidence": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "crop_ref": "",
+        "extraction_confidence": 0.7
+      },
+      "rule_findings": [],
+      "ai_suggestion": {
+        "present": false,
+        "task": null,
+        "text": null,
+        "model_disposition": null
+      },
+      "field_confidence": {
+        "band": "medium",
+        "numeric": 0.7
+      }
+    },
+    {
+      "field_name": "class_type",
+      "extracted_value": "{'class_type': 'Bourbon Whiskey'}",
+      "expected_value": "BOURBON WHISKEY",
+      "evidence": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "crop_ref": "",
+        "extraction_confidence": 0.7
+      },
+      "rule_findings": [
+        {
+          "rule_id": "spirits.class_type.matches_soi",
+          "cfr_citation": "27 CFR §5 Subpart I",
+          "disposition": "fail",
+          "reason_code": "CLASS_TYPE.SOI.NO_MATCH",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "spirits.class_type.present",
+          "cfr_citation": "27 CFR §5.63(a), Subpart I",
+          "disposition": "fail",
+          "reason_code": "CLASS_TYPE.PRESENCE.MISSING",
+          "plain_language_explanation": ""
+        }
+      ],
+      "ai_suggestion": {
+        "present": false,
+        "task": null,
+        "text": null,
+        "model_disposition": null
+      },
+      "field_confidence": {
+        "band": "medium",
+        "numeric": 0.7
+      }
+    },
+    {
+      "field_name": "net_contents",
+      "extracted_value": "{'net_contents_value': 750, 'unit': 'ML'}",
+      "expected_value": "",
+      "evidence": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "crop_ref": "",
+        "extraction_confidence": 0.7
+      },
+      "rule_findings": [
+        {
+          "rule_id": "spirits.net_contents.present",
+          "cfr_citation": "27 CFR §5.63(b)(2), §5.70",
+          "disposition": "pass",
+          "reason_code": "",
+          "plain_language_explanation": ""
+        }
+      ],
+      "ai_suggestion": {
+        "present": false,
+        "task": null,
+        "text": null,
+        "model_disposition": null
+      },
+      "field_confidence": {
+        "band": "medium",
+        "numeric": 0.7
+      }
+    },
+    {
+      "field_name": "alcohol_content",
+      "extracted_value": "{'abv_pct': 40, 'unit': '%'}",
+      "expected_value": "",
+      "evidence": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "crop_ref": "",
+        "extraction_confidence": 0.7
+      },
+      "rule_findings": [
+        {
+          "rule_id": "spirits.alcohol.tolerance_band",
+          "cfr_citation": "27 CFR §5.65(c)",
+          "disposition": "fail",
+          "reason_code": "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND",
+          "plain_language_explanation": ""
+        }
+      ],
+      "ai_suggestion": {
+        "present": false,
+        "task": null,
+        "text": null,
+        "model_disposition": null
+      },
+      "field_confidence": {
+        "band": "medium",
+        "numeric": 0.7
+      }
+    },
+    {
+      "field_name": "warning",
+      "extracted_value": "{'text': 'Government Warning: (1) According to the Surgeon General, women should not drink alcoholic beverages during pregnancy because of the risk of birth defects.'}",
+      "expected_value": "",
+      "evidence": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "crop_ref": "",
+        "extraction_confidence": 0.7
+      },
+      "rule_findings": [],
+      "ai_suggestion": {
+        "present": false,
+        "task": null,
+        "text": null,
+        "model_disposition": null
+      },
+      "field_confidence": {
+        "band": "medium",
+        "numeric": 0.7
+      }
+    },
+    {
+      "field_name": "name_address",
+      "extracted_value": "{'name': 'ACME DISTILLERIES', 'city': 'FRANKFORT', 'state': 'KY'}",
+      "expected_value": "",
+      "evidence": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "crop_ref": "",
+        "extraction_confidence": 0.7
+      },
+      "rule_findings": [],
+      "ai_suggestion": {
+        "present": false,
+        "task": null,
+        "text": null,
+        "model_disposition": null
+      },
+      "field_confidence": {
+        "band": "medium",
+        "numeric": 0.7
+      }
+    },
+    {
+      "field_name": "country_of_origin",
+      "extracted_value": "{'country': 'USA'}",
+      "expected_value": "",
+      "evidence": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "crop_ref": "",
+        "extraction_confidence": 0.7
+      },
+      "rule_findings": [],
+      "ai_suggestion": {
+        "present": false,
+        "task": null,
+        "text": null,
+        "model_disposition": null
+      },
+      "field_confidence": {
+        "band": "medium",
+        "numeric": 0.7
+      }
+    }
+  ],
+  "audit_trail": {
+    "evaluation_id": "245d9fb5-8992-4b40-a2d4-cc2a214c34ca",
+    "rule_set_version": "unknown",
+    "model_version": null,
+    "prompt_version": null,
+    "input_hash": "b09ec9e55e23b23851e9f3e6c665828b0d1a8cc5414afc7fb4e5b07734072d6c",
+    "output_hash": "0145e6200cba1941edbe53e70eeaf7bf05cb2a0501f7a53545d122fa2c64b658",
+    "started_at": "2026-05-04T22:29:27.280385Z",
+    "completed_at": "2026-05-04T22:29:31.505114Z",
+    "per_rule_trace": [
+      {
+        "rule_id": "spirits.alcohol.tolerance_band",
+        "disposition": "fail",
+        "evidence_ref": "vr/spirits.alcohol.tolerance_band"
+      },
+      {
+        "rule_id": "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/spirits.alcohol.tolerance_band"
+      },
+      {
+        "rule_id": "spirits.class_type.matches_soi",
+        "disposition": "fail",
+        "evidence_ref": "vr/spirits.class_type.matches_soi"
+      },
+      {
+        "rule_id": "CLASS_TYPE.SOI.NO_MATCH",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/spirits.class_type.matches_soi"
+      },
+      {
+        "rule_id": "spirits.class_type.present",
+        "disposition": "fail",
+        "evidence_ref": "vr/spirits.class_type.present"
+      },
+      {
+        "rule_id": "CLASS_TYPE.PRESENCE.MISSING",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/spirits.class_type.present"
+      },
+      {
+        "rule_id": "spirits.net_contents.present",
+        "disposition": "pass",
+        "evidence_ref": "vr/spirits.net_contents.present"
+      }
+    ],
+    "overrides": []
+  },
+  "metrics": {
+    "total_duration_ms": 4224,
+    "per_rule_durations_ms": [
+      {
+        "rule_id": "spirits.alcohol.tolerance_band",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "spirits.class_type.matches_soi",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "CLASS_TYPE.SOI.NO_MATCH",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "spirits.class_type.present",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "CLASS_TYPE.PRESENCE.MISSING",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "spirits.net_contents.present",
+        "duration_ms": 0
+      }
+    ],
+    "vision_duration_ms": 4215,
+    "orchestrator_duration_ms": 0
+  }
+}

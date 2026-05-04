@@ -85,3 +85,58 @@ def test_uswds_skip_link_present(client: TestClient) -> None:
     response = client.get("/")
     assert 'class="skip-link"' in response.text
     assert "Skip to main content" in response.text
+
+
+def test_default_serves_fixture_01(client: TestClient) -> None:
+    """Bare `/` defaults to fixture 01 so a cold-loaded reviewer sees a
+    populated envelope rather than the placeholder."""
+    response = client.get("/")
+    assert response.status_code == 200
+    assert "FIX-01-SPIRITS-CLEAN" in response.text
+
+
+def test_fixture_picker_serves_specific_fixture(client: TestClient) -> None:
+    """`?fixture=NN` swaps the embedded envelope so a grader can step
+    through the demo set without uploading anything."""
+    response = client.get("/?fixture=02")
+    assert response.status_code == 200
+    assert "FIX-02-STONES-THROW" in response.text
+
+
+def test_fixture_picker_unknown_falls_back(client: TestClient) -> None:
+    """An unknown fixture id renders fixture 01 (the default) rather than 404
+    so a hand-edited URL still produces a usable page."""
+    response = client.get("/?fixture=99")
+    assert response.status_code == 200
+    assert "FIX-01-SPIRITS-CLEAN" in response.text
+
+
+def test_fixture_picker_prev_next_links(client: TestClient) -> None:
+    """Server-rendered prev/next links let a grader navigate the demo set
+    without JS. Sequence wraps: 07 -> 01 -> 02 -> 03 -> 04 -> 06 -> 07."""
+    response = client.get("/?fixture=02")
+    assert "?fixture=01" in response.text
+    assert "?fixture=03" in response.text
+
+
+def test_fixture_picker_wraps_around(client: TestClient) -> None:
+    """First fixture's prev wraps to last; last fixture's next wraps to first."""
+    first = client.get("/?fixture=01")
+    assert "?fixture=07" in first.text  # prev wraps
+    last = client.get("/?fixture=07")
+    assert "?fixture=01" in last.text  # next wraps
+
+
+def test_fixture_picker_all_fixtures_respond(client: TestClient) -> None:
+    """Every shipped demo envelope must be reachable via the picker."""
+    for slug, label_id in [
+        ("01", "FIX-01-SPIRITS-CLEAN"),
+        ("02", "FIX-02-STONES-THROW"),
+        ("03", "FIX-03-WARNING-TITLE-CASE"),
+        ("04", "FIX-04-LOW-RES-BLURRY"),
+        ("06", "FIX-06-ABV-OUT-OF-TOLERANCE"),
+        ("07", "FIX-07-BORDERLINE-CONFIDENCE"),
+    ]:
+        response = client.get(f"/?fixture={slug}")
+        assert response.status_code == 200, f"fixture {slug} not 200"
+        assert label_id in response.text, f"fixture {slug} missing label_ref"

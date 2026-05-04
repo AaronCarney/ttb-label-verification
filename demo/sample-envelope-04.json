@@ -1,0 +1,39 @@
+{
+  "evaluation_id": "1d181998-6ac1-4407-88f3-b0a29d92a9fc",
+  "label_ref": "FIX-04-LOW-RES-BLURRY",
+  "disposition": "needs_review",
+  "disposition_confidence": {
+    "band": "low",
+    "numeric": 0.0
+  },
+  "fields": [],
+  "audit_trail": {
+    "evaluation_id": "1d181998-6ac1-4407-88f3-b0a29d92a9fc",
+    "rule_set_version": "unknown",
+    "model_version": null,
+    "prompt_version": null,
+    "input_hash": "14a3365216e3b6a4cb69e1a3690a703d66e6f750614f233265fcd7f33ab72557",
+    "output_hash": "ebbecb9f337c073bfb440764b719286df93920e1d3ba35b7b794d11b3e019ff9",
+    "started_at": "2026-05-04T22:29:31.505922Z",
+    "completed_at": "2026-05-04T22:29:31.506599Z",
+    "per_rule_trace": [
+      {
+        "rule_id": "WARNING.LEGIBILITY.LOW_RESOLUTION",
+        "disposition": "needs_review",
+        "evidence_ref": "engine_failure/N/A"
+      }
+    ],
+    "overrides": []
+  },
+  "metrics": {
+    "total_duration_ms": 0,
+    "per_rule_durations_ms": [
+      {
+        "rule_id": "WARNING.LEGIBILITY.LOW_RESOLUTION",
+        "duration_ms": 0
+      }
+    ],
+    "vision_duration_ms": 0,
+    "orchestrator_duration_ms": 0
+  }
+}

@@ -1,0 +1,307 @@
+{
+  "evaluation_id": "672038e9-e035-43fe-9be9-28d0987d7213",
+  "label_ref": "FIX-01-SPIRITS-CLEAN",
+  "disposition": "fail",
+  "disposition_confidence": {
+    "band": "medium",
+    "numeric": 0.7
+  },
+  "fields": [
+    {
+      "field_name": "brand_name",
+      "extracted_value": "{'brand_name': 'ACME BOURBON'}",
+      "expected_value": "ACME BOURBON",
+      "evidence": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "crop_ref": "",
+        "extraction_confidence": 0.7
+      },
+      "rule_findings": [],
+      "ai_suggestion": {
+        "present": false,
+        "task": null,
+        "text": null,
+        "model_disposition": null
+      },
+      "field_confidence": {
+        "band": "medium",
+        "numeric": 0.7
+      }
+    },
+    {
+      "field_name": "class_type",
+      "extracted_value": "{'class_type': 'Bourbon'}",
+      "expected_value": "BOURBON WHISKEY",
+      "evidence": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "crop_ref": "",
+        "extraction_confidence": 0.7
+      },
+      "rule_findings": [
+        {
+          "rule_id": "spirits.class_type.matches_soi",
+          "cfr_citation": "27 CFR §5 Subpart I",
+          "disposition": "fail",
+          "reason_code": "CLASS_TYPE.SOI.NO_MATCH",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "spirits.class_type.present",
+          "cfr_citation": "27 CFR §5.63(a), Subpart I",
+          "disposition": "fail",
+          "reason_code": "CLASS_TYPE.PRESENCE.MISSING",
+          "plain_language_explanation": ""
+        }
+      ],
+      "ai_suggestion": {
+        "present": false,
+        "task": null,
+        "text": null,
+        "model_disposition": null
+      },
+      "field_confidence": {
+        "band": "medium",
+        "numeric": 0.7
+      }
+    },
+    {
+      "field_name": "net_contents",
+      "extracted_value": "{'net_contents_value': 750, 'unit': 'ML'}",
+      "expected_value": "",
+      "evidence": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "crop_ref": "",
+        "extraction_confidence": 0.7
+      },
+      "rule_findings": [
+        {
+          "rule_id": "spirits.net_contents.present",
+          "cfr_citation": "27 CFR §5.63(b)(2), §5.70",
+          "disposition": "pass",
+          "reason_code": "",
+          "plain_language_explanation": ""
+        }
+      ],
+      "ai_suggestion": {
+        "present": false,
+        "task": null,
+        "text": null,
+        "model_disposition": null
+      },
+      "field_confidence": {
+        "band": "medium",
+        "numeric": 0.7
+      }
+    },
+    {
+      "field_name": "alcohol_content",
+      "extracted_value": "{'abv_pct': 40, 'unit': '%'}",
+      "expected_value": "",
+      "evidence": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "crop_ref": "",
+        "extraction_confidence": 0.7
+      },
+      "rule_findings": [
+        {
+          "rule_id": "spirits.alcohol.tolerance_band",
+          "cfr_citation": "27 CFR §5.65(c)",
+          "disposition": "fail",
+          "reason_code": "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND",
+          "plain_language_explanation": ""
+        }
+      ],
+      "ai_suggestion": {
+        "present": false,
+        "task": null,
+        "text": null,
+        "model_disposition": null
+      },
+      "field_confidence": {
+        "band": "medium",
+        "numeric": 0.7
+      }
+    },
+    {
+      "field_name": "warning",
+      "extracted_value": "{'text': 'GOVERNMENT WARNING:\\n(1) ACCORDING TO THE SURGEON GENERAL...'}",
+      "expected_value": "",
+      "evidence": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "crop_ref": "",
+        "extraction_confidence": 0.7
+      },
+      "rule_findings": [],
+      "ai_suggestion": {
+        "present": false,
+        "task": null,
+        "text": null,
+        "model_disposition": null
+      },
+      "field_confidence": {
+        "band": "medium",
+        "numeric": 0.7
+      }
+    },
+    {
+      "field_name": "name_address",
+      "extracted_value": "{'name': 'ACME Bourbon', 'city': '', 'state': 'Kentucky'}",
+      "expected_value": "",
+      "evidence": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "crop_ref": "",
+        "extraction_confidence": 0.7
+      },
+      "rule_findings": [],
+      "ai_suggestion": {
+        "present": false,
+        "task": null,
+        "text": null,
+        "model_disposition": null
+      },
+      "field_confidence": {
+        "band": "medium",
+        "numeric": 0.7
+      }
+    },
+    {
+      "field_name": "country_of_origin",
+      "extracted_value": "{'country': 'United States'}",
+      "expected_value": "",
+      "evidence": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "crop_ref": "",
+        "extraction_confidence": 0.7
+      },
+      "rule_findings": [],
+      "ai_suggestion": {
+        "present": false,
+        "task": null,
+        "text": null,
+        "model_disposition": null
+      },
+      "field_confidence": {
+        "band": "medium",
+        "numeric": 0.7
+      }
+    }
+  ],
+  "audit_trail": {
+    "evaluation_id": "672038e9-e035-43fe-9be9-28d0987d7213",
+    "rule_set_version": "unknown",
+    "model_version": null,
+    "prompt_version": null,
+    "input_hash": "09910fd08f030bec97321f3494d15a4f247edc34f659d53b27cc955d8550ebec",
+    "output_hash": "d3fcea54109439677bdf4da47d4570020c667ee2e199d972676e3262feb2d99c",
+    "started_at": "2026-05-04T22:29:17.757162Z",
+    "completed_at": "2026-05-04T22:29:23.638521Z",
+    "per_rule_trace": [
+      {
+        "rule_id": "spirits.alcohol.tolerance_band",
+        "disposition": "fail",
+        "evidence_ref": "vr/spirits.alcohol.tolerance_band"
+      },
+      {
+        "rule_id": "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/spirits.alcohol.tolerance_band"
+      },
+      {
+        "rule_id": "spirits.class_type.matches_soi",
+        "disposition": "fail",
+        "evidence_ref": "vr/spirits.class_type.matches_soi"
+      },
+      {
+        "rule_id": "CLASS_TYPE.SOI.NO_MATCH",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/spirits.class_type.matches_soi"
+      },
+      {
+        "rule_id": "spirits.class_type.present",
+        "disposition": "fail",
+        "evidence_ref": "vr/spirits.class_type.present"
+      },
+      {
+        "rule_id": "CLASS_TYPE.PRESENCE.MISSING",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/spirits.class_type.present"
+      },
+      {
+        "rule_id": "spirits.net_contents.present",
+        "disposition": "pass",
+        "evidence_ref": "vr/spirits.net_contents.present"
+      }
+    ],
+    "overrides": []
+  },
+  "metrics": {
+    "total_duration_ms": 3842,
+    "per_rule_durations_ms": [
+      {
+        "rule_id": "spirits.alcohol.tolerance_band",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "spirits.class_type.matches_soi",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "CLASS_TYPE.SOI.NO_MATCH",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "spirits.class_type.present",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "CLASS_TYPE.PRESENCE.MISSING",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "spirits.net_contents.present",
+        "duration_ms": 0
+      }
+    ],
+    "vision_duration_ms": 3839,
+    "orchestrator_duration_ms": 0
+  }
+}

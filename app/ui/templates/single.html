@@ -2,6 +2,13 @@
 {% block title %}Review label — TTB Label Verification{% endblock %}
 {% block bundle_name_script %}single{% endblock %}
 {% block content %}
+  {% if fixture_slug %}
+  <nav class="fixture-picker" aria-label="Demo fixture navigation">
+    <a href="/?fixture={{ prev_fixture }}" rel="prev">← Prev (FIX-{{ prev_fixture }})</a>
+    <span>Fixture FIX-{{ fixture_slug }}</span>
+    <a href="/?fixture={{ next_fixture }}" rel="next">Next (FIX-{{ next_fixture }}) →</a>
+  </nav>
+  {% endif %}
   <div id="root" data-mode="single">
     <p>Loading review surface…</p>
   </div>
