@@ -106,11 +106,22 @@ class OpenAIStrictOrchestrator(Orchestrator):
             result = schema_cls.model_validate(content)
             return TaskSlice(task=task_name, payload=result.model_dump())  # type: ignore[arg-type]
         except ValidationError:
+            # Retry attempt — must produce its own CallRecord regardless of outcome
+            # (per L2 Conventions: "Both attempts produce CallRecord entries"). On
+            # retry-attempt HTTPError, _post_one never reaches its internal
+            # _record() call, so we write the failure record explicitly here.
+            t0_retry = time.monotonic()
             try:
                 content = await self._post_one(task_name, body)
+            except httpx.HTTPError as e:
+                elapsed_ms = int((time.monotonic() - t0_retry) * 1000)
+                self._record(task_name, body, {"error": "ENGINE.MODEL.UNAVAILABLE", "exception": str(e)}, latency_ms=elapsed_ms)
+                return TaskSlice(task=task_name, qualifier="LLM_OUTPUT_INVALID")  # type: ignore[arg-type]
+            try:
                 result = schema_cls.model_validate(content)
                 return TaskSlice(task=task_name, payload=result.model_dump())  # type: ignore[arg-type]
-            except (ValidationError, httpx.HTTPError):
+            except ValidationError:
+                # _post_one already wrote a success-shaped record carrying the bad payload.
                 return TaskSlice(task=task_name, qualifier="LLM_OUTPUT_INVALID")  # type: ignore[arg-type]
 
     def _build_body(self, task_name: str, schema_cls: type) -> dict[str, Any]:

@@ -111,11 +111,19 @@ class AnthropicStrictOrchestrator(Orchestrator):
             result = schema_cls.model_validate(content)
             return TaskSlice(task=task_name, payload=result.model_dump())  # type: ignore[arg-type]
         except (ValidationError, ValueError):
+            # Retry attempt — write its own CallRecord on HTTPError so the
+            # failure is visible (parity with OpenAIStrictOrchestrator).
+            t0_retry = time.monotonic()
             try:
                 content = await self._post_one(task_name, body)
+            except httpx.HTTPError as e:
+                elapsed_ms = int((time.monotonic() - t0_retry) * 1000)
+                self._record(task_name, body, {"error": "ENGINE.MODEL.UNAVAILABLE", "exception": str(e)}, latency_ms=elapsed_ms)
+                return TaskSlice(task=task_name, qualifier="LLM_OUTPUT_INVALID")  # type: ignore[arg-type]
+            try:
                 result = schema_cls.model_validate(content)
                 return TaskSlice(task=task_name, payload=result.model_dump())  # type: ignore[arg-type]
-            except (ValidationError, ValueError, httpx.HTTPError):
+            except (ValidationError, ValueError):
                 return TaskSlice(task=task_name, qualifier="LLM_OUTPUT_INVALID")  # type: ignore[arg-type]
 
     def _build_body(self, task_name: str, schema_cls: type) -> dict[str, Any]:
