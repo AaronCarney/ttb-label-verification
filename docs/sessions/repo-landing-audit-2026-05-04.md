@@ -40,3 +40,30 @@ What a cold reviewer sees when they hit `github.com/AaronCarney/ttb-label-verifi
 - README renders well-structured headings, code blocks, profile setup ✓
 - `docs/` directory listing is browsable and has clear hierarchy ✓
 - No secrets in tree (spot-checked `.env.example`, no leaked keys) ✓
+
+## Priority pass (post project-instructions review)
+
+Re-tiered against the project-instructions filter: D-001 (Sarah's team grades
+the application, not branding), D-DEPLOY-001 ("cost > benefit for a one-shot
+demo" applied to repo cosmetics), and the `Don't push without explicit permission`
+constraint.
+
+### T1 — Reviewer-blocking; must land before submission
+
+- **#1 dead `ttb.aaroncarney.me` URL on `main`.** Fixed locally by `b307307`. Action required: merge `docs/post-e8-decisions` → `main` + push. **Gated on user permission.**
+
+### T2 — Cheap, high-signal; recommend now
+
+- **#3 empty `homepage` metadata.** Single `gh repo edit AaronCarney/ttb-label-verification --homepage https://context31415-ttb-label.hf.space`. Adds the "🔗 site" link in GitHub's right-rail — one-click reviewer path to the demo. **Remote state; gated on user permission.**
+
+### T3 — Follow-up (track, not now)
+
+- **#2 CI workflow.** Real engineering signal but adding before E6/E7/E8 lands risks a red X mid-flight. Defer until post-E8 with `uv run pytest -v` verified green on `main`.
+- **#4 LICENSE.** Candidate IP-intent question; genuinely ambiguous — not auto-answerable.
+- **#9 disable empty Wiki.** One-click cosmetic; bundle into post-E8 polish.
+- **#10 `v0.1` tag at submission.** Optional convenience; tag at submission commit if/when the candidate cuts the deliverable.
+- **#7 `feat/e7-ui` publicly visible.** Defensible (shows real development); no action unless the candidate wants a tidier branch list at submission.
+
+### T4 — Skip (low reviewer signal)
+
+- **#5 generic repo description, #6 empty topics, #8 no PR history.** Take-home doesn't benefit. Explicitly not pursuing.
