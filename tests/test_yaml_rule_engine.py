@@ -27,7 +27,7 @@ from app.rules.loader import YamlRuleLoader  # noqa: E402
 from app.rules.yaml_engine import YamlRuleEngine  # noqa: E402
 from app.schemas.expected import BeverageClass  # noqa: E402
 from app.schemas.rejection import Outcome, ValidationResult  # noqa: E402
-from tests.rules.fixtures import make_context, make_expected, make_obs  # noqa: E402
+from tests.rules.fixtures import make_context, make_expected, make_obs, make_rule  # noqa: E402
 
 
 @pytest.fixture(scope="module")
@@ -97,3 +97,32 @@ async def test_yaml_engine_records_per_rule_timing(ruleset) -> None:
         assert r.engine_meta is not None
         assert r.engine_meta.started_at_ms > 0, f"started_at_ms not set: {r.rule_id}"
         assert r.engine_meta.elapsed_ms >= 0, f"elapsed_ms negative: {r.rule_id}"
+
+
+@pytest.mark.asyncio
+async def test_yaml_engine_unregistered_validator_emits_not_found() -> None:
+    """FR-907 taxonomy: validator-name-not-in-registry is a CONFIGURATION error
+    (loader cross-check 6 normally rejects at startup), distinct from a
+    validator that exists and crashes at runtime (ENGINE.VALIDATOR.EXCEPTION).
+
+    Constructs a RuleSet manually with a never-registered validator name to
+    bypass the loader and exercise the defensive engine branch directly.
+    """
+    from app.schemas.rules import RuleSet
+    rule = make_rule(
+        rule_id="x.unregistered",
+        cfr_citation="27 CFR §0.0",
+        validator="__never_registered__",
+        reason_code="WARNING.PRESENCE.MISSING",
+    )
+    rs = RuleSet(
+        version="0.1.0", effective_date="2026-01-01",
+        rules=(rule,), reason_codes={}, assets={}, decision_tables={},
+    )
+    engine = YamlRuleEngine(rs)
+    obs = [make_obs(field_id="warning_block", value="x", beverage_class=BeverageClass.SPIRITS)]
+    exp = [make_expected(field_id="warning_block")]
+    results = await engine.evaluate(obs, exp, make_context())
+    assert results
+    assert results[0].outcome is Outcome.ERROR
+    assert results[0].reason_code == "ENGINE.VALIDATOR.NOT_FOUND"

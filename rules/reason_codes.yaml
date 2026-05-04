@@ -151,6 +151,10 @@ codes:
     description: "An uncaught exception was raised inside a validator (FR-907)."
     cfr_anchors: []
     severity: reject
+  ENGINE.VALIDATOR.NOT_FOUND:
+    description: "Rule references a validator name not present in VALIDATOR_REGISTRY (FR-907 configuration error; loader cross-check 6 normally prevents reaching this branch at runtime)."
+    cfr_anchors: []
+    severity: reject
   ENGINE.VALIDATOR.TIMEOUT:
     description: "Per-rule timeout exceeded (FR-908)."
     cfr_anchors: []

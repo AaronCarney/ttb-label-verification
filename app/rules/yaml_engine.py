@@ -90,7 +90,7 @@ class YamlRuleEngine(RuleEngine):
             return ValidationResult(
                 rule_id=rule.rule_id, cfr_citation=rule.cfr_citation,
                 beverage_class=obs.beverage_class, outcome=Outcome.ERROR,
-                severity=Severity.REJECT, reason_code="ENGINE.VALIDATOR.EXCEPTION",
+                severity=Severity.REJECT, reason_code="ENGINE.VALIDATOR.NOT_FOUND",
                 aggregated_confidence=0.0, evidence=obs.evidence,
                 expected=exp, observed=obs, engine_meta=_meta(0),
             )
