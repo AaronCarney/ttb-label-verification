@@ -14,9 +14,14 @@ import { RuleVerdict } from "./components/RuleVerdict";
 import { Toast } from "./components/Toast";
 import { useKeyboardShortcuts } from "./hooks/useKeyboardShortcuts";
 import type { DispositionEnvelope } from "./types/envelopes";
+import type { ReasonCodeEntry } from "./components/ReasonCodePicker";
 
 // A minimal hard-coded reason-code catalog mirrors rules/reason_codes.yaml.
-// E7 ships a small subset; E8 (or a build step) can generate the full set.
+// Each entry pins the applied_disposition that E6's OverrideRequest schema
+// records when the reviewer picks this code — derived from the registry's
+// `severity` field (reject → fail, warn → needs_review). Pin disposition
+// explicitly per code; deriving from the code-name prefix produced wrong
+// audit entries because the catalog uses BIN.SUB.SPECIFIC, not FAIL./PASS.
 //
 // ORDER INVARIANT (FR-803 — 3-keystroke override path):
 // For each fixture's canonical reason code, this array's FIRST entry that
@@ -34,23 +39,19 @@ import type { DispositionEnvelope } from "./types/envelopes";
 // Reorder this array only after re-verifying T30's keyboard test still
 // passes. T20 does not assert this invariant; future readers, see also
 // the `tests/manual/a11y-smoke.md` step 7 narration.
-const _REASON_CODES = [
-  { code: "BRAND.NAME.MISMATCH", description: "Brand mismatch" },
-  { code: "BRAND.NAME.NEEDS_REVIEW", description: "Brand needs review" },
-  { code: "WARNING.STYLE.HEADING_NOT_BOLD_CAPS", description: "Heading not bold caps" },
-  { code: "WARNING.LEGIBILITY.LOW_RESOLUTION", description: "Low resolution" },
-  { code: "WARNING.LEGIBILITY.GLARE", description: "Glare" },
-  { code: "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND", description: "ABV out of band" },
-  { code: "CLASS_TYPE.SOI.NO_MATCH", description: "Class/Type SOI mismatch" },
+const _REASON_CODES: ReasonCodeEntry[] = [
+  { code: "BRAND.NAME.MISMATCH", description: "Brand mismatch", disposition: "fail" },
+  { code: "BRAND.NAME.NEEDS_REVIEW", description: "Brand needs review", disposition: "needs_review" },
+  { code: "WARNING.STYLE.HEADING_NOT_BOLD_CAPS", description: "Heading not bold caps", disposition: "fail" },
+  { code: "WARNING.LEGIBILITY.LOW_RESOLUTION", description: "Low resolution", disposition: "needs_review" },
+  { code: "WARNING.LEGIBILITY.GLARE", description: "Glare", disposition: "needs_review" },
+  { code: "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND", description: "ABV out of band", disposition: "fail" },
+  { code: "CLASS_TYPE.SOI.NO_MATCH", description: "Class/Type SOI mismatch", disposition: "fail" },
 ];
 
-// Per D-PE6-01: applied_disposition is required by E6's OverrideRequest schema
-// but the drawer only captures reason_code + justification. Derive disposition
-// from the reason_code prefix.
-function _disposition_for(code: string): "pass" | "fail" | "needs_review" {
-  if (code.startsWith("FAIL.")) return "fail";
-  if (code.startsWith("PASS.")) return "pass";
-  return "needs_review";
+function _disposition_for(code: string): "fail" | "needs_review" {
+  const entry = _REASON_CODES.find((e) => e.code === code);
+  return entry?.disposition ?? "needs_review";
 }
 
 function SingleApp({ envelope }: { envelope: DispositionEnvelope | null }): React.JSX.Element {

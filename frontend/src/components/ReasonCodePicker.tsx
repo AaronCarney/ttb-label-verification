@@ -4,6 +4,11 @@ import { cn } from "../lib/cn";
 export interface ReasonCodeEntry {
   code: string;
   description: string;
+  /** Applied disposition when this code is chosen as an override target.
+   *  Sourced from rules/reason_codes.yaml severity (reject → fail,
+   *  warn → needs_review). Optional here so callers that only use the
+   *  picker for display don't have to populate it. */
+  disposition?: "fail" | "needs_review";
 }
 
 export interface ReasonCodePickerProps {
