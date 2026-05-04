@@ -46,10 +46,12 @@ def test_batch_page_shell(client: TestClient) -> None:
 
 
 def test_static_island_mount(client: TestClient) -> None:
-    """The StaticFiles mount serves files under app/ui/static/. The .gitkeep
-    placeholder proves the mount works before the real bundle lands (T34)."""
-    response = client.get("/static/island/.gitkeep")
+    """The StaticFiles mount serves files under app/ui/static/. After T34 lands
+    the built bundle, /static/island/style.css is the canonical mount sentinel
+    (Vite's emptyOutDir wipes any placeholder file on each build)."""
+    response = client.get("/static/island/style.css")
     assert response.status_code == 200
+    assert response.headers["content-type"].startswith("text/css")
 
 
 def test_uswds_skip_link_present(client: TestClient) -> None:
