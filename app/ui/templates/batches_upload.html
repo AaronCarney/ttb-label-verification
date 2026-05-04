@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Bulk upload — TTB Label Verification{% endblock %}
+{% block bundle_name_script %}single{% endblock %}
+{% block content %}
+  <section class="bulk-upload" aria-labelledby="bulk-heading">
+    <h2 id="bulk-heading">Bulk label upload</h2>
+    <p>Pick multiple PNG or JPEG files. Each becomes one label in a single
+    batch; the streaming results page opens once the worker spawns.</p>
+    <form action="/batches/upload" method="post" enctype="multipart/form-data" class="upload-form">
+      <label for="bulk-labels">Label images (multi-select)</label>
+      <input id="bulk-labels" type="file" name="labels" accept="image/png,image/jpeg" multiple required />
+      <button type="submit">Submit batch</button>
+    </form>
+    {% if upload_error %}
+    <div role="alert" class="upload-error">{{ upload_error }}</div>
+    {% endif %}
+    <p><a href="/">← Back to single-label review</a></p>
+  </section>
+{% endblock %}

@@ -7,11 +7,13 @@ Engine logic lives in the JSON API routes (``app.api.labels``,
 """
 from __future__ import annotations
 
+import asyncio
 import uuid
+from datetime import datetime, timezone
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, File, Request, UploadFile
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from app.config import Settings
@@ -206,3 +208,126 @@ async def batch_page_shell(
         name="batch.html",
         context={"batch_id": batch_id, "dev_mode": settings.dev_mode},
     )
+
+
+@router.get("/batches", response_class=HTMLResponse)
+async def batches_upload_page(
+    request: Request,
+    settings: Settings = Depends(_get_settings),
+) -> HTMLResponse:
+    """Render the bulk-upload form. Submitting it lands at POST /batches/upload
+    which spawns a worker and redirects into the existing batch shell."""
+    return templates.TemplateResponse(
+        request=request,
+        name="batches_upload.html",
+        context={"dev_mode": settings.dev_mode},
+    )
+
+
+@router.post("/batches/upload")
+async def batches_upload_submit(
+    request: Request,
+    labels: list[UploadFile] = File(...),
+    settings: Settings = Depends(_get_settings),
+    evaluator=Depends(_get_upload_evaluator),
+):
+    """Build a real in-flight batch from N uploaded images.
+
+    The existing JSON `POST /batches` endpoint takes only refs and the worker
+    stubs out image bytes — that's fine for tests but useless for a grader who
+    wants to drop their own files. We pre-populate `BatchWorker._label_lookup`
+    here so each item carries the exact bytes the user uploaded.
+    """
+    from app.api._sse_bus import SSEBus
+    from app.batch.anomaly import AnomalyDetector
+    from app.batch.state import InFlightBatch
+    from app.batch.worker import BatchWorker
+    from app.schemas.application import Application
+    from app.schemas.batch import BatchItem, ItemState
+    from app.schemas.label import Label as LabelModel
+
+    if not labels:
+        return templates.TemplateResponse(
+            request=request,
+            name="batches_upload.html",
+            context={
+                "dev_mode": settings.dev_mode,
+                "upload_error": "Pick at least one PNG or JPEG file.",
+            },
+            status_code=400,
+        )
+
+    # Read every file up front so we can validate MIME before scheduling work.
+    raw: list[tuple[str, bytes, str]] = []
+    for upload in labels:
+        body = await upload.read()
+        mime = _detect_image_mime(body)
+        if mime is None:
+            return templates.TemplateResponse(
+                request=request,
+                name="batches_upload.html",
+                context={
+                    "dev_mode": settings.dev_mode,
+                    "upload_error": (
+                        f"Unsupported file: {upload.filename or 'upload'} — "
+                        "every upload must be PNG or JPEG."
+                    ),
+                },
+                status_code=400,
+            )
+        raw.append((upload.filename or f"label-{len(raw)}", body, mime))
+
+    batch_id = f"B-{uuid.uuid4().hex[:10]}"
+    now = datetime.now(timezone.utc)
+    items: list[BatchItem] = []
+    label_lookup: dict[str, LabelModel] = {}
+    app_lookup: dict[str, Application] = {}
+    for idx, (filename, body, mime) in enumerate(raw):
+        label_id = f"{batch_id}-{idx:03d}-{filename}"
+        application_ref = f"{batch_id}-app-{idx:03d}"
+        items.append(
+            BatchItem(
+                label_id=label_id,
+                application_ref=application_ref,
+                state=ItemState.QUEUED,
+                result=None,
+                enqueued_at=now,
+            )
+        )
+        label_lookup[label_id] = LabelModel(
+            label_id=label_id,
+            batch_id=batch_id,
+            image_bytes=body,
+            content_type=mime,
+            face_tag="front",
+            dimensions=None,
+        )
+        app_lookup[application_ref] = Application(
+            application_id=application_ref,
+            evaluation_id=label_id,
+            expected_values=(),
+        )
+
+    in_flight = InFlightBatch(
+        batch_id=batch_id,
+        agent_id="ui-bulk-upload",
+        items=tuple(items),
+        lookahead_k=max(1, settings.lookahead_k),
+    )
+    bus = SSEBus()
+    request.app.state.batches[batch_id] = in_flight
+    if not hasattr(request.app.state, "buses"):
+        request.app.state.buses = {}
+    request.app.state.buses[batch_id] = bus
+
+    worker = BatchWorker(
+        in_flight=in_flight,
+        evaluator=evaluator,
+        anomaly=AnomalyDetector(),
+        bus=bus,
+    )
+    worker._label_lookup = label_lookup
+    worker._app_lookup = app_lookup
+    asyncio.create_task(worker.run())
+
+    return RedirectResponse(url=f"/batch/{batch_id}", status_code=303)

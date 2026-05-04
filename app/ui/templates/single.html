@@ -13,6 +13,7 @@
     <label for="label-upload">Upload your own label (PNG or JPEG)</label>
     <input id="label-upload" type="file" name="label" accept="image/png,image/jpeg" required />
     <button type="submit">Evaluate</button>
+    <a href="/batches" class="bulk-link">Bulk upload (multiple labels) →</a>
   </form>
   {% if upload_error %}
   <div role="alert" class="upload-error">{{ upload_error }}</div>

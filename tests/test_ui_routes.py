@@ -203,3 +203,88 @@ def test_upload_without_file_returns_422() -> None:
     client = TestClient(app)
     response = client.post("/", files={})
     assert response.status_code == 422
+
+
+# ---------------------------------------------------------------------------
+# Bulk upload page — GET /batches + POST /batches/upload
+# ---------------------------------------------------------------------------
+
+# A tiny valid PNG used across the bulk-upload tests.
+_PNG_1x1 = bytes.fromhex(
+    "89504e470d0a1a0a0000000d49484452000000010000000108060000001f15c4"
+    "89000000017352474200aece1ce90000000d4944415478da636060606000000005"
+    "0001a5f645400000000049454e44ae426082"
+)
+
+
+def test_batches_upload_page_present(client: TestClient) -> None:
+    """A grader needs a top-level entry to bulk submission. `GET /batches`
+    should serve a multipart form whose file input accepts multiple files."""
+    response = client.get("/batches")
+    assert response.status_code == 200
+    assert 'enctype="multipart/form-data"' in response.text
+    assert "multiple" in response.text
+    assert 'name="labels"' in response.text
+
+
+def test_root_links_to_bulk_upload(client: TestClient) -> None:
+    """The single-label page surfaces a link to bulk upload so a grader who
+    hits `/` can find the batch flow without reading the README."""
+    response = client.get("/")
+    assert "/batches" in response.text
+
+
+def test_bulk_upload_redirects_to_batch_view() -> None:
+    """Submitting N files spawns a batch worker and redirects to the existing
+    `/batch/{batch_id}` shell that streams results via SSE."""
+    from app.api.ui import _get_upload_evaluator
+    from tests._fakes.evaluator import FakeEvaluator
+    from tests.conftest import _stub_disposition_envelope
+
+    app = create_app()
+    fake = FakeEvaluator(
+        [
+            (0.0, _stub_disposition_envelope(0, disposition="pass")),
+            (0.0, _stub_disposition_envelope(1, disposition="needs_review")),
+        ]
+    )
+    app.dependency_overrides[_get_upload_evaluator] = lambda: fake
+    client = TestClient(app)
+
+    response = client.post(
+        "/batches/upload",
+        files=[
+            ("labels", ("a.png", _PNG_1x1, "image/png")),
+            ("labels", ("b.png", _PNG_1x1, "image/png")),
+        ],
+        follow_redirects=False,
+    )
+    assert response.status_code == 303, response.text
+    location = response.headers["location"]
+    assert location.startswith("/batch/")
+    batch_id = location.removeprefix("/batch/")
+    assert batch_id in app.state.batches
+
+
+def test_bulk_upload_rejects_non_image() -> None:
+    """A non-PNG/JPEG in the upload set should fail loudly with 400 rather
+    than silently scheduling a batch that will explode mid-stream."""
+    app = create_app()
+    client = TestClient(app)
+    response = client.post(
+        "/batches/upload",
+        files=[
+            ("labels", ("ok.png", _PNG_1x1, "image/png")),
+            ("labels", ("oops.txt", b"not an image", "text/plain")),
+        ],
+    )
+    assert response.status_code == 400
+    assert "oops.txt" in response.text or "unsupported" in response.text.lower()
+
+
+def test_bulk_upload_requires_at_least_one_file() -> None:
+    """Submitting an empty form is a usage error, not an empty batch."""
+    app = create_app()
+    client = TestClient(app)
+    response = client.post("/batches/upload", files=[])
+    assert response.status_code in (400, 422)
