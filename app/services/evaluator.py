@@ -10,6 +10,7 @@ exception routing (P4: every downstream exception → needs_review).
 """
 from __future__ import annotations
 
+import asyncio
 import logging
 import time
 
@@ -28,6 +29,8 @@ _logger = logging.getLogger("app.services.evaluator")
 
 
 class Evaluator:
+    _DEFAULT_SLA_SECONDS = 5.0
+
     def __init__(
         self,
         *,
@@ -46,13 +49,7 @@ class Evaluator:
     async def evaluate(self, application: Application, label: Label) -> DispositionEnvelope:
         import hashlib
 
-        from app.services.audit import AuditRecorder, _canonical_json
-        from app.services.engine_meta import EvaluationTimeline
-        from app.services.envelope_builder import build_field_findings, build_success_envelope
-        from app.services.metrics_builder import MetricsBuilder
-
-        t_total = time.monotonic()
-        timeline = EvaluationTimeline(evaluation_id=application.evaluation_id)
+        from app.services.audit import _canonical_json
 
         # NFR-DET-001 cache check — key over canonicalized inputs MINUS the
         # per-call evaluation_id (so two calls with the same app + label hit).
@@ -67,6 +64,30 @@ class Evaluator:
             if cached is not None:
                 return cached.model_copy(update={"evaluation_id": application.evaluation_id})
 
+        sla = getattr(self, "_sla_seconds", self._DEFAULT_SLA_SECONDS)
+        try:
+            envelope = await asyncio.wait_for(
+                self._evaluate_inner(application, label), timeout=sla
+            )
+            # Cache-write: success branch only (NEVER on TimeoutError).
+            if self._cache is not None and cache_key is not None:
+                self._cache.put(cache_key, envelope)
+        except asyncio.TimeoutError:
+            envelope = self._timeout_envelope(application, label)
+        return envelope
+
+    async def _evaluate_inner(self, application: Application, label: Label) -> DispositionEnvelope:
+        from app.services.audit import AuditRecorder
+        from app.services.engine_meta import EvaluationTimeline
+        from app.services.envelope_builder import build_field_findings, build_success_envelope
+        from app.services.metrics_builder import MetricsBuilder
+
+        t_total = time.monotonic()
+        timeline = EvaluationTimeline(evaluation_id=application.evaluation_id)
+        # Stash for partial-state surfacing in timeout fallback.
+        self._last_timeline = timeline
+        self._last_t_total = t_total
+
         # Step 1: vision
         t0 = time.monotonic()
         observations = await self._vision.extract(label)
@@ -79,6 +100,14 @@ class Evaluator:
                 reason_code=quality.reason_code,
                 message=f"image quality insufficient: {quality.reason_code}",
                 exception_class="N/A",
+            )
+            _logger.info(
+                "engine_failure_routed",
+                extra={
+                    "reason_code": quality.reason_code,
+                    "evaluation_id": application.evaluation_id,
+                    "exception_class": "N/A",
+                },
             )
             return self._short_circuit(application, label, timeline, quality.reason_code, t_total)
 
@@ -100,6 +129,14 @@ class Evaluator:
                 timeline.record_failure(
                     reason_code="ENGINE.MODEL.UNAVAILABLE",
                     message=str(e), exception_class=type(e).__name__,
+                )
+                _logger.info(
+                    "engine_failure_routed",
+                    extra={
+                        "reason_code": "ENGINE.MODEL.UNAVAILABLE",
+                        "evaluation_id": application.evaluation_id,
+                        "exception_class": type(e).__name__,
+                    },
                 )
             finally:
                 timeline.record_orchestrator_done(int((time.monotonic() - t_orch) * 1000))
@@ -143,8 +180,6 @@ class Evaluator:
             application=application, label=label, timeline=timeline,
             disposition=disposition, fields=field_findings, audit=audit, metrics=metrics,
         )
-        if self._cache is not None and cache_key is not None:
-            self._cache.put(cache_key, envelope)
         return envelope
 
     def _short_circuit(self, application, label, timeline, reason_code: str, t_total: float):
@@ -161,4 +196,42 @@ class Evaluator:
         return build_short_circuit_envelope(
             application=application, label=label, timeline=timeline,
             reason_code=reason_code, audit=audit, metrics=metrics,
+        )
+
+    def _timeout_envelope(self, application: Application, label: Label) -> DispositionEnvelope:
+        from app.services.audit import AuditRecorder
+        from app.services.engine_meta import EvaluationTimeline
+        from app.services.envelope_builder import build_short_circuit_envelope
+        from app.services.metrics_builder import MetricsBuilder
+
+        timeline = getattr(self, "_last_timeline", None) or EvaluationTimeline(
+            evaluation_id=application.evaluation_id
+        )
+        timeline.record_failure(
+            reason_code="ENGINE.SLA.TIMEOUT",
+            message="whole-eval timeout exceeded",
+            exception_class="TimeoutError",
+        )
+        # Surface failure into per_rule_trace.
+        for failure in timeline.failures:
+            timeline.record_rule_done(rule_id=failure.reason_code, duration_ms=0,
+                                      disposition="needs_review",
+                                      evidence_ref=f"engine_failure/{failure.exception_class}")
+        timeline.finish(total_duration_ms=timeline.total_duration_ms or 0)
+        _logger.info(
+            "engine_failure_routed",
+            extra={
+                "reason_code": "ENGINE.SLA.TIMEOUT",
+                "evaluation_id": application.evaluation_id,
+                "exception_class": "TimeoutError",
+            },
+        )
+        envelope_for_hash = {"evaluation_id": application.evaluation_id, "disposition": "needs_review",
+                             "reason_code": "ENGINE.SLA.TIMEOUT"}
+        audit = AuditRecorder().assemble(timeline=timeline, application=application, label=label,
+                                         envelope_for_hash=envelope_for_hash)
+        metrics = MetricsBuilder().build(timeline)
+        return build_short_circuit_envelope(
+            application=application, label=label, timeline=timeline,
+            reason_code="ENGINE.SLA.TIMEOUT", audit=audit, metrics=metrics,
         )
