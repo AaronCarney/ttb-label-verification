@@ -35,9 +35,13 @@ function BatchApp({ batchId }: { batchId: string }): React.JSX.Element {
 // Exported so tests can call it explicitly per-test (Vitest caches modules
 // — see corresponding NOTE in batch.test.tsx). Production uses the
 // auto-mount block below.
+//
+// Idempotent: a second call against the same #root no-ops, preventing the
+// React-DOM "createRoot on a container that has already been passed" warning.
 export function mount(): void {
   const root = document.getElementById("root");
   if (!root) return;
+  if (root.dataset.mounted === "true") return;
   const batchId = root.getAttribute("data-batch-id") ?? "";
   createRoot(root).render(
     <React.StrictMode>
@@ -47,7 +51,8 @@ export function mount(): void {
   root.setAttribute("data-mounted", "true");
 }
 
-if (typeof document !== "undefined") {
+// Auto-mount in browsers; Vitest sets MODE='test' and tests call mount() per-it.
+if (import.meta.env.MODE !== "test" && typeof document !== "undefined") {
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", mount);
   } else {

@@ -142,9 +142,15 @@ function _readEnvelope(): DispositionEnvelope | null {
 // Exported so the unit test can call it explicitly per-test (Vitest caches
 // modules — relying on the auto-mount side effect would render only on the
 // first `it` block). Production code path uses the auto-mount below.
+//
+// Idempotent: a second call against the same #root no-ops, preventing the
+// React-DOM "createRoot on a container that has already been passed" warning
+// when both the auto-mount block and a test's explicit mount() hit the same
+// node within one module-load.
 export function mount(): void {
   const root = document.getElementById("root");
   if (!root) return;
+  if (root.dataset.mounted === "true") return;
   const reactRoot = createRoot(root);
   const render = (envelope: DispositionEnvelope | null): void => {
     reactRoot.render(
@@ -166,8 +172,16 @@ export function mount(): void {
 // DOMContentLoaded listener, future SSE/router-driven hydration). Watches the
 // document for a <script id="envelope"> addition and re-renders. Self-cleans
 // after 5s to avoid leaking observers in production.
+//
+// Disconnects any prior active observer first — defensive against double-mount
+// in development (HMR) or test re-renders.
+let _activeEnvelopeObserver: MutationObserver | null = null;
 function _waitForEnvelope(onArrival: (envelope: DispositionEnvelope) => void): void {
   if (typeof MutationObserver === "undefined") return;
+  if (_activeEnvelopeObserver) {
+    _activeEnvelopeObserver.disconnect();
+    _activeEnvelopeObserver = null;
+  }
   let settled = false;
   const observer = new MutationObserver(() => {
     if (settled) return;
@@ -175,19 +189,23 @@ function _waitForEnvelope(onArrival: (envelope: DispositionEnvelope) => void): v
     if (envelope !== null) {
       settled = true;
       observer.disconnect();
+      if (_activeEnvelopeObserver === observer) _activeEnvelopeObserver = null;
       onArrival(envelope);
     }
   });
+  _activeEnvelopeObserver = observer;
   observer.observe(document.documentElement, { childList: true, subtree: true });
   setTimeout(() => {
     if (!settled) {
       settled = true;
       observer.disconnect();
+      if (_activeEnvelopeObserver === observer) _activeEnvelopeObserver = null;
     }
   }, 5000);
 }
 
-if (typeof document !== "undefined") {
+// Auto-mount in browsers; Vitest sets MODE='test' and tests call mount() per-it.
+if (import.meta.env.MODE !== "test" && typeof document !== "undefined") {
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", mount);
   } else {
