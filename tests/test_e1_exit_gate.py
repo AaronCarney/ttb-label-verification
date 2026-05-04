@@ -128,30 +128,30 @@ def test_ac7_healthz_emits_one_json_log_line(capsys) -> None:
 
 
 def test_ac8_di_providers_raise_not_implemented_on_seam_invocation() -> None:
-    """AC #8: providers raise NotImplementedError on extract()/refine()."""
+    """AC #8 (E1 → updated for E3 D-015): vision provider is now real (E3); only
+    orchestrator still raises the E4 placeholder marker. Vision provider must
+    return a real ``VisionExtractor`` selected per VISION_MODE.
+    """
     import asyncio
 
     from app.config import Settings
     from app.deps import build_orchestrator, build_vision_extractor
+    from app.vision.base import VisionExtractor
 
     s = Settings()
     extractor = build_vision_extractor(s)
     orch = build_orchestrator(s)
 
-    async def _run() -> tuple[bool, bool]:
-        e3, e4 = False, False
-        try:
-            await extractor.extract(label=None)  # type: ignore[arg-type]
-        except NotImplementedError as exc:
-            e3 = "seam not wired in E1" in str(exc) and "E3" in str(exc)
+    assert isinstance(extractor, VisionExtractor) or hasattr(extractor, "extract")
+
+    async def _run() -> bool:
         try:
             await orch.refine(payload=None)  # type: ignore[arg-type]
         except NotImplementedError as exc:
-            e4 = "seam not wired in E1" in str(exc) and "E4" in str(exc)
-        return e3, e4
+            return "seam not wired in E1" in str(exc) and "E4" in str(exc)
+        return False
 
-    e3, e4 = asyncio.run(_run())
-    assert e3 and e4
+    assert asyncio.run(_run())
 
 
 def test_ac9_rule_set_canonically_declared_in_app_schemas_rules() -> None:

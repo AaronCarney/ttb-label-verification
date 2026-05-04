@@ -38,14 +38,16 @@ def test_vision_extractor_provider_returns_object_when_called() -> None:
     assert extractor is not None
 
 
-@pytest.mark.asyncio
-async def test_vision_extractor_extract_raises_not_implemented_e3() -> None:
+def test_vision_extractor_provider_dispatches_on_mode() -> None:
+    """E3 D-015: build_vision_extractor returns a real extractor selected by mode."""
     from app.deps import build_vision_extractor
+    from app.vision.cloud import CloudVisionExtractor
+    from app.vision.local import LocalVisionExtractor
 
-    s = _settings_with(OPENAI_API_KEY="sk", VISION_MODE="cloud")
-    extractor = build_vision_extractor(s)
-    with pytest.raises(NotImplementedError, match=r"seam not wired in E1 \(E3\)"):
-        await extractor.extract(label=None)  # type: ignore[arg-type]
+    s_cloud = _settings_with(OPENAI_API_KEY="sk", VISION_MODE="cloud")
+    s_local = _settings_with(OPENAI_API_KEY="sk", VISION_MODE="local")
+    assert isinstance(build_vision_extractor(s_cloud), CloudVisionExtractor)
+    assert isinstance(build_vision_extractor(s_local), LocalVisionExtractor)
 
 
 @pytest.mark.asyncio
