@@ -97,6 +97,7 @@ async def test_refine_fr304_fallback_on_5xx():
     assert len(ring) == 3
 
 
+# Cycle C: strict-retry on malformed structured output
 @pytest.mark.asyncio
 async def test_refine_retries_once_on_malformed():
     settings = Settings()
