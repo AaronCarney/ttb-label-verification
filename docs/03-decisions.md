@@ -7,7 +7,7 @@ This file is the master ADR index. Each entry is one line: identifier, date,
 title, and a pointer to the location of the full ADR body. Detailed bodies live
 in:
 
-- [`decisions-extended.md`](decisions-extended.md) — D-001..D-009, D-021..D-023, D-DEPLOY-001..004
+- [`decisions-extended.md`](decisions-extended.md) — D-001..D-009, D-021..D-024, D-DEPLOY-001..004
 - [`research/S2-output.md`](research/S2-output.md) — D-010..D-012 (MVP scope, demo shape, brand-match policy)
 - [`research/S3-output.md`](research/S3-output.md) — D-013..D-016 (stack choice, rule format, deployment mode, local model serving)
 - [`ARCHITECTURE.md` §15](ARCHITECTURE.md#15-architecture-decision-records-d-017-through-d-020) — D-017..D-020 (confidence aggregation, audit/telemetry split, eval-route gating, demo-cache regen)
@@ -43,6 +43,7 @@ ADR-style: append-only. Supersede with new entries; don't edit history.
 | D-021 | 2026-05-03 | Trim local vision and orchestrator scope to prototype tier | Accepted | [extended](decisions-extended.md#d-021--trim-local-vision-and-orchestrator-scope-to-prototype-tier) |
 | D-022 | 2026-05-04 | Front the HF Spaces public URL with `ttb.aaroncarney.me` | **Superseded by D-DEPLOY-001** | [extended](decisions-extended.md#d-022--front-the-hf-spaces-public-url-with-ttbaaroncarneyme) |
 | D-023 | 2026-05-03 | Eval corpus right-sized to prototype tier (closes OQ-PRD-5) | Accepted | [extended](decisions-extended.md#d-023--eval-corpus-right-sized-to-prototype-tier-closes-oq-prd-5) |
+| D-024 | 2026-05-04 | Anthropic backend never run live; skeleton stays as substitutability proof only | Accepted | [extended](decisions-extended.md#d-024--anthropic-backend-never-run-live-skeleton-stays-as-substitutability-proof-only) |
 | D-DEPLOY-001 | 2026-05-04 | Default `*.hf.space` URL; no custom domain (supersedes D-022) | Accepted | [extended](decisions-extended.md#d-deploy-001--default-hfspace-url-no-custom-domain) |
 | D-DEPLOY-002 | 2026-05-04 | HF account: `Context31415` (not `aaroncarney`) | Accepted | [extended](decisions-extended.md#d-deploy-002--hf-account-context31415-not-aaroncarney) |
 | D-DEPLOY-003 | 2026-05-04 | `VISION_MODE=cloud` on the deployed Space | Accepted | [extended](decisions-extended.md#d-deploy-003--vision_modecloud-on-the-deployed-space) |

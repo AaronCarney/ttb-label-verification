@@ -257,9 +257,9 @@ The components below are listed in the order an evaluation flows through them. E
 
 **Substitutability.** **Yes (D-004 swap point #2).** The abstract `Orchestrator` (an ABC with one async method `refine`) lives at `app/orchestrator/base.py`. Two implementations ship in MVP per D-021 prototype-tier scope reduction:
 - `OpenAIStrictOrchestrator` (`openai_strict.py`) — **default in MVP; the only implementation validated against the demo fixtures and eval corpus.** OpenAI Structured Outputs `strict:true`, `temperature=0`, fixed seed, snapshot-pinned model.
-- `AnthropicStrictOrchestrator` (`anthropic_strict.py`) — **swap-path skeleton.** Declares the seam; exercises Anthropic `tool_use` strict mode in unit tests; **not** validated against the demo fixtures or the eval corpus in MVP.
+- `AnthropicStrictOrchestrator` (`anthropic_strict.py`) — **swap-path skeleton.** Declares the seam; exercises Anthropic `tool_use` strict mode in **respx-mocked unit tests only** per D-024; **never** invoked with live credentials in any environment (local, CI, HF Spaces) and not validated against the demo fixtures or the eval corpus in MVP.
 
-The Anthropic skeleton exists to demonstrate the seam holds — it proves provider-agnostic substitutability without claiming production-readiness for a backend the prototype does not exercise. A `VllmXgrammarOrchestrator` was scoped out per D-021 (production-trajectory federal on-prem); the existing ABC permits future re-introduction without rework.
+The Anthropic skeleton exists to demonstrate the seam holds — it proves provider-agnostic substitutability without claiming production-readiness for a backend the prototype does not exercise. Per D-024, the project has no Anthropic API budget; the skeleton's value is structural (one module + mocked tests, satisfying D-004 / NFR-PORT-001/002) and any future plan that proposes live-Anthropic execution must first supersede D-024 with a new ADR. A `VllmXgrammarOrchestrator` was scoped out per D-021 (production-trajectory federal on-prem); the existing ABC permits future re-introduction without rework.
 
 **Failure mode.** When the LLM endpoint is unreachable, returns `needs_review` with `ENGINE.MODEL.UNAVAILABLE` (FR-304 / FR-912). When the structured response fails schema validation after one retry, returns `needs_review` with a `LLM_OUTPUT_INVALID` qualifier on the task-specific reason code (T5 Task 1 / 2 / 3 malformed-output behavior). Manual review (FR-802) is preserved against the Rule Engine output alone — the Application Service's assembly does not require a successful orchestrator call.
 
@@ -951,9 +951,9 @@ The full env-var inventory (consolidated from §9.2, §13.4, ADR D-019, D-020):
 | Env var | Default | Type | Where read | Purpose |
 |---|---|---|---|---|
 | `VISION_MODE` | `auto` | enum `{local,cloud,auto}` | `app/deps.py` | Selects `VisionExtractor` (D-015). `auto` probes for CUDA. |
-| `ORCHESTRATOR_BACKEND` | `openai` | enum `{openai,anthropic}` | `app/deps.py` | Selects `Orchestrator` implementation (per D-021). |
+| `ORCHESTRATOR_BACKEND` | `openai` | enum `{openai,anthropic}` | `app/deps.py` | Selects `Orchestrator` implementation (per D-021). **Only `openai` is ever run live per D-024.** |
 | `OPENAI_API_KEY` | (none — required in cloud mode / when `ORCHESTRATOR_BACKEND=openai`) | secret | `app/config.py` | Authenticates outbound LLM calls. |
-| `ANTHROPIC_API_KEY` | (none — required when `ORCHESTRATOR_BACKEND=anthropic`) | secret | `app/config.py` | Authenticates Anthropic SDK. |
+| `ANTHROPIC_API_KEY` | (none — **never set in this project per D-024**) | secret | `app/config.py` | Field exists for the substitutability seam; the `AnthropicStrictOrchestrator` is mocked-only and never invoked with live credentials. |
 | `LLM_MODEL_SNAPSHOT` | `gpt-4o-2024-08-06` (example) | string | `configs/orchestrator.toml` override | Pinned snapshot per T5 Recommendation #6. Drift triggers cache regeneration (ADR D-020). |
 | `PROMPT_VERSION` | `v1` | string | `configs/orchestrator.toml` override | Versioned prompt; drift triggers cache regeneration. |
 | `LOOKAHEAD_K` | `3` | int | `app/config.py` | Batch lookahead window (per `PRD-deferred-content.md` §1.4). |

@@ -410,3 +410,31 @@ Cloudflare performs no TLS termination, no caching, no WAF — it is a dumb DNS 
 - PRD §9 reflects the new numbers; the eval/datasheet.md captures the labeling protocol.
 - E8 plan T-1, T-2, T-3 acceptance criteria align with the right-sized targets.
 - Pilot follow-up: re-do Krippendorff α once corpus reaches ≥150 labels with two labelers.
+
+---
+
+## D-024 — Anthropic backend never run live; skeleton stays as substitutability proof only
+
+**Status:** Accepted
+**Date:** 2026-05-04
+
+**Context.** D-021 trimmed orchestrator scope to two implementations: `OpenAIStrictOrchestrator` (validated default) and `AnthropicStrictOrchestrator` (swap-path skeleton). The Anthropic skeleton was retained to demonstrate the `Orchestrator` ABC is provider-agnostic — evidence the seam holds without shipping a second validated backend. ARCH §4.2.6, §11.5, §12.2, §14.1, and `.env.example` all carry copy that implies `ORCHESTRATOR_BACKEND=anthropic` is a real runtime option (just unvalidated). It is not.
+
+**Decision.** This project will never run the Anthropic backend with live credentials. The candidate has no Anthropic API budget and will not acquire one for this take-home. `ORCHESTRATOR_BACKEND=openai` is the only valid runtime setting; `ANTHROPIC_API_KEY` is never set in any environment (local `.env`, HF Space secrets, CI). The `AnthropicStrictOrchestrator` module stays in the repo as **structural** substitutability evidence — its existence + its respx-mocked unit tests (E4) prove the seam is provider-agnostic, with no claim of live operability.
+
+**Rationale.**
+- **Honest budget signaling.** Documenting "no Anthropic credits, ever" prevents future planning waves from proposing live-Anthropic verification tasks, eval-corpus runs against Anthropic, dual-backend latency comparisons, or A/B demo paths — none of which can be funded.
+- **Seam claim is unaffected.** D-004 / NFR-PORT-001 / NFR-PORT-002 only require that the seam is provably substitutable. Two distinct implementations against the same ABC, plus mocked unit tests for both, satisfy that. Live execution against Anthropic is not part of the evidence chain.
+- **Reduces review surface.** Plan reviewers, code reviewers, and demo runbooks should not waste cycles considering the Anthropic path; making "never live" explicit in the decisions log is the cheapest way to retire that consideration permanently.
+
+**Alternatives considered.**
+- **Delete the Anthropic skeleton entirely** → Rejected. The skeleton is the cheapest evidence the orchestrator ABC is not OpenAI-coupled; deleting it weakens the substitutability claim that motivated D-021's retention of two impls. Cost-of-keeping is near zero (one module + mocked tests, no runtime dependency).
+- **Add a different second backend (e.g., a local llama.cpp orchestrator)** → Rejected. Out of scope for prototype tier; the local-vision path already demonstrates federal on-prem trajectory per ARCH §9.4.
+- **Leave the docs ambiguous** → Rejected. Ambiguity here is what causes future planning sessions to repeatedly re-evaluate Anthropic; an explicit "never" is the durable fix.
+
+**Consequences.**
+- `.env.example` and ARCH §12.2 env-var inventory annotate `ANTHROPIC_API_KEY` as "never set in this project per D-024"; the row stays in the table because the env var is a real Pydantic Settings field, but the prose changes from "required when …" to "never set; D-024".
+- ARCH §4.2.6 + §11.5 keep their existing language about the swap-path skeleton; D-024 adds one sentence reinforcing "skeleton tests stay mocked; no live calls in any environment."
+- E5 audit log fields that record `provider: "openai" | "anthropic" | "local.paddleocr"` keep the `anthropic` enum value — it is reachable in unit tests via the mocked skeleton and stays in the wire schema for forward compatibility.
+- E8 demo runbook, eval harness, and deployment secrets are OpenAI-only; no plan task may require Anthropic credits as a precondition.
+- Future plans that propose any Anthropic-live work must first supersede this decision with a new ADR; planning sessions that surface such proposals should reject them on sight.
