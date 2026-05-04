@@ -29,7 +29,14 @@ htmlcov/
 frontend/node_modules/
 frontend/dist/
 frontend/.vite/
-frontend/src/**/*.tsbuildinfo
+frontend/**/*.tsbuildinfo
+# tsc emissions from *.config.ts (sources are committed; postcss.config.js is hand-authored)
+frontend/tailwind.config.js
+frontend/tailwind.config.d.ts
+frontend/vite.config.js
+frontend/vite.config.d.ts
+frontend/vitest.config.js
+frontend/vitest.config.d.ts
 
 # Editor / OS
 .vscode/
