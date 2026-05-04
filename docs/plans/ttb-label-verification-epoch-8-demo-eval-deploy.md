@@ -81,15 +81,15 @@ Per ARCH §9 / D-015:
 - `Dockerfile.gpu` — CUDA 12.6 base + `paddlepaddle-gpu` + `transformers` (per ARCH §19.3); `uv sync --extra gpu`. NVIDIA Container Toolkit assumed at host.
 - `docker-compose.yml` — `demo` service (CPU image).
 - `docker-compose.gpu.yml` — `demo-gpu` service with `deploy.resources.reservations.devices`.
-- HF Spaces config — `README.md` frontmatter (HF Spaces YAML metadata): `sdk: docker`, `app_port: 8000`, `hardware: cpu-basic`, `pinned: false`. Space secrets configured via the HF UI: `OPENAI_API_KEY`, `LLM_MODEL_SNAPSHOT`, `ORCHESTRATOR_BACKEND`, `LOOKAHEAD_K`, `DEV_MODE` (unset for the public URL).
-- Custom domain — Cloudflare DNS adds `CNAME ttb → aaroncarney-ttb-label.hf.space` with proxy status **DNS only** (grey cloud); HF Space → Settings → "Custom Domain" registers `ttb.aaroncarney.me`; HF auto-provisions a Let's Encrypt cert. Reviewer-canonical URL is `https://ttb.aaroncarney.me`; the HF subdomain remains a fallback. One-time manual setup; no code changes.
-- TLS provided by HF Spaces edge (NFR-SEC-001) — Cloudflare grey-cloud means Cloudflare does no TLS termination; HF cert is end-to-end.
+- HF Spaces config — `README.md` frontmatter (HF Spaces YAML metadata): `sdk: docker`, `app_port: 8000`, `hardware: cpu-basic`, `pinned: false`. Space owned by the `Context31415` HF account (D-DEPLOY-002). Space variables and secrets configured via the HF UI: `OPENAI_API_KEY` (secret); `ORCHESTRATOR_BACKEND=openai`, `LLM_MODEL_SNAPSHOT=gpt-4o-2024-08-06`, `LOOKAHEAD_K=3`, `PROMPT_VERSION=v1`, `VISION_MODE=cloud` (D-DEPLOY-003 — explicit `cloud` skips the `nvidia-smi` probe on cpu-basic); `DEV_MODE` unset for the public URL.
+- No custom domain (D-DEPLOY-001 supersedes D-022) — HF custom domains are Pro-tier-only ($9/mo). Reviewer-canonical URL is the bare HF subdomain `https://context31415-ttb-label.hf.space`. No CDN or DNS proxy in the request path.
+- TLS provided end-to-end by HF Spaces edge (NFR-SEC-001).
 
 ### 2.7 Demo runbook (`DEMO-RUNBOOK.md`)
 
 Per `PRD-deferred-content.md` §3.4 / ARCH §14.4:
 
-- **T-30 minutes** — environment check: `curl -I https://ttb.aaroncarney.me/healthz` returns 200 with a valid HF-issued cert (no `--insecure`); API credentials valid in cloud mode; `gh release list` and `git diff` clean; cache regeneration script idempotency confirmed.
+- **T-30 minutes** — environment check: `curl -I https://context31415-ttb-label.hf.space/healthz` returns 200 with a valid HF-issued cert (no `--insecure`); API credentials valid in cloud mode; `gh release list` and `git diff` clean; cache regeneration script idempotency confirmed.
 - **T-5 minutes** — pre-warm `GET /healthz` (sentinel pipeline against fixture-01); confirm 200 within 2 s.
 - **T-1 minute** — fixture-01 dry run against the deployed URL (a single browser load).
 - **T-0** — begin recording; six-stage path per PRD §10.2.

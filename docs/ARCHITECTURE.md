@@ -631,7 +631,7 @@ The stack below is settled by D-013 through D-016 (S3) and S1 (vision stack surv
 | Vision (cloud mode) | **GPT-4o-on-crop with Structured Outputs `strict:true`** | D-015 | Claude Sonnet 4.5, Gemini, Azure OpenAI | Default for the deployed URL; one-LLM-call-per-leg. |
 | Vision (local mode) | **PaddleOCR PP-OCRv5 (GPU) + GPT-4o-on-crop tiebreaker** | S1, D-016, D-021 | Florence-2-large, Qwen2.5-VL-7B-AWQ, vLLM, Ollama, llama.cpp | Florence-2 + Qwen scoped out per D-021 prototype-tier reduction; the local seam is preserved for re-introduction. ~1.5 GB resident on a 24 GB device. |
 | LLM orchestrator | **OpenAI Structured Outputs** (`temperature=0`, fixed seed, snapshot-pinned model) | D-013, T5 | Multi-step agents (ReAct, LangGraph), Anthropic-only, vLLM-only | Single-shot tool calls only (T5 §Recommendation #1); Anthropic strict mode is the documented swap-in (`AnthropicStrictOrchestrator`). |
-| Deployment (public URL) | **Hugging Face Spaces, Docker SDK, `cpu-basic` default**, fronted by `ttb.aaroncarney.me` (Cloudflare DNS-only CNAME → HF custom domain, HF-issued Let's Encrypt cert) | D-015 | Vercel, fly.io, Railway, Replit, AWS/GCP custom | fly.io GPUs deprecated; ZeroGPU is Gradio-only; Vercel/Fluid-Compute is a poor fit for the long-running asyncio batch worker + SSE state. Cached fixtures cover the demo so cpu-basic is sufficient. Optional A10G-small upgrade (~$1/hr, billed per minute) for live local-vision demos. |
+| Deployment (public URL) | **Hugging Face Spaces, Docker SDK, `cpu-basic` default**, bare HF subdomain `https://context31415-ttb-label.hf.space` (no custom domain per D-DEPLOY-001 / D-DEPLOY-002) | D-015, D-DEPLOY-001..003 | Vercel, fly.io, Railway, Replit, AWS/GCP custom; HF Pro custom domain | fly.io GPUs deprecated; ZeroGPU is Gradio-only; Vercel/Fluid-Compute is a poor fit for the long-running asyncio batch worker + SSE state. HF custom domains are Pro-tier ($9/mo) — cost > benefit for a one-shot demo. Cached fixtures cover the demo so cpu-basic is sufficient. Optional A10G-small upgrade (~$1/hr, billed per minute) for live local-vision demos. |
 | Package management | **uv** (`pyproject.toml` + `uv.lock`) | D-013 (consequence) | pip, poetry, conda | Astral's uv resolves and installs ~10–100× faster; brings `uv run task demo` under 30 s on a fresh box. |
 | Frontend tooling | **pnpm + Vite** (frontend developers only) | D-013 | npm, yarn, webpack | Built island committed; reviewers do not need Node. |
 | Logging | **Structured JSON to stdout**, OpenTelemetry GenAI semantic-convention attribute names | D-013 (Q13) | Loguru-only, OTLP collector sidecar | Future `OTEL_EXPORTER_OTLP_ENDPOINT` env var flips to real OTel without code changes. |
@@ -771,17 +771,19 @@ Optional Docker path:
 docker compose up demo
 ```
 
-### 9.2 Public URL deployment (HF Spaces, Docker SDK, custom domain)
+### 9.2 Public URL deployment (HF Spaces, Docker SDK)
 
-The deployed-URL deliverable lives on Hugging Face Spaces with the Docker SDK and the `cpu-basic` hardware tier (free) (D-015), fronted by the custom domain `ttb.aaroncarney.me` so the reviewer-facing URL matches the candidate's portfolio. The HF subdomain (`aaroncarney-ttb-label.hf.space`) remains reachable as a fallback; the custom domain is canonical.
+The deployed-URL deliverable lives on Hugging Face Spaces with the Docker SDK and the `cpu-basic` hardware tier (free) (D-015). The reviewer-facing URL is the bare HF subdomain `https://context31415-ttb-label.hf.space` (D-DEPLOY-001, D-DEPLOY-002). No custom domain registration on HF (custom domains are HF-Pro-gated at $9/mo; cost > benefit for a one-shot demo per D-DEPLOY-001). No Cloudflare or other CDN in the request path.
 
-**DNS + custom-domain setup (one-time, ~5 minutes):**
+**Setup (one-time, ~2 minutes):**
 
-1. Cloudflare DNS: add `CNAME ttb → aaroncarney-ttb-label.hf.space` (proxy status: **DNS only** / grey cloud — required for HF's Let's Encrypt cert provisioning to succeed; do not orange-cloud).
-2. HF Space → Settings → "Custom Domain" → add `ttb.aaroncarney.me`. HF provisions the Let's Encrypt cert automatically once DNS resolves.
-3. Verify `curl -I https://ttb.aaroncarney.me/healthz` returns 200 with a valid cert (no `--insecure`).
+1. Create the HF Space at `Context31415/ttb-label` (Docker SDK, `cpu-basic`, public).
+2. Set Space variables: `ORCHESTRATOR_BACKEND=openai`, `LLM_MODEL_SNAPSHOT=gpt-4o-2024-08-06`, `LOOKAHEAD_K=3`, `PROMPT_VERSION=v1`, `VISION_MODE=cloud` (per D-DEPLOY-003 — explicit `cloud` skips the `nvidia-smi` probe).
+3. Set Space secret `OPENAI_API_KEY` via the HF UI.
+4. `git push hf main` to deploy.
+5. Verify `curl -I https://context31415-ttb-label.hf.space/healthz` returns 200.
 
-TLS is provided end-to-end by HF Spaces' edge (NFR-SEC-001) — Cloudflare is DNS-only, no proxy/cache/WAF in front of the app.
+TLS is provided end-to-end by HF Spaces' edge (NFR-SEC-001).
 
 Required environment variables at deploy time:
 
@@ -794,7 +796,7 @@ Required environment variables at deploy time:
 | `DEV_MODE` | unset (falsy) | Hides the `/eval` route in the public deployment. |
 | `LLM_MODEL_SNAPSHOT` | `gpt-4o-2024-08-06` (example) | Pinned snapshot per T5 Recommendation #6. |
 
-The public-URL deployment serves the cached demo fixtures (six total per PRD §10.2); LLM calls for fixtures hit the in-memory cache built from `demo/cached/`. Ad-hoc reviewer uploads go through the live cloud-vision path. TLS is provided by HF Spaces' edge (NFR-SEC-001) — Cloudflare DNS is grey-cloud (DNS only) so the cert is HF-issued end-to-end.
+The public-URL deployment serves the cached demo fixtures (six total per PRD §10.2); LLM calls for fixtures hit the in-memory cache built from `demo/cached/`. Ad-hoc reviewer uploads go through the live cloud-vision path. TLS is provided by HF Spaces' edge (NFR-SEC-001).
 
 ### 9.3 Optional GPU upgrade for live local-vision demos
 
