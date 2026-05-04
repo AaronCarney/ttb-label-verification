@@ -17,7 +17,7 @@ const _META: Record<
     role: "alert" | "status";
     live: "assertive" | "polite";
     bg: string;
-    Icon: React.ComponentType<{ "aria-hidden"?: boolean; className?: string }>;
+    Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   }
 > = {
   error: {

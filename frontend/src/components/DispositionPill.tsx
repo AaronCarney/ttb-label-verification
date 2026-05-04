@@ -17,7 +17,7 @@ const _META: Record<
     shape: "check" | "x" | "question";
     bg: string;
     fg: string;
-    Icon: React.ComponentType<{ "aria-hidden"?: boolean; className?: string }>;
+    Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   }
 > = {
   pass: {
