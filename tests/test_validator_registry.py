@@ -54,7 +54,7 @@ def test_registry_has_expected_names() -> None:
 def test_every_validator_module_registers_at_least_one_name() -> None:
     _import_all_validators()
     pkg_root = Path("app/rules/_validators")
-    py_files = [p for p in pkg_root.glob("*.py") if p.name != "__init__.py"]
+    py_files = [p for p in pkg_root.glob("*.py") if not p.name.startswith("_")]
     from app.rules._validators import VALIDATOR_REGISTRY
     by_module: dict[str, int] = {}
     for fn in VALIDATOR_REGISTRY.values():

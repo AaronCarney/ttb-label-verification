@@ -4,36 +4,25 @@
   enumerated_match  — lookup against `rule.parameters['allowed_values']`
 
 Per L1 §4 exit-gate item 10, this file does not contain citation literals.
+
+Shared helpers (`_build_meta`, `_conf`) live in `_helpers.py` so every
+validator file can import them without depending on this module's load
+order. `_normalize` stays here because it is genuinely equality-internal.
 """
 from __future__ import annotations
 
 import unicodedata
 
 from app.rules._validators import ValidatorContext, register
+from app.rules._validators._helpers import _build_meta, _conf
 from app.schemas.expected import ExpectedValue
 from app.schemas.extracted import FieldObservation
-from app.schemas.rejection import EngineMeta, Outcome, ValidationResult
+from app.schemas.rejection import Outcome, ValidationResult
 from app.schemas.rules import MatchPolicy, RuleDefinition
 
 
 def _normalize(s: str) -> str:
     return unicodedata.normalize("NFKC", s).strip().casefold()
-
-
-def _build_meta(rule: RuleDefinition, ctx: ValidatorContext, elapsed_ms: int = 0) -> EngineMeta:
-    return EngineMeta(
-        engine_version=ctx.engine_version,
-        rule_pack=rule.rule_pack or "unknown",
-        rule_pack_version=rule.rule_pack_version or "0.0.0",
-        started_at_ms=ctx.started_at_ms,
-        elapsed_ms=elapsed_ms,
-    )
-
-
-def _conf(obs: FieldObservation) -> float:
-    if not obs.evidence:
-        return 0.0
-    return min(ev.confidence for ev in obs.evidence)
 
 
 @register("equality_match")
