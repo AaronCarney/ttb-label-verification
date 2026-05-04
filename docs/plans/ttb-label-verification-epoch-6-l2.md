@@ -1243,6 +1243,8 @@ Append to `tests/conftest.py` (after the existing `_stub_label` definition):
 # tests/conftest.py — append below existing _stub_label
 from collections.abc import Iterable
 
+import pytest
+
 from app.schemas.wire.disposition import DispositionEnvelope
 
 
@@ -1299,6 +1301,22 @@ def _fake_evaluator(
         return FakeEvaluator(plan)
     factory = envelope_factory or _stub_disposition_envelope
     return FakeEvaluator((latency_s, factory(i)) for i in range(n_items))
+
+
+@pytest.fixture(autouse=True)
+def _reset_reason_code_cache():
+    """E6 isolation: the override endpoint caches the reason-code registry
+    on first request. Reset between tests so a test that monkeypatches the
+    YAML or cwd does not silently use the cached set from a prior test."""
+    try:
+        import app.api.overrides as _overrides_mod
+    except ImportError:
+        # T8 hasn't landed yet — skip
+        yield
+        return
+    _overrides_mod._ACCEPTED_REASON_CODES_CACHE = None
+    yield
+    _overrides_mod._ACCEPTED_REASON_CODES_CACHE = None
 ```
 
 - [ ] **Step 4: Run focused → GREEN (5 passed)**
@@ -1488,6 +1506,36 @@ async def test_worker_first_label_individual_does_not_wait_for_lookahead_window(
     assert first_event["event"] == "label-result"
     assert first_event["data"]["queue_position"] == 0
     assert elapsed < 0.5, f"first-label took {elapsed:.3f}s — exceeds 0.5s budget"
+
+
+@pytest.mark.asyncio
+async def test_worker_run_does_not_deadlock_when_consumer_raises():
+    """Regression guard for the producer/consumer cancel-in-finally pattern.
+
+    If `_consume` raises while the producer is parked on a saturated
+    `queue.put`, the `finally` MUST cancel the producer task before
+    awaiting it — otherwise `await producer_task` deadlocks. We assert
+    the run() coroutine completes (with the consumer's exception
+    propagated) inside a tight asyncio.wait_for timeout."""
+
+    class _RaisingEvaluator:
+        async def evaluate(self, application, label):
+            raise RuntimeError("evaluator boom")
+
+    in_flight = InFlightBatch(
+        batch_id="B-RAISE", agent_id="a",
+        items=tuple(_stub_item(i) for i in range(5)),
+        lookahead_k=3,
+    )
+    worker = BatchWorker(
+        in_flight=in_flight,
+        evaluator=_RaisingEvaluator(),
+        anomaly=AnomalyDetector(),
+        bus=SSEBus(),
+    )
+
+    with pytest.raises(RuntimeError, match="evaluator boom"):
+        await asyncio.wait_for(worker.run(), timeout=1.0)
 ```
 
 - [ ] **Step A.2: Run focused → RED**
@@ -1661,9 +1709,9 @@ class BatchWorker:
 
 > **Note (Cycle A `_resolve_application` / `_resolve_label`).** These two helpers synthesize a minimal `Application` and `Label` directly from the `application_ref` / `label_id` strings carried on each `BatchItem`. This IS the production wiring for the MVP — the `BatchEnvelope` (PRD §6.3) is JSON-only with reference strings; no separate applications/labels registry exists in this codebase. The Evaluator's chokepoint contract only needs the refs to compute `input_hash`, so synthesizing the minimal schema-conforming instances is sufficient. A future production trajectory (multi-tenant storage, identity claims) would replace the synthesized instances with a real lookup; that swap is OQ-PRD-1 / OQ-ARCH-3 territory and is **out of scope** for E6.
 
-- [ ] **Step A.4: Run Cycle A focused → GREEN (3 passed)**
+- [ ] **Step A.4: Run Cycle A focused → GREEN (4 passed)**
 
-`uv run pytest tests/test_batch_worker_skeleton.py -v` → 3 passed.
+`uv run pytest tests/test_batch_worker_skeleton.py -v` → 4 passed.
 
 - [ ] **Step A.5: Commit Cycle A**
 
@@ -1974,6 +2022,21 @@ async def test_worker_emits_anomaly_advisory_on_5_of_10_same_reason_code():
 
 
 @pytest.mark.asyncio
+async def test_worker_does_not_inspect_audit_trail_overrides():
+    """FR-404 negative control. Tighter than the iter-1 brittle grep —
+    matches `audit_trail.overrides` access (member-chain), not the bare
+    word `overrides` (which appears in docstrings and the conftest helper)."""
+    import re
+    from pathlib import Path
+    src = Path("app/batch/worker.py").read_text()
+    hits = re.findall(r"\.audit_trail\s*\.\s*overrides", src)
+    assert hits == [], (
+        f"BatchWorker must not access audit_trail.overrides — that is FR-404 "
+        f"(found {len(hits)} occurrences)."
+    )
+
+
+@pytest.mark.asyncio
 async def test_worker_continues_after_in_flight_results_mutation_simulating_override():
     """FR-404 positive: when the override endpoint mutates
     `in_flight.results[label_id]` mid-batch, the worker keeps going."""
@@ -2061,9 +2124,9 @@ async def test_worker_emits_stream_end_exactly_once_after_last_label_result():
 
 Cycle C is purely behavioral: bind the anomaly observation, broadcast the `anomaly-advisory` event when `observe(...)` returns non-None, and assert exactly one `stream-end` after the last per-label event. The worker code shown in Cycle A already includes this behavior — Cycle C's contribution is the test surface that pins it. No schema changes; no new files.
 
-- [ ] **Step C.4: Run Cycle C focused → GREEN (4 passed)**
+- [ ] **Step C.4: Run Cycle C focused → GREEN (5 passed)**
 
-`uv run pytest tests/test_batch_worker_anomaly_override.py -v` → 4 passed.
+`uv run pytest tests/test_batch_worker_anomaly_override.py -v` → 5 passed.
 
 - [ ] **Step C.5: Commit Cycle C**
 
@@ -3270,6 +3333,7 @@ After T12 lands:
 | Version | Date | Author | Notes |
 |---|---|---|---|
 | 0.1 | 2026-05-04 | Project team | Initial E6 L2 plan. 13 tasks across 6 waves; bottlenecked on T6 worker (3 cycles, single file). Wave 0: T0 (additive `OverrideEntry.field_name = None`). Wave 1 parallel-5: T1-T5 (state, queue, anomaly, sse_bus, fakes). Wave 2 single 3-cycle: T6 worker. Wave 3 single: T7 batches endpoint. Wave 4 single: T8 overrides endpoint. Wave 5 parallel-4: T9 perf, T10 smoke, T11 eviction, T12 LOOKAHEAD_K. Wave 6 run-only check. Total tasks: 13; total waves: 6; max parallelism: 5 (Wave 1); expected commits: ~17 (13 base + 2 extra T6 cycles + 2 Rule 1-3 margin). Known iter-1 BLOCK candidate flagged inline: `PerRuleTraceEntry.reason_code` does not exist on the E1 schema and the worker's `_headline_reason_code` reads from it; reviewer-driven Wave 0 expansion (T0b) likely. |
+| 0.3 | 2026-05-04 | Plan-review iter 2 | Test-surface gaps surfaced by iter-2 architectural review, all closed: (a) added `test_worker_run_does_not_deadlock_when_consumer_raises` to Cycle A — uses a `_RaisingEvaluator` whose `evaluate()` throws; asserts `worker.run()` propagates `RuntimeError` inside an `asyncio.wait_for(timeout=1.0)` so a regression that drops the producer-task `cancel()` would fail loudly. Cycle A GREEN target: 3 → 4. (b) Re-added the FR-404 negative-control guard as `test_worker_does_not_inspect_audit_trail_overrides` in Cycle C, but with a tighter `\.audit_trail\s*\.\s*overrides` regex (matches the member-chain access, not the bare word "overrides" which appears in docstrings). Cycle C GREEN target: 4 → 5. (c) Added an autouse `_reset_reason_code_cache` fixture to T5's conftest append so the lazy `_ACCEPTED_REASON_CODES_CACHE` is reset between tests — closes the cache-staleness foot-gun introduced by the iter-1 lazy loader. Iter-2 verdict: structural APPROVED; architectural ISSUES_FOUND with the 3 gaps above + 2 documented-as-accepted MVP carve-outs (empty-batch test, SSE subscriber-side queue is unbounded). All 3 actionable gaps now closed; the 2 carve-outs remain explicitly documented as accepted-for-MVP per the L1 §6 out-of-scope list. |
 | 0.2 | 2026-05-04 | Plan-review iter 1 | **Structural fixes (4):** (1) `_stub_disposition_envelope.Metrics(...)` constructor used non-existent `evaluation_id` and `per_rule_durations` (dict) — corrected to actual schema (`total_duration_ms`, `per_rule_durations_ms` tuple, `vision_duration_ms`, `orchestrator_duration_ms`); (2) T7 imported `get_settings` from `app.deps` (does not exist) — replaced with module-private `_get_settings` factory mirroring E5's healthz/labels pattern; (3) T3 broken anomaly test (alternating A/B that fires by observation 9 contradicting its `assert adv is None`) replaced with a heterogeneous-batch test (4 As + 4 Bs + 2 Cs, no code reaches threshold). **Architectural fixes (5):** (4) `BatchWorker.run()` `await producer_task` in `finally` would deadlock on consumer exception — added `producer_task.cancel(); await asyncio.gather(..., return_exceptions=True)`; (5) `BoundedQueue` was dead code (T1 constructed bare `asyncio.Queue` directly) — wired `InFlightBatch.queue: BoundedQueue[BatchItem]` so the substitutability seam (L1 §2.3 / ARCH §4.2.7) is real; T2 moved to Wave 0 since T1 now depends on it; (6) Dropped dead `InFlightBatch.subscribers` field (duplicate of `SSEBus.subscribers`); (7) Replaced T7 retro-bolt of `bus` field on `InFlightBatch` with separate `app.state.buses: dict[str, SSEBus]` registry — same lifecycle, no circular-import risk, no dataclass mutation; (8) Made `_load_accepted_reason_codes` lazy + loud (no module-import side effect; missing registry now raises `FileNotFoundError` rather than silently returning an empty frozenset). **Cleanups:** dropped the spurious `PerRuleTraceEntry.reason_code` Wave 0-expansion warning (the helper reads `rule_id` from existing schema with a fallback to `RuleFindingWire.reason_code` — no extension needed); double-call of `_headline_reason_code(envelope)` collapsed to a single bind; override endpoint contract for "queued-not-yet-evaluated" labels documented (returns 404 by design — UI guards via SSE `label-result` event before enabling the override button); T7 lifespan teardown clears both `app.state.batches` and `app.state.buses`. **Wave restructure:** Wave 0 grows from `[T0]` to `[T0, T2]` (parallel-2); Wave 1 shrinks from `[T1, T2, T3, T4, T5]` to `[T1, T3, T4, T5]` (parallel-4). Total waves now 7. Critical path unchanged (T2 → T1 → T6 → T7 → T8 → T10 = 6 hops). |
 
 ---
