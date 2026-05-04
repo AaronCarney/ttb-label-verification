@@ -83,16 +83,15 @@ class CloudVisionExtractor:
             },
         }
         call_kind = "layout" if field_name == "layout" else "field"
-        async with self._semaphore:
-            t0 = time.monotonic()
-            async with httpx.AsyncClient(timeout=30.0) as client:
-                resp = await client.post(
-                    "https://api.openai.com/v1/chat/completions",
-                    headers={"Authorization": f"Bearer {self._api_key}"},
-                    json=body,
-                )
-                resp.raise_for_status()
-            elapsed_ms = int((time.monotonic() - t0) * 1000)
+        t0 = time.monotonic()
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            resp = await client.post(
+                "https://api.openai.com/v1/chat/completions",
+                headers={"Authorization": f"Bearer {self._api_key}"},
+                json=body,
+            )
+            resp.raise_for_status()
+        elapsed_ms = int((time.monotonic() - t0) * 1000)
         payload = resp.json()
         content = json.loads(payload["choices"][0]["message"]["content"])
         self._ring.append(
@@ -118,6 +117,14 @@ class CloudVisionExtractor:
         )
         return content
 
+    async def _gated_call(
+        self, *, field_name: str, crop: bytes, label: Label
+    ) -> dict:
+        async with self._semaphore:
+            return await self._call_per_field(
+                field_name=field_name, crop=crop, label=label
+            )
+
     async def extract(self, label: Label) -> list[FieldObservation]:
         report = quality.assess(label)
         if report.disposition != "ok":
@@ -134,7 +141,7 @@ class CloudVisionExtractor:
                 )
             ]
 
-        layout = await self._call_per_field(
+        layout = await self._gated_call(
             field_name="layout", crop=label.image_bytes, label=label
         )
         bbox_by_id: dict[str, tuple[int, int, int, int]] = {}
@@ -143,11 +150,14 @@ class CloudVisionExtractor:
             if bbox and len(bbox) == 4:
                 bbox_by_id[entry["id"]] = tuple(int(v) for v in bbox)
 
-        observations: list[FieldObservation] = []
-        for fname in _FIELD_NAMES:
-            content = await self._call_per_field(
-                field_name=fname, crop=label.image_bytes, label=label
+        contents = await asyncio.gather(
+            *(
+                self._gated_call(field_name=fname, crop=label.image_bytes, label=label)
+                for fname in _FIELD_NAMES
             )
+        )
+        observations: list[FieldObservation] = []
+        for fname, content in zip(_FIELD_NAMES, contents):
             observations.append(
                 FieldObservation(
                     field_id=fname,
