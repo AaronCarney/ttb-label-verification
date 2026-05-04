@@ -9,10 +9,11 @@ export default defineConfig({
     emptyOutDir: true,
     manifest: false,
     sourcemap: true,
-    // Emit one CSS bundle per entry (single.css, batch.css) so the Jinja
-    // shell's <link href="/static/island/{name}.css"> resolves. Default
-    // (true) splits CSS by chunk and would name the file after whichever
-    // shared chunk imports the global stylesheet (e.g. LiveRegion.css).
+    // Emit ONE shared CSS bundle (style.css) for all entries. base.html
+    // links it once via <link href="/static/island/style.css">. Default
+    // (true) splits CSS per chunk and names the file after whichever shared
+    // chunk imports the global stylesheet (e.g. LiveRegion.css), which
+    // breaks the deterministic link path Jinja needs.
     cssCodeSplit: false,
     rollupOptions: {
       input: {

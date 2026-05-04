@@ -21,7 +21,7 @@ Run before each release / before merging E7 to main.
 2. VO+→ steps through the navigation; the rotor (VO+U) shows landmarks (banner, main, contentinfo).
 3. The disposition pill is announced as "Disposition: Pass / Fail / Needs review" (not just the icon).
 4. Open the override drawer via `O`; VO announces the modal.
-5. Tab order inside the drawer: combobox → submit → cancel → close.
+5. Tab order inside the drawer: close → reason-code combobox → justification textarea → cancel → submit.
 6. After submit, VO reads the LiveRegion message.
 
 ## Failure handling
