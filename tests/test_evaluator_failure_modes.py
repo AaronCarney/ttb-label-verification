@@ -149,3 +149,27 @@ async def test_fr912_model_unavailable():
     assert envelope.disposition == "needs_review"
     rule_ids = {entry.rule_id for entry in envelope.audit_trail.per_rule_trace}
     assert any("ENGINE.MODEL" in c for c in rule_ids)
+
+
+@pytest.mark.asyncio
+async def test_short_circuit_preserves_prior_failures_in_audit():
+    """Review W-3: when vision raises and the legibility gate also fires, both
+    failures must surface in per_rule_trace. Pre-fix, the _short_circuit path
+    skipped the timeline.failures surfacing loop, silently dropping the
+    earlier ENGINE.EXTRACTION.UNAVAILABLE entry from audit."""
+    class CrashingVision(FakeVisionExtractor):
+        async def extract(self, label):
+            raise RuntimeError("vision boom")
+
+    e = Evaluator(vision=CrashingVision(observations=[]),
+                  rules=FakeRuleEngine(results=()),
+                  orchestrator=FakeOrchestrator(), settings=Settings())
+    # _stub_label ships 8-byte PNG-magic stub; assess_quality routes it to
+    # needs_better_photo via the decode-error guard, triggering _short_circuit.
+    envelope = await e.evaluate(application=_stub_app(), label=_stub_label())
+    assert envelope.disposition == "needs_review"
+    rule_ids = {entry.rule_id for entry in envelope.audit_trail.per_rule_trace}
+    assert "ENGINE.EXTRACTION.UNAVAILABLE" in rule_ids, (
+        f"audit dropped the prior vision failure on the legibility short-circuit "
+        f"path; per_rule_trace = {rule_ids}"
+    )

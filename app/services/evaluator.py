@@ -235,6 +235,13 @@ class Evaluator:
         from app.services.envelope_builder import build_short_circuit_envelope
         from app.services.metrics_builder import MetricsBuilder
 
+        # Surface every prior failure (e.g. an upstream vision exception
+        # before the legibility gate fired) into per_rule_trace so the audit
+        # is complete. Mirrors _timeout_envelope's surfacing loop.
+        for failure in timeline.failures:
+            timeline.record_rule_done(rule_id=failure.reason_code, duration_ms=0,
+                                      disposition="needs_review",
+                                      evidence_ref=f"engine_failure/{failure.exception_class}")
         timeline.finish(total_duration_ms=int((time.monotonic() - t_total) * 1000))
         envelope_for_hash = {"evaluation_id": application.evaluation_id, "disposition": "needs_review",
                              "reason_code": reason_code}
