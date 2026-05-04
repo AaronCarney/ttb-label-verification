@@ -13,7 +13,7 @@ def test_cli_smoke_exits_zero_on_synthetic_fixture():
         env={**__import__("os").environ, "OPENAI_API_KEY": "sk-test", "VISION_MODE": "cloud"},
     )
     assert result.returncode == 0, result.stderr.decode()
-    assert b"field_count: 8" in result.stdout
+    assert b"field_count: 7" in result.stdout
 
 
 def test_cli_smoke_missing_fixture_exits_2():

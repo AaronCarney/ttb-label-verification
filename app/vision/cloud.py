@@ -22,6 +22,7 @@ from app.schemas.expected import BeverageClass
 from app.schemas.extracted import Evidence, EvidenceSource, FieldObservation, MatchKind
 from app.schemas.label import Label
 from app.vision import quality
+from app.vision.heading_measure import measure_heading_bold
 
 # Self-reported per-field confidence. Required on every per-field schema so
 # OpenAI Structured Outputs (strict:true) forces the model to emit a number
@@ -71,23 +72,24 @@ _SCHEMAS = {
         "additionalProperties": False,
     },
     "gov_warning": {
+        # The §16.22 health-warning rule pack checks both the verbatim body
+        # text AND the heading style (all-caps, bold, type-size). Folding both
+        # into one observation keeps the validator on one payload and lets us
+        # apply local SWT measurement to override `heading_bold` after the
+        # call — see app/vision/heading_measure.py + README §"Bold detection".
         "type": "object",
         "properties": {
             "text": {"type": "string"},
-            "confidence": _CONFIDENCE_SCHEMA,
-        },
-        "required": ["text", "confidence"],
-        "additionalProperties": False,
-    },
-    "heading_typography": {
-        "type": "object",
-        "properties": {
-            "all_caps": {"type": "boolean"},
-            "bold": {"type": "boolean"},
+            "heading_text": {"type": "string"},
+            "heading_all_caps": {"type": "boolean"},
+            "heading_bold": {"type": "boolean"},
             "type_size_pt": {"type": "number"},
             "confidence": _CONFIDENCE_SCHEMA,
         },
-        "required": ["all_caps", "bold", "type_size_pt", "confidence"],
+        "required": [
+            "text", "heading_text", "heading_all_caps",
+            "heading_bold", "type_size_pt", "confidence",
+        ],
         "additionalProperties": False,
     },
     "name_address": {
@@ -137,7 +139,6 @@ _FIELD_NAMES = (
     "abv",
     "net_contents",
     "gov_warning",
-    "heading_typography",
     "name_address",
     "country_origin",
 )
@@ -277,6 +278,22 @@ class CloudVisionExtractor:
         )
         observations: list[FieldObservation] = []
         for fname, content in zip(_FIELD_NAMES, contents):
+            if fname == "gov_warning" and isinstance(content, dict):
+                # Override the model's self-reported bold with a deterministic
+                # stroke-width measurement on the heading bbox. The LLM's
+                # value is preserved as `heading_bold_llm` in upstream_meta so
+                # the audit trail captures what each source claimed.
+                bbox = bbox_by_id.get("gov_warning")
+                measurement = measure_heading_bold(label.image_bytes, bbox)
+                content = {
+                    **content,
+                    "heading_bold_llm": bool(content.get("heading_bold", False)),
+                    "heading_bold_measured": measurement.is_bold,
+                    "heading_bold_measured_confident": measurement.confident,
+                    "heading_bold_width_height_ratio": measurement.width_height_ratio,
+                }
+                if measurement.confident:
+                    content["heading_bold"] = measurement.is_bold
             text = _extract_text(content)
             observations.append(
                 FieldObservation(

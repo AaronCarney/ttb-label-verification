@@ -1,5 +1,5 @@
 {
-  "evaluation_id": "bac05a50-2ef3-44a9-a441-699cf81fe74a",
+  "evaluation_id": "247c197a-6109-479d-974b-3248a2d734ff",
   "label_ref": "FIX-06-ABV-OUT-OF-TOLERANCE",
   "disposition": "fail",
   "disposition_confidence": {
@@ -21,7 +21,15 @@
         "crop_ref": "",
         "extraction_confidence": 0.95
       },
-      "rule_findings": [],
+      "rule_findings": [
+        {
+          "rule_id": "spirits.brand.present",
+          "cfr_citation": "27 CFR §5.63(a), §5.64",
+          "disposition": "fail",
+          "reason_code": "BRAND.PRESENCE.MISSING",
+          "plain_language_explanation": ""
+        }
+      ],
       "ai_suggestion": {
         "present": false,
         "task": null,
@@ -124,6 +132,20 @@
       },
       "rule_findings": [
         {
+          "rule_id": "spirits.alcohol.format",
+          "cfr_citation": "27 CFR §5.65(b)",
+          "disposition": "fail",
+          "reason_code": "ALCOHOL_CONTENT.FORMAT.INVALID",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "spirits.alcohol.present",
+          "cfr_citation": "27 CFR §5.63(a), §5.65(a)",
+          "disposition": "pass",
+          "reason_code": "",
+          "plain_language_explanation": ""
+        },
+        {
           "rule_id": "spirits.alcohol.tolerance_band",
           "cfr_citation": "27 CFR §5.65(c)",
           "disposition": "fail",
@@ -144,7 +166,7 @@
     },
     {
       "field_name": "warning",
-      "extracted_value": "{'text': 'GOVERNMENT WARNING: (1) ACCORDING TO THE SURGEON GENERAL, WOMEN SHOULD NOT DRINK ALCOHOLIC BEVERAGES DURING PREGNANCY BECAUSE OF THE RISK OF BIRTH DEFECTS.', 'confidence': 0.95}",
+      "extracted_value": "{'text': 'GOVERNMENT WARNING: (1) ACCORDING TO THE SURGEON GENERAL, WOMEN SHOULD NOT DRINK ALCOHOLIC BEVERAGES DURING PREGNANCY BECAUSE OF THE RISK OF BIRTH DEFECTS.', 'heading_text': 'GOVERNMENT WARNING', 'heading_all_caps': True, 'heading_bold': False, 'type_size_pt': 10, 'confidence': 0.95, 'heading_bold_llm': False, 'heading_bold_measured': False, 'heading_bold_measured_confident': False, 'heading_bold_width_height_ratio': 0.0}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -156,7 +178,57 @@
         "crop_ref": "",
         "extraction_confidence": 0.95
       },
-      "rule_findings": [],
+      "rule_findings": [
+        {
+          "rule_id": "common.warning.contrasting_bg",
+          "cfr_citation": "27 CFR §16.22(a)(1)",
+          "disposition": "fail",
+          "reason_code": "WARNING.LEGIBILITY.NO_CONTRAST",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "common.warning.cpi_max",
+          "cfr_citation": "27 CFR §16.22(a)(4)",
+          "disposition": "fail",
+          "reason_code": "WARNING.TYPE_SIZE.CPI_EXCEEDED",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "common.warning.heading_caps_bold",
+          "cfr_citation": "27 CFR §16.22(a)(2)",
+          "disposition": "fail",
+          "reason_code": "WARNING.STYLE.HEADING_NOT_BOLD_CAPS",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "common.warning.present",
+          "cfr_citation": "27 CFR §16.21",
+          "disposition": "pass",
+          "reason_code": "",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "common.warning.separate_apart",
+          "cfr_citation": "27 CFR §16.21",
+          "disposition": "fail",
+          "reason_code": "WARNING.PLACEMENT.NOT_SEPARATE",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "common.warning.type_size_min",
+          "cfr_citation": "27 CFR §16.22(b)",
+          "disposition": "pass",
+          "reason_code": "",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "common.warning.verbatim",
+          "cfr_citation": "27 CFR §16.21",
+          "disposition": "fail",
+          "reason_code": "WARNING.VERBATIM.MISMATCH",
+          "plain_language_explanation": ""
+        }
+      ],
       "ai_suggestion": {
         "present": false,
         "task": null,
@@ -182,7 +254,15 @@
         "crop_ref": "",
         "extraction_confidence": 0.95
       },
-      "rule_findings": [],
+      "rule_findings": [
+        {
+          "rule_id": "spirits.name_address.present",
+          "cfr_citation": "27 CFR §5.63(b)(1)",
+          "disposition": "pass",
+          "reason_code": "",
+          "plain_language_explanation": ""
+        }
+      ],
       "ai_suggestion": {
         "present": false,
         "task": null,
@@ -222,15 +302,90 @@
     }
   ],
   "audit_trail": {
-    "evaluation_id": "bac05a50-2ef3-44a9-a441-699cf81fe74a",
+    "evaluation_id": "247c197a-6109-479d-974b-3248a2d734ff",
     "rule_set_version": "unknown",
     "model_version": null,
     "prompt_version": null,
     "input_hash": "28c0beb4a4aa178634091bde14c1f29b77f1d3441fbeda8b12d8e79ffe906079",
-    "output_hash": "526954c442b2e6eed4f12771a8c573e4dbef562eedea8d8d034b8a81810a9110",
-    "started_at": "2026-05-04T22:52:25.123316Z",
-    "completed_at": "2026-05-04T22:52:31.577433Z",
+    "output_hash": "e87c2cd11c4e71f0334cfd43a6b703c82e7ed7965ddb141c7711c9973937fa81",
+    "started_at": "2026-05-04T23:17:43.344398Z",
+    "completed_at": "2026-05-04T23:17:46.019763Z",
     "per_rule_trace": [
+      {
+        "rule_id": "common.warning.contrasting_bg",
+        "disposition": "fail",
+        "evidence_ref": "vr/common.warning.contrasting_bg"
+      },
+      {
+        "rule_id": "WARNING.LEGIBILITY.NO_CONTRAST",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/common.warning.contrasting_bg"
+      },
+      {
+        "rule_id": "common.warning.cpi_max",
+        "disposition": "fail",
+        "evidence_ref": "vr/common.warning.cpi_max"
+      },
+      {
+        "rule_id": "WARNING.TYPE_SIZE.CPI_EXCEEDED",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/common.warning.cpi_max"
+      },
+      {
+        "rule_id": "common.warning.heading_caps_bold",
+        "disposition": "fail",
+        "evidence_ref": "vr/common.warning.heading_caps_bold"
+      },
+      {
+        "rule_id": "WARNING.STYLE.HEADING_NOT_BOLD_CAPS",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/common.warning.heading_caps_bold"
+      },
+      {
+        "rule_id": "common.warning.present",
+        "disposition": "pass",
+        "evidence_ref": "vr/common.warning.present"
+      },
+      {
+        "rule_id": "common.warning.separate_apart",
+        "disposition": "fail",
+        "evidence_ref": "vr/common.warning.separate_apart"
+      },
+      {
+        "rule_id": "WARNING.PLACEMENT.NOT_SEPARATE",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/common.warning.separate_apart"
+      },
+      {
+        "rule_id": "common.warning.type_size_min",
+        "disposition": "pass",
+        "evidence_ref": "vr/common.warning.type_size_min"
+      },
+      {
+        "rule_id": "common.warning.verbatim",
+        "disposition": "fail",
+        "evidence_ref": "vr/common.warning.verbatim"
+      },
+      {
+        "rule_id": "WARNING.VERBATIM.MISMATCH",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/common.warning.verbatim"
+      },
+      {
+        "rule_id": "spirits.alcohol.format",
+        "disposition": "fail",
+        "evidence_ref": "vr/spirits.alcohol.format"
+      },
+      {
+        "rule_id": "ALCOHOL_CONTENT.FORMAT.INVALID",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/spirits.alcohol.format"
+      },
+      {
+        "rule_id": "spirits.alcohol.present",
+        "disposition": "pass",
+        "evidence_ref": "vr/spirits.alcohol.present"
+      },
       {
         "rule_id": "spirits.alcohol.tolerance_band",
         "disposition": "fail",
@@ -240,6 +395,16 @@
         "rule_id": "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND",
         "disposition": "fail",
         "evidence_ref": "reason_code/spirits.alcohol.tolerance_band"
+      },
+      {
+        "rule_id": "spirits.brand.present",
+        "disposition": "fail",
+        "evidence_ref": "vr/spirits.brand.present"
+      },
+      {
+        "rule_id": "BRAND.PRESENCE.MISSING",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/spirits.brand.present"
       },
       {
         "rule_id": "spirits.class_type.matches_soi",
@@ -262,6 +427,11 @@
         "evidence_ref": "reason_code/spirits.class_type.present"
       },
       {
+        "rule_id": "spirits.name_address.present",
+        "disposition": "pass",
+        "evidence_ref": "vr/spirits.name_address.present"
+      },
+      {
         "rule_id": "spirits.net_contents.present",
         "disposition": "pass",
         "evidence_ref": "vr/spirits.net_contents.present"
@@ -270,14 +440,82 @@
     "overrides": []
   },
   "metrics": {
-    "total_duration_ms": 6454,
+    "total_duration_ms": 2675,
     "per_rule_durations_ms": [
+      {
+        "rule_id": "common.warning.contrasting_bg",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "WARNING.LEGIBILITY.NO_CONTRAST",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "common.warning.cpi_max",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "WARNING.TYPE_SIZE.CPI_EXCEEDED",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "common.warning.heading_caps_bold",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "WARNING.STYLE.HEADING_NOT_BOLD_CAPS",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "common.warning.present",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "common.warning.separate_apart",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "WARNING.PLACEMENT.NOT_SEPARATE",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "common.warning.type_size_min",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "common.warning.verbatim",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "WARNING.VERBATIM.MISMATCH",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "spirits.alcohol.format",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "ALCOHOL_CONTENT.FORMAT.INVALID",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "spirits.alcohol.present",
+        "duration_ms": 0
+      },
       {
         "rule_id": "spirits.alcohol.tolerance_band",
         "duration_ms": 0
       },
       {
         "rule_id": "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "spirits.brand.present",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "BRAND.PRESENCE.MISSING",
         "duration_ms": 0
       },
       {
@@ -297,11 +535,15 @@
         "duration_ms": 0
       },
       {
+        "rule_id": "spirits.name_address.present",
+        "duration_ms": 0
+      },
+      {
         "rule_id": "spirits.net_contents.present",
         "duration_ms": 0
       }
     ],
-    "vision_duration_ms": 6447,
+    "vision_duration_ms": 2667,
     "orchestrator_duration_ms": 0
   }
 }

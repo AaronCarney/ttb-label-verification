@@ -40,10 +40,11 @@ async def test_cloud_writes_9_call_records():
             return Response(200, json=payload)
         router.post("/v1/chat/completions").mock(side_effect=_dispatch)
         await extractor.extract(label)
-    assert len(ring) == 9
+    assert len(ring) == 8
     stages = [r.stage for r in ring]
-    # 1 layout call + 8 per-field calls; all under vision.gpt4o_tiebreak per cloud-mode policy
-    # (cloud uses the same tiebreaker stage tag as local; it's the unified GPT-4o stage).
+    # 1 layout call + 7 per-field calls (heading_typography folded into
+    # gov_warning post-consolidation); all under vision.gpt4o_tiebreak per
+    # cloud-mode policy.
     assert all(s == "vision.gpt4o_tiebreak" for s in stages)
     assert all(r.provider == "openai" for r in ring)
     assert all(r.model == "gpt-4o-2024-08-06" for r in ring)

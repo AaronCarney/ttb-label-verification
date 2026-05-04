@@ -35,6 +35,17 @@ The seven required fields are all extracted, checked, and cited: brand name, cla
 
 **4. Batch reuses the single-label engine, on the same five-second budget.** I refused to split into "fast single, slow batch" — that produces two code paths, two SLAs, and two sets of bugs. The batch worker runs the same per-label evaluator, with a small lookahead (default 3) that pre-fetches the next labels while the reviewer is reading the current one. The first label of a batch is processed individually so the reviewer feels the same latency they would feel from `POST /labels`. The brief asked for batch *and* the 5s SLA; I treated them as the same requirement.
 
+## Bold detection — measured, not guessed
+
+§16.22(a)(2) requires the "GOVERNMENT WARNING" heading be all-caps **and** bold. "Is this text bold?" is the kind of question an LLM will cheerfully answer with high confidence regardless of the actual pixels, so the cloud profile does not trust the model on this one signal. Detection runs in two layers and the **measurement wins** whenever it is confident:
+
+1. **GPT-4o classifies** `heading_bold` as part of the consolidated `gov_warning` extraction (alongside `heading_text`, `heading_all_caps`, `type_size_pt`).
+2. **Local SWT-style measurement** crops to the heading bbox returned by the layout call, runs Otsu thresholding, takes the distance transform, and computes a stroke-width-to-character-height ratio across connected components (`app/vision/heading_measure.py`). If the ratio exceeds the threshold (currently 0.30, ported from the historical local-OCR module), the heading is bold; if not, it is not. The model's value is preserved in the audit trail (`heading_bold_llm`) for comparison.
+
+The measurement is deterministic, runs entirely in-process on bytes the application already holds, and adds no LLM round-trips, no GPU, and no firewall surface. It is uncalibrated — the 0.30 threshold is empirical and works on the demo fixtures; tuning it against a labeled corpus is the same eval-corpus sweep that would calibrate BRISQUE/NIQE and brand-match thresholds (PRD §3.2 deferred). When the heading bbox is degenerate or the crop is too small for a reliable component count, the measurement reports `confident=False` and the LLM's value is used as the fallback. The `heading_style_check` validator reads whichever value the cloud extractor settled on, so the §16.22(a)(2) verdict is grounded in pixels first and language-model judgment second.
+
+This is the only place the architecture explicitly distrusts the model. Everywhere else the LLM is paraphrasing or extracting; here it is being asked to make a measurement-class call, and the measurement is one OpenCV call away.
+
 ## Stakeholder asks, point by point
 
 - **Sarah's 5 seconds.** Single-label P50 is ~2.7s, P99 is ≤5s. The whole-evaluation timeout is enforced (`ENGINE.SLA.TIMEOUT`); the per-rule timeout is 250ms. Demo runs hit `/healthz` at T-5 minutes to pre-warm the model client.

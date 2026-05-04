@@ -42,6 +42,30 @@ from app.schemas.rules import RuleSet
 
 PER_RULE_TIMEOUT_S = 0.25
 
+# The YAML rule pack uses semantic field names (`brand`, `alc_text`,
+# `warning_block`, …) while the cloud extractor emits physical field_ids
+# (`brand_name`, `abv`, `gov_warning`, …). This map bridges the two so a rule
+# whose `evidence_required: [warning_block]` actually finds the gov_warning
+# observation. Bidirectional — keys match observation field_ids, values are
+# the alias names the rule pack may use.
+_FIELD_ID_RULE_ALIASES: dict[str, tuple[str, ...]] = {
+    "brand_name": ("brand",),
+    "abv": ("alc_text", "alcohol_content"),
+    "gov_warning": ("warning_block",),
+    "name_address": ("bottler", "name_and_address"),
+    "country_origin": ("country_of_origin",),
+}
+
+
+def _matches_evidence_required(obs_field_id: str, required: tuple[str, ...]) -> bool:
+    """`obs.field_id` directly OR any of its rule-pack aliases satisfies the
+    rule's `evidence_required`."""
+    if obs_field_id in required:
+        return True
+    aliases = _FIELD_ID_RULE_ALIASES.get(obs_field_id, ())
+    return any(a in required for a in aliases)
+
+
 _log = logging.getLogger(__name__)
 
 
@@ -72,7 +96,10 @@ class YamlRuleEngine(RuleEngine):
             applicable_obs = [
                 obs for obs in observations
                 if obs.beverage_class in rule.applies_to_classes
-                and (not rule.evidence_required or obs.field_id in rule.evidence_required)
+                and (
+                    not rule.evidence_required
+                    or _matches_evidence_required(obs.field_id, rule.evidence_required)
+                )
             ]
             if not applicable_obs:
                 continue

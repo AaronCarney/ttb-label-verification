@@ -1,5 +1,5 @@
 {
-  "evaluation_id": "7dc9610e-01d3-4d13-8ac9-bbce5767b4ef",
+  "evaluation_id": "0b1f674e-5b1e-4fc4-be55-b1eb962799a2",
   "label_ref": "FIX-03-WARNING-TITLE-CASE",
   "disposition": "fail",
   "disposition_confidence": {
@@ -9,7 +9,7 @@
   "fields": [
     {
       "field_name": "brand_name",
-      "extracted_value": "{'brand_name': 'ACME BOURBON', 'confidence': 0.95}",
+      "extracted_value": "{'brand_name': 'ACME', 'confidence': 0.95}",
       "expected_value": "ACME BOURBON",
       "evidence": {
         "bbox": [
@@ -21,7 +21,15 @@
         "crop_ref": "",
         "extraction_confidence": 0.95
       },
-      "rule_findings": [],
+      "rule_findings": [
+        {
+          "rule_id": "spirits.brand.present",
+          "cfr_citation": "27 CFR §5.63(a), §5.64",
+          "disposition": "fail",
+          "reason_code": "BRAND.PRESENCE.MISSING",
+          "plain_language_explanation": ""
+        }
+      ],
       "ai_suggestion": {
         "present": false,
         "task": null,
@@ -35,7 +43,7 @@
     },
     {
       "field_name": "class_type",
-      "extracted_value": "{'class_type': 'BOURBON WHISKEY', 'confidence': 1.0}",
+      "extracted_value": "{'class_type': 'BOURBON WHISKEY', 'confidence': 0.95}",
       "expected_value": "BOURBON WHISKEY",
       "evidence": {
         "bbox": [
@@ -45,7 +53,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 1.0
+        "extraction_confidence": 0.95
       },
       "rule_findings": [
         {
@@ -71,7 +79,7 @@
       },
       "field_confidence": {
         "band": "high",
-        "numeric": 1.0
+        "numeric": 0.95
       }
     },
     {
@@ -110,7 +118,7 @@
     },
     {
       "field_name": "alcohol_content",
-      "extracted_value": "{'abv_pct': 40, 'unit': '%', 'confidence': 0.95}",
+      "extracted_value": "{'abv_pct': 40.0, 'unit': '%', 'confidence': 0.95}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -123,6 +131,20 @@
         "extraction_confidence": 0.95
       },
       "rule_findings": [
+        {
+          "rule_id": "spirits.alcohol.format",
+          "cfr_citation": "27 CFR §5.65(b)",
+          "disposition": "fail",
+          "reason_code": "ALCOHOL_CONTENT.FORMAT.INVALID",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "spirits.alcohol.present",
+          "cfr_citation": "27 CFR §5.63(a), §5.65(a)",
+          "disposition": "pass",
+          "reason_code": "",
+          "plain_language_explanation": ""
+        },
         {
           "rule_id": "spirits.alcohol.tolerance_band",
           "cfr_citation": "27 CFR §5.65(c)",
@@ -144,7 +166,7 @@
     },
     {
       "field_name": "warning",
-      "extracted_value": "{'text': 'Government Warning: (1) According to the Surgeon General, women should not drink alcoholic beverages during pregnancy because of the risk of birth defects.', 'confidence': 0.95}",
+      "extracted_value": "{'text': 'Government Warning: (1) According to the Surgeon General, women should not drink alcoholic beverages during pregnancy because of the risk of birth defects.', 'heading_text': 'Government Warning:', 'heading_all_caps': True, 'heading_bold': False, 'type_size_pt': 12, 'confidence': 0.95, 'heading_bold_llm': False, 'heading_bold_measured': False, 'heading_bold_measured_confident': False, 'heading_bold_width_height_ratio': 0.0}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -156,7 +178,57 @@
         "crop_ref": "",
         "extraction_confidence": 0.95
       },
-      "rule_findings": [],
+      "rule_findings": [
+        {
+          "rule_id": "common.warning.contrasting_bg",
+          "cfr_citation": "27 CFR §16.22(a)(1)",
+          "disposition": "fail",
+          "reason_code": "WARNING.LEGIBILITY.NO_CONTRAST",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "common.warning.cpi_max",
+          "cfr_citation": "27 CFR §16.22(a)(4)",
+          "disposition": "fail",
+          "reason_code": "WARNING.TYPE_SIZE.CPI_EXCEEDED",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "common.warning.heading_caps_bold",
+          "cfr_citation": "27 CFR §16.22(a)(2)",
+          "disposition": "fail",
+          "reason_code": "WARNING.STYLE.HEADING_NOT_BOLD_CAPS",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "common.warning.present",
+          "cfr_citation": "27 CFR §16.21",
+          "disposition": "pass",
+          "reason_code": "",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "common.warning.separate_apart",
+          "cfr_citation": "27 CFR §16.21",
+          "disposition": "fail",
+          "reason_code": "WARNING.PLACEMENT.NOT_SEPARATE",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "common.warning.type_size_min",
+          "cfr_citation": "27 CFR §16.22(b)",
+          "disposition": "pass",
+          "reason_code": "",
+          "plain_language_explanation": ""
+        },
+        {
+          "rule_id": "common.warning.verbatim",
+          "cfr_citation": "27 CFR §16.21",
+          "disposition": "fail",
+          "reason_code": "WARNING.VERBATIM.MISMATCH",
+          "plain_language_explanation": ""
+        }
+      ],
       "ai_suggestion": {
         "present": false,
         "task": null,
@@ -182,7 +254,15 @@
         "crop_ref": "",
         "extraction_confidence": 0.95
       },
-      "rule_findings": [],
+      "rule_findings": [
+        {
+          "rule_id": "spirits.name_address.present",
+          "cfr_citation": "27 CFR §5.63(b)(1)",
+          "disposition": "pass",
+          "reason_code": "",
+          "plain_language_explanation": ""
+        }
+      ],
       "ai_suggestion": {
         "present": false,
         "task": null,
@@ -222,15 +302,90 @@
     }
   ],
   "audit_trail": {
-    "evaluation_id": "7dc9610e-01d3-4d13-8ac9-bbce5767b4ef",
+    "evaluation_id": "0b1f674e-5b1e-4fc4-be55-b1eb962799a2",
     "rule_set_version": "unknown",
     "model_version": null,
     "prompt_version": null,
     "input_hash": "b09ec9e55e23b23851e9f3e6c665828b0d1a8cc5414afc7fb4e5b07734072d6c",
-    "output_hash": "74f0cd41708845a65cbbed334b7823a47962b26badaaf54745d887f11e377a4a",
-    "started_at": "2026-05-04T22:52:20.129196Z",
-    "completed_at": "2026-05-04T22:52:25.121934Z",
+    "output_hash": "a181c9f70fa53957aadcb635a4a3274d494c8a60f97545266dedd4c1cc2ac49d",
+    "started_at": "2026-05-04T23:17:37.994498Z",
+    "completed_at": "2026-05-04T23:17:43.343044Z",
     "per_rule_trace": [
+      {
+        "rule_id": "common.warning.contrasting_bg",
+        "disposition": "fail",
+        "evidence_ref": "vr/common.warning.contrasting_bg"
+      },
+      {
+        "rule_id": "WARNING.LEGIBILITY.NO_CONTRAST",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/common.warning.contrasting_bg"
+      },
+      {
+        "rule_id": "common.warning.cpi_max",
+        "disposition": "fail",
+        "evidence_ref": "vr/common.warning.cpi_max"
+      },
+      {
+        "rule_id": "WARNING.TYPE_SIZE.CPI_EXCEEDED",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/common.warning.cpi_max"
+      },
+      {
+        "rule_id": "common.warning.heading_caps_bold",
+        "disposition": "fail",
+        "evidence_ref": "vr/common.warning.heading_caps_bold"
+      },
+      {
+        "rule_id": "WARNING.STYLE.HEADING_NOT_BOLD_CAPS",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/common.warning.heading_caps_bold"
+      },
+      {
+        "rule_id": "common.warning.present",
+        "disposition": "pass",
+        "evidence_ref": "vr/common.warning.present"
+      },
+      {
+        "rule_id": "common.warning.separate_apart",
+        "disposition": "fail",
+        "evidence_ref": "vr/common.warning.separate_apart"
+      },
+      {
+        "rule_id": "WARNING.PLACEMENT.NOT_SEPARATE",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/common.warning.separate_apart"
+      },
+      {
+        "rule_id": "common.warning.type_size_min",
+        "disposition": "pass",
+        "evidence_ref": "vr/common.warning.type_size_min"
+      },
+      {
+        "rule_id": "common.warning.verbatim",
+        "disposition": "fail",
+        "evidence_ref": "vr/common.warning.verbatim"
+      },
+      {
+        "rule_id": "WARNING.VERBATIM.MISMATCH",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/common.warning.verbatim"
+      },
+      {
+        "rule_id": "spirits.alcohol.format",
+        "disposition": "fail",
+        "evidence_ref": "vr/spirits.alcohol.format"
+      },
+      {
+        "rule_id": "ALCOHOL_CONTENT.FORMAT.INVALID",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/spirits.alcohol.format"
+      },
+      {
+        "rule_id": "spirits.alcohol.present",
+        "disposition": "pass",
+        "evidence_ref": "vr/spirits.alcohol.present"
+      },
       {
         "rule_id": "spirits.alcohol.tolerance_band",
         "disposition": "fail",
@@ -240,6 +395,16 @@
         "rule_id": "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND",
         "disposition": "fail",
         "evidence_ref": "reason_code/spirits.alcohol.tolerance_band"
+      },
+      {
+        "rule_id": "spirits.brand.present",
+        "disposition": "fail",
+        "evidence_ref": "vr/spirits.brand.present"
+      },
+      {
+        "rule_id": "BRAND.PRESENCE.MISSING",
+        "disposition": "fail",
+        "evidence_ref": "reason_code/spirits.brand.present"
       },
       {
         "rule_id": "spirits.class_type.matches_soi",
@@ -262,6 +427,11 @@
         "evidence_ref": "reason_code/spirits.class_type.present"
       },
       {
+        "rule_id": "spirits.name_address.present",
+        "disposition": "pass",
+        "evidence_ref": "vr/spirits.name_address.present"
+      },
+      {
         "rule_id": "spirits.net_contents.present",
         "disposition": "pass",
         "evidence_ref": "vr/spirits.net_contents.present"
@@ -270,14 +440,82 @@
     "overrides": []
   },
   "metrics": {
-    "total_duration_ms": 4992,
+    "total_duration_ms": 5348,
     "per_rule_durations_ms": [
+      {
+        "rule_id": "common.warning.contrasting_bg",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "WARNING.LEGIBILITY.NO_CONTRAST",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "common.warning.cpi_max",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "WARNING.TYPE_SIZE.CPI_EXCEEDED",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "common.warning.heading_caps_bold",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "WARNING.STYLE.HEADING_NOT_BOLD_CAPS",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "common.warning.present",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "common.warning.separate_apart",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "WARNING.PLACEMENT.NOT_SEPARATE",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "common.warning.type_size_min",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "common.warning.verbatim",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "WARNING.VERBATIM.MISMATCH",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "spirits.alcohol.format",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "ALCOHOL_CONTENT.FORMAT.INVALID",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "spirits.alcohol.present",
+        "duration_ms": 0
+      },
       {
         "rule_id": "spirits.alcohol.tolerance_band",
         "duration_ms": 0
       },
       {
         "rule_id": "ALCOHOL_CONTENT.TOLERANCE.OUT_OF_BAND",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "spirits.brand.present",
+        "duration_ms": 0
+      },
+      {
+        "rule_id": "BRAND.PRESENCE.MISSING",
         "duration_ms": 0
       },
       {
@@ -297,11 +535,15 @@
         "duration_ms": 0
       },
       {
+        "rule_id": "spirits.name_address.present",
+        "duration_ms": 0
+      },
+      {
         "rule_id": "spirits.net_contents.present",
         "duration_ms": 0
       }
     ],
-    "vision_duration_ms": 4985,
+    "vision_duration_ms": 5340,
     "orchestrator_duration_ms": 0
   }
 }

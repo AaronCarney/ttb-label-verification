@@ -14,7 +14,7 @@ from app.vision.cloud import CloudVisionExtractor
 
 EXPECTED_FIELD_IDS = {
     "brand_name", "class_type", "abv", "net_contents",
-    "gov_warning", "heading_typography", "name_address", "country_origin",
+    "gov_warning", "name_address", "country_origin",
 }
 RECORDINGS_DIR = Path("tests/recordings/openai/gpt-4o-2024-08-06/v1/01-spirits-clean")
 FIXTURE = Path("fixtures/01-spirits-clean/label.png")

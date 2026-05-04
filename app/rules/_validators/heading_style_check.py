@@ -1,4 +1,14 @@
-"""heading_style_check: §16.22(a)(2) caps + bold heading enforcement."""
+"""heading_style_check: §16.22(a)(2) caps + bold heading enforcement.
+
+Reads the consolidated gov_warning observation produced by
+`app/vision/cloud.py`. Keys: `heading_text`, `heading_all_caps`,
+`heading_bold`. The `heading_bold` value is the SWT-measured signal whenever
+the local stroke-width measurement was confident; otherwise it falls back to
+the LLM's self-reported classification — see README §"Bold detection".
+
+Backwards-compatible with the legacy `heading_styles` sub-object used by
+hand-built fixtures so existing fixture tests don't have to be rewritten.
+"""
 from __future__ import annotations
 
 from app.rules._validators import ValidatorContext, register
@@ -7,6 +17,22 @@ from app.schemas.expected import ExpectedValue
 from app.schemas.extracted import FieldObservation
 from app.schemas.rejection import Outcome, ValidationResult
 from app.schemas.rules import RuleDefinition
+
+
+def _read_heading_signal(payload: dict, target: str, weight: str, case: str) -> bool:
+    """Resolve (text, case, weight) match from either the consolidated cloud
+    shape or the legacy `heading_styles` sub-object."""
+    text = payload.get("heading_text", "")
+    if "heading_all_caps" in payload or "heading_bold" in payload:
+        all_caps = bool(payload.get("heading_all_caps", False))
+        is_bold = bool(payload.get("heading_bold", False))
+        case_ok = (case == "upper" and all_caps) or (case == "lower" and not all_caps)
+        weight_ok = (weight == "bold" and is_bold) or (weight == "regular" and not is_bold)
+    else:
+        styles = payload.get("heading_styles", {})
+        case_ok = styles.get("case") == case
+        weight_ok = styles.get("weight") == weight
+    return (text.upper() == target.upper()) and case_ok and weight_ok
 
 
 @register("heading_style_check")
@@ -20,13 +46,7 @@ def heading_style_check(
     target = rule.parameters.get("target_phrase", "GOVERNMENT WARNING")
     required_case = rule.parameters.get("required_case", "upper")
     required_weight = rule.parameters.get("required_weight", "bold")
-    text = payload.get("heading_text", "")
-    styles = payload.get("heading_styles", {})
-    ok = (
-        text.upper() == target.upper()
-        and styles.get("case") == required_case
-        and styles.get("weight") == required_weight
-    )
+    ok = _read_heading_signal(payload, target, required_weight, required_case)
     return ValidationResult(
         rule_id=rule.rule_id,
         cfr_citation=rule.cfr_citation,

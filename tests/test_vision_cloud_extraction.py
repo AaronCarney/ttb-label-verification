@@ -14,7 +14,7 @@ RECORDINGS_DIR = Path("tests/recordings/openai/gpt-4o-2024-08-06/v1/01-spirits-c
 FIXTURE = Path("fixtures/01-spirits-clean/label.png")
 EXPECTED_FIELD_IDS = {
     "brand_name", "class_type", "abv", "net_contents",
-    "gov_warning", "heading_typography", "name_address", "country_origin",
+    "gov_warning", "name_address", "country_origin",
 }
 
 
@@ -52,7 +52,7 @@ async def test_cloud_extracts_fr_001_to_008(monkeypatch):
         observations = await extractor.extract(label)
     field_ids = {obs.field_id for obs in observations}
     assert field_ids == EXPECTED_FIELD_IDS
-    assert len(ring) == 9  # 1 layout + 8 per-field calls
+    assert len(ring) == 8  # 1 layout + 7 per-field calls (heading_typography folded into gov_warning)
 
 
 @pytest.mark.asyncio
@@ -76,9 +76,13 @@ async def test_cloud_threads_self_reported_confidence(monkeypatch):
         "class_type": {"class_type": "BOURBON", "confidence": 0.88},
         "abv": {"abv_pct": 40.0, "unit": "%", "confidence": 0.81},
         "net_contents": {"net_contents_value": 750, "unit": "ML", "confidence": 0.97},
-        "gov_warning": {"text": "GOVERNMENT WARNING…", "confidence": 0.55},
-        "heading_typography": {
-            "all_caps": True, "bold": True, "type_size_pt": 8.0, "confidence": 0.42,
+        "gov_warning": {
+            "text": "GOVERNMENT WARNING…",
+            "heading_text": "GOVERNMENT WARNING",
+            "heading_all_caps": True,
+            "heading_bold": True,
+            "type_size_pt": 8.0,
+            "confidence": 0.55,
         },
         "name_address": {
             "name": "ACME", "city": "FRANKFORT", "state": "KY", "confidence": 0.73,
@@ -102,7 +106,7 @@ async def test_cloud_threads_self_reported_confidence(monkeypatch):
         observations = await extractor.extract(label)
     by_field = {obs.field_id: obs for obs in observations}
     assert by_field["brand_name"].evidence[0].confidence == pytest.approx(0.92)
-    assert by_field["heading_typography"].evidence[0].confidence == pytest.approx(0.42)
+    assert by_field["gov_warning"].evidence[0].confidence == pytest.approx(0.55)
     assert by_field["country_origin"].evidence[0].confidence == pytest.approx(0.66)
 
 
