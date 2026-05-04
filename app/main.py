@@ -85,6 +85,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     application.state.batches = {}
     application.state.buses = {}
 
+    if settings.dev_mode:
+        from app.api.eval import router as eval_router
+        application.include_router(eval_router)
+
     return application
 
 
