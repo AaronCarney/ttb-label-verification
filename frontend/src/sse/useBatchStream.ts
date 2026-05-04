@@ -1,4 +1,5 @@
 import * as React from "react";
+import type { DispositionEnvelope } from "../types/envelopes";
 import type { BatchSSEEvent } from "../types/sse";
 
 export interface BatchStreamState {
@@ -25,35 +26,44 @@ function _reducer(state: BatchStreamState, action: _Action): BatchStreamState {
   }
 }
 
+// E6 emits named SSE events per ARCH §5.2: label-result, anomaly-advisory,
+// stream-end (worker), and override-applied (override endpoint).
+// Per D-PE6-03 (post-E6 followups L2 plan), E7 consumes only label-result +
+// stream-end; the others are not surfaced in the current UI.
 export function useBatchStream(batchId: string): BatchStreamState {
   const [state, dispatch] = React.useReducer(_reducer, { events: [], error: null });
 
-  // FRAMING ASSUMPTION (PRD §6.3): each `MessageEvent` carries one whole
-  // BatchSSEEvent envelope as JSON in `msg.data`. If E6 instead emits
-  // `event:` / `id:` / `retry:` framed multi-line records, attach
-  // `addEventListener('label-update', …)` and friends per `event:` name and
-  // re-parse here. Test corpus today is single-line `data:` only.
-  //
-  // TODO(post-E6): verify against E6's actual emit format (read app/batch/**
-  // and app/api/batches.py once E6 lands on main); switch to addEventListener
-  // per emitted event name if E6 uses named framing. See
-  // docs/followups/post-e6-merge.md §2.
   React.useEffect(() => {
     if (!batchId) return;
     const url = `/batches/${encodeURIComponent(batchId)}/stream`;
     const es = new EventSource(url);
-    es.onmessage = (msg) => {
+
+    const _onLabelResult = (msg: MessageEvent) => {
       try {
-        const parsed = JSON.parse(msg.data as string) as BatchSSEEvent;
-        dispatch({ type: "push", event: parsed });
+        const wrapped = JSON.parse(msg.data as string) as {
+          batch_id: string;
+          queue_position: number;
+          envelope: DispositionEnvelope;
+        };
+        const flat: BatchSSEEvent = {
+          ...wrapped.envelope,
+          batch_id: wrapped.batch_id,
+          queue_position: wrapped.queue_position,
+        };
+        dispatch({ type: "push", event: flat });
       } catch {
         dispatch({ type: "error", message: "Malformed SSE payload" });
       }
     };
-    es.onerror = () => {
-      dispatch({ type: "error", message: "SSE connection error" });
-    };
+    const _onStreamEnd = () => es.close();
+
+    es.addEventListener("label-result", _onLabelResult);
+    es.addEventListener("stream-end", _onStreamEnd);
+    es.onerror = () => dispatch({ type: "error", message: "SSE connection error" });
+
     return () => {
+      es.removeEventListener("label-result", _onLabelResult);
+      es.removeEventListener("stream-end", _onStreamEnd);
       es.close();
     };
   }, [batchId]);
