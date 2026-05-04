@@ -37,7 +37,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 "prompt_version": settings.prompt_version,
             },
         )
+        app.state.batches = {}  # E6 NFR-DATA-001/002 — process-local in-flight batches
+        app.state.buses = {}    # E6 — per-batch SSEBus registry, keyed by batch_id
         yield
+        app.state.batches.clear()  # E6 lifespan teardown evicts all in-flight batches
+        app.state.buses.clear()    # E6 — drop bus subscribers + queues
 
     application = FastAPI(
         title="TTB Label Verification (prototype)",
@@ -51,6 +55,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     from app.api import raw as raw_module
     application.include_router(raw_module.router)
+
+    from app.api import batches as batches_module
+    application.include_router(batches_module.router)
+
+    # Pre-init state so routes work even when lifespan hasn't fired (e.g. httpx tests).
+    # Lifespan startup will re-assign; shutdown will clear.
+    application.state.batches = {}
+    application.state.buses = {}
 
     return application
 
