@@ -1,10 +1,11 @@
 """Cross-cutting registry invariants:
 
   1. Importing app.rules._validators populates VALIDATOR_REGISTRY with at least
-     the names this epoch ships (15 functions across 10 files; 15 registered
+     the names this epoch ships (16 functions across 11 files; 16 registered
      names — L1 §2.1's '12 registered names' is the original target; the surface
      grew to 15 during L2 decomposition because abv_band split into 3 names per
-     D-006 and layout_check split into 2 per FR-206/FR-226).
+     D-006 and layout_check split into 2 per FR-206/FR-226, then to 16 with the
+     A2 supplement that added type_size_check for FR-204).
   2. Every *.py file under app/rules/_validators/ (excluding __init__) registers
      at least one name (orphan-validator detection — file→registry direction).
      The companion check (registry→YAML: every registered name is referenced
@@ -31,6 +32,7 @@ EXPECTED_NAMES = {
     "cpi_lookup",
     "heading_style_check",
     "contrast_ratio_check",
+    "type_size_check",
     "layout_isolation_check", "same_field_of_vision_check",
     "fuzzy_brand",
 }
