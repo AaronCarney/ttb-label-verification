@@ -188,6 +188,15 @@ class Evaluator:
             )
             timeline.record_rule_done(rule_id=vr.rule_id, duration_ms=vr.engine_meta.elapsed_ms,
                                       disposition=disposition_label, evidence_ref=f"vr/{vr.rule_id}")
+            # Surface YAML-registry reason_code as a separate trace entry so
+            # the chokepoint contract (FR-90X surfacing) holds: any non-PASS
+            # outcome carrying a reason_code lands in per_rule_trace verbatim.
+            if vr.reason_code and vr.outcome != Outcome.PASS:
+                timeline.record_rule_done(
+                    rule_id=vr.reason_code, duration_ms=0,
+                    disposition=disposition_label,
+                    evidence_ref=f"reason_code/{vr.rule_id}",
+                )
         disposition = compute_disposition(results)
 
         # Step 9-10: assembly
