@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import time
 
 from app.api._sse_bus import SSEBus
 from app.batch.anomaly import AnomalyDetector
@@ -110,18 +111,50 @@ class BatchWorker:
 
     async def _consume(self) -> None:
         total = len(self._in_flight.items)
+        batch_id = self._in_flight.batch_id
+        t_batch = time.monotonic()
+        _logger.info(
+            f"batch_consume_started batch_id={batch_id} items={total} lookahead_k={self._in_flight.lookahead_k}",
+            extra={"batch_id": batch_id, "reason_code": "ENGINE.OK.NONE"},
+        )
         for queue_position in range(total):
             item: BatchItem = await self._in_flight.queue.get()
             application = self._resolve_application(item)
             label = self._resolve_label(item)
-            envelope = await self._evaluator.evaluate(application, label)
+            t_label = time.monotonic()
+            try:
+                envelope = await self._evaluator.evaluate(application, label)
+            except Exception:
+                _logger.exception(
+                    f"label_evaluation_failed batch_id={batch_id} label_id={item.label_id} pos={queue_position}",
+                    extra={
+                        "batch_id": batch_id,
+                        "label_id": item.label_id,
+                        "evaluation_id": application.evaluation_id,
+                        "reason_code": "ENGINE.WORKER.UNHANDLED",
+                    },
+                )
+                raise
+            duration_ms = int((time.monotonic() - t_label) * 1000)
             self._in_flight.record_result(item.label_id, envelope)
+
+            headline_code = _headline_reason_code(envelope)
+            _logger.info(
+                f"label_result batch_id={batch_id} pos={queue_position} disposition={envelope.disposition} duration_ms={duration_ms}",
+                extra={
+                    "batch_id": batch_id,
+                    "label_id": item.label_id,
+                    "evaluation_id": envelope.evaluation_id,
+                    "duration_ms": duration_ms,
+                    "reason_code": headline_code or "ENGINE.OK.NONE",
+                },
+            )
 
             # Per-label SSE event with queue_position
             self._bus.broadcast({
                 "event": "label-result",
                 "data": {
-                    "batch_id": self._in_flight.batch_id,
+                    "batch_id": batch_id,
                     "queue_position": queue_position,
                     "envelope": envelope.model_dump(mode="json"),
                 },
@@ -131,14 +164,17 @@ class BatchWorker:
             # binding here pins the contract that ``recent_dispositions`` and
             # ``observe`` see the same code, even if the helper later acquires
             # side effects.
-            headline_code = _headline_reason_code(envelope)
             self._in_flight.recent_dispositions.append(headline_code)
             advisory = self._anomaly.observe(headline_code)
             if advisory is not None:
+                _logger.info(
+                    f"anomaly_advisory batch_id={batch_id} advisory_id={advisory.advisory_id} count={advisory.count} window={advisory.window}",
+                    extra={"batch_id": batch_id, "reason_code": advisory.reason_code},
+                )
                 self._bus.broadcast({
                     "event": "anomaly-advisory",
                     "data": {
-                        "batch_id": self._in_flight.batch_id,
+                        "batch_id": batch_id,
                         "advisory_id": advisory.advisory_id,
                         "reason_code": advisory.reason_code,
                         "count": advisory.count,
@@ -146,10 +182,19 @@ class BatchWorker:
                     },
                 })
 
+        batch_duration_ms = int((time.monotonic() - t_batch) * 1000)
+        _logger.info(
+            f"batch_consume_finished batch_id={batch_id} items={total} duration_ms={batch_duration_ms}",
+            extra={
+                "batch_id": batch_id,
+                "duration_ms": batch_duration_ms,
+                "reason_code": "ENGINE.OK.NONE",
+            },
+        )
         self._bus.broadcast({
             "event": "stream-end",
             "data": {
-                "batch_id": self._in_flight.batch_id,
+                "batch_id": batch_id,
                 "total_count": total,
             },
         })
@@ -164,4 +209,15 @@ class BatchWorker:
             # cancel, a ``_consume`` error would leave the producer parked
             # forever and ``await producer_task`` would deadlock.
             producer_task.cancel()
-            await asyncio.gather(producer_task, return_exceptions=True)
+            results = await asyncio.gather(producer_task, return_exceptions=True)
+            for result in results:
+                if isinstance(result, BaseException) and not isinstance(result, asyncio.CancelledError):
+                    _logger.error(
+                        f"batch_producer_failed batch_id={self._in_flight.batch_id}",
+                        exc_info=(type(result), result, result.__traceback__),
+                        extra={
+                            "batch_id": self._in_flight.batch_id,
+                            "reason_code": "ENGINE.WORKER.UNHANDLED",
+                            "error_class": type(result).__name__,
+                        },
+                    )

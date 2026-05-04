@@ -66,6 +66,10 @@ async def post_batches(
 ) -> dict[str, str]:
     """Spawn a worker and return the batch_id."""
     if envelope.batch_id in request.app.state.batches:
+        _logger.warning(
+            f"batch_submit_conflict batch_id={envelope.batch_id} agent_id={envelope.agent_id} items={len(envelope.items)}",
+            extra={"batch_id": envelope.batch_id, "reason_code": "ENGINE.BATCH.CONFLICT"},
+        )
         raise HTTPException(status_code=409, detail=f"batch_id {envelope.batch_id} already in flight")
 
     lookahead_k = _resolve_lookahead_k(settings)
@@ -85,6 +89,10 @@ async def post_batches(
         bus=bus,
     )
     asyncio.create_task(worker.run())
+    _logger.info(
+        f"batch_accepted batch_id={envelope.batch_id} agent_id={envelope.agent_id} items={len(envelope.items)} lookahead_k={lookahead_k}",
+        extra={"batch_id": envelope.batch_id, "reason_code": "ENGINE.OK.NONE"},
+    )
     return {"batch_id": envelope.batch_id}
 
 
@@ -92,6 +100,10 @@ async def post_batches(
 async def get_batch_snapshot(batch_id: str, request: Request) -> dict[str, Any]:
     in_flight = request.app.state.batches.get(batch_id)
     if in_flight is None:
+        _logger.warning(
+            f"batch_snapshot_not_found batch_id={batch_id}",
+            extra={"batch_id": batch_id, "reason_code": "ENGINE.BATCH.NOT_FOUND"},
+        )
         raise HTTPException(status_code=404, detail=f"batch_id {batch_id} not found")
     return in_flight.snapshot().model_dump(mode="json")
 
@@ -100,17 +112,39 @@ async def get_batch_snapshot(batch_id: str, request: Request) -> dict[str, Any]:
 async def get_batch_stream(batch_id: str, request: Request):
     in_flight = request.app.state.batches.get(batch_id)
     if in_flight is None:
+        _logger.warning(
+            f"batch_stream_not_found batch_id={batch_id}",
+            extra={"batch_id": batch_id, "reason_code": "ENGINE.BATCH.NOT_FOUND"},
+        )
         raise HTTPException(status_code=404, detail=f"batch_id {batch_id} not found")
     bus: SSEBus | None = request.app.state.buses.get(batch_id)
     if bus is None:
+        _logger.warning(
+            f"batch_stream_bus_missing batch_id={batch_id}",
+            extra={"batch_id": batch_id, "reason_code": "ENGINE.BATCH.NOT_FOUND"},
+        )
         raise HTTPException(status_code=404, detail=f"batch_id {batch_id} stream not registered")
     sub = bus.subscribe()
+    replay_count = sub.qsize()
+    _logger.info(
+        f"batch_stream_subscribed batch_id={batch_id} replay={replay_count} subscribers={len(bus.subscribers)}",
+        extra={"batch_id": batch_id, "reason_code": "ENGINE.OK.NONE"},
+    )
 
     async def _event_generator():
+        events_yielded = 0
+        terminated = False
         try:
             async for evt in bus.iterate(sub, terminator_event="stream-end"):
+                events_yielded += 1
+                if evt.get("event") == "stream-end":
+                    terminated = True
                 yield {"event": evt["event"], "data": evt["data"]}
         finally:
             bus.unsubscribe(sub)
+            _logger.info(
+                f"batch_stream_closed batch_id={batch_id} events={events_yielded} terminated={terminated}",
+                extra={"batch_id": batch_id, "reason_code": "ENGINE.OK.NONE"},
+            )
 
     return EventSourceResponse(_event_generator())

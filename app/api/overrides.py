@@ -48,6 +48,10 @@ def _accepted_reason_codes() -> frozenset[str]:
     global _ACCEPTED_REASON_CODES_CACHE
     if _ACCEPTED_REASON_CODES_CACHE is None:
         _ACCEPTED_REASON_CODES_CACHE = _load_accepted_reason_codes()
+        _logger.info(
+            f"override_registry_loaded codes={len(_ACCEPTED_REASON_CODES_CACHE)} path=rules/reason_codes.yaml",
+            extra={"reason_code": "ENGINE.OK.NONE"},
+        )
     return _ACCEPTED_REASON_CODES_CACHE
 
 
@@ -87,6 +91,13 @@ async def post_override(
     request: Request,
 ) -> dict:
     if payload.reason_code not in _accepted_reason_codes():
+        _logger.warning(
+            f"override_rejected_unknown_code evaluation_id={evaluation_id} reason_code={payload.reason_code} applied={payload.applied_disposition}",
+            extra={
+                "evaluation_id": evaluation_id,
+                "reason_code": payload.reason_code,
+            },
+        )
         raise HTTPException(
             status_code=400,
             detail=f"reason_code '{payload.reason_code}' is not in the loaded registry",
@@ -100,6 +111,13 @@ async def post_override(
         # in any batch; (b) label is queued but evaluator has not yet emitted
         # a result. Per the contract above, the UI prevents (b) by gating the
         # override button on the SSE label-result event.
+        _logger.warning(
+            f"override_rejected_not_found evaluation_id={evaluation_id} reason_code={payload.reason_code}",
+            extra={
+                "evaluation_id": evaluation_id,
+                "reason_code": "ENGINE.OVERRIDE.NOT_FOUND",
+            },
+        )
         raise HTTPException(
             status_code=404,
             detail=f"evaluation_id {evaluation_id} not found in any in-flight batch result",
@@ -126,6 +144,7 @@ async def post_override(
     # the broadcast as best-effort — the audit-trail mutation is the
     # source-of-truth contract.
     bus = request.app.state.buses.get(batch_id)
+    bus_present = bus is not None
     if bus is not None:
         bus.broadcast({
             "event": "override-applied",
@@ -135,5 +154,15 @@ async def post_override(
                 "entry": entry.model_dump(mode="json"),
             },
         })
+
+    _logger.info(
+        f"override_applied batch_id={batch_id} evaluation_id={evaluation_id} field={payload.field_name} {env.disposition}->{payload.applied_disposition} bus={bus_present}",
+        extra={
+            "batch_id": batch_id,
+            "evaluation_id": evaluation_id,
+            "label_id": label_id,
+            "reason_code": payload.reason_code,
+        },
+    )
 
     return entry.model_dump(mode="json")

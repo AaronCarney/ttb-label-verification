@@ -40,8 +40,15 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         app.state.batches = {}  # E6 NFR-DATA-001/002 — process-local in-flight batches
         app.state.buses = {}    # E6 — per-batch SSEBus registry, keyed by batch_id
         yield
-        app.state.batches.clear()  # E6 lifespan teardown evicts all in-flight batches
-        app.state.buses.clear()    # E6 — drop bus subscribers + queues
+        # E6 lifespan teardown evicts all in-flight batches + bus subscribers/queues
+        evicted_batches = len(app.state.batches)
+        evicted_buses = len(app.state.buses)
+        app.state.batches.clear()
+        app.state.buses.clear()
+        logging.getLogger("app.main").info(
+            f"app_shutdown evicted_batches={evicted_batches} evicted_buses={evicted_buses}",
+            extra={"reason_code": "ENGINE.OK.NONE"},
+        )
 
     application = FastAPI(
         title="TTB Label Verification (prototype)",
