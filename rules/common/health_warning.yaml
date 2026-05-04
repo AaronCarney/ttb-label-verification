@@ -90,3 +90,29 @@ rules:
     confidence_floor: 0.40
     effective_date: "1989-11-18"
     test_fixtures: [F-COMMON-WARN-ISOLATION-PASS-01, F-COMMON-WARN-ISOLATION-FAIL-01]
+
+  - rule_id: common.warning.type_size_min
+    cfr_citation: "27 CFR §16.22(b)"
+    applies_to_classes: [wine, spirits, malt]
+    reason_code: WARNING.TYPE_SIZE.UNDER_MIN
+    severity: reject
+    match_policy: layout
+    validator: type_size_check
+    parameters:
+      min_type_size_pt: 2.0
+    evidence_required: [warning_block]
+    confidence_floor: 0.40
+    effective_date: "1989-11-18"
+    test_fixtures: [F-COMMON-WARN-TYPE-SIZE-PASS-01, F-COMMON-WARN-TYPE-SIZE-FAIL-01]
+
+  - rule_id: common.warning.heading_phrase
+    cfr_citation: "27 CFR §16.21"
+    applies_to_classes: [wine, spirits, malt]
+    reason_code: WARNING.VERBATIM.MISMATCH
+    severity: reject
+    match_policy: normalized
+    validator: equality_match
+    evidence_required: [warning_heading]
+    confidence_floor: 0.50
+    effective_date: "1989-11-18"
+    test_fixtures: [F-COMMON-WARN-HEADING-PASS-01, F-COMMON-WARN-HEADING-MISMATCH-01]
