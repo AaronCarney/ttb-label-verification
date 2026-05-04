@@ -222,3 +222,19 @@ def pnpm_built_island() -> Path:
     out_dir = root / "app" / "ui" / "static" / "island"
     assert (out_dir / "single.js").exists(), "vite build did not produce single.js"
     return out_dir
+
+
+def pytest_collection_modifyitems(config, items):
+    """Run sync-Playwright tests last.
+
+    Playwright's sync API installs a thread-local event loop that pytest-asyncio
+    cannot reuse cleanly; if any Playwright test runs first, every subsequent
+    `@pytest.mark.asyncio` test fails with `Cannot run the event loop while
+    another loop is running` at teardown. Pushing all `page`-fixture tests to
+    the end of the run keeps the asyncio block uncontaminated.
+    """
+    playwright_items = [it for it in items if "page" in it.fixturenames]
+    if not playwright_items:
+        return
+    other_items = [it for it in items if "page" not in it.fixturenames]
+    items[:] = other_items + playwright_items
