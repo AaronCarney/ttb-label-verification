@@ -11,6 +11,7 @@ import { NeedsBetterPhotoCard } from "./components/NeedsBetterPhotoCard";
 import { OverrideDrawer } from "./components/OverrideDrawer";
 import { RawJSONDrawer } from "./components/RawJSONDrawer";
 import { RuleVerdict } from "./components/RuleVerdict";
+import { Toast } from "./components/Toast";
 import { useKeyboardShortcuts } from "./hooks/useKeyboardShortcuts";
 import type { DispositionEnvelope } from "./types/envelopes";
 
@@ -43,9 +44,19 @@ const _REASON_CODES = [
   { code: "CLASS_TYPE.SOI.NO_MATCH", description: "Class/Type SOI mismatch" },
 ];
 
+// Per D-PE6-01: applied_disposition is required by E6's OverrideRequest schema
+// but the drawer only captures reason_code + justification. Derive disposition
+// from the reason_code prefix.
+function _disposition_for(code: string): "pass" | "fail" | "needs_review" {
+  if (code.startsWith("FAIL.")) return "fail";
+  if (code.startsWith("PASS.")) return "pass";
+  return "needs_review";
+}
+
 function SingleApp({ envelope }: { envelope: DispositionEnvelope | null }): React.JSX.Element {
   const [overrideOpen, setOverrideOpen] = React.useState(false);
   const [announcement, setAnnouncement] = React.useState("");
+  const [toast, setToast] = React.useState<{kind: "error" | "success"; message: string} | null>(null);
   useKeyboardShortcuts({
     onOverride: () => setOverrideOpen(true),
     onEscape: () => setOverrideOpen(false),
@@ -102,16 +113,43 @@ function SingleApp({ envelope }: { envelope: DispositionEnvelope | null }): Reac
         open={overrideOpen}
         onOpenChange={setOverrideOpen}
         codes={_REASON_CODES}
-        onSubmit={(p) => {
-          // TODO(post-E6): POST { evaluation_id, reason_code, justification }
-          // to E6's /overrides endpoint, surface failures via Toast, refresh
-          // audit_trail.overrides on success. See docs/followups/post-e6-merge.md §1.
-          // Today this is local-only (FR-507 satisfied; FR-801 audit not yet).
-          setAnnouncement(`Override saved: ${p.reasonCode}`);
-          setOverrideOpen(false);
+        // Single-label demo flow: this POST 404s against the real E6 endpoint
+        // because the label is not in any in-flight batch's results map. Tests
+        // intercept via page.route(). See docs/followups/post-e6-merge.md.
+        onSubmit={async (p) => {
+          const body = {
+            field_name: null,
+            applied_disposition: _disposition_for(p.reasonCode),
+            reason_code: p.reasonCode,
+            justification_text: p.justification || null,
+          };
+          try {
+            const res = await fetch(
+              `/labels/${encodeURIComponent(envelope.evaluation_id)}/overrides`,
+              { method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body) },
+            );
+            if (!res.ok) {
+              const errBody = await res.json().catch(() => ({detail: "Override request failed"}));
+              const detail = Array.isArray(errBody.detail)
+                ? errBody.detail.map((d: {msg?: string}) => d.msg).filter(Boolean).join("; ")
+                : (errBody.detail ?? "Override request failed");
+              setToast({kind: "error", message: detail});
+              return;
+            }
+            setAnnouncement(`Override saved: ${p.reasonCode}`);
+            setOverrideOpen(false);
+          } catch {
+            setToast({kind: "error", message: "Network error — override not saved"});
+          }
         }}
       />
       <LiveRegion message={announcement} />
+      {toast && (
+        <Toast
+          message={toast.message}
+          onDismiss={() => setToast(null)}
+        />
+      )}
       <EvidencePanelStub />
     </div>
   );
