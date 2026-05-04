@@ -272,3 +272,14 @@ class YamlRuleLoader:
             key = ap.split("/")[-1].rsplit(".", 1)[0]
             out[key] = AssetRef(path=ap, sha256=pin)
         return out
+
+
+def _cli_entry() -> int:
+    import sys
+    from app.rules.__main__ import main
+    return main()
+
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(_cli_entry())
