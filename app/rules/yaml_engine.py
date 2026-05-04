@@ -49,6 +49,15 @@ class YamlRuleEngine(RuleEngine):
     def __init__(self, ruleset: RuleSet) -> None:
         self._ruleset = ruleset
 
+    def build_validator_context(self, *, started_at_ms: int) -> ValidatorContext:
+        rs = self._ruleset
+        return ValidatorContext(
+            assets=rs.assets,
+            decision_tables=rs.decision_tables,
+            started_at_ms=started_at_ms,
+            engine_version=rs.version,
+        )
+
     async def evaluate(
         self,
         observations: Sequence[FieldObservation],

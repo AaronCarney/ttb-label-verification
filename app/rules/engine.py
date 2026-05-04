@@ -25,3 +25,15 @@ class RuleEngine(ABC):
         expected: Sequence[ExpectedValue],
         context: ValidatorContext,
     ) -> tuple[ValidationResult, ...]: ...
+
+    @abstractmethod
+    def build_validator_context(self, *, started_at_ms: int) -> ValidatorContext:
+        """Construct a per-evaluation ``ValidatorContext`` for this engine.
+
+        Each subclass sources ``assets``, ``decision_tables``, and
+        ``engine_version`` from whatever it has on hand; the caller (the
+        Evaluator) supplies the per-evaluation wall-clock reference. Pulling
+        construction onto the abstraction means tests (FakeRuleEngine) can
+        return a stub without reaching into private state.
+        """
+        ...
