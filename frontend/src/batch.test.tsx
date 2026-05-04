@@ -8,6 +8,8 @@ class _NoopEventSource {
   onmessage: unknown = null;
   onerror: unknown = null;
   close(): void {}
+  addEventListener(): void {}
+  removeEventListener(): void {}
 }
 
 beforeEach(() => {
