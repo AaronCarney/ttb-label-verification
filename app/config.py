@@ -6,6 +6,7 @@ references ``os.environ`` directly.
 """
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Literal
 
 from pydantic import Field, field_validator
@@ -57,6 +58,13 @@ class Settings(BaseSettings):
 
     # Logging level (L2-added; flag for ARCH §12.2 amendment).
     log_level: str = Field(default="INFO", alias="LOG_LEVEL")
+
+    # YAML rules directory (D-014).
+    rules_root: Path = Field(
+        default=Path("rules").resolve(),
+        alias="RULES_ROOT",
+        description="Absolute path to the YAML rules directory (D-014).",
+    )
 
     @field_validator("dev_mode", mode="before")
     @classmethod
