@@ -1789,4 +1789,75 @@ Verify:
 
 | Version | Date | Author | Notes |
 |---|---|---|---|
-| 0.1 | 2026-05-03 | Project team | Initial E3 L2 plan. 19 tasks, 5 waves. |
+| 0.1 | 2026-05-03 | Project team | Initial E3 L2 plan. 19 tasks. |
+| 0.2 | 2026-05-03 | Project team | Added formal §Dependency Graph (parallel-planning). 6 waves, max-6 concurrency cap honored. |
+
+---
+
+## Dependency Graph
+
+### Task Dependencies
+
+| Task | Depends On | Blocks | Files Owned |
+|------|-----------|--------|-------------|
+| T1: Label + Dimensions schema | — | T2, T6, T10, T11 | `app/schemas/label.py`, `tests/test_label_schema.py` |
+| T2: VisionExtractor Protocol | T1 | T6, T7, T8, T9, T10, T11, T15 | `app/vision/__init__.py`, `app/vision/base.py`, `tests/test_vision_protocol.py` |
+| T3: Reason codes (GLARE + MOTION_BLUR) | — | T6 | `rules/reason_codes.yaml` (append), `tests/rules/test_reason_codes_yaml.py` (extend whitelist) |
+| T4: pyproject — `respx` dev dep | — | T9, T10 | `pyproject.toml`, `uv.lock` |
+| T5: Synthetic fixture | — | T6, T10, T13, T14, T15, T17 | `fixtures/01-spirits-clean/label.png`, `scripts/build_synthetic_fixture.py`, `tests/test_synthetic_fixture.py` |
+| T6: Quality gates (BRISQUE/NIQE/glare/blur/DPI) | T1, T3, T5 | T10, T11, T18 | `app/vision/quality.py`, `tests/test_vision_quality_gates.py` |
+| T7: PaddleOCR sub-runner | T2 | T11 | `app/vision/paddle_runner.py`, `tests/test_vision_paddle_runner.py` |
+| T8: SWT bold detector sub-runner | T2 | T11 | `app/vision/swt.py`, `tests/test_vision_swt.py` |
+| T9: GPT-4o tiebreaker sub-runner | T2, T4 | T11 | `app/vision/tiebreak_gpt4o.py`, `tests/recordings/openai/gpt-4o-2024-08-06/v1/tiebreak/brand_name.json`, `tests/test_vision_tiebreak_gpt4o.py` |
+| T10: CloudVisionExtractor | T1, T2, T4, T5, T6 | T12, T13, T14, T15, T16, T17, T19 | `app/vision/cloud.py`, `tests/recordings/openai/gpt-4o-2024-08-06/v1/01-spirits-clean/*.json` (9 files), `tests/test_vision_cloud_extraction.py` |
+| T11: LocalVisionExtractor (composer) | T1, T2, T6, T7, T8, T9 | T12, T15, T19 | `app/vision/local.py`, `tests/test_vision_local_protocol.py` |
+| T12: DI wiring + `_autodetect` | T10, T11 | — | `app/deps.py` (replace placeholders), `tests/test_vision_deps_autodetect.py` |
+| T13: CLI smoke entry | T5, T9, T10 | — | `app/vision/__main__.py`, `tests/test_vision_cli_smoke.py` |
+| T14: Recording-rotation script | T5, T10 | — | `scripts/record_vision_responses.py`, `tests/test_record_vision_responses.py` |
+| T15: Substitutability E2E | T2, T5, T10, T11 | — | `tests/test_vision_substitutability.py` |
+| T16: Bulkhead concurrency cap | T10 | — | `tests/test_vision_bulkhead.py` |
+| T17: Ring-buffer CallRecord per leg | T5, T10 | — | `tests/test_vision_ring_buffer_records.py` |
+| T18: Multi-source DPI extraction | T6 | — | `tests/test_vision_dpi_extraction.py` |
+| T19: Inference-dep isolation grep | T10, T11 | — | `tests/test_vision_isolation.py` |
+
+### Shared Files
+
+No cross-task file modifications. Every cell in "Files Owned" appears in exactly one row. Verified by inspection:
+
+- `rules/reason_codes.yaml` — appended only by T3 (registry-grow append). E2 already wrote the file; E3 only adds two new keys. No other E3 task touches it.
+- `pyproject.toml` / `uv.lock` — modified only by T4.
+- `app/deps.py` — modified only by T12 (E1 wrote the placeholders; E3 replaces them).
+- `tests/recordings/openai/gpt-4o-2024-08-06/v1/` — partitioned by sub-path: T9 owns `tiebreak/`, T10 owns `01-spirits-clean/`. T13/T14/T15/T17 *consume* recordings as test fixtures but do not write to them. T14's recording-rotation script writes only when invoked under `--live` flag (operator action, never at test time).
+- `tests/rules/test_reason_codes_yaml.py` — extended only by T3 (the existing E2 file's whitelist is widened by two strings).
+
+### Execution Waves
+
+```
+Wave 1 (parallel, 4 tasks): [T1, T3, T4, T5]                       ← roots, no deps
+Wave 2 (single,   1 task ): [T2]                                    ← needs T1 (Label)
+Wave 3 (parallel, 4 tasks): [T6, T7, T8, T9]                        ← need T1/T2/T3/T4/T5
+Wave 4 (parallel, 3 tasks): [T10, T11, T18]                         ← need Wave 3 outputs
+Wave 5 (parallel, 6 tasks): [T12, T13, T14, T15, T16, T17]          ← all need T10 (and/or T11)
+Wave 6 (single,   1 task ): [T19]                                   ← isolation grep — runs after all vision code lands
+```
+
+**Wave 5 cap rationale.** Wave 5 sits exactly at the executor's 6-task concurrent-dispatch ceiling. T19 (which only needs T10 + T11) is deferred to Wave 6 because adding it to Wave 5 would push to 7 tasks. T19 alone in Wave 6 is correct: it's the last-chance integrity check that no upstream wave smuggled an `openai`/`paddle`/`cv2`/`torch` import outside `app/vision/`, and running it solo means no concurrent task can be racing the file tree it scans.
+
+**Critical path (longest dependency chain):** T1 → T2 → T7 (or T8 or T9) → T11 → T15 (or T19 for the 6-wave path) — 5 wave hops counting wave boundaries. Wall-clock per wave is dominated by the slowest task in the wave, so overall wall-clock ≈ Σ(max-per-wave-duration) instead of Σ(all-task-durations).
+
+**Parallelism factor.** 19 tasks across 6 waves → effective parallelism ≈ 3.2× vs strict serial. The two heaviest tasks (T10 cloud, T11 local) are co-resident in Wave 4, so the wall-clock floor is `max(T10, T11)` for that wave rather than the sum.
+
+### Execution Strategy
+
+> **For Claude:** Use `parallel-plan-executor` to execute this plan. The executor dispatches every task in a wave concurrently (up to 6 at a time) and holds a barrier between waves. Each task runs in an isolated worktree subagent with the `task-executor` skill body injected for TDD enforcement.
+
+**Wave 1** — Dispatch T1, T3, T4, T5 concurrently in one message. Barrier. Verify 4 commits land on `main`.
+**Wave 2** — Dispatch T2 alone. Verify 1 commit.
+**Wave 3** — Dispatch T6, T7, T8, T9 concurrently in one message. Barrier. Verify 4 commits.
+**Wave 4** — Dispatch T10, T11, T18 concurrently. Barrier. Verify 3 commits.
+**Wave 5** — Dispatch T12, T13, T14, T15, T16, T17 concurrently (six is the cap). Barrier. Verify 6 commits.
+**Wave 6** — Dispatch T19 alone (final integrity check). Verify 1 commit.
+
+**Total expected new commits on `main`:** ~30 (some tasks bundle multiple TDD cycles per the `task-executor` "one behavior per commit" rule, so the count may exceed 19; T6 alone is 5 cycles, T10 is 3 cycles).
+
+**Pre-flight invariant** (parallel-plan-executor enforces): for each wave, the union of file-ownership sets is a strict-disjoint set (no file appears twice). Verified above in §Shared Files.
