@@ -16,6 +16,15 @@ function _isTypingTarget(target: EventTarget | null): boolean {
   return false;
 }
 
+// Inside an open dialog, all top-level shortcuts (O/J/K) must defer to the
+// dialog's own keyboard model — otherwise pressing 'O' in the override
+// drawer's close button would re-open the drawer, and J/K could fire batch
+// navigation while the user is reviewing a citation in EvidencePanel.
+function _isInsideDialog(target: EventTarget | null): boolean {
+  if (!(target instanceof HTMLElement)) return false;
+  return target.closest('[role="dialog"]') !== null;
+}
+
 export function useKeyboardShortcuts(shortcuts: KeyboardShortcuts): void {
   const ref = React.useRef(shortcuts);
   React.useEffect(() => {
@@ -24,26 +33,27 @@ export function useKeyboardShortcuts(shortcuts: KeyboardShortcuts): void {
 
   React.useEffect(() => {
     const handler = (e: KeyboardEvent) => {
+      const inDialog = _isInsideDialog(e.target);
       if (_isTypingTarget(e.target)) return;
       const { onOverride, onNext, onPrev, onEscape, onEnter } = ref.current;
       switch (e.key) {
         case "o":
         case "O":
-          if (onOverride) {
+          if (onOverride && !inDialog) {
             e.preventDefault();
             onOverride();
           }
           break;
         case "j":
         case "J":
-          if (onNext) {
+          if (onNext && !inDialog) {
             e.preventDefault();
             onNext();
           }
           break;
         case "k":
         case "K":
-          if (onPrev) {
+          if (onPrev && !inDialog) {
             e.preventDefault();
             onPrev();
           }

@@ -42,6 +42,26 @@ describe("useKeyboardShortcuts", () => {
     document.body.removeChild(input);
   });
 
+  it("ignores O/J/K when focus is inside a [role=dialog]", () => {
+    const onOverride = vi.fn();
+    const onNext = vi.fn();
+    const onPrev = vi.fn();
+    renderHook(() => useKeyboardShortcuts({ onOverride, onNext, onPrev }));
+    const dialog = document.createElement("div");
+    dialog.setAttribute("role", "dialog");
+    const closeBtn = document.createElement("button");
+    dialog.appendChild(closeBtn);
+    document.body.appendChild(dialog);
+    closeBtn.focus();
+    fireKey("o", closeBtn);
+    fireKey("j", closeBtn);
+    fireKey("k", closeBtn);
+    expect(onOverride).not.toHaveBeenCalled();
+    expect(onNext).not.toHaveBeenCalled();
+    expect(onPrev).not.toHaveBeenCalled();
+    document.body.removeChild(dialog);
+  });
+
   it("cleans up listeners on unmount (StrictMode survival)", () => {
     const onOverride = vi.fn();
     const { unmount } = renderHook(() => useKeyboardShortcuts({ onOverride }));
