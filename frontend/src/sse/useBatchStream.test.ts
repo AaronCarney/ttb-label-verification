@@ -67,7 +67,7 @@ function _envelope(label_ref: string, disposition: "pass" | "fail" | "needs_revi
 describe("useBatchStream", () => {
   it("pushes label-result events with unwrapped envelope payload", () => {
     const { result } = renderHook(() => useBatchStream("B-001"));
-    const es = FakeEventSource.instances[0];
+    const es = FakeEventSource.instances[0]!;
     expect(es.url).toContain("/batches/B-001/stream");
 
     act(() => {
@@ -75,15 +75,15 @@ describe("useBatchStream", () => {
     });
 
     expect(result.current.events).toHaveLength(1);
-    expect(result.current.events[0].label_ref).toBe("lbl-1");
-    expect(result.current.events[0].batch_id).toBe("B-001");
-    expect(result.current.events[0].queue_position).toBe(1);
+    expect(result.current.events[0]!.label_ref).toBe("lbl-1");
+    expect(result.current.events[0]!.batch_id).toBe("B-001");
+    expect(result.current.events[0]!.queue_position).toBe(1);
     expect(result.current.error).toBeNull();
   });
 
   it("stream-end closes the connection — subsequent label-result events are ignored", () => {
     const { result } = renderHook(() => useBatchStream("B-002"));
-    const es = FakeEventSource.instances[0];
+    const es = FakeEventSource.instances[0]!;
 
     act(() => {
       es.fire("label-result", { batch_id: "B-002", queue_position: 1, envelope: _envelope("lbl-A") });
@@ -104,7 +104,7 @@ describe("useBatchStream", () => {
 
   it("dedupes label-result events with the same label_ref", () => {
     const { result } = renderHook(() => useBatchStream("B-003"));
-    const es = FakeEventSource.instances[0];
+    const es = FakeEventSource.instances[0]!;
 
     act(() => {
       es.fire("label-result", { batch_id: "B-003", queue_position: 1, envelope: _envelope("lbl-X") });
@@ -112,12 +112,12 @@ describe("useBatchStream", () => {
     });
 
     expect(result.current.events).toHaveLength(1);
-    expect(result.current.events[0].disposition).toBe("pass");  // first wins
+    expect(result.current.events[0]!.disposition).toBe("pass");  // first wins
   });
 
   it("sets error on malformed JSON payload", () => {
     const { result } = renderHook(() => useBatchStream("B-004"));
-    const es = FakeEventSource.instances[0];
+    const es = FakeEventSource.instances[0]!;
 
     act(() => {
       es.fire("label-result", "not-json{");

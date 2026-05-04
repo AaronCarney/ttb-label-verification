@@ -112,6 +112,45 @@ def test_three_keystroke_override_posts_to_endpoint(page: Page, live_server_url:
 
 
 @pytest.mark.usefixtures("live_server", "pnpm_built_island")
+def test_override_failure_path_surfaces_toast(page: Page, live_server_url: str) -> None:
+    envelope = json.loads(FIXTURE.read_text())
+
+    def _route_422(route):
+        route.fulfill(
+            status=422,
+            content_type="application/json",
+            body=json.dumps({
+                "detail": "reason_code 'WARNING.STYLE.HEADING_NOT_BOLD_CAPS' is not in the loaded registry",
+            }),
+        )
+    page.route("**/labels/*/overrides", _route_422)
+
+    page.add_init_script(
+        script=f"""
+          window.addEventListener('DOMContentLoaded', () => {{
+            const tag = document.createElement('script');
+            tag.id = 'envelope';
+            tag.type = 'application/json';
+            tag.textContent = {json.dumps(json.dumps(envelope))};
+            document.body.appendChild(tag);
+          }});
+        """
+    )
+    page.goto(f"{live_server_url}/")
+    page.wait_for_selector('[data-mounted="true"]', timeout=5000)
+
+    page.keyboard.press("o")
+    page.wait_for_selector('[role="dialog"]', timeout=2000)
+    page.keyboard.type("w")
+    page.keyboard.press("Enter")
+
+    # Toast renders with role=status (per Toast.tsx convention).
+    page.wait_for_selector('[role="status"]', timeout=2000)
+    assert page.locator('[role="dialog"]').is_visible()
+    assert "not in the loaded registry" in page.locator('[role="status"]').inner_text()
+
+
+@pytest.mark.usefixtures("live_server", "pnpm_built_island")
 def test_jk_navigation_does_not_steal_typing(page: Page, live_server_url: str) -> None:
     """J/K are reserved for batch navigation but must not fire while typing."""
     envelope = json.loads(FIXTURE.read_text())
