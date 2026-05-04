@@ -62,26 +62,33 @@ Every negative disposition includes a structured `reason_code` from a single tax
 
 ## Setup
 
+If you just want to try it, the live demo above already has the key configured server-side — no local setup required. Local boot is for reading code and running the eval harness.
+
+**You will need an OpenAI API key for any local profile.** The orchestrator (LLM) always runs against GPT-4o; only the vision model can run locally. Get a key at https://platform.openai.com/api-keys.
+
+In every profile: `cp .env.example .env`, then put your key on the `OPENAI_API_KEY=` line. Every other variable in `.env.example` has a sensible default and can stay as-is.
+
 The React UI bundle is pre-built and committed under `app/ui/static/island/`, so Profiles B and C do not need a Node toolchain.
 
-### Profile A — WSL2 + GPU (full local-mode path, includes UI rebuild)
+### Profile A — WSL2 + GPU (local vision path, GPU-extras install)
 ```bash
 git clone https://github.com/AaronCarney/ttb-label-verification && cd ttb-label-verification
+cp .env.example .env  # fill OPENAI_API_KEY
 uv sync --extra gpu
 uv run task demo
 # Open http://localhost:8000
 ```
 
-### Profile B — macOS, no GPU (cloud-mode only)
+### Profile B — macOS, no GPU (cloud vision path)
 ```bash
 git clone https://github.com/AaronCarney/ttb-label-verification && cd ttb-label-verification
-cp .env.example .env  # then fill OPENAI_API_KEY
+cp .env.example .env  # fill OPENAI_API_KEY
 uv sync
 uv run task demo
 # Open http://localhost:8000
 ```
 
-### Profile C — Linux, no GPU (cloud-mode only)
+### Profile C — Linux, no GPU (cloud vision path)
 Same as Profile B.
 
 ## Eval
