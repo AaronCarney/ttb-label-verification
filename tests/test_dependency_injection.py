@@ -50,16 +50,6 @@ def test_vision_extractor_provider_dispatches_on_mode() -> None:
     assert isinstance(build_vision_extractor(s_local), LocalVisionExtractor)
 
 
-@pytest.mark.asyncio
-async def test_orchestrator_refine_raises_not_implemented_e4() -> None:
-    from app.deps import build_orchestrator
-
-    s = _settings_with(OPENAI_API_KEY="sk", ORCHESTRATOR_BACKEND="openai")
-    orch = build_orchestrator(s)
-    with pytest.raises(NotImplementedError, match=r"seam not wired in E1 \(E4\)"):
-        await orch.refine(payload=None)  # type: ignore[arg-type]
-
-
 def test_orchestrator_provider_dispatches_on_backend() -> None:
     from app.deps import build_orchestrator
 
