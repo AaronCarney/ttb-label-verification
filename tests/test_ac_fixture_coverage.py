@@ -59,9 +59,11 @@ _UPSTREAM_VISION_REPLAY = pytest.mark.xfail(
 @pytest.mark.asyncio
 @pytest.mark.parametrize("fixture_id, expected_disposition, expected_field_count", [
     pytest.param("01-spirits-clean",        "pass",         7, marks=_UPSTREAM_VISION_REPLAY),
+    pytest.param("02-bourbon-stones-throw", "pass",         7, marks=_UPSTREAM_VISION_REPLAY),
     pytest.param("03-warning-title-case",   "fail",         7, marks=_UPSTREAM_VISION_REPLAY),
     pytest.param("04-low-res-blurry",       "needs_review", 0),
     pytest.param("06-abv-out-of-tolerance", "fail",         7, marks=_UPSTREAM_VISION_REPLAY),
+    pytest.param("07-borderline-confidence", "needs_review", 7, marks=_UPSTREAM_VISION_REPLAY),
 ])
 async def test_ac_fixture_disposition(fixture_id, expected_disposition, expected_field_count):
     settings = Settings()
