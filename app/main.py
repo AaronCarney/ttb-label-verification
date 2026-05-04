@@ -49,6 +49,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     from app.api import labels as labels_module
     application.include_router(labels_module.router)
 
+    from app.api import raw as raw_module
+    application.include_router(raw_module.router)
+
     return application
 
 
