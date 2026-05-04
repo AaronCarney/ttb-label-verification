@@ -36,7 +36,7 @@ class PaddleRunner:
                 raise RuntimeError(
                     "PaddleOCR not installed. Install with `uv sync --extra gpu`."
                 ) from e
-            self._ocr_engine = PaddleOCR(use_angle_cls=False, lang="en")
+            self._ocr_engine = PaddleOCR(use_textline_orientation=False, lang="en")
 
     def _ocr(self, crop: bytes) -> list[dict]:
         # Real impl shells out to self._ocr_engine.ocr(); test patches this method.

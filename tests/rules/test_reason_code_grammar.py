@@ -1,4 +1,4 @@
-"""Reason-code grammar enforcement (E1 T7 regex, L1 §4 exit-gate item 9):
+r"""Reason-code grammar enforcement (E1 T7 regex, L1 §4 exit-gate item 9):
 
   Pattern: ^[A-Z][A-Z0-9_]*(?:\.[A-Z][A-Z0-9_]*){2,3}$
 
