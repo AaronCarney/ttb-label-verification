@@ -1,15 +1,15 @@
 {
-  "evaluation_id": "672038e9-e035-43fe-9be9-28d0987d7213",
+  "evaluation_id": "5ea2a91b-13cd-42c7-88ba-4ca1779f27ae",
   "label_ref": "FIX-01-SPIRITS-CLEAN",
   "disposition": "fail",
   "disposition_confidence": {
-    "band": "medium",
-    "numeric": 0.7
+    "band": "high",
+    "numeric": 0.95
   },
   "fields": [
     {
       "field_name": "brand_name",
-      "extracted_value": "{'brand_name': 'ACME BOURBON'}",
+      "extracted_value": "{'brand_name': 'ACME BOURBON', 'confidence': 0.95}",
       "expected_value": "ACME BOURBON",
       "evidence": {
         "bbox": [
@@ -19,7 +19,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 0.7
+        "extraction_confidence": 0.95
       },
       "rule_findings": [],
       "ai_suggestion": {
@@ -29,13 +29,13 @@
         "model_disposition": null
       },
       "field_confidence": {
-        "band": "medium",
-        "numeric": 0.7
+        "band": "high",
+        "numeric": 0.95
       }
     },
     {
       "field_name": "class_type",
-      "extracted_value": "{'class_type': 'Bourbon'}",
+      "extracted_value": "{'class_type': 'Bourbon', 'confidence': 0.95}",
       "expected_value": "BOURBON WHISKEY",
       "evidence": {
         "bbox": [
@@ -45,7 +45,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 0.7
+        "extraction_confidence": 0.95
       },
       "rule_findings": [
         {
@@ -70,13 +70,13 @@
         "model_disposition": null
       },
       "field_confidence": {
-        "band": "medium",
-        "numeric": 0.7
+        "band": "high",
+        "numeric": 0.95
       }
     },
     {
       "field_name": "net_contents",
-      "extracted_value": "{'net_contents_value': 750, 'unit': 'ML'}",
+      "extracted_value": "{'net_contents_value': 750, 'unit': 'ml', 'confidence': 0.95}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -86,7 +86,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 0.7
+        "extraction_confidence": 0.95
       },
       "rule_findings": [
         {
@@ -104,13 +104,13 @@
         "model_disposition": null
       },
       "field_confidence": {
-        "band": "medium",
-        "numeric": 0.7
+        "band": "high",
+        "numeric": 0.95
       }
     },
     {
       "field_name": "alcohol_content",
-      "extracted_value": "{'abv_pct': 40, 'unit': '%'}",
+      "extracted_value": "{'abv_pct': 40, 'unit': '%', 'confidence': 0.95}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -120,7 +120,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 0.7
+        "extraction_confidence": 0.95
       },
       "rule_findings": [
         {
@@ -138,13 +138,13 @@
         "model_disposition": null
       },
       "field_confidence": {
-        "band": "medium",
-        "numeric": 0.7
+        "band": "high",
+        "numeric": 0.95
       }
     },
     {
       "field_name": "warning",
-      "extracted_value": "{'text': 'GOVERNMENT WARNING:\\n(1) ACCORDING TO THE SURGEON GENERAL...'}",
+      "extracted_value": "{'text': '(1) ACCORDING TO THE SURGEON GENERAL...', 'confidence': 0.95}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -154,7 +154,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 0.7
+        "extraction_confidence": 0.95
       },
       "rule_findings": [],
       "ai_suggestion": {
@@ -164,13 +164,13 @@
         "model_disposition": null
       },
       "field_confidence": {
-        "band": "medium",
-        "numeric": 0.7
+        "band": "high",
+        "numeric": 0.95
       }
     },
     {
       "field_name": "name_address",
-      "extracted_value": "{'name': 'ACME Bourbon', 'city': '', 'state': 'Kentucky'}",
+      "extracted_value": "{'name': 'ACME BOURBON', 'city': '', 'state': 'KENTUCKY', 'confidence': 0.95}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -180,7 +180,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 0.7
+        "extraction_confidence": 0.95
       },
       "rule_findings": [],
       "ai_suggestion": {
@@ -190,13 +190,13 @@
         "model_disposition": null
       },
       "field_confidence": {
-        "band": "medium",
-        "numeric": 0.7
+        "band": "high",
+        "numeric": 0.95
       }
     },
     {
       "field_name": "country_of_origin",
-      "extracted_value": "{'country': 'United States'}",
+      "extracted_value": "{'country': 'USA', 'confidence': 0.95}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -206,7 +206,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 0.7
+        "extraction_confidence": 0.95
       },
       "rule_findings": [],
       "ai_suggestion": {
@@ -216,20 +216,20 @@
         "model_disposition": null
       },
       "field_confidence": {
-        "band": "medium",
-        "numeric": 0.7
+        "band": "high",
+        "numeric": 0.95
       }
     }
   ],
   "audit_trail": {
-    "evaluation_id": "672038e9-e035-43fe-9be9-28d0987d7213",
+    "evaluation_id": "5ea2a91b-13cd-42c7-88ba-4ca1779f27ae",
     "rule_set_version": "unknown",
     "model_version": null,
     "prompt_version": null,
     "input_hash": "09910fd08f030bec97321f3494d15a4f247edc34f659d53b27cc955d8550ebec",
-    "output_hash": "d3fcea54109439677bdf4da47d4570020c667ee2e199d972676e3262feb2d99c",
-    "started_at": "2026-05-04T22:29:17.757162Z",
-    "completed_at": "2026-05-04T22:29:23.638521Z",
+    "output_hash": "8a77a13b73586eaba2a51f7a08a38fa432e17ce3029ac78c2b4862bd84459fd0",
+    "started_at": "2026-05-04T22:52:10.817069Z",
+    "completed_at": "2026-05-04T22:52:14.404169Z",
     "per_rule_trace": [
       {
         "rule_id": "spirits.alcohol.tolerance_band",
@@ -270,7 +270,7 @@
     "overrides": []
   },
   "metrics": {
-    "total_duration_ms": 3842,
+    "total_duration_ms": 3587,
     "per_rule_durations_ms": [
       {
         "rule_id": "spirits.alcohol.tolerance_band",
@@ -301,7 +301,7 @@
         "duration_ms": 0
       }
     ],
-    "vision_duration_ms": 3839,
+    "vision_duration_ms": 3584,
     "orchestrator_duration_ms": 0
   }
 }

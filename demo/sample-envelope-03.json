@@ -1,15 +1,15 @@
 {
-  "evaluation_id": "245d9fb5-8992-4b40-a2d4-cc2a214c34ca",
+  "evaluation_id": "7dc9610e-01d3-4d13-8ac9-bbce5767b4ef",
   "label_ref": "FIX-03-WARNING-TITLE-CASE",
   "disposition": "fail",
   "disposition_confidence": {
-    "band": "medium",
-    "numeric": 0.7
+    "band": "high",
+    "numeric": 0.95
   },
   "fields": [
     {
       "field_name": "brand_name",
-      "extracted_value": "{'brand_name': 'ACME BOURBON'}",
+      "extracted_value": "{'brand_name': 'ACME BOURBON', 'confidence': 0.95}",
       "expected_value": "ACME BOURBON",
       "evidence": {
         "bbox": [
@@ -19,7 +19,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 0.7
+        "extraction_confidence": 0.95
       },
       "rule_findings": [],
       "ai_suggestion": {
@@ -29,13 +29,13 @@
         "model_disposition": null
       },
       "field_confidence": {
-        "band": "medium",
-        "numeric": 0.7
+        "band": "high",
+        "numeric": 0.95
       }
     },
     {
       "field_name": "class_type",
-      "extracted_value": "{'class_type': 'Bourbon Whiskey'}",
+      "extracted_value": "{'class_type': 'BOURBON WHISKEY', 'confidence': 1.0}",
       "expected_value": "BOURBON WHISKEY",
       "evidence": {
         "bbox": [
@@ -45,7 +45,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 0.7
+        "extraction_confidence": 1.0
       },
       "rule_findings": [
         {
@@ -70,13 +70,13 @@
         "model_disposition": null
       },
       "field_confidence": {
-        "band": "medium",
-        "numeric": 0.7
+        "band": "high",
+        "numeric": 1.0
       }
     },
     {
       "field_name": "net_contents",
-      "extracted_value": "{'net_contents_value': 750, 'unit': 'ML'}",
+      "extracted_value": "{'net_contents_value': 750, 'unit': 'ML', 'confidence': 0.95}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -86,7 +86,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 0.7
+        "extraction_confidence": 0.95
       },
       "rule_findings": [
         {
@@ -104,13 +104,13 @@
         "model_disposition": null
       },
       "field_confidence": {
-        "band": "medium",
-        "numeric": 0.7
+        "band": "high",
+        "numeric": 0.95
       }
     },
     {
       "field_name": "alcohol_content",
-      "extracted_value": "{'abv_pct': 40, 'unit': '%'}",
+      "extracted_value": "{'abv_pct': 40, 'unit': '%', 'confidence': 0.95}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -120,7 +120,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 0.7
+        "extraction_confidence": 0.95
       },
       "rule_findings": [
         {
@@ -138,13 +138,13 @@
         "model_disposition": null
       },
       "field_confidence": {
-        "band": "medium",
-        "numeric": 0.7
+        "band": "high",
+        "numeric": 0.95
       }
     },
     {
       "field_name": "warning",
-      "extracted_value": "{'text': 'Government Warning: (1) According to the Surgeon General, women should not drink alcoholic beverages during pregnancy because of the risk of birth defects.'}",
+      "extracted_value": "{'text': 'Government Warning: (1) According to the Surgeon General, women should not drink alcoholic beverages during pregnancy because of the risk of birth defects.', 'confidence': 0.95}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -154,7 +154,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 0.7
+        "extraction_confidence": 0.95
       },
       "rule_findings": [],
       "ai_suggestion": {
@@ -164,13 +164,13 @@
         "model_disposition": null
       },
       "field_confidence": {
-        "band": "medium",
-        "numeric": 0.7
+        "band": "high",
+        "numeric": 0.95
       }
     },
     {
       "field_name": "name_address",
-      "extracted_value": "{'name': 'ACME DISTILLERIES', 'city': 'FRANKFORT', 'state': 'KY'}",
+      "extracted_value": "{'name': 'ACME DISTILLERIES', 'city': 'FRANKFORT', 'state': 'KY', 'confidence': 0.95}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -180,7 +180,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 0.7
+        "extraction_confidence": 0.95
       },
       "rule_findings": [],
       "ai_suggestion": {
@@ -190,13 +190,13 @@
         "model_disposition": null
       },
       "field_confidence": {
-        "band": "medium",
-        "numeric": 0.7
+        "band": "high",
+        "numeric": 0.95
       }
     },
     {
       "field_name": "country_of_origin",
-      "extracted_value": "{'country': 'USA'}",
+      "extracted_value": "{'country': 'USA', 'confidence': 0.95}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -206,7 +206,7 @@
           0
         ],
         "crop_ref": "",
-        "extraction_confidence": 0.7
+        "extraction_confidence": 0.95
       },
       "rule_findings": [],
       "ai_suggestion": {
@@ -216,20 +216,20 @@
         "model_disposition": null
       },
       "field_confidence": {
-        "band": "medium",
-        "numeric": 0.7
+        "band": "high",
+        "numeric": 0.95
       }
     }
   ],
   "audit_trail": {
-    "evaluation_id": "245d9fb5-8992-4b40-a2d4-cc2a214c34ca",
+    "evaluation_id": "7dc9610e-01d3-4d13-8ac9-bbce5767b4ef",
     "rule_set_version": "unknown",
     "model_version": null,
     "prompt_version": null,
     "input_hash": "b09ec9e55e23b23851e9f3e6c665828b0d1a8cc5414afc7fb4e5b07734072d6c",
-    "output_hash": "0145e6200cba1941edbe53e70eeaf7bf05cb2a0501f7a53545d122fa2c64b658",
-    "started_at": "2026-05-04T22:29:27.280385Z",
-    "completed_at": "2026-05-04T22:29:31.505114Z",
+    "output_hash": "74f0cd41708845a65cbbed334b7823a47962b26badaaf54745d887f11e377a4a",
+    "started_at": "2026-05-04T22:52:20.129196Z",
+    "completed_at": "2026-05-04T22:52:25.121934Z",
     "per_rule_trace": [
       {
         "rule_id": "spirits.alcohol.tolerance_band",
@@ -270,7 +270,7 @@
     "overrides": []
   },
   "metrics": {
-    "total_duration_ms": 4224,
+    "total_duration_ms": 4992,
     "per_rule_durations_ms": [
       {
         "rule_id": "spirits.alcohol.tolerance_band",
@@ -301,7 +301,7 @@
         "duration_ms": 0
       }
     ],
-    "vision_duration_ms": 4215,
+    "vision_duration_ms": 4985,
     "orchestrator_duration_ms": 0
   }
 }

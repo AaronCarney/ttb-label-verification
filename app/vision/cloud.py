@@ -23,17 +23,31 @@ from app.schemas.extracted import Evidence, EvidenceSource, FieldObservation, Ma
 from app.schemas.label import Label
 from app.vision import quality
 
+# Self-reported per-field confidence. Required on every per-field schema so
+# OpenAI Structured Outputs (strict:true) forces the model to emit a number
+# we can route into Evidence.confidence. Calibration is uncalibrated — this
+# is the model's own read of how well it could see/identify the field — but
+# it's strictly more informative than the prior 0.7 placeholder, and the
+# downstream band/min-aggregation logic now operates on real signal.
+_CONFIDENCE_SCHEMA = {"type": "number", "minimum": 0.0, "maximum": 1.0}
+
 _SCHEMAS = {
     "brand_name": {
         "type": "object",
-        "properties": {"brand_name": {"type": "string"}},
-        "required": ["brand_name"],
+        "properties": {
+            "brand_name": {"type": "string"},
+            "confidence": _CONFIDENCE_SCHEMA,
+        },
+        "required": ["brand_name", "confidence"],
         "additionalProperties": False,
     },
     "class_type": {
         "type": "object",
-        "properties": {"class_type": {"type": "string"}},
-        "required": ["class_type"],
+        "properties": {
+            "class_type": {"type": "string"},
+            "confidence": _CONFIDENCE_SCHEMA,
+        },
+        "required": ["class_type", "confidence"],
         "additionalProperties": False,
     },
     "abv": {
@@ -41,8 +55,9 @@ _SCHEMAS = {
         "properties": {
             "abv_pct": {"type": "number"},
             "unit": {"type": "string"},
+            "confidence": _CONFIDENCE_SCHEMA,
         },
-        "required": ["abv_pct", "unit"],
+        "required": ["abv_pct", "unit", "confidence"],
         "additionalProperties": False,
     },
     "net_contents": {
@@ -50,14 +65,18 @@ _SCHEMAS = {
         "properties": {
             "net_contents_value": {"type": "number"},
             "unit": {"type": "string"},
+            "confidence": _CONFIDENCE_SCHEMA,
         },
-        "required": ["net_contents_value", "unit"],
+        "required": ["net_contents_value", "unit", "confidence"],
         "additionalProperties": False,
     },
     "gov_warning": {
         "type": "object",
-        "properties": {"text": {"type": "string"}},
-        "required": ["text"],
+        "properties": {
+            "text": {"type": "string"},
+            "confidence": _CONFIDENCE_SCHEMA,
+        },
+        "required": ["text", "confidence"],
         "additionalProperties": False,
     },
     "heading_typography": {
@@ -66,8 +85,9 @@ _SCHEMAS = {
             "all_caps": {"type": "boolean"},
             "bold": {"type": "boolean"},
             "type_size_pt": {"type": "number"},
+            "confidence": _CONFIDENCE_SCHEMA,
         },
-        "required": ["all_caps", "bold", "type_size_pt"],
+        "required": ["all_caps", "bold", "type_size_pt", "confidence"],
         "additionalProperties": False,
     },
     "name_address": {
@@ -76,14 +96,18 @@ _SCHEMAS = {
             "name": {"type": "string"},
             "city": {"type": "string"},
             "state": {"type": "string"},
+            "confidence": _CONFIDENCE_SCHEMA,
         },
-        "required": ["name", "city", "state"],
+        "required": ["name", "city", "state", "confidence"],
         "additionalProperties": False,
     },
     "country_origin": {
         "type": "object",
-        "properties": {"country": {"type": "string"}},
-        "required": ["country"],
+        "properties": {
+            "country": {"type": "string"},
+            "confidence": _CONFIDENCE_SCHEMA,
+        },
+        "required": ["country", "confidence"],
         "additionalProperties": False,
     },
     "layout": {
@@ -140,13 +164,23 @@ class CloudVisionExtractor:
     async def _call_per_field(
         self, *, field_name: str, crop: bytes, label: Label
     ) -> dict:
+        prompt = (
+            f"Extract field: {field_name}.\n"
+            "Also return a self-reported `confidence` in [0.0, 1.0]:\n"
+            "  ~0.95 — text is sharp, fully visible, unambiguous;\n"
+            "  ~0.80 — clearly readable but minor occlusion/blur/skew;\n"
+            "  ~0.60 — readable with effort; some characters are guesses;\n"
+            "  ~0.40 — partial guess; significant occlusion or blur;\n"
+            "  ~0.20 — mostly invented; field may not be on the label.\n"
+            "Be honest — downstream code routes <0.6 to human review."
+        )
         body = {
             "model": self._model,
             "messages": [
                 {
                     "role": "user",
                     "content": [
-                        {"type": "text", "text": f"Extract field: {field_name}"},
+                        {"type": "text", "text": prompt},
                         {
                             "type": "image_url",
                             "image_url": {
@@ -250,7 +284,10 @@ class CloudVisionExtractor:
                     beverage_class=BeverageClass.SPIRITS,
                     observed_value=content,
                     evidence=(_make_evidence(
-                        field_id=fname, bbox=bbox_by_id.get(fname), text=text,
+                        field_id=fname,
+                        bbox=bbox_by_id.get(fname),
+                        text=text,
+                        confidence=_extract_confidence(content),
                     ),),
                     upstream_meta={"bbox": bbox_by_id.get(fname)},
                 )
@@ -274,17 +311,44 @@ def _extract_text(content: dict) -> str | None:
     return None
 
 
+_FALLBACK_CONFIDENCE = 0.7
+
+
+def _extract_confidence(content: dict | None) -> float:
+    """Pull self-reported model confidence from the per-field payload, clamped
+    to [0, 1]. Falls back to 0.7 only when the field is absent — old recordings
+    pre-date the schema widening, and the legibility short-circuit path
+    synthesizes a quality observation that has no model call."""
+    if not isinstance(content, dict):
+        return _FALLBACK_CONFIDENCE
+    raw = content.get("confidence")
+    if raw is None:
+        return _FALLBACK_CONFIDENCE
+    try:
+        v = float(raw)
+    except (TypeError, ValueError):
+        return _FALLBACK_CONFIDENCE
+    if v < 0.0:
+        return 0.0
+    if v > 1.0:
+        return 1.0
+    return v
+
+
 def _make_evidence(
-    *, field_id: str, bbox: tuple[int, int, int, int] | None, text: str | None,
+    *,
+    field_id: str,
+    bbox: tuple[int, int, int, int] | None,
+    text: str | None,
+    confidence: float = _FALLBACK_CONFIDENCE,
 ) -> Evidence:
     """Synthesize a single Evidence from the LLM's per-field payload + the
-    bbox surfaced by the layout call. confidence=0.7 is a deliberate stand-in
-    until E3 surfaces per-call confidence from the JSON-schema response."""
+    bbox surfaced by the layout call."""
     return Evidence(
         field_id=field_id,
         source=EvidenceSource.LAYOUT,
         bbox=bbox,
         extracted_text=text,
         match_kind=MatchKind.NONE,
-        confidence=0.7,
+        confidence=confidence,
     )

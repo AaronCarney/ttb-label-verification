@@ -1,5 +1,5 @@
 {
-  "evaluation_id": "1d181998-6ac1-4407-88f3-b0a29d92a9fc",
+  "evaluation_id": "d9dd3b4c-9b96-48ce-b1a8-6ae90c1facc4",
   "label_ref": "FIX-04-LOW-RES-BLURRY",
   "disposition": "needs_review",
   "disposition_confidence": {
@@ -8,14 +8,14 @@
   },
   "fields": [],
   "audit_trail": {
-    "evaluation_id": "1d181998-6ac1-4407-88f3-b0a29d92a9fc",
+    "evaluation_id": "d9dd3b4c-9b96-48ce-b1a8-6ae90c1facc4",
     "rule_set_version": "unknown",
     "model_version": null,
     "prompt_version": null,
     "input_hash": "14a3365216e3b6a4cb69e1a3690a703d66e6f750614f233265fcd7f33ab72557",
-    "output_hash": "ebbecb9f337c073bfb440764b719286df93920e1d3ba35b7b794d11b3e019ff9",
-    "started_at": "2026-05-04T22:29:31.505922Z",
-    "completed_at": "2026-05-04T22:29:31.506599Z",
+    "output_hash": "632929967f594c18c6923bf214de530fa4d903f9eeb4d2e627886877365fc1ec",
+    "started_at": "2026-05-04T22:52:25.122516Z",
+    "completed_at": "2026-05-04T22:52:25.123056Z",
     "per_rule_trace": [
       {
         "rule_id": "WARNING.LEGIBILITY.LOW_RESOLUTION",
