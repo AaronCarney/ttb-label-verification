@@ -1,82 +1,175 @@
-# E7 Post-E6 Followups — L2
+# E7 Post-E6 Followups — L2 (v0.2 — post plan-review)
 
 > **Parent:** [`ttb-label-verification-epoch-7-l2.md`](./ttb-label-verification-epoch-7-l2.md) §"Deferred items" + [`docs/followups/post-e6-merge.md`](../followups/post-e6-merge.md)
 > **Tier:** L2 (tactical).
 > **Branch:** `feat/e7-ui`.
-> **Dependencies:** E6 surface on `main` — `app/api/batches.py` (named-event SSE) + `app/api/overrides.py` (POST `/labels/{id}/overrides`). Confirmed landed at `main` HEAD `d27a8c2`.
+> **Dependencies:** E6 surface available on `main` — `app/api/batches.py` (named-event SSE) + `app/api/overrides.py` (POST `/labels/{evaluation_id}/overrides`).
 
 ---
 
 ## 1. Goal
 
-Close the two `TODO(post-E6)` breadcrumbs in `frontend/`. Both wire E7's island against E6's actual contracts (formerly stubbed because E6 ran in a parallel session and hadn't landed when E7 froze).
+Close the two `TODO(post-E6)` breadcrumbs in `frontend/` against E6's actual contracts. Narrow scope to what E7's UI surface actually consumes.
 
-After this plan: `feat/e7-ui` is fully self-consistent against the E6 surface on `main`, the island bundle is rebuilt, and the branch is mergeable.
+After this plan: `feat/e7-ui` is self-consistent against E6 on `main`, the island bundle is rebuilt, and the branch is mergeable.
 
----
+## 2. Scope decisions (locked, post plan-review)
 
-## 2. Locked surface
+- **D-PE6-01** — `applied_disposition` derived from reason_code prefix: `WARNING.*` → `needs_review`; `FAIL.*` → `fail`; `PASS.*` → `pass`. Required server-side; UI does not capture it explicitly.
+- **D-PE6-02** — T1 test uses `page.route()` to stub the POST. Single-label demo flow cannot end-to-end persist (E6 endpoint requires the label to be in an in-flight batch's `results` map; single-label `/labels` POST doesn't add to any batch). Test verifies wire shape + LiveRegion + Toast paths, not server persistence. Documented inline at the call site.
+- **D-PE6-03** — T2 wires only `label-result` + `stream-end`. **Skip** `anomaly-advisory` and `override-applied` — E7 UI doesn't render advisories or consume cross-subscriber audit updates. Inline note documents the deferral.
+- **D-PE6-04** — Anomaly dismiss endpoint (`POST /batches/{batch_id}/anomalies/{advisory_id}/dismiss`) deferred. E7 UI doesn't surface advisory display or dismiss affordance. Lands as a post-E8 followup if/when the UI surfaces advisories.
+
+## 3. Locked surface
 
 **Owned (this plan can write to):**
 - `frontend/src/single.tsx`
 - `frontend/src/sse/useBatchStream.ts`
 - `frontend/src/sse/useBatchStream.test.ts` (NEW or extended)
-- `tests/test_keyboard_model.py` (extend with override-POST assertion)
-- `tests/fixtures/envelopes/batch/05-batch-of-50-events.jsonl` (reformat to named-event records, only if currently bare-JSON)
-- `app/ui/static/island/{single,batch}.{js,css,map}` (regenerated bundle in Wave 2)
-- `docs/followups/post-e6-merge.md` (close-out edits — mark items resolved)
+- `tests/test_keyboard_model.py` (extend with override-POST shape assertion)
+- `app/ui/static/island/{single,batch}.{js,css,map}` (regenerated bundle in T3)
+- `docs/followups/post-e6-merge.md` (closeout edits)
 
 **Forbidden (read-only):**
-- `app/services/**`, `app/api/**`, `app/batch/**` (E5/E6 territory — already on `main`)
-- Any other `frontend/src/components/**` not in the owned list
+- `app/services/**`, `app/api/**`, `app/batch/**` (E5/E6 territory)
+- `frontend/src/components/**` not in the owned list
 
----
-
-## 3. Task graph
+## 4. Task graph
 
 ```
 Wave 1 (2 ‖):  T1 (override-POST wiring)   T2 (SSE named-event listeners)
-Wave 2 (1):    T3 (final validation: bundle rebuild + full pytest + frontend tests)
+Wave 2 (1):    T3 (final validation: bundle rebuild + full pytest + frontend tests + followup closeout)
 ```
 
-Wave 1 tasks are mutually independent — disjoint file ownership, no shared imports.
+Wave 1 tasks own disjoint files.
 
 ---
 
-## 4. Tasks
+## 5. Tasks
 
-### T1 — Wire OverrideDrawer.onSubmit to POST `/labels/{id}/overrides`
+### T1 — Wire OverrideDrawer.onSubmit to POST `/labels/{evaluation_id}/overrides`
 
 **Label:** TDD
 **Owner files:** `frontend/src/single.tsx`, `tests/test_keyboard_model.py`
 
-**Context.** E6's endpoint is `POST /labels/{evaluation_id}/overrides` (commit `04fba48`, file `app/api/overrides.py`). Request body is `OverrideEntry`-shaped: `{evaluation_id, field_name|null, reason_code, justification_text, reviewer_id}`. Response on 2xx returns the updated audit envelope. On 4xx (registry validation failure) the body is `{detail: "<message>"}`; on 409 (collision) similarly. AC-FR-801 requires the override is durably recorded server-side; AC-FR-507 requires LiveRegion announces locally.
+**Authoritative E6 schema** (from `app/api/overrides.py:55-61`):
+```python
+class OverrideRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    field_name: str | None = None
+    applied_disposition: Literal["pass", "fail", "needs_review"]
+    reason_code: str
+    justification_text: str | None = None
+```
+- Path: `POST /labels/{evaluation_id}/overrides`
+- `evaluation_id` is path-only; do **not** include in body (`extra="forbid"` rejects).
+- `reviewer_id` is server-generated; do **not** include in body.
+- `applied_disposition` REQUIRED — derive from reason_code prefix per D-PE6-01.
 
 **Recipe.**
 
-1. **RED.** Extend `tests/test_keyboard_model.py` with an `O → w → ENTER` flow that:
-   - Stubs the route via `page.route('/labels/*/overrides', ...)` to capture the POST.
-   - Asserts (a) one POST landed, (b) request body has `reason_code`, `justification_text`, `evaluation_id`, (c) LiveRegion text contains "Override saved", (d) drawer closes after submit.
-   - Add a parallel test for failure path: stub returns 422; assert Toast appears with the error and drawer stays open.
+1. **RED.** Extend `tests/test_keyboard_model.py`:
 
-2. **GREEN.** Replace the body of `OverrideDrawer.onSubmit` in `frontend/src/single.tsx:104-110` with an async handler:
+   ```python
+   def test_three_keystroke_override_posts_to_endpoint(page: Page, live_server_url: str) -> None:
+       envelope = json.loads(FIXTURE.read_text())
+       captured: dict = {}
+       def _route(route, request):
+           captured["url"] = request.url
+           captured["method"] = request.method
+           captured["body"] = request.post_data_json
+           route.fulfill(status=200, content_type="application/json", body=json.dumps({
+               "field_name": None,
+               "original_disposition": "pass",
+               "applied_disposition": "needs_review",
+               "reason_code": captured["body"]["reason_code"],
+               "justification_text": captured["body"].get("justification_text"),
+               "reviewer_id": "session-test",
+               "timestamp": "2026-05-04T00:00:00Z",
+           }))
+       page.route(f"**/labels/*/overrides", _route)
+
+       page.add_init_script(script=f"""
+         window.addEventListener('DOMContentLoaded', () => {{
+           const tag = document.createElement('script');
+           tag.id = 'envelope';
+           tag.type = 'application/json';
+           tag.textContent = {json.dumps(json.dumps(envelope))};
+           document.body.appendChild(tag);
+         }});
+       """)
+       page.goto(f"{live_server_url}/")
+       page.wait_for_selector('[data-mounted="true"]', timeout=5000)
+
+       page.keyboard.press("o")
+       page.wait_for_selector('[role="dialog"]', timeout=2000)
+       page.keyboard.type("w")
+       page.keyboard.press("Enter")
+       page.wait_for_selector(
+           'text=/Override saved: WARNING\\.STYLE\\.HEADING_NOT_BOLD_CAPS/',
+           timeout=2000,
+       )
+       assert captured["method"] == "POST"
+       assert f"/labels/{envelope['evaluation_id']}/overrides" in captured["url"]
+       body = captured["body"]
+       assert body["reason_code"] == "WARNING.STYLE.HEADING_NOT_BOLD_CAPS"
+       assert body["applied_disposition"] == "needs_review"
+       assert body["field_name"] is None
+       assert "evaluation_id" not in body  # path-only
+       assert "reviewer_id" not in body    # server-generated
+   ```
+
+   And a failure-path test:
+   ```python
+   def test_override_failure_path_surfaces_toast(page: Page, live_server_url: str) -> None:
+       # ... same envelope load + init script ...
+       def _route_422(route):
+           route.fulfill(status=422, content_type="application/json",
+                         body=json.dumps({"detail": "reason_code 'WARNING.STYLE.HEADING_NOT_BOLD_CAPS' is not in the loaded registry"}))
+       page.route(f"**/labels/*/overrides", _route_422)
+       # ... goto, keystrokes O w ENTER ...
+       page.wait_for_selector('[role="status"]', timeout=2000)  # Toast role=status
+       assert page.locator('[role="dialog"]').is_visible()  # drawer stays open
+       assert "not in the loaded registry" in page.locator('[role="status"]').inner_text()
+   ```
+
+   The existing `test_three_keystroke_override` (no-stub LiveRegion-only test) stays — it asserts the UX still works when no route is intercepted (browser fetch fails silently → catch branch fires Toast with network error). Update its assertion accordingly OR keep it as the "happy LiveRegion path" by also stubbing 200. Pick the simpler: **keep the existing test as-is, add the two new tests above.** The existing test will start failing once we add the fetch — fix it by adding a 200-stub `page.route()` to it.
+
+2. **GREEN.** In `frontend/src/single.tsx`, replace the `onSubmit` block at the `TODO(post-E6)` marker:
+
    ```tsx
+   // Add at top of file (after existing imports):
+   import { Toast } from "./components/Toast";
+
+   // Inside the component, with other state:
+   const [toast, setToast] = React.useState<{kind: "error" | "success", message: string} | null>(null);
+
+   // Helper (file-local):
+   function _disposition_for(code: string): "pass" | "fail" | "needs_review" {
+     if (code.startsWith("FAIL.")) return "fail";
+     if (code.startsWith("PASS.")) return "pass";
+     return "needs_review";  // WARNING.* and any unprefixed code default to needs_review
+   }
+
+   // Replace the onSubmit handler:
    onSubmit={async (p) => {
+     const body = {
+       field_name: null,
+       applied_disposition: _disposition_for(p.reasonCode),
+       reason_code: p.reasonCode,
+       justification_text: p.justification || null,
+     };
      try {
-       const res = await fetch(`/labels/${encodeURIComponent(envelope.evaluation_id)}/overrides`, {
-         method: "POST",
-         headers: {"Content-Type": "application/json"},
-         body: JSON.stringify({
-           evaluation_id: envelope.evaluation_id,
-           field_name: null,
-           reason_code: p.reasonCode,
-           justification_text: p.justification,
-           reviewer_id: "prototype",
-         }),
-       });
+       const res = await fetch(
+         `/labels/${encodeURIComponent(envelope.evaluation_id)}/overrides`,
+         { method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body) },
+       );
        if (!res.ok) {
-         const body = await res.json().catch(() => ({detail: "Override request failed"}));
-         setToast({kind: "error", message: body.detail ?? "Override request failed"});
+         const errBody = await res.json().catch(() => ({detail: "Override request failed"}));
+         const detail = Array.isArray(errBody.detail)
+           ? errBody.detail.map((d: {msg?: string}) => d.msg).filter(Boolean).join("; ")
+           : (errBody.detail ?? "Override request failed");
+         setToast({kind: "error", message: detail});
          return;
        }
        setAnnouncement(`Override saved: ${p.reasonCode}`);
@@ -86,99 +179,151 @@ Wave 1 tasks are mutually independent — disjoint file ownership, no shared imp
      }
    }}
    ```
-   Remove the `TODO(post-E6)` comment. If `setToast` is not yet wired in this file, add a minimal Toast slot bound to existing `Toast` component (already imported at T12). Keep `setAnnouncement` + `setOverrideOpen` exactly as they were.
 
-3. **REFACTOR.** If the handler is now >25 lines, extract `submitOverride(payload, evaluationId): Promise<{ok: boolean, error?: string}>` to a sibling helper. Keep the handler dumb — it only branches on the helper's result.
+   Render `Toast` conditionally near `LiveRegion`:
+   ```tsx
+   {toast && (
+     <Toast
+       message={toast.message}
+       onDismiss={() => setToast(null)}
+     />
+   )}
+   ```
 
-4. **Commit per cycle.** Two commits expected:
-   - `test(e7): override POST wiring + failure path (post-E6 #1)`
+   Drop the entire `TODO(post-E6):` comment block. Add a one-line note immediately above the handler:
+   ```tsx
+   // Single-label demo flow: this POST 404s against the real E6 endpoint
+   // because the label is not in any in-flight batch's results map.
+   // Tests intercept via page.route(). See docs/followups/post-e6-merge.md.
+   ```
+
+3. **REFACTOR.** If the handler exceeds ~25 lines, extract `submitOverride(payload, evaluationId): Promise<{ok: boolean, error?: string}>` to a sibling helper.
+
+4. **Commit cadence.** Two commits expected:
+   - `test(e7): override POST wiring + 422 failure path (post-E6 #1)`
    - `feat(e7): wire OverrideDrawer.onSubmit to POST /overrides (FR-803)`
 
-5. **Validation grep.** No new `TODO(post-E6)` markers remain in `frontend/src/single.tsx`. The `// TODO(post-E6): POST` line at L106 is gone.
+5. **Validation grep.** `grep -n "TODO(post-E6)" frontend/src/single.tsx` returns nothing.
 
 ---
 
-### T2 — Switch `useBatchStream` to named-event listeners
+### T2 — Switch `useBatchStream` to named-event listener (label-result only)
 
 **Label:** TDD
-**Owner files:** `frontend/src/sse/useBatchStream.ts`, `frontend/src/sse/useBatchStream.test.ts`, `tests/fixtures/envelopes/batch/05-batch-of-50-events.jsonl`
+**Owner files:** `frontend/src/sse/useBatchStream.ts`, `frontend/src/sse/useBatchStream.test.ts`
 
-**Context.** E6 emits named SSE events: `app/api/batches.py:118` does `yield {"event": evt["event"], "data": evt["data"]}`. `EventSource.onmessage` does NOT fire on named events — only `addEventListener('<name>', ...)` does. Worker emits three event types per ARCH §5.2: `label-update`, `anomaly`, `stream-end`. The hook must subscribe to each.
+**Authoritative E6 wire** (from `app/batch/worker.py` and `app/api/batches.py:117-118`):
+- Worker emits these events: `label-result` (per-label disposition), `anomaly-advisory` (M-of-N detector trip), `stream-end` (terminal).
+- Override endpoint emits: `override-applied` (audit trail mutation).
+- `label-result` data shape: `{batch_id: str, queue_position: int, envelope: DispositionEnvelope}` — wrapped envelope, NOT bare `BatchSSEEvent`.
+- Other events have different shapes.
+
+**D-PE6-03 consequence:** This task wires only `label-result` + `stream-end`. The other two are out of scope for E7's UI.
 
 **Recipe.**
 
-1. **RED.** Add `frontend/src/sse/useBatchStream.test.ts` (or extend if it exists) with three tests using a fake `EventSource`:
-   - Named `label-update` event triggers `push` action.
-   - Named `anomaly` event surfaces in state.
-   - Named `stream-end` event closes the connection (no more events accepted).
-   - Bonus: dedupe still works on duplicate `label_ref` across events.
+1. **RED.** Create `frontend/src/sse/useBatchStream.test.ts`. Use a fake `EventSource` (the existing convention; check sibling tests). Tests:
+   - **label-result event drives push** — fire one named `label-result` event with `{batch_id, queue_position, envelope: <DispositionEnvelope>}`; assert `state.events[0].label_ref === envelope.label_ref`, `state.events[0].batch_id === <batch_id>`, `state.events[0].queue_position === <pos>`.
+   - **stream-end closes the connection** — fire one `label-result`, then `stream-end`; assert subsequent `label-result` events are ignored (EventSource closed).
+   - **dedupe still works** — fire two `label-result` events with same `envelope.label_ref`; assert `state.events.length === 1`.
+   - **malformed payload sets error** — fire `label-result` with non-JSON `data`; assert `state.error === "Malformed SSE payload"`.
 
-2. **GREEN.** Rewrite the `useEffect` body to register listeners per event name:
+2. **GREEN.** Rewrite the `useEffect` body:
+
    ```ts
-   const es = new EventSource(url);
-   const _onPayload = (msg: MessageEvent) => {
-     try {
-       const parsed = JSON.parse(msg.data as string) as BatchSSEEvent;
-       dispatch({type: "push", event: parsed});
-     } catch {
-       dispatch({type: "error", message: "Malformed SSE payload"});
-     }
-   };
-   es.addEventListener("label-update", _onPayload);
-   es.addEventListener("anomaly", _onPayload);
-   es.addEventListener("stream-end", () => es.close());
-   es.onerror = () => dispatch({type: "error", message: "SSE connection error"});
-   return () => {
-     es.removeEventListener("label-update", _onPayload);
-     es.removeEventListener("anomaly", _onPayload);
-     es.close();
-   };
+   import * as React from "react";
+   import type { DispositionEnvelope } from "../types/envelopes";
+   import type { BatchSSEEvent } from "../types/sse";
+
+   // ... existing reducer, state types unchanged ...
+
+   // E6 emits named SSE events per ARCH §5.2: label-result, anomaly-advisory,
+   // stream-end (worker), and override-applied (override endpoint).
+   // E7 consumes only label-result + stream-end; the others are not surfaced
+   // in the current UI (see docs/followups/post-e6-merge.md, D-PE6-03).
+   React.useEffect(() => {
+     if (!batchId) return;
+     const url = `/batches/${encodeURIComponent(batchId)}/stream`;
+     const es = new EventSource(url);
+
+     const _onLabelResult = (msg: MessageEvent) => {
+       try {
+         const wrapped = JSON.parse(msg.data as string) as {
+           batch_id: string;
+           queue_position: number;
+           envelope: DispositionEnvelope;
+         };
+         const flat: BatchSSEEvent = {
+           ...wrapped.envelope,
+           batch_id: wrapped.batch_id,
+           queue_position: wrapped.queue_position,
+         };
+         dispatch({type: "push", event: flat});
+       } catch {
+         dispatch({type: "error", message: "Malformed SSE payload"});
+       }
+     };
+     const _onStreamEnd = () => es.close();
+
+     es.addEventListener("label-result", _onLabelResult);
+     es.addEventListener("stream-end", _onStreamEnd);
+     es.onerror = () => dispatch({type: "error", message: "SSE connection error"});
+
+     return () => {
+       es.removeEventListener("label-result", _onLabelResult);
+       es.removeEventListener("stream-end", _onStreamEnd);
+       es.close();
+     };
+   }, [batchId]);
    ```
-   Drop `es.onmessage` entirely (verified E6 emits named-only). Remove the `TODO(post-E6)` block + the `FRAMING ASSUMPTION` comment, replacing with one short note: `// E6 emits named events per ARCH §5.2: label-update, anomaly, stream-end.`
 
-3. **REFACTOR.** If event names ever expand, prefer a constant `_BATCH_EVENT_NAMES = ["label-update", "anomaly"] as const` and iterate. Optional — only if it doesn't bloat.
+   Drop the `FRAMING ASSUMPTION` and `TODO(post-E6)` comment blocks entirely. The new comment block above the `useEffect` documents the contract.
 
-4. **Fixture audit.** Read `tests/fixtures/envelopes/batch/05-batch-of-50-events.jsonl`. If each line is bare JSON (current state), prepend `event: label-update` framing OR document inline that the JSONL is a payload-only fixture and the test harness wraps it. The simpler path: keep JSONL bare-JSON and have the test fake `EventSource` synthesize the named-event wrapper. Pick whichever keeps the diff smaller.
+3. **REFACTOR.** Optional — extract `_unwrapLabelResult(data: string): BatchSSEEvent | null` if it improves test coverage clarity.
 
-5. **Commit per cycle.** Expected commits:
-   - `test(e7): named-event SSE listeners — label-update, anomaly, stream-end (post-E6 #2)`
-   - `fix(e7): subscribe useBatchStream to named SSE events`
-   - (Optional) `chore(e7): batch fixture — clarify framing convention`
+4. **No fixture edit.** `tests/fixtures/envelopes/batch/05-batch-of-50-events.jsonl` stays bare-JSON; tests synthesize the named-event wrapper in JS via the fake EventSource. Lock this decision.
 
-6. **Validation grep.** No `TODO(post-E6)` remains in `frontend/src/sse/useBatchStream.ts`.
+5. **Commit cadence.** Two commits:
+   - `test(e7): named-event SSE listeners — label-result + stream-end (post-E6 #2)`
+   - `fix(e7): subscribe useBatchStream to named SSE events (label-result framing)`
+
+6. **Validation grep.** `grep -n "TODO(post-E6)" frontend/src/sse/useBatchStream.ts` returns nothing. `grep -n "FRAMING ASSUMPTION" frontend/src/sse/useBatchStream.ts` returns nothing.
 
 ---
 
-### T3 — Final validation: bundle rebuild + full suite
+### T3 — Final validation + bundle rebuild + followup closeout
 
 **Label:** skip-tdd (mechanical)
 **Owner files:** `app/ui/static/island/{single,batch}.{js,css,map}`, `docs/followups/post-e6-merge.md`
 
 **Recipe.**
 
-1. `cd /home/context/olorin/projects/takehome/frontend && pnpm install --frozen-lockfile && pnpm build`. Bundle MUST succeed; if `tsc -b` fails, fix typing inline (Rule 1-3 auto-fix).
-2. `cd /home/context/olorin/projects/takehome && git add app/ui/static/island/`. Verify `git diff --cached --stat` shows expected `single.{js,css,map}` + `batch.{js,css,map}` changes.
-3. `cd /home/context/olorin/projects/takehome && uv run --python 3.12 pytest -x -q tests/test_island_build_clean.py`. Must pass — clean-diff gate.
-4. Run `cd /home/context/olorin/projects/takehome/frontend && pnpm test`. Every component / hook test green, including new T2 hook tests.
-5. Run `cd /home/context/olorin/projects/takehome && uv run --python 3.12 pytest -x -q`. Full Python suite green.
-6. Mark `docs/followups/post-e6-merge.md` items 1+2 as resolved (add a `**Status:** Resolved YYYY-MM-DD on commit <hash>` line under each item header). One closeout commit.
+1. `cd /home/context/olorin/projects/takehome/frontend && pnpm install --frozen-lockfile && pnpm build`. If `tsc -b` fails, fix typing inline (Rule 1-3).
+2. `cd /home/context/olorin/projects/takehome && git add app/ui/static/island/`. Verify diff is `single.{js,css,map}` + `batch.{js,css,map}`.
+3. `uv run --python 3.12 pytest -x -q tests/test_island_build_clean.py` — clean-diff gate must pass.
+4. `cd frontend && pnpm test` — all hook + component tests green, including new T2 tests.
+5. `cd .. && uv run --python 3.12 pytest -x -q` — full Python suite green, including new T1 tests.
+6. Update `docs/followups/post-e6-merge.md`:
+   - Mark items 1 & 2 as **Resolved** with commit hashes.
+   - Add a new **Item 3 (deferred to post-E8)** documenting:
+     - Anomaly-advisory display in batch UI
+     - `POST /batches/{batch_id}/anomalies/{advisory_id}/dismiss` endpoint (E6 omitted; in-process `dismiss()` exists)
+     - `override-applied` SSE consumer for cross-subscriber timeline updates
+     - `applied_disposition` UX — currently derived from reason_code prefix (D-PE6-01); a real disposition picker may be needed if reviewers want override semantics independent of the code chosen
 7. Commit: `chore(e7): rebuild island bundle + close post-E6 followups`.
 
----
+## 6. Exit gate
 
-## 5. Exit gate
-
-- `grep -rn "TODO(post-E6)" frontend/ docs/` → zero hits in `frontend/src/**`. (One historical mention in `docs/followups/post-e6-merge.md` is acceptable as it documents the closed item.)
+- `grep -rn "TODO(post-E6)" frontend/` → zero hits.
+- `grep -rn "FRAMING ASSUMPTION" frontend/` → zero hits.
 - Full Python suite passes.
 - `pnpm test` passes.
 - `pnpm build && git diff --exit-code app/ui/static/island/` returns 0.
-- Branch `feat/e7-ui` is mergeable into `main` (no conflicts on E6 surface — verified by attempting a dry-run rebase).
+- `feat/e7-ui` is mergeable into `main` (no conflicts on E6 surface — verified by `git rebase --dry-run main`).
 
----
-
-## 6. Total commits expected
+## 7. Total commits expected
 
 - T1: 2
-- T2: 2–3
+- T2: 2
 - T3: 1
-- **Total: 5–6 commits on `feat/e7-ui`**.
+- **Total: 5 commits on `feat/e7-ui`**.
