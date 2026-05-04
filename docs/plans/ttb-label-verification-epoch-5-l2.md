@@ -1,5 +1,7 @@
 # TTB Label Verification — Epoch 5 (Application Service + Audit + Single-Label Flow) — L2 Implementation Plan
 
+> **Version:** v0.4 (2026-05-04) — see Change log for iter-2 fixes.
+>
 > **For agentic workers:** REQUIRED EXECUTOR: `parallel-plan-executor`. Per olorin CLAUDE.md, `superpowers:subagent-driven-development` is obsolete and fully replaced by `parallel-plan-executor` (which injects the `task-executor` skill body for TDD enforcement). Each task lands as one Red→Green→Commit cycle (or, for the few bundled tasks, multiple cycles) inside an isolated subagent. Steps use checkbox (`- [ ]`) syntax for tracking.
 >
 > **Parent L1:** [`ttb-label-verification-epoch-5-evaluator-audit.md`](./ttb-label-verification-epoch-5-evaluator-audit.md) (v0.1)
@@ -31,7 +33,11 @@ The Evaluator holds no per-evaluation state beyond the call frame; both `AuditRe
 
 **TDD posture.** Each task is one Red→Green→Commit cycle on a single narrow file (or one tightly coupled file group). The `task-executor` skill body (injected by `parallel-plan-executor`) enforces "one behavior per commit". Two tasks bundle multiple cycles by necessity (T13 Evaluator core = 4 cycles; T14 Evaluator resilience = 2 cycles) — those are the only multi-cycle tasks in the plan. Each commit is atomic and Conventional (`feat:`/`test:`/`chore:`/`docs:`/`fix:`). Pre-existing main is fast-forwarded after each task.
 
-**Hard scope boundary.** This plan owns: `app/services/{engine_meta,confidence,disposition,aggregation,patcher,triggers,envelope_builder,cache,metrics_builder,audit,evaluator}.py`, `app/api/{labels,raw}.py`, the upgrade to `app/api/healthz.py`, three new fakes under `tests/_fakes/`, an *additive* `build_evaluator` factory in `app/deps.py`, a router-registration line in `app/main.py`, **two additive surfaces in `app/rules/` — `__init__.py::build_rule_engine` (T0a) and `context.py::build_validator_context` (T0b) — neither alters E2 behavior; both are construction-time helpers callable from outside `app/rules/`**, an *additive* `rules_root` field on `app/config.py::Settings` (T0a), and ~15 new test files. It does **NOT** modify `app/rules/loader.py`, `app/rules/yaml_engine.py`, `app/rules/_validators/` (E2 — locked), `app/vision/` (E3 — locked), `app/orchestrator/` (E4 — locked), or `app/schemas/` (existing wire shapes are stable).
+**Hard scope boundary.** This plan owns: `app/services/{engine_meta,confidence,disposition,aggregation,patcher,triggers,envelope_builder,cache,metrics_builder,audit,evaluator}.py`, `app/api/{labels,raw}.py`, the upgrade to `app/api/healthz.py`, three new fakes under `tests/_fakes/`, an *additive* `build_evaluator` factory in `app/deps.py`, a router-registration line in `app/main.py`, **two additive surfaces in `app/rules/` — `__init__.py::build_rule_engine` (T0a) and `context.py::build_validator_context` (T0b) — neither alters E2 behavior; both are construction-time helpers callable from outside `app/rules/`**, an *additive* `rules_root` field on `app/config.py::Settings` (T0a), **an *additive* abstract method `RuleEngine.build_validator_context(self, *, started_at_ms) -> ValidatorContext` on `app/rules/engine.py` plus a concrete implementation on `YamlRuleEngine` that sources its data from the existing private `_ruleset` (iter-2 Blocker fix — see T0b)**, **an *additive* optional field `expected_values: tuple[ExpectedValue, ...] = ()` on `app/schemas/application.py::Application` (iter-2 Warning #2 fix — defaults to empty tuple so all existing callers stay green; populated by T20 fixture sidecars and forwarded by T13 Cycle C)**, and ~15 new test files. It does **NOT** modify `app/rules/loader.py`, `app/rules/yaml_engine.py`'s evaluation logic, `app/rules/_validators/` (E2 — locked), `app/vision/` (E3 — locked), `app/orchestrator/` (E4 — locked), or any other field of `app/schemas/` (existing wire shapes are stable).
+
+**Locked-surface additions are deliberately additive only.** The new abstract method on `RuleEngine` and the new optional field on `Application` both preserve every existing call site: `RuleEngine` subclasses outside this plan don't exist (only `YamlRuleEngine` and the test `FakeRuleEngine`, both updated in lockstep — T0b/T3); `Application` callers that don't pass `expected_values` get the default empty tuple, matching today's behavior bit-for-bit. No public method signature changes; no field renames; no existing-test rewrites.
+
+**FR-906 deferral.** The L1 names FR-906 (ruleset version mismatch — loader-time refusal to start) but it is explicitly deferred from E5: the loader-time refusal lives in E2's loader test (`tests/rules/test_loader.py::test_loader_refuses_unknown_version`) and is exercised end-to-end as part of E8 deployment readiness (subprocess assertion: an interpreter started against an incompatible ruleset exits non-zero before serving any request). E5 wires `build_rule_engine` (T0a) to call the existing E2 loader, so any FR-906-class refusal surfaces at process startup well before any T0a/T15 test runs — there is nothing for E5 to add beyond not bypassing the loader, which T0a does not.
 
 ---
 
@@ -66,7 +72,7 @@ The Evaluator holds no per-evaluation state beyond the call frame; both `AuditRe
 | `tests/test_engine_meta_timeline.py` | T1 | Timeline shape + recording API. |
 | `tests/test_confidence_band_mapping.py` | T2 | Edge values + monotonicity. |
 | `tests/test_fakes_orchestrator_rules.py` | T3 | Protocol conformance for orch + rules fakes. |
-| `tests/test_fakes_vision.py` | T4 | Protocol conformance + `needs_better_photo` signalling. |
+| `tests/test_fakes_vision.py` | T4 | Protocol conformance only — legibility goes through `app.vision.quality.assess`. |
 | `tests/test_metrics_builder.py` | T5 | `MetricsBuilder.build` returns the right `Metrics` shape. |
 | `tests/test_audit_recorder.py` + `tests/test_audit_metrics_split.py` | T6 | AuditRecorder shape; D-018 split. |
 | `tests/test_disposition_rule.py` | T7 | Parametrized disposition rule. |
@@ -109,7 +115,7 @@ The Evaluator holds no per-evaluation state beyond the call frame; both `AuditRe
 
 ### `_stub_label()` — canonical test Label factory
 
-All E5 tests construct `Label` via this helper to keep recipes synchronized with the locked E3 schema (`app/schemas/label.py`: `label_id`, `batch_id`, `image_bytes`, `content_type`, `face_tag`, `dimensions=None`). The wire-side `label_ref` (carried in `DispositionEnvelope`, `AISuggestionWire`, audit `request_id`) is sourced from `Label.label_id` in production envelope-builder + audit assembly — translation at the wire boundary, not in the test recipes.
+All E5 tests construct `Label` via this helper to keep recipes synchronized with the locked E3 schema (`app/schemas/label.py`: `label_id`, `batch_id`, `image_bytes`, `content_type`, `face_tag`, `dimensions=None`). The wire-side `label_ref` (carried in `DispositionEnvelope`) is sourced from `Label.label_id` in production envelope-builder assembly — translation at the wire boundary, not in the test recipes. (The audit record has no `request_id` field; it identifies via `evaluation_id` + `input_hash` + `output_hash`.)
 
 ```python
 # tests/conftest.py (or per-test inline)
@@ -174,26 +180,36 @@ Wave 0 root. No deps. Eliminates the deferred-BLOCK risk in T15 (plan-review ite
 validator-decorator imports (per loader.py:24-29 forward note)."""
 from pathlib import Path
 
+import pytest
+
 from app.config import Settings
 from app.rules import build_rule_engine
 from app.rules._validators import VALIDATOR_REGISTRY
 from app.rules.yaml_engine import YamlRuleEngine
 
 
-def test_build_rule_engine_returns_yaml_engine(tmp_path, monkeypatch):
-    # Settings.rules_root must be absolute so test is CWD-independent.
+@pytest.fixture
+def rules_root_env(monkeypatch):
+    """Pin RULES_ROOT to an absolute path so neither test depends on the
+    interpreter's import-time CWD (Settings.rules_root default resolves
+    `Path('rules')` at module load — see iter-2 Warning #3)."""
     monkeypatch.setenv("RULES_ROOT", str(Path("rules").resolve()))
+
+
+def test_build_rule_engine_returns_yaml_engine(rules_root_env):
     engine = build_rule_engine(Settings())
     assert isinstance(engine, YamlRuleEngine)
 
 
-def test_build_rule_engine_populates_validator_registry():
+def test_build_rule_engine_populates_validator_registry(rules_root_env):
     engine = build_rule_engine(Settings())
     # Force-import side effect must register at least one validator.
     assert len(VALIDATOR_REGISTRY) >= 1
     # Engine carries a non-empty ruleset against the real fixtures.
     assert len(engine._ruleset.rules) >= 1
 ```
+
+> **iter-2 Warning #3 fix.** Both tests now consume the `rules_root_env` fixture so neither relies on the interpreter's import-time CWD. The fixture can be promoted to `tests/rules/conftest.py` if more T0a-adjacent tests land later.
 
 - [ ] **Step 2: Run focused → RED**
 
@@ -257,88 +273,145 @@ git commit -m "feat(e5): build_rule_engine factory (force-imports validators, wi
 
 ---
 
-## Task 0b: app/rules/context.py — build_validator_context helper
+## Task 0b: app/rules/engine.py + yaml_engine.py + context.py — RuleEngine.build_validator_context abstract method
 
 **Files:**
-- Create: `app/rules/context.py`
+- Modify: `app/rules/engine.py` (add abstract method `build_validator_context`)
+- Modify: `app/rules/yaml_engine.py` (add concrete `build_validator_context` sourcing from `self._ruleset`)
+- Create: `app/rules/context.py` (thin shim — preserves the importable free-function name for callers that prefer it; delegates to the engine method)
 - Test: `tests/rules/test_build_validator_context.py` (new)
 
-Wave 0 root. No deps. Eliminates the `ValidatorContext(label=...)` constructor mismatch (plan-review iter-1 Blocker #2). The Evaluator (T13/T14) constructs a per-evaluation `ValidatorContext` via this helper instead of fabricating a `label=` field that does not exist.
+Wave 0 root. No deps. Eliminates the `ValidatorContext(label=...)` constructor mismatch (plan-review iter-1 Blocker #2) AND the new iter-2 Blocker (free-function helper accessing `engine._ruleset` failed against the abstract `RuleEngine` seam used by `FakeRuleEngine`). The Evaluator (T13/T14) constructs a per-evaluation `ValidatorContext` by calling `self._rules.build_validator_context(started_at_ms=...)` on the abstraction itself, so both `YamlRuleEngine` (production) and `FakeRuleEngine` (tests, T3) implement it directly. No more reaching into a private attribute through a free function.
+
+> **iter-2 Blocker fix.** v0.3 introduced a free-function helper `build_validator_context(engine, ...)` that read `engine._ruleset`. The Evaluator's typed seam is the abstract `RuleEngine`; the unit-test `FakeRuleEngine` carries no `_ruleset`, so T13 Cycle C tests crashed with `AttributeError` before reaching `orch.refine`. v0.4 relocates context construction onto the `RuleEngine` ABC so the abstraction owns the contract; the concrete YAML engine implements it against `self._ruleset`; the fake (T3) implements it as a stub returning empty assets/tables and a placeholder version string.
 
 - [ ] **Step 1: Write the failing test**
 
 ```python
 # tests/rules/test_build_validator_context.py
-"""build_validator_context(engine, started_at_ms) — pulls assets/decision_tables/
-engine_version off the engine's ruleset; supplies the per-evaluation clock."""
+"""RuleEngine.build_validator_context — abstract-method seam.
+
+Validates the abstract method on the concrete YamlRuleEngine wired via T0a's
+build_rule_engine factory: sources assets/decision_tables/engine_version off
+the engine's private ruleset; supplies the per-evaluation clock from the
+caller. The FakeRuleEngine implementation is exercised in T3's test
+(test_fakes_orchestrator_rules.py) so this file stays focused on production.
+"""
 from app.config import Settings
 from app.rules import build_rule_engine
 from app.rules._validators import ValidatorContext
-from app.rules.context import build_validator_context
+from app.rules.context import build_validator_context  # thin shim → engine method
 
 
-def test_build_validator_context_returns_validator_context():
+def test_yaml_engine_build_validator_context_returns_validator_context():
     engine = build_rule_engine(Settings())
-    ctx = build_validator_context(engine, started_at_ms=12345)
+    ctx = engine.build_validator_context(started_at_ms=12345)
     assert isinstance(ctx, ValidatorContext)
 
 
-def test_build_validator_context_sources_from_ruleset():
+def test_yaml_engine_build_validator_context_sources_from_ruleset():
     engine = build_rule_engine(Settings())
-    ctx = build_validator_context(engine, started_at_ms=99)
+    ctx = engine.build_validator_context(started_at_ms=99)
     assert ctx.assets == engine._ruleset.assets
     assert ctx.decision_tables == engine._ruleset.decision_tables
     assert ctx.started_at_ms == 99
     assert ctx.engine_version  # non-empty (sourced from RuleSet.version)
+
+
+def test_shim_delegates_to_engine_method():
+    """The free-function shim is a one-line forwarder so existing recipes that
+    prefer the free-function name still work — but the contract lives on the
+    abstraction."""
+    engine = build_rule_engine(Settings())
+    via_method = engine.build_validator_context(started_at_ms=7)
+    via_shim = build_validator_context(engine, started_at_ms=7)
+    assert via_method == via_shim
 ```
 
 - [ ] **Step 2: Run focused → RED**
 
-`uv run pytest tests/rules/test_build_validator_context.py -q` → ModuleNotFoundError.
+`uv run pytest tests/rules/test_build_validator_context.py -q` → AttributeError (`RuleEngine` has no `build_validator_context`) and ModuleNotFoundError on `app.rules.context`.
 
 - [ ] **Step 3: Implement**
 
+Add the abstract method to the rule-engine ABC:
+
+```python
+# app/rules/engine.py — add the abstract method to class RuleEngine
+from abc import ABC, abstractmethod
+
+from app.rules._validators import ValidatorContext  # already imported
+
+
+class RuleEngine(ABC):
+    @abstractmethod
+    async def evaluate(...): ...
+
+    @abstractmethod
+    def build_validator_context(self, *, started_at_ms: int) -> ValidatorContext:
+        """Construct a per-evaluation ``ValidatorContext`` for this engine.
+
+        Each subclass sources ``assets``, ``decision_tables``, and
+        ``engine_version`` from whatever it has on hand; the caller (the
+        Evaluator) supplies the per-evaluation wall-clock reference. Pulling
+        construction onto the abstraction means tests (FakeRuleEngine) can
+        return a stub without reaching into private state.
+        """
+        ...
+```
+
+Add the concrete implementation to `YamlRuleEngine`:
+
+```python
+# app/rules/yaml_engine.py — inside class YamlRuleEngine
+    def build_validator_context(self, *, started_at_ms: int) -> ValidatorContext:
+        rs = self._ruleset
+        return ValidatorContext(
+            assets=rs.assets,
+            decision_tables=rs.decision_tables,
+            started_at_ms=started_at_ms,
+            engine_version=rs.version,
+        )
+```
+
+Create the thin shim (kept so call sites that prefer the free-function name still resolve; the contract lives on the abstraction):
+
 ```python
 # app/rules/context.py
-"""Per-evaluation ``ValidatorContext`` factory.
+"""Backward-compatible shim over ``RuleEngine.build_validator_context``.
 
-Sources ``assets``, ``decision_tables``, and ``engine_version`` from the
-engine's ruleset (acceptable encapsulation break inside the same ``app.rules``
-package). Caller (the Evaluator) supplies the per-evaluation ``started_at_ms``
-clock so each evaluation has its own wall-clock reference for time-bounded
-validators.
+The abstract method on ``RuleEngine`` (``app/rules/engine.py``) is the source
+of truth for per-evaluation ``ValidatorContext`` construction. This module
+preserves a free-function name for any caller that prefers it; everything
+delegates to the engine method.
 """
 from __future__ import annotations
 
 from app.rules._validators import ValidatorContext
-from app.rules.yaml_engine import YamlRuleEngine
+from app.rules.engine import RuleEngine
 
 
 def build_validator_context(
-    engine: YamlRuleEngine, *, started_at_ms: int
+    engine: RuleEngine, *, started_at_ms: int
 ) -> ValidatorContext:
-    rs = engine._ruleset
-    return ValidatorContext(
-        assets=rs.assets,
-        decision_tables=rs.decision_tables,
-        started_at_ms=started_at_ms,
-        engine_version=rs.version,
-    )
+    return engine.build_validator_context(started_at_ms=started_at_ms)
 ```
 
-> **Schema note.** `RuleSet.version` (`app/schemas/rules.py:86`) is the engine-level version field; `RuleDefinition.rule_pack_version` is per-rule. Use `rs.version` here. If a future schema change makes `version` ambiguous, source from `rs.rules[0].rule_pack_version` and document the change.
+> **Schema note.** `RuleSet.version` (`app/schemas/rules.py:86`) is the engine-level version field; `RuleDefinition.rule_pack_version` is per-rule. Use `rs.version` in the YAML engine implementation. If a future schema change makes `version` ambiguous, source from `rs.rules[0].rule_pack_version` and document the change.
 
-- [ ] **Step 4: Run focused → GREEN (2 passed)**
+> **FakeRuleEngine in T3.** T3 (the orch + rules fakes task) MUST also implement `build_validator_context` returning a stub — `ValidatorContext(assets={}, decision_tables={}, started_at_ms=started_at_ms, engine_version="fake")`. T3's recipe is updated below to include this. Without that concrete override, `FakeRuleEngine` cannot instantiate (Python raises `TypeError: Can't instantiate abstract class`).
+
+- [ ] **Step 4: Run focused → GREEN (3 passed)**
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add app/rules/context.py tests/rules/test_build_validator_context.py
-git commit -m "feat(e5): build_validator_context — per-evaluation ValidatorContext factory"
+git add app/rules/engine.py app/rules/yaml_engine.py app/rules/context.py tests/rules/test_build_validator_context.py
+git commit -m "feat(e5): RuleEngine.build_validator_context — abstract method + YAML impl + shim"
 ```
 
-**TDD:** 1 cycle.
-**Done:** test constructs an engine via T0a, calls `build_validator_context(engine, started_at_ms=12345)`, asserts the returned `ValidatorContext` has the engine's `assets`, `decision_tables`, the supplied clock, and non-empty `engine_version`.
+**TDD:** 1 cycle (RED → GREEN).
+**Done:** test calls `engine.build_validator_context(started_at_ms=12345)` on the YAML engine wired via T0a, asserts the returned `ValidatorContext` has the ruleset's `assets`, `decision_tables`, the supplied clock, and non-empty `engine_version`; a third test asserts the free-function shim delegates byte-for-byte to the engine method.
 
 ---
 
@@ -653,6 +726,22 @@ async def test_fake_rule_engine_returns_canned_results():
     fake = FakeRuleEngine(results=canned)
     out = await fake.evaluate(observations=[], expected=[], context=None)  # type: ignore[arg-type]
     assert out == canned
+
+
+def test_fake_rule_engine_build_validator_context_returns_stub():
+    """T0b adds an abstract ``build_validator_context`` to ``RuleEngine``;
+    the fake must implement it so `FakeRuleEngine(...)` is instantiable
+    and the Evaluator can call `self._rules.build_validator_context(...)`
+    against the abstraction in T13/T14."""
+    from app.rules._validators import ValidatorContext
+
+    fake = FakeRuleEngine(results=())
+    ctx = fake.build_validator_context(started_at_ms=42)
+    assert isinstance(ctx, ValidatorContext)
+    assert ctx.assets == {}
+    assert ctx.decision_tables == {}
+    assert ctx.started_at_ms == 42
+    assert ctx.engine_version == "fake"
 ```
 
 - [ ] **Step 2: Run focused → RED**
@@ -706,6 +795,7 @@ from __future__ import annotations
 
 from typing import Sequence
 
+from app.rules._validators import ValidatorContext
 from app.rules.engine import RuleEngine
 from app.schemas.expected import ExpectedValue
 from app.schemas.extracted import FieldObservation
@@ -723,9 +813,19 @@ class FakeRuleEngine(RuleEngine):
         context,  # type: ignore[no-untyped-def]
     ) -> tuple[ValidationResult, ...]:
         return self._results
+
+    def build_validator_context(self, *, started_at_ms: int) -> ValidatorContext:
+        # Stub: empty assets/tables + placeholder engine_version. Sufficient
+        # for any test that doesn't exercise asset-driven validators.
+        return ValidatorContext(
+            assets={},
+            decision_tables={},
+            started_at_ms=started_at_ms,
+            engine_version="fake",
+        )
 ```
 
-- [ ] **Step 4: Run focused → GREEN (6 passed)**
+- [ ] **Step 4: Run focused → GREEN (7 passed)**
 
 - [ ] **Step 5: Commit**
 
@@ -1895,11 +1995,14 @@ from tests.conftest import _stub_label
 
 @pytest.mark.asyncio
 async def test_legibility_short_circuit(monkeypatch):
+    # iter-2 Warning #4: stub uses the canonical WARNING.LEGIBILITY.* prefix
+    # so unit-test reason codes match what `app.vision.quality.assess` emits
+    # in production (LOW_RESOLUTION / GLARE / MOTION_BLUR / LOW_DPI).
     monkeypatch.setattr(
         "app.services.evaluator.assess_quality",
         lambda lbl: QualityReport(
             disposition="needs_better_photo",
-            reason_code="VISION.QUALITY.LOW_DPI",
+            reason_code="WARNING.LEGIBILITY.LOW_DPI",
             dpi=72,
         ),
     )
@@ -1912,7 +2015,7 @@ async def test_legibility_short_circuit(monkeypatch):
     )
     assert envelope.disposition == "needs_review"
     rule_ids = {entry.rule_id for entry in envelope.audit_trail.per_rule_trace}
-    assert "VISION.QUALITY.LOW_DPI" in rule_ids
+    assert "WARNING.LEGIBILITY.LOW_DPI" in rule_ids
 ```
 
 - [ ] **Step B.2: Run focused → RED**
@@ -2057,11 +2160,16 @@ Insert after the legibility short-circuit (before the assembly):
 
 ```python
         # Step 3-4: rules
-        from app.rules.context import build_validator_context  # T0b
-        from app.schemas.expected import ExpectedValue
-        expected: list[ExpectedValue] = []  # T20 (AC fixture coverage) populates from application
+        # T0b: context construction is owned by the rule-engine abstraction
+        # itself — we call the engine method, NOT a free function over a
+        # private attribute. Both YamlRuleEngine and FakeRuleEngine implement
+        # `build_validator_context`.
         started_at_ms = int(time.monotonic() * 1000)
-        ctx = build_validator_context(self._rules, started_at_ms=started_at_ms)
+        ctx = self._rules.build_validator_context(started_at_ms=started_at_ms)
+        # iter-2 Warning #2 fix: forward expected_values from the Application
+        # (additive optional field, defaults to empty tuple). T20's AC fixtures
+        # populate it via per-fixture sidecar JSON; everywhere else it is empty.
+        expected = tuple(application.expected_values)
         results = await self._rules.evaluate(observations, expected, ctx)
 
         # Step 5-6: orchestrator (conditional) + FR-303 patching
@@ -2439,20 +2547,37 @@ Replace the vision call with:
         timeline.record_vision_done(int((time.monotonic() - t0) * 1000))
 ```
 
-Replace the rules call with (using the T0b factory):
+Replace the rules call with (using the T0b abstract method on the engine):
 
 ```python
-        from app.rules.context import build_validator_context  # T0b
+        # T0b: build_validator_context is an abstract method on RuleEngine —
+        # YamlRuleEngine sources from self._ruleset; FakeRuleEngine returns a
+        # stub. The Evaluator never reaches into a private attribute itself.
         try:
-            ctx = build_validator_context(self._rules, started_at_ms=int(time.monotonic() * 1000))
+            ctx = self._rules.build_validator_context(
+                started_at_ms=int(time.monotonic() * 1000)
+            )
+            expected = tuple(application.expected_values)  # iter-2 Warning #2
             results = await self._rules.evaluate(observations, expected, ctx)
         except Exception as e:
             timeline.record_failure(reason_code="ENGINE.RULES.UNAVAILABLE",
                                     message=str(e), exception_class=type(e).__name__)
+            _logger.info(  # NFR-OBS-001: log every routed FR-900 event
+                "engine_failure_routed",
+                extra={
+                    "reason_code": "ENGINE.RULES.UNAVAILABLE",
+                    "evaluation_id": application.evaluation_id,
+                    "exception_class": type(e).__name__,
+                },
+            )
             results = ()
 ```
 
+> **iter-2 Warning #1 fix (NFR-OBS-001).** Every FR-900 routing event in the chokepoint also emits one structured log line via the module-level `_logger = logging.getLogger("app.services.evaluator")`. Apply the same `_logger.info("engine_failure_routed", extra={"reason_code": <code>, "evaluation_id": ..., "exception_class": ...})` pattern to the vision-exception branch (`ENGINE.EXTRACTION.UNAVAILABLE`), the timeout fallback (`ENGINE.SLA.TIMEOUT` in `_timeout_envelope`), the legibility short-circuit (`quality.reason_code` from Cycle B), and the orchestrator-exception branch (`ENGINE.MODEL.UNAVAILABLE` from Cycle C). The Cycle B done-criteria below assert at least one log line was emitted with the matching `reason_code` (use `caplog` from pytest's logging plugin: `assert any(r.reason_code == "ENGINE.RULES.UNAVAILABLE" for r in caplog.records)` after the call).
+
 The `compute_disposition(())` call from T7 already routes empty results to `needs_review`, so the disposition is honest.
+
+- [ ] **Cycle B done-criteria additions (NFR-OBS-001).** Both Cycle B tests assert that the routed FR-900 event also produced a structured log line with the matching `reason_code` extra. Use pytest's `caplog` fixture: at the top of each test, `caplog.set_level(logging.INFO, logger="app.services.evaluator")`; after `await e.evaluate(...)`, assert `any(getattr(r, "reason_code", None) for r in caplog.records)` is truthy and matches the expected code.
 
 - [ ] **Step B.4: Run focused → GREEN**
 
@@ -2848,7 +2973,7 @@ git commit -m "feat(e5): DEV_MODE-gated /batches/.../calls endpoint (D-019)"
 **Files:**
 - Test: `tests/test_evaluator_failure_modes.py`
 
-- [ ] **Step 1: Write the parametrized test (FR-902, FR-907, FR-908, FR-909, FR-911, FR-912 — Web-layer FR-900/901 covered by T15's endpoint tests)**
+- [ ] **Step 1: Write the parametrized test (FR-902, FR-903, FR-904, FR-905, FR-907, FR-908, FR-909, FR-910, FR-911, FR-912 — Web-layer FR-900/901 covered by T15's endpoint tests; FR-906 deferred — see Hard Scope Boundary)**
 
 ```python
 # tests/test_evaluator_failure_modes.py
@@ -2888,6 +3013,40 @@ async def test_fr902_conflicting_rules():
     e = Evaluator(vision=FakeVisionExtractor(observations=[]), rules=rules, orchestrator=FakeOrchestrator(), settings=Settings())
     envelope = await e.evaluate(application=_stub_app(), label=_stub_label())
     assert envelope.disposition == "fail"
+
+
+# iter-2 Warning #1: extend coverage to FR-903 / FR-904 / FR-905 / FR-910.
+# Each case wires a downstream signal (typically a ValidationResult with the
+# matching reason_code) and asserts the chokepoint routes the disposition to
+# `needs_review` and surfaces the reason code in `per_rule_trace`.
+@pytest.mark.asyncio
+@pytest.mark.parametrize("reason_code, outcome, fr_label", [
+    ("ENGINE.OCR.AMBIGUOUS",            Outcome.INSUFFICIENT_EVIDENCE, "FR-903"),
+    ("ENGINE.CLASS.UNKNOWN",            Outcome.INSUFFICIENT_EVIDENCE, "FR-904"),
+    ("ENGINE.CLASS.DISAGREEMENT",       Outcome.INSUFFICIENT_EVIDENCE, "FR-905"),
+    ("ENGINE.DPI.MISSING",              Outcome.INSUFFICIENT_EVIDENCE, "FR-910"),
+])
+async def test_fr_900_series_routes_to_needs_review(reason_code, outcome, fr_label):
+    """FR-903 / FR-904 / FR-905 / FR-910 — when an upstream signal carries
+    one of these reason codes, the chokepoint must route to needs_review and
+    keep the reason code visible in the per-rule trace."""
+    rules = FakeRuleEngine(results=(
+        ValidationResult(
+            rule_id=f"R-{fr_label}", cfr_citation="27 CFR §x",
+            beverage_class=BeverageClass.SPIRITS,
+            outcome=outcome, severity=Severity.WARN,
+            reason_code=reason_code,
+            aggregated_confidence=0.4, engine_meta=_em(),
+        ),
+    ))
+    e = Evaluator(vision=FakeVisionExtractor(observations=[]), rules=rules,
+                  orchestrator=FakeOrchestrator(), settings=Settings())
+    envelope = await e.evaluate(application=_stub_app(), label=_stub_label())
+    assert envelope.disposition == "needs_review", f"{fr_label} did not route to needs_review"
+    rule_ids = {entry.rule_id for entry in envelope.audit_trail.per_rule_trace}
+    assert reason_code in rule_ids or any(reason_code.split(".")[1] in rid for rid in rule_ids), (
+        f"{fr_label}: reason_code {reason_code} not surfaced in per_rule_trace ({rule_ids})"
+    )
 
 
 @pytest.mark.asyncio
@@ -2972,7 +3131,7 @@ If any case unexpectedly fails, that's a Rule 1-3 inline gap in T14's chokepoint
 
 ```bash
 git add tests/test_evaluator_failure_modes.py
-git commit -m "test(e5): full FR-902/907/908/909/911/912 coverage"
+git commit -m "test(e5): full FR-902/903/904/905/907/908/909/910/911/912 coverage"
 ```
 
 ---
@@ -3055,13 +3214,63 @@ git commit -m "test(e5): NFR-PERF-001/003 P50/P99 budget assertion (30-trial)"
 ## Task 20: tests/test_ac_fixture_coverage.py — L1 §4 AC #1-4
 
 **Files:**
+- Modify: `app/schemas/application.py` (additive optional `expected_values: tuple[ExpectedValue, ...] = ()` field — see Hard Scope Boundary)
+- Create: `fixtures/<fixture_id>/expected.json` per fixture (sidecar describing expected values per field)
 - Test: `tests/test_ac_fixture_coverage.py`
 
-- [ ] **Step 1: Write the AC tests**
+> **iter-2 Warning #2 fix.** v0.3 left `expected = []` hardcoded in T13 Cycle C and gave T20 no way to populate it, so AC #1 (`01-spirits-clean → pass`) and AC #4 (`06-abv-out-of-tolerance → fail`) couldn't be satisfied — every fixture would have routed to `needs_review` because the rule engine was given nothing to validate against. v0.4 closes the gap with the smallest possible additive surface change: an optional `expected_values: tuple[ExpectedValue, ...] = ()` on `Application`. T13 Cycle C and T14 Cycle B already read it via `tuple(application.expected_values)` (see those task recipes); T20 here builds the application with values loaded from a per-fixture sidecar JSON.
+
+- [ ] **Step 1: Add the additive Application field**
+
+```python
+# app/schemas/application.py — add the optional field. Default of `()`
+# preserves every existing call site (T0a/T6/T11/T13/T14/T15/T16/T18/T19
+# tests construct Application without `expected_values`; they all keep
+# working).
+from app.schemas.expected import ExpectedValue
+
+
+class Application(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    application_id: str
+    evaluation_id: str
+    expected_values: tuple[ExpectedValue, ...] = ()
+```
+
+- [ ] **Step 2: Add per-fixture sidecars**
+
+For each fixture in the AC-coverage parametrize list, drop a sidecar JSON describing the expected values per field. The schema mirrors `app/schemas/expected.py::ExpectedValue` (`field_id` + the field-specific value keys; consult that schema for the exact field names — the fixture sidecar carries whatever the rule pack needs to make the disposition deterministic).
+
+```
+fixtures/01-spirits-clean/expected.json
+fixtures/03-warning-title-case/expected.json
+fixtures/04-low-res-blurry/expected.json
+fixtures/06-abv-out-of-tolerance/expected.json
+```
+
+Each file is a JSON list of objects, e.g.:
+
+```json
+[
+  {"field_id": "brand_name", "expected_brand_name": "Crown Royal"},
+  {"field_id": "alcohol_content", "expected_abv_pct": 40.0, "abv_tolerance_pct": 0.3}
+]
+```
+
+The exact keys per field come from `ExpectedValue` — pull them out at fixture-build time and let pydantic surface any schema drift as a load error.
+
+- [ ] **Step 3: Write the AC tests**
 
 ```python
 # tests/test_ac_fixture_coverage.py
-"""L1 §4 AC #1/#2/#3/#4 — fixture-driven dispositions (full real stack)."""
+"""L1 §4 AC #1/#2/#3/#4 — fixture-driven dispositions (full real stack).
+
+Each fixture carries a sidecar `expected.json` describing the per-field
+ExpectedValues the rule engine validates against. T13 Cycle C reads them
+via `application.expected_values` (additive optional field — see iter-2
+Warning #2 fix in the Hard Scope Boundary)."""
+import json
 from pathlib import Path
 
 import pytest
@@ -3069,6 +3278,7 @@ import pytest
 from app.config import Settings
 from app.deps import build_evaluator
 from app.schemas.application import Application
+from app.schemas.expected import ExpectedValue
 from app.schemas.label import Label
 
 
@@ -3088,6 +3298,18 @@ def _label_from_fixture(fixture_id: str) -> Label:
     )
 
 
+def _expected_from_fixture(fixture_id: str) -> tuple[ExpectedValue, ...]:
+    """Load the per-fixture sidecar and parse into ExpectedValue tuple.
+    Missing sidecar → empty tuple (the rule engine treats every field as
+    'no expected'); present sidecar → strict pydantic parse so schema drift
+    fails loud."""
+    sidecar = Path(f"fixtures/{fixture_id}/expected.json")
+    if not sidecar.exists():
+        return ()
+    raw = json.loads(sidecar.read_text())
+    return tuple(ExpectedValue(**entry) for entry in raw)
+
+
 @pytest.mark.asyncio
 @pytest.mark.parametrize("fixture_id, expected_disposition", [
     ("01-spirits-clean", "pass"),
@@ -3098,7 +3320,11 @@ def _label_from_fixture(fixture_id: str) -> Label:
 async def test_ac_fixture_disposition(fixture_id, expected_disposition):
     settings = Settings()
     evaluator = build_evaluator(settings)
-    application = Application(application_id="A-001", evaluation_id=f"EV-{fixture_id}")
+    application = Application(
+        application_id="A-001",
+        evaluation_id=f"EV-{fixture_id}",
+        expected_values=_expected_from_fixture(fixture_id),
+    )
     label = _label_from_fixture(fixture_id)
     envelope = await evaluator.evaluate(application=application, label=label)
     assert envelope.disposition == expected_disposition, (
@@ -3106,15 +3332,15 @@ async def test_ac_fixture_disposition(fixture_id, expected_disposition):
     )
 ```
 
-- [ ] **Step 2: Run focused → expect mixed (this is the integration canary)**
+- [ ] **Step 4: Run focused → expect GREEN once sidecars + schema field land together**
 
-If any case fails, identify which seam (vision/rules/orchestrator) is producing wrong output. E2/E3/E4 are LOCKED — if they produce wrong output against a fixture, report `STATUS: BLOCKED — AC #X requires upstream fix in <epoch>`.
+If any case fails, identify which seam (vision/rules/orchestrator) is producing wrong output. E2/E3/E4 are LOCKED for evaluation logic — if they produce wrong output against a fixture, report `STATUS: BLOCKED — AC #X requires upstream fix in <epoch>`. The Application schema field is in scope here (additive), so a `expected_values`-related fail is fixable inside this task.
 
-- [ ] **Step 3: Commit**
+- [ ] **Step 5: Commit**
 
 ```bash
-git add tests/test_ac_fixture_coverage.py
-git commit -m "test(e5): AC fixture coverage 01/03/04/06 (L1 §4 AC #1-4)"
+git add app/schemas/application.py fixtures/*/expected.json tests/test_ac_fixture_coverage.py
+git commit -m "feat(e5): AC fixture coverage 01/03/04/06 + Application.expected_values"
 ```
 
 ---
@@ -3208,6 +3434,43 @@ After T21 lands:
 
 ---
 
+## L1 → Task Coverage Map
+
+This map tracks every L1-named requirement (FR-/NFR-) and acceptance criterion against the task that owns its coverage. It is the artifact a future plan-reviewer reads first to confirm nothing was dropped.
+
+| L1 Requirement | Status | Task / Notes |
+|---|---|---|
+| FR-300 / FR-301 / FR-302 (orchestrator trigger + invocation) | Covered | T10 (`should_invoke_orchestrator` predicate); T13 Cycle C (Evaluator wiring). |
+| FR-303 (orchestrator never overrides fail) | Covered | T9 (`patcher.py` — pure FR-303-safe patcher); T13 Cycle C (uses patcher); T20 (`test_patcher_fr303` is the canary). |
+| FR-304 (CallRecord retry visibility) | Covered upstream (E4) | E4 ships the orchestrator-side recording; E5 carries it through unchanged. |
+| FR-505 / FR-603 (legibility short-circuit) | Covered | T13 Cycle B (`assess_quality(label)` short-circuit). |
+| FR-700-series (audit) | Covered | T6 (`AuditRecorder` + canonical hashes); T13 Cycle D (assembly). |
+| FR-902 (conflicting rules) | Covered | T18 `test_fr902_conflicting_rules`. |
+| FR-903 (ambiguous OCR) | Covered (iter-2) | T18 parametrized — `test_fr_900_series_routes_to_needs_review[FR-903]`. |
+| FR-904 (unknown class) | Covered (iter-2) | T18 parametrized — `test_fr_900_series_routes_to_needs_review[FR-904]`. |
+| FR-905 (class disagreement) | Covered (iter-2) | T18 parametrized — `test_fr_900_series_routes_to_needs_review[FR-905]`. |
+| FR-906 (ruleset version mismatch — loader-time refusal) | Deferred | Loader-time refusal lives in E2's loader test (`tests/rules/test_loader.py`); end-to-end exercised in E8 deployment readiness. T0a calls the existing E2 loader, so any FR-906 refusal surfaces at process startup before any E5 test runs. See Hard Scope Boundary. |
+| FR-907 (validator exception) | Covered | T14 Cycle B (rules try/except → `ENGINE.RULES.UNAVAILABLE`); T18 `test_fr907_validator_exception`. |
+| FR-908 (per-rule timeout) | Covered | T18 `test_fr908_per_rule_timeout_outcome_routes_to_needs_review` (semantics enforced by E2's `YamlRuleEngine`; E5 routes the resulting outcome). |
+| FR-909 (whole-eval timeout) | Covered | T14 Cycle A (`asyncio.wait_for` → `ENGINE.SLA.TIMEOUT`); T18 `test_fr909_whole_eval_timeout`. |
+| FR-910 (missing DPI) | Covered (iter-2) | T18 parametrized — `test_fr_900_series_routes_to_needs_review[FR-910]`. |
+| FR-911 (reference-data unavailable) | Covered | T18 `test_fr911_reference_data_unavailable`. |
+| FR-912 (model unavailable) | Covered | T14 Cycle B (orchestrator try/except → `ENGINE.MODEL.UNAVAILABLE`); T18 `test_fr912_model_unavailable`. |
+| NFR-PERF-001 / NFR-PERF-003 (P50 / P99 SLA) | Covered | T19 perf test (30-trial P50/P99 budget). |
+| NFR-DET-001 (session determinism) | Covered | T12 (`SessionCache`); T13 Cycle D (cache integration). |
+| NFR-DET-002 (cross-process determinism) | Out of scope (MVP) | E5 does not persist the cache across restarts; documented in T12 module docstring. |
+| NFR-OBS-001 (FR-900 logs) | Covered (iter-2) | T14 Cycle B emits `_logger.info("engine_failure_routed", extra={"reason_code": ..., ...})` for every routed FR-900 event; Cycle B done-criteria assert via `caplog`. Same logging pattern applied to vision-exception, timeout, legibility, and orchestrator-exception branches. |
+| L1 §4 AC #1-4 (fixture dispositions) | Covered | T20 with per-fixture `expected.json` sidecars + additive `Application.expected_values`. |
+| L1 §4 AC #5 (FR-900 series) | Covered | T18 (parametrized — see FR rows above). |
+| L1 §4 AC #6 / AC #7 (audit / metrics split) | Covered | T6 + T13 Cycle D; D-018. |
+| L1 §4 AC #8 (perf) | Covered | T19. |
+| L1 §4 AC #9 (healthz) | Covered | T16. |
+| L1 §4 AC #10 (FR-303 runtime) | Covered | T9 + T13 Cycle C; the `test_patcher_does_not_override_fail` canary. |
+| L1 §4 AC #11 (chokepoint grep) | Covered | T21 P4 grep guard. |
+| L1 §4 AC #12 (evaluation_id consistency) | Covered | T13 Cycle D `test_cache_hit_replaces_evaluation_id` (cache path); same UUID flows audit + metrics + envelope. |
+
+---
+
 ## Change log
 
 | Version | Date | Author | Notes |
@@ -3215,6 +3478,7 @@ After T21 lands:
 | 0.1 | 2026-05-04 | Project team | Initial E5 L2 plan. 16 tasks across 8 waves; bottlenecked on T7+T8 (Evaluator file). |
 | 0.2 | 2026-05-04 | Project team | **Refactored for parallelism per user feedback**: extracted Evaluator helpers into 6 separate pure modules (T7 disposition, T8 aggregation, T9 patcher, T10 triggers, T11 envelope_builder, T12 cache) so Wave 3 fans out to 6 concurrent subagents. Evaluator (T13 + T14) is now thin — 4 cycles (core) + 2 cycles (resilience) instead of 6+4. Total tasks: 21; total waves: 8; max parallelism: 6 (Wave 3); expected commits: ~26. |
 | 0.3 | 2026-05-04 | Project team | **plan-review iter-1 fixes** (4 blockers + 3 warnings). **B1**: Added `_stub_label()` test factory in Conventions; swept test recipes to use real `Label` shape (`label_id`, `content_type`, `face_tag`); production code sources wire `label_ref` from `Label.label_id`. **B2**: New Wave 0 task **T0b** introduces `app/rules/context.py::build_validator_context(engine, started_at_ms)`; T13 Cycle C + T14 Cycle B use it instead of constructing `ValidatorContext(label=...)`. **B3**: New Wave 0 task **T0a** introduces `app/rules/__init__.py::build_rule_engine(settings)`; T15 imports it instead of relying on a runtime BLOCK escalation. **B4**: T13 Cycle B uses `app.vision.quality.assess(label)` instead of fake-only `getattr(vision, "needs_better_photo", False)`; FakeVisionExtractor drops the flag; Cycle B test monkeypatches `app.services.evaluator.assess_quality`. **W4**: T16 → T15 dependency added; T16 moved from Wave 5 to Wave 6 (Wave 6 now: T16 + T17, fanout 2). **W5**: T15 happy-path test + T19 perf test now monkeypatch `build_vision_extractor` + `build_orchestrator` (or use respx-mocked cloud) to remove flakiness against real vision. **W6 / B1 follow-on**: T20 fixture coverage uses `dimensions=None` (drops hardcoded `Dimensions(200, 200)`). Total tasks: 23; total waves: 9; max parallelism: 6 (Wave 1a); expected commits: ~28. |
+| 0.4 | 2026-05-04 | Project team | **plan-review iter-2 fixes** (1 blocker + 4 warnings + 3 info). **B-iter2** (v0.3-regression): the v0.3 free-function `build_validator_context` accessed `engine._ruleset` and crashed against the abstract `RuleEngine` seam used by `FakeRuleEngine`. T0b is rewritten so context construction lives on the rule-engine ABC itself (`RuleEngine.build_validator_context(self, *, started_at_ms)`); `YamlRuleEngine` implements it against `self._ruleset`; `FakeRuleEngine` (T3) implements a stub returning empty assets/tables and `engine_version="fake"`; the free-function in `app/rules/context.py` is kept as a thin shim. T13 Cycle C and T14 Cycle B call `self._rules.build_validator_context(...)` on the abstraction. Hard Scope Boundary acknowledges the additive abstract method. **W1-iter2** (FR-903/904/905/906/910 + NFR-OBS-001): T18 extends the parametrized FR-900 series with FR-903 (ambiguous OCR), FR-904 (unknown class), FR-905 (class disagreement), FR-910 (missing DPI) — each asserts the chokepoint routes disposition to needs-review with the matching reason code. FR-906 documented as deferred to E2 loader test + E8 deployment readiness. NFR-OBS-001 added: T14 Cycle B chokepoint emits a structured log line via `_logger.info("engine_failure_routed", extra={"reason_code": ..., ...})` for every routed FR-900 event; Cycle B done-criteria assert via `caplog`. **W2-iter2**: T20 acquires per-fixture `expected.json` sidecars; new additive optional `expected_values: tuple[ExpectedValue, ...] = ()` on `Application`; T13 Cycle C and T14 Cycle B forward `application.expected_values` to the rule engine; Hard Scope Boundary acknowledges the additive field. **W3-iter2**: T0a both tests now consume a `rules_root_env` fixture that pins `RULES_ROOT` to `Path("rules").resolve()` so neither relies on the import-time CWD. **W4-iter2**: T13 Cycle B test stub uses canonical `WARNING.LEGIBILITY.LOW_DPI` reason-code prefix (matches `app/vision/quality.py`). **I1-iter2**: T4 file-map row no longer mentions removed `needs_better_photo` flag. **I2-iter2**: stale Wave-1 inline header replaced with the split-header pointer to Wave 1a/1b. **I3-iter2**: Conventions §`_stub_label()` no longer claims `label_ref` is carried in audit `request_id` (audit identifies via `evaluation_id` + hashes; no such field). Total tasks: 23; total waves: 9; max parallelism: 6 (Wave 1a); expected commits: ~28 (unchanged — all v0.4 changes are doc-only edits within the existing tasks, no new tasks added). |
 
 ---
 
@@ -3225,10 +3489,10 @@ After T21 lands:
 | Task | Depends On | Blocks | Files Owned |
 |------|-----------|--------|-------------|
 | T0a: build_rule_engine factory | — | T13, T14, T15, T16 | `app/rules/__init__.py`, `app/config.py` (additive), `tests/rules/test_build_rule_engine.py` |
-| T0b: build_validator_context | — | T13, T14 | `app/rules/context.py`, `tests/rules/test_build_validator_context.py` |
+| T0b: RuleEngine.build_validator_context | — | T3, T13, T14 | `app/rules/engine.py` (additive abstract method), `app/rules/yaml_engine.py` (concrete impl), `app/rules/context.py` (thin shim), `tests/rules/test_build_validator_context.py` |
 | T1: EvaluationTimeline | — | T5, T6, T11, T13, T14 | `app/services/__init__.py`, `app/services/engine_meta.py`, `tests/test_engine_meta_timeline.py` |
 | T2: confidence band | — | T8, T11 | `app/services/confidence.py`, `tests/test_confidence_band_mapping.py` |
-| T3: orch + rules fakes | — | T13, T14, T18 | `tests/_fakes/__init__.py`, `tests/_fakes/orchestrator.py`, `tests/_fakes/rules.py`, `tests/test_fakes_orchestrator_rules.py` |
+| T3: orch + rules fakes | T0b | T13, T14, T18 | `tests/_fakes/__init__.py`, `tests/_fakes/orchestrator.py`, `tests/_fakes/rules.py`, `tests/test_fakes_orchestrator_rules.py` |
 | T4: vision fake | — | T6, T11, T13, T14, T15, T16, T17, T18, T19, T20 | `tests/_fakes/vision.py`, `tests/conftest.py` (append `_stub_label`), `tests/test_fakes_vision.py` |
 | T5: metrics_builder | T1 | T11, T13 | `app/services/metrics_builder.py`, `tests/test_metrics_builder.py` |
 | T6: audit | T1, T4 (conftest `_stub_label`) | T11, T13 | `app/services/audit.py`, `tests/test_audit_recorder.py`, `tests/test_audit_metrics_split.py` |
@@ -3245,7 +3509,7 @@ After T21 lands:
 | T17: /raw endpoint | T15 | — | `app/api/raw.py`, `app/main.py` (append) |
 | T18: FR-900 series tests | T14 | — | `tests/test_evaluator_failure_modes.py` |
 | T19: perf test | T15 | — | `tests/test_post_labels_perf.py` |
-| T20: AC fixture coverage | T15 | — | `tests/test_ac_fixture_coverage.py` |
+| T20: AC fixture coverage | T15 | — | `app/schemas/application.py` (additive `expected_values`), `fixtures/<id>/expected.json` (sidecars), `tests/test_ac_fixture_coverage.py` |
 | T21: chokepoint grep | T14 | — | `tests/test_evaluator_chokepoint_grep.py` |
 
 ### Shared Files
@@ -3260,12 +3524,11 @@ After T21 lands:
 
 ```
 Wave 0 (parallel, 2): [T0a, T0b]                 ← root-level rules-package factories
-Wave 1 (parallel, 6 tasks): [T1, T2, T3, T4, T7, T9, T10, T12]
-  → 6 concurrent (executor cap). T7, T9, T10, T12 are pure roots
-    (no deps); T1, T2, T3, T4 are seed deps. Split as below if >6.
+Wave 1 (8 candidates, executor cap = 6): split into 1a + 1b — see below
+  → T7, T9, T10, T12 are pure roots (no deps); T1, T2, T3, T4 are seed deps.
 ```
 
-**Wave-1 split** (since 8 candidates > 6 cap): execute as two back-to-back sub-waves.
+**Wave-1 split** (8 candidates > 6 executor cap): execute as two back-to-back sub-waves.
 
 - Wave 1a (parallel, 6): [T1, T2, T3, T4, T7, T9]
 - Wave 1b (parallel, 2): [T10, T12]
