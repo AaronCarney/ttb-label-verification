@@ -59,6 +59,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     from app.api import batches as batches_module
     application.include_router(batches_module.router)
 
+    from app.api import overrides as overrides_module
+    application.include_router(overrides_module.router)
+
     # Pre-init state so routes work even when lifespan hasn't fired (e.g. httpx tests).
     # Lifespan startup will re-assign; shutdown will clear.
     application.state.batches = {}
