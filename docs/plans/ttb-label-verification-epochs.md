@@ -270,3 +270,20 @@ Every PRD FR and NFR maps to at least one epoch's exit gate. Where coverage is *
 | 0.2 | 2026-05-02 | Project team | Plan-review address-pass: added §11 FR/NFR coverage matrix; reconciled boot-time vs. cold-start budgets in §2; added VPAT/ACR deferral to §7; added boot-time clarification. Per-epoch sub-files updated separately. |
 | 0.3 | 2026-05-03 | Project team | Applied D-021 prototype-tier scope reduction to L1: dropped Florence-2 / Qwen2.5-VL from local vision and vLLM/XGrammar from orchestrator across §2, §3 (epoch table), §11 NFR-PORT rows, and per-epoch E3 / E4 sub-files. Substitutability seams unchanged. |
 | 0.4 | 2026-05-03 | Project team | Aligned with PRD v0.6 eval-corpus right-sizing: §3 E8 row updated (full corpus ~50 labels, was ≥250). |
+
+---
+
+## 13. Completion log
+
+Per-epoch hand-back records — date closed, commit range, and any deviations from the §3 exit gate. Each row is mirrored in the epoch's L1 sub-doc completion section.
+
+| Epoch | Closed | Commit range | Status | Deviations / notes |
+|---|---|---|---|---|
+| **E1** | (not logged) | — | shipped | — |
+| **E2** | (not logged) | — | shipped | — |
+| **E3** | (not logged) | — | shipped | — |
+| **E4** | (not logged) | — | shipped | — |
+| **E5** | (not logged) | — | shipped | — |
+| **E6** | (not logged) | — | shipped | — |
+| **E7** | (not logged) | — | shipped | — |
+| **E8** | 2026-05-04 | `c5e54e4..HEAD` | substrate complete; AC gate not met | (1) AC-§8.4 macro-F1 = 0.190 vs ≥ 0.70 — synthetic-fixture OCR + manifest rule-id schema mismatch; cost-weighted score = 0.944. (2) 5-min recording descoped — live demo URL + narration script substitute. (3) Harness defensive shims (60 s eval-time SLA, forced cloud vision, skip-on-missing fixtures). Full detail: `ttb-label-verification-epoch-8-demo-eval-deploy.md` §10. |

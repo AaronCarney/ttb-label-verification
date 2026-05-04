@@ -225,3 +225,28 @@ When E8 lands:
 | 0.1 | 2026-05-02 | Project team | Initial epoch-8 L1 doc. |
 | 0.2 | 2026-05-03 | Project team | Aligned with PRD v0.6 eval-corpus right-sizing: full corpus ~50 (was ≥250), borderline ≥10 (was ≥20), happy-path ≥10 (was ≥97), per-rule coverage ≥1 (was ≥43), Krippendorff α gate deferred to pilot per OQ-PRD-5; class balance rebalanced. macro-F1 ≥ 0.70 MVP gate held. |
 | 0.3 | 2026-05-03 | Project team | §1 Goal item 2 follow-up: aligned in-line §9.1 corpus shape with PRD v0.6 (spirits 30–40%, wine 30–40%, malt 20–30%; borderline ≥10; synthetic share ≤30%). Removes internal contradiction between §1 and §4 exit-gate item 4 introduced in 0.2. |
+
+---
+
+## 10. Completion (E8 hand-back)
+
+| Date | Commit range | Notes |
+|---|---|---|
+| 2026-05-04 | `c5e54e4..HEAD` (19 commits, both splits + close-out) | E8 closed with 3 documented deviations; substrate complete, AC gate not met. See deviations below. |
+
+### 10.1 Deviations from §4 exit gate
+
+1. **AC-§8.4 macro-F1 ≥ 0.70 — NOT MET (0.190 on first live run).** Root cause is two-layered: (a) synthetic 200×200 PNG fixtures (`PIL.ImageFont.load_default()` text on flat backgrounds) are not consistently OCR-able by `gpt-4o-2024-08-06`; ~4/6 evaluable fixtures route to `ENGINE.EXTRACTION.UNAVAILABLE` and force `needs_review`. (b) Manifest `expected_per_rule` uses PRD-style `FR-XXX` rule IDs (T2 schema) while the live rule engine emits YAML-registry IDs (`spirits.alcohol.tolerance_band` etc.) — no rule_id overlap, so the per-rule recall assertions in `tests/test_eval_full.py` are vacuously satisfied. **Substrate is complete** (live `_live_evaluator` adapter, fixed `importorskip`, history serialization, `eval/history/2026-05-04T20-41-27.255236+00-00.json` produced). **Path forward** (post-take-home): rebuild fixtures at higher resolution with cleaner typography, OR add a manifest-rule-id ↔ registry-rule-id mapping layer in the harness. Cost-weighted score = 0.944 (most errors are FR rather than FP, so the cost-aware metric is healthy).
+2. **5-minute recorded walkthrough — DESCOPED 2026-05-04.** Replaced with: live demo URL (`https://context31415-ttb-label.hf.space`) + spoken-narration script (`docs/demo-narration.md`). Reviewer can interact directly with the seven demo fixtures. T16 axe-core/keyboard tests against deployed UI deferred — local E7 a11y suite continues to exercise these in CI.
+3. **Eval harness defensive shims** — three test-time settings overrides committed in `7156503`: `_sla_seconds = 60.0` (cold-path OpenAI multimodal calls exceed the 5 s production SLA); `vision_mode="cloud"` forced (auto-detect routed to `LocalVisionExtractor` on CUDA-equipped dev hosts where `paddlepaddle-gpu` raises `NotImplementedError`); `run_subset()` now skips manifest entries whose `application_ref`/`image_ref` files are missing locally (14/20 entries reference COLA-corpus IDs without local fixtures). Production code paths (`POST /labels`, `/healthz`) are unaffected.
+
+### 10.2 Out-of-band scope additions during E8
+
+- **Fixture-05 batch (T15)** built — `fixtures/05-batch-of-50/` (50 labels), `scripts/build_fixture_05.py` (idempotent), batch envelope, batch-leg AC test. Manifest expansion deferred (master-draft note: corpus capped at 20-entry smoke; wine/malt expansion is E2 stretch).
+- **Live `_live_evaluator` adapter (T14)** — `eval/harness.py` now wires the harness to `app.deps.build_evaluator(Settings())` with `Application` built per-entry from `fixtures/<id>/expected.json` and `Label` from `image_ref`.
+
+### 10.3 Hand-back posture
+
+- `feat/e8-backend` is on `origin/main` (data-infra split + eval-pipeline split + T16 narration + T15 batch + T14 live-eval all merged).
+- `OPENAI_API_KEY` is local-only (`.env`, gitignored). Rotate after take-home submission.
+- Fast-follow candidates (post-take-home): manifest rule-id schema unification (T2 followup), real-resolution fixture rebuild, threshold re-calibration (PRD §3.2 v0.3 stretch — `scripts/recalibrate_thresholds.py` was not authored; it remains a stretch line item).
