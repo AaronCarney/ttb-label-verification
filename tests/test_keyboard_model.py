@@ -144,10 +144,12 @@ def test_override_failure_path_surfaces_toast(page: Page, live_server_url: str) 
     page.keyboard.type("w")
     page.keyboard.press("Enter")
 
-    # Toast renders with role=status (per Toast.tsx convention).
-    page.wait_for_selector('[role="status"]', timeout=2000)
+    # Toast renders with role=status; select by unique error text since
+    # disposition badges also use role=status on the page.
+    toast = page.get_by_text("not in the loaded registry")
+    toast.wait_for(state="visible", timeout=2000)
     assert page.locator('[role="dialog"]').is_visible()
-    assert "not in the loaded registry" in page.locator('[role="status"]').inner_text()
+    assert "not in the loaded registry" in toast.inner_text()
 
 
 @pytest.mark.usefixtures("live_server", "pnpm_built_island")
