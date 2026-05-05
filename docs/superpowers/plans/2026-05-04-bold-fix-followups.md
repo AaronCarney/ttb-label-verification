@@ -1094,3 +1094,47 @@ Then re-inspect — the brand and alcohol-format rules should no longer be the c
 - [x] **Type consistency:** `_strip_audit_keys` (T2) is the only new public surface; T1 + T3 are pure additions inside existing files; T4 helpers (`_project_brand`, `_project_alc_text`) are private and used only by their owning validator.
 - [x] **TDD posture:** Every task starts with a failing test (steps numbered `.1`), a failure-confirmation step, the implementation, a green-test confirmation, and a commit. Per-step granularity is 2–5 minutes.
 - [x] **Frequent commits:** One commit per task. Tasks 1–4 are independent and can land in any order.
+
+---
+
+## Dependency Graph
+
+### Task Dependencies
+
+| Task | Depends On | Blocks | Files Owned |
+|------|-----------|--------|-------------|
+| T1-IMAGE | — | T5 | `app/api/ui.py`, `app/ui/templates/single.html`, `tests/test_label_image_route.py` |
+| T2-AUDIT-STRIP | — | T5 | `app/services/envelope_builder.py`, `tests/test_envelope_extracted_value_clean.py` |
+| T3-BBOX-FALLBACK | — | T5 | `app/vision/heading_measure.py`, `tests/test_heading_measurement.py` |
+| T4-VALIDATOR-DICT | — | T5 | `app/rules/_validators/fuzzy_brand.py`, `app/rules/_validators/format_check.py`, `tests/test_validator_dict_observation.py` |
+| T5-EVAL-REMEASURE | T1, T2, T3, T4 | — | `README.md`, `demo/sample-envelope-*.json` |
+
+### Shared Files
+
+None within Wave 1. Every Wave-1 task owns disjoint paths:
+
+- T1 owns `app/api/` + `app/ui/templates/`.
+- T2 owns `app/services/`.
+- T3 owns `app/vision/`.
+- T4 owns `app/rules/_validators/`.
+- Each task owns its own `tests/test_*.py` file (no test-file overlap).
+
+T5's eval harness (`eval/harness.py`) is **read-only** and is not in any task's ownership set. T5 modifies only `README.md` and regenerates `demo/sample-envelope-*.json` — no Wave-1 task touches either.
+
+### Execution Waves
+
+```
+Wave 1 (parallel, 4 tasks): [T1-IMAGE, T2-AUDIT-STRIP, T3-BBOX-FALLBACK, T4-VALIDATOR-DICT]   ← no dependencies; disjoint ownership
+Wave 2 (single):            [T5-EVAL-REMEASURE]                                                ← depends on T1–T4 (eval runs against integrated stack)
+```
+
+**Critical path:** any of T1/T2/T3/T4 → T5 (2 waves).
+**Parallelism factor:** 5 tasks across 2 waves → ~2.5× wall-clock speedup vs. fully sequential.
+
+### Execution Strategy
+
+> **For Claude:** Use `parallel-plan-executor` to execute this plan. The executor dispatches every task in a wave concurrently (up to 6 at a time) and holds a barrier between waves.
+
+**Wave 1** — Dispatch T1-IMAGE, T2-AUDIT-STRIP, T3-BBOX-FALLBACK, T4-VALIDATOR-DICT concurrently in one message (4 subagents, well under the 6-task cap). Barrier. Verify each landed a green-test commit on `feat/e8-backend`.
+
+**Wave 2** — Dispatch T5-EVAL-REMEASURE alone. Runs eval-smoke + eval-full against the post-Wave-1 stack, regenerates demo envelopes, refreshes README §Trade-offs.
