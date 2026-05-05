@@ -20,8 +20,8 @@ app/
   services/
     envelope_builder.py                # MODIFY (T2) — strip audit-only keys before _coerce_str
   vision/
-    cloud.py                           # MODIFY (T3) — pass image dimensions into measure_heading_bold; bbox fallback
-    heading_measure.py                 # MODIFY (T3) — accept image_dimensions; full-image fallback when bbox is degenerate
+    cloud.py                           # MODIFY (T2) — define OBSERVED_VALUE_AUDIT_KEYS next to its producer
+    heading_measure.py                 # MODIFY (T3) — full-image fallback when bbox is degenerate
   rules/_validators/
     fuzzy_brand.py                     # MODIFY (T4) — project dict observed_value via known key; NOT_APPLICABLE when expected missing
     format_check.py                    # MODIFY (T4) — same dict-projection + NOT_APPLICABLE handling
@@ -292,7 +292,8 @@ a <figure> when image_url is set."
 
 **Files:**
 - Create test: `tests/test_envelope_extracted_value_clean.py`
-- Modify: `app/services/envelope_builder.py` (filter keys at the wire-projection boundary, per-field-id)
+- Modify: `app/vision/cloud.py` (define `OBSERVED_VALUE_AUDIT_KEYS` next to the code that produces those keys)
+- Modify: `app/services/envelope_builder.py` (import the canonical set, strip at the wire-projection boundary)
 
 ### Step 2.1 — Write failing test
 
@@ -417,32 +418,49 @@ def test_extracted_value_preserves_non_audit_keys_on_warning():
 `uv run --python 3.12 python -m pytest tests/test_envelope_extracted_value_clean.py -q`
 Expected: 2 failed (audit keys leak).
 
-- [ ] **Step 2.3 — Implement the strip**
+- [ ] **Step 2.3 — Define the canonical audit-key set next to the producer**
 
-Edit `app/services/envelope_builder.py`. Locate `_coerce_str` (currently at lines 61–64) and add a sibling helper plus update the call site:
+The audit keys are *populated* in `app/vision/cloud.py` (around line 288, in the `gov_warning` post-processing block where `measure_heading_bold` is called). The single source of truth for "which keys are audit-only" lives next to the code that emits them — that way, when a future audit key is added to the cloud extractor, the constant is in the same file the developer is already editing.
 
-Add immediately below `_coerce_str`:
+Edit `app/vision/cloud.py`. Add this constant near the top of the module (next to other module-level constants):
 
 ```python
-# Audit-only keys that flow through the cloud extractor's observed_value but
-# should never appear on the reviewer surface. Keep this list narrow — every
-# new audit key the extractor emits has to be added here explicitly so the
-# default is "user-facing unless declared otherwise."
-_AUDIT_ONLY_OBSERVED_VALUE_KEYS = frozenset({
+# Keys emitted on the cloud extractor's observed_value dict that are audit-only —
+# internal records of the LLM-vs-measurement comparison and the per-call
+# self-reported confidence. These flow through to the wire envelope's
+# upstream_meta but must be stripped from the user-facing extracted_value
+# projection. Add to this set whenever a new audit key is introduced below.
+OBSERVED_VALUE_AUDIT_KEYS: frozenset[str] = frozenset({
     "confidence",
     "heading_bold_llm",
     "heading_bold_measured",
     "heading_bold_measured_confident",
     "heading_bold_width_height_ratio",
 })
+```
+
+- [ ] **Step 2.4 — Wire the strip into the envelope builder**
+
+Edit `app/services/envelope_builder.py`. Locate `_coerce_str` (currently at lines 61–64) and add a sibling helper plus update the call site.
+
+Add immediately below `_coerce_str` (the new `_strip_audit_keys` imports the canonical set from `cloud.py` so producer and consumer cannot drift):
+
+```python
+from app.vision.cloud import OBSERVED_VALUE_AUDIT_KEYS
 
 
 def _strip_audit_keys(value):
-    """If `value` is a dict, drop keys we never want on the wire surface."""
+    """If `value` is a dict, drop keys we never want on the wire surface.
+
+    The canonical key set is owned by the producer (`app.vision.cloud`) — see
+    `OBSERVED_VALUE_AUDIT_KEYS` for the list and the rationale.
+    """
     if not isinstance(value, dict):
         return value
-    return {k: v for k, v in value.items() if k not in _AUDIT_ONLY_OBSERVED_VALUE_KEYS}
+    return {k: v for k, v in value.items() if k not in OBSERVED_VALUE_AUDIT_KEYS}
 ```
+
+(Add the import at the top of the file alongside the other `app.*` imports rather than nested inside the function — the inline form above is shown for proximity.)
 
 Find the line where `extracted_value` is assigned in the `FieldFindingWire` construction (it's currently a `_coerce_str(obs.observed_value)` call inside `build_field_findings`). Change it to:
 
@@ -452,26 +470,28 @@ Find the line where `extracted_value` is assigned in the `FieldFindingWire` cons
 
 (If `_coerce_str` is called in more than one place to format `observed_value`, update every callsite consistently.)
 
-- [ ] **Step 2.4 — Run the test, confirm it passes**
+- [ ] **Step 2.5 — Run the test, confirm it passes**
 
 `uv run --python 3.12 python -m pytest tests/test_envelope_extracted_value_clean.py -q`
 Expected: 3 passed.
 
-- [ ] **Step 2.5 — Run the existing envelope-builder tests for regression**
+- [ ] **Step 2.6 — Run the existing envelope-builder tests for regression**
 
 `uv run --python 3.12 python -m pytest tests/ -q -k "envelope or wire" --no-header`
 Expected: prior count of passes; no regression.
 
-- [ ] **Step 2.6 — Commit**
+- [ ] **Step 2.7 — Commit**
 
 ```bash
-git add app/services/envelope_builder.py tests/test_envelope_extracted_value_clean.py
+git add app/vision/cloud.py app/services/envelope_builder.py tests/test_envelope_extracted_value_clean.py
 git commit -m "fix(envelope): strip audit-only keys from extracted_value
 
 The cloud extractor's observed_value dict carries internal keys
 (self-reported confidence; bold-detection LLM-vs-measurement audit
-fields) that should not land on the reviewer surface. _strip_audit_keys
-filters them at the wire-projection boundary; the canonical primitive
+fields) that should not land on the reviewer surface. The canonical
+key set OBSERVED_VALUE_AUDIT_KEYS is defined alongside the producer
+in app.vision.cloud and consumed by _strip_audit_keys at the wire
+boundary so producer and consumer cannot drift. Canonical primitive
 content (brand_name, heading_text, etc.) still flows through."
 ```
 
@@ -482,9 +502,10 @@ content (brand_name, heading_text, etc.) still flows through."
 **Why:** GPT-4o's layout call routinely returns `bbox=[0, 0, 0, 0]` for `gov_warning` on real fixtures (verified on `demo/sample-envelope-01.json` post-bold-fix). `measure_heading_bold` checks `x1 <= x0 or y1 <= y0` and short-circuits with `confident=False` — meaning the SWT measurement never actually runs and the LLM's self-reported `heading_bold` is used 100% of the time. The README's "measured, not guessed" claim is currently aspirational. The fix is a **fallback bbox**: when the layout bbox is degenerate, run SWT against the **lower half** of the full image (the warning is by regulation in the lower portion of the label, and any heading-density signal there is dominated by the warning heading text). Mark the result `confident=True` only when component count and ratio look reasonable; otherwise honour the existing fallback chain.
 
 **Files:**
-- Modify test: `tests/test_heading_measurement.py` (add three new tests)
-- Modify: `app/vision/heading_measure.py` (accept full-image dimensions hint and a `fallback_to_full_image` switch)
-- Modify: `app/vision/cloud.py` (always pass the image when calling `measure_heading_bold`; let the function decide)
+- Modify test: `tests/test_heading_measurement.py` (add three new tests, rewrite two)
+- Modify: `app/vision/heading_measure.py` (resolve crop with lower-half fallback when bbox is degenerate)
+
+(`app/vision/cloud.py` is **not** modified by this task — the call site at `cloud.py:287` already passes `(image_bytes, bbox)` and reads `measurement.confident`. T2 owns the cloud.py edits in this plan.)
 
 ### Step 3.1 — Write failing tests
 
@@ -1043,44 +1064,49 @@ fuzzy_brand returns NOT_APPLICABLE instead of silently failing."
 grep -n "eval-full\|eval-smoke" pyproject.toml
 ```
 
-Expected: tasks named `eval-full` and `eval-smoke` already exist.
+Expected: tasks named `eval-full` and `eval-smoke` already exist (in the `[tool.taskipy.tasks]` block).
 
-### Step 5.2 — Run the smoke suite first (cheap sanity)
+### Step 5.2 — Regenerate demo envelopes first (pre-eval, so eval runs against fresh data)
+
+- [ ] `OPENAI_API_KEY=... uv run --python 3.12 python scripts/build_demo_envelopes.py`
+
+Rationale: the eval-full run (~$0.50–$1.50) must execute against post-fix envelopes, otherwise the macro-F1 number reflects the pre-T1–T4 stack and we burn API spend for a meaningless answer. Regenerate first; eval second.
+
+### Step 5.3 — Cross-check FIX-01 disposition before eval
+
+- [ ] `python3 -c "import json; e = json.loads(open('demo/sample-envelope-01.json').read()); print('disposition:', e['disposition']); print('confidence:', e['disposition_confidence'])"`
+
+After regeneration, FIX-01 should no longer fail on `BRAND.PRESENCE.MISSING` or `ALCOHOL_CONTENT.FORMAT.INVALID` (those were T4's broken validators). It may still fail on rules that legitimately apply (e.g., the §16.22(a)(2) warning heading rule on a fixture without a bold heading) — that's a real signal, not a regression.
+
+### Step 5.4 — Run the smoke suite (cheap sanity)
 
 - [ ] `uv run task eval-smoke 2>&1 | tail -40`
 
-Capture stdout to a temp note. Compare disposition macro-F1 to the prior README claim (0.19 live, 0.82 replay).
+Capture stdout to a temp note. Compare disposition macro-F1 to the prior README claim (0.19 live, 0.82 replay). If smoke shows wildly different numbers from the prior 0.19, surface to the user before burning the full-suite budget.
 
-### Step 5.3 — Run the full live suite
+### Step 5.5 — Run the full live suite
 
 - [ ] `uv run task eval-full 2>&1 | tee /tmp/eval-full-after.log | tail -60`
 
-Note the new disposition macro-F1, cost-weighted score, and any rule-recall changes. Cost cap on the suite is governed by `tests/research/eval/conftest.py` constants in the upstream tree — for this project the eval harness has no hard cap, but a single full run is ~$0.50–$1.50. Halt if the run is going off the rails (timeouts, key errors).
+Note: the new disposition macro-F1, cost-weighted score, and **per-rule pass/fail counts** (the harness already emits these). Capture the per-rule deltas — when the README prose explains a macro-F1 shift, attribute it to the specific rule that changed (T2: visible output; T3: measurement; T4: rule outcomes). This prevents wrong-cause attribution.
 
-### Step 5.4 — Re-run the replay-mode suite
+Halt if the run is going off the rails (timeouts, key errors).
+
+### Step 5.6 — Re-run the replay-mode suite
 
 - [ ] `uv run task eval-full -- --mode replay 2>&1 | tee /tmp/eval-full-replay-after.log | tail -60`
 
 (or whatever the harness CLI flag is for replay mode — confirm with `python -m eval.harness --help`.)
 
-### Step 5.5 — Update README §Trade-offs
+### Step 5.7 — Update README §Trade-offs
 
-- [ ] Open `README.md` and locate the bullet that begins **"The full eval AC gate (macro-F1 ≥ 0.70) is not met end-to-end."** — currently at line 61.
+- [ ] Open `README.md` and locate the bullet that begins **"The full eval AC gate (macro-F1 ≥ 0.70) is not met end-to-end."** — currently around line 72 (search the literal phrase rather than relying on the line number — the file shifts as other sections are edited).
 
-Rewrite the numerical claims in that bullet to reflect the post-fix measurements. Preserve the structure (live numbers first, replay numbers second, cost-weighted score, then the link to the eval write-up). If macro-F1 has materially shifted (improved or regressed), say so plainly. Do **not** invent numbers — if a measurement is unavailable, say "not re-measured" rather than fabricating a value.
+Rewrite the numerical claims in that bullet to reflect the post-fix measurements. Preserve the structure (live numbers first, replay numbers second, cost-weighted score, then the link to the eval write-up). If macro-F1 has materially shifted (improved or regressed), say so plainly **and cite which T1–T4 fix drove the shift** based on the per-rule deltas captured in step 5.5. Do **not** invent numbers — if a measurement is unavailable, say "not re-measured" rather than fabricating a value.
 
 If the live macro-F1 has crossed the 0.70 gate, also update the line in the same paragraph that asserts the gate is not met.
 
-### Step 5.6 — Cross-check FIX-01 disposition
-
-- [ ] `python3 -c "import json; e = json.loads(open('demo/sample-envelope-01.json').read()); print('disposition:', e['disposition']); print('confidence:', e['disposition_confidence'])"`
-
-If FIX-01 still lands `disposition='fail'`, regenerate the envelopes:
-`OPENAI_API_KEY=... uv run --python 3.12 python scripts/build_demo_envelopes.py`
-
-Then re-inspect — the brand and alcohol-format rules should no longer be the cause of failure. (Other rules that legitimately fail on this fixture, like the warning-block heading rule, may still fire.)
-
-### Step 5.7 — Commit
+### Step 5.8 — Commit
 
 - [ ] `git add README.md demo/sample-envelope-*.json`
 - [ ] `git commit -m "docs(readme): refresh §Trade-offs with post-followup eval numbers"`
@@ -1091,9 +1117,14 @@ Then re-inspect — the brand and alcohol-format rules should no longer be the c
 
 - [x] **Spec coverage:** All 5 review findings have explicit tasks. T1=image display; T2=audit-key strip; T3=bbox-zero; T4=broken validators; T5=re-measure.
 - [x] **No placeholders:** Every step has either runnable code, an exact file path with line numbers, or a precise command. No "implement appropriate handling" hand-waves.
-- [x] **Type consistency:** `_strip_audit_keys` (T2) is the only new public surface; T1 + T3 are pure additions inside existing files; T4 helpers (`_project_brand`, `_project_alc_text`) are private and used only by their owning validator.
+- [x] **Type consistency:** `OBSERVED_VALUE_AUDIT_KEYS` (T2, defined in `app/vision/cloud.py`) is the canonical key set; `_strip_audit_keys` imports it. T1 + T3 are pure additions inside existing files; T4 helpers (`_project_brand`, `_project_alc_text`) are private and used only by their owning validator.
 - [x] **TDD posture:** Every task starts with a failing test (steps numbered `.1`), a failure-confirmation step, the implementation, a green-test confirmation, and a commit. Per-step granularity is 2–5 minutes.
 - [x] **Frequent commits:** One commit per task. Tasks 1–4 are independent and can land in any order.
+
+### Acknowledged future-cleanup (deferred, not in this plan)
+
+- **Validator dict-projection consolidation:** T4 introduces `_project_brand` (in `fuzzy_brand.py`) and `_project_alc_text` (in `format_check.py`) as private per-validator helpers. With only two callers today this is below the YAGNI bar (CLAUDE.md: "three similar lines is better than a premature abstraction"). When a third validator needs dict projection, consolidate into either a shared `app/rules/_validators/_projection.py` module *or* a `FieldObservation.primitive(field_id)` method on the schema — the schema-method form is preferred since it places the projection logic next to the field definitions that drive it.
+- **Schema-level audit/observation split:** T2's denylist co-located with the producer is a band-aid, not a redesign. The cleaner architecture is for `FieldObservation` to expose two distinct dicts — `observed_value` (user-facing) and `audit` (introspection) — populated separately by the cloud extractor. That refactor touches every callsite that reads `observed_value` and is out of scope here.
 
 ---
 
@@ -1104,7 +1135,7 @@ Then re-inspect — the brand and alcohol-format rules should no longer be the c
 | Task | Depends On | Blocks | Files Owned |
 |------|-----------|--------|-------------|
 | T1-IMAGE | — | T5 | `app/api/ui.py`, `app/ui/templates/single.html`, `tests/test_label_image_route.py` |
-| T2-AUDIT-STRIP | — | T5 | `app/services/envelope_builder.py`, `tests/test_envelope_extracted_value_clean.py` |
+| T2-AUDIT-STRIP | — | T5 | `app/vision/cloud.py`, `app/services/envelope_builder.py`, `tests/test_envelope_extracted_value_clean.py` |
 | T3-BBOX-FALLBACK | — | T5 | `app/vision/heading_measure.py`, `tests/test_heading_measurement.py` |
 | T4-VALIDATOR-DICT | — | T5 | `app/rules/_validators/fuzzy_brand.py`, `app/rules/_validators/format_check.py`, `tests/test_validator_dict_observation.py` |
 | T5-EVAL-REMEASURE | T1, T2, T3, T4 | — | `README.md`, `demo/sample-envelope-*.json` |
@@ -1113,11 +1144,13 @@ Then re-inspect — the brand and alcohol-format rules should no longer be the c
 
 None within Wave 1. Every Wave-1 task owns disjoint paths:
 
-- T1 owns `app/api/` + `app/ui/templates/`.
-- T2 owns `app/services/`.
-- T3 owns `app/vision/`.
-- T4 owns `app/rules/_validators/`.
+- T1 owns `app/api/ui.py` + `app/ui/templates/single.html`.
+- T2 owns `app/services/envelope_builder.py` + `app/vision/cloud.py` (constant definition only — does not touch `heading_measure.py`).
+- T3 owns `app/vision/heading_measure.py` only — the call site in `cloud.py` is unchanged.
+- T4 owns `app/rules/_validators/{fuzzy_brand,format_check}.py`.
 - Each task owns its own `tests/test_*.py` file (no test-file overlap).
+
+T2 and T3 both touch `app/vision/`, but **different files** — T2 only edits `cloud.py`, T3 only edits `heading_measure.py`. No file is owned by two Wave-1 tasks.
 
 T5's eval harness (`eval/harness.py`) is **read-only** and is not in any task's ownership set. T5 modifies only `README.md` and regenerates `demo/sample-envelope-*.json` — no Wave-1 task touches either.
 
