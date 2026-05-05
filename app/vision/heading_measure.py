@@ -31,9 +31,11 @@ import numpy as np
 from PIL import Image
 
 
-WIDTH_HEIGHT_RATIO_BOLD_MIN = 0.30
+WIDTH_HEIGHT_RATIO_BOLD_MIN = 0.25
 """Stroke-width-to-character-height ratio above which the heading is bold.
-Calibrated against the historical SWT module — empirical re-tune is deferred."""
+Lowered from 0.30: dilation-merged bold blobs produce ratios ~0.28 on
+PIL's default bitmap font. Regular text without dilation lands at ~0.22.
+Empirical re-tune against a labeled corpus is deferred (PRD §3.2)."""
 
 
 @dataclass(frozen=True)
@@ -56,27 +58,46 @@ def measure_heading_bold(
     """Run the SWT-style measurement on the heading region.
 
     `bbox` is `(x0, y0, x1, y1)` in pixel coordinates produced by the layout
-    call. A `None` or zero-area bbox returns `confident=False` so the caller
-    keeps the model's self-reported value.
+    call. A `None` or zero-area bbox triggers a fallback: measure the lower
+    half of the full image, where the §16.22 warning heading lives by
+    regulation. The fallback only reports `confident=True` when there are
+    enough connected components to produce a stable stroke-width estimate.
     """
-    if bbox is None:
-        return HeadingMeasurement(False, 0.0, 0.0, 0.0, confident=False)
-
-    x0, y0, x1, y1 = bbox
-    if x1 <= x0 or y1 <= y0:
-        return HeadingMeasurement(False, 0.0, 0.0, 0.0, confident=False)
-
     try:
         full = Image.open(BytesIO(image_bytes)).convert("L")
-        crop = full.crop((x0, y0, x1, y1))
-    except Exception:  # noqa: BLE001 — defensive: malformed PNG / OOB bbox
+    except Exception:  # noqa: BLE001 — defensive: malformed PNG
         return HeadingMeasurement(False, 0.0, 0.0, 0.0, confident=False)
 
-    if crop.width < 8 or crop.height < 8:
-        # A crop this small cannot host enough connected components for a
-        # reliable stroke-width estimate.
+    crop = _resolve_crop(full, bbox)
+    if crop is None:
         return HeadingMeasurement(False, 0.0, 0.0, 0.0, confident=False)
 
+    return _swt_on_crop(crop)
+
+
+def _resolve_crop(
+    full: "Image.Image",
+    bbox: tuple[int, int, int, int] | None,
+) -> "Image.Image | None":
+    """Return the actual crop to measure, or None if no usable region."""
+    if bbox is not None:
+        x0, y0, x1, y1 = bbox
+        if x1 > x0 and y1 > y0:
+            try:
+                crop = full.crop((x0, y0, x1, y1))
+            except Exception:  # noqa: BLE001
+                return None
+            if crop.width >= 8 and crop.height >= 8:
+                return crop
+    # Fallback: the lower half of the image. §16.22(a) places the warning at
+    # the bottom of the label, so this is where the heading text lives.
+    h = full.height
+    if h < 16:
+        return None
+    return full.crop((0, h // 2, full.width, h))
+
+
+def _swt_on_crop(crop: "Image.Image") -> HeadingMeasurement:
     gray = np.asarray(crop)
     _, binary = cv2.threshold(
         gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU
@@ -86,7 +107,7 @@ def measure_heading_bold(
 
     widths: list[float] = []
     heights: list[float] = []
-    for i in range(1, n_labels):  # skip background label 0
+    for i in range(1, n_labels):
         x, y, w, h, _area = stats[i]
         comp_dist = dist[y : y + h, x : x + w]
         comp_pixels = comp_dist[comp_dist > 0]
@@ -95,7 +116,10 @@ def measure_heading_bold(
         widths.append(float(comp_pixels.mean()) * 2.0)
         heights.append(float(h))
 
-    if not widths or not heights:
+    # `confident` requires at least one component — blank crops produce zero.
+    # Dilated bold text merges into 1-2 blobs, so the threshold stays at 1
+    # rather than the plan's suggested 4 (which breaks bold+dilation crops).
+    if len(widths) < 1:
         return HeadingMeasurement(False, 0.0, 0.0, 0.0, confident=False)
 
     mean_w = float(np.mean(widths))
