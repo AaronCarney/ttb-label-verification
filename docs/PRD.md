@@ -701,20 +701,48 @@ The PRD specifies what the eval looks like and what passes. The Architecture Doc
 
 ### 9.1 Test corpus shape
 
-**Right-sizing note (v0.4).** The original S4 spec called for ≥ 250 hand-labeled labels with worst-case Wald math, ≥ 43 cases per rule, and Krippendorff's α ≥ 0.80 from a 48-hour-gap solo-annotator double-pass. That is pilot-phase scope. Prototype tier ships a defensible-but-smaller corpus:
+**Right-sizing note (v0.4).** The original S4 spec called for ≥ 250 hand-labeled labels with worst-case Wald math, ≥ 43 cases per rule, and Krippendorff's α ≥ 0.80 from a 48-hour-gap solo-annotator double-pass. That is pilot-phase scope. Prototype tier ships a defensible-but-smaller corpus, **but the sourcing ordering is fixed across every tier — real images first, synthetics only as supplement, and synthetics must clear the realism bar in §9.1.4.**
 
 - **Smoke subset:** ~ 20 labels — runs on every PR; ≤ 60 s wall clock.
 - **Full corpus:** ~ 50 labels (smoke is a strict subset). Stratified across class × difficulty × rule families so every MVP rule is exercised by ≥ 1 positive case.
 - **Class balance:** spirits 30–40%, wine 30–40%, malt 20–30%. (Spirits is the largest rule surface per S5; wine and malt are weighted to absolute coverage rather than industry mix in the prototype corpus.)
-- **Synthetic share ≤ 30%** of the full corpus with `provenance.source` matching `^synthetic-` (relaxed from 15% — at N=50, controlled synthetic degradations are the only practical way to exercise the borderline slice without compromising provenance honesty).
-- **Borderline-confidence slice (≥ 10 labels)**, scaled from the original ≥ 20: images intentionally degraded into the medium-confidence band so the disposition lands at `needs_review` rather than clean pass/fail. Sources: (a) controlled synthetic degradation of clean COLA Registry images (mild blur, glare, JPEG compression, rotation, perspective transforms tuned to drop OCR confidence into the borderline band); (b) hand-curated retail/mobile product photography with real-world quality issues (reflections, partial occlusion, motion blur); (c) ICDAR Robust Reading Challenge derivations applied to label crops. This slice exercises FR-704 confidence aggregation and the human-in-the-loop disposition path.
-- **Happy-path coverage ≥ 10** fully-compliant labels in the full corpus.
+- **Real-image floor ≥ 70%** of the full corpus with `provenance.source` matching `^cola-` (TTB Public COLA Registry per T9 §3, T13 §0.1, §1.0) or a litigation-exhibit identifier per T13 §1.6. The §9.1.1 sourcing checklist is mandatory; iterations that fall below the floor must record the gap in the decisions log (D-023, D-025).
+- **Synthetic share ≤ 30%** of the full corpus with `provenance.source` matching `^synthetic-`. Synthetics are *supplements*, not substitutes — every synthetic row must clear §9.1.4. Plain-text-on-white renders are explicitly disallowed (D-025).
+- **Borderline-confidence slice (≥ 10 labels)**, scaled from the original ≥ 20: images intentionally degraded into the medium-confidence band so the disposition lands at `needs_review` rather than clean pass/fail. Sources, in order of preference: (a) controlled synthetic degradation of clean COLA Registry images (mild blur, glare, JPEG compression, rotation, perspective transforms tuned to drop OCR confidence into the borderline band) — preserves CC0 lineage and is the canonical synthetic-fail path; (b) hand-curated retail/mobile product photography with real-world quality issues (reflections, partial occlusion, motion blur); (c) ICDAR Robust Reading Challenge derivations applied to label crops. This slice exercises FR-704 confidence aggregation and the human-in-the-loop disposition path.
+- **Happy-path coverage ≥ 10** fully-compliant labels in the full corpus, all sourced from the TTB Public COLA Registry.
 - **Intra-rater reliability:** the original Krippendorff's α ≥ 0.80 target is **deferred to pilot phase** — at N=50 the statistic's confidence interval is too wide to support a hard gate, and the expected pilot-phase corpus expansion is the right place to land it. The MVP corpus is single-pass with the labeling protocol documented in `eval/datasheet.md` for transparency.
 - **Datasheet** still follows Gebru et al. (2021) seven-section template — the documentation discipline holds at any N.
 
 The pilot-phase expansion path (≥ 250 labels, ≥ 43 per rule, Krippendorff's α gate) remains the production-trajectory target and is recorded in §12.2 OQ-PRD-5.
 
-*Source: S4 §Evaluation acceptance criteria, right-sized at v0.4 for prototype tier; T9 Q9.1–Q9.4.*
+*Source: S4 §Evaluation acceptance criteria, right-sized at v0.4 for prototype tier; T9 Q9.1–Q9.4; T13 §0 sourcing ordering.*
+
+#### 9.1.1 Mandatory sourcing checklist
+
+Every iteration that ships an eval corpus or fixture set must record evidence of the following, in order. Skipping a step requires an ADR.
+
+1. **Pull from TTB Public COLA Registry first.** Use the per-record URL pattern in T9 §3 / T13 §1.0. Save provenance as `cola-{14-char-ttbid}` and store the image under `fixtures/_corpus/cola-{ttbid}/`. CC0; no licensing risk. Target: ≥70% of full corpus.
+2. **Pull negatives from PACER/CourtListener** for any rule pack covering brand or geographic claims (T13 §1.6). Save provenance as `pacer-{case-id}` or `courtlistener-{docket-id}`. Target: 5–20 entries depending on rule pack.
+3. **Apply controlled degradation to Registry images** for the borderline slice (T13 §0.1 second paragraph). Record the source TTB ID and the degradation script SHA — the synthetic provenance becomes `synthetic-derived-from-cola-{ttbid}@{script-sha}`.
+4. **Pure synthetics are last resort, supplement only**, and must clear §9.1.4. Record provenance as `synthetic-{slug}@{build-script-sha}`. The build script must produce label-realistic renders, not text-on-white rasterizations.
+5. **Document every gap.** If real-image floor (≥70%) is not met, the iteration's decisions log records *which* sources were attempted, *why* they fell short, and *which* follow-up unblocks the gap.
+
+#### 9.1.4 Synthetic realism standard (D-025)
+
+Synthetic label PNGs must be visually unambiguous as labels. Plain text rendered on a blank white canvas is explicitly disallowed. The minimum bar:
+
+- **Canvas:** ≥ 600×900 px, paper or cream stock (RGB ≈ #FAF6EE / #F4EFE0), not pure white.
+- **Frame:** rounded-rectangle border or printed frame at the canvas edge.
+- **Type hierarchy:** brand banner (large, bold), product line (medium, italic or alt-weight), body text (small, regular), Government Warning block (uppercase per FR-200 unless deliberately violating).
+- **Layout:** brand top, body middle, Government Warning bottom — the same vertical ordering a real bottle label uses.
+- **Optional but encouraged:** a faux-engraving stripe, a faux foil seal, or a desaturated-color watermark behind the text. None are required, but a featureless white background is a hard fail.
+- **Tooling:** PIL with TTF fonts (not the default bitmap font), or an SVG → PNG pipeline. The build script SHA goes in `provenance.source`. Re-running the script must produce byte-identical output (deterministic font hinting, fixed RNG seed).
+
+A synthetic asset that does not clear this bar is a defect, not a fixture. The §9.1.1 checklist's step 4 explicitly invokes this standard.
+
+#### 9.1.5 Anti-pattern (canonical, do not repeat)
+
+The v0.1–v0.6 fixture set (`fixtures/0{1..7}-*/label.png`, `fixtures/05-batch-of-50/label_NNN.png`) ships as 200×200 to 480×480 PIL `ImageDraw.text(...)` rasterizations on a pure-white canvas using `ImageFont.load_default()` (bitmap font). These are **OCR test stimuli**, not labels — they were generated to drive the extraction pipeline, never to demonstrate the reviewer experience. Carrying them through to the reviewer UI and the eval surface was the wrong call (D-023 supersession). Any future fixture work must clear §9.1.4 from the start.
 
 ### 9.2 Metrics framework
 

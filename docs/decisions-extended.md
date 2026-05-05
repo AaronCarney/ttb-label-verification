@@ -381,8 +381,8 @@ Cloudflare performs no TLS termination, no caching, no WAF — it is a dumb DNS 
 
 ## D-023 — Eval corpus right-sized to prototype tier (closes OQ-PRD-5)
 
-**Status:** Accepted (formalizes PRD v0.6 changelog scope decision)
-**Date:** 2026-05-03 (PRD v0.6 publication; ADR formalized post-E8 audit on 2026-05-04)
+**Status:** Accepted (formalizes PRD v0.6 changelog scope decision); **superseded in part by D-025** on the synthetic-image realism standard and the real-first sourcing ordering. Numeric corpus targets stand; the sourcing-mix half of the "synthetic share ≤30%" line is reframed by D-025 / PRD §9.1.1.
+**Date:** 2026-05-03 (PRD v0.6 publication; ADR formalized post-E8 audit on 2026-05-04; partial supersession 2026-05-05).
 
 **Context.** PRD v0.5 specified an eval corpus of ≥250 labels with ≥97 happy-path, ≥20 borderline, and ≥1 case per rule (43+ rules) plus an intra-rater Krippendorff α ≥ 0.7 reliability gate. PRD v0.6 reduced these targets across the board. This was applied via a PRD changelog line and an L1 epoch-8 plan revision, but never written up as an ADR, so the rationale is not durable.
 
@@ -391,7 +391,7 @@ Cloudflare performs no TLS termination, no caching, no WAF — it is a dumb DNS 
 - Happy-path ≥10 labels (was ≥97)
 - Borderline ≥10 labels (was ≥20)
 - Per-rule positive coverage ≥1 (was ≥43; closes OQ-PRD-5)
-- Class balance: spirits 30–40%, wine 30–40%, malt 20–30%; synthetic share ≤30%
+- Class balance: spirits 30–40%, wine 30–40%, malt 20–30%; synthetic share ≤30% (per D-025: synthetic *supplement*, not substitute; real-image floor ≥70%)
 - Krippendorff α ≥ 0.7 intra-rater reliability gate **deferred to pilot phase**
 - Macro-F1 ≥ 0.70 MVP gate **held** (not relaxed)
 
@@ -410,6 +410,8 @@ Cloudflare performs no TLS termination, no caching, no WAF — it is a dumb DNS 
 - PRD §9 reflects the new numbers; the eval/datasheet.md captures the labeling protocol.
 - E8 plan T-1, T-2, T-3 acceptance criteria align with the right-sized targets.
 - Pilot follow-up: re-do Krippendorff α once corpus reaches ≥150 labels with two labelers.
+
+**Post-deadline retrospective (2026-05-05).** D-023's sourcing-mix language was read in execution as "any synthetic-share ≤30% is fine" rather than "real first, then synthetic." What actually shipped: **0 sourced images, 56 PIL-rasterized text-on-white PNGs**, 100% synthetic, with the L2 eval-pipeline manifest carrying 14 placeholder `cola-*` rows whose images were never sourced (the harness silently skips them). The macro-F1 numbers in the README §Trade-offs are computed against the 6 FIX fixtures only. This is a real gap with the BRD §A-1 / OQ-5 framing ("the public COLA Registry is a reasonable test corpus") and with PRD §9.1's listed sources. **D-025 reframes the sourcing ordering so this cannot recur** — real-first is now an ADR-level requirement, the synthetic realism bar is explicit, and PRD §9.1.1 ships a mandatory sourcing checklist that any future iteration must satisfy or explicitly waive in its decisions log.
 
 ---
 
@@ -438,3 +440,37 @@ Cloudflare performs no TLS termination, no caching, no WAF — it is a dumb DNS 
 - E5 audit log fields that record `provider: "openai" | "anthropic" | "local.paddleocr"` keep the `anthropic` enum value — it is reachable in unit tests via the mocked skeleton and stays in the wire schema for forward compatibility.
 - E8 demo runbook, eval harness, and deployment secrets are OpenAI-only; no plan task may require Anthropic credits as a precondition.
 - Future plans that propose any Anthropic-live work must first supersede this decision with a new ADR; planning sessions that surface such proposals should reject them on sight.
+
+---
+
+## D-025 — Real-first sourcing + synthetic-realism standard for the eval corpus and fixture set
+
+**Status:** Accepted (partial supersession of D-023's sourcing-mix language)
+**Date:** 2026-05-05
+
+**Context.** D-023 right-sized the eval corpus and capped synthetic share at ≤30%, but did not specify a *sourcing ordering* and did not define *what "synthetic" means visually*. In execution, the gap was filled by inertia: the E3 PIL-text-on-white test stimuli (`scripts/build_synthetic_fixture*.py`) were carried forward through E5 → E7 → E8 as the canonical fixture set, the L2 eval-pipeline manifest's 14 `cola-*` rows were never sourced from the TTB Public COLA Registry, and the eval harness silently skipped those rows via `run_subset()`. The shipped state: **0 sourced images, 56 synthetic PIL-rasterized text-on-white PNGs (6 FIX fixtures + 50 batch-of-50)**, README §Trade-offs macro-F1 numbers computed against 6 FIX fixtures only, no demo image visually distinguishable from raw HTML text.
+
+**Decision.** The sourcing contract is now ordered and the synthetic-realism bar is explicit.
+
+1. **Real-first is mandatory.** The TTB Public COLA Registry (T9 §3, T13 §0.1, §1.0) is the canonical primary source for every tier of this project. Real-image floor is **≥70% of the full eval corpus** with `provenance.source` matching `^cola-` or a litigation-exhibit identifier. Iterations that fall below the floor must explicitly waive the gap in their decisions log, naming which sources were attempted and why they fell short.
+2. **Synthetics are supplements, not substitutes.** The ≤30% synthetic share from D-023 stands, but every synthetic asset must clear the realism bar in PRD §9.1.4. Plain text on white using PIL's default bitmap font is **explicitly disallowed** — the v0.1–v0.6 fixture style is a defect, not a fixture (PRD §9.1.5 anti-pattern).
+3. **Synthetic provenance is reproducible.** Every synthetic asset carries `provenance.source = synthetic-{slug}@{build-script-sha}`. The build script must produce byte-identical output on re-run (deterministic font hinting, fixed RNG seed). Synthetics derived from a Registry source carry `synthetic-derived-from-cola-{ttbid}@{script-sha}` — preserving CC0 lineage and verifiable ground truth.
+4. **Sourcing checklist is mandatory** (PRD §9.1.1). Every iteration that ships an eval corpus or fixture set must record evidence of the five-step ordering: Registry → litigation → degradation-from-Registry → pure-synthetic-supplement → gap-documentation. Skipping any step requires an ADR.
+
+**Rationale.**
+- **Honest evaluation.** Macro-F1 against 6 PIL text rasterizations is not evidence the system performs against real labels. Real-first sourcing forces the eval to actually evaluate what the BRD §A-1 / OQ-5 reasoning assumes — that the Registry is the reasonable test corpus.
+- **No licensing risk.** The Registry is CC0 (T9 §3). Real-first costs curator hours, not legal review.
+- **Reviewer experience.** A reviewer looking at a fixture page should see *a label*. PIL text on white renders as a paragraph, not a label, and it makes the entire UI read as broken. The realism bar in §9.1.4 is the cheapest fix that prevents this from recurring.
+- **Auditability.** `synthetic-derived-from-cola-{ttbid}@{sha}` is auditable; `synthetic-acme-distilling` (a hand-named slug pointing nowhere) is not.
+
+**Alternatives considered.**
+- **Keep the v0.1–v0.6 synthetic-only mix; document it.** Rejected — documenting "we skipped the primary source" as an accepted state normalizes a defect. The decisions log records *why* gaps exist, but the contract has to require real-first or the next iteration will repeat the failure.
+- **Forbid synthetics entirely.** Rejected — the borderline-confidence slice (PRD §9.1) genuinely benefits from controlled degradation that you can't reliably get from natural Registry images. The right answer is degradation-of-Registry-source, not pure-synthetic, but the controlled-degradation path needs to remain available.
+- **Set the real-image floor at 100%.** Rejected — same reason. Borderline degradation is a real corpus need; the ≥70% floor leaves room for it without legitimizing pure synthetics.
+
+**Consequences.**
+- PRD §9.1 reframed: real-first ordering, ≥70% floor, mandatory sourcing checklist (§9.1.1), synthetic realism standard (§9.1.4), explicit anti-pattern (§9.1.5).
+- T13 promoted from "PRODUCTION-APP REFERENCE" to canonical sourcing reference for every tier; new §0 prescribes ordering; new §1.0 dedicates a section to the TTB Public COLA Registry.
+- L2 eval-pipeline plan (`docs/plans/ttb-label-verification-epoch-8-l2-eval-pipeline.md`) authoring sequence updates to require Registry pulls before synthetic generation.
+- Existing `scripts/build_synthetic_fixture*.py` outputs are flagged in PRD §9.1.5 as the canonical anti-pattern. They remain in the repo for now (the existing tests depend on them) but no future fixture work may use them as a template.
+- Future iterations that ship without a Registry-sourced count must explicitly waive the gap in a new ADR. "Calendar pressure" is not a sufficient waiver — the BRD already authorizes the Registry as the test corpus, the license is CC0, the per-record URL pattern is documented in T9 §3, and the curation effort for a defensible 30–50 entry corpus is 4–6 hours.

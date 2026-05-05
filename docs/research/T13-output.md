@@ -1,8 +1,36 @@
-# T13-output.md — Labeled Fail-Data Sourcing Survey
+# T13-output.md — Label-Image Sourcing Survey (canonical reference)
 
-> **Status: PRODUCTION-APP REFERENCE.** Not used by the prototype. Captures sources we surveyed for a future production-app eval corpus (post-prototype, v1+). Borderline-confidence imagery — what the prototype actually needs — is handled in PRD §9 / §10.2, not here.
+> **Status: CANONICAL SOURCING REFERENCE for every tier of this project** — prototype, take-home, and v1. The eval corpus, the demo fixture set, *and* any synthetic supplements all source from the registry of paths surveyed here. Real-first ordering is mandatory: every synthetic asset (PRD §9.1, D-025) must justify itself against an attempted real-source pass before it ships.
+>
+> **Sister document:** T9-output §3 holds the concrete TTB Public COLA Registry access mechanics (URL patterns, CC0 license posture, search semantics). T13 owns the source-by-source survey and yield/effort matrix; T9 owns the per-record retrieval contract.
 
 > **Source posture.** This output is produced from authoritative training knowledge of FOIA mechanics, TTB organizational structure, federal-records access patterns, PACER/CourtListener, and academic OCR corpora. It is **not** a live web survey; specific URLs, recent FOIA logs, and current Market Compliance bulletins are flagged for spot-verification. Honest yield estimates beat optimistic ones — every count below is a **realistic floor**, not a pitch.
+
+## 0. Primary sourcing path (mandatory ordering for any tier)
+
+The order is the same whether the corpus target is 6 demo fixtures, 50 prototype labels, or 250+ v1 labels. **Real-first is not aspirational; it is the canonical contract.** Synthetic generation does not begin until §0.1 has been attempted.
+
+### 0.1 — TTB Public COLA Registry (positives + class balance)
+
+**Always step 1.** The Registry (T9 §3) is CC0-licensed, exposes a per-record URL pattern (`viewColaDetails.do?action=publicDisplaySearchBasic&ttbid={14-char TTB ID}`), and contains every approved label TTB has issued. **Spirits, wine, and malt class balance is achievable in this single source.** Yield per hour of curation is the highest of any source listed; reuse rights are unambiguous. The §10 "what's actually shipped" entry of any iteration must record a real Registry-sourced count before any synthetic label is permitted.
+
+### 0.2 — Litigation exhibits (negatives, brand/geographic-claim slice)
+
+**Always step 2 if the rule pack covers brand or geographic claims.** PACER/CourtListener (§1.6) yield 10–40 real labels with cited dispute reasoning at the prototype tier. These are the only large source of real *failed* labels available without a 6-12 week FOIA cycle.
+
+### 0.3 — Synthetic generation (supplement only)
+
+**Only after §0.1 and §0.2 have been attempted.** Synthetic assets must clear the realism bar in PRD §9.1.4 / D-025: label-shaped renders with paper/cream stock, a brand banner, type hierarchy, frame border, and a Government Warning block laid out as a real label would lay it out. Plain text on white (the v0.1–v0.6 fixture style) is **explicitly disallowed** — it does not register as an image to a reviewer and it misrepresents what the system is being evaluated against. Provenance metadata must record `^synthetic-` plus the build script SHA so any synthetic asset is reproducible and auditable.
+
+### 0.4 — Academic OCR corpora (legibility-gate slice only)
+
+**Step 4, narrow scope.** ICDAR robust-reading derivations (§1.7) exercise the BRISQUE/NIQE legibility-gate path only. Never used for rule evaluation. A small, separately-tagged slice of the corpus.
+
+### 0.5 — FOIA + state-ABC + market-compliance + industry data
+
+**Skip for prototype/take-home tier; file FOIA early in v1.** §1.1, §1.2, §1.5, §1.8 are all v1+ work or yield zero images.
+
+---
 
 ## TL;DR
 
@@ -17,6 +45,32 @@
 ---
 
 ## 1. Per-source survey
+
+### 1.0 TTB Public COLA Registry — positives, class balance, primary corpus source
+
+**Status:** Canonical primary source. CC0-licensed. Image yield bounded only by curation hours.
+
+**Mechanism.** TTB's Public COLA Registry republishes every approved Certificate of Label Approval — by statute, the artwork on every approved COLA is published within ~48 hours of approval (BRD §27). The Registry has no bulk download API as of April 2026 (T9 §3); access is per-record via the URL pattern documented in T9. Search is class-and-text faceted: filter by spirits / wine / malt, brand fragment, applicant name, and approval date.
+
+**Content.** Real, approved label artwork as JPEG/PNG. Every record carries the 14-char TTB ID, applicant, brand, class/type, alcohol content, net contents, and approval metadata — i.e., the ground-truth `expected.json` fields are queryable from the same record that supplies the image. **This is the only source where ground truth and imagery come pre-paired.**
+
+**Licensing.** Creative Commons CCZero (CC0) per data.gov entries `015-TTB-54` and the COLA Search/Download companion entry (T9 §3). Redistribution is unrestricted. No attribution required, but attribution is always good practice for traceability.
+
+**Reuse posture.** The Registry contains *approved* labels by definition. For positive-class corpus rows (`expected_disposition: pass`), the disposition is implicit — TTB approved it. For negative-class rows, controlled degradation of a Registry image (mild blur for legibility-gate cases, ABV character-swap for FR-400 cases, case-folding the warning block for FR-200 cases) preserves CC0 lineage and yields verifiable ground truth. **This is the canonical synthetic-fail path** — it is "synthetic-derived-from-cola-{ttbid}", not "synthetic-from-PIL-text-on-white".
+
+**Realistic yield.**
+- **Take-home / 7-day timeline:** ~30–50 hand-curated labels across the three classes. ~4–6 hours of curator time. Sufficient for a defensible prototype eval.
+- **Prototype timeline (4–6 wk):** ~150–250 labels with stratified class balance and per-rule positive coverage.
+- **v1 timeline (6–12 mo):** ~600+ labels with full per-rule coverage targets met.
+
+**Cost.** Curator hours only. No API fees. No storage costs at prototype scale (50 × ~200 KB ≈ 10 MB).
+
+**Failure modes to plan for.**
+- TTB ID format drift — verify the 14-char pattern at execution time.
+- Class-balance bias — Registry over-represents large-volume applicants; sampling needs to oversample small spirits brands and craft beer to avoid concentration on a handful of brand families.
+- Image-quality variance — Registry images are scans of approved artwork; some are 600 DPI vector-derived, others are low-resolution JPEGs. Curator must reject artifacts that pre-fail the legibility gate before scoring real rules.
+
+**Recommendation.** **Mandatory primary source for every tier.** The §0.1 ordering is not negotiable: any iteration that ships without a Registry-sourced count must explicitly justify the omission in its decisions log.
 
 ### 1.1 TTB FOIA (5 U.S.C. § 552; Treasury implementing regs at 31 CFR Part 1)
 
