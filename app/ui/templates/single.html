@@ -9,6 +9,12 @@
     <a href="/?fixture={{ next_fixture }}" rel="next">Next (FIX-{{ next_fixture }}) →</a>
   </nav>
   {% endif %}
+  {% if image_url %}
+  <figure class="label-preview">
+    <img src="{{ image_url }}" alt="The label image being reviewed" />
+    <figcaption>Source label image — what the extractor saw.</figcaption>
+  </figure>
+  {% endif %}
   <form action="/" method="post" enctype="multipart/form-data" class="upload-form" aria-label="Upload a label for evaluation">
     <label for="label-upload">Upload your own label (PNG or JPEG)</label>
     <input id="label-upload" type="file" name="label" accept="image/png,image/jpeg" required />

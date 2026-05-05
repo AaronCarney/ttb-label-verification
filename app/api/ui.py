@@ -12,8 +12,10 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
+from collections import OrderedDict
+
 from fastapi import APIRouter, Depends, File, Request, UploadFile
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, RedirectResponse, Response
 from fastapi.templating import Jinja2Templates
 
 from app.config import Settings
@@ -36,6 +38,30 @@ _DEFAULT_FIXTURE = "01"
 
 _DEMO_ENVELOPE_CACHE: dict[str, str] = {}
 _DEMO_ENVELOPE_CACHED = False
+
+# Per-process cache of upload bytes keyed by synthesized evaluation_id. Bounded
+# so a long-running Space doesn't grow without limit. The value is (mime, bytes);
+# bytes are GC'd when the entry is evicted.
+_UPLOAD_IMAGE_CACHE_MAX = 64
+_LATEST_UPLOAD_IMAGES: OrderedDict[str, tuple[str, bytes]] = OrderedDict()
+
+
+def _stash_upload_image(eval_id: str, mime: str, body: bytes) -> None:
+    _LATEST_UPLOAD_IMAGES[eval_id] = (mime, body)
+    while len(_LATEST_UPLOAD_IMAGES) > _UPLOAD_IMAGE_CACHE_MAX:
+        _LATEST_UPLOAD_IMAGES.popitem(last=False)
+
+
+# Fixture image directory — mirrors the on-disk layout under fixtures/.
+_FIXTURE_IMAGE_ROOT = Path(__file__).resolve().parent.parent.parent / "fixtures"
+_FIXTURE_DIR_BY_SLUG = {
+    "01": "01-spirits-clean",
+    "02": "02-bourbon-stones-throw",
+    "03": "03-warning-title-case",
+    "04": "04-low-res-blurry",
+    "06": "06-abv-out-of-tolerance",
+    "07": "07-borderline-confidence",
+}
 
 
 def _populate_envelope_cache() -> None:
@@ -114,6 +140,7 @@ async def single_page_shell(
             "fixture_slug": slug,
             "prev_fixture": prev_slug,
             "next_fixture": next_slug,
+            "image_url": f"/fixtures/{slug}/label.png",
         },
     )
 
@@ -184,6 +211,9 @@ async def single_label_upload(
         dimensions=None,
     )
     envelope = await evaluator.evaluate(application=app_obj, label=label_obj)
+    # Stash under the canonical id the envelope carries so the image route
+    # and template URL agree even when the evaluator synthesises its own id.
+    _stash_upload_image(envelope.evaluation_id, mime, image_bytes)
     return templates.TemplateResponse(
         request=request,
         name="single.html",
@@ -191,8 +221,37 @@ async def single_label_upload(
             "envelope_json": envelope.model_dump_json(),
             "dev_mode": settings.dev_mode,
             "fixture_slug": None,  # suppress prev/next nav for live uploads
+            "image_url": f"/labels/{envelope.evaluation_id}/image",
         },
     )
+
+
+@router.get("/fixtures/{slug}/label.png")
+async def fixture_label_image(slug: str) -> Response:
+    """Serve the PNG for one of the shipped demo fixtures."""
+    from fastapi import HTTPException
+
+    dirname = _FIXTURE_DIR_BY_SLUG.get(slug)
+    if dirname is None:
+        raise HTTPException(status_code=404, detail=f"unknown fixture {slug!r}")
+    path = _FIXTURE_IMAGE_ROOT / dirname / "label.png"
+    try:
+        body = path.read_bytes()
+    except OSError:
+        raise HTTPException(status_code=404, detail=f"fixture image missing: {slug}")
+    return Response(content=body, media_type="image/png")
+
+
+@router.get("/labels/{eval_id}/image")
+async def upload_label_image(eval_id: str) -> Response:
+    """Serve the PNG/JPEG bytes uploaded for a given evaluation."""
+    from fastapi import HTTPException
+
+    entry = _LATEST_UPLOAD_IMAGES.get(eval_id)
+    if entry is None:
+        raise HTTPException(status_code=404, detail=f"no image for evaluation {eval_id!r}")
+    mime, body = entry
+    return Response(content=body, media_type=mime)
 
 
 @router.get("/batch/{batch_id}", response_class=HTMLResponse)
