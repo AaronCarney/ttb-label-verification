@@ -14,7 +14,7 @@ from app.schemas.expected import ExpectedValue
 from app.schemas.extracted import FieldObservation
 from app.schemas.label import Label
 from app.schemas.metrics import Metrics
-from app.schemas.rejection import ValidationResult
+from app.schemas.rejection import Outcome, ValidationResult
 from app.schemas.wire.disposition import (
     AISuggestionWire,
     ConfidenceBand,
@@ -127,6 +127,12 @@ def build_field_findings(
             crop_ref=ev.image_uri or "",
             extraction_confidence=ev.confidence,
         )
+        # NOT_APPLICABLE rules are filtered out: the wire enum only models
+        # {pass, fail, needs_review}, so bucketing not_applicable as
+        # needs_review would mislead the reviewer into looking at a rule that
+        # explicitly opted out (e.g. fuzzy_brand with no expected value).
+        # The audit trail still carries them — see evaluator.py disposition
+        # mapping which preserves the not_applicable label for per_rule_trace.
         rule_findings_for_field = tuple(
             RuleFindingWire(
                 rule_id=vr.rule_id,
@@ -138,11 +144,20 @@ def build_field_findings(
                 ),
                 reason_code=vr.reason_code or "",
                 plain_language_explanation=vr.message or "",
-            ) for vr in results_by_field.get(fid, [])
+            )
+            for vr in results_by_field.get(fid, [])
+            if vr.outcome != Outcome.NOT_APPLICABLE
         )
         # Min confidence over this field's validators; fall back to
         # the observation's evidence confidence when no rule fired.
-        confidences = [vr.aggregated_confidence for vr in results_by_field.get(fid, [])]
+        # NOT_APPLICABLE rules carry the observation's confidence by default
+        # but they didn't actually evaluate, so excluding them keeps the
+        # aggregate honest if a future validator reports a distinct value.
+        confidences = [
+            vr.aggregated_confidence
+            for vr in results_by_field.get(fid, [])
+            if vr.outcome != Outcome.NOT_APPLICABLE
+        ]
         numeric = min(confidences) if confidences else ev.confidence
         out.append(FieldFindingWire(
             field_name=_FIELD_CANONICAL_TO_WIRE[fid],  # type: ignore[arg-type]

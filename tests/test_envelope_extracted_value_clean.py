@@ -9,6 +9,10 @@ dict carries:
     — internal records of the LLM-vs-measurement comparison.
 
 The wire `extracted_value` must omit those keys.
+
+The wire's per-field `rule_findings` must also exclude rules that returned
+NOT_APPLICABLE — they did not evaluate, so they should not surface to the
+reviewer as "needs_review" (which is what the previous mapping produced).
 """
 from __future__ import annotations
 
@@ -18,6 +22,12 @@ from app.schemas.extracted import (
     EvidenceSource,
     FieldObservation,
     MatchKind,
+)
+from app.schemas.rejection import (
+    EngineMeta,
+    Outcome,
+    Severity,
+    ValidationResult,
 )
 from app.services.envelope_builder import build_field_findings
 
@@ -38,6 +48,33 @@ def _obs(field_id: str, value: dict) -> FieldObservation:
         observed_value=value,
         evidence=(_evidence(field_id),),
         upstream_meta={},
+    )
+
+
+def _engine_meta() -> EngineMeta:
+    return EngineMeta(
+        engine_version="t",
+        rule_pack_version="t",
+        rule_pack="t",
+        started_at_ms=0,
+        elapsed_ms=0,
+    )
+
+
+def _result(field_id: str, *, outcome: Outcome, rule_id: str) -> ValidationResult:
+    obs = _obs(field_id, {"brand_name": "ACME", "confidence": 0.95})
+    return ValidationResult(
+        rule_id=rule_id,
+        cfr_citation="27 CFR §5.63(a)",
+        beverage_class=BeverageClass.SPIRITS,
+        outcome=outcome,
+        severity=Severity.REJECT,
+        reason_code=None,
+        aggregated_confidence=0.95,
+        evidence=(_evidence(field_id),),
+        expected=ExpectedValue(field_id=field_id),
+        observed=obs,
+        engine_meta=_engine_meta(),
     )
 
 
@@ -86,6 +123,30 @@ def test_extracted_value_strips_heading_audit_keys():
         assert key not in target.extracted_value, f"leaked audit key: {key}"
     # User-visible content survives.
     assert "GOVERNMENT WARNING" in target.extracted_value
+
+
+def test_not_applicable_rules_are_dropped_from_wire_findings():
+    """`Outcome.NOT_APPLICABLE` means the rule did not evaluate (e.g. fuzzy_brand
+    when no expected.value was supplied). The wire's RuleFindingWire.disposition
+    enum is only {pass, fail, needs_review} — bucketing not_applicable as
+    needs_review tells the reviewer to look at a rule that explicitly opted
+    out. The fix is to drop these from the per-field rule_findings entirely;
+    the audit trail still carries them (audit/per_rule_trace, evaluator.py)."""
+    findings = build_field_findings(
+        results=(
+            _result("brand_name", outcome=Outcome.NOT_APPLICABLE, rule_id="spirits.brand.present"),
+            _result("brand_name", outcome=Outcome.PASS, rule_id="spirits.brand.format"),
+        ),
+        observations=[_obs("brand_name", {"brand_name": "ACME", "confidence": 0.95})],
+        expected_values=[ExpectedValue(field_id="brand_name")],
+    )
+    target = next(f for f in findings if f.field_name == "brand_name")
+    rule_ids = {rf.rule_id for rf in target.rule_findings}
+    assert "spirits.brand.present" not in rule_ids, "NOT_APPLICABLE must not appear on wire"
+    assert "spirits.brand.format" in rule_ids, "PASS must still appear"
+    # Sanity: nothing got bucketed as needs_review.
+    dispositions = {rf.disposition for rf in target.rule_findings}
+    assert dispositions <= {"pass", "fail"}, f"unexpected dispositions: {dispositions}"
 
 
 def test_extracted_value_preserves_non_audit_keys_on_warning():
