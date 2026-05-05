@@ -1,5 +1,5 @@
 {
-  "evaluation_id": "247c197a-6109-479d-974b-3248a2d734ff",
+  "evaluation_id": "9601b7db-dc9f-4449-bf78-1fc5fc947a4e",
   "label_ref": "FIX-06-ABV-OUT-OF-TOLERANCE",
   "disposition": "fail",
   "disposition_confidence": {
@@ -9,7 +9,7 @@
   "fields": [
     {
       "field_name": "brand_name",
-      "extracted_value": "{'brand_name': 'ACME BOURBON', 'confidence': 0.95}",
+      "extracted_value": "{'brand_name': 'ACME BOURBON'}",
       "expected_value": "ACME BOURBON",
       "evidence": {
         "bbox": [
@@ -25,8 +25,8 @@
         {
           "rule_id": "spirits.brand.present",
           "cfr_citation": "27 CFR §5.63(a), §5.64",
-          "disposition": "fail",
-          "reason_code": "BRAND.PRESENCE.MISSING",
+          "disposition": "pass",
+          "reason_code": "",
           "plain_language_explanation": ""
         }
       ],
@@ -43,7 +43,7 @@
     },
     {
       "field_name": "class_type",
-      "extracted_value": "{'class_type': 'Bourbon Whiskey', 'confidence': 0.95}",
+      "extracted_value": "{'class_type': 'Bourbon Whiskey'}",
       "expected_value": "BOURBON WHISKEY",
       "evidence": {
         "bbox": [
@@ -84,7 +84,7 @@
     },
     {
       "field_name": "net_contents",
-      "extracted_value": "{'net_contents_value': 750, 'unit': 'ML', 'confidence': 0.95}",
+      "extracted_value": "{'net_contents_value': 750, 'unit': 'mL'}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -118,7 +118,7 @@
     },
     {
       "field_name": "alcohol_content",
-      "extracted_value": "{'abv_pct': 40.0, 'unit': '%', 'confidence': 0.95}",
+      "extracted_value": "{'abv_pct': 40, 'unit': '%'}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -134,8 +134,8 @@
         {
           "rule_id": "spirits.alcohol.format",
           "cfr_citation": "27 CFR §5.65(b)",
-          "disposition": "fail",
-          "reason_code": "ALCOHOL_CONTENT.FORMAT.INVALID",
+          "disposition": "pass",
+          "reason_code": "",
           "plain_language_explanation": ""
         },
         {
@@ -166,7 +166,7 @@
     },
     {
       "field_name": "warning",
-      "extracted_value": "{'text': 'GOVERNMENT WARNING: (1) ACCORDING TO THE SURGEON GENERAL, WOMEN SHOULD NOT DRINK ALCOHOLIC BEVERAGES DURING PREGNANCY BECAUSE OF THE RISK OF BIRTH DEFECTS.', 'heading_text': 'GOVERNMENT WARNING', 'heading_all_caps': True, 'heading_bold': False, 'type_size_pt': 10, 'confidence': 0.95, 'heading_bold_llm': False, 'heading_bold_measured': False, 'heading_bold_measured_confident': False, 'heading_bold_width_height_ratio': 0.0}",
+      "extracted_value": "{'text': 'GOVERNMENT WARNING: (1) ACCORDING TO THE SURGEON GENERAL, WOMEN SHOULD NOT DRINK ALCOHOLIC BEVERAGES DURING PREGNANCY BECAUSE OF THE RISK OF BIRTH DEFECTS.', 'heading_text': 'GOVERNMENT WARNING', 'heading_all_caps': True, 'heading_bold': False, 'type_size_pt': 10}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -242,7 +242,7 @@
     },
     {
       "field_name": "name_address",
-      "extracted_value": "{'name': 'ACME DISTILLERIES', 'city': 'FRANKFORT', 'state': 'KY', 'confidence': 0.95}",
+      "extracted_value": "{'name': 'ACME Distilleries', 'city': 'Frankfort', 'state': 'KY'}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -276,7 +276,7 @@
     },
     {
       "field_name": "country_of_origin",
-      "extracted_value": "{'country': 'USA', 'confidence': 0.95}",
+      "extracted_value": "{'country': 'USA'}",
       "expected_value": "",
       "evidence": {
         "bbox": [
@@ -302,14 +302,14 @@
     }
   ],
   "audit_trail": {
-    "evaluation_id": "247c197a-6109-479d-974b-3248a2d734ff",
+    "evaluation_id": "9601b7db-dc9f-4449-bf78-1fc5fc947a4e",
     "rule_set_version": "unknown",
     "model_version": null,
     "prompt_version": null,
     "input_hash": "28c0beb4a4aa178634091bde14c1f29b77f1d3441fbeda8b12d8e79ffe906079",
-    "output_hash": "e87c2cd11c4e71f0334cfd43a6b703c82e7ed7965ddb141c7711c9973937fa81",
-    "started_at": "2026-05-04T23:17:43.344398Z",
-    "completed_at": "2026-05-04T23:17:46.019763Z",
+    "output_hash": "942b9d385bac5a0ac3ab32252574408c7d0e840b638c71128bb82b759a90f330",
+    "started_at": "2026-05-05T03:43:14.607435Z",
+    "completed_at": "2026-05-05T03:43:19.258587Z",
     "per_rule_trace": [
       {
         "rule_id": "common.warning.contrasting_bg",
@@ -373,13 +373,8 @@
       },
       {
         "rule_id": "spirits.alcohol.format",
-        "disposition": "fail",
+        "disposition": "pass",
         "evidence_ref": "vr/spirits.alcohol.format"
-      },
-      {
-        "rule_id": "ALCOHOL_CONTENT.FORMAT.INVALID",
-        "disposition": "fail",
-        "evidence_ref": "reason_code/spirits.alcohol.format"
       },
       {
         "rule_id": "spirits.alcohol.present",
@@ -398,13 +393,8 @@
       },
       {
         "rule_id": "spirits.brand.present",
-        "disposition": "fail",
+        "disposition": "pass",
         "evidence_ref": "vr/spirits.brand.present"
-      },
-      {
-        "rule_id": "BRAND.PRESENCE.MISSING",
-        "disposition": "fail",
-        "evidence_ref": "reason_code/spirits.brand.present"
       },
       {
         "rule_id": "spirits.class_type.matches_soi",
@@ -440,7 +430,7 @@
     "overrides": []
   },
   "metrics": {
-    "total_duration_ms": 2675,
+    "total_duration_ms": 4651,
     "per_rule_durations_ms": [
       {
         "rule_id": "common.warning.contrasting_bg",
@@ -495,10 +485,6 @@
         "duration_ms": 0
       },
       {
-        "rule_id": "ALCOHOL_CONTENT.FORMAT.INVALID",
-        "duration_ms": 0
-      },
-      {
         "rule_id": "spirits.alcohol.present",
         "duration_ms": 0
       },
@@ -512,10 +498,6 @@
       },
       {
         "rule_id": "spirits.brand.present",
-        "duration_ms": 0
-      },
-      {
-        "rule_id": "BRAND.PRESENCE.MISSING",
         "duration_ms": 0
       },
       {
@@ -543,7 +525,7 @@
         "duration_ms": 0
       }
     ],
-    "vision_duration_ms": 2667,
+    "vision_duration_ms": 4643,
     "orchestrator_duration_ms": 0
   }
 }
