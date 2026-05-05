@@ -10,6 +10,8 @@
 """
 from __future__ import annotations
 
+import logging
+
 from app.rules._validators import ValidatorContext, register
 from app.rules._validators._helpers import _build_meta, _conf
 from app.rules.brand_match import stage_a_normalized, stage_b_fuzzy
@@ -17,6 +19,8 @@ from app.schemas.expected import ExpectedValue
 from app.schemas.extracted import FieldObservation
 from app.schemas.rejection import Outcome, Severity, ValidationResult
 from app.schemas.rules import RuleDefinition
+
+_logger = logging.getLogger("app.rules._validators.fuzzy_brand")
 
 
 def _project_brand(value: object) -> str:

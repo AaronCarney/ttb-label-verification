@@ -8,11 +8,14 @@ Engine logic lives in the JSON API routes (``app.api.labels``,
 from __future__ import annotations
 
 import asyncio
+import logging
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
 from collections import OrderedDict
+
+_logger = logging.getLogger("app.api.ui")
 
 from fastapi import APIRouter, Depends, File, Request, UploadFile
 from fastapi.responses import HTMLResponse, RedirectResponse, Response
@@ -49,7 +52,11 @@ _LATEST_UPLOAD_IMAGES: OrderedDict[str, tuple[str, bytes]] = OrderedDict()
 def _stash_upload_image(eval_id: str, mime: str, body: bytes) -> None:
     _LATEST_UPLOAD_IMAGES[eval_id] = (mime, body)
     while len(_LATEST_UPLOAD_IMAGES) > _UPLOAD_IMAGE_CACHE_MAX:
-        _LATEST_UPLOAD_IMAGES.popitem(last=False)
+        evicted_id, _ = _LATEST_UPLOAD_IMAGES.popitem(last=False)
+        _logger.debug(
+            "upload_image_evicted",
+            extra={"evaluation_id": evicted_id, "cache_max": _UPLOAD_IMAGE_CACHE_MAX},
+        )
 
 
 # Fixture image directory — mirrors the on-disk layout under fixtures/.
@@ -237,7 +244,14 @@ async def fixture_label_image(slug: str) -> Response:
     path = _FIXTURE_IMAGE_ROOT / dirname / "label.png"
     try:
         body = path.read_bytes()
-    except OSError:
+    except OSError as e:
+        # Most likely cause: the Docker image's `COPY fixtures/ ./fixtures/`
+        # missed this slug, or the fixture set was renamed without updating
+        # _FIXTURE_DIR_BY_SLUG. Log path so ops can diagnose.
+        _logger.warning(
+            "fixture_image_read_failed",
+            extra={"slug": slug, "path": str(path), "error_class": type(e).__name__},
+        )
         raise HTTPException(status_code=404, detail=f"fixture image missing: {slug}")
     return Response(content=body, media_type="image/png")
 

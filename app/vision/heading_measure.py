@@ -23,12 +23,15 @@ brand-match thresholds (PRD §3.2 deferred).
 """
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass
 from io import BytesIO
 
 import cv2
 import numpy as np
 from PIL import Image
+
+_logger = logging.getLogger("app.vision.heading_measure")
 
 
 WIDTH_HEIGHT_RATIO_BOLD_MIN = 0.25
@@ -94,6 +97,18 @@ def _resolve_crop(
     h = full.height
     if h < 16:
         return None
+    # Logged at info because operating without a real bbox is the GPT-4o
+    # layout-call failure mode this fallback exists for; an ops dashboard
+    # tracking how often this fires gives an early signal that the layout
+    # prompt has regressed.
+    _logger.info(
+        "heading_bbox_fallback_to_lower_half",
+        extra={
+            "reason": "degenerate_layout_bbox" if bbox is not None else "missing_layout_bbox",
+            "image_height": h,
+            "image_width": full.width,
+        },
+    )
     return full.crop((0, h // 2, full.width, h))
 
 
@@ -120,6 +135,10 @@ def _swt_on_crop(crop: "Image.Image") -> HeadingMeasurement:
     # merges into 1-2 blobs, so the floor is 1 (the plan's ≥4 breaks
     # bold+dilation cases). Noise rejection happens via the height floor below.
     if not widths:
+        _logger.debug(
+            "heading_measurement_unconfident",
+            extra={"reason": "no_components", "crop_width": crop.width, "crop_height": crop.height},
+        )
         return HeadingMeasurement(False, 0.0, 0.0, 0.0, confident=False)
 
     mean_w = float(np.mean(widths))
@@ -131,6 +150,14 @@ def _swt_on_crop(crop: "Image.Image") -> HeadingMeasurement:
     # ≥ 4px. Below that, defer to the LLM rather than emit a confident
     # measurement on noise.
     if mean_h < 4:
+        _logger.debug(
+            "heading_measurement_unconfident",
+            extra={
+                "reason": "mean_height_below_floor",
+                "mean_h": round(mean_h, 2),
+                "n_components": len(widths),
+            },
+        )
         return HeadingMeasurement(False, 0.0, 0.0, 0.0, confident=False)
 
     ratio = mean_w / mean_h if mean_h > 0 else 0.0

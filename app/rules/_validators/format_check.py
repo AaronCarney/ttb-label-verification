@@ -1,6 +1,7 @@
 """regex_match validator: tests observed string against rule.parameters['pattern']."""
 from __future__ import annotations
 
+import logging
 import re
 
 from app.rules._validators import ValidatorContext, register
@@ -9,6 +10,8 @@ from app.schemas.expected import ExpectedValue
 from app.schemas.extracted import FieldObservation
 from app.schemas.rejection import Outcome, ValidationResult
 from app.schemas.rules import RuleDefinition
+
+_logger = logging.getLogger("app.rules._validators.format_check")
 
 
 def _project_alc_text(value: object, field_id: str) -> str:
@@ -44,6 +47,17 @@ def regex_match(
     ignore_case = bool(rule.parameters.get("ignore_case", False))
     flags = re.IGNORECASE if ignore_case else 0
     observed = _project_alc_text(obs.observed_value, obs.field_id)
+    if not observed and isinstance(obs.observed_value, dict):
+        # Diagnostic for "why did this rule fail" — distinguishes projection
+        # failure (no recognized key) from regex mismatch on a real string.
+        _logger.debug(
+            "regex_match_empty_projection",
+            extra={
+                "rule_id": rule.rule_id,
+                "field_id": obs.field_id,
+                "observed_keys": sorted(obs.observed_value.keys()),
+            },
+        )
     ok = bool(re.match(pattern, observed, flags=flags)) if observed else False
     return ValidationResult(
         rule_id=rule.rule_id,
