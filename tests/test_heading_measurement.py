@@ -139,3 +139,23 @@ def test_blank_image_with_zero_bbox_returns_unconfident():
 
     m = measure_heading_bold(png, (0, 0, 0, 0))
     assert not m.confident
+
+
+def test_single_noise_speck_returns_unconfident():
+    """A single tiny dust-speck component must not yield confident=True with a
+    garbage ratio. The original SWT contract ('measured, not guessed') breaks
+    if a 2-pixel blob can produce is_bold=True at ratio≈1.0. Real heading text,
+    even at the lowest fixture resolution, has character heights >> a few px."""
+    # 200x80 image with a single 3x3 black speck — looks like sensor noise.
+    img = Image.new("L", (200, 80), color=255)
+    arr = np.asarray(img).copy()
+    arr[40:43, 100:103] = 0  # 3x3 black square — single connected component
+    out = BytesIO()
+    Image.fromarray(arr, mode="L").save(out, "PNG")
+    png = out.getvalue()
+
+    m = measure_heading_bold(png, (0, 0, 0, 0))
+    assert not m.confident, (
+        f"a 3x3 dust speck must not be confidently classified as a heading; "
+        f"got is_bold={m.is_bold} ratio={m.width_height_ratio:.3f} mean_h={m.mean_character_height:.2f}"
+    )

@@ -116,14 +116,23 @@ def _swt_on_crop(crop: "Image.Image") -> HeadingMeasurement:
         widths.append(float(comp_pixels.mean()) * 2.0)
         heights.append(float(h))
 
-    # `confident` requires at least one component — blank crops produce zero.
-    # Dilated bold text merges into 1-2 blobs, so the threshold stays at 1
-    # rather than the plan's suggested 4 (which breaks bold+dilation crops).
-    if len(widths) < 1:
+    # Component-count floor: blank crops produce zero. Dilated bold text
+    # merges into 1-2 blobs, so the floor is 1 (the plan's ≥4 breaks
+    # bold+dilation cases). Noise rejection happens via the height floor below.
+    if not widths:
         return HeadingMeasurement(False, 0.0, 0.0, 0.0, confident=False)
 
     mean_w = float(np.mean(widths))
     mean_h = float(np.mean(heights))
+
+    # Height floor: a single dust speck (3-4px tall) can pass the component-
+    # count floor but produces a meaningless ratio. Real heading text — even
+    # at the lowest fixture resolution we ship — has mean character height
+    # ≥ 4px. Below that, defer to the LLM rather than emit a confident
+    # measurement on noise.
+    if mean_h < 4:
+        return HeadingMeasurement(False, 0.0, 0.0, 0.0, confident=False)
+
     ratio = mean_w / mean_h if mean_h > 0 else 0.0
     return HeadingMeasurement(
         is_bold=ratio > WIDTH_HEIGHT_RATIO_BOLD_MIN,
