@@ -23,6 +23,7 @@ from app.schemas.wire.disposition import (
     FieldFindingWire,
     RuleFindingWire,
 )
+from app.vision.cloud import OBSERVED_VALUE_AUDIT_KEYS
 from app.services.aggregation import min_aggregate_confidence
 from app.services.confidence import to_band
 from app.services.engine_meta import EvaluationTimeline
@@ -62,6 +63,17 @@ def _coerce_str(value) -> str:
     if value is None:
         return ""
     return str(value)
+
+
+def _strip_audit_keys(value):
+    """If `value` is a dict, drop keys we never want on the wire surface.
+
+    The canonical key set is owned by the producer (`app.vision.cloud`) — see
+    `OBSERVED_VALUE_AUDIT_KEYS` for the list and the rationale.
+    """
+    if not isinstance(value, dict):
+        return value
+    return {k: v for k, v in value.items() if k not in OBSERVED_VALUE_AUDIT_KEYS}
 
 
 def build_field_findings(
@@ -134,7 +146,7 @@ def build_field_findings(
         numeric = min(confidences) if confidences else ev.confidence
         out.append(FieldFindingWire(
             field_name=_FIELD_CANONICAL_TO_WIRE[fid],  # type: ignore[arg-type]
-            extracted_value=_coerce_str(obs.observed_value),
+            extracted_value=_coerce_str(_strip_audit_keys(obs.observed_value)),
             expected_value=_coerce_str(exp.value if exp else None),
             evidence=evidence_wire,
             rule_findings=rule_findings_for_field,

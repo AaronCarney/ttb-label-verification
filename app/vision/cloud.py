@@ -24,6 +24,19 @@ from app.schemas.label import Label
 from app.vision import quality
 from app.vision.heading_measure import measure_heading_bold
 
+# Keys emitted on the cloud extractor's observed_value dict that are audit-only —
+# internal records of the LLM-vs-measurement comparison and the per-call
+# self-reported confidence. These flow through to the wire envelope's
+# upstream_meta but must be stripped from the user-facing extracted_value
+# projection. Add to this set whenever a new audit key is introduced below.
+OBSERVED_VALUE_AUDIT_KEYS: frozenset[str] = frozenset({
+    "confidence",
+    "heading_bold_llm",
+    "heading_bold_measured",
+    "heading_bold_measured_confident",
+    "heading_bold_width_height_ratio",
+})
+
 # Self-reported per-field confidence. Required on every per-field schema so
 # OpenAI Structured Outputs (strict:true) forces the model to emit a number
 # we can route into Evidence.confidence. Calibration is uncalibrated — this
