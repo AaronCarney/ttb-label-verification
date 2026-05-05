@@ -19,6 +19,22 @@ from app.schemas.rejection import Outcome, Severity, ValidationResult
 from app.schemas.rules import RuleDefinition
 
 
+def _project_brand(value: object) -> str:
+    """The cloud extractor produces {brand_name, confidence}; legacy fixtures
+    pass a bare string. Return the brand string in either shape."""
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value
+    if isinstance(value, dict):
+        # `brand_name` is the canonical cloud key; `value` is the legacy fixture key.
+        for key in ("brand_name", "value"):
+            v = value.get(key)
+            if isinstance(v, str) and v:
+                return v
+    return ""
+
+
 @register("fuzzy_brand")
 def fuzzy_brand(
     obs: FieldObservation,
@@ -26,9 +42,21 @@ def fuzzy_brand(
     rule: RuleDefinition,
     ctx: ValidatorContext,
 ) -> ValidationResult:
-    observed = "" if obs.observed_value is None else str(obs.observed_value)
+    observed = _project_brand(obs.observed_value)
     expected = "" if exp.value is None else str(exp.value)
     meta = _build_meta(rule, ctx)
+
+    # The rule needs something to compare against. Without an expected brand
+    # the application never declared one — surface as NOT_APPLICABLE rather
+    # than silently failing every cold-loaded label.
+    if not expected:
+        return ValidationResult(
+            rule_id=rule.rule_id, cfr_citation=rule.cfr_citation,
+            beverage_class=obs.beverage_class, outcome=Outcome.NOT_APPLICABLE,
+            severity=rule.severity, reason_code=None,
+            aggregated_confidence=_conf(obs), evidence=obs.evidence,
+            expected=exp, observed=obs, engine_meta=meta,
+        )
 
     if stage_a_normalized(observed, expected):
         return ValidationResult(

@@ -11,6 +11,28 @@ from app.schemas.rejection import Outcome, ValidationResult
 from app.schemas.rules import RuleDefinition
 
 
+def _project_alc_text(value: object, field_id: str) -> str:
+    """Build the canonical 'alcohol N% by volume' string from the cloud
+    extractor's abv dict. Legacy string observations pass through unchanged."""
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value
+    if isinstance(value, dict):
+        if field_id in ("abv", "alcohol_content"):
+            pct = value.get("abv_pct")
+            unit = value.get("unit", "%")
+            if pct is None:
+                return ""
+            return f"alcohol {pct}{unit} by volume"
+        # Generic projection: pick the first scalar value with a stable order.
+        for key in ("text", "value", "name"):
+            v = value.get(key)
+            if isinstance(v, str) and v:
+                return v
+    return ""
+
+
 @register("regex_match")
 def regex_match(
     obs: FieldObservation,
@@ -18,17 +40,18 @@ def regex_match(
     rule: RuleDefinition,
     ctx: ValidatorContext,
 ) -> ValidationResult:
-    pattern: str = rule.parameters.get("pattern", "")
-    flags = re.IGNORECASE if rule.parameters.get("ignore_case", False) else 0
-    text = "" if obs.observed_value is None else str(obs.observed_value)
-    matched = bool(pattern) and re.match(pattern, text, flags) is not None
+    pattern = rule.parameters.get("pattern", "")
+    ignore_case = bool(rule.parameters.get("ignore_case", False))
+    flags = re.IGNORECASE if ignore_case else 0
+    observed = _project_alc_text(obs.observed_value, obs.field_id)
+    ok = bool(re.match(pattern, observed, flags=flags)) if observed else False
     return ValidationResult(
         rule_id=rule.rule_id,
         cfr_citation=rule.cfr_citation,
         beverage_class=obs.beverage_class,
-        outcome=Outcome.PASS if matched else Outcome.FAIL,
+        outcome=Outcome.PASS if ok else Outcome.FAIL,
         severity=rule.severity,
-        reason_code=None if matched else rule.reason_code,
+        reason_code=None if ok else rule.reason_code,
         aggregated_confidence=_conf(obs),
         evidence=obs.evidence,
         expected=exp,
