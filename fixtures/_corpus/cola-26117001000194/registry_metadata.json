@@ -1,0 +1,32 @@
+{
+  "ttbid": "26117001000194",
+  "brand": "AURORA BOREALIS BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "03",
+  "permitNo": "DSP-NJ-21070",
+  "serialNumber": "265001",
+  "approvalDate": "04/30/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 636,
+      "h": 1052
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 548,
+      "h": 570
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 636,
+    "h": 1052
+  }
+}

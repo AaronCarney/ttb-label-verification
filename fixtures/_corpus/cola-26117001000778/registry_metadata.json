@@ -1,0 +1,26 @@
+{
+  "ttbid": "26117001000778",
+  "brand": "LAYER 8",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20078",
+  "serialNumber": "260427",
+  "approvalDate": "04/29/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LAYER%208%20REDUCED.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3578,
+      "h": 1476
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LAYER%208%20REDUCED.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3578,
+    "h": 1476
+  }
+}

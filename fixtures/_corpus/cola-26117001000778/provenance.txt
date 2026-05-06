@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 26117001000778
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=26117001000778
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LAYER%208%20REDUCED.jpg&filetype=l
+fetched_at: 2026-05-06T02:41:49Z

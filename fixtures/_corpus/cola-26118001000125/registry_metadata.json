@@ -1,0 +1,26 @@
+{
+  "ttbid": "26118001000125",
+  "brand": "CHAPPY CHAPMAN BOURBON WHISKEY BOGUE SOUND DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21061",
+  "serialNumber": "260428",
+  "approvalDate": "04/30/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ChappyChapman-last.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1440,
+      "h": 720
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ChappyChapman-last.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1440,
+    "h": 720
+  }
+}

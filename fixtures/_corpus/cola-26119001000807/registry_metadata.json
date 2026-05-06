@@ -1,0 +1,32 @@
+{
+  "ttbid": "26119001000807",
+  "brand": "PEOPLE FOR PETS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "20",
+  "permitNo": "DSP-IA-21021",
+  "serialNumber": "26P4PB",
+  "approvalDate": "05/01/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=P4P%20bourbon%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 900,
+      "h": 1125
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=P4P%20bourbon%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 900,
+      "h": 1125
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=P4P%20bourbon%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 900,
+    "h": 1125
+  }
+}
