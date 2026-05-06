@@ -1,0 +1,26 @@
+{
+  "ttbid": "25188001000068",
+  "brand": "LOCO BOYS BREWING COMPANY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20284",
+  "serialNumber": "25DS07",
+  "approvalDate": "07/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LB%20Bourbon%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1801,
+      "h": 1796
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LB%20Bourbon%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1801,
+    "h": 1796
+  }
+}

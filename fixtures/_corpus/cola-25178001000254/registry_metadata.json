@@ -1,0 +1,32 @@
+{
+  "ttbid": "25178001000254",
+  "brand": "BRANCH & BARREL",
+  "fancyName": "COLORADO BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20057",
+  "serialNumber": "25SBBR",
+  "approvalDate": "06/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB%20Bourbon%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1021,
+      "h": 1024
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB%20Bourbon%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1021,
+      "h": 1024
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB%20Bourbon%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1021,
+    "h": 1024
+  }
+}

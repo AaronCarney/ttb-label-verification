@@ -1,0 +1,32 @@
+{
+  "ttbid": "25177001000226",
+  "brand": "OLD RICK",
+  "fancyName": "TOASTED COLUMBIAN OAK",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20134",
+  "serialNumber": "252505",
+  "approvalDate": "07/17/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OldRick10yrToastedColumbianOak_GT_FrontTTB.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 956,
+      "h": 956
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OldRick_10yrToastedColumbianOak_GT_BackTTB.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 956,
+      "h": 956
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OldRick10yrToastedColumbianOak_GT_FrontTTB.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 956,
+    "h": 956
+  }
+}

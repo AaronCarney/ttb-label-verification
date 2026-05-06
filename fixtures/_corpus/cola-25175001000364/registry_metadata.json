@@ -1,0 +1,44 @@
+{
+  "ttbid": "25175001000364",
+  "brand": "MACABRE SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20044",
+  "serialNumber": "25F025",
+  "approvalDate": "06/25/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Macabre%20HNM%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1066,
+      "h": 459
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Macabre%20HNM%20Back%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1100,
+      "h": 2045
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Macabre%20HNM%20Frame.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1137,
+      "h": 2047
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Macabre%20HNM%20NEck%20Wrap.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1993,
+      "h": 688
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Macabre%20HNM%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1066,
+    "h": 459
+  }
+}

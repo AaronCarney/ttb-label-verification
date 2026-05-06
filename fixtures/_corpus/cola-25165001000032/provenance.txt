@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25165001000032
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25165001000032
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Revised%20Full%20Ryde%20Front.png&filetype=l
+fetched_at: 2026-05-06T02:00:06Z

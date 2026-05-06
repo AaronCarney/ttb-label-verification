@@ -1,0 +1,32 @@
+{
+  "ttbid": "25174001000503",
+  "brand": "WEBB'S",
+  "fancyName": "GOLDEN REPUBLIC CALIFORNIA BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20379",
+  "serialNumber": "250002",
+  "approvalDate": "07/02/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=wgr-cola-2-front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2282,
+      "h": 2951
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=wgr-cola-2-back_2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1457,
+      "h": 1885
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=wgr-cola-2-front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2282,
+    "h": 2951
+  }
+}

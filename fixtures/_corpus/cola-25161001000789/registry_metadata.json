@@ -1,0 +1,38 @@
+{
+  "ttbid": "25161001000789",
+  "brand": "ECHO SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20177",
+  "serialNumber": "25SSMA",
+  "approvalDate": "06/12/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB%20Bourbon%20Front%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 609,
+      "h": 735
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Top%20Sticker%201x58.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 300,
+      "h": 1739
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB%20Bourbon%20Rear%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 538,
+      "h": 559
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB%20Bourbon%20Front%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 609,
+    "h": 735
+  }
+}

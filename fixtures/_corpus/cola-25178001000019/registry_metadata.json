@@ -1,0 +1,26 @@
+{
+  "ttbid": "25178001000019",
+  "brand": "CHEF LIFE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20146",
+  "serialNumber": "250011",
+  "approvalDate": "07/08/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CL-Rye%20Whiskey.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 685,
+      "h": 307
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CL-Rye%20Whiskey.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 685,
+    "h": 307
+  }
+}

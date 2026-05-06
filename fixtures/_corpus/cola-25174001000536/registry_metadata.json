@@ -1,0 +1,32 @@
+{
+  "ttbid": "25174001000536",
+  "brand": "TREATY OAK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-15028",
+  "serialNumber": "250002",
+  "approvalDate": "06/25/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TX%20Bourbon%20Whiskey%20front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1276,
+      "h": 726
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TX%20Bourbon%20Whiskey%20other.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1040,
+      "h": 350
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TX%20Bourbon%20Whiskey%20front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1276,
+    "h": 726
+  }
+}

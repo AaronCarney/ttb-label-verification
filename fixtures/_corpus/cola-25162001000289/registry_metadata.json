@@ -1,0 +1,32 @@
+{
+  "ttbid": "25162001000289",
+  "brand": "GRIDIRON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "20",
+  "permitNo": "DSP-IA-21021",
+  "serialNumber": "25ISU1",
+  "approvalDate": "06/12/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Gridiron_Front_Final.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 450,
+      "h": 563
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Gridiron_Back_Approval.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 900,
+      "h": 1125
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Gridiron_Front_Final.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 450,
+    "h": 563
+  }
+}

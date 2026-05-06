@@ -1,0 +1,44 @@
+{
+  "ttbid": "25175001000734",
+  "brand": "INVENTORS SPIRIT NO. 7",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20017",
+  "serialNumber": "250009",
+  "approvalDate": "07/07/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Inventors%20Bourbon%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 867,
+      "h": 1498
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blended%20Whiskey%20Tamper.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 319,
+      "h": 1547
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blended%20Whiskey%20Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1385,
+      "h": 330
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Inventors%20Bourbon%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 867,
+      "h": 1186
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Inventors%20Bourbon%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 867,
+    "h": 1498
+  }
+}

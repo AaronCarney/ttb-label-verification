@@ -1,0 +1,38 @@
+{
+  "ttbid": "25175001000124",
+  "brand": "HUNTER S. THOMPSON ESTATE",
+  "fancyName": "OWL FARM",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-15015",
+  "serialNumber": "250008",
+  "approvalDate": "06/25/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Owl%20Farm%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 600,
+      "h": 600
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Owl%20Farm%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 525,
+      "h": 600
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OWl%20Farm%20Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1314,
+      "h": 226
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Owl%20Farm%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 600,
+    "h": 600
+  }
+}

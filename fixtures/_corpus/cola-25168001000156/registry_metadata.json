@@ -1,0 +1,32 @@
+{
+  "ttbid": "25168001000156",
+  "brand": "LUCKY DICE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "TX-I-15481",
+  "serialNumber": "25DICE",
+  "approvalDate": "06/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1160,
+      "h": 696
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bourbon%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1003,
+      "h": 360
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1160,
+    "h": 696
+  }
+}

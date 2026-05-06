@@ -1,0 +1,38 @@
+{
+  "ttbid": "25160001000786",
+  "brand": "REDEMPTION",
+  "fancyName": "HIGH RYE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21029",
+  "serialNumber": "250014",
+  "approvalDate": "06/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Redemption%20High%20Rye%20Bourbon%20Front%20.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1457,
+      "h": 724
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Redemption%20High%20Rye%20Bourbon%20Neck%20.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1443,
+      "h": 191
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=high%20Rye%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1069,
+      "h": 628
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Redemption%20High%20Rye%20Bourbon%20Front%20.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1457,
+    "h": 724
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "25168001000055",
+  "brand": "BROWNE FAMILY SPIRITS",
+  "fancyName": "BARREL #042",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21105",
+  "serialNumber": "250004",
+  "approvalDate": "06/17/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_SafewayWAD32_BourbonWhiskey_FL-2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1700,
+      "h": 1020
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_SafewayWAD32_BourbonWhiskey_FL-1.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 2700,
+      "h": 1136
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_SafewayWAD32_BourbonWhiskey_BL.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1000,
+      "h": 595
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_SafewayWAD32_BourbonWhiskey_FL-2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1700,
+    "h": 1020
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25174001000558",
+  "brand": "TREATY OAK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-15028",
+  "serialNumber": "250003",
+  "approvalDate": "06/24/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SBR_BW_UPPER%20100P.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2395,
+      "h": 1354
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SBR_BW_BOTTOM%20100P.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 899,
+      "h": 363
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SBR_BW_UPPER%20100P.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2395,
+    "h": 1354
+  }
+}

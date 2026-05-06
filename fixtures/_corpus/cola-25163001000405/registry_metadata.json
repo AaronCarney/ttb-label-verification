@@ -1,0 +1,26 @@
+{
+  "ttbid": "25163001000405",
+  "brand": "S&S TRADITIONAL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-15006",
+  "serialNumber": "25SS11",
+  "approvalDate": "06/12/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SS%20Traditional%20KY%20Bourbon%20Whiskey.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2024,
+      "h": 2386
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SS%20Traditional%20KY%20Bourbon%20Whiskey.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2024,
+    "h": 2386
+  }
+}

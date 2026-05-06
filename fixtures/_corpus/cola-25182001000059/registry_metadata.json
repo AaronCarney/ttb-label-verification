@@ -1,0 +1,38 @@
+{
+  "ttbid": "25182001000059",
+  "brand": "ECHO SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20067",
+  "serialNumber": "25PICK",
+  "approvalDate": "07/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Barrel%20Select%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1222,
+      "h": 1468
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Top%20Sticker%201x58.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 300,
+      "h": 1739
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Barrel%20Select%20Rear.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 531,
+      "h": 562
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Barrel%20Select%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1222,
+    "h": 1468
+  }
+}

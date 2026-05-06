@@ -1,0 +1,38 @@
+{
+  "ttbid": "25182001000809",
+  "brand": "STRAIGHT AMERICAN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-15028",
+  "serialNumber": "250002",
+  "approvalDate": "07/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2483,
+      "h": 911
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 857,
+      "h": 719
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Necker.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1534,
+      "h": 480
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2483,
+    "h": 911
+  }
+}

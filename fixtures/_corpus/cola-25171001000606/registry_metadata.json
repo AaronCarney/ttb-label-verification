@@ -1,0 +1,26 @@
+{
+  "ttbid": "25171001000606",
+  "brand": "CATHRINE WALDSCHMIDT",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20043",
+  "serialNumber": "252020",
+  "approvalDate": "06/25/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CD_CatherineWaldschmidt_8_V2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1129,
+      "h": 890
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CD_CatherineWaldschmidt_8_V2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1129,
+    "h": 890
+  }
+}
