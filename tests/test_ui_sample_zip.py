@@ -97,3 +97,81 @@ def test_upload_page_links_to_sample_zip(client: TestClient) -> None:
     response = client.get("/batches")
     assert response.status_code == 200
     assert "/batches/sample.zip" in response.text
+
+
+def test_sample_zip_falls_back_to_github_raw_when_disk_missing(
+    client: TestClient, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """On HF Space the corpus jpgs aren't bundled (binary-blob policy), so
+    the endpoint must fetch from GitHub raw at request time."""
+    from app.api import ui
+
+    fake_jpeg = b"\xff\xd8\xff\xe0fake"
+    fetched_urls: list[str] = []
+
+    def fake_urlopen(url, timeout=10):
+        fetched_urls.append(url)
+
+        class FakeResp:
+            status = 200
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                pass
+
+            def read(self):
+                return fake_jpeg
+
+        return FakeResp()
+
+    # Disable disk path: point the active-corpus root at a tmp dir with no jpgs
+    import tempfile
+    tmp = Path(tempfile.mkdtemp())
+    active_path = tmp / "_active.txt"
+    active_path.write_text("cola-21210001000878\ncola-22032001001017\n")
+    monkeypatch.setattr(ui, "_ACTIVE_CORPUS_PATH", active_path)
+    import urllib.request
+    monkeypatch.setattr(urllib.request, "urlopen", fake_urlopen)
+
+    response = client.get("/batches/sample.zip?n=2")
+    assert response.status_code == 200
+
+    z = zipfile.ZipFile(io.BytesIO(response.content))
+    names = z.namelist()
+    assert len(names) == 2
+    for n in names:
+        assert z.read(n) == fake_jpeg
+    # Both ttbids fetched from the GitHub raw base
+    assert all(
+        "raw.githubusercontent.com/AaronCarney/ttb-label-verification" in u
+        for u in fetched_urls
+    )
+
+
+def test_sample_zip_skips_entries_when_both_disk_and_remote_fail(
+    client: TestClient, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """If a label can't be sourced anywhere (corrupted active list, GH down),
+    skip it — don't 500. Caller still gets a usable zip with whatever we
+    could fetch."""
+    from app.api import ui
+    import tempfile
+    import urllib.error
+
+    tmp = Path(tempfile.mkdtemp())
+    active_path = tmp / "_active.txt"
+    active_path.write_text("cola-99999999999999\n")  # bogus, not on disk
+    monkeypatch.setattr(ui, "_ACTIVE_CORPUS_PATH", active_path)
+
+    def always_fail(url, timeout=10):
+        raise urllib.error.URLError("offline")
+
+    import urllib.request
+    monkeypatch.setattr(urllib.request, "urlopen", always_fail)
+
+    response = client.get("/batches/sample.zip?n=1")
+    assert response.status_code == 200
+    z = zipfile.ZipFile(io.BytesIO(response.content))
+    assert z.namelist() == []  # nothing fetched, but request still succeeds

@@ -300,12 +300,37 @@ async def batches_upload_page(
 _ACTIVE_CORPUS_PATH = (
     Path(__file__).resolve().parent.parent.parent / "fixtures" / "_corpus" / "_active.txt"
 )
+# GitHub raw URL prefix for fetching label binaries when the deployed Space
+# doesn't bundle them locally. HF Space's pre-receive hook rejects bare binary
+# blobs (they want Xet), so the deploy ships app + _active.txt only and
+# fetches images from origin at sample-zip request time.
+_CORPUS_RAW_BASE = (
+    "https://raw.githubusercontent.com/AaronCarney/ttb-label-verification/main/fixtures/_corpus"
+)
 
 
 def _load_active_ttbids() -> list[str]:
     if not _ACTIVE_CORPUS_PATH.is_file():
         return []
     return [line.strip() for line in _ACTIVE_CORPUS_PATH.read_text().splitlines() if line.strip()]
+
+
+def _read_label_bytes(ttbid_dirname: str) -> bytes | None:
+    """Return the JPEG bytes for one ttbid, preferring local disk (dev /
+    GitHub clone) and falling back to GitHub raw (HF Space deploy)."""
+    local = _ACTIVE_CORPUS_PATH.parent / ttbid_dirname / "label.jpg"
+    if local.is_file():
+        return local.read_bytes()
+    import urllib.error
+    import urllib.request
+    url = f"{_CORPUS_RAW_BASE}/{ttbid_dirname}/label.jpg"
+    try:
+        with urllib.request.urlopen(url, timeout=10) as resp:
+            if resp.status != 200:
+                return None
+            return resp.read()
+    except (urllib.error.URLError, TimeoutError):
+        return None
 
 
 @router.get("/batches/sample.zip")
@@ -316,6 +341,10 @@ async def batches_sample_zip(n: int = 10) -> Response:
     Registry labels without needing their own files: download → drop into
     the upload form on /batches → real worker runs through the same code
     path a production caller would hit.
+
+    Image bytes come from local disk if present (dev / GitHub clone) or
+    GitHub raw at request time (HF Space deploy, where the corpus isn't
+    bundled).
     """
     if n <= 0:
         return Response(
@@ -339,15 +368,13 @@ async def batches_sample_zip(n: int = 10) -> Response:
     take = min(n, len(active))
     chosen = random.sample(active, take)
 
-    corpus_root = _ACTIVE_CORPUS_PATH.parent
     buf = io.BytesIO()
     with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
         for ttbid_dirname in chosen:
-            label_path = corpus_root / ttbid_dirname / "label.jpg"
-            if not label_path.is_file():
+            body = _read_label_bytes(ttbid_dirname)
+            if body is None:
                 continue
-            arcname = f"{ttbid_dirname}.jpg"
-            zf.write(label_path, arcname=arcname)
+            zf.writestr(f"{ttbid_dirname}.jpg", body)
     buf.seek(0)
     return Response(
         content=buf.getvalue(),
