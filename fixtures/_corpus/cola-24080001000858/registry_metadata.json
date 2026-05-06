@@ -1,0 +1,38 @@
+{
+  "ttbid": "24080001000858",
+  "brand": "THE DAY DRINKER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-15028",
+  "serialNumber": "240002",
+  "approvalDate": "04/02/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=750%20ml%20Day%20Drinker%20Bourbon%2080p%20lbl%20art.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 740,
+      "h": 776
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=750%20ml%20Day%20Drinker%20Bourbon%2080p%20back%20lbl%20art.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1110,
+      "h": 1164
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=750%20ml%20Silver%20tamper%20strip.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1128,
+      "h": 220
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=750%20ml%20Day%20Drinker%20Bourbon%2080p%20lbl%20art.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 740,
+    "h": 776
+  }
+}

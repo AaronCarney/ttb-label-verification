@@ -1,0 +1,38 @@
+{
+  "ttbid": "24067001000281",
+  "brand": "FALLEN OAK DISTILLING",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20080",
+  "serialNumber": "240001",
+  "approvalDate": "03/28/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20F.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 602,
+      "h": 602
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20C.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1071,
+      "h": 103
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%201%20state.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2190,
+      "h": 2528
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20F.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 602,
+    "h": 602
+  }
+}

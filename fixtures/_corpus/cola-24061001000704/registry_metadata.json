@@ -1,0 +1,26 @@
+{
+  "ttbid": "24061001000704",
+  "brand": "COPPER COLLAR",
+  "fancyName": "BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20027",
+  "serialNumber": "249000",
+  "approvalDate": "03/20/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Copper%20Collar.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1937,
+      "h": 968
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Copper%20Collar.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1937,
+    "h": 968
+  }
+}

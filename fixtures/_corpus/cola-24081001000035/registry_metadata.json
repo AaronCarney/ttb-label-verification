@@ -1,0 +1,32 @@
+{
+  "ttbid": "24081001000035",
+  "brand": "PATRIOTIC SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "20",
+  "permitNo": "DSP-IA-21003",
+  "serialNumber": "243455",
+  "approvalDate": "04/11/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 996,
+      "h": 1402
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 786,
+      "h": 834
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 996,
+    "h": 1402
+  }
+}

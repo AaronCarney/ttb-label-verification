@@ -1,0 +1,32 @@
+{
+  "ttbid": "24080001000429",
+  "brand": "B2 TEAMWORK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "24B2TW",
+  "approvalDate": "04/01/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=B2%20Teamwork%20front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 657,
+      "h": 878
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=b2%20teamwork%20back%20.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 516,
+      "h": 680
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=B2%20Teamwork%20front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 657,
+    "h": 878
+  }
+}

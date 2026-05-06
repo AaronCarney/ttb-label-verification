@@ -1,0 +1,32 @@
+{
+  "ttbid": "24073001000159",
+  "brand": "BIRDSEYE HOLLOW",
+  "fancyName": "SINGLE BARREL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21271",
+  "serialNumber": "2424-9",
+  "approvalDate": "04/09/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Birdseye_750_SingleBarrelWheatedBourbon-FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2551,
+      "h": 3301
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Birdseye_750_SingleBarrelWheatedBourbon-BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2551,
+      "h": 3301
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Birdseye_750_SingleBarrelWheatedBourbon-FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2551,
+    "h": 3301
+  }
+}

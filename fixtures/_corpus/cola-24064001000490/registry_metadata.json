@@ -1,0 +1,32 @@
+{
+  "ttbid": "24064001000490",
+  "brand": "FLOYD'S",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-15026",
+  "serialNumber": "240023",
+  "approvalDate": "03/08/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Floys%20B%20sub%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1654,
+      "h": 2198
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Floyds%20B%20sub%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1622,
+      "h": 2193
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Floys%20B%20sub%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1654,
+    "h": 2198
+  }
+}

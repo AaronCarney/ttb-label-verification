@@ -1,0 +1,26 @@
+{
+  "ttbid": "24063001000056",
+  "brand": "DEEP ROOTS DISTILLERY USA",
+  "fancyName": "CASK CLUB",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "26",
+  "permitNo": "DSP-MA-21059",
+  "serialNumber": "24CCBW",
+  "approvalDate": "03/20/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cask%20Club%20Bourbon%20Label%2090%20proof.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3542,
+      "h": 1855
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cask%20Club%20Bourbon%20Label%2090%20proof.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3542,
+    "h": 1855
+  }
+}

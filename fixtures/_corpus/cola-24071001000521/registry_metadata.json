@@ -1,0 +1,32 @@
+{
+  "ttbid": "24071001000521",
+  "brand": "WISE MEN DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20084",
+  "serialNumber": "243001",
+  "approvalDate": "03/28/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20-%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1800,
+      "h": 920
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Goverment%20Warning%20Label%20Pint%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2601,
+      "h": 737
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20-%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1800,
+    "h": 920
+  }
+}

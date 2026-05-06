@@ -1,0 +1,26 @@
+{
+  "ttbid": "24081001000411",
+  "brand": "TALL PINES DISTILLERY",
+  "fancyName": "WOODLAND RESERVE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20048",
+  "serialNumber": "240003",
+  "approvalDate": "04/04/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Woodland%20Reserve%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 848,
+      "h": 1139
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Woodland%20Reserve%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 848,
+    "h": 1139
+  }
+}

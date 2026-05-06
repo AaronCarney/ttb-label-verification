@@ -1,0 +1,32 @@
+{
+  "ttbid": "24059001000061",
+  "brand": "ODYSEA",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20073",
+  "serialNumber": "242001",
+  "approvalDate": "03/04/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=odysea_bourbon_label_front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1259,
+      "h": 1831
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=odysea_bourbon_label_back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1259,
+      "h": 1220
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=odysea_bourbon_label_front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1259,
+    "h": 1831
+  }
+}

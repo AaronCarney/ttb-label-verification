@@ -1,0 +1,26 @@
+{
+  "ttbid": "24074001000826",
+  "brand": "DISOBEDIENT SPIRITS",
+  "fancyName": "FORT NECESSITY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20011",
+  "serialNumber": "240314",
+  "approvalDate": "03/20/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FortNecessity_314.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 839,
+      "h": 1359
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FortNecessity_314.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 839,
+    "h": 1359
+  }
+}

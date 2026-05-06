@@ -1,0 +1,44 @@
+{
+  "ttbid": "24068001000798",
+  "brand": "YELLOW ROSE DISTILLING",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20049",
+  "serialNumber": "240013",
+  "approvalDate": "03/18/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=YRD%20brand.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2112,
+      "h": 1488
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OUTLAW%20FRONT%20USA.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1024,
+      "h": 529
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OUTLAW%20BACK%20USA.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1024,
+      "h": 544
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PAW%20Rye%20Outlaw%20Necker.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 878,
+      "h": 386
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=YRD%20brand.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2112,
+    "h": 1488
+  }
+}

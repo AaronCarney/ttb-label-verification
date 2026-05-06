@@ -1,0 +1,26 @@
+{
+  "ttbid": "24066001000939",
+  "brand": "CULTIVATED COCKTAILS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21042",
+  "serialNumber": "24TKU1",
+  "approvalDate": "03/18/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CCD-TK-BourbonWhisky-v1-750mL-Label-20240315.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3450,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CCD-TK-BourbonWhisky-v1-750mL-Label-20240315.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3450,
+    "h": 1200
+  }
+}

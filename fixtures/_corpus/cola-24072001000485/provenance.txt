@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24072001000485
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24072001000485
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=matunuckbourbonwhiskey.png&filetype=l
+fetched_at: 2026-05-06T01:03:58Z

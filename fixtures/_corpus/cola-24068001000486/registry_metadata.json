@@ -1,0 +1,38 @@
+{
+  "ttbid": "24068001000486",
+  "brand": "JESSE JAMES",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21009",
+  "serialNumber": "240001",
+  "approvalDate": "03/29/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front.JPG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1095,
+      "h": 894
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 438,
+      "h": 663
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Neck.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 3141,
+      "h": 2061
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front.JPG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1095,
+    "h": 894
+  }
+}

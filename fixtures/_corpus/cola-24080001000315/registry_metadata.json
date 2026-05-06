@@ -1,0 +1,32 @@
+{
+  "ttbid": "24080001000315",
+  "brand": "TEN RUNNER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20011",
+  "serialNumber": "242003",
+  "approvalDate": "04/02/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TenRunnerLabelFront1.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2192,
+      "h": 2569
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TenRunner-Label-Back-%20High%20Res.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2134,
+      "h": 991
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TenRunnerLabelFront1.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2192,
+    "h": 2569
+  }
+}

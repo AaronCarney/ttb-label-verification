@@ -1,0 +1,38 @@
+{
+  "ttbid": "24062001000158",
+  "brand": "COPPER COLLAR",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20109",
+  "serialNumber": "240002",
+  "approvalDate": "03/19/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1228,
+      "h": 2265
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back%20label.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 716,
+      "h": 1084
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=top%20strap.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 222,
+      "h": 1343
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1228,
+    "h": 2265
+  }
+}

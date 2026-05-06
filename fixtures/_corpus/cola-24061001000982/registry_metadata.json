@@ -1,0 +1,32 @@
+{
+  "ttbid": "24061001000982",
+  "brand": "THE GENTLEMAN'S BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20032",
+  "serialNumber": "240301",
+  "approvalDate": "03/12/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front_2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1088,
+      "h": 1088
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1088,
+      "h": 1088
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front_2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1088,
+    "h": 1088
+  }
+}

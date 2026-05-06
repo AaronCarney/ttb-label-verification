@@ -1,0 +1,32 @@
+{
+  "ttbid": "24058001001166",
+  "brand": "AMBASSADOR BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20118",
+  "serialNumber": "240003",
+  "approvalDate": "03/04/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rambassador.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1449,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=backlabe.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1171,
+      "h": 826
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rambassador.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1449,
+    "h": 1200
+  }
+}

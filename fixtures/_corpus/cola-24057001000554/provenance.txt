@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24057001000554
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24057001000554
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DCD%20Final%20Bootleg%20Labels%20-%20Finch%20Forever%20Gilded%20Age%20Bourbon.jpg&filetype=l
+fetched_at: 2026-05-06T01:01:46Z

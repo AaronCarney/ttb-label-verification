@@ -1,0 +1,32 @@
+{
+  "ttbid": "24067001000551",
+  "brand": "SEVEN BRIDGES GOLF CLUB",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-15026",
+  "serialNumber": "240027",
+  "approvalDate": "03/15/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Seven%20Bridge%20B%20Sub%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1661,
+      "h": 2209
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Seven%20Bridges%20B%20Sub%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1651,
+      "h": 2203
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Seven%20Bridge%20B%20Sub%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1661,
+    "h": 2209
+  }
+}

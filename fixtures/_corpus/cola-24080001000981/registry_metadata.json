@@ -1,0 +1,26 @@
+{
+  "ttbid": "24080001000981",
+  "brand": "TOWN'S END",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20245",
+  "serialNumber": "242026",
+  "approvalDate": "04/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Small%20Batch%20Bourbon%20TE.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1000,
+      "h": 521
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Small%20Batch%20Bourbon%20TE.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1000,
+    "h": 521
+  }
+}

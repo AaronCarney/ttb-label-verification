@@ -1,0 +1,38 @@
+{
+  "ttbid": "24065001000071",
+  "brand": "THE SPIRIT OF SERVICE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20016",
+  "serialNumber": "240009",
+  "approvalDate": "03/12/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2024%20Ken%20Bottle%20Front%20575x375.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1194,
+      "h": 1980
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2024%20Ken%20Bottle%20Back%20375x375.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1238,
+      "h": 1206
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2024%20Ken%20Bottle%20Strip%207x075.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 302,
+      "h": 2128
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2024%20Ken%20Bottle%20Front%20575x375.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1194,
+    "h": 1980
+  }
+}

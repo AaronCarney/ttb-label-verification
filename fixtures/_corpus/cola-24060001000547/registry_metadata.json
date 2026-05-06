@@ -1,0 +1,26 @@
+{
+  "ttbid": "24060001000547",
+  "brand": "CINCINNATI DISTILLING",
+  "fancyName": "HYDE PARK SQUARE RESERVE BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20043",
+  "serialNumber": "240015",
+  "approvalDate": "03/07/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CD-HydeParkSquareReserve-Label-Draft.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2500,
+      "h": 909
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CD-HydeParkSquareReserve-Label-Draft.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2500,
+    "h": 909
+  }
+}
