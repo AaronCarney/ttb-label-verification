@@ -1,0 +1,32 @@
+{
+  "ttbid": "24093001000624",
+  "brand": "BARNSTORMER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20046",
+  "serialNumber": "240402",
+  "approvalDate": "04/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Barnstormer%20Bourbon%20barrel%20proof%20navy-01.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2475,
+      "h": 1362
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Barnstormer%20Bourbon%20Necker.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1725,
+      "h": 346
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Barnstormer%20Bourbon%20barrel%20proof%20navy-01.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2475,
+    "h": 1362
+  }
+}

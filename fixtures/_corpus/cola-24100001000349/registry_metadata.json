@@ -1,0 +1,26 @@
+{
+  "ttbid": "24100001000349",
+  "brand": "MOMENTUM BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21116",
+  "serialNumber": "240012",
+  "approvalDate": "05/01/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBONTTB3.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 789,
+      "h": 302
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBONTTB3.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 789,
+    "h": 302
+  }
+}

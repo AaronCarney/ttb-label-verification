@@ -1,0 +1,32 @@
+{
+  "ttbid": "24100001000755",
+  "brand": "SHADY MILE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20049",
+  "serialNumber": "240020",
+  "approvalDate": "04/18/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Shady%20mile%20wheat%20brand%202024.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 480,
+      "h": 681
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Shady%20mile%20wheat%20back%202024.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 586,
+      "h": 353
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Shady%20mile%20wheat%20brand%202024.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 480,
+    "h": 681
+  }
+}

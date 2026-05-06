@@ -1,0 +1,26 @@
+{
+  "ttbid": "24088001000666",
+  "brand": "WATERMARK BREWING CO.",
+  "fancyName": "MONSTERA BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20134",
+  "serialNumber": "240011",
+  "approvalDate": "04/16/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=whiskey%20ttb.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2236,
+      "h": 1704
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=whiskey%20ttb.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2236,
+    "h": 1704
+  }
+}

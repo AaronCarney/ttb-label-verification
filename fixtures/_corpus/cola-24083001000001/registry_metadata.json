@@ -1,0 +1,38 @@
+{
+  "ttbid": "24083001000001",
+  "brand": "PRESERVATION",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20040",
+  "serialNumber": "240322",
+  "approvalDate": "04/03/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PRESERVATION%20BOURBON-%20FACE.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 700,
+      "h": 1708
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PRESERVATION%20BOURBON-%20NECK.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 800,
+      "h": 370
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PRESERVATION%20BOURBON-UPC.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 476,
+      "h": 286
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PRESERVATION%20BOURBON-%20FACE.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 700,
+    "h": 1708
+  }
+}

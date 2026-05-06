@@ -1,0 +1,32 @@
+{
+  "ttbid": "24100001000747",
+  "brand": "SHADY MILE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20049",
+  "serialNumber": "240019",
+  "approvalDate": "04/18/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Shady%20mile%20rye%20brand%202024.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 476,
+      "h": 667
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Shady%20mile%20rye%20back%202024.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 581,
+      "h": 345
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Shady%20mile%20rye%20brand%202024.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 476,
+    "h": 667
+  }
+}

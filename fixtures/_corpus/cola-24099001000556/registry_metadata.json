@@ -1,0 +1,32 @@
+{
+  "ttbid": "24099001000556",
+  "brand": "OATH",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "24OWKB",
+  "approvalDate": "05/01/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=revised%20OATH%20front%20.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1000,
+      "h": 1327
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=revised%20oath%20back%20w%20.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1000,
+      "h": 1095
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=revised%20OATH%20front%20.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1000,
+    "h": 1327
+  }
+}

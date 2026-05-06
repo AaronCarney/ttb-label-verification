@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24087001000923
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24087001000923
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Holiday%20Select%20RWB%20v3.jpeg&filetype=l
+fetched_at: 2026-05-06T01:06:38Z

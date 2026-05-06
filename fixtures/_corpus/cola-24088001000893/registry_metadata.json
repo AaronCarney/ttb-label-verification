@@ -1,0 +1,38 @@
+{
+  "ttbid": "24088001000893",
+  "brand": "SINGULAR RESERVE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20126",
+  "serialNumber": "240004",
+  "approvalDate": "04/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FS_SRandSS_front_top.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2000,
+      "h": 2743
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FS_SR_Front_Bottom_RaggedBranch_Bourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1968,
+      "h": 716
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FS_SSandSR_Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 972,
+      "h": 1730
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FS_SRandSS_front_top.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2000,
+    "h": 2743
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "24096001000910",
+  "brand": "SINGLE BARREL BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "14",
+  "permitNo": "DSP-CT-21018",
+  "serialNumber": "240032",
+  "approvalDate": "04/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SingleBarrelBourbon375_TTB%204-5-24.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1850,
+      "h": 963
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SingleBarrelBourbon375_TTB%204-5-24.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1850,
+    "h": 963
+  }
+}

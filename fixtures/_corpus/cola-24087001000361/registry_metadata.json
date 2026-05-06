@@ -1,0 +1,26 @@
+{
+  "ttbid": "24087001000361",
+  "brand": "CINCINNATI DISTILLING",
+  "fancyName": "HARRISON RESERVE BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20043",
+  "serialNumber": "240018",
+  "approvalDate": "04/09/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CD-HarrisonHyperLocalBourbon-Label-Draft-V2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2500,
+      "h": 909
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CD-HarrisonHyperLocalBourbon-Label-Draft-V2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2500,
+    "h": 909
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "24082001000699",
+  "brand": "CAPTAIN'S TABLE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-15089",
+  "serialNumber": "240005",
+  "approvalDate": "04/03/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=STS_CTBatch3Front6intall1in%20wide.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 363,
+      "h": 2200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=STSCTBack6intall587in%20wide.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 216,
+      "h": 2200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Captains%20Table%20Delta123W2H.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 300,
+      "h": 476
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=STS_CTBatch3Front6intall1in%20wide.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 363,
+    "h": 2200
+  }
+}

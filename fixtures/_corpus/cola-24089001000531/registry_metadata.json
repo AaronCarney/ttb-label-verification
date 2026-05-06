@@ -1,0 +1,44 @@
+{
+  "ttbid": "24089001000531",
+  "brand": "SHELTER DISTILLING",
+  "fancyName": "SINGLE BARREL COLORADO BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20165",
+  "serialNumber": "241103",
+  "approvalDate": "04/11/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 922,
+      "h": 1836
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%201.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 462,
+      "h": 923
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%202.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 902,
+      "h": 1460
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%203.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 176,
+      "h": 2000
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 922,
+    "h": 1836
+  }
+}

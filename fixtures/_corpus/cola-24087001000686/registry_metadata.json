@@ -1,0 +1,32 @@
+{
+  "ttbid": "24087001000686",
+  "brand": "HAYNER DISTILLING",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20090",
+  "serialNumber": "243274",
+  "approvalDate": "04/09/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=barrel%20proof%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2663,
+      "h": 2513
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=barrel%20proof%20rear.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1377,
+      "h": 1338
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=barrel%20proof%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2663,
+    "h": 2513
+  }
+}

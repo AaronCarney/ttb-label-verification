@@ -1,0 +1,32 @@
+{
+  "ttbid": "24095001000513",
+  "brand": "JACKALOPE BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20153",
+  "serialNumber": "240001",
+  "approvalDate": "04/26/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=jackalope%20label.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 575,
+      "h": 318
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back%20of%20label.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 574,
+      "h": 315
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=jackalope%20label.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 575,
+    "h": 318
+  }
+}

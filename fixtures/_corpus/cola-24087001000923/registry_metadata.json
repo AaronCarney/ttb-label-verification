@@ -1,0 +1,50 @@
+{
+  "ttbid": "24087001000923",
+  "brand": "BORCHETTA BOURBON",
+  "fancyName": "HOLIDAY SELECT 2024",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21052",
+  "serialNumber": "24BB04",
+  "approvalDate": "04/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Holiday%20Select%20RWB%20v3.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1999,
+      "h": 934
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Borchetta%20Bourbon%20Holiday_Tamper%20Strip-COLA.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 300,
+      "h": 1425
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Borchetta%20Bourbon%20Holiday-Back%20Label-COLA.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 900,
+      "h": 1650
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Borchetta%20Bourbon%20Holiday-Neck%20Label-COLA.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1261,
+      "h": 348
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Stamp%20File.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1200,
+      "h": 900
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Holiday%20Select%20RWB%20v3.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1999,
+    "h": 934
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24097001000022",
+  "brand": "WHITE BISON RANCH",
+  "fancyName": "RYE BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20098",
+  "serialNumber": "242100",
+  "approvalDate": "05/08/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WBR%20Label.JPG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1313,
+      "h": 757
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WBR%20Tamper.JPG&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1339,
+      "h": 571
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WBR%20Label.JPG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1313,
+    "h": 757
+  }
+}

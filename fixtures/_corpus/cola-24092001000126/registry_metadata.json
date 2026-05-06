@@ -1,0 +1,32 @@
+{
+  "ttbid": "24092001000126",
+  "brand": "WHISPERING RANCH BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20212",
+  "serialNumber": "240412",
+  "approvalDate": "04/15/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1240,
+      "h": 1320
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 772,
+      "h": 908
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1240,
+    "h": 1320
+  }
+}

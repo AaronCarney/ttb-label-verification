@@ -1,0 +1,38 @@
+{
+  "ttbid": "24085001000822",
+  "brand": "BREAK WATER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20044",
+  "serialNumber": "24C025",
+  "approvalDate": "04/16/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Breakwater%20Bourbon%20Front%20Label%20V2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1255,
+      "h": 1854
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Breakwater%20Bourbon%20Back%20Label%20V2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 892,
+      "h": 1513
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Breakwater%20Bourbon%20Tamper%20strip.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 362,
+      "h": 1543
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Breakwater%20Bourbon%20Front%20Label%20V2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1255,
+    "h": 1854
+  }
+}

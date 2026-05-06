@@ -1,0 +1,38 @@
+{
+  "ttbid": "24106001000954",
+  "brand": "REDEMPTION",
+  "fancyName": "WHEATED BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-TN-21029",
+  "serialNumber": "240019",
+  "approvalDate": "04/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Brand%2037%20x%2030.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1117,
+      "h": 899
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back%20238%20x%20185.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1068,
+      "h": 831
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Strip%2057%20x%2006.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1734,
+      "h": 176
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Brand%2037%20x%2030.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1117,
+    "h": 899
+  }
+}

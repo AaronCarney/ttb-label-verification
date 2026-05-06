@@ -1,0 +1,32 @@
+{
+  "ttbid": "24087001001160",
+  "brand": "SALT FLATS",
+  "fancyName": "BONNEVILLE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "45",
+  "permitNo": "DSP-UT-20018",
+  "serialNumber": "247841",
+  "approvalDate": "04/11/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ttb%20front%20bonneville.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1087,
+      "h": 1094
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Bonneville%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1075,
+      "h": 2085
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ttb%20front%20bonneville.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1087,
+    "h": 1094
+  }
+}

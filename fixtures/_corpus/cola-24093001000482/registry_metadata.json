@@ -1,0 +1,32 @@
+{
+  "ttbid": "24093001000482",
+  "brand": "ELEVEN SQUARE",
+  "fancyName": "MASH BILL #4",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-15020",
+  "serialNumber": "240009",
+  "approvalDate": "05/14/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=west_end_distillery_labels_2024_mash_4_front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 900,
+      "h": 1500
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lowback4.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 393,
+      "h": 651
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=west_end_distillery_labels_2024_mash_4_front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 900,
+    "h": 1500
+  }
+}

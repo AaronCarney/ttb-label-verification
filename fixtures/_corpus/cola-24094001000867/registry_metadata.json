@@ -1,0 +1,32 @@
+{
+  "ttbid": "24094001000867",
+  "brand": "RARE CHARACTER",
+  "fancyName": "SINGLE BARREL SERIES",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20123",
+  "serialNumber": "24BTN3",
+  "approvalDate": "04/15/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RC_375ML_FRONT%201.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 621,
+      "h": 931
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=375%20TN%20BACK.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1256,
+      "h": 1873
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RC_375ML_FRONT%201.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 621,
+    "h": 931
+  }
+}

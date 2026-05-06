@@ -1,0 +1,26 @@
+{
+  "ttbid": "24086001000504",
+  "brand": "BLACK BEAVER WARS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21002",
+  "serialNumber": "24BB01",
+  "approvalDate": "04/11/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black%20Beaver%20Wars%20Bourbon%20Label%20_Page_1.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1670,
+      "h": 668
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black%20Beaver%20Wars%20Bourbon%20Label%20_Page_1.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1670,
+    "h": 668
+  }
+}

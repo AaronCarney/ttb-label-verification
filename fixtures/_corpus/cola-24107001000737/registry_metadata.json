@@ -1,0 +1,32 @@
+{
+  "ttbid": "24107001000737",
+  "brand": "BATTLEGROUND SPIRITS",
+  "fancyName": "5 STAR BOURBON WHISKEY - UNFILTERED UNCUT - SINGLE BARREL - CASK STRENGTH",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20092",
+  "serialNumber": "240643",
+  "approvalDate": "05/01/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ApprovOLow_031424_750ML_SingleBarrel5StarBourbon-FRONT-NEW.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1038,
+      "h": 1050
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ApprovOLow_031424_750ML_SingleBarrel5StarBourbon-BACK-NEW.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1215,
+      "h": 1050
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ApprovOLow_031424_750ML_SingleBarrel5StarBourbon-FRONT-NEW.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1038,
+    "h": 1050
+  }
+}

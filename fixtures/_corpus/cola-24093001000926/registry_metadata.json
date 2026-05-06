@@ -1,0 +1,32 @@
+{
+  "ttbid": "24093001000926",
+  "brand": "BIG BEAR'S",
+  "fancyName": "BATCH NO. 1",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-15018",
+  "serialNumber": "242409",
+  "approvalDate": "04/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BigBearsBourbonFrontLabelTTB.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 450,
+      "h": 487
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BigBearsBourbonBackLabelTTB2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 900,
+      "h": 975
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BigBearsBourbonFrontLabelTTB.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 450,
+    "h": 487
+  }
+}

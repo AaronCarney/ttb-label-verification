@@ -1,0 +1,32 @@
+{
+  "ttbid": "24087001000875",
+  "brand": "TIMBER-TOWERED BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20121",
+  "serialNumber": "240001",
+  "approvalDate": "04/11/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TIMBER%20TOWER%20-%20FINAL%2090%20-%20BARREL%201.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 808,
+      "h": 2190
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TIMBER%20TOWER%20-%20BACK%20COPY%20-%20TTB%20CORRECTED.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 808,
+      "h": 2190
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TIMBER%20TOWER%20-%20FINAL%2090%20-%20BARREL%201.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 808,
+    "h": 2190
+  }
+}

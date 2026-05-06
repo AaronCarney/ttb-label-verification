@@ -1,0 +1,32 @@
+{
+  "ttbid": "24101001000355",
+  "brand": "DUCKEES DRIVE THRU",
+  "fancyName": "TABLE ROCK LAKE BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-15018",
+  "serialNumber": "242411",
+  "approvalDate": "05/03/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DuckeesTableRockLakeBourbonFront_TTB4.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 825,
+      "h": 1125
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DuckeesTableRockLakeBourbonBack_TTB4.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 825,
+      "h": 1169
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DuckeesTableRockLakeBourbonFront_TTB4.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 825,
+    "h": 1125
+  }
+}

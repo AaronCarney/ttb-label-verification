@@ -1,0 +1,32 @@
+{
+  "ttbid": "24094001001073",
+  "brand": "FIRESIDE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-15029",
+  "serialNumber": "240001",
+  "approvalDate": "04/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Stratv3.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1442,
+      "h": 290
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Stratback%20v8.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 970,
+      "h": 211
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Stratv3.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1442,
+    "h": 290
+  }
+}

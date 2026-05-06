@@ -1,0 +1,32 @@
+{
+  "ttbid": "24093001000978",
+  "brand": "BATCH HOUSE DISTILLERY",
+  "fancyName": "SINGLE BARREL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20050",
+  "serialNumber": "24BH01",
+  "approvalDate": "04/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BatchHouse_Label_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 750,
+      "h": 1425
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BatchHouse%20Back3.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 750,
+      "h": 1425
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BatchHouse_Label_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 750,
+    "h": 1425
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "ttbid": "24081001000898",
+  "brand": "SHELTER DISTILLING",
+  "fancyName": "SHELTER SMALL BATCH BLUE CORN BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20165",
+  "serialNumber": "241104",
+  "approvalDate": "04/02/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SmalBatchFront.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1432,
+      "h": 2826
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SSMBBCBInside.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 618,
+      "h": 1248
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SSBBCBBack.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 608,
+      "h": 972
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%2012.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 190,
+      "h": 2166
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SmalBatchFront.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1432,
+    "h": 2826
+  }
+}

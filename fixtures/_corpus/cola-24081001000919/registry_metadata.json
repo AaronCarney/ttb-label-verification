@@ -1,0 +1,44 @@
+{
+  "ttbid": "24081001000919",
+  "brand": "BORCHETTA BOURBON",
+  "fancyName": "SMALL BATCH RESERVE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21003",
+  "serialNumber": "24BB02",
+  "approvalDate": "04/08/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20SB%20Reserve_Screen%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 863,
+      "h": 1238
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20SB%20Reserve_Label%20Body.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2400,
+      "h": 338
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20SB%20Reserve_Label%20Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1200,
+      "h": 375
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20SB%20Reserve_Screen%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 863,
+      "h": 1238
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20SB%20Reserve_Screen%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 863,
+    "h": 1238
+  }
+}
