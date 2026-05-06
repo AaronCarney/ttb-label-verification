@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 26114001000243
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=26114001000243
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TFJ_Jones-House-Straight-Bourbon_750ml_front_042926%20copy.png&filetype=l
+fetched_at: 2026-05-06T02:41:11Z

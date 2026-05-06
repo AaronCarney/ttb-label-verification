@@ -1,0 +1,32 @@
+{
+  "ttbid": "26091001000151",
+  "brand": "ALFALFA FARM CELLARS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "26",
+  "permitNo": "DSP-MA-21090",
+  "serialNumber": "261118",
+  "approvalDate": "04/08/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AF%20bourbon%20whiskey%20front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1650,
+      "h": 2550
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AF%20bourbon%20whiskey%20back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1650,
+      "h": 2550
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AF%20bourbon%20whiskey%20front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1650,
+    "h": 2550
+  }
+}

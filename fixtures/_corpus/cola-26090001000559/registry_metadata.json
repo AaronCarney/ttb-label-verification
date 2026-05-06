@@ -1,0 +1,32 @@
+{
+  "ttbid": "26090001000559",
+  "brand": "EQUESTRIAN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20077",
+  "serialNumber": "26015L",
+  "approvalDate": "04/01/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Equestrian%20Bourbon%20Label%20Proof%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2115,
+      "h": 2338
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Equestrian%20Bourbon%20Label%20Proof%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1403,
+      "h": 1653
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Equestrian%20Bourbon%20Label%20Proof%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2115,
+    "h": 2338
+  }
+}

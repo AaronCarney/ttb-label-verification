@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 26116001000017
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=26116001000017
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=End%20of%20Watch%20Boourbon%20-%20Front%20Label.png&filetype=l
+fetched_at: 2026-05-06T02:41:36Z

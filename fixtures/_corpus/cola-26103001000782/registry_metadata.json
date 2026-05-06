@@ -1,0 +1,32 @@
+{
+  "ttbid": "26103001000782",
+  "brand": "DENALI SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "4",
+  "permitNo": "DSP-AK-20006",
+  "serialNumber": "260005",
+  "approvalDate": "04/15/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Denali_BourbonWhiskey_Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 658,
+      "h": 836
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Denali_BourbonWhiskey_Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 497,
+      "h": 585
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Denali_BourbonWhiskey_Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 658,
+    "h": 836
+  }
+}

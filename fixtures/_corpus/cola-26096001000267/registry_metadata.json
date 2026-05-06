@@ -1,0 +1,38 @@
+{
+  "ttbid": "26096001000267",
+  "brand": "DOUBLE BARREL TENNESSEE BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21028",
+  "serialNumber": "260059",
+  "approvalDate": "04/07/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Double%20Barrel%20Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 905,
+      "h": 1522
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Double%20Barrel%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 781,
+      "h": 1618
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Double%20Barrel%20Neck.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 2091,
+      "h": 501
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Double%20Barrel%20Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 905,
+    "h": 1522
+  }
+}

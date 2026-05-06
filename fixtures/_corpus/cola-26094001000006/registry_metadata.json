@@ -1,0 +1,38 @@
+{
+  "ttbid": "26094001000006",
+  "brand": "BIG ASS SOCIAL DRINK CO.",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20037",
+  "serialNumber": "260081",
+  "approvalDate": "04/07/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Big%20Ass%20-%20Face.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 646,
+      "h": 905
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Big%20Ass%20-%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 524,
+      "h": 730
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Big%20Ass%20-%20Neck.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1610,
+      "h": 637
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Big%20Ass%20-%20Face.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 646,
+    "h": 905
+  }
+}

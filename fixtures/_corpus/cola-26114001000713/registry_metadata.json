@@ -1,0 +1,44 @@
+{
+  "ttbid": "26114001000713",
+  "brand": "HORSE SOLDIER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-15015",
+  "serialNumber": "260022",
+  "approvalDate": "04/28/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 384,
+      "h": 484
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bottom%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1413,
+      "h": 514
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 583,
+      "h": 874
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Neck%20Label.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 708,
+      "h": 175
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 384,
+    "h": 484
+  }
+}

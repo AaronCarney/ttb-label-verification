@@ -1,0 +1,32 @@
+{
+  "ttbid": "26098001000101",
+  "brand": "TRADECRAFT SPIRITS",
+  "fancyName": "13 BARREL BLEND",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21024",
+  "serialNumber": "26TCBL",
+  "approvalDate": "04/13/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tradecraft%20Spirits%20Front%20Label%20-%20update.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1743,
+      "h": 1287
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tradecraft%20Spirits%20-%20neck%20strap.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 836,
+      "h": 618
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tradecraft%20Spirits%20Front%20Label%20-%20update.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1743,
+    "h": 1287
+  }
+}

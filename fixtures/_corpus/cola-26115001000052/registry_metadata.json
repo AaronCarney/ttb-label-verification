@@ -1,0 +1,32 @@
+{
+  "ttbid": "26115001000052",
+  "brand": "J.D. MASON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20027",
+  "serialNumber": "268301",
+  "approvalDate": "04/28/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JD%20Mason%20Compass%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1024,
+      "h": 1536
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JD%20Mason%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1024,
+      "h": 1536
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JD%20Mason%20Compass%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1024,
+    "h": 1536
+  }
+}

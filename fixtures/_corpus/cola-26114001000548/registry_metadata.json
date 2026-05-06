@@ -1,0 +1,32 @@
+{
+  "ttbid": "26114001000548",
+  "brand": "MAMA TRIED",
+  "fancyName": "THE RHINOCEROS",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "30",
+  "permitNo": "DSP-MT-15013",
+  "serialNumber": "26001L",
+  "approvalDate": "04/28/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=mamatried_rino_front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 670,
+      "h": 950
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=mamatried_rino_back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 677,
+      "h": 946
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=mamatried_rino_front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 670,
+    "h": 950
+  }
+}

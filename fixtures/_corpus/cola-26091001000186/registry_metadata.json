@@ -1,0 +1,38 @@
+{
+  "ttbid": "26091001000186",
+  "brand": "MUNSTEAD",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20287",
+  "serialNumber": "260004",
+  "approvalDate": "04/23/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Apr%2022%202026%20front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 840,
+      "h": 1560
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Boubon%20Neck.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1163,
+      "h": 188
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Apr%2022%202026%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 910,
+      "h": 1690
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Apr%2022%202026%20front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 840,
+    "h": 1560
+  }
+}

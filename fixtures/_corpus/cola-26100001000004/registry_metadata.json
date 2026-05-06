@@ -1,0 +1,32 @@
+{
+  "ttbid": "26100001000004",
+  "brand": "OLD STATION 31",
+  "fancyName": "SINGLE BARREL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20106",
+  "serialNumber": "26V001",
+  "approvalDate": "04/15/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Single%20Barrel%20Bourbon%20-%20Front%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1650,
+      "h": 1276
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Single%20Barrel%20Bourbon%20-%20Back%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1650,
+      "h": 1276
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Single%20Barrel%20Bourbon%20-%20Front%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1650,
+    "h": 1276
+  }
+}

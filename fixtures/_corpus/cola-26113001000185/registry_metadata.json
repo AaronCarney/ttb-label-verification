@@ -1,0 +1,32 @@
+{
+  "ttbid": "26113001000185",
+  "brand": "BROWNE FAMILY SPIRITS",
+  "fancyName": "BO'S BLEND",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21105",
+  "serialNumber": "260013",
+  "approvalDate": "04/30/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_BosBlendBourbon_FL.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1358,
+      "h": 1270
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Screenshot%202026-04-28%20144328.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 365,
+      "h": 582
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_BosBlendBourbon_FL.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1358,
+    "h": 1270
+  }
+}

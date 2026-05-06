@@ -1,0 +1,32 @@
+{
+  "ttbid": "26099001000083",
+  "brand": "EVERWOOD RESERVE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-15033",
+  "serialNumber": "262601",
+  "approvalDate": "04/16/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=EverWood%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2700,
+      "h": 3600
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=EverWood%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2700,
+      "h": 3600
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=EverWood%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2700,
+    "h": 3600
+  }
+}

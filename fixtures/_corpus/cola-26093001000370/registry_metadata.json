@@ -1,0 +1,26 @@
+{
+  "ttbid": "26093001000370",
+  "brand": "RANSOM FARM & DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-15",
+  "serialNumber": "26BN4Y",
+  "approvalDate": "04/06/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ransom-4yr-Bourbon-Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1566,
+      "h": 778
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ransom-4yr-Bourbon-Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1566,
+    "h": 778
+  }
+}

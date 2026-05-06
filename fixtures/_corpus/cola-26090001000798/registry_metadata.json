@@ -1,0 +1,32 @@
+{
+  "ttbid": "26090001000798",
+  "brand": "NORTHSIDE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20039",
+  "serialNumber": "260005",
+  "approvalDate": "04/29/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Northside%20Front%20Label%20r.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1146,
+      "h": 1495
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Northside%20Label%20Back%20Corrected.JPG&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1146,
+      "h": 1495
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Northside%20Front%20Label%20r.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1146,
+    "h": 1495
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "ttbid": "26103001000291",
+  "brand": "REDWOOD EMPIRE",
+  "fancyName": "COLONEL ARMSTRONG",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-15097",
+  "serialNumber": "260027",
+  "approvalDate": "04/14/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Colonel%20Armstrong%20front%20upper.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 635,
+      "h": 714
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Colonel%20Armstrong%20front%20lower.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 566,
+      "h": 215
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Colonel%20Armstrong%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 635,
+      "h": 947
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Colonel%20Armstrong%20neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 978,
+      "h": 146
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Colonel%20Armstrong%20front%20upper.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 635,
+    "h": 714
+  }
+}

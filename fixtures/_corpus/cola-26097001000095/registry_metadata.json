@@ -1,0 +1,32 @@
+{
+  "ttbid": "26097001000095",
+  "brand": "GEORGE WASHINGTON'S",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-1797",
+  "serialNumber": "260001",
+  "approvalDate": "04/13/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GW%20Bourbon%20Whiskey%20Label%2004-13-26.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2700,
+      "h": 938
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GW%20Bourbon%20Whiskey%20Neck%20Label%2004-07-26.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1200,
+      "h": 338
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GW%20Bourbon%20Whiskey%20Label%2004-13-26.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2700,
+    "h": 938
+  }
+}

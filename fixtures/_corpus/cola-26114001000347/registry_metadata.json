@@ -1,0 +1,32 @@
+{
+  "ttbid": "26114001000347",
+  "brand": "ANITA'S CHOICE",
+  "fancyName": "DARE TO BE MORE - SINGLE BARREL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "41",
+  "permitNo": "DSP-SC-21046",
+  "serialNumber": "26BOUR",
+  "approvalDate": "04/28/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BCD_AC_SingleBarrel_TTB.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2477,
+      "h": 1679
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AC%20Strip.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 117,
+      "h": 1740
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BCD_AC_SingleBarrel_TTB.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2477,
+    "h": 1679
+  }
+}

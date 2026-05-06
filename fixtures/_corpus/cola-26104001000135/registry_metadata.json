@@ -1,0 +1,26 @@
+{
+  "ttbid": "26104001000135",
+  "brand": "GEORGE WASHINGTON'S",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-1797",
+  "serialNumber": "260002",
+  "approvalDate": "04/14/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Spirit%20of%2076%20Bourbon%20Label%2004-13-26.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2850,
+      "h": 1725
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Spirit%20of%2076%20Bourbon%20Label%2004-13-26.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2850,
+    "h": 1725
+  }
+}

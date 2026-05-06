@@ -1,0 +1,38 @@
+{
+  "ttbid": "26094001000120",
+  "brand": "LIFTED SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20023",
+  "serialNumber": "26BOUR",
+  "approvalDate": "04/15/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OTM%20Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 948,
+      "h": 1204
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OTM%20Neck.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1670,
+      "h": 445
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OTM%20BAck.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1132,
+      "h": 1216
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OTM%20Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 948,
+    "h": 1204
+  }
+}

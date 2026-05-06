@@ -1,0 +1,32 @@
+{
+  "ttbid": "26090001000805",
+  "brand": "MARY-ROOSE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20039",
+  "serialNumber": "260006",
+  "approvalDate": "04/03/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=750ML%20Mary%20Roose%20Front%20Final%209-15-25%20gold%20rose%20leaf.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1146,
+      "h": 1495
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=750ML%20Mary%20Roose%20Back%20Corrected.JPG&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1146,
+      "h": 1495
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=750ML%20Mary%20Roose%20Front%20Final%209-15-25%20gold%20rose%20leaf.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1146,
+    "h": 1495
+  }
+}

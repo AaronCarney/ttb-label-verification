@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 26090001000805
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=26090001000805
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=750ML%20Mary%20Roose%20Front%20Final%209-15-25%20gold%20rose%20leaf.jpg&filetype=l
+fetched_at: 2026-05-06T02:38:19Z

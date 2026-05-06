@@ -1,0 +1,32 @@
+{
+  "ttbid": "26110001000159",
+  "brand": "MORSA ROYAL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20027",
+  "serialNumber": "268200",
+  "approvalDate": "04/21/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=morsa%20royal%20front.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1026,
+      "h": 1533
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Morsa%20Royal%20Back.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1024,
+      "h": 1536
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=morsa%20royal%20front.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1026,
+    "h": 1533
+  }
+}

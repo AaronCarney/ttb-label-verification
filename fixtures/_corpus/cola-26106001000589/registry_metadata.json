@@ -1,0 +1,32 @@
+{
+  "ttbid": "26106001000589",
+  "brand": "HAYS BOURBON WHISKEY",
+  "fancyName": "SINGLE BARREL CASK STRENGTH WHEATED BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-15009",
+  "serialNumber": "26HAYS",
+  "approvalDate": "04/20/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Hays%20Bourbon%20Front%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1125,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Hays%20Bourbon%20Back%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 975,
+      "h": 1050
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Hays%20Bourbon%20Front%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1125,
+    "h": 1200
+  }
+}

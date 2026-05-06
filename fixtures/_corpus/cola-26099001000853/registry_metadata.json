@@ -1,0 +1,26 @@
+{
+  "ttbid": "26099001000853",
+  "brand": "SEELBACH'S",
+  "fancyName": "ECHO",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20044",
+  "serialNumber": "260D11",
+  "approvalDate": "04/10/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Echo.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2668,
+      "h": 1210
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Echo.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2668,
+    "h": 1210
+  }
+}

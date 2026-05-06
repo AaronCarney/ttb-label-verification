@@ -1,0 +1,38 @@
+{
+  "ttbid": "26093001000248",
+  "brand": "KAPPA ALPHA ORDER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "26187B",
+  "approvalDate": "04/06/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=kafa%20alpha%20front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 561,
+      "h": 699
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=kafa%20alpha%20back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 507,
+      "h": 459
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=neck.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 108,
+      "h": 475
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=kafa%20alpha%20front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 561,
+    "h": 699
+  }
+}

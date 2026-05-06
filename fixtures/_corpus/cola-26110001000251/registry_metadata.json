@@ -1,0 +1,38 @@
+{
+  "ttbid": "26110001000251",
+  "brand": "CLYDE MAY'S",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "10",
+  "permitNo": "DSP-AL-20053",
+  "serialNumber": "260014",
+  "approvalDate": "04/22/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20-%20CM%20Wheated%20Bourbon%20750ml%20label%2004-22-2026.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2207,
+      "h": 1371
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CM%20Wheated%20Bourbon%20750m.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 660,
+      "h": 184
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=110SR%20Strip%20Stamp%20Cropped.PNG&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 532,
+      "h": 100
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20-%20CM%20Wheated%20Bourbon%20750ml%20label%2004-22-2026.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2207,
+    "h": 1371
+  }
+}

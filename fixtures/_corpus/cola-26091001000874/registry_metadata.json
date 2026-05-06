@@ -1,0 +1,38 @@
+{
+  "ttbid": "26091001000874",
+  "brand": "OLD MAN WINTER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20040",
+  "serialNumber": "260401",
+  "approvalDate": "04/06/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OMW-%20Face-Front%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 904,
+      "h": 1258
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OMW%20New-%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1104,
+      "h": 1072
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=UPC-OMW%20New.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 871,
+      "h": 484
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OMW-%20Face-Front%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 904,
+    "h": 1258
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "26116001000017",
+  "brand": "END OF WATCH",
+  "fancyName": "SINGLE BARREL RELEASE BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "34",
+  "permitNo": "DSP-NM-21026",
+  "serialNumber": "260001",
+  "approvalDate": "04/28/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=End%20of%20Watch%20Boourbon%20-%20Front%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 519,
+      "h": 768
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=End%20of%20Watch%20Boourbon%20-%20Back%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 519,
+      "h": 768
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=End%20of%20Watch%20Boourbon%20-%20Front%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 519,
+    "h": 768
+  }
+}

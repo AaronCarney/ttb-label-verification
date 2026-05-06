@@ -1,0 +1,38 @@
+{
+  "ttbid": "26099001000785",
+  "brand": "DOUBLE OAK TENNESSEE BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21028",
+  "serialNumber": "260060",
+  "approvalDate": "04/10/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Double%20Oak%20Front%20Update.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 909,
+      "h": 1528
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Double%20Barrel%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 781,
+      "h": 1618
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Double%20Barrel%20Neck.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 2091,
+      "h": 501
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Double%20Oak%20Front%20Update.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 909,
+    "h": 1528
+  }
+}
