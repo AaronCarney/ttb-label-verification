@@ -1,0 +1,26 @@
+{
+  "ttbid": "25093001000111",
+  "brand": "EARL GILES DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "27",
+  "permitNo": "DSP-MN-20061",
+  "serialNumber": "25BOUR",
+  "approvalDate": "04/14/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=earl%20giles%20hi%20rye%20bourbon.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1080,
+      "h": 962
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=earl%20giles%20hi%20rye%20bourbon.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1080,
+    "h": 962
+  }
+}

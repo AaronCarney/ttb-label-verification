@@ -1,0 +1,38 @@
+{
+  "ttbid": "25078001000668",
+  "brand": "J. MATTINGLY 1845",
+  "fancyName": "THE BATTLE OF IWO JIMA 80TH ANNIVERSARY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20030",
+  "serialNumber": "250031",
+  "approvalDate": "03/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Iwo%20jima%20front%20label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1051,
+      "h": 1556
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Iwo%20Jima%20back%20label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1051,
+      "h": 1556
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Iwo%20Jima%20batch%20tab.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1704,
+      "h": 568
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Iwo%20jima%20front%20label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1051,
+    "h": 1556
+  }
+}

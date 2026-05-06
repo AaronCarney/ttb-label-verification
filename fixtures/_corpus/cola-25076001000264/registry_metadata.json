@@ -1,0 +1,26 @@
+{
+  "ttbid": "25076001000264",
+  "brand": "FRIENDSHIP DISTILLING COMPANY",
+  "fancyName": "BARREL PROOF",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20116",
+  "serialNumber": "250004",
+  "approvalDate": "03/19/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FDCBarrelProofBourbonLabel1.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1199,
+      "h": 564
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FDCBarrelProofBourbonLabel1.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1199,
+    "h": 564
+  }
+}

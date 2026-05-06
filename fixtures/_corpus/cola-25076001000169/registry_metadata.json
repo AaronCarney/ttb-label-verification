@@ -1,0 +1,26 @@
+{
+  "ttbid": "25076001000169",
+  "brand": "STAGRABBIT",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20153",
+  "serialNumber": "250001",
+  "approvalDate": "03/17/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=stagrabbit.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 4140,
+      "h": 2187
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=stagrabbit.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 4140,
+    "h": 2187
+  }
+}

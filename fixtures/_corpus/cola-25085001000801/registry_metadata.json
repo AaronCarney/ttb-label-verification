@@ -1,0 +1,32 @@
+{
+  "ttbid": "25085001000801",
+  "brand": "LENAPE TRAIL BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "03",
+  "permitNo": "DSP-NJ-21013",
+  "serialNumber": "25LTB1",
+  "approvalDate": "04/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lenape%20Trial%20Bourbon%20FRONT%20750.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 978,
+      "h": 1566
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lenape%20back%20750.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 969,
+      "h": 1560
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lenape%20Trial%20Bourbon%20FRONT%20750.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 978,
+    "h": 1566
+  }
+}

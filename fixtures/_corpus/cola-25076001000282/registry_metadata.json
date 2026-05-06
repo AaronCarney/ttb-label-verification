@@ -1,0 +1,26 @@
+{
+  "ttbid": "25076001000282",
+  "brand": "FOUNDER'S RESERVE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21033",
+  "serialNumber": "252507",
+  "approvalDate": "04/08/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Founders%20reserve%20750ml%20label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1353,
+      "h": 739
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Founders%20reserve%20750ml%20label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1353,
+    "h": 739
+  }
+}

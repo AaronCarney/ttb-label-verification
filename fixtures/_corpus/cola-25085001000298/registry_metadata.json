@@ -1,0 +1,32 @@
+{
+  "ttbid": "25085001000298",
+  "brand": "THREE'S BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "25THRE",
+  "approvalDate": "03/31/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_0862.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1290,
+      "h": 1730
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=three%20bourbon%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1234,
+      "h": 1679
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_0862.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1290,
+    "h": 1730
+  }
+}

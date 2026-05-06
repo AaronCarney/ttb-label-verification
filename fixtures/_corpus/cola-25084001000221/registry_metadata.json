@@ -1,0 +1,26 @@
+{
+  "ttbid": "25084001000221",
+  "brand": "CREATURE COMFORTS SPIRITS BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20055",
+  "serialNumber": "25BRBN",
+  "approvalDate": "04/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Spitits_16oz_Can_Bottle_Bourbon_COLA%20-%20UPDATED.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2981,
+      "h": 1457
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Spitits_16oz_Can_Bottle_Bourbon_COLA%20-%20UPDATED.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2981,
+    "h": 1457
+  }
+}

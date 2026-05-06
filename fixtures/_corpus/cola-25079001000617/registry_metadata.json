@@ -1,0 +1,32 @@
+{
+  "ttbid": "25079001000617",
+  "brand": "RIDGE RIVER",
+  "fancyName": "FIRST CUT",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20158",
+  "serialNumber": "250026",
+  "approvalDate": "03/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=First%20Cut%20-%20Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 832,
+      "h": 1350
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=First%20Cut%20-%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 836,
+      "h": 1176
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=First%20Cut%20-%20Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 832,
+    "h": 1350
+  }
+}

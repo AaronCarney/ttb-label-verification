@@ -1,0 +1,32 @@
+{
+  "ttbid": "25085001000292",
+  "brand": "FARMSTEAD",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20059",
+  "serialNumber": "25FS02",
+  "approvalDate": "03/26/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Farmsteadwheat.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1456,
+      "h": 830
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Farmsteadcork.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1844,
+      "h": 288
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Farmsteadwheat.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1456,
+    "h": 830
+  }
+}

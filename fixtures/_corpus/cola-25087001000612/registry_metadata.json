@@ -1,0 +1,38 @@
+{
+  "ttbid": "25087001000612",
+  "brand": "COPPER & CASK",
+  "fancyName": "SINGLE BARREL SELECTION",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "40",
+  "permitNo": "DSP-RI-20009",
+  "serialNumber": "250015",
+  "approvalDate": "04/11/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonStreet_DC-881_Front_COLA.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 401,
+      "h": 722
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CC_NeckLabel_Bourbon.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 820,
+      "h": 144
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonStreet_DC-881_Back_COLA2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 350,
+      "h": 745
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonStreet_DC-881_Front_COLA.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 401,
+    "h": 722
+  }
+}

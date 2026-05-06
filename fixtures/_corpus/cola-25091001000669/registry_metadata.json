@@ -1,0 +1,32 @@
+{
+  "ttbid": "25091001000669",
+  "brand": "UKIAH RODEO",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-15037",
+  "serialNumber": "250401",
+  "approvalDate": "04/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ukiah_Front_Final_Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1117,
+      "h": 1313
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ukiah_Back_Final_Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1117,
+      "h": 1313
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ukiah_Front_Final_Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1117,
+    "h": 1313
+  }
+}

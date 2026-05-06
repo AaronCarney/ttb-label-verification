@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25085001000801
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25085001000801
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lenape%20Trial%20Bourbon%20FRONT%20750.jpg&filetype=l
+fetched_at: 2026-05-06T01:46:53Z

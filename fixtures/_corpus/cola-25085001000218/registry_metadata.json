@@ -1,0 +1,26 @@
+{
+  "ttbid": "25085001000218",
+  "brand": "CROOKED WATER SPIRITS OF THE NORTH",
+  "fancyName": "OLD HELL ROARING DOUBLE BARRELED BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "27",
+  "permitNo": "DSP-MN-15014",
+  "serialNumber": "250030",
+  "approvalDate": "03/26/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CWOH%20lephroig.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 713
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CWOH%20lephroig.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 713
+  }
+}

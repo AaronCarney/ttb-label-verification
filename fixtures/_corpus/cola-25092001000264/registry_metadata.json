@@ -1,0 +1,32 @@
+{
+  "ttbid": "25092001000264",
+  "brand": "BOURBON 30",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20030",
+  "serialNumber": "250046",
+  "approvalDate": "04/02/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Five%20below%20100%20proof%20pick.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1273,
+      "h": 1388
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Five%20below%20back%20label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 925,
+      "h": 1171
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Five%20below%20100%20proof%20pick.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1273,
+    "h": 1388
+  }
+}

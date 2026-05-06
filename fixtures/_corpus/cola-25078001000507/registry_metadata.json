@@ -1,0 +1,32 @@
+{
+  "ttbid": "25078001000507",
+  "brand": "FRANKLIN DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20015",
+  "serialNumber": "250007",
+  "approvalDate": "03/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=C-_TN-Whiskey-16-FRONT-BW-new.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 929,
+      "h": 1708
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=16%20YO%20Bourbon%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 861,
+      "h": 1393
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=C-_TN-Whiskey-16-FRONT-BW-new.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 929,
+    "h": 1708
+  }
+}

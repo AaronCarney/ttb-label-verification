@@ -1,0 +1,32 @@
+{
+  "ttbid": "25083001000425",
+  "brand": "LEAVENWORTH DISTILLING COMPANY",
+  "fancyName": "10 YEAR OLD BOURBON 170 YEARS OF LEAVENWORTH",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "21",
+  "permitNo": "DSP-KS-21023",
+  "serialNumber": "25L170",
+  "approvalDate": "04/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=leavenworth_label_2025_final%20cola.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 890,
+      "h": 738
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Leavenworth_Label_2025_back_final3_nobleed_LOWRES.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 825,
+      "h": 1275
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=leavenworth_label_2025_final%20cola.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 890,
+    "h": 738
+  }
+}

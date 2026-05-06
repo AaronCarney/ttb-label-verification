@@ -1,0 +1,26 @@
+{
+  "ttbid": "25092001000381",
+  "brand": "OLD TAVERN FARM DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21307",
+  "serialNumber": "250402",
+  "approvalDate": "04/02/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OTFD_BOURBON%202.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 4500,
+      "h": 2176
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OTFD_BOURBON%202.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 4500,
+    "h": 2176
+  }
+}

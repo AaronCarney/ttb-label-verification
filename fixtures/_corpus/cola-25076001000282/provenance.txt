@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25076001000282
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25076001000282
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Founders%20reserve%20750ml%20label.png&filetype=l
+fetched_at: 2026-05-06T01:44:46Z

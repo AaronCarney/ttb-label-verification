@@ -1,0 +1,26 @@
+{
+  "ttbid": "25083001000510",
+  "brand": "GRAND ARMORY BREWING",
+  "fancyName": "RED RYDER",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20239",
+  "serialNumber": "252008",
+  "approvalDate": "03/26/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Red%20Ryder.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1000,
+      "h": 500
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Red%20Ryder.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1000,
+    "h": 500
+  }
+}

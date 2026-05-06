@@ -1,0 +1,26 @@
+{
+  "ttbid": "25078001000711",
+  "brand": "ESPY HOUSE",
+  "fancyName": "WASHINGTON'S RESERVE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20194",
+  "serialNumber": "250001",
+  "approvalDate": "03/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=EH%20SBBW%20WR_112_123.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2110,
+      "h": 1424
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=EH%20SBBW%20WR_112_123.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2110,
+    "h": 1424
+  }
+}

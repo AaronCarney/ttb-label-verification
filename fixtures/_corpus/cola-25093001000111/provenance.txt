@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25093001000111
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25093001000111
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=earl%20giles%20hi%20rye%20bourbon.jpg&filetype=l
+fetched_at: 2026-05-06T01:48:00Z

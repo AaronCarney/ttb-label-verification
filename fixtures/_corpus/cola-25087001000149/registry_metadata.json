@@ -1,0 +1,26 @@
+{
+  "ttbid": "25087001000149",
+  "brand": "THE PURE SCIENCE DISTILING COMPANY",
+  "fancyName": "BO",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20019",
+  "serialNumber": "253285",
+  "approvalDate": "04/04/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bourbon%20v5.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1825,
+      "h": 1204
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bourbon%20v5.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1825,
+    "h": 1204
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "25080001000327",
+  "brand": "BENSON VALLEY BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20157",
+  "serialNumber": "25BVB1",
+  "approvalDate": "03/24/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BV-TTB-R1-Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1443,
+      "h": 1225
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BV-TTB-R1-NeckWrap.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1117,
+      "h": 347
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BV-TTB-R1-Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 865,
+      "h": 721
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BV-TTB-R1-Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1443,
+    "h": 1225
+  }
+}
