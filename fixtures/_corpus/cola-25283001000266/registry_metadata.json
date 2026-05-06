@@ -1,0 +1,32 @@
+{
+  "ttbid": "25283001000266",
+  "brand": "COOSA CUT",
+  "fancyName": "BOTTLED IN BOND",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "41",
+  "permitNo": "DSP-SC-21044",
+  "serialNumber": "251008",
+  "approvalDate": "11/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front%20coosa%20cut%20bottled%20in%20bond.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 600,
+      "h": 630
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back%20label%20coosa%20cut%20bib.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 390,
+      "h": 782
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front%20coosa%20cut%20bottled%20in%20bond.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 600,
+    "h": 630
+  }
+}

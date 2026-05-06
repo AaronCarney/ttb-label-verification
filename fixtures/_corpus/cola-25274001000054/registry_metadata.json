@@ -1,0 +1,32 @@
+{
+  "ttbid": "25274001000054",
+  "brand": "BOOTLEG DISTILLING",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "47",
+  "permitNo": "DSP-WV-21028",
+  "serialNumber": "254G25",
+  "approvalDate": "11/17/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=4GS%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1552,
+      "h": 2139
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=4GS%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1221,
+      "h": 1655
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=4GS%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1552,
+    "h": 2139
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25280001000374",
+  "brand": "WHISKEY TREE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "23",
+  "permitNo": "DSP-LA-20018",
+  "serialNumber": "259865",
+  "approvalDate": "12/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WT%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 638,
+      "h": 1036
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WTB%20122.jpeg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1780,
+      "h": 356
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WT%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 638,
+    "h": 1036
+  }
+}

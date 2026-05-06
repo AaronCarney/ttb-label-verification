@@ -1,0 +1,32 @@
+{
+  "ttbid": "25288001000266",
+  "brand": "STRAY OAK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "4",
+  "permitNo": "DSP-DC-20011",
+  "serialNumber": "250007",
+  "approvalDate": "12/05/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Stray%20Oak%20Bourbon%20vFRONT%20Label%20v2.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 749,
+      "h": 747
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Stray%20Oak%20Bourbon%20vBACK%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 698,
+      "h": 916
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Stray%20Oak%20Bourbon%20vFRONT%20Label%20v2.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 749,
+    "h": 747
+  }
+}

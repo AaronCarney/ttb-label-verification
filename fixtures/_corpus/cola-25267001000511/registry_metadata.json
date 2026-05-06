@@ -1,0 +1,26 @@
+{
+  "ttbid": "25267001000511",
+  "brand": "STILLWORKS TEXAS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20310",
+  "serialNumber": "250003",
+  "approvalDate": "09/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Bourbon%20Label%20Full.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3312,
+      "h": 1380
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Bourbon%20Label%20Full.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3312,
+    "h": 1380
+  }
+}

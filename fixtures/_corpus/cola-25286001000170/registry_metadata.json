@@ -1,0 +1,26 @@
+{
+  "ttbid": "25286001000170",
+  "brand": "COLLEGE STATION TEXAS BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-TX-20020",
+  "serialNumber": "250001",
+  "approvalDate": "11/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CollegeStationBourbon2025.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2400,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CollegeStationBourbon2025.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2400,
+    "h": 1200
+  }
+}

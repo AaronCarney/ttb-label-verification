@@ -1,0 +1,32 @@
+{
+  "ttbid": "25272001000480",
+  "brand": "BLACKSMITH DISTILLERY",
+  "fancyName": "GRAND OPENING BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20070",
+  "serialNumber": "25GRND",
+  "approvalDate": "09/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Grand%20Opening%20front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 444,
+      "h": 518
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1%20Corn%20BACK2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1050,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Grand%20Opening%20front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 444,
+    "h": 518
+  }
+}

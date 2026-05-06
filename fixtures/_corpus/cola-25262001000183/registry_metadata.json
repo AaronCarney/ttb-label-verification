@@ -1,0 +1,38 @@
+{
+  "ttbid": "25262001000183",
+  "brand": "PROOF AND WOOD",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "25PR7M",
+  "approvalDate": "09/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MATTS%20MITT%20front%20.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1017,
+      "h": 1382
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MATTS%20MITT%20BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1234,
+      "h": 1677
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MATTSMITT%20tax%20stamp%20.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1500,
+      "h": 225
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MATTS%20MITT%20front%20.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1017,
+    "h": 1382
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "ttbid": "25287001000053",
+  "brand": "BROWNE FAMILY SPIRITS",
+  "fancyName": "BARREL #209",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21105",
+  "serialNumber": "250010",
+  "approvalDate": "11/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_TWMSpokane_BourbonWhiskey209_FL-2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1700,
+      "h": 1011
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_TWMSpokane_BourbonWhiskey209_BL.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 850,
+      "h": 507
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_TWMSpokane_BourbonWhiskey209_FL-1.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 2700,
+      "h": 1136
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_TWMSpokane_BourbonWhiskey209_Closure.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 500,
+      "h": 3401
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_TWMSpokane_BourbonWhiskey209_FL-2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1700,
+    "h": 1011
+  }
+}

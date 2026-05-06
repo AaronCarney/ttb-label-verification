@@ -1,0 +1,32 @@
+{
+  "ttbid": "25280001000359",
+  "brand": "BEDFORD",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "25RV75",
+  "approvalDate": "11/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front%20label%20blue%20bedford.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 626,
+      "h": 828
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back%20label%20blue%20bedford.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 544,
+      "h": 634
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front%20label%20blue%20bedford.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 626,
+    "h": 828
+  }
+}

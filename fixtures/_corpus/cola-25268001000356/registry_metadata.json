@@ -1,0 +1,32 @@
+{
+  "ttbid": "25268001000356",
+  "brand": "UNDAMMED DISTILLING CO.",
+  "fancyName": "PRYOR CREEK BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "30",
+  "permitNo": "DSP-MT-15002",
+  "serialNumber": "250003",
+  "approvalDate": "11/13/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Undammed_Logo_label_TTB_3.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 975,
+      "h": 713
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=UDCo_FA_Pryor-Creek_TTB_3.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3060,
+      "h": 600
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Undammed_Logo_label_TTB_3.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 975,
+    "h": 713
+  }
+}

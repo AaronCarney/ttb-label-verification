@@ -1,0 +1,26 @@
+{
+  "ttbid": "25283001000258",
+  "brand": "KO-KWEL SPIRITS",
+  "fancyName": "EIGHTY NINE BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-20154",
+  "serialNumber": "250004",
+  "approvalDate": "11/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KKS%20EIGHTY%20NINE%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2665,
+      "h": 1453
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KKS%20EIGHTY%20NINE%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2665,
+    "h": 1453
+  }
+}

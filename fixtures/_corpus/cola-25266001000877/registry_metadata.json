@@ -1,0 +1,32 @@
+{
+  "ttbid": "25266001000877",
+  "brand": "HARRIS RANCH",
+  "fancyName": "FASHIONABLY FAST",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-15087",
+  "serialNumber": "250003",
+  "approvalDate": "11/13/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_1020.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 813,
+      "h": 1247
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_1021.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 819,
+      "h": 1189
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_1020.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 813,
+    "h": 1247
+  }
+}

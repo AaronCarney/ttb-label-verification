@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25268001000356
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25268001000356
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Undammed_Logo_label_TTB_3.jpg&filetype=l
+fetched_at: 2026-05-06T02:14:27Z

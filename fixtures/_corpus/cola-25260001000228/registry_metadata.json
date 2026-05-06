@@ -1,0 +1,32 @@
+{
+  "ttbid": "25260001000228",
+  "brand": "BOOT HILL DISTILLERY BS BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "21",
+  "permitNo": "DSP-KS-21003",
+  "serialNumber": "250917",
+  "approvalDate": "09/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BarrelClub-Cook.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1474,
+      "h": 1290
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TurkeyBack.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 433,
+      "h": 433
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BarrelClub-Cook.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1474,
+    "h": 1290
+  }
+}

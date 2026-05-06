@@ -1,0 +1,32 @@
+{
+  "ttbid": "25273001000680",
+  "brand": "JOHNNY'S DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-PA-20247",
+  "serialNumber": "25BOUR",
+  "approvalDate": "11/14/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon_750ml.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1800,
+      "h": 810
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon_750mlNeck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 630,
+      "h": 225
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon_750ml.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1800,
+    "h": 810
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25268001000390",
+  "brand": "IRONCLAD DISTILLERY",
+  "fancyName": "RUFFLED FEATHERS BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20023",
+  "serialNumber": "250003",
+  "approvalDate": "11/13/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Coastal%20CarolinaLabelv2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2704,
+      "h": 1123
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Coastal%20CarolinaLabelv2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2704,
+    "h": 1123
+  }
+}

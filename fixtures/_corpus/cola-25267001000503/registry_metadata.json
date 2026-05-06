@@ -1,0 +1,26 @@
+{
+  "ttbid": "25267001000503",
+  "brand": "STILLWORKS TEXAS",
+  "fancyName": "DOUBLE BARREL BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20310",
+  "serialNumber": "250002",
+  "approvalDate": "11/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Double%20Barrel%20Bourbon%20Full%20new.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3311,
+      "h": 1380
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Double%20Barrel%20Bourbon%20Full%20new.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3311,
+    "h": 1380
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25269001000454",
+  "brand": "BEND 'N ELBOW",
+  "fancyName": "BARREL AGED BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21055",
+  "serialNumber": "250021",
+  "approvalDate": "11/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BendNElbow1blue.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2459,
+      "h": 1312
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BendNElbow1blue.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2459,
+    "h": 1312
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "25260001000388",
+  "brand": "TWISTED TAP",
+  "fancyName": "BOURBON WHISKEY-AGED 2 YEARS",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20084",
+  "serialNumber": "250008",
+  "approvalDate": "09/19/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TwistedTapDistillery_2YearBourbon_FrontLabel.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 375,
+      "h": 600
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TwistedTapDistillery2YearBourbon_BackLabel.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 375,
+      "h": 600
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TwistedTap_CapLabel.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1050,
+      "h": 300
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TwistedTapDistillery_2YearBourbon_FrontLabel.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 375,
+    "h": 600
+  }
+}

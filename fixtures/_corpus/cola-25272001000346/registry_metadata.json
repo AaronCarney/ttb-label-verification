@@ -1,0 +1,26 @@
+{
+  "ttbid": "25272001000346",
+  "brand": "BLACK DIAMOND BREWERY AND DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20159",
+  "serialNumber": "250006",
+  "approvalDate": "11/13/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black%20Diamond%20Bourbon%20Whiskey%20-%20Mineshaft.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2316,
+      "h": 1254
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black%20Diamond%20Bourbon%20Whiskey%20-%20Mineshaft.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2316,
+    "h": 1254
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25266001000477",
+  "brand": "GRAND TRAVERSE DISTILLERY",
+  "fancyName": "LAKE MICHIGAN BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-15003",
+  "serialNumber": "251823",
+  "approvalDate": "09/24/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lake%20Michigan%20Bourbon%20Whiskey%20MLCC.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1275,
+      "h": 660
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Our%20Story%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1125,
+      "h": 1050
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lake%20Michigan%20Bourbon%20Whiskey%20MLCC.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1275,
+    "h": 660
+  }
+}

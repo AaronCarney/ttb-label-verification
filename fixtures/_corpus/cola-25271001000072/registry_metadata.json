@@ -1,0 +1,44 @@
+{
+  "ttbid": "25271001000072",
+  "brand": "BREAKAWAY BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21165",
+  "serialNumber": "250009",
+  "approvalDate": "11/14/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BreakawayFront.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1144,
+      "h": 785
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BreakawayBack.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 963,
+      "h": 604
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TapeLabel.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1019,
+      "h": 189
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=EHD%20Tape.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1260,
+      "h": 134
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BreakawayFront.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1144,
+    "h": 785
+  }
+}

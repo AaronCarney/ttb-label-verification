@@ -1,0 +1,32 @@
+{
+  "ttbid": "25273001000484",
+  "brand": "DAAD",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "25DD72",
+  "approvalDate": "11/17/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FRONT%20LABELS.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1234,
+      "h": 1415
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BACK%20LABEL.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1234,
+      "h": 1395
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FRONT%20LABELS.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1234,
+    "h": 1415
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25262001000218",
+  "brand": "KING'S FAMILY DISTILLERY 10",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21058",
+  "serialNumber": "250007",
+  "approvalDate": "09/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=10%20Year%20Bourbon%20Label%20Final3.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 9969,
+      "h": 4551
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=10%20Year%20Bourbon%20Label%20Final3.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 9969,
+    "h": 4551
+  }
+}

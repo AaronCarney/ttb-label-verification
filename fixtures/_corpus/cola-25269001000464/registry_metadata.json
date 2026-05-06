@@ -1,0 +1,26 @@
+{
+  "ttbid": "25269001000464",
+  "brand": "WOOD & GRAIN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21055",
+  "serialNumber": "250022",
+  "approvalDate": "11/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wood%20Grain%20Final.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2174,
+      "h": 1552
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wood%20Grain%20Final.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2174,
+    "h": 1552
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25289001000073",
+  "brand": "NEW REALM DISTILLING COMPANY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20037",
+  "serialNumber": "25NR86",
+  "approvalDate": "11/19/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOTTLE%20LABEL%20-%20Well%20Bourbon.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1280,
+      "h": 2325
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOTTLE%20LABEL%20-%20Well%20Bourbon.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1280,
+    "h": 2325
+  }
+}

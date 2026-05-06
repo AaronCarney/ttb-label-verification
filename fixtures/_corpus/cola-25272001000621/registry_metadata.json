@@ -1,0 +1,32 @@
+{
+  "ttbid": "25272001000621",
+  "brand": "TIMBER HOUSE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20289",
+  "serialNumber": "25TH08",
+  "approvalDate": "11/13/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=th%20bourbon%20front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 380,
+      "h": 425
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TH%20Bourbon%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 536,
+      "h": 735
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=th%20bourbon%20front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 380,
+    "h": 425
+  }
+}

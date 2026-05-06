@@ -1,0 +1,38 @@
+{
+  "ttbid": "25269001000675",
+  "brand": "BIG WINSTON",
+  "fancyName": "BARREL FINISHED SERIES",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21024",
+  "serialNumber": "25BWDO",
+  "approvalDate": "11/14/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB_Big%20Winston_CaskFinished_OAK_REV_100125%20-%20BB_Big%20Winston_CaskFinished_OAK_REV_100125%20-%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 932,
+      "h": 723
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Special%20Release%20Neck%20Strip.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 2195,
+      "h": 602
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB_Big%20Winston_CaskFinished_OAK_REV_100125%20-%20BB_Big%20Winston_CaskFinished_OAK_REV_100125%20-%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 932,
+      "h": 723
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB_Big%20Winston_CaskFinished_OAK_REV_100125%20-%20BB_Big%20Winston_CaskFinished_OAK_REV_100125%20-%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 932,
+    "h": 723
+  }
+}

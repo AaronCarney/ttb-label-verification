@@ -1,0 +1,32 @@
+{
+  "ttbid": "25267001000479",
+  "brand": "ROCHEPORT DISTILLING CO",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20009",
+  "serialNumber": "25RDBO",
+  "approvalDate": "09/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RDCBourbon07A.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1095,
+      "h": 1634
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RDCBourbon07B.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1084,
+      "h": 1120
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RDCBourbon07A.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1095,
+    "h": 1634
+  }
+}

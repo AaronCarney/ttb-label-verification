@@ -1,0 +1,38 @@
+{
+  "ttbid": "25269001000280",
+  "brand": "NORTHERN LIBERTIES WHISKEY CO.",
+  "fancyName": "STOCKHOUSE SELECT SINGLE BARREL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20035",
+  "serialNumber": "250927",
+  "approvalDate": "11/13/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Single%20Barrel%20Front%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 941,
+      "h": 1441
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 923,
+      "h": 1154
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Interior%20Label.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 923,
+      "h": 1154
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Single%20Barrel%20Front%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 941,
+    "h": 1441
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25269001000268",
+  "brand": "LILY MAY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "25LM7L",
+  "approvalDate": "09/29/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FRONT%20LABEL.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1234,
+      "h": 1546
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back%20label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1234,
+      "h": 404
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FRONT%20LABEL.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1234,
+    "h": 1546
+  }
+}
