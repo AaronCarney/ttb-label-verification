@@ -1,0 +1,32 @@
+{
+  "ttbid": "25135001000856",
+  "brand": "DOC HOLLIDAY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "GA-I-21200",
+  "serialNumber": "25053L",
+  "approvalDate": "05/19/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=brand%206%2047.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 900,
+      "h": 701
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back%2024%2026.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 367,
+      "h": 396
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=brand%206%2047.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 900,
+    "h": 701
+  }
+}

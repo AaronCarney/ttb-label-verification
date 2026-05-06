@@ -1,0 +1,32 @@
+{
+  "ttbid": "25150001000136",
+  "brand": "REMINGTON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-47",
+  "serialNumber": "250530",
+  "approvalDate": "06/02/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=250530%20%20Remington%20Open%20Season%20Blend%20Front%20750mL.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1082,
+      "h": 1395
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=250530%20%20Remington%20Open%20Season%20Blend%20Back%20750mL.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1018,
+      "h": 1384
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=250530%20%20Remington%20Open%20Season%20Blend%20Front%20750mL.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1082,
+    "h": 1395
+  }
+}

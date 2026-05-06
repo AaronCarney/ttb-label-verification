@@ -1,0 +1,38 @@
+{
+  "ttbid": "25139001000901",
+  "brand": "SWEETENS COVE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21029",
+  "serialNumber": "250011",
+  "approvalDate": "06/10/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Sweet%20Front%20Bourbon.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2348,
+      "h": 1954
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Sweet%20back%20bourbon.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1440,
+      "h": 1273
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=sweet%20neck%20bourbon.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 2642,
+      "h": 730
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Sweet%20Front%20Bourbon.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2348,
+    "h": 1954
+  }
+}

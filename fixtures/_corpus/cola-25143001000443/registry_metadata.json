@@ -1,0 +1,44 @@
+{
+  "ttbid": "25143001000443",
+  "brand": "LEGENDS OF THE WILD WEST",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20040",
+  "serialNumber": "255523",
+  "approvalDate": "05/27/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Legends-Gold-%20Wild%20Bill%20Hickok.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 703,
+      "h": 946
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Legends-%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 630,
+      "h": 906
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Legends-Gold-%20Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1357,
+      "h": 620
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=UPC-%20LEGENDS.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 871,
+      "h": 484
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Legends-Gold-%20Wild%20Bill%20Hickok.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 703,
+    "h": 946
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "ttbid": "25142001000784",
+  "brand": "LEGENDS OF THE WILD WEST",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20040",
+  "serialNumber": "250522",
+  "approvalDate": "05/23/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Legends-%20Martin%20Van%20Buren.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 714,
+      "h": 891
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Legends-%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 630,
+      "h": 906
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LEGENDS-NECK.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1673,
+      "h": 759
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=UPC-%20LEGENDS.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 871,
+      "h": 484
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Legends-%20Martin%20Van%20Buren.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 714,
+    "h": 891
+  }
+}

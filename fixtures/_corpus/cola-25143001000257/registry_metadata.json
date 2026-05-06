@@ -1,0 +1,38 @@
+{
+  "ttbid": "25143001000257",
+  "brand": "HORSESHOE SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "18",
+  "permitNo": "DSP-ID-21019",
+  "serialNumber": "250011",
+  "approvalDate": "05/28/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon_Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 768,
+      "h": 1280
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HSC_InnerLabel.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 768,
+      "h": 1280
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HSC_Bourbon_BackLabel_Optimized.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1800,
+      "h": 3000
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon_Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 768,
+    "h": 1280
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "25139001000357",
+  "brand": "GENERAL THOMAS KENTUCKY BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20007",
+  "serialNumber": "250520",
+  "approvalDate": "05/27/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=barrel%20strength%20front-2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 804,
+      "h": 1124
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=barrel%20strength%20neck%20.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 686,
+      "h": 169
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=barrel%20strength%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 430,
+      "h": 824
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=barrel%20strength%20front-2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 804,
+    "h": 1124
+  }
+}

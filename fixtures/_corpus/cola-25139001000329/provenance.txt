@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25139001000329
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25139001000329
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BRAND%20LABEL%20TROOP.png&filetype=l
+fetched_at: 2026-05-06T01:56:33Z

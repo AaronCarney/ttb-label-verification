@@ -1,0 +1,26 @@
+{
+  "ttbid": "25156001000239",
+  "brand": "KING'S FAMILY DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21058",
+  "serialNumber": "250005",
+  "approvalDate": "06/09/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=V3%2010%20Year%20Bourbon%20Labels.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1583,
+      "h": 736
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=V3%2010%20Year%20Bourbon%20Labels.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1583,
+    "h": 736
+  }
+}

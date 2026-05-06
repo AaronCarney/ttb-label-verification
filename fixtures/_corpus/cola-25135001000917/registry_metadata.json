@@ -1,0 +1,38 @@
+{
+  "ttbid": "25135001000917",
+  "brand": "OUTLAW",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20040",
+  "serialNumber": "250005",
+  "approvalDate": "05/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Outlaw--Face.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 573,
+      "h": 602
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Jesse%20James-%20BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 917,
+      "h": 949
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=UPC-%20OUTLAW.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 871,
+      "h": 484
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Outlaw--Face.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 573,
+    "h": 602
+  }
+}

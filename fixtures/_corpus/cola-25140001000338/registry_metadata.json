@@ -1,0 +1,32 @@
+{
+  "ttbid": "25140001000338",
+  "brand": "BOURBEUSE VALLEY BOURBON WHISKEY",
+  "fancyName": "DOUBLE OAK",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20069",
+  "serialNumber": "250008",
+  "approvalDate": "05/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BVB_Franklin_CO_Front_V1.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 781,
+      "h": 897
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BVB_Franklin_CO_Back_V1.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 785,
+      "h": 894
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BVB_Franklin_CO_Front_V1.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 781,
+    "h": 897
+  }
+}

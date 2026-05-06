@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25150001000136
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25150001000136
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=250530%20%20Remington%20Open%20Season%20Blend%20Front%20750mL.png&filetype=l
+fetched_at: 2026-05-06T01:58:27Z

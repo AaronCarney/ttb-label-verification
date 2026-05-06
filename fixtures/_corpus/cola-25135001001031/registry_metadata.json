@@ -1,0 +1,26 @@
+{
+  "ttbid": "25135001001031",
+  "brand": "TURKEY TOM",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "GA-I-21200",
+  "serialNumber": "25058L",
+  "approvalDate": "05/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=brand%2031%2024.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 922,
+      "h": 709
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=brand%2031%2024.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 922,
+    "h": 709
+  }
+}

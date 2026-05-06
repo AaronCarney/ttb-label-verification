@@ -1,0 +1,26 @@
+{
+  "ttbid": "25139001000329",
+  "brand": "PROTECT AND SERVE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21112",
+  "serialNumber": "250005",
+  "approvalDate": "05/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BRAND%20LABEL%20TROOP.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1037,
+      "h": 592
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BRAND%20LABEL%20TROOP.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1037,
+    "h": 592
+  }
+}

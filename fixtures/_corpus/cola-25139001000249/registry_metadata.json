@@ -1,0 +1,38 @@
+{
+  "ttbid": "25139001000249",
+  "brand": "MR. & MRS.BOURBON COMPANY",
+  "fancyName": "THE VILLE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20105",
+  "serialNumber": "250009",
+  "approvalDate": "05/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VILLE_2_LBF.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1977,
+      "h": 1090
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VILLE2_LBN.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 891,
+      "h": 234
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VILLE2_LBSS.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1157,
+      "h": 259
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VILLE_2_LBF.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1977,
+    "h": 1090
+  }
+}

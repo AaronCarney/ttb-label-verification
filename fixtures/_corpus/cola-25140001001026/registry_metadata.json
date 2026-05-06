@@ -1,0 +1,38 @@
+{
+  "ttbid": "25140001001026",
+  "brand": "BORCHETTA BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21003",
+  "serialNumber": "25BB03",
+  "approvalDate": "05/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Borchetta%20Bourbon_Blend%20Your%20Own-Bottle%20Label-Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 900,
+      "h": 900
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Borchetta%20Bourbon_Blend%20Your%20Own-Bottle%20Label-Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 900,
+      "h": 1500
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Borchetta%20Bourbon_Blend%20Your%20Own-Bottle%20Label-Etching.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 900,
+      "h": 600
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Borchetta%20Bourbon_Blend%20Your%20Own-Bottle%20Label-Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 900,
+    "h": 900
+  }
+}

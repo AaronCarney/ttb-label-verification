@@ -1,0 +1,26 @@
+{
+  "ttbid": "25150001000511",
+  "brand": "HELL YEAH! BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "27",
+  "permitNo": "DSP-MN-15014",
+  "serialNumber": "250039",
+  "approvalDate": "06/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PAN210001HellYeahLabel92Proof.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1332,
+      "h": 666
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PAN210001HellYeahLabel92Proof.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1332,
+    "h": 666
+  }
+}

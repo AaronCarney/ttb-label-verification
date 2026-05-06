@@ -1,0 +1,32 @@
+{
+  "ttbid": "25143001000313",
+  "brand": "1787",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20141",
+  "serialNumber": "250040",
+  "approvalDate": "06/02/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1787%20Front%20Correction%20.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1042,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1787%20back%20correction%20.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 958,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1787%20Front%20Correction%20.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1042,
+    "h": 1200
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25155001000150",
+  "brand": "BATTLEGROUND SPIRITS",
+  "fancyName": "5 STAR BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20092",
+  "serialNumber": "255S75",
+  "approvalDate": "06/12/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=053023_750ML_5StarBourbon_FULLZBOTTLE.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1688,
+      "h": 788
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=053023_750ML_5StarBourbon_FULLZBOTTLE.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1688,
+    "h": 788
+  }
+}

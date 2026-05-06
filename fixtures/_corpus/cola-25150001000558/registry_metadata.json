@@ -1,0 +1,44 @@
+{
+  "ttbid": "25150001000558",
+  "brand": "STONE GROOVE SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20164",
+  "serialNumber": "250001",
+  "approvalDate": "06/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Country%20Bourbon%20-%20Front%20Side.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 586,
+      "h": 1306
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Country%20Bourbon%20-%20Back%20Side.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1174,
+      "h": 1178
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Country%20Bourbon%20-%20Right%20Side.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1175,
+      "h": 858
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Country%20Bourbon%20-%20Left%20Side.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1175,
+      "h": 858
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Country%20Bourbon%20-%20Front%20Side.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 586,
+    "h": 1306
+  }
+}
