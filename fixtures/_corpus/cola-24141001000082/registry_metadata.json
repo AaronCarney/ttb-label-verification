@@ -1,0 +1,38 @@
+{
+  "ttbid": "24141001000082",
+  "brand": "DUNCE WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "33",
+  "permitNo": "DSP-NH-21007",
+  "serialNumber": "240766",
+  "approvalDate": "05/26/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=0766_DNCE_24_NH_Front_TTB01.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 490,
+      "h": 721
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=0766_DNCE_24_NH_Back_TTB01.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 581,
+      "h": 1067
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=0766_DNCE_24_NH_Tmpr_TTB01.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 112,
+      "h": 862
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=0766_DNCE_24_NH_Front_TTB01.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 490,
+    "h": 721
+  }
+}

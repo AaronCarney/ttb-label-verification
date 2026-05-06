@@ -1,0 +1,26 @@
+{
+  "ttbid": "24162001000641",
+  "brand": "ISCO",
+  "fancyName": "INDIGO CORN BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "40",
+  "permitNo": "DSP-RI-20007",
+  "serialNumber": "246666",
+  "approvalDate": "06/27/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=4.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2000,
+      "h": 737
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=4.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2000,
+    "h": 737
+  }
+}

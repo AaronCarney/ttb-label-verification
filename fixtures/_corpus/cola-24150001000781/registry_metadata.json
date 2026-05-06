@@ -1,0 +1,32 @@
+{
+  "ttbid": "24150001000781",
+  "brand": "AMABO",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-15026",
+  "serialNumber": "240006",
+  "approvalDate": "06/04/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PHOTO-2024-05-29-14-47-24.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 669,
+      "h": 1600
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Amabo%20Back%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 659,
+      "h": 740
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PHOTO-2024-05-29-14-47-24.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 669,
+    "h": 1600
+  }
+}

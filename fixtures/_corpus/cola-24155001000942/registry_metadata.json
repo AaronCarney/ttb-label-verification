@@ -1,0 +1,26 @@
+{
+  "ttbid": "24155001000942",
+  "brand": "FORGOTTEN FIFTY DISTILLING",
+  "fancyName": "BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-MD-20067",
+  "serialNumber": "240003",
+  "approvalDate": "06/04/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2024-bourbon-FF.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3300,
+      "h": 1350
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2024-bourbon-FF.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3300,
+    "h": 1350
+  }
+}

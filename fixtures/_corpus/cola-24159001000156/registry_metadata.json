@@ -1,0 +1,32 @@
+{
+  "ttbid": "24159001000156",
+  "brand": "REDEMPTION",
+  "fancyName": "THE ANCIENTS",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-18",
+  "serialNumber": "240008",
+  "approvalDate": "06/08/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Redemption%20Brand.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1165,
+      "h": 246
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Redemption%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1948,
+      "h": 149
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Redemption%20Brand.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1165,
+    "h": 246
+  }
+}

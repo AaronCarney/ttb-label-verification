@@ -1,0 +1,32 @@
+{
+  "ttbid": "24144001001025",
+  "brand": "JOURNEYMAN DISTILLERY",
+  "fancyName": "FARM BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-MI-15027",
+  "serialNumber": "240005",
+  "approvalDate": "06/04/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Final%20Farm%20Bouirbon%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1200,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Farm%20Bourbon%20Back.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 846,
+      "h": 930
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Final%20Farm%20Bouirbon%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1200,
+    "h": 1200
+  }
+}

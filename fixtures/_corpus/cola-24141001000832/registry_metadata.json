@@ -1,0 +1,38 @@
+{
+  "ttbid": "24141001000832",
+  "brand": "1835 BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20010",
+  "serialNumber": "240007",
+  "approvalDate": "05/21/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1835_Bourbon_175_Stg2_Face.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1466,
+      "h": 1466
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1835_Bourbon_175_Stg2_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 975,
+      "h": 638
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1835_Bourbon_175_Stg2_Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1650,
+      "h": 731
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1835_Bourbon_175_Stg2_Face.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1466,
+    "h": 1466
+  }
+}

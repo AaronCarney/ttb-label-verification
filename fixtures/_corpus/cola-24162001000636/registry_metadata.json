@@ -1,0 +1,26 @@
+{
+  "ttbid": "24162001000636",
+  "brand": "ISCO",
+  "fancyName": "HEIRLOOM",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "40",
+  "permitNo": "DSP-RI-20007",
+  "serialNumber": "247777",
+  "approvalDate": "06/28/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HeirloomBourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1966,
+      "h": 714
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HeirloomBourbon.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1966,
+    "h": 714
+  }
+}

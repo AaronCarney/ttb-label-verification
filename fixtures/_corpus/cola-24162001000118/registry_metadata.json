@@ -1,0 +1,32 @@
+{
+  "ttbid": "24162001000118",
+  "brand": "FORTITUDE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20234",
+  "serialNumber": "240002",
+  "approvalDate": "06/20/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=fortitude%20bourbon%20front_page-0001.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 750,
+      "h": 900
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=fortitude%20bourbon%20back_page-0001.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 750,
+      "h": 900
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=fortitude%20bourbon%20front_page-0001.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 750,
+    "h": 900
+  }
+}

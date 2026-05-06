@@ -1,0 +1,26 @@
+{
+  "ttbid": "24158001000154",
+  "brand": "RED WHITE AND BLUE BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21058",
+  "serialNumber": "240002",
+  "approvalDate": "06/10/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=American%20Label%20Cola%20Submission.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1504,
+      "h": 681
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=American%20Label%20Cola%20Submission.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1504,
+    "h": 681
+  }
+}

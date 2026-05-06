@@ -1,0 +1,26 @@
+{
+  "ttbid": "24165001000043",
+  "brand": "WATERMARK BREWING CO.",
+  "fancyName": "BACKBAR BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20134",
+  "serialNumber": "240021",
+  "approvalDate": "06/15/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=backbar%20bourob%20whiskey.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1132,
+      "h": 1130
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=backbar%20bourob%20whiskey.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1132,
+    "h": 1130
+  }
+}

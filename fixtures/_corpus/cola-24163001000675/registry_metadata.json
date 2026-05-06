@@ -1,0 +1,26 @@
+{
+  "ttbid": "24163001000675",
+  "brand": "THEODORE REX",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20059",
+  "serialNumber": "24TR02",
+  "approvalDate": "06/12/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Theorex%20bourbonwheated%20.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1544,
+      "h": 684
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Theorex%20bourbonwheated%20.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1544,
+    "h": 684
+  }
+}

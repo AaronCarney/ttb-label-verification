@@ -1,0 +1,32 @@
+{
+  "ttbid": "24141001000678",
+  "brand": "BROKEN SPIRITS DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20468",
+  "serialNumber": "240017",
+  "approvalDate": "05/21/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WBRBIB.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1448,
+      "h": 660
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Brown%20BIB.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 334,
+      "h": 708
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WBRBIB.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1448,
+    "h": 660
+  }
+}

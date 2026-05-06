@@ -1,0 +1,32 @@
+{
+  "ttbid": "24157001000447",
+  "brand": "DREAD RIVER DISTILLING CO.",
+  "fancyName": "NORMAN'S ONE AND ONLY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "10",
+  "permitNo": "DSP-AL-20029",
+  "serialNumber": "240605",
+  "approvalDate": "06/24/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Normans%20Front%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 826,
+      "h": 829
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Normans%20Back%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1063,
+      "h": 1060
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Normans%20Front%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 826,
+    "h": 829
+  }
+}

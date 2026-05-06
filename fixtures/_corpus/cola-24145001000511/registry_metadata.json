@@ -1,0 +1,32 @@
+{
+  "ttbid": "24145001000511",
+  "brand": "WEST FORK WHSKY CO.",
+  "fancyName": "BOTTLED-IN-BOND",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21028",
+  "serialNumber": "240523",
+  "approvalDate": "05/25/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=highryebibffront.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 642,
+      "h": 1388
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=highryebibback.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1204,
+      "h": 1260
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=highryebibffront.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 642,
+    "h": 1388
+  }
+}

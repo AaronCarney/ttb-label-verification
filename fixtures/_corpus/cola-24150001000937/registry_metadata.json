@@ -1,0 +1,32 @@
+{
+  "ttbid": "24150001000937",
+  "brand": "GRAND OPTIMIST",
+  "fancyName": "NYS WHEATED BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21155",
+  "serialNumber": "24WB02",
+  "approvalDate": "05/30/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated375-03.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2714,
+      "h": 691
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=All%20Whiskey%20Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 3113,
+      "h": 465
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated375-03.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2714,
+    "h": 691
+  }
+}

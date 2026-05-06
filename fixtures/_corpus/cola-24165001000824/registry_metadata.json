@@ -1,0 +1,32 @@
+{
+  "ttbid": "24165001000824",
+  "brand": "GRANT",
+  "fancyName": "FOUR GRAIN BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20124",
+  "serialNumber": "240001",
+  "approvalDate": "06/21/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=shiloh%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 768,
+      "h": 624
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=shiloh%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 768,
+      "h": 624
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=shiloh%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 768,
+    "h": 624
+  }
+}

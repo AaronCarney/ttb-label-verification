@@ -1,0 +1,32 @@
+{
+  "ttbid": "24141001000460",
+  "brand": "SLIPPERY NOODLE INN SINGLE BARREL BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21112",
+  "serialNumber": "240520",
+  "approvalDate": "05/30/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Screenshot_20240530_104915_Gmail.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1079,
+      "h": 1421
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Screenshot_20240520_133315_Gmail.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 892,
+      "h": 1318
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Screenshot_20240530_104915_Gmail.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1079,
+    "h": 1421
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24151001000744",
+  "brand": "BLACK SHEEP DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21251",
+  "serialNumber": "24BRBN",
+  "approvalDate": "06/10/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonFront.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 722,
+      "h": 597
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbonback.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 642,
+      "h": 440
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonFront.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 722,
+    "h": 597
+  }
+}

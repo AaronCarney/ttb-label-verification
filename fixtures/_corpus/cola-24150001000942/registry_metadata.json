@@ -1,0 +1,38 @@
+{
+  "ttbid": "24150001000942",
+  "brand": "TAYLOR GARRETT",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "34",
+  "permitNo": "DSP-NM-21022",
+  "serialNumber": "240029",
+  "approvalDate": "05/30/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front_Full_v1.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2816,
+      "h": 5221
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back_Label_v1.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2510,
+      "h": 5372
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Top_Strip_v1.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1014,
+      "h": 6213
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front_Full_v1.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2816,
+    "h": 5221
+  }
+}

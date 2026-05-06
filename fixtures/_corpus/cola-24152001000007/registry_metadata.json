@@ -1,0 +1,32 @@
+{
+  "ttbid": "24152001000007",
+  "brand": "COVALENT SPIRITS",
+  "fancyName": "BATTLE BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20062",
+  "serialNumber": "24BR04",
+  "approvalDate": "06/05/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=covalent%20spirits%20label_battle_bourbon_final.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3026,
+      "h": 1269
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=covalent%20spirits%20OM_label_final.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 2401,
+      "h": 301
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=covalent%20spirits%20label_battle_bourbon_final.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3026,
+    "h": 1269
+  }
+}

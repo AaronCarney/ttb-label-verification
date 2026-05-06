@@ -1,0 +1,32 @@
+{
+  "ttbid": "24151001000033",
+  "brand": "THE BULLOCK DISTILLERY",
+  "fancyName": "COUNTRY ROADS BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "47",
+  "permitNo": "DSP-WV-21018",
+  "serialNumber": "24BD21",
+  "approvalDate": "06/07/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=304%20FRONT%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1224,
+      "h": 1224
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=304%20BACK%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 648,
+      "h": 1080
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=304%20FRONT%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1224,
+    "h": 1224
+  }
+}

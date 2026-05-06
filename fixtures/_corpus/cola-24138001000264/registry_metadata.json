@@ -1,0 +1,32 @@
+{
+  "ttbid": "24138001000264",
+  "brand": "INTERURBAN BOURBON",
+  "fancyName": "RAIL RYED",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20290",
+  "serialNumber": "240020",
+  "approvalDate": "05/19/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Interurban%20Bourbon%20-%20Rye%20DenisonSherman%20200mL%20low%20res.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1300,
+      "h": 650
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LidSticker%20Regular.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1000,
+      "h": 4000
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Interurban%20Bourbon%20-%20Rye%20DenisonSherman%20200mL%20low%20res.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1300,
+    "h": 650
+  }
+}

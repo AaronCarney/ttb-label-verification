@@ -1,0 +1,26 @@
+{
+  "ttbid": "24144001000776",
+  "brand": "WARDOG SPIRITS",
+  "fancyName": "BLACK RIVER BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20119",
+  "serialNumber": "241222",
+  "approvalDate": "05/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black%20River%20Bourbon%20Whiskey%20label%20-%205-2024%20FINAL.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1650,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black%20River%20Bourbon%20Whiskey%20label%20-%205-2024%20FINAL.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1650,
+    "h": 1200
+  }
+}

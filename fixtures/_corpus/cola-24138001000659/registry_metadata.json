@@ -1,0 +1,38 @@
+{
+  "ttbid": "24138001000659",
+  "brand": "FIELD OF DREAMS",
+  "fancyName": "SMALL BATCH BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21009",
+  "serialNumber": "240004",
+  "approvalDate": "05/19/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SS%20Front%20Final.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1139,
+      "h": 1525
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SS%20Final%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1139,
+      "h": 1525
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SS%20Neck%20Final.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1183,
+      "h": 1551
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SS%20Front%20Final.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1139,
+    "h": 1525
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24155001000294",
+  "brand": "THE OUTPOST",
+  "fancyName": "TRIPLE GRAIN BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20126",
+  "serialNumber": "242403",
+  "approvalDate": "06/21/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 900,
+      "h": 1500
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=13.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 900,
+      "h": 1500
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 900,
+    "h": 1500
+  }
+}

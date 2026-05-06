@@ -1,0 +1,32 @@
+{
+  "ttbid": "24156001001014",
+  "brand": "ALVIN LANGSTON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20075",
+  "serialNumber": "24ALB1",
+  "approvalDate": "06/07/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Small%20Batch7yearsV2Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2762,
+      "h": 3794
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Small%20Batch7yearsV2Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2139,
+      "h": 3024
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Small%20Batch7yearsV2Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2762,
+    "h": 3794
+  }
+}

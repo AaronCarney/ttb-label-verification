@@ -1,0 +1,32 @@
+{
+  "ttbid": "24143001000555",
+  "brand": "WASHINGTON CREEK DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21205",
+  "serialNumber": "24BOUR",
+  "approvalDate": "06/04/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FF-Bourbon_brand.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2123,
+      "h": 1162
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FF-Bourbon_back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1079,
+      "h": 1162
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FF-Bourbon_brand.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2123,
+    "h": 1162
+  }
+}

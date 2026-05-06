@@ -1,0 +1,32 @@
+{
+  "ttbid": "24142001001034",
+  "brand": "PEG LEG PORKER SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21113",
+  "serialNumber": "240003",
+  "approvalDate": "06/25/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=12YEARfront%202.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 5100,
+      "h": 6600
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=12YEARback.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1700,
+      "h": 2200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=12YEARfront%202.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 5100,
+    "h": 6600
+  }
+}
