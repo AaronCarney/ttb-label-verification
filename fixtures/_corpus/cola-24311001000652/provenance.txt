@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24311001000652
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24311001000652
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DARK%20WATERS_Distillery_Bourbon_Whiskey_Label_Actual_Size_4.jpeg&filetype=l
+fetched_at: 2026-05-06T01:30:45Z

@@ -1,0 +1,26 @@
+{
+  "ttbid": "24344001000631",
+  "brand": "CHURCH STREET DISTILLING COMPANY",
+  "fancyName": "MERITAS",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20074",
+  "serialNumber": "240006",
+  "approvalDate": "12/12/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MeritasLabel.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2262,
+      "h": 1050
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MeritasLabel.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2262,
+    "h": 1050
+  }
+}

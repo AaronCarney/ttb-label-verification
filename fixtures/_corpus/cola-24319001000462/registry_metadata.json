@@ -1,0 +1,38 @@
+{
+  "ttbid": "24319001000462",
+  "brand": "RAINFIRE",
+  "fancyName": "COVET COLLECTION",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "18",
+  "permitNo": "DSP-ID-21028",
+  "serialNumber": "24CSBW",
+  "approvalDate": "11/19/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RF%20CSBW%20Front%20Label%20Corrected.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 802,
+      "h": 1080
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RF%20CSBW%20Neck%20Label.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1050,
+      "h": 328
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RF%20CSBW%20Barcode%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 864,
+      "h": 562
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RF%20CSBW%20Front%20Label%20Corrected.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 802,
+    "h": 1080
+  }
+}

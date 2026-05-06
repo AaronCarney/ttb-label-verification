@@ -1,0 +1,38 @@
+{
+  "ttbid": "24318001000191",
+  "brand": "MR. & MRS. BOURBON COMPANY",
+  "fancyName": "OCTOBER LONDON'S",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20105",
+  "serialNumber": "240027",
+  "approvalDate": "12/02/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MMBC%20OCT%20LONDON%20FRONT%203%20jpg.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1452,
+      "h": 795
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MMBC%20Oct_London_SS.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1649,
+      "h": 348
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MMBC%20Oct_London_Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1544,
+      "h": 355
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MMBC%20OCT%20LONDON%20FRONT%203%20jpg.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1452,
+    "h": 795
+  }
+}

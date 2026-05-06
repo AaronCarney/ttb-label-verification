@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24338001000797
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24338001000797
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MVMF-50thAnniversary-Bourbon-FRONT-2ndCOLA.jpg&filetype=l
+fetched_at: 2026-05-06T01:32:56Z

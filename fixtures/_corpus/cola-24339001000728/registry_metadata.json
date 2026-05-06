@@ -1,0 +1,32 @@
+{
+  "ttbid": "24339001000728",
+  "brand": "INVASIVE SPECIES",
+  "fancyName": "WHISKEY CREEK",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20188",
+  "serialNumber": "240004",
+  "approvalDate": "12/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Indiana%20Bourbon%20Whiskey%20Creek%20label%20FLATTENED.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 2100
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Indiana%20Whiskey%20BACK%20label%20200MLS%20FINAL%20FLAT.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1500,
+      "h": 2100
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Indiana%20Bourbon%20Whiskey%20Creek%20label%20FLATTENED.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 2100
+  }
+}

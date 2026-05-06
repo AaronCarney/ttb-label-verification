@@ -1,0 +1,26 @@
+{
+  "ttbid": "24333001000086",
+  "brand": "CATTLE CON 2025 SAN ANTONIO",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-LA-20014",
+  "serialNumber": "241128",
+  "approvalDate": "12/02/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CattleCon2025SanAntonioLabel4%2025x%2010.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1503,
+      "h": 639
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CattleCon2025SanAntonioLabel4%2025x%2010.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1503,
+    "h": 639
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24324001000172",
+  "brand": "BRIDLE & BIT",
+  "fancyName": "WHEATED DOUBLE OAK BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20134",
+  "serialNumber": "242080",
+  "approvalDate": "12/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BridleBit_LabelWheatedDoubleOakBourbon_FrontTTB.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1152,
+      "h": 1440
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BridleBit_Label_WheatedDoubleOakBourbonBackTTB.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1064,
+      "h": 692
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BridleBit_LabelWheatedDoubleOakBourbon_FrontTTB.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1152,
+    "h": 1440
+  }
+}

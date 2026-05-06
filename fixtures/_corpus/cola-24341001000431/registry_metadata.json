@@ -1,0 +1,38 @@
+{
+  "ttbid": "24341001000431",
+  "brand": "BORCHETTA BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21003",
+  "serialNumber": "24BB07",
+  "approvalDate": "12/12/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Borchetta%20Bourbon_Bottle%20Labels2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1999,
+      "h": 934
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Borchetta%20Bourbon_Bottle%20Labels.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1238,
+      "h": 931
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Borchetta%20Bourbon_Bottle%20Labels3.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1733,
+      "h": 957
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Borchetta%20Bourbon_Bottle%20Labels2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1999,
+    "h": 934
+  }
+}

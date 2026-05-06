@@ -1,0 +1,44 @@
+{
+  "ttbid": "24310001000232",
+  "brand": "PINE BLUFFS DISTILLING",
+  "fancyName": "PIONEER BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "49",
+  "permitNo": "DSP-WY-21006",
+  "serialNumber": "240017",
+  "approvalDate": "11/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PB_Pioneer_Tier1_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1200,
+      "h": 978
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PB_Pioneer_Tier1_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1200,
+      "h": 978
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PB_Pioneer_Tier1_Reverseback.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1200,
+      "h": 978
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PB_Pioneer_Tier1_Collar.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 3563,
+      "h": 938
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PB_Pioneer_Tier1_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1200,
+    "h": 978
+  }
+}

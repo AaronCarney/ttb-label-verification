@@ -1,0 +1,32 @@
+{
+  "ttbid": "24331001000220",
+  "brand": "HARMONY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20166",
+  "serialNumber": "240003",
+  "approvalDate": "11/29/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Harmony%20Bourbon%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 901,
+      "h": 712
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back%20Label%20Harmony%20bourbon.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 590,
+      "h": 403
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Harmony%20Bourbon%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 901,
+    "h": 712
+  }
+}

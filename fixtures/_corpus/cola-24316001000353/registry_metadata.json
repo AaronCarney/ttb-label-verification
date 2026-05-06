@@ -1,0 +1,32 @@
+{
+  "ttbid": "24316001000353",
+  "brand": "LOPING CROW",
+  "fancyName": "BACKROADS BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21118",
+  "serialNumber": "24BBW1",
+  "approvalDate": "11/13/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LOPING%20BACKROAD%20BOURBON%20CF.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1634,
+      "h": 658
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LOPING%20BACKROAD%20BOURBON%20TCF.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1257,
+      "h": 151
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LOPING%20BACKROAD%20BOURBON%20CF.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1634,
+    "h": 658
+  }
+}

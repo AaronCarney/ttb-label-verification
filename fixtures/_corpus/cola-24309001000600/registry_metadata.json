@@ -1,0 +1,26 @@
+{
+  "ttbid": "24309001000600",
+  "brand": "KING'S FAMILY DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21058",
+  "serialNumber": "240005",
+  "approvalDate": "11/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KFD%20White%20Corn%20Bourbon%20V3.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1503,
+      "h": 680
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KFD%20White%20Corn%20Bourbon%20V3.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1503,
+    "h": 680
+  }
+}

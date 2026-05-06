@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24327001000655
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24327001000655
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OSN-Straight%20Outta%20Btown-BARREL%20PICK-Face.jpg&filetype=l
+fetched_at: 2026-05-06T01:31:54Z

@@ -1,0 +1,26 @@
+{
+  "ttbid": "24310001000797",
+  "brand": "HERITAGE DISTILLING CO. CASK CLUB",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21211",
+  "serialNumber": "240001",
+  "approvalDate": "11/14/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Stillaguamish%20750ml%20Cask%20Club%20Bourbon%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1275,
+      "h": 601
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Stillaguamish%20750ml%20Cask%20Club%20Bourbon%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1275,
+    "h": 601
+  }
+}

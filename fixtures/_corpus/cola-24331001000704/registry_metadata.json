@@ -1,0 +1,32 @@
+{
+  "ttbid": "24331001000704",
+  "brand": "CROOKED CREEK DISTILLERY",
+  "fancyName": "FREEDOM TRAIL BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20090",
+  "serialNumber": "240049",
+  "approvalDate": "12/10/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CC-FreedomTrailBourbonWhiskey-FRONT-750-241125.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 5344,
+      "h": 6769
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CCFreedom%20Trail%20Bourbon%20WhiskeyBACK75012624.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1125,
+      "h": 1425
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CC-FreedomTrailBourbonWhiskey-FRONT-750-241125.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 5344,
+    "h": 6769
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "24331001000225",
+  "brand": "LAKE FOREST COUNTRY CLUB",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20124",
+  "serialNumber": "247000",
+  "approvalDate": "12/04/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LFCCBW45.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1831,
+      "h": 1201
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LFCCBW45.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1831,
+    "h": 1201
+  }
+}

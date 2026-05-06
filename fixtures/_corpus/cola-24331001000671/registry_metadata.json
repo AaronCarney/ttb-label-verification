@@ -1,0 +1,44 @@
+{
+  "ttbid": "24331001000671",
+  "brand": "COCK OF THE WALK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20040",
+  "serialNumber": "241126",
+  "approvalDate": "12/04/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cock%20Walk-Face.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 676,
+      "h": 665
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cock%20Walk-Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1129,
+      "h": 355
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cock%20of%20the%20Walk-%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 595,
+      "h": 1162
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=COW-%20Barrel%20Pick.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1569,
+      "h": 491
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cock%20Walk-Face.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 676,
+    "h": 665
+  }
+}

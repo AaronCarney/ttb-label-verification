@@ -1,0 +1,32 @@
+{
+  "ttbid": "24311001000584",
+  "brand": "HARMONY SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "27",
+  "permitNo": "DSP-MN-20048",
+  "serialNumber": "240001",
+  "approvalDate": "11/12/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bottled%20in%20Bond%20Front%20Label%203.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 500,
+      "h": 500
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bottled%20in%20Bond%20Back%20Label%202.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 750,
+      "h": 750
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bottled%20in%20Bond%20Front%20Label%203.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 500,
+    "h": 500
+  }
+}

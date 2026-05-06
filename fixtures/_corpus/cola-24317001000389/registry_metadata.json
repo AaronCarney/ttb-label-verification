@@ -1,0 +1,32 @@
+{
+  "ttbid": "24317001000389",
+  "brand": "TWO HORSE DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "41",
+  "permitNo": "DSP-SC-21065",
+  "serialNumber": "24B100",
+  "approvalDate": "11/19/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Two%20Horse%20Distillery%20-%20Bourbon%20B100-%20Front2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1126,
+      "h": 1726
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Two%20Horse%20Distillery%20-%20Bourbon%20B100-%20Back2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1126,
+      "h": 1726
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Two%20Horse%20Distillery%20-%20Bourbon%20B100-%20Front2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1126,
+    "h": 1726
+  }
+}

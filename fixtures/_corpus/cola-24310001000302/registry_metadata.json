@@ -1,0 +1,32 @@
+{
+  "ttbid": "24310001000302",
+  "brand": "JIM BEAM",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-230",
+  "serialNumber": "240140",
+  "approvalDate": "11/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Braves-GAF01140_TTB.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1985,
+      "h": 1368
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ROPP130-UNV013_TTB.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 795,
+      "h": 905
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Braves-GAF01140_TTB.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1985,
+    "h": 1368
+  }
+}

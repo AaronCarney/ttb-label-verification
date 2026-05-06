@@ -1,0 +1,44 @@
+{
+  "ttbid": "24344001000720",
+  "brand": "OUTLAW",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20040",
+  "serialNumber": "241210",
+  "approvalDate": "12/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OUTLAW-Face5.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 793,
+      "h": 639
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OUTLAW-back%201.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 927,
+      "h": 925
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OUTLAW-NECK2.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 800,
+      "h": 190
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=UPC-.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 663,
+      "h": 538
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OUTLAW-Face5.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 793,
+    "h": 639
+  }
+}

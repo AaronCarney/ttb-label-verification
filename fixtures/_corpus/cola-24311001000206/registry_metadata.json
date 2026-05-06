@@ -1,0 +1,38 @@
+{
+  "ttbid": "24311001000206",
+  "brand": "COPPER FOX",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-15002",
+  "serialNumber": "24003L",
+  "approvalDate": "11/07/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=cf_bourbon_front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 701,
+      "h": 1050
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=cf_bourbon_back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 646,
+      "h": 878
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=cf_bourbon_neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1637,
+      "h": 125
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=cf_bourbon_front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 701,
+    "h": 1050
+  }
+}

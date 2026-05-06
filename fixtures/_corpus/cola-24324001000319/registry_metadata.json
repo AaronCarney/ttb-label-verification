@@ -1,0 +1,32 @@
+{
+  "ttbid": "24324001000319",
+  "brand": "BOMB CITY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20138",
+  "serialNumber": "240001",
+  "approvalDate": "11/20/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WhiskeyLabel1.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2481,
+      "h": 3508
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WhiskeyBackLabel.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2481,
+      "h": 3508
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WhiskeyLabel1.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2481,
+    "h": 3508
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24338001000797",
+  "brand": "MVMF 50TH ANNIVERSARY BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20106",
+  "serialNumber": "24MVMF",
+  "approvalDate": "12/13/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MVMF-50thAnniversary-Bourbon-FRONT-2ndCOLA.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 903,
+      "h": 1653
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MVMF-50thAnniversary-Bourbon-BACK-2ndCOLA.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 905,
+      "h": 1654
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MVMF-50thAnniversary-Bourbon-FRONT-2ndCOLA.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 903,
+    "h": 1653
+  }
+}

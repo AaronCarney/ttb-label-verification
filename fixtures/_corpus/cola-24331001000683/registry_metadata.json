@@ -1,0 +1,32 @@
+{
+  "ttbid": "24331001000683",
+  "brand": "PORCHLIGHT DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20329",
+  "serialNumber": "241492",
+  "approvalDate": "11/29/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Porchlight-StraightBourbon-FRONT-1stCOLA.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1138,
+      "h": 1407
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Porchlight-StraightBourbon-BACK-1stCOLA.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 903,
+      "h": 1215
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Porchlight-StraightBourbon-FRONT-1stCOLA.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1138,
+    "h": 1407
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24310001000198",
+  "brand": "ETHOS CRAFT BREWING",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "10",
+  "permitNo": "DSP-AL-20060",
+  "serialNumber": "240005",
+  "approvalDate": "11/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=image006.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 309,
+      "h": 434
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=image007.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 312,
+      "h": 435
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=image006.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 309,
+    "h": 434
+  }
+}

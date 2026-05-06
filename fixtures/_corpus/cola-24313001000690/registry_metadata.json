@@ -1,0 +1,32 @@
+{
+  "ttbid": "24313001000690",
+  "brand": "STONEHOUSE DISTILLERY",
+  "fancyName": "PRESIDENT DONALD J. TRUMP MAKE AMERICA GREAT AGAIN",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "30",
+  "permitNo": "DSP-MT-20008",
+  "serialNumber": "24TRUM",
+  "approvalDate": "11/14/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TRUMP%20FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1050,
+      "h": 1050
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TRUMP_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1050,
+      "h": 1050
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TRUMP%20FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1050,
+    "h": 1050
+  }
+}

@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24318001000191
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24318001000191
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MMBC%20OCT%20LONDON%20FRONT%203%20jpg.jpg&filetype=l
+fetched_at: 2026-05-06T01:31:15Z

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24338001000137",
+  "brand": "PAPA TEK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "10",
+  "permitNo": "DSP-AL-20003",
+  "serialNumber": "241202",
+  "approvalDate": "12/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PAPATEK%20FRONT%20REVISED.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1506,
+      "h": 1380
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PapaTek%20Back-Latest%20update.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1501,
+      "h": 1384
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PAPATEK%20FRONT%20REVISED.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1506,
+    "h": 1380
+  }
+}

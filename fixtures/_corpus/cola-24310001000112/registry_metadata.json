@@ -1,0 +1,32 @@
+{
+  "ttbid": "24310001000112",
+  "brand": "BARREL CLUB",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "24BC7W",
+  "approvalDate": "11/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=wheated%20bourbon%20front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1239,
+      "h": 1928
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 550,
+      "h": 2196
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=wheated%20bourbon%20front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1239,
+    "h": 1928
+  }
+}

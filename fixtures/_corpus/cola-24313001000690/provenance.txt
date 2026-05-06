@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24313001000690
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24313001000690
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TRUMP%20FRONT.jpg&filetype=l
+fetched_at: 2026-05-06T01:30:53Z

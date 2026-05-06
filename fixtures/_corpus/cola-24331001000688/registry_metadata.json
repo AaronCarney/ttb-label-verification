@@ -1,0 +1,44 @@
+{
+  "ttbid": "24331001000688",
+  "brand": "RARE PERFECTION",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20040",
+  "serialNumber": "242611",
+  "approvalDate": "12/04/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rare%20perfection%208yr%20Bourbon-%20BARREL%20PICK-%20Face.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 450,
+      "h": 686
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rare%20perfection%208yr%20Bourbon-BARREL%20PICK_%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 491,
+      "h": 798
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RP-Barrel%20Pick.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1270,
+      "h": 326
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RP-UPC.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 900,
+      "h": 722
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rare%20perfection%208yr%20Bourbon-%20BARREL%20PICK-%20Face.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 450,
+    "h": 686
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24331001000748",
+  "brand": "THE YARD DISTILLING CO",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20115",
+  "serialNumber": "240006",
+  "approvalDate": "12/02/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=YARD%20WHISKEY%20FRONT%20NEW.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2451,
+      "h": 3150
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=YARD%20WHISKEY%20BACK%20NEW.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2451,
+      "h": 3150
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=YARD%20WHISKEY%20FRONT%20NEW.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2451,
+    "h": 3150
+  }
+}

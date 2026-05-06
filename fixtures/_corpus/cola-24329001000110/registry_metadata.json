@@ -1,0 +1,32 @@
+{
+  "ttbid": "24329001000110",
+  "brand": "LARADO",
+  "fancyName": "HERITAGE TITLE COMPANY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20158",
+  "serialNumber": "240012",
+  "approvalDate": "11/27/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Heritage%20Title%20Company%20Front%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 950,
+      "h": 1010
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Larado%20-%20Special%20Order%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 692,
+      "h": 1044
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Heritage%20Title%20Company%20Front%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 950,
+    "h": 1010
+  }
+}
