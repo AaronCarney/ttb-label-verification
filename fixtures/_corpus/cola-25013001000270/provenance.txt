@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25013001000270
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25013001000270
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Fancy_Creek_Front_Whiskey_Label_Production_V1-01.png&filetype=l
+fetched_at: 2026-05-06T01:37:20Z

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25024001000537",
+  "brand": "BLACK BAND",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20060",
+  "serialNumber": "250006",
+  "approvalDate": "01/27/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blackband_NEW_FINAL_PRINT2_15_23-05.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1653,
+      "h": 226
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BlackBandNeckLabel.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 567,
+      "h": 62
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blackband_NEW_FINAL_PRINT2_15_23-05.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1653,
+    "h": 226
+  }
+}

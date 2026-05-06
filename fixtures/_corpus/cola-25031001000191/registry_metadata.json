@@ -1,0 +1,32 @@
+{
+  "ttbid": "25031001000191",
+  "brand": "SEELBACH'S PRIVATE RESERVE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20044",
+  "serialNumber": "25A031",
+  "approvalDate": "02/07/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Seelbachs%20Wheated%20Front%20COLA%20Rev%202.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1088,
+      "h": 1605
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20bbn%20Back%20COLA.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1200,
+      "h": 1800
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Seelbachs%20Wheated%20Front%20COLA%20Rev%202.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1088,
+    "h": 1605
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25015001000290",
+  "brand": "PAUL BEE DISTILLERY",
+  "fancyName": "RANCH CUT BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20229",
+  "serialNumber": "250005",
+  "approvalDate": "01/16/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon_50ml_TTB_UPDATED.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1920,
+      "h": 1080
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon_50ml_TTB_UPDATED.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1920,
+    "h": 1080
+  }
+}

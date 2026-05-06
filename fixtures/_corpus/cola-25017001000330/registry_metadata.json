@@ -1,0 +1,26 @@
+{
+  "ttbid": "25017001000330",
+  "brand": "WORKING MAN DISTILLERS",
+  "fancyName": "SOUTH BOUND BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-RI-20017",
+  "serialNumber": "25WMD1",
+  "approvalDate": "01/23/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=South%20Bound%20Bourbon%20ttb%20resize.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1508,
+      "h": 1064
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=South%20Bound%20Bourbon%20ttb%20resize.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1508,
+    "h": 1064
+  }
+}

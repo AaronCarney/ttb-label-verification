@@ -1,0 +1,26 @@
+{
+  "ttbid": "25020001000054",
+  "brand": "CINCINNATI DISTILLING",
+  "fancyName": "BLUE LINE BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20043",
+  "serialNumber": "250070",
+  "approvalDate": "01/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BlueLine.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3000,
+      "h": 1207
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BlueLine.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3000,
+    "h": 1207
+  }
+}

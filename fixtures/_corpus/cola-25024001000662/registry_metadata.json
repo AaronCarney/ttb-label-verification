@@ -1,0 +1,38 @@
+{
+  "ttbid": "25024001000662",
+  "brand": "KINGDOM SPIRITS",
+  "fancyName": "BURKE BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "46",
+  "permitNo": "DSP-VT-15003",
+  "serialNumber": "25BBWL",
+  "approvalDate": "02/05/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Burke-Bourbon-front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1900,
+      "h": 488
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Burke%20Bourbon%20inside%20label%20j.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 3750,
+      "h": 7500
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Burke%20Bourbon%20Back%20j.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 3750,
+      "h": 7500
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Burke-Bourbon-front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1900,
+    "h": 488
+  }
+}

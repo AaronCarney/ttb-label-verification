@@ -1,0 +1,32 @@
+{
+  "ttbid": "25027001000082",
+  "brand": "BRADY'S DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20085",
+  "serialNumber": "250001",
+  "approvalDate": "02/25/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BRADYS%20DISTILLERY%20-%20WHISKEY%20FINAL.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2092,
+      "h": 1366
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cap%20Strip%20Toasted%20Barrel%202024.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 409,
+      "h": 1116
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BRADYS%20DISTILLERY%20-%20WHISKEY%20FINAL.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2092,
+    "h": 1366
+  }
+}

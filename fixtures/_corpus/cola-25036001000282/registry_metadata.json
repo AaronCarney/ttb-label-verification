@@ -1,0 +1,38 @@
+{
+  "ttbid": "25036001000282",
+  "brand": "COPPER & CASK",
+  "fancyName": "PRIVATE BLEND",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "40",
+  "permitNo": "DSP-RI-20009",
+  "serialNumber": "250005",
+  "approvalDate": "02/07/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=25_CC_PrivateBatch_Specs_SP02_Front_COLA.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 480,
+      "h": 876
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=25_CC_PrivateBatch_Specs_SP02_Back_COLA.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 350,
+      "h": 745
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CC_NeckLabel_Cream.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 820,
+      "h": 144
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=25_CC_PrivateBatch_Specs_SP02_Front_COLA.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 480,
+    "h": 876
+  }
+}

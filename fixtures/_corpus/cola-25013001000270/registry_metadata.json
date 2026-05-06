@@ -1,0 +1,32 @@
+{
+  "ttbid": "25013001000270",
+  "brand": "FANCY CREEK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "20",
+  "permitNo": "DSP-IA-15001",
+  "serialNumber": "25FCBB",
+  "approvalDate": "01/14/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Fancy_Creek_Front_Whiskey_Label_Production_V1-01.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1050,
+      "h": 1413
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Fancy_Creek_Back_Whiskey_Label_Production_V1-02.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 631,
+      "h": 1192
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Fancy_Creek_Front_Whiskey_Label_Production_V1-01.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1050,
+    "h": 1413
+  }
+}

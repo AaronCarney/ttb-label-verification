@@ -1,0 +1,26 @@
+{
+  "ttbid": "25013001000229",
+  "brand": "WEST VIRGINIA FRUIT AND BERRY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "25WV7R",
+  "approvalDate": "01/16/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=correction%20special%20reserve.JPG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1006,
+      "h": 746
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=correction%20special%20reserve.JPG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1006,
+    "h": 746
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25020001000213",
+  "brand": "HOSTE",
+  "fancyName": "HOUSE BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20068",
+  "serialNumber": "250004",
+  "approvalDate": "01/28/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HOUSE%20KY%20BOURBON%20FOR%20COLA-16.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1051,
+      "h": 1501
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GOVERNMENT%20WARNING%20STICKER-13.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1249,
+      "h": 211
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HOUSE%20KY%20BOURBON%20FOR%20COLA-16.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1051,
+    "h": 1501
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25022001000340",
+  "brand": "GEORGE BURDELL",
+  "fancyName": "CASK STRENGTH BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20128",
+  "serialNumber": "250001",
+  "approvalDate": "01/27/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Third%20Rail_Burdell%20Cask_FRONT_v2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 540,
+      "h": 1057
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Third%20Rail_Burdell%20Cask_BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 540,
+      "h": 600
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Third%20Rail_Burdell%20Cask_FRONT_v2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 540,
+    "h": 1057
+  }
+}

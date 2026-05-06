@@ -1,0 +1,44 @@
+{
+  "ttbid": "25035001000215",
+  "brand": "FORBIDDEN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20037",
+  "serialNumber": "250031",
+  "approvalDate": "02/05/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Forbidden%20SB%20Wheated%20F.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1021,
+      "h": 2044
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Forbidden%20SB%20Wheated%20FB.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1799,
+      "h": 907
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Forbidden%20SB%20Wheated%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1572,
+      "h": 382
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Forbidden%20SB%20Wheated%20O.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1232,
+      "h": 1216
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Forbidden%20SB%20Wheated%20F.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1021,
+    "h": 2044
+  }
+}

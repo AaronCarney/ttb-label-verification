@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25034001000461
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25034001000461
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=25-0001_%20Loudoun%20Bourbon%20Whiskey%20-%20Cool%20Spring%20Distillery%20-%20BRAND.png&filetype=l
+fetched_at: 2026-05-06T01:39:59Z

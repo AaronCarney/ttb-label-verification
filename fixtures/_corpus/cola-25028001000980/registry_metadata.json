@@ -1,0 +1,38 @@
+{
+  "ttbid": "25028001000980",
+  "brand": "CATHEDRAL LEDGE DISTILLERY",
+  "fancyName": "BOTTLED IN BOND",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NH-21019",
+  "serialNumber": "250001",
+  "approvalDate": "01/29/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Diamond%20Rotated%20Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1132,
+      "h": 1130
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BottledInBond-Bourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2026,
+      "h": 787
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bottled%20In%20Bond%20-%20Tamper%20Seal.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 379,
+      "h": 1488
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Diamond%20Rotated%20Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1132,
+    "h": 1130
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25035001000090",
+  "brand": "BLACKBURN",
+  "fancyName": "MILD AND MELLOW",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "FL-I-21456",
+  "serialNumber": "250135",
+  "approvalDate": "02/11/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BLACKBURN%20CE.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 426,
+      "h": 501
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BLACKBURN.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 555,
+      "h": 559
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BLACKBURN%20CE.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 426,
+    "h": 501
+  }
+}

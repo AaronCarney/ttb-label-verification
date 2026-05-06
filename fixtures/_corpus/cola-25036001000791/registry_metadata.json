@@ -1,0 +1,32 @@
+{
+  "ttbid": "25036001000791",
+  "brand": "THIRTEENTH COLONY DISTILLERIES",
+  "fancyName": "SINGLE BARREL DOUBLE OAKED BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-15005",
+  "serialNumber": "251234",
+  "approvalDate": "02/07/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=13th%20Colony%20Double%20Oaked%20Single%20Barrel.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3300,
+      "h": 525
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=13th%20Colony%20Double%20Oaked%20Single%20Barrel_Top%20Strip.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1618,
+      "h": 251
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=13th%20Colony%20Double%20Oaked%20Single%20Barrel.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3300,
+    "h": 525
+  }
+}

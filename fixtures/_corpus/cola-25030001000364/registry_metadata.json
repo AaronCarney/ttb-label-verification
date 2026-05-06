@@ -1,0 +1,32 @@
+{
+  "ttbid": "25030001000364",
+  "brand": "DUST BOWL DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20432",
+  "serialNumber": "250001",
+  "approvalDate": "02/06/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DustBowlDistillery%20Bourbon%20750MLBottle%20TopLabel%20TTB.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1051,
+      "h": 1023
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DustBowlDistillery-Bourbon-750MLBottle-BottomLabel-TTB.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 2000,
+      "h": 284
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DustBowlDistillery%20Bourbon%20750MLBottle%20TopLabel%20TTB.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1051,
+    "h": 1023
+  }
+}

@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25027001000612
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25027001000612
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%2015.png&filetype=l
+fetched_at: 2026-05-06T01:39:13Z

@@ -1,0 +1,38 @@
+{
+  "ttbid": "25014001000514",
+  "brand": "PATHFINDER FARM",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20050",
+  "serialNumber": "25RCB2",
+  "approvalDate": "01/17/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BLOODY-BUTCHER_final1whiskeyadded.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 934,
+      "h": 1280
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BLOODY-BUTCHER_final3.jpeg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 238,
+      "h": 1280
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BLOODY-BUTCHER_final2withagestatement.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 911,
+      "h": 1280
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BLOODY-BUTCHER_final1whiskeyadded.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 934,
+    "h": 1280
+  }
+}

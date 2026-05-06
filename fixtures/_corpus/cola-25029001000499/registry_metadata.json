@@ -1,0 +1,26 @@
+{
+  "ttbid": "25029001000499",
+  "brand": "WELL DONE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20117",
+  "serialNumber": "250003",
+  "approvalDate": "02/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Well%20Done%20-%20Bourbon%20Whiskey_4.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1557,
+      "h": 799
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Well%20Done%20-%20Bourbon%20Whiskey_4.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1557,
+    "h": 799
+  }
+}

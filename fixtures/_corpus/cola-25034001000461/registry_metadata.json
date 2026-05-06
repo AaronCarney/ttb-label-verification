@@ -1,0 +1,26 @@
+{
+  "ttbid": "25034001000461",
+  "brand": "LOUDOUN BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20103",
+  "serialNumber": "250001",
+  "approvalDate": "02/04/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=25-0001_%20Loudoun%20Bourbon%20Whiskey%20-%20Cool%20Spring%20Distillery%20-%20BRAND.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1351,
+      "h": 678
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=25-0001_%20Loudoun%20Bourbon%20Whiskey%20-%20Cool%20Spring%20Distillery%20-%20BRAND.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1351,
+    "h": 678
+  }
+}

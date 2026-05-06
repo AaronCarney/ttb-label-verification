@@ -1,0 +1,44 @@
+{
+  "ttbid": "25037001000960",
+  "brand": "SHELTER DISTILLING",
+  "fancyName": "RIDGE RUNNER",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20152",
+  "serialNumber": "250005",
+  "approvalDate": "02/10/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%2017.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 960,
+      "h": 1944
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%2018.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 928,
+      "h": 1514
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%201.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 505,
+      "h": 972
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%203.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 140,
+      "h": 1710
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%2017.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 960,
+    "h": 1944
+  }
+}

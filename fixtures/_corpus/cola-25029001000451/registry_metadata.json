@@ -1,0 +1,26 @@
+{
+  "ttbid": "25029001000451",
+  "brand": "BLACK DIAMOND BREWERY AND DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20159",
+  "serialNumber": "250004",
+  "approvalDate": "01/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black%20Diamond%20Bourbon%20Whiskey%20-%20Barrel%20Bottled%20-%20124%20Proof.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3928,
+      "h": 2068
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black%20Diamond%20Bourbon%20Whiskey%20-%20Barrel%20Bottled%20-%20124%20Proof.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3928,
+    "h": 2068
+  }
+}

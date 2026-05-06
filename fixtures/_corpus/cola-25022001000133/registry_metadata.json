@@ -1,0 +1,32 @@
+{
+  "ttbid": "25022001000133",
+  "brand": "SUA SPONTE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "41",
+  "permitNo": "DSP-SC-15008",
+  "serialNumber": "250122",
+  "approvalDate": "01/27/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SSF%20Front%20Label%202.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 731,
+      "h": 652
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SSF%20Rear%202.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 485,
+      "h": 482
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SSF%20Front%20Label%202.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 731,
+    "h": 652
+  }
+}

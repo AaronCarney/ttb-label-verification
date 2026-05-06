@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25020001000213
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25020001000213
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HOUSE%20KY%20BOURBON%20FOR%20COLA-16.jpg&filetype=l
+fetched_at: 2026-05-06T01:38:01Z

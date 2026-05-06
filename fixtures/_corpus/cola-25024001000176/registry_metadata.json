@@ -1,0 +1,32 @@
+{
+  "ttbid": "25024001000176",
+  "brand": "1693 ELEVATION",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20139",
+  "serialNumber": "250002",
+  "approvalDate": "01/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1693%20Bourbon%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 867,
+      "h": 1265
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Single%20Barrel%20Select%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1158,
+      "h": 862
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1693%20Bourbon%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 867,
+    "h": 1265
+  }
+}

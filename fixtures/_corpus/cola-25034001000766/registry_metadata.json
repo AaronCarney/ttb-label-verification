@@ -1,0 +1,44 @@
+{
+  "ttbid": "25034001000766",
+  "brand": "BORCHETTA BOURBON",
+  "fancyName": "RED CORN RESERVE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21003",
+  "serialNumber": "25BB01",
+  "approvalDate": "02/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Small%20Batch_Screen%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 863,
+      "h": 1238
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Red%20Corn%20Reserve_Label%20Body.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2475,
+      "h": 450
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Small%20Batch_Screen%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 863,
+      "h": 1238
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Red%20Corn%20Reserve_Label%20Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1275,
+      "h": 450
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Small%20Batch_Screen%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 863,
+    "h": 1238
+  }
+}

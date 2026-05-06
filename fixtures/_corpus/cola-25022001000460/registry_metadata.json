@@ -1,0 +1,32 @@
+{
+  "ttbid": "25022001000460",
+  "brand": "SOCIETY",
+  "fancyName": "B3.12",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-15097",
+  "serialNumber": "250018",
+  "approvalDate": "01/23/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Sink%20Into%20The%20Night%20B312.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1530,
+      "h": 1120
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BACK%20Arkansas%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1020,
+      "h": 931
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Sink%20Into%20The%20Night%20B312.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1530,
+    "h": 1120
+  }
+}

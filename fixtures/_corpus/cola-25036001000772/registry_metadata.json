@@ -1,0 +1,32 @@
+{
+  "ttbid": "25036001000772",
+  "brand": "BOOT HILL DISTILLERY- KANSAS CORN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "21",
+  "permitNo": "DSP-KS-21003",
+  "serialNumber": "250205",
+  "approvalDate": "02/07/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KSCORN.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 686,
+      "h": 841
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=123.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 768,
+      "h": 758
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KSCORN.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 686,
+    "h": 841
+  }
+}
