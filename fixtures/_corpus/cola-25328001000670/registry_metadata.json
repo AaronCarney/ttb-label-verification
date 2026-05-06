@@ -1,0 +1,32 @@
+{
+  "ttbid": "25328001000670",
+  "brand": "BOXER BOURBON",
+  "fancyName": "MAXIMUS 8 YEARS OLD",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20209",
+  "serialNumber": "25BB8Y",
+  "approvalDate": "12/11/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Maximus%20-%20Front%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 412,
+      "h": 716
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Boxer%208%20yr%20back%20label%20120825.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 826,
+      "h": 1426
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Maximus%20-%20Front%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 412,
+    "h": 716
+  }
+}

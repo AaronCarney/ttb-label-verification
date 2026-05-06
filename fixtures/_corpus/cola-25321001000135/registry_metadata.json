@@ -1,0 +1,32 @@
+{
+  "ttbid": "25321001000135",
+  "brand": "GUNN'S",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "26",
+  "permitNo": "DSP-MA-21011",
+  "serialNumber": "250003",
+  "approvalDate": "11/25/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Irish%20Brewing%20Bopurbon%20Front-3.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 827,
+      "h": 1163
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Irish%20Brewing%20Bourbon%20Back-3.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 827,
+      "h": 1163
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Irish%20Brewing%20Bopurbon%20Front-3.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 827,
+    "h": 1163
+  }
+}

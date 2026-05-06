@@ -1,0 +1,26 @@
+{
+  "ttbid": "25300001000050",
+  "brand": "OLD MAN LIVER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21072",
+  "serialNumber": "250006",
+  "approvalDate": "11/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wasteland%20Whiskey.JPG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1775,
+      "h": 685
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wasteland%20Whiskey.JPG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1775,
+    "h": 685
+  }
+}

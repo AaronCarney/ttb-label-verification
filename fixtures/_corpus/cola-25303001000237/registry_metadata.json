@@ -1,0 +1,32 @@
+{
+  "ttbid": "25303001000237",
+  "brand": "CAYUGA'S WATERS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "14",
+  "permitNo": "DSP-CT-21036",
+  "serialNumber": "250012",
+  "approvalDate": "11/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2025-10-28_Cayugas_Waters_Front_LabelDesign_V2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1407,
+      "h": 1040
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2025-10-28_Cayugas_Waters_Back_Label%20Design_V2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 3960,
+      "h": 6895
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2025-10-28_Cayugas_Waters_Front_LabelDesign_V2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1407,
+    "h": 1040
+  }
+}

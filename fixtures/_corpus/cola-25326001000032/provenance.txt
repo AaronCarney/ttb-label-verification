@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25326001000032
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25326001000032
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Noel%20Garcia%20Bourbon%20Nordic%20750ml%2020251119%20Front%20Main%20Label.jpg&filetype=l
+fetched_at: 2026-05-06T02:20:11Z

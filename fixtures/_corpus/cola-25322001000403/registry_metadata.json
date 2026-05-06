@@ -1,0 +1,32 @@
+{
+  "ttbid": "25322001000403",
+  "brand": "PIONEERING THE SPIRIT OF IOWA",
+  "fancyName": "1847",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "20",
+  "permitNo": "DSP-IA-15001",
+  "serialNumber": "251847",
+  "approvalDate": "11/24/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Iowa%201847%20Front%20Label%20V2.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1620,
+      "h": 2030
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Iowa%201847%20Back%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1082,
+      "h": 956
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Iowa%201847%20Front%20Label%20V2.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1620,
+    "h": 2030
+  }
+}

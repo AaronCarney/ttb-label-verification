@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25314001000175
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25314001000175
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IC_BESSEMER_BOURBON100_FRONTLABEL_COLA.jpg&filetype=l
+fetched_at: 2026-05-06T02:17:52Z

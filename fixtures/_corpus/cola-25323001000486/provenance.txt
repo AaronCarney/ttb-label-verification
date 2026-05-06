@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25323001000486
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25323001000486
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Preet%20liquors%20back%20label.png&filetype=l
+fetched_at: 2026-05-06T02:19:31Z

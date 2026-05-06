@@ -1,0 +1,44 @@
+{
+  "ttbid": "25325001000822",
+  "brand": "VERY OLDE ST. NICK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20040",
+  "serialNumber": "251121",
+  "approvalDate": "12/01/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VOSN-%20TBC%20Face.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1494,
+      "h": 1470
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VOSN-%20TBC%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1723,
+      "h": 1814
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VOSN-TBC%20Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 3114,
+      "h": 739
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OSN-TBC-%20UPC.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 871,
+      "h": 484
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VOSN-%20TBC%20Face.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1494,
+    "h": 1470
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25300001000114",
+  "brand": "REVELTON DISTILLING COMPANY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "20",
+  "permitNo": "DSP-IA-21032",
+  "serialNumber": "25002L",
+  "approvalDate": "11/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=REVELTON%20BOURBON%2050ML%20FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 462,
+      "h": 653
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=REVELTON%20BOURBON%2050ML%20BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 241,
+      "h": 431
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=REVELTON%20BOURBON%2050ML%20FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 462,
+    "h": 653
+  }
+}

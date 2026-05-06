@@ -1,0 +1,32 @@
+{
+  "ttbid": "25322001000210",
+  "brand": "HINDS1GHT 2020",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21321",
+  "serialNumber": "250001",
+  "approvalDate": "12/02/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Hinds1ght2020BourbonFront.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 956,
+      "h": 1511
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonRear.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1080,
+      "h": 1664
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Hinds1ght2020BourbonFront.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 956,
+    "h": 1511
+  }
+}

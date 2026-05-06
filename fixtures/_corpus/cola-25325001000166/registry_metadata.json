@@ -1,0 +1,26 @@
+{
+  "ttbid": "25325001000166",
+  "brand": "CINCINNATI DISTILLING",
+  "fancyName": "ST. XAVIER BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20043",
+  "serialNumber": "251121",
+  "approvalDate": "01/09/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=StX_Xtravaganza_Label_2026Edition.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 861,
+      "h": 925
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=StX_Xtravaganza_Label_2026Edition.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 861,
+    "h": 925
+  }
+}

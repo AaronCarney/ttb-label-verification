@@ -1,0 +1,32 @@
+{
+  "ttbid": "25325001000140",
+  "brand": "LINCOLN RIDGE",
+  "fancyName": "TAVERN 19",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20121",
+  "serialNumber": "253000",
+  "approvalDate": "11/28/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LR-Tavern19Bourbon-Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 600,
+      "h": 800
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LR-Tavern19Bourbon-Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 600,
+      "h": 800
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LR-Tavern19Bourbon-Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 600,
+    "h": 800
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25314001000175",
+  "brand": "BESSEMER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20222",
+  "serialNumber": "250011",
+  "approvalDate": "12/15/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IC_BESSEMER_BOURBON100_FRONTLABEL_COLA.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 833,
+      "h": 629
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IC_BESSEMER_BOURBON100_BACKLABEL_COLA.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 825,
+      "h": 170
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IC_BESSEMER_BOURBON100_FRONTLABEL_COLA.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 833,
+    "h": 629
+  }
+}

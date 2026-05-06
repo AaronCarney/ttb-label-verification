@@ -1,0 +1,32 @@
+{
+  "ttbid": "25320001000038",
+  "brand": "PROFILE SPIRITS",
+  "fancyName": "ANDERSON'S RESERVE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "33",
+  "permitNo": "DSP-NH-21027",
+  "serialNumber": "250022",
+  "approvalDate": "11/25/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Andersons%20reserve%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 912,
+      "h": 1127
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Andersons%20Reserve%20Rear.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 901,
+      "h": 1080
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Andersons%20reserve%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 912,
+    "h": 1127
+  }
+}

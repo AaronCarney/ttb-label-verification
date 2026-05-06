@@ -1,0 +1,26 @@
+{
+  "ttbid": "25310001000037",
+  "brand": "BUTCHER'S BLOCK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "20",
+  "permitNo": "DSP-IA-21032",
+  "serialNumber": "25003L",
+  "approvalDate": "11/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Bourbon%20Whiskey.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3077,
+      "h": 717
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Bourbon%20Whiskey.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3077,
+    "h": 717
+  }
+}

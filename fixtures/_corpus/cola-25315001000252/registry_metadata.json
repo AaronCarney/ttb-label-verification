@@ -1,0 +1,32 @@
+{
+  "ttbid": "25315001000252",
+  "brand": "SCOTTISH RITE NMJ",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "14",
+  "permitNo": "DSP-CT-21036",
+  "serialNumber": "250014",
+  "approvalDate": "11/26/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2025_11_25_Scottish%20Rite_Front_Design%20V5.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1767,
+      "h": 2673
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2025_11_25_Scottish%20Rite_Back_Design_V5.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 843,
+      "h": 1267
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2025_11_25_Scottish%20Rite_Front_Design%20V5.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1767,
+    "h": 2673
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25325001000339",
+  "brand": "STIGGS BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20278",
+  "serialNumber": "250001",
+  "approvalDate": "12/01/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=750%20STIGGS%20BOURBON%20-%20FINAL%20FRONT%20VERSION.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1108,
+      "h": 2488
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=750%20STIGGS%20BOURBON%20-%20FINAL%20BACK%20VERSION.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 840,
+      "h": 2185
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=750%20STIGGS%20BOURBON%20-%20FINAL%20FRONT%20VERSION.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1108,
+    "h": 2488
+  }
+}

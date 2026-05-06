@@ -1,0 +1,32 @@
+{
+  "ttbid": "25310001000119",
+  "brand": "CRADLE OF LIBERTY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20018",
+  "serialNumber": "25BOY1",
+  "approvalDate": "11/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=COL_Bourbon_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 975,
+      "h": 1611
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=COL_Bourbon_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 802,
+      "h": 753
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=COL_Bourbon_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 975,
+    "h": 1611
+  }
+}

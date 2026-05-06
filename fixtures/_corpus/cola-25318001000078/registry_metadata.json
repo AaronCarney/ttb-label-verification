@@ -1,0 +1,26 @@
+{
+  "ttbid": "25318001000078",
+  "brand": "BERNADOTTE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "27",
+  "permitNo": "DSP-MN-20083",
+  "serialNumber": "25BERN",
+  "approvalDate": "11/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bernadotte.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1239,
+      "h": 930
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bernadotte.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1239,
+    "h": 930
+  }
+}

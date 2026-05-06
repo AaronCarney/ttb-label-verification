@@ -1,0 +1,32 @@
+{
+  "ttbid": "25309001000023",
+  "brand": "BIG LAKE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20145",
+  "serialNumber": "251001",
+  "approvalDate": "12/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourb_Whisk_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 846,
+      "h": 1067
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BW_Back.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 581,
+      "h": 898
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourb_Whisk_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 846,
+    "h": 1067
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "25322001000602",
+  "brand": "PARK HOLLOW MORTGAGE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20316",
+  "serialNumber": "25PARK",
+  "approvalDate": "11/24/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Park%20Hollow%20%20BourbonWhiskey-front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 900,
+      "h": 900
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Park%20Hollow%20%20BourbonWhiskey-BottomFront.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 976,
+      "h": 825
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Park%20Hollow%20%20BourbonWhiskey-Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 750,
+      "h": 675
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Park%20Hollow%20%20BourbonWhiskey-front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 900,
+    "h": 900
+  }
+}

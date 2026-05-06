@@ -1,0 +1,32 @@
+{
+  "ttbid": "25324001000515",
+  "brand": "NINE FINGERS",
+  "fancyName": "WHEATED BOURBON WHISKEY SMALL BATCH",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21328",
+  "serialNumber": "259F01",
+  "approvalDate": "12/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Nine%20Fingers%20Front%20Ver%202.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1545,
+      "h": 2000
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Nine%20Fingers%20Back%20w-barcode%20V2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1545,
+      "h": 2000
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Nine%20Fingers%20Front%20Ver%202.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1545,
+    "h": 2000
+  }
+}

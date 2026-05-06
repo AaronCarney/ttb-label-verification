@@ -1,0 +1,38 @@
+{
+  "ttbid": "25326001000032",
+  "brand": "NOEL GARCIA",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20066",
+  "serialNumber": "250001",
+  "approvalDate": "12/01/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Noel%20Garcia%20Bourbon%20Nordic%20750ml%2020251119%20Front%20Main%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1674,
+      "h": 532
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Asset%201-100.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 213,
+      "h": 81
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Asset%202-100.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 381,
+      "h": 74
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Noel%20Garcia%20Bourbon%20Nordic%20750ml%2020251119%20Front%20Main%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1674,
+    "h": 532
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25308001000033",
+  "brand": "1620 DISTILLING CO",
+  "fancyName": "RED DIRT ROAD BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20120",
+  "serialNumber": "250003",
+  "approvalDate": "11/25/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RedDirtLabels_Bourbon_Final_Horizontal%202.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2026,
+      "h": 1576
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RedDirtLabels_Bourbon_Final_Horizontal%202.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2026,
+    "h": 1576
+  }
+}

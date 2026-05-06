@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25304001000164
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25304001000164
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=K2%20Font%20NE%20ONLY%20x2.png&filetype=l
+fetched_at: 2026-05-06T02:17:23Z

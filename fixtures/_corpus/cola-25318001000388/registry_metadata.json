@@ -1,0 +1,32 @@
+{
+  "ttbid": "25318001000388",
+  "brand": "STORYHOUSE SPIRITS",
+  "fancyName": "COMMUNION BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20186",
+  "serialNumber": "250004",
+  "approvalDate": "12/01/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Storyhouse%20front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 708,
+      "h": 894
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SH_COMMUNION_TTB_BOURBON_LABEL.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1428,
+      "h": 370
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Storyhouse%20front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 708,
+    "h": 894
+  }
+}

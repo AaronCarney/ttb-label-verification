@@ -1,0 +1,32 @@
+{
+  "ttbid": "25324001000533",
+  "brand": "TRESTLE BRIDGE",
+  "fancyName": "BOURBON WHISKEY HIGH RYE SMALL BATCH",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21328",
+  "serialNumber": "25TR01",
+  "approvalDate": "12/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Trestle%20Bridge%20Front%20v2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1545,
+      "h": 2000
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Trestle%20Bridge%20Back%20w-Barcode%20v2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1545,
+      "h": 2000
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Trestle%20Bridge%20Front%20v2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1545,
+    "h": 2000
+  }
+}

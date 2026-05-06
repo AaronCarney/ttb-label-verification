@@ -1,0 +1,38 @@
+{
+  "ttbid": "25323001000486",
+  "brand": "PINHOOK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-18",
+  "serialNumber": "250042",
+  "approvalDate": "11/24/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Preet%20liquors%20back%20label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 848,
+      "h": 1437
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Preet%20liquors%20front%20bottom.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1161,
+      "h": 1006
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Preet%20liquors%20front%20top.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1407,
+      "h": 437
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Preet%20liquors%20back%20label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 848,
+    "h": 1437
+  }
+}

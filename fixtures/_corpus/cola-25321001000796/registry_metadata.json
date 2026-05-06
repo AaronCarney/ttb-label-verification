@@ -1,0 +1,38 @@
+{
+  "ttbid": "25321001000796",
+  "brand": "CUTWATER",
+  "fancyName": "CASK STRENGTH BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20137",
+  "serialNumber": "25CB11",
+  "approvalDate": "11/26/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cutwater-Cask-Strength-Bourbon_1-Front_TTB_v2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1050,
+      "h": 1275
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cutwater-Cask-Strength-Bourbon_1-Back_TTB_v2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 675,
+      "h": 675
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cutwater-Cask-Strength-Bourbon_1-Neck_TTB_v2.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 260,
+      "h": 1067
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cutwater-Cask-Strength-Bourbon_1-Front_TTB_v2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1050,
+    "h": 1275
+  }
+}

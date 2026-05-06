@@ -1,0 +1,26 @@
+{
+  "ttbid": "25325001000227",
+  "brand": "LINCOLN RIDGE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20121",
+  "serialNumber": "256001",
+  "approvalDate": "11/28/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LR_50ML_Bourbon.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 800,
+      "h": 350
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LR_50ML_Bourbon.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 800,
+    "h": 350
+  }
+}

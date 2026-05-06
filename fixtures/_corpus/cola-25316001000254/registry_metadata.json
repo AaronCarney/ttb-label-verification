@@ -1,0 +1,38 @@
+{
+  "ttbid": "25316001000254",
+  "brand": "OREGON SPIRIT DISTILLERS STRAIGHT AMERICAN BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-15028",
+  "serialNumber": "250005",
+  "approvalDate": "11/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OSD%20Bourbon%20BIB%202024%20FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2499,
+      "h": 926
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OSD%20Bourbon%20SA%202024%20BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 919,
+      "h": 764
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OSD%20Bourbon%20SA%202024%20NECK.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1557,
+      "h": 457
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OSD%20Bourbon%20BIB%202024%20FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2499,
+    "h": 926
+  }
+}

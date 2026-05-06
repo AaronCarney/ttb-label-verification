@@ -1,0 +1,38 @@
+{
+  "ttbid": "25315001000335",
+  "brand": "WILDERNESS TRAIL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20005",
+  "serialNumber": "250003",
+  "approvalDate": "12/02/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WTD_logomark_TTB02%20-%20Copy.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3146,
+      "h": 2193
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WTD%20Hi%20Rye%20Wrap%20COLA%20PB_with%20text.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2582,
+      "h": 734
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WTD%20Hi%20Rye%20Neck%20COLA%20PB.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1342,
+      "h": 406
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WTD_logomark_TTB02%20-%20Copy.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3146,
+    "h": 2193
+  }
+}

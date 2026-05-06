@@ -1,0 +1,32 @@
+{
+  "ttbid": "25322001000377",
+  "brand": "PUBLIC BARREL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "41",
+  "permitNo": "DSP-SC-21022",
+  "serialNumber": "25BUB2",
+  "approvalDate": "12/02/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Public%20Barrel%20Oak.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 1500
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back%20Label%20Burbon.PNG&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1080,
+      "h": 1080
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Public%20Barrel%20Oak.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 1500
+  }
+}
