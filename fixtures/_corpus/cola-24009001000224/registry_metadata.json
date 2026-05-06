@@ -1,0 +1,32 @@
+{
+  "ttbid": "24009001000224",
+  "brand": "RENAISSANCE MAN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20220",
+  "serialNumber": "24BRBN",
+  "approvalDate": "01/10/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 424,
+      "h": 673
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBON%20BACK%20LABEL.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1800,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 424,
+    "h": 673
+  }
+}

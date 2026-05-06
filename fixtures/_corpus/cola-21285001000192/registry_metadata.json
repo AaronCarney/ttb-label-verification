@@ -1,0 +1,32 @@
+{
+  "ttbid": "21285001000192",
+  "brand": "SWEET LIZZY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20039",
+  "serialNumber": "210466",
+  "approvalDate": "10/13/2021",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTBLabelFront120Lizzy_06232021REV_10052021.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 632,
+      "h": 943
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTBLabelBACK120Lizzy_06232021REV_10052021.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 632,
+      "h": 943
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTBLabelFront120Lizzy_06232021REV_10052021.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 632,
+    "h": 943
+  }
+}

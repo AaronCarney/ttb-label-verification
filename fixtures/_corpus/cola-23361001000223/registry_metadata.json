@@ -1,0 +1,32 @@
+{
+  "ttbid": "23361001000223",
+  "brand": "ARTHUR WHEELER SPIRITS COMPANY",
+  "fancyName": "CASK STRENGTH BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20070",
+  "serialNumber": "230002",
+  "approvalDate": "01/03/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=csbourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 4380,
+      "h": 1636
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AWSC_ShrinkCap_Band.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1226,
+      "h": 672
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=csbourbon.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 4380,
+    "h": 1636
+  }
+}

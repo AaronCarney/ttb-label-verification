@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 23083001000310
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=23083001000310
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2L%20f%20Old%20Faithful.jpg&filetype=l
+fetched_at: 2026-05-06T00:54:46Z

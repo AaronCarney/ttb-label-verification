@@ -1,0 +1,26 @@
+{
+  "ttbid": "24003001000061",
+  "brand": "MIDDLETOWN",
+  "fancyName": "SINGLE BARREL CITY LIMITS",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20043",
+  "serialNumber": "240002",
+  "approvalDate": "01/04/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MiddletownBourbon-SingleBarrel-Label-Draft-2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2500,
+      "h": 915
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MiddletownBourbon-SingleBarrel-Label-Draft-2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2500,
+    "h": 915
+  }
+}

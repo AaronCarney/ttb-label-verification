@@ -1,0 +1,26 @@
+{
+  "ttbid": "24004001000637",
+  "brand": "NORTHERN WATERS DISTILLERY",
+  "fancyName": "VIXEN'S BITE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20014",
+  "serialNumber": "244590",
+  "approvalDate": "01/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Vixen_label_final-min.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2439,
+      "h": 1239
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Vixen_label_final-min.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2439,
+    "h": 1239
+  }
+}

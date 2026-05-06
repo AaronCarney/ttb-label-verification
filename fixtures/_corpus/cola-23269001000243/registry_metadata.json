@@ -1,0 +1,32 @@
+{
+  "ttbid": "23269001000243",
+  "brand": "CALL HER SUE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "03",
+  "permitNo": "DSP-NJ-21007",
+  "serialNumber": "230926",
+  "approvalDate": "10/03/2023",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Call%20her%20Sue.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 457,
+      "h": 573
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Back%20label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1137,
+      "h": 591
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Call%20her%20Sue.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 457,
+    "h": 573
+  }
+}

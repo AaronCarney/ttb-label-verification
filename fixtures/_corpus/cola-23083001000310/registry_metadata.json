@@ -1,0 +1,26 @@
+{
+  "ttbid": "23083001000310",
+  "brand": "OLD FAITHFUL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "30",
+  "permitNo": "DSP-MT-20006",
+  "serialNumber": "23002L",
+  "approvalDate": "04/01/2023",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2L%20f%20Old%20Faithful.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2733,
+      "h": 1466
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2L%20f%20Old%20Faithful.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2733,
+    "h": 1466
+  }
+}

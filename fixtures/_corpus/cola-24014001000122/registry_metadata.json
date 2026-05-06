@@ -1,0 +1,32 @@
+{
+  "ttbid": "24014001000122",
+  "brand": "CASUS BELLI SPIRITS COMPANY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20255",
+  "serialNumber": "24B001",
+  "approvalDate": "01/22/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Casus%20Belli%20Label_Bourbon_Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 4001,
+      "h": 2320
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Casus%20Belli%20Label_Bourbon_Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 4001,
+      "h": 2320
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Casus%20Belli%20Label_Bourbon_Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 4001,
+    "h": 2320
+  }
+}

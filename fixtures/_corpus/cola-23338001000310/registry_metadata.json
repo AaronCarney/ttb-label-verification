@@ -1,0 +1,32 @@
+{
+  "ttbid": "23338001000310",
+  "brand": "HOMEGROWN BOONE'S BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "41",
+  "permitNo": "DSP-SC-15001",
+  "serialNumber": "232021",
+  "approvalDate": "12/12/2023",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BoonesBourbon-Fed-Label-Front-02.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 878,
+      "h": 1388
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BoonesBourbon-Fed-Label-Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 878,
+      "h": 1388
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BoonesBourbon-Fed-Label-Front-02.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 878,
+    "h": 1388
+  }
+}

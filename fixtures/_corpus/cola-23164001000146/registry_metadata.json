@@ -1,0 +1,38 @@
+{
+  "ttbid": "23164001000146",
+  "brand": "THREE DOCTORS BOURBON",
+  "fancyName": "TEN DAY BOURBON SMALL BATCH",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20129",
+  "serialNumber": "23DR06",
+  "approvalDate": "08/31/2023",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ten%20Day%20Bourbon%20-%20Front%20Label%20-new%208-30.JPEG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1112,
+      "h": 1256
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TD-ttb-labels-smallbatch-seal.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1200,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ten%20Day%20Bourbon%20-%20Back%20Label%20-%20new%208-30.JPEG&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1110,
+      "h": 1254
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ten%20Day%20Bourbon%20-%20Front%20Label%20-new%208-30.JPEG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1112,
+    "h": 1256
+  }
+}

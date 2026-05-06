@@ -1,0 +1,38 @@
+{
+  "ttbid": "24008001000715",
+  "brand": "ST. GEORGE DRAGONSLAYER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20011",
+  "serialNumber": "241111",
+  "approvalDate": "01/22/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=george.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3840,
+      "h": 2160
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front-st-george-alc-proof.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 2255,
+      "h": 749
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=georgebacklabel.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2620,
+      "h": 3930
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=george.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3840,
+    "h": 2160
+  }
+}

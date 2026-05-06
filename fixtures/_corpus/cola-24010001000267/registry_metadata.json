@@ -1,0 +1,26 @@
+{
+  "ttbid": "24010001000267",
+  "brand": "MERJENT",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20014",
+  "serialNumber": "240002",
+  "approvalDate": "01/10/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Merjent%20TTB%20Upload.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2250,
+      "h": 900
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Merjent%20TTB%20Upload.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2250,
+    "h": 900
+  }
+}

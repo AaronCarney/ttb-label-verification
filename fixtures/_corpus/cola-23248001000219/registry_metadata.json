@@ -1,0 +1,32 @@
+{
+  "ttbid": "23248001000219",
+  "brand": "SEVENTH HAVEN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NJ-21007",
+  "serialNumber": "230923",
+  "approvalDate": "09/13/2023",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Seventh%20Haven%20Bourbon%20Label_Page_1.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 880,
+      "h": 650
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Seventh%20Haven%20Bourbon%20Label_Page_2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 880,
+      "h": 650
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Seventh%20Haven%20Bourbon%20Label_Page_1.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 880,
+    "h": 650
+  }
+}

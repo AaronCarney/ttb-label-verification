@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 23335001000512
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=23335001000512
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JD%20PC%20Bourbon%20Front%20New.png&filetype=l
+fetched_at: 2026-05-06T00:55:22Z

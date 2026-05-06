@@ -1,0 +1,38 @@
+{
+  "ttbid": "23315001000028",
+  "brand": "VIRGIL KAINE",
+  "fancyName": "RIP-TRACK",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21098",
+  "serialNumber": "232331",
+  "approvalDate": "12/04/2023",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rip%20Track%20Front%20Label.PNG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 396,
+      "h": 675
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rip%20Track%20Back%20Label.PNG&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 393,
+      "h": 344
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rip%20Track%20Other%20Label.PNG&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 569,
+      "h": 517
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rip%20Track%20Front%20Label.PNG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 396,
+    "h": 675
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24011001000538",
+  "brand": "SEVEN THREE DISTILLING CO.",
+  "fancyName": "BYWATER",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "23",
+  "permitNo": "DSP-LA-20018",
+  "serialNumber": "240004",
+  "approvalDate": "02/20/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=B4G%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 947,
+      "h": 1250
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=B4G%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 664,
+      "h": 1068
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=B4G%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 947,
+    "h": 1250
+  }
+}

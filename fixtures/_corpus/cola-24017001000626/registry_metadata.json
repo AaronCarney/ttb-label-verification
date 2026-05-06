@@ -1,0 +1,32 @@
+{
+  "ttbid": "24017001000626",
+  "brand": "KANSAS TERRITORY DISTILLING",
+  "fancyName": "CATTLEMAN'S CLUB BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "21",
+  "permitNo": "DSP-KS-21019",
+  "serialNumber": "24W001",
+  "approvalDate": "01/22/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cattleman-s%20Club%20Bourbon%20Whiskey%20front%20label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1056,
+      "h": 1198
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cattleman-s%20Club%20Bourbon%20Whiskey%20back%20label%202.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1041,
+      "h": 1182
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cattleman-s%20Club%20Bourbon%20Whiskey%20front%20label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1056,
+    "h": 1198
+  }
+}

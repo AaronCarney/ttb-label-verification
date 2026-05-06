@@ -1,0 +1,38 @@
+{
+  "ttbid": "22023001000125",
+  "brand": "SR DISTILLED SPIRITS",
+  "fancyName": "HALLMAN BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20117",
+  "serialNumber": "220001",
+  "approvalDate": "01/28/2022",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Hallman%20Bourbon%20Whiskey%20COLA%20Corrected.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 960,
+      "h": 540
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HallmanBourbanWhiskeyUpdated%20Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1389,
+      "h": 353
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HallmanBourbanWhiskeyUpdated%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 921,
+      "h": 1045
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Hallman%20Bourbon%20Whiskey%20COLA%20Corrected.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 960,
+    "h": 540
+  }
+}

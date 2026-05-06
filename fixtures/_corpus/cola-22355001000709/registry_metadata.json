@@ -1,0 +1,44 @@
+{
+  "ttbid": "22355001000709",
+  "brand": "FENWICKS DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21102",
+  "serialNumber": "220009",
+  "approvalDate": "01/03/2023",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=6yr-Cask-Bourbon-Front-R1.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1035,
+      "h": 1452
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=6yrBourbon-Cap.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1524,
+      "h": 304
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=6yr-Cask-Bourbon-Back-R1.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1077,
+      "h": 1193
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=6yr-Cask-Bourbon-Bottom-R1.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 2256,
+      "h": 393
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=6yr-Cask-Bourbon-Front-R1.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1035,
+    "h": 1452
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "23361001000563",
+  "brand": "117 WEST SPIRITS",
+  "fancyName": "KALIFORNIA BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20158",
+  "serialNumber": "230001",
+  "approvalDate": "01/22/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Kalifornia%20Bourbon%20Final%20122923_KALI%20Bourbon%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 783,
+      "h": 757
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Kalifornia%20Bourbon%20Final%20011724_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1175,
+      "h": 1147
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Kalifornia%20Bourbon%20Final%20122923_KALI%20Bourbon%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 783,
+    "h": 757
+  }
+}

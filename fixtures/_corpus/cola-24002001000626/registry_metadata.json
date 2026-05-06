@@ -1,0 +1,38 @@
+{
+  "ttbid": "24002001000626",
+  "brand": "REDWOOD EMPIRE",
+  "fancyName": "SCREAMING TITAN",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20056",
+  "serialNumber": "240001",
+  "approvalDate": "01/04/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=screamingtitan-frontcombined.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1045,
+      "h": 1390
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=572106804.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 668,
+      "h": 892
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=pw_sls_screaming_titan_750ML_neck_166x24mm.jpeg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1280,
+      "h": 188
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=screamingtitan-frontcombined.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1045,
+    "h": 1390
+  }
+}

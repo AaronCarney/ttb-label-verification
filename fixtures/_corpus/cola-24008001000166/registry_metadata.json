@@ -1,0 +1,32 @@
+{
+  "ttbid": "24008001000166",
+  "brand": "THIRTEENTH COLONY DISTILLERIES",
+  "fancyName": "CASK STRENGTH SOUTHERN BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-15005",
+  "serialNumber": "241234",
+  "approvalDate": "01/09/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=THIRTEENTH%20COLONY%20Cask%20Strength%20Bourbon.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2750,
+      "h": 438
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Thirteenth%20Colony%20Cask%20Strength%20Bourbon%20Top%20Strip.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1250,
+      "h": 125
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=THIRTEENTH%20COLONY%20Cask%20Strength%20Bourbon.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2750,
+    "h": 438
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "24009001000053",
+  "brand": "STEELBOUND BREWERY & DISTILLERY",
+  "fancyName": "42ND INFANTRY DIVISION BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21112",
+  "serialNumber": "241001",
+  "approvalDate": "01/22/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=101328-DIGrev3.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2700,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=101328-DIGrev3.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2700,
+    "h": 1200
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24004001000618",
+  "brand": "THIRTEENTH COLONY DISTILLERIES",
+  "fancyName": "15TH YEAR CASK STRENGTH ANNIVERSARY BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-15005",
+  "serialNumber": "241234",
+  "approvalDate": "01/08/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Thirteenth%20Colony%2015%20Anniversary%20Label_With%20correct%20UPC%20and%20ABV.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2750,
+      "h": 438
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Thirteenth%20Colony%2015%20Anniversary%20Top%20Strip%20Cropped.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1314,
+      "h": 169
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Thirteenth%20Colony%2015%20Anniversary%20Label_With%20correct%20UPC%20and%20ABV.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2750,
+    "h": 438
+  }
+}

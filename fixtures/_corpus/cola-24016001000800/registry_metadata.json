@@ -1,0 +1,32 @@
+{
+  "ttbid": "24016001000800",
+  "brand": "BLUE TRUCK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20282",
+  "serialNumber": "240116",
+  "approvalDate": "02/05/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blue%20Truck%20%20Whiskey-03.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1300,
+      "h": 1600
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blue%20Truck%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1510,
+      "h": 1857
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blue%20Truck%20%20Whiskey-03.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1300,
+    "h": 1600
+  }
+}

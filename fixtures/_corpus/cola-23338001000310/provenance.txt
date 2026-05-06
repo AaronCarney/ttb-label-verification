@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 23338001000310
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=23338001000310
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BoonesBourbon-Fed-Label-Front-02.jpg&filetype=l
+fetched_at: 2026-05-06T00:55:26Z

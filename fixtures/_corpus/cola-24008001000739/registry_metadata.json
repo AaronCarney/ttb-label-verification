@@ -1,0 +1,38 @@
+{
+  "ttbid": "24008001000739",
+  "brand": "BELTON BRIDGE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "30",
+  "permitNo": "DSP-MT-15011",
+  "serialNumber": "240003",
+  "approvalDate": "01/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Belton%20Bridge-01.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 828,
+      "h": 1275
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Belton%20Bridge-03.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 375,
+      "h": 1126
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Belton%20Bridge-02-Revised.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 825,
+      "h": 1275
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Belton%20Bridge-01.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 828,
+    "h": 1275
+  }
+}

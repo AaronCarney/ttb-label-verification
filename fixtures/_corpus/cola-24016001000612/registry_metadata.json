@@ -1,0 +1,32 @@
+{
+  "ttbid": "24016001000612",
+  "brand": "THREE NOTCH'D DISTILLING COMPANY",
+  "fancyName": "HATCHET HEAD BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20114",
+  "serialNumber": "24HHH1",
+  "approvalDate": "01/29/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HHHfront3.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1410,
+      "h": 1169
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HHHback2.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1106,
+      "h": 900
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HHHfront3.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1410,
+    "h": 1169
+  }
+}
