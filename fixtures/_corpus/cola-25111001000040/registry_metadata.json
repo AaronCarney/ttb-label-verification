@@ -1,0 +1,32 @@
+{
+  "ttbid": "25111001000040",
+  "brand": "FOUR BASES BOURBON",
+  "fancyName": "INDIANA SMALL BATCH BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21001",
+  "serialNumber": "250001",
+  "approvalDate": "04/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Four%20Bases-01.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1350,
+      "h": 1350
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Four%20Bases-02.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1350,
+      "h": 1350
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Four%20Bases-01.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1350,
+    "h": 1350
+  }
+}

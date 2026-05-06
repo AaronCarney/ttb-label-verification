@@ -1,0 +1,26 @@
+{
+  "ttbid": "25100001000883",
+  "brand": "HAUSMAN FARM DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20150",
+  "serialNumber": "250416",
+  "approvalDate": "04/14/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Hausman%20Farm%20-%20Bourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3316,
+      "h": 1309
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Hausman%20Farm%20-%20Bourbon.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3316,
+    "h": 1309
+  }
+}

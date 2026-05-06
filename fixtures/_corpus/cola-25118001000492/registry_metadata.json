@@ -1,0 +1,32 @@
+{
+  "ttbid": "25118001000492",
+  "brand": "BLACK BAND",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20060",
+  "serialNumber": "250017",
+  "approvalDate": "04/29/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBON%20STANDARD%20ORGANIC.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3452,
+      "h": 465
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BlackBandNeckLabel.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 567,
+      "h": 62
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBON%20STANDARD%20ORGANIC.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3452,
+    "h": 465
+  }
+}

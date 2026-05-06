@@ -1,0 +1,26 @@
+{
+  "ttbid": "25094001000509",
+  "brand": "THIRD NATURE BREWING CO.",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20279",
+  "serialNumber": "250002",
+  "approvalDate": "04/08/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=4.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 427,
+      "h": 640
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=4.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 427,
+    "h": 640
+  }
+}

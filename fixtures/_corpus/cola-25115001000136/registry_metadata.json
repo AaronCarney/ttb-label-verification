@@ -1,0 +1,26 @@
+{
+  "ttbid": "25115001000136",
+  "brand": "ECHO SPIRITS",
+  "fancyName": "ECHO BASE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20067",
+  "serialNumber": "25EB01",
+  "approvalDate": "05/01/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ttb%20left.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1811,
+      "h": 951
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ttb%20left.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1811,
+    "h": 951
+  }
+}

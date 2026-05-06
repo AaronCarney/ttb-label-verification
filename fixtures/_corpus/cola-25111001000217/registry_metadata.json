@@ -1,0 +1,38 @@
+{
+  "ttbid": "25111001000217",
+  "brand": "TRAVELERS POINT",
+  "fancyName": "BARREL PROOF BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21066",
+  "serialNumber": "250001",
+  "approvalDate": "04/23/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Travelers%20Point%20BARREL%20PROOF_F%20FINAL.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1002,
+      "h": 1500
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Travelers%20Point%20BARREL%20PROOF_B%20FINAL.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 492,
+      "h": 650
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Traverlers%20Point%20Barrel%20Proof_STRAP.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 5625,
+      "h": 656
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Travelers%20Point%20BARREL%20PROOF_F%20FINAL.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1002,
+    "h": 1500
+  }
+}

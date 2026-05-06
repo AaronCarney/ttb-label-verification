@@ -1,0 +1,26 @@
+{
+  "ttbid": "25107001000281",
+  "brand": "MALTED GRAIN SERIES",
+  "fancyName": "MALTED FOUR GRAIN",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "32",
+  "permitNo": "DSP-NV-15003",
+  "serialNumber": "250004",
+  "approvalDate": "04/29/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Malted%20Four%20Grain%20Bourbon%20Whis_TTB_jpeg.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 5600,
+      "h": 1465
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Malted%20Four%20Grain%20Bourbon%20Whis_TTB_jpeg.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 5600,
+    "h": 1465
+  }
+}

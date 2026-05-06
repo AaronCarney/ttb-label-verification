@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25098001000664
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25098001000664
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PAPOUS%20CHECKERBOARD%20BOURBON%20Front%20TTB%20Final.jpg&filetype=l
+fetched_at: 2026-05-06T01:48:52Z

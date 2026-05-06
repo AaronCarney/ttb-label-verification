@@ -1,0 +1,32 @@
+{
+  "ttbid": "25104001000288",
+  "brand": "VALOR PEAK DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-15033",
+  "serialNumber": "258696",
+  "approvalDate": "04/16/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Low%20Rye%20Bourbon%20Whiskey%20Front%20Final.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 5625,
+      "h": 3750
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Low%20Rye%20Bourbon%20Whiskey%20Back%20Final.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 5625,
+      "h": 3750
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Low%20Rye%20Bourbon%20Whiskey%20Front%20Final.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 5625,
+    "h": 3750
+  }
+}

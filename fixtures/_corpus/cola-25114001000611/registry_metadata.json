@@ -1,0 +1,32 @@
+{
+  "ttbid": "25114001000611",
+  "brand": "SOCIAL FOX",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20131",
+  "serialNumber": "250424",
+  "approvalDate": "04/25/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Polish_20250424_141318870.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 900
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back%20bourbon%20copy.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1200,
+      "h": 800
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Polish_20250424_141318870.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 900
+  }
+}

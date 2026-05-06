@@ -1,0 +1,26 @@
+{
+  "ttbid": "25104001000415",
+  "brand": "ETHANOLOGY",
+  "fancyName": "BIROBUR BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20063",
+  "serialNumber": "252022",
+  "approvalDate": "04/28/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Birobur%20Bourbon%20Double%20Oak%2090%20proof.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2000,
+      "h": 275
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Birobur%20Bourbon%20Double%20Oak%2090%20proof.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2000,
+    "h": 275
+  }
+}

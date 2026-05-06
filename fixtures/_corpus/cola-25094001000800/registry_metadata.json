@@ -1,0 +1,26 @@
+{
+  "ttbid": "25094001000800",
+  "brand": "OUTLAW DISTILLERY",
+  "fancyName": "BARREL PROOF BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "11",
+  "permitNo": "DSP-AZ-20018",
+  "serialNumber": "250404",
+  "approvalDate": "04/07/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Arizona_BarrelProofBourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2528,
+      "h": 1084
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Arizona_BarrelProofBourbon.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2528,
+    "h": 1084
+  }
+}

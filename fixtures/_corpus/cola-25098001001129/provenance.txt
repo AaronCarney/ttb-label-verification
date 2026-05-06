@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25098001001129
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25098001001129
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bass%20Reeves%20LABEL%202%20EXPANDED%20FRONT.png&filetype=l
+fetched_at: 2026-05-06T01:48:55Z

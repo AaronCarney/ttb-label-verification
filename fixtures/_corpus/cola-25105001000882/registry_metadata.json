@@ -1,0 +1,26 @@
+{
+  "ttbid": "25105001000882",
+  "brand": "SAN LUIS SPIRITS",
+  "fancyName": "BARREL-THIEVED BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-15009",
+  "serialNumber": "25BTBN",
+  "approvalDate": "04/23/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=375mL%20Barrel-Thieved%20Bourbon%20Label%20Update.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 991,
+      "h": 901
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=375mL%20Barrel-Thieved%20Bourbon%20Label%20Update.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 991,
+    "h": 901
+  }
+}

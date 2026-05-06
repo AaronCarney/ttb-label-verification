@@ -1,0 +1,26 @@
+{
+  "ttbid": "25115001000837",
+  "brand": "(509) SPIRITS BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21208",
+  "serialNumber": "255198",
+  "approvalDate": "04/28/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=509BourbonWhiskey-TTBCola.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2728,
+      "h": 1452
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=509BourbonWhiskey-TTBCola.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2728,
+    "h": 1452
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25097001000125",
+  "brand": "ETHANOLOGY",
+  "fancyName": "FRUMENTUM BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20063",
+  "serialNumber": "252018",
+  "approvalDate": "04/10/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Frumentum%20Bourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2000,
+      "h": 275
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Frumentum%20Bourbon.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2000,
+    "h": 275
+  }
+}

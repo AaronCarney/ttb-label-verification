@@ -1,0 +1,32 @@
+{
+  "ttbid": "25100001000012",
+  "brand": "TREATY OAK",
+  "fancyName": "SINGLE BARREL SELECT",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-15010",
+  "serialNumber": "250008",
+  "approvalDate": "04/10/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB_Wrap.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2550,
+      "h": 1454
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1035,
+      "h": 504
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB_Wrap.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2550,
+    "h": 1454
+  }
+}

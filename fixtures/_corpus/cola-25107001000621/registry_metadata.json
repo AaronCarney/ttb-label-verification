@@ -1,0 +1,26 @@
+{
+  "ttbid": "25107001000621",
+  "brand": "GOOD FUCKING BOURBON",
+  "fancyName": "LITTLE FUCKERS",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "27",
+  "permitNo": "DSP-MN-15014",
+  "serialNumber": "250032",
+  "approvalDate": "04/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Little%20Fucker%20GF%20BOURBON%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 678,
+      "h": 608
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Little%20Fucker%20GF%20BOURBON%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 678,
+    "h": 608
+  }
+}

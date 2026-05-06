@@ -1,0 +1,38 @@
+{
+  "ttbid": "25114001000097",
+  "brand": "BACKROADS DISTILLING COMPANY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21114",
+  "serialNumber": "250424",
+  "approvalDate": "04/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Draft%201_Page_1.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2580,
+      "h": 3600
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Draft%201_Page_2%20resized.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2012,
+      "h": 2808
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Draft%20Strip_Label_Label_Label.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 2550,
+      "h": 450
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Draft%201_Page_1.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2580,
+    "h": 3600
+  }
+}

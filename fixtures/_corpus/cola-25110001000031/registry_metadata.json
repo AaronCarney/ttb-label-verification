@@ -1,0 +1,50 @@
+{
+  "ttbid": "25110001000031",
+  "brand": "BORCHETTA BOURBON",
+  "fancyName": "SINGLE BARREL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21003",
+  "serialNumber": "25BB02",
+  "approvalDate": "04/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Small%20Batch_Screen%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 863,
+      "h": 1238
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Single%20Barrel_Body%20Label-B.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2400,
+      "h": 375
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Small%20Batch_Screen%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 863,
+      "h": 1238
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Single%20Barrel_Neck%20Label.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1200,
+      "h": 375
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Single%20Barrel_Selection%20Label.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1600,
+      "h": 474
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Small%20Batch_Screen%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 863,
+    "h": 1238
+  }
+}

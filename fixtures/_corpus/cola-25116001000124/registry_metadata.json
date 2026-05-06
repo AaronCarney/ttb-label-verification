@@ -1,0 +1,26 @@
+{
+  "ttbid": "25116001000124",
+  "brand": "THE TRAIL HOTEL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20044",
+  "serialNumber": "25D26A",
+  "approvalDate": "04/28/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TrailHotel_BourbonLabel_3Main_BOURBON_AMENDED.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3319,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TrailHotel_BourbonLabel_3Main_BOURBON_AMENDED.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3319,
+    "h": 1200
+  }
+}

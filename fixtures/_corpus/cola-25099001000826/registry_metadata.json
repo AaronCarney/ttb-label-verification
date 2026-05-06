@@ -1,0 +1,32 @@
+{
+  "ttbid": "25099001000826",
+  "brand": "TREATY OAK",
+  "fancyName": "SMALL BATCH",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-15010",
+  "serialNumber": "250005",
+  "approvalDate": "04/11/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SBBW_Wrap.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2550,
+      "h": 1454
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SBBBW_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1035,
+      "h": 504
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SBBW_Wrap.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2550,
+    "h": 1454
+  }
+}

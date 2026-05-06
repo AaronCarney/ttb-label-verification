@@ -1,0 +1,32 @@
+{
+  "ttbid": "25098001000664",
+  "brand": "GRAMLING WOODS",
+  "fancyName": "CHECKERBOARD",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20086",
+  "serialNumber": "250001",
+  "approvalDate": "04/09/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PAPOUS%20CHECKERBOARD%20BOURBON%20Front%20TTB%20Final.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1688,
+      "h": 601
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PAPOUS%20CHECKERBOARD%20BOURBON%20TCF%20topper%20TTB%20final.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1653,
+      "h": 301
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PAPOUS%20CHECKERBOARD%20BOURBON%20Front%20TTB%20Final.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1688,
+    "h": 601
+  }
+}

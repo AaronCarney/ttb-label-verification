@@ -1,0 +1,38 @@
+{
+  "ttbid": "25106001000348",
+  "brand": "TRUE AMERICAN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "18",
+  "permitNo": "DSP-ID-21019",
+  "serialNumber": "252025",
+  "approvalDate": "04/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TAMR_Bourbon_Front_WhiteBG.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 900,
+      "h": 1758
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TA_Flag_Inside_compressed.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 900,
+      "h": 1758
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TA_BackLabel_GOOD.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 864,
+      "h": 1440
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TAMR_Bourbon_Front_WhiteBG.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 900,
+    "h": 1758
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25099001000422",
+  "brand": "FRANKIE'S BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21095",
+  "serialNumber": "250031",
+  "approvalDate": "04/14/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PursuitFrankiesFarmV5BourbonWhiskey1.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2775,
+      "h": 1725
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PursuitFrankiesFarmV5BourbonWhiskey1.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2775,
+    "h": 1725
+  }
+}
