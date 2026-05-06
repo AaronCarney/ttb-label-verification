@@ -1,0 +1,44 @@
+{
+  "ttbid": "24180001000442",
+  "brand": "SHELTER DISTILLING",
+  "fancyName": "NATIVE BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20152",
+  "serialNumber": "241109",
+  "approvalDate": "07/05/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%205.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 946,
+      "h": 1878
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%202.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 466,
+      "h": 921
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%204.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 166,
+      "h": 2012
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%206.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 890,
+      "h": 1484
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KA%20Screen%205.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 946,
+    "h": 1878
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24194001000548",
+  "brand": "MYSTIC TRINITY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21054",
+  "serialNumber": "24TRIN",
+  "approvalDate": "07/16/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TrinityBrand.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 569,
+      "h": 887
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TrinityBack.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 505,
+      "h": 717
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TrinityBrand.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 569,
+    "h": 887
+  }
+}

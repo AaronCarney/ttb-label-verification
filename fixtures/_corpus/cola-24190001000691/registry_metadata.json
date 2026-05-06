@@ -1,0 +1,44 @@
+{
+  "ttbid": "24190001000691",
+  "brand": "DOUBLE BARREL MISSOURI BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20004",
+  "serialNumber": "240009",
+  "approvalDate": "07/15/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DBMB%20Whiskey%20COLA%20wrap%20label-revised.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3937,
+      "h": 666
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=topsealapproval.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 720,
+      "h": 482
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=topfrontapproval.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 432,
+      "h": 476
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=topbackapproval.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 859,
+      "h": 923
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DBMB%20Whiskey%20COLA%20wrap%20label-revised.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3937,
+    "h": 666
+  }
+}

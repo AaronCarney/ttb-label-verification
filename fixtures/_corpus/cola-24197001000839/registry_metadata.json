@@ -1,0 +1,26 @@
+{
+  "ttbid": "24197001000839",
+  "brand": "USA BRAND",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20093",
+  "serialNumber": "240715",
+  "approvalDate": "07/18/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=USABRANDBOURBONV2071524.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 5100,
+      "h": 6600
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=USABRANDBOURBONV2071524.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 5100,
+    "h": 6600
+  }
+}

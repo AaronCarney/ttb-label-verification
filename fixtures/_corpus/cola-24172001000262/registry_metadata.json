@@ -1,0 +1,32 @@
+{
+  "ttbid": "24172001000262",
+  "brand": "RAY LYNN'S RESERVE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20134",
+  "serialNumber": "240015",
+  "approvalDate": "07/01/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ray%20Lynn%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 962,
+      "h": 1782
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ray%20Lynn%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 962,
+      "h": 1782
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ray%20Lynn%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 962,
+    "h": 1782
+  }
+}

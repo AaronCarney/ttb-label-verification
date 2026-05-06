@@ -1,0 +1,32 @@
+{
+  "ttbid": "24178001000738",
+  "brand": "ORIGINAL BLEND",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21029",
+  "serialNumber": "240032",
+  "approvalDate": "07/02/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=orig%20front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 512,
+      "h": 476
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=org%20back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 758,
+      "h": 724
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=orig%20front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 512,
+    "h": 476
+  }
+}

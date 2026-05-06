@@ -1,0 +1,26 @@
+{
+  "ttbid": "24198001000209",
+  "brand": "MAD TRAPPER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "20",
+  "permitNo": "DSP-IA-21039",
+  "serialNumber": "240716",
+  "approvalDate": "07/29/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Mad%20Trapper%20TTB%20Size%207-27-24.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2000,
+      "h": 944
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Mad%20Trapper%20TTB%20Size%207-27-24.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2000,
+    "h": 944
+  }
+}

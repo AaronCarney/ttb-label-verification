@@ -1,0 +1,26 @@
+{
+  "ttbid": "24193001000690",
+  "brand": "BEYOND DISTILLING BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "41",
+  "permitNo": "DSP-SC-21050",
+  "serialNumber": "246789",
+  "approvalDate": "07/25/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LOUTREL%20LABEL%20final%20TTB%20fix.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1719,
+      "h": 1925
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LOUTREL%20LABEL%20final%20TTB%20fix.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1719,
+    "h": 1925
+  }
+}

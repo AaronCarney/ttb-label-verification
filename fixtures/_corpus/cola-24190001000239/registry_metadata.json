@@ -1,0 +1,26 @@
+{
+  "ttbid": "24190001000239",
+  "brand": "CINCINNATI DISTILLING",
+  "fancyName": "CLIFTON OHIO STRAIGHT BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20043",
+  "serialNumber": "240030",
+  "approvalDate": "07/10/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CD-CliftonOhioStraightBourbon-Label-Draft-V3.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2500,
+      "h": 909
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CD-CliftonOhioStraightBourbon-Label-Draft-V3.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2500,
+    "h": 909
+  }
+}

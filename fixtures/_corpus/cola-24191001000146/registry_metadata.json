@@ -1,0 +1,32 @@
+{
+  "ttbid": "24191001000146",
+  "brand": "COOPER'S",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20037",
+  "serialNumber": "240709",
+  "approvalDate": "07/11/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Coopers%20Bourbon%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1182,
+      "h": 1418
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Coopers%20Bourban%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1063,
+      "h": 827
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Coopers%20Bourbon%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1182,
+    "h": 1418
+  }
+}

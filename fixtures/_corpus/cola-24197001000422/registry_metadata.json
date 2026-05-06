@@ -1,0 +1,38 @@
+{
+  "ttbid": "24197001000422",
+  "brand": "MR. & MRS.",
+  "fancyName": "ROSENTRELLI",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20105",
+  "serialNumber": "240014",
+  "approvalDate": "07/18/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rosentrelli%20Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 964,
+      "h": 520
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rosentrelli%20Neck.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 967,
+      "h": 214
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rosentrelli%20SS.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1797,
+      "h": 373
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rosentrelli%20Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 964,
+    "h": 520
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "24169001000538",
+  "brand": "WHEELHOUSE DISTILLING COMPANY",
+  "fancyName": "DEAD RECKONING BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "03",
+  "permitNo": "DSP-NJ-21049",
+  "serialNumber": "240001",
+  "approvalDate": "06/26/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Dead%20Reckoning8.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1800,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Dead%20Reckoning8.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1800,
+    "h": 1200
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "24192001000823",
+  "brand": "BROWNE FAMILY SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21105",
+  "serialNumber": "240002",
+  "approvalDate": "07/12/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FairchildAFB_Bourbon_FL.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1000,
+      "h": 800
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FairchildAFB_Bourbon_FL.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1000,
+    "h": 800
+  }
+}

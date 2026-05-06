@@ -1,0 +1,38 @@
+{
+  "ttbid": "24184001000091",
+  "brand": "MINGLEWOOD DISTILLING COMPANY",
+  "fancyName": "WHEATED BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20040",
+  "serialNumber": "240003",
+  "approvalDate": "07/08/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Label%20Front%20Main.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1398,
+      "h": 1063
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Label%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1398,
+      "h": 1063
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Label%20Content%20Strip.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1650,
+      "h": 450
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Label%20Front%20Main.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1398,
+    "h": 1063
+  }
+}

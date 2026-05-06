@@ -1,0 +1,38 @@
+{
+  "ttbid": "24169001000141",
+  "brand": "KROOKED MOON DISTILLERY",
+  "fancyName": "CASK STRENGTH",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "28",
+  "permitNo": "DSP-MO-20074",
+  "serialNumber": "240618",
+  "approvalDate": "06/21/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front%20main-1.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 440,
+      "h": 932
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=02_Alimony_CASK%20STRENGTH.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1091,
+      "h": 324
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=backpublicViewAttachment.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 555,
+      "h": 454
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front%20main-1.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 440,
+    "h": 932
+  }
+}

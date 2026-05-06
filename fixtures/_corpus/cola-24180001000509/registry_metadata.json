@@ -1,0 +1,32 @@
+{
+  "ttbid": "24180001000509",
+  "brand": "CART/HORSE DISTILLING FOOL'S ERRAND",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20051",
+  "serialNumber": "240628",
+  "approvalDate": "07/12/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Fools%20Errand%20750m%20COLA.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 413,
+      "h": 1013
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FoolsErrand_BackCOLA.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 600,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Fools%20Errand%20750m%20COLA.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 413,
+    "h": 1013
+  }
+}

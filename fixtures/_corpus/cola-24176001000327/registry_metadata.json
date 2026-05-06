@@ -1,0 +1,32 @@
+{
+  "ttbid": "24176001000327",
+  "brand": "WOODLAWN DISTILLING",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21233",
+  "serialNumber": "240018",
+  "approvalDate": "07/03/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2128,
+      "h": 2409
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2094,
+      "h": 2519
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2128,
+    "h": 2409
+  }
+}

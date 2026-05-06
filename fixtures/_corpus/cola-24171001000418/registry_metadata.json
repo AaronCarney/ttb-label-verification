@@ -1,0 +1,32 @@
+{
+  "ttbid": "24171001000418",
+  "brand": "ROCKER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20067",
+  "serialNumber": "245171",
+  "approvalDate": "07/18/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ROCK002_SingleBarrel_P9_TTB__FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1503,
+      "h": 1503
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ROCK002_SingleBarrel_P9_TTB__BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1566,
+      "h": 983
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ROCK002_SingleBarrel_P9_TTB__FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1503,
+    "h": 1503
+  }
+}

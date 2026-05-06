@@ -1,0 +1,32 @@
+{
+  "ttbid": "24192001000961",
+  "brand": "WILSON VALLEY MERCANTILE",
+  "fancyName": "TEXAS BLOODY BUTCHER BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20225",
+  "serialNumber": "24BB02",
+  "approvalDate": "07/11/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Bloody%20Butcher%20Bourbon%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 749,
+      "h": 1341
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Bloody%20Butcher%20Back%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 479,
+      "h": 327
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Bloody%20Butcher%20Bourbon%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 749,
+    "h": 1341
+  }
+}

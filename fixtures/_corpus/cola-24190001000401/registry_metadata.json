@@ -1,0 +1,26 @@
+{
+  "ttbid": "24190001000401",
+  "brand": "IRONTON DISTILLERY & CRAFTHOUSE",
+  "fancyName": "MR. BIG SHOT",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20073",
+  "serialNumber": "240077",
+  "approvalDate": "07/11/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Mr-Big-Shot-Label-ttb.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2000,
+      "h": 508
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Mr-Big-Shot-Label-ttb.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2000,
+    "h": 508
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "ttbid": "24187001000321",
+  "brand": "HORSE SOLDIER BOURBON",
+  "fancyName": "COMMANDERS SELECT VI",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20061",
+  "serialNumber": "240021",
+  "approvalDate": "07/07/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CS%20Front%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 816,
+      "h": 928
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CS%20VI%20Back%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 806,
+      "h": 1205
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CS%20VI%20Neck%20Label.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 2051,
+      "h": 1010
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CSVI%20%20Lower%20Label.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 759,
+      "h": 254
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CS%20Front%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 816,
+    "h": 928
+  }
+}

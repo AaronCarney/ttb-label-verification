@@ -1,0 +1,44 @@
+{
+  "ttbid": "24179001000272",
+  "brand": "TINCUP",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-CO-15022",
+  "serialNumber": "242524",
+  "approvalDate": "07/09/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 424,
+      "h": 1872
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 271,
+      "h": 1247
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SHOULDER.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1262,
+      "h": 631
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=STRIP.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 221,
+      "h": 650
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 424,
+    "h": 1872
+  }
+}

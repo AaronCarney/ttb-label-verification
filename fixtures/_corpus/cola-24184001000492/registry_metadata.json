@@ -1,0 +1,26 @@
+{
+  "ttbid": "24184001000492",
+  "brand": "DIDACUS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20301",
+  "serialNumber": "240128",
+  "approvalDate": "07/08/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Didacus%20Bourbon%20label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1442,
+      "h": 1146
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Didacus%20Bourbon%20label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1442,
+    "h": 1146
+  }
+}
