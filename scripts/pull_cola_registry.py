@@ -48,29 +48,36 @@ def ab_run_js(js: str, timeout: int = 60) -> str:
 def fetch_detail_metadata(ttbid: str) -> dict:
     ab("open", DETAIL_URL.format(ttbid=ttbid), timeout=45)
     ab("wait", "--load", "networkidle", timeout=45)
-    js = """
+    js = r"""
 (() => {
   const txt = document.body.innerText;
+  // Numbered TTB form fields: "<num>. <LABEL> (notes)\n<value>".
+  // If value-line itself looks like the next numbered field, the field is empty.
   const grab = (label) => {
-    const re = new RegExp(label + '[:\\\\s]+(.+?)(?=\\\\n[A-Z]|\\\\n\\\\n|$)', 's');
+    const re = new RegExp('\\d+[a-z]?\\.\\s*' + label.replace(/\//g, '\\/') + '[^\\n]*\\n([^\\n]+)');
     const m = txt.match(re);
-    return m ? m[1].trim().split('\\n')[0].trim() : null;
+    if (!m) return null;
+    const v = m[1].trim();
+    if (/^\d+[a-z]?\.\s+[A-Z][A-Z]/.test(v)) return null;
+    return v || null;
   };
+  const ctMatch = txt.match(/\bCT\b[\s\n]+(\d+)/);
+  const orMatch = txt.match(/\bOR\b[\s\n]+(\d+)/);
   const imgs = Array.from(document.querySelectorAll('img'))
     .filter(i => i.src.includes('publicViewAttachment'))
     .map(i => ({src: i.src, alt: i.alt || '', w: i.naturalWidth, h: i.naturalHeight}));
   const front = imgs.find(i => /front|brand/i.test(i.alt)) || imgs[0] || null;
   return JSON.stringify({
-    ttbid: location.search.match(/ttbid=(\\d+)/)?.[1] || null,
-    brand: grab('Brand Name'),
-    fancyName: grab('Fanciful Name'),
-    classType: grab('Class/Type'),
-    abv: grab('Alcohol Content'),
-    netContents: grab('Net Contents'),
-    origin: grab('Origin'),
-    permitNo: grab('Plant Registry/Basic Permit/Brewer'),
-    applicant: grab('Name and Address'),
-    approvalDate: grab('Date Issued'),
+    ttbid: location.search.match(/ttbid=(\d+)/)?.[1] || null,
+    brand: grab('BRAND NAME'),
+    fancyName: grab('FANCIFUL NAME'),
+    classType: ctMatch?.[1] || null,
+    abv: grab('ALCOHOL CONTENT'),
+    netContents: grab('NET CONTENTS'),
+    origin: orMatch?.[1] || null,
+    permitNo: grab('PLANT REGISTRY'),
+    serialNumber: grab('SERIAL NUMBER'),
+    approvalDate: grab('DATE ISSUED'),
     allLabelImages: imgs,
     frontLabelImage: front
   });
