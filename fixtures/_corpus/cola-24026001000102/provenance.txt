@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24026001000102
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24026001000102
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ten%20Day%20Front.jpeg&filetype=l
+fetched_at: 2026-05-06T00:58:00Z

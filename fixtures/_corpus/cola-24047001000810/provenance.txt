@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24047001000810
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24047001000810
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=100329_100986_Lincoln%20Ridge%20Whiskey%20750ml%20Sets%20-%20With%20Silver%20Foil_Front_COLA.jpg&filetype=l
+fetched_at: 2026-05-06T01:00:23Z

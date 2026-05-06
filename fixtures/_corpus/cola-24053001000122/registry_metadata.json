@@ -1,0 +1,38 @@
+{
+  "ttbid": "24053001000122",
+  "brand": "ECHO SPIRITS",
+  "fancyName": "ENGINEER SERIES",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20067",
+  "serialNumber": "240004",
+  "approvalDate": "02/29/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Engineer%20Series%20Bourbon%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1276,
+      "h": 1529
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Top%20Sticker.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 555,
+      "h": 3217
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Engineer%20Series%20Bourbon%20Rear%20-%20Kentucky.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1101,
+      "h": 1164
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Engineer%20Series%20Bourbon%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1276,
+    "h": 1529
+  }
+}

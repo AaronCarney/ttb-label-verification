@@ -1,0 +1,44 @@
+{
+  "ttbid": "24051001000073",
+  "brand": "REVELTON DISTILLING CO.",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "20",
+  "permitNo": "DSP-IA-21032",
+  "serialNumber": "24001L",
+  "approvalDate": "03/05/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=REVELTON%20BOURBON%20750%20FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2129,
+      "h": 1365
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=REVELTON%20SINGLEBARREL%20BOURBON%20revised%20front2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1846,
+      "h": 383
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=REVELTON%20BOURBON%20750%20NECK.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 293,
+      "h": 1778
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=REVELTON%20SINGLEBARREL%20BOURBON%20revised%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 926,
+      "h": 383
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=REVELTON%20BOURBON%20750%20FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2129,
+    "h": 1365
+  }
+}

@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24028001000079
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24028001000079
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tobacco%20Barn%20Distillery%20750%20ML%20Barrel%20Strength%20Center%2028%20JAN%2024.jpg&filetype=l
+fetched_at: 2026-05-06T00:58:08Z

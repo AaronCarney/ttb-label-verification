@@ -1,0 +1,38 @@
+{
+  "ttbid": "24030001000850",
+  "brand": "SLAVA UKRAINI",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20011",
+  "serialNumber": "242222",
+  "approvalDate": "02/01/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SLAVA-FRONT-LABEL-PREV.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2625,
+      "h": 2100
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=frontmedal.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1512,
+      "h": 2016
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SLAVA-BACK-LABEL-PREV.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2625,
+      "h": 2100
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SLAVA-FRONT-LABEL-PREV.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2625,
+    "h": 2100
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24033001000018",
+  "brand": "DODGY FOX",
+  "fancyName": "CASK STRENGTH BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "21",
+  "permitNo": "DSP-KS-21033",
+  "serialNumber": "242006",
+  "approvalDate": "02/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DodgyFoxBourbon-CSB-01.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2400,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Seal-Label-01.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1950,
+      "h": 225
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DodgyFoxBourbon-CSB-01.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2400,
+    "h": 1200
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24042001000056",
+  "brand": "THREE BROOKS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20039",
+  "serialNumber": "24TBBO",
+  "approvalDate": "02/21/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=threebrooksfront2.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1200,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=threebrooksback2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 880,
+      "h": 880
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=threebrooksfront2.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1200,
+    "h": 1200
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24029001000216",
+  "brand": "VIKRE DISTILLERY",
+  "fancyName": "CELEBRATION",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "27",
+  "permitNo": "DSP-MN-20004",
+  "serialNumber": "240001",
+  "approvalDate": "01/31/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=celebration%20bourbon%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1350,
+      "h": 1132
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=celebration%20bourbon%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1050,
+      "h": 1068
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=celebration%20bourbon%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1350,
+    "h": 1132
+  }
+}

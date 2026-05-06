@@ -1,0 +1,26 @@
+{
+  "ttbid": "24054001000511",
+  "brand": "ANITA'S CHOICE",
+  "fancyName": "SIX GRAIN",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "41",
+  "permitNo": "DSP-SC-21046",
+  "serialNumber": "24ANIT",
+  "approvalDate": "03/01/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AnitaS%20Choice%20Label%2082X53.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1219,
+      "h": 797
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AnitaS%20Choice%20Label%2082X53.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1219,
+    "h": 797
+  }
+}

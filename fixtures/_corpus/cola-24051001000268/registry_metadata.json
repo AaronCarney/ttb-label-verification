@@ -1,0 +1,38 @@
+{
+  "ttbid": "24051001000268",
+  "brand": "FIELD OF DREAMS BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21009",
+  "serialNumber": "240001",
+  "approvalDate": "02/27/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FODFRONTNEW.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1782,
+      "h": 2320
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FODBACKNEW.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1794,
+      "h": 2324
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FODNECKNEW.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1284,
+      "h": 2464
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FODFRONTNEW.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1782,
+    "h": 2320
+  }
+}

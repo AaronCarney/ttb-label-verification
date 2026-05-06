@@ -1,0 +1,32 @@
+{
+  "ttbid": "24051001000390",
+  "brand": "BULLDOGGER SPIRITS",
+  "fancyName": "THE YOUNGER",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "24BGTY",
+  "approvalDate": "02/27/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bulldogger%20spirits%20front%20.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1059,
+      "h": 836
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bulldoger%20spirtis%20back%20.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 534,
+      "h": 440
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bulldogger%20spirits%20front%20.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1059,
+    "h": 836
+  }
+}

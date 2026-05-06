@@ -1,0 +1,44 @@
+{
+  "ttbid": "24047001000866",
+  "brand": "INSPIRED BY LEGEND",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20049",
+  "serialNumber": "240009",
+  "approvalDate": "02/27/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Outlaw_FrontOutsideUS.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 699,
+      "h": 359
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Outlaw_BackUS.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 463,
+      "h": 628
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Outlaw_Necker.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 731,
+      "h": 321
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Other.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 694,
+      "h": 941
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Outlaw_FrontOutsideUS.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 699,
+    "h": 359
+  }
+}

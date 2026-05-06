@@ -1,0 +1,32 @@
+{
+  "ttbid": "24042001000036",
+  "brand": "IRON FISH DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20053",
+  "serialNumber": "24BBDI",
+  "approvalDate": "02/16/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1161,
+      "h": 1441
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1170,
+      "h": 1370
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1161,
+    "h": 1441
+  }
+}

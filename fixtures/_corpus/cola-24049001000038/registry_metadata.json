@@ -1,0 +1,32 @@
+{
+  "ttbid": "24049001000038",
+  "brand": "INDIAN RIVER DISTILLERY BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20134",
+  "serialNumber": "240009",
+  "approvalDate": "02/28/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=General%20bourbon%20label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 962,
+      "h": 1782
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=General%20bourbon%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 962,
+      "h": 1782
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=General%20bourbon%20label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 962,
+    "h": 1782
+  }
+}

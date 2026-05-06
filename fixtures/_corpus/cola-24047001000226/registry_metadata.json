@@ -1,0 +1,38 @@
+{
+  "ttbid": "24047001000226",
+  "brand": "LEGATUM",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "32",
+  "permitNo": "DSP-NV-21009",
+  "serialNumber": "240155",
+  "approvalDate": "03/14/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Legatum%20Revisions%20Front%204.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 639,
+      "h": 827
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Legatum%20UPC-Warning.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 235,
+      "h": 833
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Legatum%20Revisions%20Back%203.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 637,
+      "h": 827
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Legatum%20Revisions%20Front%204.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 639,
+    "h": 827
+  }
+}

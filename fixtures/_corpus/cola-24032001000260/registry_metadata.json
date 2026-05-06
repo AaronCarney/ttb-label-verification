@@ -1,0 +1,32 @@
+{
+  "ttbid": "24032001000260",
+  "brand": "BIB & TUCKER",
+  "fancyName": "THE GOLDEN SPIKE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21029",
+  "serialNumber": "240003",
+  "approvalDate": "02/02/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BibandTucker15yearLabel%20.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 4220,
+      "h": 1625
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BibandTucker15yearNeckSticker.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1350,
+      "h": 1350
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BibandTucker15yearLabel%20.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 4220,
+    "h": 1625
+  }
+}

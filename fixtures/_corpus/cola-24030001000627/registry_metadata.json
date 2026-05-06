@@ -1,0 +1,38 @@
+{
+  "ttbid": "24030001000627",
+  "brand": "YELLOW ROSE DISTILLING",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20049",
+  "serialNumber": "240003",
+  "approvalDate": "02/13/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Outlaw%20Neck%20Label.JPG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2002,
+      "h": 868
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Outlaw%20US%20Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1280,
+      "h": 649
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Outlaw%20US%20Back%20v2.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1016,
+      "h": 538
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Outlaw%20Neck%20Label.JPG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2002,
+    "h": 868
+  }
+}

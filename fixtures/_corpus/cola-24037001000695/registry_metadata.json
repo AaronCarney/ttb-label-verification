@@ -1,0 +1,38 @@
+{
+  "ttbid": "24037001000695",
+  "brand": "FJW BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21066",
+  "serialNumber": "240005",
+  "approvalDate": "02/07/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBON%20WHISKEY%20FRONT%20LBL.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 890,
+      "h": 1169
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBON%20WHISKY%20BACK%20LBL.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 833,
+      "h": 1126
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBON%20WHISKEY%20NECK%20LABEL.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1693,
+      "h": 338
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBON%20WHISKEY%20FRONT%20LBL.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 890,
+    "h": 1169
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24038001000740",
+  "brand": "DEVIL'S HEAD DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20041",
+  "serialNumber": "24B001",
+  "approvalDate": "02/20/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=whiskeylabelfront.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 1500
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=whiskeylabelback1.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1500,
+      "h": 1500
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=whiskeylabelfront.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 1500
+  }
+}

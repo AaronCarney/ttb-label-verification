@@ -1,0 +1,32 @@
+{
+  "ttbid": "24031001000214",
+  "brand": "SWEET HOME SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "10",
+  "permitNo": "DSP-AL-20046",
+  "serialNumber": "240502",
+  "approvalDate": "02/07/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cask%20Strength%20Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 337,
+      "h": 816
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cask%20Strength%20Back.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 444,
+      "h": 471
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cask%20Strength%20Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 337,
+    "h": 816
+  }
+}

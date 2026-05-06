@@ -1,0 +1,32 @@
+{
+  "ttbid": "24054001000201",
+  "brand": "ROLLING BARREL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "21",
+  "permitNo": "DSP-KS-15006",
+  "serialNumber": "240004",
+  "approvalDate": "03/26/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rolling%20Barrel%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 900,
+      "h": 1000
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rolling%20Barrel%20BL.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 493,
+      "h": 449
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rolling%20Barrel%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 900,
+    "h": 1000
+  }
+}

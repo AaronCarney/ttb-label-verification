@@ -1,0 +1,32 @@
+{
+  "ttbid": "24052001000074",
+  "brand": "NEW REALM",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20037",
+  "serialNumber": "24WL12",
+  "approvalDate": "02/28/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Boubon%20Label%202024.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 966,
+      "h": 422
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Label%20back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1500,
+      "h": 658
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Boubon%20Label%202024.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 966,
+    "h": 422
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "24046001000526",
+  "brand": "REDWOOD EMPIRE",
+  "fancyName": "PIPE DREAM CASK STRENGTH",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20056",
+  "serialNumber": "240007",
+  "approvalDate": "02/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=caskPDfront%20002.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 781,
+      "h": 1092
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=caskPDback%202.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 813,
+      "h": 1092
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=caskPDneck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1706,
+      "h": 271
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=caskPDfront%20002.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 781,
+    "h": 1092
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24030001000811",
+  "brand": "R6 DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20112",
+  "serialNumber": "240002",
+  "approvalDate": "03/01/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HopSaintTTB_2.JPG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2259,
+      "h": 1024
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Strip.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1539,
+      "h": 405
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HopSaintTTB_2.JPG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2259,
+    "h": 1024
+  }
+}

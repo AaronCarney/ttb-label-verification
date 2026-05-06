@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24051001000390
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24051001000390
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bulldogger%20spirits%20front%20.png&filetype=l
+fetched_at: 2026-05-06T01:00:46Z

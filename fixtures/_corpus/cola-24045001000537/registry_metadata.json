@@ -1,0 +1,32 @@
+{
+  "ttbid": "24045001000537",
+  "brand": "1843",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21133",
+  "serialNumber": "240007",
+  "approvalDate": "02/28/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1843%20FINAL%20FRONT%20100.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1201,
+      "h": 1202
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1843%20Back%20Label%20Revised.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 975,
+      "h": 975
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1843%20FINAL%20FRONT%20100.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1201,
+    "h": 1202
+  }
+}

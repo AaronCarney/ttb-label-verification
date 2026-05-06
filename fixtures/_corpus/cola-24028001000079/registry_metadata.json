@@ -1,0 +1,44 @@
+{
+  "ttbid": "24028001000079",
+  "brand": "TOBACCO BARN DISTILLERY",
+  "fancyName": "CASK STRENGTH",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20013",
+  "serialNumber": "240003",
+  "approvalDate": "01/29/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tobacco%20Barn%20Distillery%20750%20ML%20Barrel%20Strength%20Center%2028%20JAN%2024.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1135,
+      "h": 2126
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tobacco%20Barn%20Distillery%20750%20ML%20Barrel%20Strength%20Left%2028%20JAN%2024.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 671,
+      "h": 2056
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tobacco%20Barn%20Distillery%20750%20ML%20Barrel%20Strength%20Right%2028%20JAN%2024.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 640,
+      "h": 2093
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tobacco%20Barn%20Distillery%20750%20ML%20Barrel%20Strength%20Back%2028%20JAN%2024.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 651,
+      "h": 1164
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tobacco%20Barn%20Distillery%20750%20ML%20Barrel%20Strength%20Center%2028%20JAN%2024.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1135,
+    "h": 2126
+  }
+}

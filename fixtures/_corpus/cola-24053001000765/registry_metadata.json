@@ -1,0 +1,38 @@
+{
+  "ttbid": "24053001000765",
+  "brand": "WOODY CREEK DISTILLERS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20004",
+  "serialNumber": "240201",
+  "approvalDate": "03/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Colorado-high-rye-70-30-Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1205,
+      "h": 638
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Screening.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 352,
+      "h": 704
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Colorado-high-rye-70-30-Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1205,
+      "h": 638
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Colorado-high-rye-70-30-Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1205,
+    "h": 638
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "24031001000591",
+  "brand": "CINCINNATI DISTILLING",
+  "fancyName": "QUEEN OF THE WEST",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20043",
+  "serialNumber": "240007",
+  "approvalDate": "01/31/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cincinnati-4-Year-Bourbon_Label-Draft-V3.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 1810
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cincinnati-4-Year-Bourbon_Label-Draft-V3.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 1810
+  }
+}

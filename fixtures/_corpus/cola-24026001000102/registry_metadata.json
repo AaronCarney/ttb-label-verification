@@ -1,0 +1,38 @@
+{
+  "ttbid": "24026001000102",
+  "brand": "TEN DAY BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20106",
+  "serialNumber": "24TD01",
+  "approvalDate": "02/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ten%20Day%20Front.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 534,
+      "h": 741
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ten%20Day%20Strip.jpeg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1160,
+      "h": 1160
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ten%20Day%20Back.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1151,
+      "h": 1439
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ten%20Day%20Front.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 534,
+    "h": 741
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "24030001000634",
+  "brand": "CHICKENDUCK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20217",
+  "serialNumber": "240001",
+  "approvalDate": "02/01/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ChickenDuck%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 766,
+      "h": 1031
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ChickenDuck%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 848,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ChickenDuck%20Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 2087,
+      "h": 268
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ChickenDuck%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 766,
+    "h": 1031
+  }
+}

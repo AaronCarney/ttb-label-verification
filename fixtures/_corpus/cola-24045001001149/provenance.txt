@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24045001001149
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24045001001149
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front-90%20Proof.jpg&filetype=l
+fetched_at: 2026-05-06T01:00:08Z

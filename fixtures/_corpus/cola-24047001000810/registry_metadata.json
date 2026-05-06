@@ -1,0 +1,32 @@
+{
+  "ttbid": "24047001000810",
+  "brand": "LINCOLN RIDGE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20121",
+  "serialNumber": "241000",
+  "approvalDate": "03/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=100329_100986_Lincoln%20Ridge%20Whiskey%20750ml%20Sets%20-%20With%20Silver%20Foil_Front_COLA.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 900,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=99067_100986_Lincoln%20Ridge%20Whiskey%20750ml%20Sets%20-%20With%20Silver%20Foil_VDP%201-2500_Back_COLA.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 600,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=100329_100986_Lincoln%20Ridge%20Whiskey%20750ml%20Sets%20-%20With%20Silver%20Foil_Front_COLA.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 900,
+    "h": 1200
+  }
+}

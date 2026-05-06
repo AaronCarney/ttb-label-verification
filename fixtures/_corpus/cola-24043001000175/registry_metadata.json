@@ -1,0 +1,26 @@
+{
+  "ttbid": "24043001000175",
+  "brand": "AMERICAN SPARTAN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21110",
+  "serialNumber": "240014",
+  "approvalDate": "02/12/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=American%20Spartan%20Bourbon%20Whiskey.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1950,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=American%20Spartan%20Bourbon%20Whiskey.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1950,
+    "h": 1200
+  }
+}

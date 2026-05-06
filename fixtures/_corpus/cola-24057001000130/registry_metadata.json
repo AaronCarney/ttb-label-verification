@@ -1,0 +1,38 @@
+{
+  "ttbid": "24057001000130",
+  "brand": "SEACRETS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20022",
+  "serialNumber": "240001",
+  "approvalDate": "03/12/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SeacretsDistllingCoLogoSmall%20.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1565,
+      "h": 1518
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SDCWheatedBourbonWhiskeyFRONTProofForTTB%20392024.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 625,
+      "h": 475
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SDCWheatedBourbonWhiskeyBACKProofForTTB%20392024.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 627,
+      "h": 440
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SeacretsDistllingCoLogoSmall%20.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1565,
+    "h": 1518
+  }
+}
