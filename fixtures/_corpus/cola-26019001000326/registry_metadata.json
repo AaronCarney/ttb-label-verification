@@ -1,0 +1,26 @@
+{
+  "ttbid": "26019001000326",
+  "brand": "GLENNS CREEK",
+  "fancyName": "EXPERIMENTAL .44 CAG",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20018",
+  "serialNumber": "260004",
+  "approvalDate": "01/21/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Experimental44CAG375L-TTB.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1177,
+      "h": 885
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Experimental44CAG375L-TTB.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1177,
+    "h": 885
+  }
+}

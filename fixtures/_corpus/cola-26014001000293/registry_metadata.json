@@ -1,0 +1,32 @@
+{
+  "ttbid": "26014001000293",
+  "brand": "5094",
+  "fancyName": "TRANSPLANT",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20018",
+  "serialNumber": "260001",
+  "approvalDate": "01/15/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=5094TransplantFrLabel.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1050,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=5094TransplantRrLabelRev1.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1050,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=5094TransplantFrLabel.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1050,
+    "h": 1200
+  }
+}

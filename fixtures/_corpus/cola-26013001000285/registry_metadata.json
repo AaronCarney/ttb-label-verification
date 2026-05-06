@@ -1,0 +1,32 @@
+{
+  "ttbid": "26013001000285",
+  "brand": "JACOB'S CUT",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20060",
+  "serialNumber": "260001",
+  "approvalDate": "01/14/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Option%201.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2127,
+      "h": 3189
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Option%201%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2127,
+      "h": 3189
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Option%201.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2127,
+    "h": 3189
+  }
+}

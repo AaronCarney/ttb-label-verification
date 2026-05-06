@@ -1,0 +1,26 @@
+{
+  "ttbid": "26015001000504",
+  "brand": "NEW RIFF",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20016",
+  "serialNumber": "260043",
+  "approvalDate": "01/15/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front%208x15.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2359,
+      "h": 410
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front%208x15.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2359,
+    "h": 410
+  }
+}

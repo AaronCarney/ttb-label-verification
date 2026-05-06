@@ -1,0 +1,32 @@
+{
+  "ttbid": "26013001000704",
+  "brand": "TMI",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "26CM7B",
+  "approvalDate": "01/14/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front%20label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1234,
+      "h": 2285
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1234,
+      "h": 2162
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front%20label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1234,
+    "h": 2285
+  }
+}

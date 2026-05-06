@@ -1,0 +1,32 @@
+{
+  "ttbid": "26001001000033",
+  "brand": "REVERANCE",
+  "fancyName": "BLACK LABEL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21127",
+  "serialNumber": "260001",
+  "approvalDate": "01/05/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=original%20front.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1255,
+      "h": 1845
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=original%20back.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1215,
+      "h": 1827
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=original%20front.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1255,
+    "h": 1845
+  }
+}

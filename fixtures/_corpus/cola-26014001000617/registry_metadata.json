@@ -1,0 +1,38 @@
+{
+  "ttbid": "26014001000617",
+  "brand": "REDEMPTION",
+  "fancyName": "SINGLE BARREL BONDED BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-18",
+  "serialNumber": "260001",
+  "approvalDate": "01/20/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back%20bonded.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1067,
+      "h": 626
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1429,
+      "h": 189
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bonded%20front.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1370,
+      "h": 803
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back%20bonded.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1067,
+    "h": 626
+  }
+}

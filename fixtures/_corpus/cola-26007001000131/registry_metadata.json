@@ -1,0 +1,38 @@
+{
+  "ttbid": "26007001000131",
+  "brand": "HOLLA",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20240",
+  "serialNumber": "260001",
+  "approvalDate": "01/08/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Holla-Bourbon%20FrontTX.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1661,
+      "h": 2380
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Holla-Bourbon%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 999,
+      "h": 2365
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Holla-Bourbon%20Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1021,
+      "h": 574
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Holla-Bourbon%20FrontTX.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1661,
+    "h": 2380
+  }
+}

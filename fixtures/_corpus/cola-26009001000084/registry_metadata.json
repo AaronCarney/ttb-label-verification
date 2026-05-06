@@ -1,0 +1,32 @@
+{
+  "ttbid": "26009001000084",
+  "brand": "SEELBACH'S",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20044",
+  "serialNumber": "260A09",
+  "approvalDate": "01/09/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Seelbachs-WheatedBourbon-Front-CaskStrength-Flattened.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1087,
+      "h": 1594
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20bbn%20Back%20COLA.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1200,
+      "h": 1800
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Seelbachs-WheatedBourbon-Front-CaskStrength-Flattened.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1087,
+    "h": 1594
+  }
+}

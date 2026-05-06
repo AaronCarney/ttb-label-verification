@@ -1,0 +1,26 @@
+{
+  "ttbid": "26020001000800",
+  "brand": "VICTORY ROAD",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20014",
+  "serialNumber": "260006",
+  "approvalDate": "01/22/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20VictoryBourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1217,
+      "h": 620
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20VictoryBourbon.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1217,
+    "h": 620
+  }
+}

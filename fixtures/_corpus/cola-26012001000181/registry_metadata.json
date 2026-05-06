@@ -1,0 +1,32 @@
+{
+  "ttbid": "26012001000181",
+  "brand": "HEAVEN HILL",
+  "fancyName": "GRAIN TO GLASS",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-31",
+  "serialNumber": "260007",
+  "approvalDate": "01/12/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HHD_G2G_Limited%20Edition_WheatedBourbon_FY27_TTB%20Face.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 983
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HHD_G2G_Limited%20Edition_WheatedBourbon_FY27_TTB%20TaxStrip%202.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 245,
+      "h": 2039
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HHD_G2G_Limited%20Edition_WheatedBourbon_FY27_TTB%20Face.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 983
+  }
+}

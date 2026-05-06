@@ -1,0 +1,26 @@
+{
+  "ttbid": "26007001000287",
+  "brand": "SPECIAL RESERVE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-12",
+  "serialNumber": "2615BW",
+  "approvalDate": "01/07/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=15%20yr%20Double%20Bourbon%202.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2250,
+      "h": 975
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=15%20yr%20Double%20Bourbon%202.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2250,
+    "h": 975
+  }
+}

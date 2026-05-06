@@ -1,0 +1,38 @@
+{
+  "ttbid": "26006001000077",
+  "brand": "GEORGE DICKEL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-2",
+  "serialNumber": "26R002",
+  "approvalDate": "01/08/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=003105480053_GD_BrbnWhsky_8yr_Ft_TTB.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 862,
+      "h": 279
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=003105480051_GD_BrbnWhsky_8yr_750mL_Frnt_TTB.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1170,
+      "h": 841
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=003105525909_Z01_GD_8year_750mL_Back_US_TTB.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1575,
+      "h": 1949
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=003105480053_GD_BrbnWhsky_8yr_Ft_TTB.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 862,
+    "h": 279
+  }
+}

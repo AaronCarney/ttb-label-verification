@@ -1,0 +1,38 @@
+{
+  "ttbid": "26017001000026",
+  "brand": "SYNDICATE DISTILLERS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-10",
+  "serialNumber": "260024",
+  "approvalDate": "01/20/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB%20Front%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 567,
+      "h": 881
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB%20Back%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 532,
+      "h": 737
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB%20Strip%20Stamp.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1850,
+      "h": 290
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB%20Front%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 567,
+    "h": 881
+  }
+}

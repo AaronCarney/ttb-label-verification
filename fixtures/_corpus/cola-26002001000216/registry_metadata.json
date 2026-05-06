@@ -1,0 +1,44 @@
+{
+  "ttbid": "26002001000216",
+  "brand": "STONE GROOVE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20164",
+  "serialNumber": "26BB01",
+  "approvalDate": "03/18/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blues%20Bourbon%20Whiskey%20-%20FRONT.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 530,
+      "h": 1166
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blues%20Bourbon%20-%20Left%20Side%20Label.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 800,
+      "h": 587
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blues%20Bourbon%20Whiskey%20-%20RIGHT.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1044,
+      "h": 778
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blues%20Bourbon%20Whiskey%20-%20BACK.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1182,
+      "h": 1154
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blues%20Bourbon%20Whiskey%20-%20FRONT.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 530,
+    "h": 1166
+  }
+}

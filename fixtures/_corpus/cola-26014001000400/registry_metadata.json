@@ -1,0 +1,26 @@
+{
+  "ttbid": "26014001000400",
+  "brand": "WONG FAMILY BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "14",
+  "permitNo": "DSP-CT-21025",
+  "serialNumber": "260001",
+  "approvalDate": "01/16/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WongFamBourbon-5x4-REV1%20copy.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1575,
+      "h": 1275
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WongFamBourbon-5x4-REV1%20copy.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1575,
+    "h": 1275
+  }
+}

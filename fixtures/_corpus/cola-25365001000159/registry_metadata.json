@@ -1,0 +1,32 @@
+{
+  "ttbid": "25365001000159",
+  "brand": "BOXER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20111",
+  "serialNumber": "25MAX8",
+  "approvalDate": "01/05/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=maximus8front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 619,
+      "h": 1069
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=maximus8back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 619,
+      "h": 1069
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=maximus8front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 619,
+    "h": 1069
+  }
+}

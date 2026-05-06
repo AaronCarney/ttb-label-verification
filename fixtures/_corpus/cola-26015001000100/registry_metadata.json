@@ -1,0 +1,32 @@
+{
+  "ttbid": "26015001000100",
+  "brand": "LOCK & LOAD",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "00",
+  "permitNo": "GA-I-21200",
+  "serialNumber": "26009L",
+  "approvalDate": "01/15/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lock%20and%20Load%20FRONT1.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 697,
+      "h": 247
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lock%20and%20Load%20BACK1.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 886,
+      "h": 323
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lock%20and%20Load%20FRONT1.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 697,
+    "h": 247
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "26014001000153",
+  "brand": "COWTOWN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-83",
+  "serialNumber": "26COWT",
+  "approvalDate": "01/20/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cowtown-Front%20Label-Corrected.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1050,
+      "h": 1313
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cowtown-Back%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1050,
+      "h": 1163
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cowtown-Front%20Label-Corrected.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1050,
+    "h": 1313
+  }
+}

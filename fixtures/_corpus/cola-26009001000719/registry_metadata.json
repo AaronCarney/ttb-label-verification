@@ -1,0 +1,44 @@
+{
+  "ttbid": "26009001000719",
+  "brand": "VERY OLDE ST. NICK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20040",
+  "serialNumber": "260109",
+  "approvalDate": "01/12/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VOSN%20Immaculata%202026-Face.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1490,
+      "h": 1802
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VOSN%20Immaculata%202026-Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 3625,
+      "h": 2327
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VOSN%20Immaculata%202026-Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 3481,
+      "h": 791
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VOSN%20Immaculata%20UPC.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 902,
+      "h": 513
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VOSN%20Immaculata%202026-Face.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1490,
+    "h": 1802
+  }
+}
