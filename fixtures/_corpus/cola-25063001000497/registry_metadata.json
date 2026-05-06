@@ -1,0 +1,38 @@
+{
+  "ttbid": "25063001000497",
+  "brand": "503 DISTILLING",
+  "fancyName": "PRIVATE RESERVE SINGLE BARREL BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-20048",
+  "serialNumber": "250043",
+  "approvalDate": "03/06/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SBB.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1046,
+      "h": 934
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SBB1.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1036,
+      "h": 250
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SBB2.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 860,
+      "h": 508
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SBB.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1046,
+    "h": 934
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25044001000656",
+  "brand": "DOUBLE BARREL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20330",
+  "serialNumber": "250005",
+  "approvalDate": "02/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Double%20Barrel%20Bourbon%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1197,
+      "h": 681
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Double%20Barrel%20Bourbon%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1197,
+    "h": 681
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25065001000526",
+  "brand": "501 PRIME'S",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "25501B",
+  "approvalDate": "03/11/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=501%20primes.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1234,
+      "h": 938
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=501%20primes.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1234,
+    "h": 938
+  }
+}

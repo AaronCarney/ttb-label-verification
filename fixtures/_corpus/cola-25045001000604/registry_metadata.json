@@ -1,0 +1,26 @@
+{
+  "ttbid": "25045001000604",
+  "brand": "HERITAGE DISTILLING CO. CASK CLUB",
+  "fancyName": "CASK CLUB BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-20037",
+  "serialNumber": "250214",
+  "approvalDate": "02/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HDC%20750%20ML%20CC%20Bourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 624,
+      "h": 313
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HDC%20750%20ML%20CC%20Bourbon.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 624,
+    "h": 313
+  }
+}

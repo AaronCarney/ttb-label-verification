@@ -1,0 +1,32 @@
+{
+  "ttbid": "25056001000157",
+  "brand": "STITZEL RESERVE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-15007",
+  "serialNumber": "25LOR2",
+  "approvalDate": "03/17/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=COLA%20Front%20Label%20Bourbon%20Lore.JPG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 849,
+      "h": 657
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Lore%20Back%20Label%20.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 364,
+      "h": 651
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=COLA%20Front%20Label%20Bourbon%20Lore.JPG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 849,
+    "h": 657
+  }
+}

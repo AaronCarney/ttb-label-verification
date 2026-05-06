@@ -1,0 +1,38 @@
+{
+  "ttbid": "25049001000768",
+  "brand": "AUDIFFRED BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20004",
+  "serialNumber": "250001",
+  "approvalDate": "02/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Audiffred%20wrap%20label%20for%20approval.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3937,
+      "h": 666
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=topbackapproval.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 859,
+      "h": 923
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=topfrontapproval.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 432,
+      "h": 476
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Audiffred%20wrap%20label%20for%20approval.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3937,
+    "h": 666
+  }
+}

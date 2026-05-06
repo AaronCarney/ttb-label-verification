@@ -1,0 +1,26 @@
+{
+  "ttbid": "25052001000141",
+  "brand": "CINCINNATI DISTILLING",
+  "fancyName": "THE CATHERINE WALDSCHMIDT",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20043",
+  "serialNumber": "250074",
+  "approvalDate": "02/25/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CDCatherineWaldschmidtBourbon.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 1161
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CDCatherineWaldschmidtBourbon.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 1161
+  }
+}

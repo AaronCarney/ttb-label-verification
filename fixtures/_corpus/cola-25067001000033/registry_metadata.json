@@ -1,0 +1,26 @@
+{
+  "ttbid": "25067001000033",
+  "brand": "THREE BLONDES BREWING",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20260",
+  "serialNumber": "250005",
+  "approvalDate": "03/12/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=3BB%20Bourbon%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1056,
+      "h": 704
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=3BB%20Bourbon%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1056,
+    "h": 704
+  }
+}

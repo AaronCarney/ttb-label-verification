@@ -1,0 +1,38 @@
+{
+  "ttbid": "25041001000274",
+  "brand": "THE HERITAGE COLLECTION",
+  "fancyName": "SINGLE CASK BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20047",
+  "serialNumber": "250006",
+  "approvalDate": "02/11/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Single%20Cask%20Bourbon%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 903,
+      "h": 1284
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Single%20Cask%20Bourbon%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 911,
+      "h": 1281
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Single%20Cask%20Bourbon%20neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1192,
+      "h": 398
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Single%20Cask%20Bourbon%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 903,
+    "h": 1284
+  }
+}

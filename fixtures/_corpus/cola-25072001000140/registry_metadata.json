@@ -1,0 +1,26 @@
+{
+  "ttbid": "25072001000140",
+  "brand": "THE ANGEL'S SHARE",
+  "fancyName": "MICHAEL'S MEASURE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "03",
+  "permitNo": "DSP-NJ-21002",
+  "serialNumber": "250313",
+  "approvalDate": "03/25/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=the_halo_series_-_michaels_measure_-_perfect_final.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2700,
+      "h": 2700
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=the_halo_series_-_michaels_measure_-_perfect_final.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2700,
+    "h": 2700
+  }
+}

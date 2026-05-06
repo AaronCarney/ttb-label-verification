@@ -1,0 +1,38 @@
+{
+  "ttbid": "25054001000024",
+  "brand": "BAINBRIDGE",
+  "fancyName": "WHISKEY FORTY SALOON BARREL PROOF",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-15025",
+  "serialNumber": "252222",
+  "approvalDate": "02/25/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Whiskey40_BarrelProof_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1023,
+      "h": 1041
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Whiskey40_BarrelProof_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1182,
+      "h": 1332
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Whiskey40_Capsule.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1167,
+      "h": 579
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Whiskey40_BarrelProof_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1023,
+    "h": 1041
+  }
+}

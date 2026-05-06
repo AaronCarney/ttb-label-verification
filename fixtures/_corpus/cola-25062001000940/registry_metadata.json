@@ -1,0 +1,32 @@
+{
+  "ttbid": "25062001000940",
+  "brand": "CULINARY COCKTAILS",
+  "fancyName": "PATRIOTIC DUTY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "34",
+  "permitNo": "DSP-NM-21053",
+  "serialNumber": "25PDBR",
+  "approvalDate": "03/04/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PD%20Bourbon%20Whisky%20.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 530,
+      "h": 939
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PD%20Bourbon%20Whisky%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 488,
+      "h": 788
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PD%20Bourbon%20Whisky%20.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 530,
+    "h": 939
+  }
+}

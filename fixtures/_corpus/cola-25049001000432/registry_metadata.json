@@ -1,0 +1,26 @@
+{
+  "ttbid": "25049001000432",
+  "brand": "GRAVEL BOTTOM HOUSE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20211",
+  "serialNumber": "250001",
+  "approvalDate": "02/19/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Gravel%20Bottom%20House%20Bourbon%20750.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 812,
+      "h": 855
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Gravel%20Bottom%20House%20Bourbon%20750.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 812,
+    "h": 855
+  }
+}

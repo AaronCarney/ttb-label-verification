@@ -1,0 +1,38 @@
+{
+  "ttbid": "25048001000262",
+  "brand": "TRACKSIDE DISTILLING COMPANY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20004",
+  "serialNumber": "250009",
+  "approvalDate": "02/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=21879_036389_working.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2100,
+      "h": 1500
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=21882_036391_working.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 320,
+      "h": 1613
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=22136_036755_working.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 885,
+      "h": 300
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=21879_036389_working.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2100,
+    "h": 1500
+  }
+}

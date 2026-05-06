@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25058001000003
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25058001000003
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Cask%20Strength%20Bourbon%20-%20Front%20Label.jpg&filetype=l
+fetched_at: 2026-05-06T01:42:54Z

@@ -1,0 +1,38 @@
+{
+  "ttbid": "25063001000711",
+  "brand": "LEVI SHEARER BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20188",
+  "serialNumber": "250001",
+  "approvalDate": "03/07/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Levi%20Scheerer%20TTB%20Rev1%20Front_Reference%20Composite.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 928,
+      "h": 1524
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Neck%20label.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 775,
+      "h": 175
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rear%20Warning.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 583,
+      "h": 255
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Levi%20Scheerer%20TTB%20Rev1%20Front_Reference%20Composite.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 928,
+    "h": 1524
+  }
+}

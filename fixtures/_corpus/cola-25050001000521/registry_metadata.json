@@ -1,0 +1,32 @@
+{
+  "ttbid": "25050001000521",
+  "brand": "8TH DAY DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21031",
+  "serialNumber": "250001",
+  "approvalDate": "02/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=8D_SingleBarrel_BourbonFront_750-01.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1125,
+      "h": 1640
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=8D_SingleBarrel_BourbonBack_750-02.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1125,
+      "h": 1644
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=8D_SingleBarrel_BourbonFront_750-01.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1125,
+    "h": 1640
+  }
+}

@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25041001000154
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25041001000154
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SCN%20Blend%20Standard%20Deviations%2020250210.jpg&filetype=l
+fetched_at: 2026-05-06T01:40:47Z

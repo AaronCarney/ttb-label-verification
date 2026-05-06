@@ -1,0 +1,32 @@
+{
+  "ttbid": "25062001000753",
+  "brand": "ALVIN LANGSTON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "41",
+  "permitNo": "DSP-SC-21029",
+  "serialNumber": "25AL03",
+  "approvalDate": "03/04/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=5%20YO%20WHEATED%20BOURBON%20LABEL-1.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1818,
+      "h": 2347
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=5%20YO%20WHEATED%20BOURBON%20LABEL-2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1374,
+      "h": 1889
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=5%20YO%20WHEATED%20BOURBON%20LABEL-1.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1818,
+    "h": 2347
+  }
+}

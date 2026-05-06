@@ -1,0 +1,38 @@
+{
+  "ttbid": "25051001000800",
+  "brand": "MARKHOR",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20243",
+  "serialNumber": "250002",
+  "approvalDate": "02/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Markhor_Bourbon%20Whiskey_Face.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1426,
+      "h": 1463
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Markhor_Bourbon%20Whiskey_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 788,
+      "h": 826
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Markhor_Whiskey_TaxBand.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1441,
+      "h": 346
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Markhor_Bourbon%20Whiskey_Face.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1426,
+    "h": 1463
+  }
+}

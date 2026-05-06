@@ -1,0 +1,26 @@
+{
+  "ttbid": "25069001000862",
+  "brand": "FREY RANCH FARMERS + DISTILLERS",
+  "fancyName": "MALTED GRAIN SERIES",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "32",
+  "permitNo": "DSP-NV-15003",
+  "serialNumber": "250001",
+  "approvalDate": "03/27/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Malted%20Four%20Grain%20Bourbon%20Whiskey%20Frey%20Ranch%20TTB%20Image.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 4340,
+      "h": 1330
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Malted%20Four%20Grain%20Bourbon%20Whiskey%20Frey%20Ranch%20TTB%20Image.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 4340,
+    "h": 1330
+  }
+}

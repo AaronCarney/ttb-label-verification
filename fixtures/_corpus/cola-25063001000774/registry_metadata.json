@@ -1,0 +1,26 @@
+{
+  "ttbid": "25063001000774",
+  "brand": "THINKING TREE SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-20037",
+  "serialNumber": "253041",
+  "approvalDate": "03/07/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTS%20Bourbon%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 715,
+      "h": 631
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTS%20Bourbon%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 715,
+    "h": 631
+  }
+}

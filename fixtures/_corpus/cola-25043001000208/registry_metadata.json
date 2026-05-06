@@ -1,0 +1,32 @@
+{
+  "ttbid": "25043001000208",
+  "brand": "CATAWBA RUN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21054",
+  "serialNumber": "25CR1B",
+  "approvalDate": "02/26/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=20250226CatawbaRun_PrivateSelect_FORPRINTBRAND.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 948,
+      "h": 1174
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=20250226CatawbaRun_PrivateSelect_FORPRINTBACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 616,
+      "h": 638
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=20250226CatawbaRun_PrivateSelect_FORPRINTBRAND.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 948,
+    "h": 1174
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25055001000960",
+  "brand": "HOOT + HOWL SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20170",
+  "serialNumber": "252508",
+  "approvalDate": "02/26/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBON-2.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1200,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBON-2.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1200,
+    "h": 1200
+  }
+}
