@@ -1,0 +1,32 @@
+{
+  "ttbid": "25231001000220",
+  "brand": "OLD EIGHTY BOURBON WHISKY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20104",
+  "serialNumber": "250004",
+  "approvalDate": "08/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB_OLD%20EIGHTY%20BOURBON%20WHISKEY_2025-0004.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2925,
+      "h": 653
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=NECK%20BAND_EP.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1349,
+      "h": 344
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB_OLD%20EIGHTY%20BOURBON%20WHISKEY_2025-0004.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2925,
+    "h": 653
+  }
+}

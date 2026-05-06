@@ -1,0 +1,32 @@
+{
+  "ttbid": "25209001000441",
+  "brand": "FOX CREEK",
+  "fancyName": "SOCIAL SPIRITS",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20131",
+  "serialNumber": "250728",
+  "approvalDate": "07/29/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=foxcreek5.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 900
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=foxcreek5back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1200,
+      "h": 800
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=foxcreek5.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 900
+  }
+}

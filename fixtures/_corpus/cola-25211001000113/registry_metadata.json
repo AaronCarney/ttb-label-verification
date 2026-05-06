@@ -1,0 +1,26 @@
+{
+  "ttbid": "25211001000113",
+  "brand": "IRON AXE",
+  "fancyName": "AXE CUT",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20284",
+  "serialNumber": "250001",
+  "approvalDate": "08/26/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Screenshot%202025-08-25%20075040.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1304,
+      "h": 514
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Screenshot%202025-08-25%20075040.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1304,
+    "h": 514
+  }
+}

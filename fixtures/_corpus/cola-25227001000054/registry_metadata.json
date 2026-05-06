@@ -1,0 +1,32 @@
+{
+  "ttbid": "25227001000054",
+  "brand": "BLANTON'S",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "00",
+  "permitNo": "NY-I-21336",
+  "serialNumber": "250219",
+  "approvalDate": "08/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BLANTON%2065%20700ml.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 582,
+      "h": 683
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DISTILLED%20SPIRITS%20STRIP%20RE%20IMPORTED%20700ML.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 741,
+      "h": 278
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BLANTON%2065%20700ml.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 582,
+    "h": 683
+  }
+}

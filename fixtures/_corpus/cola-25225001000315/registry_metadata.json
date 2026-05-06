@@ -1,0 +1,32 @@
+{
+  "ttbid": "25225001000315",
+  "brand": "BUZZARD'S ROOST",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20037",
+  "serialNumber": "250165",
+  "approvalDate": "08/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BR%20Double%20Oak%20SB%20F.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 394,
+      "h": 773
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BR%20Double%20Oak%20SB%20B.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 352,
+      "h": 692
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BR%20Double%20Oak%20SB%20F.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 394,
+    "h": 773
+  }
+}

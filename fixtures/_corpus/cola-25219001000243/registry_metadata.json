@@ -1,0 +1,38 @@
+{
+  "ttbid": "25219001000243",
+  "brand": "WHISTLEPIG",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20175",
+  "serialNumber": "25PBBN",
+  "approvalDate": "08/26/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PBB%20Front%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 752,
+      "h": 675
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PBB%20Neck%20Label.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1400,
+      "h": 661
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PBB%20Back%20Label%20KY.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1000,
+      "h": 1147
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PBB%20Front%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 752,
+    "h": 675
+  }
+}

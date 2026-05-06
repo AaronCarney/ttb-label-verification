@@ -1,0 +1,26 @@
+{
+  "ttbid": "25211001000238",
+  "brand": "MOON BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "34",
+  "permitNo": "DSP-NM-21050",
+  "serialNumber": "25BMBW",
+  "approvalDate": "08/25/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WHISKEY2.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2122,
+      "h": 1085
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WHISKEY2.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2122,
+    "h": 1085
+  }
+}

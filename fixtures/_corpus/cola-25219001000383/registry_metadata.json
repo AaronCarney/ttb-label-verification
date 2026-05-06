@@ -1,0 +1,32 @@
+{
+  "ttbid": "25219001000383",
+  "brand": "DISTILLER'S RESERVE BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "32",
+  "permitNo": "DSP-NV-21025",
+  "serialNumber": "25BRBN",
+  "approvalDate": "08/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Distillers%20Reserve%20Bourbon%20Front%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1157,
+      "h": 1401
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Distillers%20Reserve%20Bourbon%20Back%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1180,
+      "h": 1413
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Distillers%20Reserve%20Bourbon%20Front%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1157,
+    "h": 1401
+  }
+}

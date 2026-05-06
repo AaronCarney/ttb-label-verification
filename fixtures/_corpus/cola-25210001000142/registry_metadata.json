@@ -1,0 +1,26 @@
+{
+  "ttbid": "25210001000142",
+  "brand": "BLUE LAW",
+  "fancyName": "PROHIBITION STYLE BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "14",
+  "permitNo": "DSP-CT-15009",
+  "serialNumber": "250014",
+  "approvalDate": "09/02/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Screenshot%202025-08-28%20141841.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1342,
+      "h": 561
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Screenshot%202025-08-28%20141841.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1342,
+    "h": 561
+  }
+}

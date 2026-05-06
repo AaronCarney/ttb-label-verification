@@ -1,0 +1,26 @@
+{
+  "ttbid": "25216001000131",
+  "brand": "BLOCKHEAD STILLWORKS",
+  "fancyName": "SMALL BATCH BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21097",
+  "serialNumber": "250011",
+  "approvalDate": "08/05/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blockhead_375ml_Bottle_Bourbon_wUPC%20use-01.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 739,
+      "h": 920
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blockhead_375ml_Bottle_Bourbon_wUPC%20use-01.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 739,
+    "h": 920
+  }
+}

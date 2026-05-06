@@ -1,0 +1,26 @@
+{
+  "ttbid": "25209001000704",
+  "brand": "SEELBACH'S",
+  "fancyName": "HIGH WIRE'S JIMMY RED",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20044",
+  "serialNumber": "250G26",
+  "approvalDate": "07/29/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AdventCalendar-%20High%20Wires%20Jimmy%20Red.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2000,
+      "h": 1300
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AdventCalendar-%20High%20Wires%20Jimmy%20Red.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2000,
+    "h": 1300
+  }
+}

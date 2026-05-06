@@ -1,0 +1,26 @@
+{
+  "ttbid": "25209001000718",
+  "brand": "SEELBACH'S",
+  "fancyName": "HARD TRUTH DISTILLING COMPANY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20044",
+  "serialNumber": "250G31",
+  "approvalDate": "07/29/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AdventCalendar-Hard%20Truth%20Distilling%20CO%20Bourbon%20Whiskey%20.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2000,
+      "h": 1300
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AdventCalendar-Hard%20Truth%20Distilling%20CO%20Bourbon%20Whiskey%20.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2000,
+    "h": 1300
+  }
+}

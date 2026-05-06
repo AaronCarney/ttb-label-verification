@@ -1,0 +1,26 @@
+{
+  "ttbid": "25227001000383",
+  "brand": "RANSOM FARM & DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-15",
+  "serialNumber": "25BNB4",
+  "approvalDate": "08/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ransom%20Bourbon%204%20Grain%20Mash%20Bill%20Label%204%20Year.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2454,
+      "h": 1238
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ransom%20Bourbon%204%20Grain%20Mash%20Bill%20Label%204%20Year.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2454,
+    "h": 1238
+  }
+}

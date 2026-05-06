@@ -1,0 +1,38 @@
+{
+  "ttbid": "25217001000166",
+  "brand": "PINHOOK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-18",
+  "serialNumber": "250029",
+  "approvalDate": "08/07/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2025-SmallBatchBourbon-Back-TX.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 976,
+      "h": 1726
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2025-SmallBatchBourbon-FrontBottom-TX.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1426,
+      "h": 1234
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2025-SmallBatchBourbon-FrontTop-TX.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1426,
+      "h": 423
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2025-SmallBatchBourbon-Back-TX.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 976,
+    "h": 1726
+  }
+}

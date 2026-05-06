@@ -1,0 +1,44 @@
+{
+  "ttbid": "25219001000250",
+  "brand": "WHISTLEPIG",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20175",
+  "serialNumber": "25BRSB",
+  "approvalDate": "08/12/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PBB%20SB%20Front%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1000,
+      "h": 1000
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PBB%20SB%20Necker.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 752,
+      "h": 355
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PBB%20SB%20Back%20Label%20KY.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1000,
+      "h": 1125
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PBB%20Single%20Barrel%20Shoulder%20Stamp.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 472,
+      "h": 498
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PBB%20SB%20Front%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1000,
+    "h": 1000
+  }
+}

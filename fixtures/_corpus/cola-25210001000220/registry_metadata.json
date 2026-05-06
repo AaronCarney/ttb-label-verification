@@ -1,0 +1,32 @@
+{
+  "ttbid": "25210001000220",
+  "brand": "COPPER DOME",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20059",
+  "serialNumber": "25CD09",
+  "approvalDate": "08/04/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WHEATBOURBON.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1530,
+      "h": 757
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WBcork.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1002,
+      "h": 176
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WHEATBOURBON.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1530,
+    "h": 757
+  }
+}

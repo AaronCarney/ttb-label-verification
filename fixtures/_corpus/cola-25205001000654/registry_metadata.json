@@ -1,0 +1,26 @@
+{
+  "ttbid": "25205001000654",
+  "brand": "SEELBACHS",
+  "fancyName": "OLD HAMER BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21028",
+  "serialNumber": "250724",
+  "approvalDate": "08/06/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=seelbachs.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1266,
+      "h": 634
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=seelbachs.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1266,
+    "h": 634
+  }
+}

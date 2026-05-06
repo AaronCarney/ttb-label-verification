@@ -1,0 +1,44 @@
+{
+  "ttbid": "25220001000326",
+  "brand": "BROWNE FAMILY SPIRITS",
+  "fancyName": "BARREL #079",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21105",
+  "serialNumber": "250006",
+  "approvalDate": "08/13/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_Farrellis_BourbonWhiskey_FL-2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1700,
+      "h": 1011
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_Farrellis_BourbonWhiskey_FL-1.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 3000,
+      "h": 1249
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_Farrellis_BourbonWhiskey_BL.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1000,
+      "h": 597
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_Farrellis_SingleBarrel_FL-3.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1000,
+      "h": 1000
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_Farrellis_BourbonWhiskey_FL-2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1700,
+    "h": 1011
+  }
+}

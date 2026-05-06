@@ -1,0 +1,32 @@
+{
+  "ttbid": "25212001000441",
+  "brand": "BELLA RIO",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20043",
+  "serialNumber": "25BRB1",
+  "approvalDate": "08/11/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bella%20Rio%20Bourbon%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 5543,
+      "h": 5939
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bella%20Rio%20Bourbon%20Rear.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 5538,
+      "h": 7182
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bella%20Rio%20Bourbon%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 5543,
+    "h": 5939
+  }
+}

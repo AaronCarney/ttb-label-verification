@@ -1,0 +1,26 @@
+{
+  "ttbid": "25224001000651",
+  "brand": "GRAY WOLF",
+  "fancyName": "SINGLE BARREL SELECT SERIES NO. 1",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20083",
+  "serialNumber": "250005",
+  "approvalDate": "08/14/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GW_Bottle%20Labels_Bourbon750_Final.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3900,
+      "h": 600
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GW_Bottle%20Labels_Bourbon750_Final.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3900,
+    "h": 600
+  }
+}

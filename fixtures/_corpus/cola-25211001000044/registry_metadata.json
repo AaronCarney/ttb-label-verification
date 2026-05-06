@@ -1,0 +1,26 @@
+{
+  "ttbid": "25211001000044",
+  "brand": "SMOKEYE HILL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20013",
+  "serialNumber": "250730",
+  "approvalDate": "08/01/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Seelbachs%20Advent%20Smokeye%20Barrel%20Proof%20TTB.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 4800,
+      "h": 3120
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Seelbachs%20Advent%20Smokeye%20Barrel%20Proof%20TTB.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 4800,
+    "h": 3120
+  }
+}

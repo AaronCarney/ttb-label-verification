@@ -1,0 +1,32 @@
+{
+  "ttbid": "25220001000447",
+  "brand": "PIPE + BARREL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20075",
+  "serialNumber": "250004",
+  "approvalDate": "08/26/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Pipe%20Barrel%20Front%20TTB.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 563,
+      "h": 601
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Pipe%20Barrel%20Back%20TTB.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 563,
+      "h": 564
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Pipe%20Barrel%20Front%20TTB.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 563,
+    "h": 601
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25209001000707",
+  "brand": "SEELBACH'S",
+  "fancyName": "BEYKE'S BLUE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20044",
+  "serialNumber": "250G27",
+  "approvalDate": "08/04/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AdventCalendar-Beykes%20Blue-Bourbon%20Whiskey%20v2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2000,
+      "h": 1300
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AdventCalendar-Beykes%20Blue-Bourbon%20Whiskey%20v2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2000,
+    "h": 1300
+  }
+}

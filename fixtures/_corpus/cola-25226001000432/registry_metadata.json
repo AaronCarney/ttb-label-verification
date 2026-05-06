@@ -1,0 +1,38 @@
+{
+  "ttbid": "25226001000432",
+  "brand": "SINGLE BARREL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20174",
+  "serialNumber": "250002",
+  "approvalDate": "08/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MSingle%20Front.JPG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1002,
+      "h": 830
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MSingle%20Back.JPG&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 852,
+      "h": 821
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MSingle%20Neck.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 240,
+      "h": 860
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MSingle%20Front.JPG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1002,
+    "h": 830
+  }
+}

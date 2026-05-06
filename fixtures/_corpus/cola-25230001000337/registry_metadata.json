@@ -1,0 +1,32 @@
+{
+  "ttbid": "25230001000337",
+  "brand": "ROBERT FULTON STRAIGHT BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "00",
+  "permitNo": "TN-I-15048",
+  "serialNumber": "254200",
+  "approvalDate": "09/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Robert%20Fulton%20Bourbon%20Whiskey%20Front%20Label%202.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 385,
+      "h": 573
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Robert%20Fulton%20backlabel%20USA%2075x55.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1000,
+      "h": 709
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Robert%20Fulton%20Bourbon%20Whiskey%20Front%20Label%202.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 385,
+    "h": 573
+  }
+}

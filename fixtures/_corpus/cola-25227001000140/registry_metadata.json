@@ -1,0 +1,26 @@
+{
+  "ttbid": "25227001000140",
+  "brand": "WHEELHOUSE DISTILLING COMPANY",
+  "fancyName": "BARREL STRENGTH DEAD RECKONING",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "03",
+  "permitNo": "DSP-NJ-21049",
+  "serialNumber": "250007",
+  "approvalDate": "08/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Barrel%20Strength%20Dead%20Reckoning.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1800,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Barrel%20Strength%20Dead%20Reckoning.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1800,
+    "h": 1200
+  }
+}

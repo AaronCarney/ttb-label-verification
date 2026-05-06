@@ -1,0 +1,32 @@
+{
+  "ttbid": "25210001000547",
+  "brand": "LEIPER'S FORK DISTILLERY",
+  "fancyName": "HIGH ANGEL'S SHARE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21034",
+  "serialNumber": "250729",
+  "approvalDate": "08/05/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=High%20Angel%20Share%20Front%20Label%20COLA%20only.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 549,
+      "h": 532
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=High%20Angel%20Share%20Back%20Label%20COLA%20only.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 484,
+      "h": 754
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=High%20Angel%20Share%20Front%20Label%20COLA%20only.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 549,
+    "h": 532
+  }
+}

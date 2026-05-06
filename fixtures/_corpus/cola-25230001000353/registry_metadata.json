@@ -1,0 +1,32 @@
+{
+  "ttbid": "25230001000353",
+  "brand": "THE CUMBERLAND",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21028",
+  "serialNumber": "250022",
+  "approvalDate": "08/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TN%20Bourbon%20Front%20v2.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 901,
+      "h": 1051
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=The%20Cumberland%20Bourbon.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 935,
+      "h": 1810
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TN%20Bourbon%20Front%20v2.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 901,
+    "h": 1051
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25211001000552",
+  "brand": "EITHER OAR",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-15007",
+  "serialNumber": "253283",
+  "approvalDate": "07/31/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20label_front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 910,
+      "h": 1210
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20label_back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 909,
+      "h": 1210
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20label_front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 910,
+    "h": 1210
+  }
+}
