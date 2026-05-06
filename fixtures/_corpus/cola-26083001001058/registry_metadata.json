@@ -1,0 +1,32 @@
+{
+  "ttbid": "26083001001058",
+  "brand": "ROCKET MAN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20189",
+  "serialNumber": "260633",
+  "approvalDate": "03/25/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 558,
+      "h": 710
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 403,
+      "h": 710
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 558,
+    "h": 710
+  }
+}

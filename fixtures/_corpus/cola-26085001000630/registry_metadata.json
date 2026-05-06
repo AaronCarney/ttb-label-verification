@@ -1,0 +1,32 @@
+{
+  "ttbid": "26085001000630",
+  "brand": "OLD ZACH",
+  "fancyName": "RARE CASK FINISH DOUBLE OAKED BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20134",
+  "serialNumber": "262606",
+  "approvalDate": "03/27/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OldZach_9YearDoubleOakedBourbon-Eagle-FRONT-PRESS.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1080,
+      "h": 1224
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OldZach_9YearBourbonLabel_2025_Back_LR_TTB.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 791,
+      "h": 1076
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OldZach_9YearDoubleOakedBourbon-Eagle-FRONT-PRESS.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1080,
+    "h": 1224
+  }
+}

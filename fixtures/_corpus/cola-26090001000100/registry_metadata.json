@@ -1,0 +1,32 @@
+{
+  "ttbid": "26090001000100",
+  "brand": "LONERGAN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20055",
+  "serialNumber": "26LDBW",
+  "approvalDate": "03/31/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lonergan%20Distillery%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3484,
+      "h": 4615
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lonergan%20Distillery%20Back%201.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 792,
+      "h": 798
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lonergan%20Distillery%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3484,
+    "h": 4615
+  }
+}

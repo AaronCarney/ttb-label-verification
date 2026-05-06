@@ -1,0 +1,32 @@
+{
+  "ttbid": "26068001000437",
+  "brand": "28TH INFANTRY DIVISION",
+  "fancyName": "RED KEYSTONE RESERVE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-CT-21025",
+  "serialNumber": "260309",
+  "approvalDate": "03/10/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=28thInfantryFront.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 975,
+      "h": 1425
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=28thInfantryBack.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 975,
+      "h": 1425
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=28thInfantryFront.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 975,
+    "h": 1425
+  }
+}

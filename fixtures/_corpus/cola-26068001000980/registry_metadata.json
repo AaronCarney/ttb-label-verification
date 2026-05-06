@@ -1,0 +1,32 @@
+{
+  "ttbid": "26068001000980",
+  "brand": "PAPA MAGOO'S BAR & GRILL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-15026",
+  "serialNumber": "260026",
+  "approvalDate": "03/10/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=magoo_label_1.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 967,
+      "h": 1399
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=magoo_label_2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 967,
+      "h": 1399
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=magoo_label_1.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 967,
+    "h": 1399
+  }
+}

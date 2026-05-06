@@ -1,0 +1,32 @@
+{
+  "ttbid": "26086001000580",
+  "brand": "CEDAR RIDGE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "20",
+  "permitNo": "DSP-IA-15001",
+  "serialNumber": "26SBC6",
+  "approvalDate": "03/30/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SBC%202026%206%20Year%20Front%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1572,
+      "h": 1812
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SBC%202026%206%20YR%20Back%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1460,
+      "h": 1410
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SBC%202026%206%20Year%20Front%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1572,
+    "h": 1812
+  }
+}

@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 26070001001052
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=26070001001052
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Label-1.jpg&filetype=l
+fetched_at: 2026-05-06T02:35:12Z

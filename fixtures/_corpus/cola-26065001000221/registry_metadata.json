@@ -1,0 +1,38 @@
+{
+  "ttbid": "26065001000221",
+  "brand": "BCD",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21108",
+  "serialNumber": "26ELB1",
+  "approvalDate": "03/06/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BCD%20EL%20Bourbon%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2097,
+      "h": 1232
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BCD%20EL%20Bourbon%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 568,
+      "h": 1166
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BCD%20EL%20Bourbon%20Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1431,
+      "h": 450
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BCD%20EL%20Bourbon%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2097,
+    "h": 1232
+  }
+}

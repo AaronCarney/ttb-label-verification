@@ -1,0 +1,32 @@
+{
+  "ttbid": "26070001001103",
+  "brand": "BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "26",
+  "permitNo": "DSP-MA-15003",
+  "serialNumber": "260006",
+  "approvalDate": "03/20/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TheCollectiveSpirits_Bourbon-Front-v2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1145,
+      "h": 1800
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TheCollectiveSpirits_Bourbon-Back-v2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1145,
+      "h": 1800
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TheCollectiveSpirits_Bourbon-Front-v2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1145,
+    "h": 1800
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "26079001000045",
+  "brand": "MAD ANGLER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20053",
+  "serialNumber": "26MABS",
+  "approvalDate": "03/20/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Mad%20Angler%20Bourbon%20Single%20Barrel%20Distribution.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2272,
+      "h": 358
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Mad%20Angler%20Bourbon%20Single%20Barrel%20Distribution.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2272,
+    "h": 358
+  }
+}

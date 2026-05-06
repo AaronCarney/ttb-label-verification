@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 26086001000580
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=26086001000580
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SBC%202026%206%20Year%20Front%20Label.png&filetype=l
+fetched_at: 2026-05-06T02:37:33Z

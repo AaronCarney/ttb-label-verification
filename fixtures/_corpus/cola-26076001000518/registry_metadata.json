@@ -1,0 +1,26 @@
+{
+  "ttbid": "26076001000518",
+  "brand": "NAPA CRU KENTUCKY BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-CA-20441",
+  "serialNumber": "262603",
+  "approvalDate": "03/19/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=NapaCRUSingleBourbonTTB.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2332,
+      "h": 2173
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=NapaCRUSingleBourbonTTB.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2332,
+    "h": 2173
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "26077001000583",
+  "brand": "HUSH & WHISPER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20147",
+  "serialNumber": "260003",
+  "approvalDate": "03/18/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20brand%201.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1408,
+      "h": 1267
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20brand%202.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2549,
+      "h": 560
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 182,
+      "h": 1750
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20brand%201.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1408,
+    "h": 1267
+  }
+}

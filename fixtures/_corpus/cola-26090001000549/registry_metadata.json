@@ -1,0 +1,26 @@
+{
+  "ttbid": "26090001000549",
+  "brand": "OLD EMMER",
+  "fancyName": "FINEST WHEAT",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-26",
+  "serialNumber": "260004",
+  "approvalDate": "04/06/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old%20Emmer%20Finest%20Wheat%20Use-up%20Label%20.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 830,
+      "h": 522
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old%20Emmer%20Finest%20Wheat%20Use-up%20Label%20.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 830,
+    "h": 522
+  }
+}

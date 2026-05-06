@@ -1,0 +1,32 @@
+{
+  "ttbid": "26072001000471",
+  "brand": "COUNTRY MUSIC HIGHWAY",
+  "fancyName": "1620 DISTILLING COMPANY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20120",
+  "serialNumber": "260005",
+  "approvalDate": "03/17/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=highway23_front_label_TTB.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 900,
+      "h": 1350
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=highway23_back_label_TTB.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 900,
+      "h": 1350
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=highway23_front_label_TTB.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 900,
+    "h": 1350
+  }
+}

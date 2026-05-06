@@ -1,0 +1,32 @@
+{
+  "ttbid": "26079001000424",
+  "brand": "TRUE AMERICAN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20042",
+  "serialNumber": "26RSSB",
+  "approvalDate": "03/24/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RSSBfront.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 796,
+      "h": 736
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RSSBback.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 452,
+      "h": 752
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RSSBfront.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 796,
+    "h": 736
+  }
+}

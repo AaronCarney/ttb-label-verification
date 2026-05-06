@@ -1,0 +1,26 @@
+{
+  "ttbid": "26077001000041",
+  "brand": "BATTLE GROUNDS DISTILLING CO.",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20039",
+  "serialNumber": "26BGB2",
+  "approvalDate": "03/18/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20v1%20DBA.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1600,
+      "h": 2500
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20v1%20DBA.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1600,
+    "h": 2500
+  }
+}

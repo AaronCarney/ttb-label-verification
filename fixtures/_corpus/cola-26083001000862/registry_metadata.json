@@ -1,0 +1,26 @@
+{
+  "ttbid": "26083001000862",
+  "brand": "CRESCENT CITY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-15011",
+  "serialNumber": "26CCWB",
+  "approvalDate": "03/31/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Crescent%20City%20Label%20750ml%20Revised.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2400,
+      "h": 1500
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Crescent%20City%20Label%20750ml%20Revised.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2400,
+    "h": 1500
+  }
+}

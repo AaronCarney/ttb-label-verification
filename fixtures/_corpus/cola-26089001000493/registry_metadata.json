@@ -1,0 +1,26 @@
+{
+  "ttbid": "26089001000493",
+  "brand": "FT. CAMPBELL",
+  "fancyName": "HOCKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21110",
+  "serialNumber": "260003",
+  "approvalDate": "04/15/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Hocky.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1536,
+      "h": 1024
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Hocky.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1536,
+    "h": 1024
+  }
+}

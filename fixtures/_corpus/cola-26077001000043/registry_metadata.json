@@ -1,0 +1,26 @@
+{
+  "ttbid": "26077001000043",
+  "brand": "BATTLE GROUNDS DISTILLING CO.",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20039",
+  "serialNumber": "26BGC1",
+  "approvalDate": "03/18/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cask%20strength%20v1%20DBA.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1800,
+      "h": 2813
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cask%20strength%20v1%20DBA.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1800,
+    "h": 2813
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "26070001000265",
+  "brand": "SMALLEY HOUSE BOURBON WHISKY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20104",
+  "serialNumber": "260002",
+  "approvalDate": "03/17/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB_SMALLEY%20HOUSE%20BOURBON%20WHISKEY%20750ML%209%205x1%209in%20updated.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2856,
+      "h": 574
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20NECK%20BAND_EP_4%20374in%20x%201in.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1349,
+      "h": 344
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB_SMALLEY%20HOUSE%20BOURBON%20WHISKEY%20750ML%209%205x1%209in%20updated.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2856,
+    "h": 574
+  }
+}

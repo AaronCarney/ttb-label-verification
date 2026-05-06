@@ -1,0 +1,26 @@
+{
+  "ttbid": "26082001000294",
+  "brand": "42 PAN-GALACTIC WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20051",
+  "serialNumber": "260323",
+  "approvalDate": "03/26/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ray%20Bottle%20Label%20TTB%20RevisedFA.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1290,
+      "h": 1500
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ray%20Bottle%20Label%20TTB%20RevisedFA.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1290,
+    "h": 1500
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "26077001000320",
+  "brand": "ANTWERP DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20162",
+  "serialNumber": "26AD05",
+  "approvalDate": "03/18/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1272,
+      "h": 1489
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1122,
+      "h": 1092
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Whiskey%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1272,
+    "h": 1489
+  }
+}

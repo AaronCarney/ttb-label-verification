@@ -1,0 +1,44 @@
+{
+  "ttbid": "26082001000939",
+  "brand": "PRESERVATION",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20040",
+  "serialNumber": "260323",
+  "approvalDate": "03/24/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Pres%20Bourbon%20NEW%20-FACE.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 674,
+      "h": 1162
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=UPC-.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 871,
+      "h": 484
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Pres%20Bourbon%20NEW-Barrel%20Pick.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 2000,
+      "h": 438
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Pres%20Bourbon%20-FACE.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1521,
+      "h": 565
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Pres%20Bourbon%20NEW%20-FACE.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 674,
+    "h": 1162
+  }
+}

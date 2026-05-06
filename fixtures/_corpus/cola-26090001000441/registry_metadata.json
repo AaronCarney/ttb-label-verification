@@ -1,0 +1,38 @@
+{
+  "ttbid": "26090001000441",
+  "brand": "HARTMAN'S DISTILLING CO.",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21164",
+  "serialNumber": "260003",
+  "approvalDate": "04/03/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Revised%20Front%20.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 784,
+      "h": 1500
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=wheated%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 516,
+      "h": 1018
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HDC%20Bourbon%20Neck%20Wheated.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 182,
+      "h": 1354
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Revised%20Front%20.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 784,
+    "h": 1500
+  }
+}

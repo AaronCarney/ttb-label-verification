@@ -1,0 +1,32 @@
+{
+  "ttbid": "26070001001052",
+  "brand": "DESTIHL SPIRITS BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20114",
+  "serialNumber": "260005",
+  "approvalDate": "03/12/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Label-1.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 488,
+      "h": 750
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Label-2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 488,
+      "h": 750
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Label-1.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 488,
+    "h": 750
+  }
+}
