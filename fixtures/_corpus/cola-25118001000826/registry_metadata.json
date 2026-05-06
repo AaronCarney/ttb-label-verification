@@ -1,0 +1,32 @@
+{
+  "ttbid": "25118001000826",
+  "brand": "BIG SPRING SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20015",
+  "serialNumber": "250003",
+  "approvalDate": "04/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front.JPG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 615,
+      "h": 753
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back.JPG&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 622,
+      "h": 762
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front.JPG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 615,
+    "h": 753
+  }
+}

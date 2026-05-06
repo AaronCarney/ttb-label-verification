@@ -1,0 +1,26 @@
+{
+  "ttbid": "25126001000863",
+  "brand": "VICTORY BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20031",
+  "serialNumber": "25002L",
+  "approvalDate": "05/07/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=cf_victorybourbon_front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1730,
+      "h": 1324
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=cf_victorybourbon_front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1730,
+    "h": 1324
+  }
+}

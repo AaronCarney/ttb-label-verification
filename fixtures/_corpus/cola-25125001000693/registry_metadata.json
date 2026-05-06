@@ -1,0 +1,32 @@
+{
+  "ttbid": "25125001000693",
+  "brand": "BLACK WOLF",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20081",
+  "serialNumber": "25BW01",
+  "approvalDate": "05/08/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BWR%20FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1125,
+      "h": 2250
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BWR%20BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1125,
+      "h": 2250
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BWR%20FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1125,
+    "h": 2250
+  }
+}

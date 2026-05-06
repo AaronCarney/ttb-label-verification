@@ -1,0 +1,32 @@
+{
+  "ttbid": "25133001000575",
+  "brand": "FIRST RESPONDER¿S CASK COMPANY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20111",
+  "serialNumber": "25FRCC",
+  "approvalDate": "05/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=frcc.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1230,
+      "h": 710
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=frcc2.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 142,
+      "h": 1516
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=frcc.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1230,
+    "h": 710
+  }
+}

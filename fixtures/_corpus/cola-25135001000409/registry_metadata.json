@@ -1,0 +1,26 @@
+{
+  "ttbid": "25135001000409",
+  "brand": "REDHEAD CREAMERY",
+  "fancyName": "DAYTON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "27",
+  "permitNo": "DSP-MN-20083",
+  "serialNumber": "252505",
+  "approvalDate": "05/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Dayton%20Label%201.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2400,
+      "h": 1800
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Dayton%20Label%201.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2400,
+    "h": 1800
+  }
+}

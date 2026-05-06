@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25131001000040
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25131001000040
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WHISKEY%20and%20RUM.jpg&filetype=l
+fetched_at: 2026-05-06T01:53:50Z

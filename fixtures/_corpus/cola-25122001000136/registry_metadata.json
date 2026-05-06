@@ -1,0 +1,26 @@
+{
+  "ttbid": "25122001000136",
+  "brand": "HOLBROOK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20123",
+  "serialNumber": "250003",
+  "approvalDate": "05/06/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1_1746289646498.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 320,
+      "h": 480
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1_1746289646498.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 320,
+    "h": 480
+  }
+}

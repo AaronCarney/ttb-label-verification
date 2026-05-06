@@ -1,0 +1,38 @@
+{
+  "ttbid": "25121001000539",
+  "brand": "COPPER & CASK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "40",
+  "permitNo": "DSP-RI-20009",
+  "serialNumber": "250029",
+  "approvalDate": "05/01/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CC_B30_Exit9_MI-1412_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 417,
+      "h": 751
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CC_B30_Exit9_MI-1412_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 304,
+      "h": 645
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CC_NeckLabel_CF.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 820,
+      "h": 144
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CC_B30_Exit9_MI-1412_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 417,
+    "h": 751
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "25128001000825",
+  "brand": "FORGED IN FIRE",
+  "fancyName": "HIGH RYE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20155",
+  "serialNumber": "25FFHR",
+  "approvalDate": "05/20/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FF_High%20Rye_Full%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 488,
+      "h": 638
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FF_High%20Rye_Back%20clean.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 454,
+      "h": 681
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FF%20Side%20Stamp%201-5W%201-75H.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 444,
+      "h": 496
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FF_High%20Rye_Full%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 488,
+    "h": 638
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25135001000547",
+  "brand": "3 HOWLS DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-15088",
+  "serialNumber": "250002",
+  "approvalDate": "05/17/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Grocery%20Bourbon%20front.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 6601,
+      "h": 7801
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Grocery%20Bourbon%20BACK.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 6601,
+      "h": 7801
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Grocery%20Bourbon%20front.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 6601,
+    "h": 7801
+  }
+}

@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25129001000689
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25129001000689
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TAMR_Bourbon_Front_BlackBG.jpg&filetype=l
+fetched_at: 2026-05-06T01:53:46Z

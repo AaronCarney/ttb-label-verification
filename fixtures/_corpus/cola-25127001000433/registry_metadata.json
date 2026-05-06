@@ -1,0 +1,26 @@
+{
+  "ttbid": "25127001000433",
+  "brand": "HUDSON WHISKEY",
+  "fancyName": "FOUR PART HARMONY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-15001",
+  "serialNumber": "254P01",
+  "approvalDate": "05/08/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=100ml%20Four%20Part%20Harmony%20copy.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1200,
+      "h": 450
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=100ml%20Four%20Part%20Harmony%20copy.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1200,
+    "h": 450
+  }
+}

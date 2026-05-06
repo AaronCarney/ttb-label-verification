@@ -1,0 +1,32 @@
+{
+  "ttbid": "25128001000607",
+  "brand": "OLD HAMER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21028",
+  "serialNumber": "250508",
+  "approvalDate": "05/09/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=10caskfront.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 515,
+      "h": 864
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=10caskback.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 452,
+      "h": 511
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=10caskfront.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 515,
+    "h": 864
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25119001000468",
+  "brand": "MAD ANGLER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20053",
+  "serialNumber": "25SBMA",
+  "approvalDate": "04/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WC%20MA%20Bourbon%20SB%20Cola.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3376,
+      "h": 601
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WC%20MA%20Bourbon%20SB%20Cola.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3376,
+    "h": 601
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "25133001000544",
+  "brand": "BROWNE FAMILY SPIRITS",
+  "fancyName": "BARREL #085",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21105",
+  "serialNumber": "250003",
+  "approvalDate": "05/14/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_TWMSpokane_BourbonWhiskey_FL-2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 895
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_TWMSpokane_BourbonWhiskey_BL.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1000,
+      "h": 596
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_TWMSpokane_BourbonWhiskey_FL-1.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 2700,
+      "h": 1136
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_TWMSpokane_BourbonWhiskey_FL-2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 895
+  }
+}

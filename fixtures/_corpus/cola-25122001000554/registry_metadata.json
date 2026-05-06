@@ -1,0 +1,32 @@
+{
+  "ttbid": "25122001000554",
+  "brand": "BOSS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-35",
+  "serialNumber": "25BOS1",
+  "approvalDate": "05/07/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Premium%20Hand%20Crafted%20Bourbon_20250506_110310_0000.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1024,
+      "h": 1536
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Premium%20Artisan%20White%20Rum_20250506_110227_0000.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1200,
+      "h": 1800
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Premium%20Hand%20Crafted%20Bourbon_20250506_110310_0000.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1024,
+    "h": 1536
+  }
+}

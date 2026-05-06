@@ -1,0 +1,26 @@
+{
+  "ttbid": "25135001000430",
+  "brand": "KALIFORNIA DISTILLERIES",
+  "fancyName": "BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20498",
+  "serialNumber": "250006",
+  "approvalDate": "05/16/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 818,
+      "h": 742
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 818,
+    "h": 742
+  }
+}

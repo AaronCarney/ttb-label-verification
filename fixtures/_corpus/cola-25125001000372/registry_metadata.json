@@ -1,0 +1,32 @@
+{
+  "ttbid": "25125001000372",
+  "brand": "EAGLE CLAW",
+  "fancyName": "EAGLE CLAW BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "30",
+  "permitNo": "DSP-MT-20006",
+  "serialNumber": "250010",
+  "approvalDate": "05/07/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Talons%20Reach%20Front%20Label%20JRH.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2222,
+      "h": 2278
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BACK%20BOURBON%20BOTTLE%201%20JRH.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2222,
+      "h": 2278
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Talons%20Reach%20Front%20Label%20JRH.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2222,
+    "h": 2278
+  }
+}

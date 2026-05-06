@@ -1,0 +1,26 @@
+{
+  "ttbid": "25120001000913",
+  "brand": "OUTLAW DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "11",
+  "permitNo": "DSP-AZ-20018",
+  "serialNumber": "250501",
+  "approvalDate": "05/01/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PeraltaBourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1800,
+      "h": 1500
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PeraltaBourbon.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1800,
+    "h": 1500
+  }
+}

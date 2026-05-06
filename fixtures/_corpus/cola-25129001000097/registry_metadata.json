@@ -1,0 +1,32 @@
+{
+  "ttbid": "25129001000097",
+  "brand": "BARBOUZARD",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20111",
+  "serialNumber": "250012",
+  "approvalDate": "05/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=25-0012-Barbouzard-Bourbon-BRAND.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2221,
+      "h": 3851
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=25-0012-Barbouzard-Bourbon-BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2221,
+      "h": 2930
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=25-0012-Barbouzard-Bourbon-BRAND.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2221,
+    "h": 3851
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25119001000781",
+  "brand": "THE BARREL CLUB",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "25SB7B",
+  "approvalDate": "05/01/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SPECIAL%20RESERVE.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1234,
+      "h": 2015
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BACK%20LABEL%20.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1234,
+      "h": 4598
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SPECIAL%20RESERVE.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1234,
+    "h": 2015
+  }
+}

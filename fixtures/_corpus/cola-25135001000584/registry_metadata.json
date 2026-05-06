@@ -1,0 +1,26 @@
+{
+  "ttbid": "25135001000584",
+  "brand": "DEEP ROOTS DISTILLERY USA",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "26",
+  "permitNo": "DSP-MA-21059",
+  "serialNumber": "25BRBN",
+  "approvalDate": "05/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=whiskey%20red%20label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1749,
+      "h": 888
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=whiskey%20red%20label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1749,
+    "h": 888
+  }
+}

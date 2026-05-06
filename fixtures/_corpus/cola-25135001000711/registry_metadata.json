@@ -1,0 +1,32 @@
+{
+  "ttbid": "25135001000711",
+  "brand": "THE OLD GUARD BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20078",
+  "serialNumber": "250001",
+  "approvalDate": "05/16/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TheOldGuard-Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1006,
+      "h": 1336
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TheOldGuard-Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 973,
+      "h": 1014
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TheOldGuard-Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1006,
+    "h": 1336
+  }
+}

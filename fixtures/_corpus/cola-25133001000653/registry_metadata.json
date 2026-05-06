@@ -1,0 +1,32 @@
+{
+  "ttbid": "25133001000653",
+  "brand": "FAIRPORT POLICE BENEVOLENT ASSOCIATION",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21039",
+  "serialNumber": "25FPBA",
+  "approvalDate": "05/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Main-v03.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1798,
+      "h": 682
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tamper.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1472,
+      "h": 193
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Main-v03.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1798,
+    "h": 682
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25128001000115",
+  "brand": "GULF OF AMERICA DISTILLING CO. BOURBON WHISKY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "10",
+  "permitNo": "DSP-AL-20041",
+  "serialNumber": "250002",
+  "approvalDate": "05/12/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBONWHISKY.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3001,
+      "h": 1500
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBONWHISKY.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3001,
+    "h": 1500
+  }
+}

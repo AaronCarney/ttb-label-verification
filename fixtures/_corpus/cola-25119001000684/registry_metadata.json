@@ -1,0 +1,32 @@
+{
+  "ttbid": "25119001000684",
+  "brand": "GRAND TRAVERSE DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-15003",
+  "serialNumber": "251809",
+  "approvalDate": "04/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lake%20Michigan%20Bourbon.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1270,
+      "h": 664
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Whiskey%20750%20%20BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1125,
+      "h": 1050
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lake%20Michigan%20Bourbon.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1270,
+    "h": 664
+  }
+}
