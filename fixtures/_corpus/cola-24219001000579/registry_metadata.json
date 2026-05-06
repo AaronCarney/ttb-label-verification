@@ -1,0 +1,32 @@
+{
+  "ttbid": "24219001000579",
+  "brand": "WAREHOUSE DISTILLERY",
+  "fancyName": "SINGLE BARREL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21064",
+  "serialNumber": "240005",
+  "approvalDate": "08/15/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WD-007_V3-TTB1_MainLabel.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1372,
+      "h": 844
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WD-007_V3-TTB1_ClosureSealTape.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1234,
+      "h": 219
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WD-007_V3-TTB1_MainLabel.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1372,
+    "h": 844
+  }
+}

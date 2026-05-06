@@ -1,0 +1,38 @@
+{
+  "ttbid": "24220001000142",
+  "brand": "LEGENDS OF THE WILD WEST",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "NY-I-1179",
+  "serialNumber": "240354",
+  "approvalDate": "08/30/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LEGEND%20WILD.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 363,
+      "h": 621
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=12%20YEAR%20WILD.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 614,
+      "h": 310
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LEGENDS%20STRIP.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 565,
+      "h": 372
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LEGEND%20WILD.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 363,
+    "h": 621
+  }
+}

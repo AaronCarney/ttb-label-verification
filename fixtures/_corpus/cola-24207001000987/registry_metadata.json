@@ -1,0 +1,38 @@
+{
+  "ttbid": "24207001000987",
+  "brand": "CRAZY LOON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21197",
+  "serialNumber": "242341",
+  "approvalDate": "08/09/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Crazy%20Loon%20Bourbon%20Label%20FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1536,
+      "h": 1267
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Crazy%20Loon%20Bourbon%20Label%20BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 995,
+      "h": 1115
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Crazy%20Loon%20Bourbon%20Label-CAP.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1310,
+      "h": 432
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Crazy%20Loon%20Bourbon%20Label%20FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1536,
+    "h": 1267
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24228001000600",
+  "brand": "GYPSY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20077",
+  "serialNumber": "24020L",
+  "approvalDate": "08/26/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Gypsy%20Bourbon%20Label%20Proof%203%20Year%20Aged%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 943,
+      "h": 1324
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Gypsy%20Bourbon%20Label%20Proof%203%20Year%20Aged%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 902,
+      "h": 905
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Gypsy%20Bourbon%20Label%20Proof%203%20Year%20Aged%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 943,
+    "h": 1324
+  }
+}

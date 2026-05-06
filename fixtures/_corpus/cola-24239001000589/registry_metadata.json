@@ -1,0 +1,38 @@
+{
+  "ttbid": "24239001000589",
+  "brand": "STATESIDE BOURBON",
+  "fancyName": "BLACK LABEL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20025",
+  "serialNumber": "240826",
+  "approvalDate": "09/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Updated750mL_bourbonAug13-04.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1406,
+      "h": 788
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Updated750mL_bourbonAug13-06.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 169,
+      "h": 1275
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Back%20Label%2082624.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1056,
+      "h": 816
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Updated750mL_bourbonAug13-04.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1406,
+    "h": 788
+  }
+}

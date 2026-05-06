@@ -1,0 +1,26 @@
+{
+  "ttbid": "24242001000379",
+  "brand": "PAPI'S",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-15002",
+  "serialNumber": "240801",
+  "approvalDate": "09/10/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PAPIS-label-2024_Los-Angeles_4x9.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1944,
+      "h": 864
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PAPIS-label-2024_Los-Angeles_4x9.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1944,
+    "h": 864
+  }
+}

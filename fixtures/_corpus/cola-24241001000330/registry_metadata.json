@@ -1,0 +1,26 @@
+{
+  "ttbid": "24241001000330",
+  "brand": "MANATAWNY STILL WORKS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20010",
+  "serialNumber": "244YRB",
+  "approvalDate": "09/16/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=4yrbourbon%203.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1729,
+      "h": 594
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=4yrbourbon%203.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1729,
+    "h": 594
+  }
+}

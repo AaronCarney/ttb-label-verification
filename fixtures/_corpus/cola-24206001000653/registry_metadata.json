@@ -1,0 +1,32 @@
+{
+  "ttbid": "24206001000653",
+  "brand": "JOURNEYMAN DISTILLERY",
+  "fancyName": "PATA DE PERRO",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-15027",
+  "serialNumber": "240018",
+  "approvalDate": "07/31/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JD_PDP_750mL_Front.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1166,
+      "h": 2240
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JD_PDP_750mL_Back.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1076,
+      "h": 2232
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JD_PDP_750mL_Front.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1166,
+    "h": 2240
+  }
+}

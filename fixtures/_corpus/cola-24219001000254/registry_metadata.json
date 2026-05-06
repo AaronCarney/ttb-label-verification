@@ -1,0 +1,38 @@
+{
+  "ttbid": "24219001000254",
+  "brand": "3 HOWLS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-15088",
+  "serialNumber": "240001",
+  "approvalDate": "08/21/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Special-front-8-16-update.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2040,
+      "h": 1614
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_3128-2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1512,
+      "h": 2016
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Special-Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1804,
+      "h": 1632
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Special-front-8-16-update.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2040,
+    "h": 1614
+  }
+}

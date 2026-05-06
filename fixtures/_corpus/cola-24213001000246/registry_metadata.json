@@ -1,0 +1,32 @@
+{
+  "ttbid": "24213001000246",
+  "brand": "GENESIS",
+  "fancyName": "THE CHALLENGER",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "03",
+  "permitNo": "DSP-NJ-21025",
+  "serialNumber": "24GTCB",
+  "approvalDate": "08/16/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_4625.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2888,
+      "h": 6000
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_4626.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2888,
+      "h": 6000
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_4625.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2888,
+    "h": 6000
+  }
+}

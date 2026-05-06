@@ -1,0 +1,32 @@
+{
+  "ttbid": "24233001000296",
+  "brand": "OLD ALKER BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "23",
+  "permitNo": "DSP-LA-20054",
+  "serialNumber": "24BRB1",
+  "approvalDate": "08/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OldAlkerBourbonWhiskey_Label_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 975,
+      "h": 1163
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OldAlkerBourbonWhiskey_Label_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 975,
+      "h": 900
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OldAlkerBourbonWhiskey_Label_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 975,
+    "h": 1163
+  }
+}

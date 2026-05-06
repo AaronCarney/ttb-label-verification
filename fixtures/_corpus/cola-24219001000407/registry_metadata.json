@@ -1,0 +1,32 @@
+{
+  "ttbid": "24219001000407",
+  "brand": "EVERNORTH SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20227",
+  "serialNumber": "2401DB",
+  "approvalDate": "08/15/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DB.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1599,
+      "h": 1978
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DB_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 838,
+      "h": 1423
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DB.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1599,
+    "h": 1978
+  }
+}

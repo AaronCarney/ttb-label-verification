@@ -1,0 +1,26 @@
+{
+  "ttbid": "24239001000222",
+  "brand": "LTB BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20159",
+  "serialNumber": "240002",
+  "approvalDate": "10/08/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=corrected%20BOURBON.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1650,
+      "h": 1350
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=corrected%20BOURBON.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1650,
+    "h": 1350
+  }
+}

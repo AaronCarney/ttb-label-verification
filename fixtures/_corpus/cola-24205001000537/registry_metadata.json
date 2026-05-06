@@ -1,0 +1,32 @@
+{
+  "ttbid": "24205001000537",
+  "brand": "BOOT HILL DISTILLERY WABASH RESERVE 1863",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "21",
+  "permitNo": "DSP-KS-21003",
+  "serialNumber": "240723",
+  "approvalDate": "07/26/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1863%20copy.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 355,
+      "h": 408
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1863back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 649,
+      "h": 441
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1863%20copy.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 355,
+    "h": 408
+  }
+}

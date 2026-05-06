@@ -1,0 +1,38 @@
+{
+  "ttbid": "24220001000149",
+  "brand": "JAZZ CLUB",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "NY-I-1179",
+  "serialNumber": "240355",
+  "approvalDate": "08/20/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JAZZ%20CLUB.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 337,
+      "h": 598
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JAZZ%20CLUB%20B.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 352,
+      "h": 464
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JAZZ%20BACK.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 648,
+      "h": 246
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JAZZ%20CLUB.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 337,
+    "h": 598
+  }
+}

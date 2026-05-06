@@ -1,0 +1,32 @@
+{
+  "ttbid": "24233001000468",
+  "brand": "OLD CHICKAMAUGA",
+  "fancyName": "SINGLE BARREL BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21053",
+  "serialNumber": "242441",
+  "approvalDate": "09/30/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Oldchickamauga%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 802,
+      "h": 976
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Oldchickamauga%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 753,
+      "h": 752
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Oldchickamauga%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 802,
+    "h": 976
+  }
+}

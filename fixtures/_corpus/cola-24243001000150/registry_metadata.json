@@ -1,0 +1,32 @@
+{
+  "ttbid": "24243001000150",
+  "brand": "OBBINK DISTILLING",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "27",
+  "permitNo": "DSP-MN-20071",
+  "serialNumber": "240034",
+  "approvalDate": "09/10/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20v1.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 569,
+      "h": 971
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back%20-%20spirit.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 619,
+      "h": 864
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20v1.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 569,
+    "h": 971
+  }
+}

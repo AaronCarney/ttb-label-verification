@@ -1,0 +1,26 @@
+{
+  "ttbid": "24241001000631",
+  "brand": "FIERCE & KIND",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20146",
+  "serialNumber": "24FKFC",
+  "approvalDate": "09/25/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FK_CancerBourbon_Cola.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2250,
+      "h": 1425
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FK_CancerBourbon_Cola.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2250,
+    "h": 1425
+  }
+}

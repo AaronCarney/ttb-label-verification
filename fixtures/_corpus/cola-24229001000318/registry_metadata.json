@@ -1,0 +1,38 @@
+{
+  "ttbid": "24229001000318",
+  "brand": "BARRELL BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20046",
+  "serialNumber": "24TABA",
+  "approvalDate": "09/05/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Toasted%20single%20barrel%20front%20label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1504,
+      "h": 1322
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Toasted%20single%20barrel%20back%20label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1698,
+      "h": 1137
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=toasted%20barrel%20strip%20seal%20cola.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1599,
+      "h": 86
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Toasted%20single%20barrel%20front%20label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1504,
+    "h": 1322
+  }
+}

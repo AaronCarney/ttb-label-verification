@@ -1,0 +1,32 @@
+{
+  "ttbid": "24222001000338",
+  "brand": "MOON DROPS DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21082",
+  "serialNumber": "240809",
+  "approvalDate": "08/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MDD_Bourbon_Allied_Bourbon_Gettys_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 894,
+      "h": 1755
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_7439.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 868,
+      "h": 1033
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MDD_Bourbon_Allied_Bourbon_Gettys_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 894,
+    "h": 1755
+  }
+}

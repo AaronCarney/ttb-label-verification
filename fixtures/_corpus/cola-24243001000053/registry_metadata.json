@@ -1,0 +1,26 @@
+{
+  "ttbid": "24243001000053",
+  "brand": "KROOKED TUSKER DISTILLERY",
+  "fancyName": "VAGUELY SPECIFIC",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21093",
+  "serialNumber": "241003",
+  "approvalDate": "09/19/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_1356.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 975,
+      "h": 563
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_1356.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 975,
+    "h": 563
+  }
+}

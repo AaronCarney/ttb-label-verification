@@ -1,0 +1,32 @@
+{
+  "ttbid": "24219001000232",
+  "brand": "3 HOWLS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-15088",
+  "serialNumber": "240001",
+  "approvalDate": "08/20/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BackbeatWhiskey-Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2486,
+      "h": 1614
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Backbeatwhiskey-Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1262,
+      "h": 1619
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BackbeatWhiskey-Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2486,
+    "h": 1614
+  }
+}

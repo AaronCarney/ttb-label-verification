@@ -1,0 +1,26 @@
+{
+  "ttbid": "24238001000063",
+  "brand": "SPEED SHIFT DISTILLERY",
+  "fancyName": "BARN FIND BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21169",
+  "serialNumber": "24BOUR",
+  "approvalDate": "09/09/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SSD%20BARN%20FIND%20BOURBON%20Label%20v2%2009082024.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2760,
+      "h": 1015
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SSD%20BARN%20FIND%20BOURBON%20Label%20v2%2009082024.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2760,
+    "h": 1015
+  }
+}

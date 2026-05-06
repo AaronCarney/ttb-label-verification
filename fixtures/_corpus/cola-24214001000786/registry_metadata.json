@@ -1,0 +1,26 @@
+{
+  "ttbid": "24214001000786",
+  "brand": "RANSOM",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-15",
+  "serialNumber": "24RNB2",
+  "approvalDate": "08/14/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ransom%20New%20Bourbon%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2900,
+      "h": 1440
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ransom%20New%20Bourbon%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2900,
+    "h": 1440
+  }
+}

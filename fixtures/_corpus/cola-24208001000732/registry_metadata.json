@@ -1,0 +1,32 @@
+{
+  "ttbid": "24208001000732",
+  "brand": "GRIT IRON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20186",
+  "serialNumber": "240038",
+  "approvalDate": "07/31/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GRITIRON_BOURBON_FRONT_COLA.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1198,
+      "h": 1570
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GRITIRON_BOURBON_BACK_COLA.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1200,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GRITIRON_BOURBON_FRONT_COLA.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1198,
+    "h": 1570
+  }
+}

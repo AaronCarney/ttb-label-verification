@@ -1,0 +1,32 @@
+{
+  "ttbid": "24200001000746",
+  "brand": "GEORGE BURDELL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20128",
+  "serialNumber": "240003",
+  "approvalDate": "07/25/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Front_BOURBON-2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 539,
+      "h": 1056
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Back_BOURBON.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 540,
+      "h": 604
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20Front_BOURBON-2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 539,
+    "h": 1056
+  }
+}

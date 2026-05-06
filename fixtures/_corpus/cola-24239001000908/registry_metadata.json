@@ -1,0 +1,32 @@
+{
+  "ttbid": "24239001000908",
+  "brand": "DOC HOLLIDAY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20073",
+  "serialNumber": "24015L",
+  "approvalDate": "09/05/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=brandd.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2022,
+      "h": 1568
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1106,
+      "h": 1182
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=brandd.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2022,
+    "h": 1568
+  }
+}

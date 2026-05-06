@@ -1,0 +1,32 @@
+{
+  "ttbid": "24239001000334",
+  "brand": "HONEST HILLBILLY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20126",
+  "serialNumber": "242408",
+  "approvalDate": "09/13/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HonestHillbilly-Amanda-Frontv2.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1711,
+      "h": 1711
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HonestHillbilly-Amanda-Backv2.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1711,
+      "h": 1711
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HonestHillbilly-Amanda-Frontv2.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1711,
+    "h": 1711
+  }
+}

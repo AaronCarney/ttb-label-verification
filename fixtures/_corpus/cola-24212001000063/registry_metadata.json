@@ -1,0 +1,32 @@
+{
+  "ttbid": "24212001000063",
+  "brand": "KILL BOTTLE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20035",
+  "serialNumber": "241000",
+  "approvalDate": "08/02/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KILL%20BOTTLE%20FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1154,
+      "h": 1692
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KILL%20BOTTLE%20BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1177,
+      "h": 1277
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KILL%20BOTTLE%20FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1154,
+    "h": 1692
+  }
+}

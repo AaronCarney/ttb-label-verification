@@ -1,0 +1,38 @@
+{
+  "ttbid": "24208001000090",
+  "brand": "FIDDLER ENCORE",
+  "fancyName": "GEORGIA OAK",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20014",
+  "serialNumber": "240727",
+  "approvalDate": "08/01/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=encore%20georgia%20oak%20front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 755,
+      "h": 997
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=encore%20back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 860,
+      "h": 1424
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=encore%20strip.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1359,
+      "h": 250
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=encore%20georgia%20oak%20front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 755,
+    "h": 997
+  }
+}

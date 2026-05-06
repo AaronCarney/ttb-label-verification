@@ -1,0 +1,26 @@
+{
+  "ttbid": "24237001000142",
+  "brand": "OAK BOWERY BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "10",
+  "permitNo": "DSP-AL-20003",
+  "serialNumber": "240824",
+  "approvalDate": "09/19/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OBB%20front%20label3.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2556,
+      "h": 1668
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OBB%20front%20label3.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2556,
+    "h": 1668
+  }
+}

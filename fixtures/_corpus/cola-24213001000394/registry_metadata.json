@@ -1,0 +1,32 @@
+{
+  "ttbid": "24213001000394",
+  "brand": "IOWA DISTILLING COMPANY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "20",
+  "permitNo": "DSP-IA-21001",
+  "serialNumber": "242400",
+  "approvalDate": "08/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20front%20C.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 459,
+      "h": 610
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20back%20B.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 455,
+      "h": 604
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20front%20C.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 459,
+    "h": 610
+  }
+}
