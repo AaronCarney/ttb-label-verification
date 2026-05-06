@@ -297,6 +297,65 @@ async def batches_upload_page(
     )
 
 
+_ACTIVE_CORPUS_PATH = (
+    Path(__file__).resolve().parent.parent.parent / "fixtures" / "_corpus" / "_active.txt"
+)
+
+
+def _load_active_ttbids() -> list[str]:
+    if not _ACTIVE_CORPUS_PATH.is_file():
+        return []
+    return [line.strip() for line in _ACTIVE_CORPUS_PATH.read_text().splitlines() if line.strip()]
+
+
+@router.get("/batches/sample.zip")
+async def batches_sample_zip(n: int = 10) -> Response:
+    """Stream a zip of N random labels from the active corpus.
+
+    Lets a grader try the bulk pipeline against real CC0 TTB Public COLA
+    Registry labels without needing their own files: download → drop into
+    the upload form on /batches → real worker runs through the same code
+    path a production caller would hit.
+    """
+    if n <= 0:
+        return Response(
+            content=b"n must be a positive integer",
+            status_code=400,
+            media_type="text/plain",
+        )
+
+    active = _load_active_ttbids()
+    if not active:
+        return Response(
+            content=b"active corpus list is empty (fixtures/_corpus/_active.txt missing)",
+            status_code=500,
+            media_type="text/plain",
+        )
+
+    import io
+    import random
+    import zipfile
+
+    take = min(n, len(active))
+    chosen = random.sample(active, take)
+
+    corpus_root = _ACTIVE_CORPUS_PATH.parent
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+        for ttbid_dirname in chosen:
+            label_path = corpus_root / ttbid_dirname / "label.jpg"
+            if not label_path.is_file():
+                continue
+            arcname = f"{ttbid_dirname}.jpg"
+            zf.write(label_path, arcname=arcname)
+    buf.seek(0)
+    return Response(
+        content=buf.getvalue(),
+        media_type="application/zip",
+        headers={"content-disposition": 'attachment; filename="sample.zip"'},
+    )
+
+
 @router.post("/batches/upload")
 async def batches_upload_submit(
     request: Request,
