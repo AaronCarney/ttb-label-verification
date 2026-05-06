@@ -1,0 +1,32 @@
+{
+  "ttbid": "24115001000239",
+  "brand": "RAILSPLITTER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20104",
+  "serialNumber": "240003",
+  "approvalDate": "05/03/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=EP%20RAILSPLITTER%20BOURBON_TTB_6IN%20X%204IN%20rev%20May%201%202024.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TAMPER%20STRIP_EP_TTB.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1500,
+      "h": 234
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=EP%20RAILSPLITTER%20BOURBON_TTB_6IN%20X%204IN%20rev%20May%201%202024.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1800,
+    "h": 1200
+  }
+}

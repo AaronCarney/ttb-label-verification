@@ -1,0 +1,32 @@
+{
+  "ttbid": "24124001000208",
+  "brand": "PLASM BOURBON CO.",
+  "fancyName": "SINGLE BARREL AGED 7 YEARS",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20248",
+  "serialNumber": "240002",
+  "approvalDate": "05/13/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Plasm%20Estate%20Labels%202024_7%20Year%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 600,
+      "h": 600
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Plasm%20Estate%20Labels%202024_7%20Year%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 600,
+      "h": 600
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Plasm%20Estate%20Labels%202024_7%20Year%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 600,
+    "h": 600
+  }
+}

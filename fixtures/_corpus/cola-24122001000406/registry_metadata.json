@@ -1,0 +1,26 @@
+{
+  "ttbid": "24122001000406",
+  "brand": "BEARDED TRIBE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21002",
+  "serialNumber": "24BT01",
+  "approvalDate": "05/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bearded%20Tribe%20Whiskey_Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2789,
+      "h": 5034
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bearded%20Tribe%20Whiskey_Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2789,
+    "h": 5034
+  }
+}

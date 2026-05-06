@@ -1,0 +1,32 @@
+{
+  "ttbid": "24134001000696",
+  "brand": "ZANJA-MADRE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20200",
+  "serialNumber": "240004",
+  "approvalDate": "07/05/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Zanja-Madre%20Bourbon%20Whiskey%20375.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 675,
+      "h": 1158
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HD%20Bourbon%20Back%20label%20TTB%2051324.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 380,
+      "h": 698
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Zanja-Madre%20Bourbon%20Whiskey%20375.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 675,
+    "h": 1158
+  }
+}

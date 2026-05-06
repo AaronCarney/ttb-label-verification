@@ -1,0 +1,38 @@
+{
+  "ttbid": "24121001000884",
+  "brand": "DISTILLER'S MARK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "27",
+  "permitNo": "DSP-MN-22",
+  "serialNumber": "240043",
+  "approvalDate": "05/03/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Brand.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 973,
+      "h": 1544
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 680,
+      "h": 942
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Strip%20Stamp.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1958,
+      "h": 203
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Brand.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 973,
+    "h": 1544
+  }
+}

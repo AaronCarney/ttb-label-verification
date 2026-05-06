@@ -1,0 +1,32 @@
+{
+  "ttbid": "24114001000692",
+  "brand": "SECURITY BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20069",
+  "serialNumber": "240005",
+  "approvalDate": "04/30/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Security_Front_V2c-01.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 750,
+      "h": 1050
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Security_Back_V1c-01.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 750,
+      "h": 1050
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Security_Front_V2c-01.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 750,
+    "h": 1050
+  }
+}

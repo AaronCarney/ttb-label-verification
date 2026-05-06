@@ -1,0 +1,38 @@
+{
+  "ttbid": "24129001000892",
+  "brand": "FIELD TO FLASKS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20055",
+  "serialNumber": "24FFBW",
+  "approvalDate": "05/29/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB_FIELD%20TO%20FLASKS_FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1050,
+      "h": 1804
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB_FIELD%20TO%20FLASKS_NECK.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 2000,
+      "h": 313
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB_FIELD%20TO%20FLASKS_BACK_v2.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 910,
+      "h": 830
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB_FIELD%20TO%20FLASKS_FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1050,
+    "h": 1804
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24120001000823",
+  "brand": "ART OF THE SPIRITS AMERICAN WHISKEY",
+  "fancyName": "HONORED TO SERVE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20148",
+  "serialNumber": "240044",
+  "approvalDate": "05/02/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=APPROVAL%2011yr%20WB%20Heroes%20Front%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 900,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=APPROVAL%20Honored%20to%20Serve%20WB%20Bacl%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 900,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=APPROVAL%2011yr%20WB%20Heroes%20Front%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 900,
+    "h": 1200
+  }
+}

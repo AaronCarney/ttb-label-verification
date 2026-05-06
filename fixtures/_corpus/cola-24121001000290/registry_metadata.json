@@ -1,0 +1,32 @@
+{
+  "ttbid": "24121001000290",
+  "brand": "WAR DOG",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "24BGWD",
+  "approvalDate": "05/03/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=war%20dog%20front%20label%20.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1000,
+      "h": 1376
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=war%20dog%20back%20label%20.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1000,
+      "h": 1408
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=war%20dog%20front%20label%20.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1000,
+    "h": 1376
+  }
+}

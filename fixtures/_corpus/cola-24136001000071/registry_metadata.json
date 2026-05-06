@@ -1,0 +1,38 @@
+{
+  "ttbid": "24136001000071",
+  "brand": "OVER THE BRIDGE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20017",
+  "serialNumber": "240005",
+  "approvalDate": "06/04/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MDC-KentTowneBourbon-%20FrontTTB.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1100,
+      "h": 1575
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MDC-KentTowneBourbon-_Back-5-15-24%20TTB.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 869,
+      "h": 1187
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tamper%20strip_Cowboy-01.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1891,
+      "h": 632
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MDC-KentTowneBourbon-%20FrontTTB.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1100,
+    "h": 1575
+  }
+}

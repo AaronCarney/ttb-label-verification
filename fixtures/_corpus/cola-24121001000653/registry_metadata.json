@@ -1,0 +1,32 @@
+{
+  "ttbid": "24121001000653",
+  "brand": "ALONE IN THE DARK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "23",
+  "permitNo": "DSP-LA-20014",
+  "serialNumber": "240430",
+  "approvalDate": "05/08/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=COLA-UpdatedAloneInTheDark4%20x%2010%20FrontLabel.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1503,
+      "h": 601
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=300COLA_AloneInTheDark.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 313,
+      "h": 1772
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=COLA-UpdatedAloneInTheDark4%20x%2010%20FrontLabel.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1503,
+    "h": 601
+  }
+}

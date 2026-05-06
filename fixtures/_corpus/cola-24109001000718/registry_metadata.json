@@ -1,0 +1,32 @@
+{
+  "ttbid": "24109001000718",
+  "brand": "ECHO SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20067",
+  "serialNumber": "24BYBI",
+  "approvalDate": "04/24/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BYO%20Bourbon%20Indiana.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1202,
+      "h": 632
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Top%20Sticker%201x58.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 300,
+      "h": 1739
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BYO%20Bourbon%20Indiana.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1202,
+    "h": 632
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "24113001000392",
+  "brand": "BOURBON WHISKEY OKLAHOMA DUCKS UNLIMITED",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "37",
+  "permitNo": "DSP-OK-21019",
+  "serialNumber": "24DUBN",
+  "approvalDate": "05/02/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=woodworks_DU_bourbon_front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1126,
+      "h": 1105
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DU%20Bourbon%20Cap.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 896,
+      "h": 1405
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=woodworks_DU_bourbon_back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 561,
+      "h": 831
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=woodworks_DU_bourbon_front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1126,
+    "h": 1105
+  }
+}

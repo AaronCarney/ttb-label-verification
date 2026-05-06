@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24136001000071
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24136001000071
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MDC-KentTowneBourbon-%20FrontTTB.jpg&filetype=l
+fetched_at: 2026-05-06T01:11:55Z

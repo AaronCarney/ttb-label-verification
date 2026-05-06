@@ -1,0 +1,32 @@
+{
+  "ttbid": "24108001000070",
+  "brand": "ART OF THE SPIRITS AMERICAN WHISKEY",
+  "fancyName": "AIRMEN",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20148",
+  "serialNumber": "240040",
+  "approvalDate": "04/25/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=APPROVAL%20Airmen%20BouRye%20front%20label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 900,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=APPROVAL%20Airmen%20BouRye%20Back%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 900,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=APPROVAL%20Airmen%20BouRye%20front%20label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 900,
+    "h": 1200
+  }
+}

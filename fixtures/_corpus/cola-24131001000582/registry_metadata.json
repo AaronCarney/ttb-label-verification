@@ -1,0 +1,38 @@
+{
+  "ttbid": "24131001000582",
+  "brand": "CAPTAIN'S TABLE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-15089",
+  "serialNumber": "240007",
+  "approvalDate": "06/11/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=STSCTBatch5Front6in%20tall1inwide.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 297,
+      "h": 1792
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Star%20Trek%20Delta.jpeg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 300,
+      "h": 476
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=STSCTBatch5Back6intall587inwide.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 176,
+      "h": 1792
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=STSCTBatch5Front6in%20tall1inwide.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 297,
+    "h": 1792
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24120001000303",
+  "brand": "MOLON LABE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "33",
+  "permitNo": "DSP-NH-15000",
+  "serialNumber": "244291",
+  "approvalDate": "05/03/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 831,
+      "h": 602
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonB.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 616,
+      "h": 609
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 831,
+    "h": 602
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "24124001000169",
+  "brand": "MASTRY'S CRAFT SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20031",
+  "serialNumber": "24MAST",
+  "approvalDate": "05/19/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonWhiskey.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 640,
+      "h": 457
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonWhiskey.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 640,
+    "h": 457
+  }
+}

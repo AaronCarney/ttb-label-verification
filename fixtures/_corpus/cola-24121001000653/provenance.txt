@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24121001000653
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24121001000653
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=COLA-UpdatedAloneInTheDark4%20x%2010%20FrontLabel.jpg&filetype=l
+fetched_at: 2026-05-06T01:10:20Z

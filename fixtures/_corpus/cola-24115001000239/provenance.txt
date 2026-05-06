@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24115001000239
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24115001000239
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=EP%20RAILSPLITTER%20BOURBON_TTB_6IN%20X%204IN%20rev%20May%201%202024.jpg&filetype=l
+fetched_at: 2026-05-06T01:09:40Z

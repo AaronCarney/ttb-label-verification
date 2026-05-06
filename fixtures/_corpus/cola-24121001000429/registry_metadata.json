@@ -1,0 +1,38 @@
+{
+  "ttbid": "24121001000429",
+  "brand": "VINTAGE SPIRITS",
+  "fancyName": "VS RESERVE BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "45",
+  "permitNo": "DSP-UT-20026",
+  "serialNumber": "240002",
+  "approvalDate": "05/03/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB%20Front%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 278
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB%20Neck%20Label.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 733,
+      "h": 256
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Back%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 890,
+      "h": 809
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SB%20Front%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 278
+  }
+}

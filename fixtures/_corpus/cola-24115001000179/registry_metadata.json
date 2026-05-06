@@ -1,0 +1,38 @@
+{
+  "ttbid": "24115001000179",
+  "brand": "MR. & MRS. BOURBON COMPANY",
+  "fancyName": "BIG BLUE BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20105",
+  "serialNumber": "240004",
+  "approvalDate": "05/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MMBC%20Big%20Blue%20Bourbon%20Face.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 834,
+      "h": 462
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MMBC%20Big%20Blue%20Bourbon%20Neck.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 862,
+      "h": 199
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MMBC%20Big%20Blue%20Bourbon%20SS.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1095,
+      "h": 271
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MMBC%20Big%20Blue%20Bourbon%20Face.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 834,
+    "h": 462
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "24128001000046",
+  "brand": "ESPY HOUSE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20037",
+  "serialNumber": "240080",
+  "approvalDate": "05/13/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=EHB_Wheated_R2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2110,
+      "h": 1490
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=EHB_Wheated_R2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2110,
+    "h": 1490
+  }
+}

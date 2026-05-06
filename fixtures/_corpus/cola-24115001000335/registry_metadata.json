@@ -1,0 +1,32 @@
+{
+  "ttbid": "24115001000335",
+  "brand": "KETTNER SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20301",
+  "serialNumber": "240124",
+  "approvalDate": "05/07/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Kettner_Label_V1_CLR-2024-BLK-Bronze_Mettalic_Foil-Text.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 1900
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Kettner_Label_V1_CLR-2024-BLK-Bronze_Mettalic_Back-NoFoil.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 700,
+      "h": 1800
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Kettner_Label_V1_CLR-2024-BLK-Bronze_Mettalic_Foil-Text.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 1900
+  }
+}
