@@ -1,0 +1,32 @@
+{
+  "ttbid": "24262001000672",
+  "brand": "LOCKE + CO DISTILLING",
+  "fancyName": "SUMMIT 14 BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20105",
+  "serialNumber": "24HGTD",
+  "approvalDate": "09/26/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=homegrown-front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1217,
+      "h": 1826
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Homegrown_back_final_toprint.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1241,
+      "h": 1772
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=homegrown-front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1217,
+    "h": 1826
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24268001000275",
+  "brand": "PARKWAY DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20120",
+  "serialNumber": "240002",
+  "approvalDate": "09/24/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Parkway_Road__MAIN%20LABEL%20bourbon_4_4.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3150,
+      "h": 1320
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon-Neck.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1875,
+      "h": 480
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Parkway_Road__MAIN%20LABEL%20bourbon_4_4.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3150,
+    "h": 1320
+  }
+}

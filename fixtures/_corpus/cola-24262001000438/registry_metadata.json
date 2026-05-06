@@ -1,0 +1,44 @@
+{
+  "ttbid": "24262001000438",
+  "brand": "BEARDED TRIBE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20111",
+  "serialNumber": "24TBT1",
+  "approvalDate": "09/24/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front%20bottom.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2300,
+      "h": 780
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=fronttop.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 666,
+      "h": 444
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=tax%20strip.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 2308,
+      "h": 338
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back1.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1452,
+      "h": 1600
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front%20bottom.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2300,
+    "h": 780
+  }
+}

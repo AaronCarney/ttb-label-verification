@@ -1,0 +1,32 @@
+{
+  "ttbid": "24259001000130",
+  "brand": "JIMMY RED",
+  "fancyName": "AGED 7 YEARS WHEATED",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "41",
+  "permitNo": "DSP-SC-21005",
+  "serialNumber": "240001",
+  "approvalDate": "09/19/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JR7yo_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 955,
+      "h": 383
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JR7yo_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 931,
+      "h": 723
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JR7yo_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 955,
+    "h": 383
+  }
+}

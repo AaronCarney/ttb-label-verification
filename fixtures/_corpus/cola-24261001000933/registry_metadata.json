@@ -1,0 +1,26 @@
+{
+  "ttbid": "24261001000933",
+  "brand": "OLD FAITHFUL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "30",
+  "permitNo": "DSP-MT-20006",
+  "serialNumber": "247717",
+  "approvalDate": "09/20/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old%20Faithful%20Bourbon%20Bottle%20BISON%20JH.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2733,
+      "h": 1584
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old%20Faithful%20Bourbon%20Bottle%20BISON%20JH.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2733,
+    "h": 1584
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24247001000177",
+  "brand": "FREELAND SPIRITS",
+  "fancyName": "CASK STRENGTH",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-20057",
+  "serialNumber": "240012",
+  "approvalDate": "09/25/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FreelandLabel_CaskStBourbonWhiskey_200ml_front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 4948,
+      "h": 1657
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FreelandLabel_CaskStBourbonWhiskey_200ml_back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 5246,
+      "h": 1663
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FreelandLabel_CaskStBourbonWhiskey_200ml_front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 4948,
+    "h": 1657
+  }
+}

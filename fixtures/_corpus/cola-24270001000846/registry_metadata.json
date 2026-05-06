@@ -1,0 +1,44 @@
+{
+  "ttbid": "24270001000846",
+  "brand": "REDWOOD EMPIRE",
+  "fancyName": "PIPE DREAM BOURBON WHISKEY CASK STRENGTH",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20056",
+  "serialNumber": "240025",
+  "approvalDate": "10/02/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RWE%20Cask%20Pipe%20Dream%20brand%20top%20label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1266,
+      "h": 1510
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RWE%20Cask%20Pipe%20Dream%20brand%20bottom%20label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2207,
+      "h": 717
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RWE%20Cask%20Pipe%20Dream%20back%20label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 656,
+      "h": 891
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RWE%20Cask%20Pipe%20Dream%20neck%20label.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 977,
+      "h": 144
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RWE%20Cask%20Pipe%20Dream%20brand%20top%20label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1266,
+    "h": 1510
+  }
+}

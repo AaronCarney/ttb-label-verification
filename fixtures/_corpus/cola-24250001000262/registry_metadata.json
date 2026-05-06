@@ -1,0 +1,26 @@
+{
+  "ttbid": "24250001000262",
+  "brand": "GOOD NEWS BREWING CO",
+  "fancyName": "BE STILL BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20124",
+  "serialNumber": "243000",
+  "approvalDate": "09/12/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon5yr.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1887,
+      "h": 1236
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon5yr.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1887,
+    "h": 1236
+  }
+}

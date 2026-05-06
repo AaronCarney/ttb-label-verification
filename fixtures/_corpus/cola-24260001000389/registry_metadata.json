@@ -1,0 +1,26 @@
+{
+  "ttbid": "24260001000389",
+  "brand": "GOOD HANDS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20013",
+  "serialNumber": "240916",
+  "approvalDate": "09/20/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Good%20Hands%20Beacon%20Only%20label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 601,
+      "h": 600
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Good%20Hands%20Beacon%20Only%20label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 601,
+    "h": 600
+  }
+}

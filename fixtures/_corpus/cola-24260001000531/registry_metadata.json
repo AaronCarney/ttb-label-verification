@@ -1,0 +1,32 @@
+{
+  "ttbid": "24260001000531",
+  "brand": "GULF STREAM",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20047",
+  "serialNumber": "240001",
+  "approvalDate": "09/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FRONT%20adjusted.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 665,
+      "h": 813
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BACK%20adjusted.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 572,
+      "h": 572
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FRONT%20adjusted.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 665,
+    "h": 813
+  }
+}

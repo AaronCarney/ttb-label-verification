@@ -1,0 +1,32 @@
+{
+  "ttbid": "24264001000334",
+  "brand": "REDEMPTION",
+  "fancyName": "BARREL PROOF",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-18",
+  "serialNumber": "240016",
+  "approvalDate": "09/25/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=9yr%20Brand%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1659,
+      "h": 252
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=9yr%20Back%20.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 945,
+      "h": 472
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=9yr%20Brand%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1659,
+    "h": 252
+  }
+}

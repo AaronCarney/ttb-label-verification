@@ -1,0 +1,44 @@
+{
+  "ttbid": "24262001000281",
+  "brand": "FLARE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20007",
+  "serialNumber": "240901",
+  "approvalDate": "10/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2048,
+      "h": 1604
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=New_LOGBOOK.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 4512,
+      "h": 2486
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BACK.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 525,
+      "h": 1128
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CORK.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 355,
+      "h": 1666
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2048,
+    "h": 1604
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24260001000101",
+  "brand": "DETROIT DOG RESCUE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20010",
+  "serialNumber": "246879",
+  "approvalDate": "09/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DDR%20front%20v1.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2503,
+      "h": 873
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DDR%20back%20v1.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2080,
+      "h": 4040
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DDR%20front%20v1.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2503,
+    "h": 873
+  }
+}

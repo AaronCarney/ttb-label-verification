@@ -1,0 +1,38 @@
+{
+  "ttbid": "24271001000147",
+  "brand": "FEAR AND LOATHING",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-15015",
+  "serialNumber": "240011",
+  "approvalDate": "11/01/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HST%20Wheated%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 525,
+      "h": 495
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HST%20Wheated%20Neck.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1170,
+      "h": 263
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Revised%20HST%20Wheated%20back%20label.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1052,
+      "h": 990
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HST%20Wheated%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 525,
+    "h": 495
+  }
+}

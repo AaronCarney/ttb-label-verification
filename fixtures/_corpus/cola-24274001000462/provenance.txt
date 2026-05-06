@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24274001000462
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24274001000462
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CORRECTED%20RED%20F%20.png&filetype=l
+fetched_at: 2026-05-06T01:26:08Z

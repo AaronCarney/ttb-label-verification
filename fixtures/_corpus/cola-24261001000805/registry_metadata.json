@@ -1,0 +1,26 @@
+{
+  "ttbid": "24261001000805",
+  "brand": "OUTLAW DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "11",
+  "permitNo": "DSP-AZ-20018",
+  "serialNumber": "241001",
+  "approvalDate": "09/26/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonWhiskeyD2.PNG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1150,
+      "h": 635
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonWhiskeyD2.PNG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1150,
+    "h": 635
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "24277001000205",
+  "brand": "BROWNE FAMILY SPIRITS",
+  "fancyName": "RESERVE BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21105",
+  "serialNumber": "240007",
+  "approvalDate": "10/07/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_ReserveBourbon_FL-2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 895
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_ReserveBourbon_FL-1.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 3000,
+      "h": 1051
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_ReserveBourbon_BL.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 850,
+      "h": 507
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_ReserveBourbon_FL-2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 895
+  }
+}

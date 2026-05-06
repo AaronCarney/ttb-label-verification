@@ -1,0 +1,32 @@
+{
+  "ttbid": "24260001000175",
+  "brand": "JOURNEYMAN DISTILLERY",
+  "fancyName": "HIGH RYE BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-15027",
+  "serialNumber": "240019",
+  "approvalDate": "09/30/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HIGH%20RYE%20FRONT.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1144,
+      "h": 1236
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HIGH%20RYE%20BACK.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1122,
+      "h": 1234
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HIGH%20RYE%20FRONT.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1144,
+    "h": 1236
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "24270001000050",
+  "brand": "KINSEY",
+  "fancyName": "MALCOLM JENKINS EDITION",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20018",
+  "serialNumber": "24MJKB",
+  "approvalDate": "10/07/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=0071-K-24-Bourbon-Jenkins-Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1170,
+      "h": 1069
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=0071-K-24-Bourbon-Jenkins-Bottom.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1687,
+      "h": 424
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=0071-K-24-Bourbon-Jenkins-Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 855,
+      "h": 1280
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=0071-K-24-Bourbon-Jenkins-Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1170,
+    "h": 1069
+  }
+}

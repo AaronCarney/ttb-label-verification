@@ -1,0 +1,26 @@
+{
+  "ttbid": "24274001000681",
+  "brand": "KILLDEER DISTILLING",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-20062",
+  "serialNumber": "240001",
+  "approvalDate": "10/09/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=custombarrelbourbon%20copy.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1200,
+      "h": 700
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=custombarrelbourbon%20copy.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1200,
+    "h": 700
+  }
+}

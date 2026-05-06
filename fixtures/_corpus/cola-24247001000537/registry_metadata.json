@@ -1,0 +1,32 @@
+{
+  "ttbid": "24247001000537",
+  "brand": "THE BARREL CLUB",
+  "fancyName": "WHEATED BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "24BCWB",
+  "approvalDate": "09/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=revised%20wheated%20bourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 343,
+      "h": 578
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=barrel%20club%20side%200.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1500,
+      "h": 3940
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=revised%20wheated%20bourbon.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 343,
+    "h": 578
+  }
+}

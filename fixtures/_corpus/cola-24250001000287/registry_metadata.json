@@ -1,0 +1,26 @@
+{
+  "ttbid": "24250001000287",
+  "brand": "GOOD NEWS BREWING CO",
+  "fancyName": "BE STILL GNB BARREL STRENGTH BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20124",
+  "serialNumber": "246000",
+  "approvalDate": "09/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BarrelStrengthBOURBON.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2176,
+      "h": 1426
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BarrelStrengthBOURBON.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2176,
+    "h": 1426
+  }
+}

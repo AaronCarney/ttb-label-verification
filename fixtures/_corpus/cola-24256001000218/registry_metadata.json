@@ -1,0 +1,32 @@
+{
+  "ttbid": "24256001000218",
+  "brand": "SQUIRE ON THE SQUARE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-15026",
+  "serialNumber": "240107",
+  "approvalDate": "09/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SOTS%20B%20Sub%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1642,
+      "h": 2192
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SOTS%20B%20Sub%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1638,
+      "h": 2186
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SOTS%20B%20Sub%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1642,
+    "h": 2192
+  }
+}

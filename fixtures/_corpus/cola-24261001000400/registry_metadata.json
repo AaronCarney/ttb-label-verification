@@ -1,0 +1,26 @@
+{
+  "ttbid": "24261001000400",
+  "brand": "LAKESIDE DISTILLERY",
+  "fancyName": "RED MULL BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "30",
+  "permitNo": "DSP-MT-20033",
+  "serialNumber": "240001",
+  "approvalDate": "09/19/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Redmull_50ml.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2340,
+      "h": 1080
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Redmull_50ml.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2340,
+    "h": 1080
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "24264001000233",
+  "brand": "BLACK DIAMOND",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20159",
+  "serialNumber": "240003",
+  "approvalDate": "09/24/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black%20Diamond%20Bourbon%20Whiskey%20-%20TTB%20Corrections%202.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3928,
+      "h": 2068
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black%20Diamond%20Bourbon%20Whiskey%20-%20TTB%20Corrections%202.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3928,
+    "h": 2068
+  }
+}

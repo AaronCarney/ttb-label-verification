@@ -1,0 +1,32 @@
+{
+  "ttbid": "24266001000065",
+  "brand": "CHRISTMAS CITY SPIRITS",
+  "fancyName": "N/A",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20094",
+  "serialNumber": "240002",
+  "approvalDate": "10/07/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ccsbourbon.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1234,
+      "h": 618
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CCS%20Bottle%20Neck%20Label%20Red.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1125,
+      "h": 300
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ccsbourbon.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1234,
+    "h": 618
+  }
+}

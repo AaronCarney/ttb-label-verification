@@ -1,0 +1,32 @@
+{
+  "ttbid": "24274001000462",
+  "brand": "BROADSTREET INFAMOUS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20075",
+  "serialNumber": "24IF7B",
+  "approvalDate": "10/28/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CORRECTED%20RED%20F%20.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 442,
+      "h": 764
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=red%20back%202.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 578,
+      "h": 916
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CORRECTED%20RED%20F%20.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 442,
+    "h": 764
+  }
+}

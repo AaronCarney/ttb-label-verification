@@ -1,0 +1,32 @@
+{
+  "ttbid": "24256001000179",
+  "brand": "DIABLO CANTINA AMERICANA",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-15026",
+  "serialNumber": "240100",
+  "approvalDate": "09/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Diablo%20B%20Sub%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1652,
+      "h": 2197
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Diablo%20B%20Sub%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1627,
+      "h": 2202
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Diablo%20B%20Sub%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1652,
+    "h": 2197
+  }
+}

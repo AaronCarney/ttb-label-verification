@@ -1,0 +1,38 @@
+{
+  "ttbid": "24249001000032",
+  "brand": "THE DAY DRINKER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-15010",
+  "serialNumber": "240004",
+  "approvalDate": "09/11/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DD%20bourbon%20front%20wrap%20lbl.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3178,
+      "h": 2953
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DD%20bourbon%20back%20wrap%20lbl.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 6356,
+      "h": 5906
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tamper%20strip%20SILVER%20certified%20TX.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 6423,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DD%20bourbon%20front%20wrap%20lbl.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3178,
+    "h": 2953
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "24250001000102",
+  "brand": "HORSE SOLDIER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20037",
+  "serialNumber": "240129",
+  "approvalDate": "09/12/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=10YO%20BS%20F%20v2.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 590,
+      "h": 863
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=10YO%20BS%20N%20v2.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1736,
+      "h": 432
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=10YO%20BS%20B%20v2.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 570,
+      "h": 832
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=10YO%20BS%20F%20v2.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 590,
+    "h": 863
+  }
+}

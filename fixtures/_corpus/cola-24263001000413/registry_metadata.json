@@ -1,0 +1,32 @@
+{
+  "ttbid": "24263001000413",
+  "brand": "SIDESHOW SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "31",
+  "permitNo": "DSP-NE-21019",
+  "serialNumber": "240919",
+  "approvalDate": "09/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Barrel%20Pick%20-Front.JPG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 477,
+      "h": 855
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Barrel%20Pick%20-%20Back.JPG&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 482,
+      "h": 824
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Barrel%20Pick%20-Front.JPG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 477,
+    "h": 855
+  }
+}

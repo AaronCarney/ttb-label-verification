@@ -1,0 +1,32 @@
+{
+  "ttbid": "24262001000640",
+  "brand": "BLANTONS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "NY-I-21336",
+  "serialNumber": "240078",
+  "approvalDate": "09/20/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BLANTON%2040%20BRAND.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 582,
+      "h": 772
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DISTILLED%20SPIRITS%20STRIP%20RE%20IMPORTED.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 741,
+      "h": 278
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BLANTON%2040%20BRAND.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 582,
+    "h": 772
+  }
+}

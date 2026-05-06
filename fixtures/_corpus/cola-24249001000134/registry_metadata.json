@@ -1,0 +1,32 @@
+{
+  "ttbid": "24249001000134",
+  "brand": "SHAWN ELLIOT",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21093",
+  "serialNumber": "24SEBW",
+  "approvalDate": "09/11/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Shawn%20Elliott%20Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Shawn%20Elliott%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1080,
+      "h": 1080
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Shawn%20Elliott%20Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1080,
+    "h": 1080
+  }
+}

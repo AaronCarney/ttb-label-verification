@@ -1,0 +1,44 @@
+{
+  "ttbid": "24249001000044",
+  "brand": "GHOST HILL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-15010",
+  "serialNumber": "240006",
+  "approvalDate": "09/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GH%20SB%20bourbon%20front%20wrap%20lbl.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3178,
+      "h": 2953
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Single%20Barrel%20label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 600
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GH%20SB%20bourbon%20back%20wrap%20lbl.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 6356,
+      "h": 5906
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tamper%20strip%20GOLD.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1817,
+      "h": 6601
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GH%20SB%20bourbon%20front%20wrap%20lbl.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3178,
+    "h": 2953
+  }
+}

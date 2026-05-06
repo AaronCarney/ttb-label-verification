@@ -1,0 +1,32 @@
+{
+  "ttbid": "24269001000829",
+  "brand": "ALVIN LANGSTON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "41",
+  "permitNo": "DSP-SC-21029",
+  "serialNumber": "24AL02",
+  "approvalDate": "10/08/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ALVIN%20LANGSTON%20BOURBON%20WHISKEY%20FRONT%20LABEL%20copy.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 637,
+      "h": 887
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Small%20Batch_7years_LowRes_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1569,
+      "h": 2204
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ALVIN%20LANGSTON%20BOURBON%20WHISKEY%20FRONT%20LABEL%20copy.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 637,
+    "h": 887
+  }
+}

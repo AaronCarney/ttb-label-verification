@@ -1,0 +1,26 @@
+{
+  "ttbid": "24271001000416",
+  "brand": "ROUNDHOUSE RESERVE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "21",
+  "permitNo": "DSP-KS-21003",
+  "serialNumber": "240927",
+  "approvalDate": "10/02/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Roundhouse%20Reserve%20copy.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 847,
+      "h": 522
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Roundhouse%20Reserve%20copy.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 847,
+    "h": 522
+  }
+}

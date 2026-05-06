@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24264001000334
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24264001000334
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=9yr%20Brand%20front.jpg&filetype=l
+fetched_at: 2026-05-06T01:25:14Z

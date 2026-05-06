@@ -1,0 +1,32 @@
+{
+  "ttbid": "24262001000667",
+  "brand": "LOCKE + CO DISTILLING",
+  "fancyName": "BIG BLAZE BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20105",
+  "serialNumber": "24BBB1",
+  "approvalDate": "09/27/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bigblaze-front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1217,
+      "h": 1827
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BigBlaze_back_final__toprint.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1241,
+      "h": 1772
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bigblaze-front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1217,
+    "h": 1827
+  }
+}
