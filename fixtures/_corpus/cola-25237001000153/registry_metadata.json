@@ -1,0 +1,26 @@
+{
+  "ttbid": "25237001000153",
+  "brand": "X GOLF BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20102",
+  "serialNumber": "25X004",
+  "approvalDate": "08/27/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=xgolf%20label%201.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1024,
+      "h": 716
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=xgolf%20label%201.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1024,
+    "h": 716
+  }
+}

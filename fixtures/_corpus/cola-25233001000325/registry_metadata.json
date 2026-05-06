@@ -1,0 +1,32 @@
+{
+  "ttbid": "25233001000325",
+  "brand": "THE PETE STORE",
+  "fancyName": "LONG & TALL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20093",
+  "serialNumber": "250033",
+  "approvalDate": "08/27/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LongAndTall_FrontLabel_8_26_2025.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 938,
+      "h": 1950
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LongAndTall_BackLabel_8_26_2025.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 938,
+      "h": 1950
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LongAndTall_FrontLabel_8_26_2025.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 938,
+    "h": 1950
+  }
+}

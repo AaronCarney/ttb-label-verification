@@ -1,0 +1,32 @@
+{
+  "ttbid": "25255001000283",
+  "brand": "PATRIARCH XO",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-15042",
+  "serialNumber": "250912",
+  "approvalDate": "09/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Patriarch%20XO%20Front%20updated.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2805,
+      "h": 1888
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PATRIARCH%20XO%20WHEATED%20WHISKEY%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 883,
+      "h": 1109
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Patriarch%20XO%20Front%20updated.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2805,
+    "h": 1888
+  }
+}

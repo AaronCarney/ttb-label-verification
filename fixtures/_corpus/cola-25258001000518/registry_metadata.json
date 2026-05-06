@@ -1,0 +1,38 @@
+{
+  "ttbid": "25258001000518",
+  "brand": "BLACKTHORN",
+  "fancyName": "BLACKTHORN BOURBON SINGLE BARREL SELECT",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20170",
+  "serialNumber": "250019",
+  "approvalDate": "09/17/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TJS_Blackthorn_SB_Front_COLA.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 782,
+      "h": 824
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TJS_Blackthorn_SB_Neck_COLA.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 663,
+      "h": 814
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TJS_Blackthorn_SB_Back_COLA.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 606,
+      "h": 788
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TJS_Blackthorn_SB_Front_COLA.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 782,
+    "h": 824
+  }
+}

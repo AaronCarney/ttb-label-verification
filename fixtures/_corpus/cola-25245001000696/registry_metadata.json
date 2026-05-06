@@ -1,0 +1,26 @@
+{
+  "ttbid": "25245001000696",
+  "brand": "LONE OAK CRAFT DISTILLERY LLC",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20126",
+  "serialNumber": "250001",
+  "approvalDate": "09/09/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=label4.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 996,
+      "h": 687
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=label4.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 996,
+    "h": 687
+  }
+}

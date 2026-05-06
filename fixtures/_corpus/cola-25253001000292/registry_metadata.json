@@ -1,0 +1,26 @@
+{
+  "ttbid": "25253001000292",
+  "brand": "PEDAL BEAR",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20115",
+  "serialNumber": "250004",
+  "approvalDate": "09/15/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Pedal%20Bear%20Label%201.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3300,
+      "h": 2550
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Pedal%20Bear%20Label%201.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3300,
+    "h": 2550
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "25258001000540",
+  "brand": "SIDE HUSTLE BREWS & SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20303",
+  "serialNumber": "250010",
+  "approvalDate": "09/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SH_19YR%20Bourbon_1.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2150,
+      "h": 1512
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SH_Whiskey%20Inside%20Label%201.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 2146,
+      "h": 1508
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SH_Whiskey%20Inside%20Label_2.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 2151,
+      "h": 1512
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SH_19YR%20Bourbon_1.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2150,
+    "h": 1512
+  }
+}

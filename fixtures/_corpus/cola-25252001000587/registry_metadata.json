@@ -1,0 +1,32 @@
+{
+  "ttbid": "25252001000587",
+  "brand": "AMERICA'S POINT DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20074",
+  "serialNumber": "250002",
+  "approvalDate": "09/19/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Aged%20Bourbon%20Brand.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1167,
+      "h": 1838
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Aged%20Bourbon%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1166,
+      "h": 1838
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Aged%20Bourbon%20Brand.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1167,
+    "h": 1838
+  }
+}

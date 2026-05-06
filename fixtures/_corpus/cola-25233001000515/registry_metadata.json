@@ -1,0 +1,32 @@
+{
+  "ttbid": "25233001000515",
+  "brand": "BLUE BOLT",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20049",
+  "serialNumber": "250008",
+  "approvalDate": "09/10/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20BW%20front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1115,
+      "h": 1230
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20BW%20back%202.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1124,
+      "h": 1227
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20BW%20front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1115,
+    "h": 1230
+  }
+}

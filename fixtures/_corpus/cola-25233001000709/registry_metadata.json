@@ -1,0 +1,26 @@
+{
+  "ttbid": "25233001000709",
+  "brand": "NOCTURNAL BLOOM BREWING",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20266",
+  "serialNumber": "250012",
+  "approvalDate": "08/25/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2025_06-NBLiquorLabel-Bourbon2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2381,
+      "h": 2380
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2025_06-NBLiquorLabel-Bourbon2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2381,
+    "h": 2380
+  }
+}

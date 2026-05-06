@@ -1,0 +1,32 @@
+{
+  "ttbid": "25233001000528",
+  "brand": "477 DISTILLING",
+  "fancyName": "BEAR'S BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20096",
+  "serialNumber": "250060",
+  "approvalDate": "09/10/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=477-Distillinguncfront.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2026,
+      "h": 2026
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=477-Distillinguncback.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 676,
+      "h": 1426
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=477-Distillinguncfront.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2026,
+    "h": 2026
+  }
+}

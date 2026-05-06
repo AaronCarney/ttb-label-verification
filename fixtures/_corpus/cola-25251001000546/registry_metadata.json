@@ -1,0 +1,32 @@
+{
+  "ttbid": "25251001000546",
+  "brand": "HOUSE BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "03",
+  "permitNo": "DSP-NJ-21077",
+  "serialNumber": "250020",
+  "approvalDate": "09/11/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=4.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1017,
+      "h": 559
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=house.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1240,
+      "h": 282
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=4.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1017,
+    "h": 559
+  }
+}

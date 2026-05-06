@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25255001000283
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25255001000283
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Patriarch%20XO%20Front%20updated.jpeg&filetype=l
+fetched_at: 2026-05-06T02:12:45Z

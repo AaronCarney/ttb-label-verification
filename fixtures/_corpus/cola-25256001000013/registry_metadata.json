@@ -1,0 +1,26 @@
+{
+  "ttbid": "25256001000013",
+  "brand": "HIGH DRIVE DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "46",
+  "permitNo": "DSP-VT-21047",
+  "serialNumber": "250001",
+  "approvalDate": "09/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=High-Drive-BOURBON-Label-draft5png.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 850,
+      "h": 483
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=High-Drive-BOURBON-Label-draft5png.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 850,
+    "h": 483
+  }
+}

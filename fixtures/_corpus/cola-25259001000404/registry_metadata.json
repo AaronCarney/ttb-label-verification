@@ -1,0 +1,26 @@
+{
+  "ttbid": "25259001000404",
+  "brand": "WILD LEAP",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20032",
+  "serialNumber": "25WL11",
+  "approvalDate": "09/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1056,
+      "h": 816
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1056,
+    "h": 816
+  }
+}

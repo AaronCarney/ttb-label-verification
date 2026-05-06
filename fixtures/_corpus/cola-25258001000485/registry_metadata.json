@@ -1,0 +1,26 @@
+{
+  "ttbid": "25258001000485",
+  "brand": "TRAIL BENT",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-20062",
+  "serialNumber": "250001",
+  "approvalDate": "09/17/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TBbourbonlabel1f%20copy.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1260,
+      "h": 398
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TBbourbonlabel1f%20copy.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1260,
+    "h": 398
+  }
+}

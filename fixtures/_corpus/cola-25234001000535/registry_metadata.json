@@ -1,0 +1,26 @@
+{
+  "ttbid": "25234001000535",
+  "brand": "PATHFINDER FARM",
+  "fancyName": "BLOODY BUTCHER BOURBON MINI",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20050",
+  "serialNumber": "25BBNM",
+  "approvalDate": "08/26/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BloodyButcherBourbonMini.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 761,
+      "h": 726
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BloodyButcherBourbonMini.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 761,
+    "h": 726
+  }
+}

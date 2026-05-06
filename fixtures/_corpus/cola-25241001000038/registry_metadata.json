@@ -1,0 +1,32 @@
+{
+  "ttbid": "25241001000038",
+  "brand": "IRON SMOKE DISTILLERY",
+  "fancyName": "GEORGETOWN WINE & SPIRITS",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21039",
+  "serialNumber": "25GTWS",
+  "approvalDate": "09/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Brand-v02.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2000,
+      "h": 759
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tamper.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1600,
+      "h": 212
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Brand-v02.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2000,
+    "h": 759
+  }
+}

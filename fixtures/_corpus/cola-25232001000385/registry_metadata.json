@@ -1,0 +1,32 @@
+{
+  "ttbid": "25232001000385",
+  "brand": "OLD 48",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "20",
+  "permitNo": "DSP-IA-21028",
+  "serialNumber": "250025",
+  "approvalDate": "08/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old48-Front-NoApostrophe%20condensed.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1425,
+      "h": 1425
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old48-Back-COND.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1425,
+      "h": 1425
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old48-Front-NoApostrophe%20condensed.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1425,
+    "h": 1425
+  }
+}

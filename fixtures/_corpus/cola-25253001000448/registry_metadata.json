@@ -1,0 +1,26 @@
+{
+  "ttbid": "25253001000448",
+  "brand": "SQUIRES",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20301",
+  "serialNumber": "250148",
+  "approvalDate": "09/16/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Squires%20Label-%20Blue%20and%20Gold%20COLA.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2813,
+      "h": 1875
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Squires%20Label-%20Blue%20and%20Gold%20COLA.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2813,
+    "h": 1875
+  }
+}

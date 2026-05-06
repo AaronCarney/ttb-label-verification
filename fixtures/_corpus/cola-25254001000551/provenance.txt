@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25254001000551
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25254001000551
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Stitzel%20Reserve%20Limited%20Edition%20Special%20Release%20Front%20.png&filetype=l
+fetched_at: 2026-05-06T02:12:41Z

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25234001000466",
+  "brand": "OAK BOWERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21052",
+  "serialNumber": "25OB01",
+  "approvalDate": "09/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=25-7%20Brewzle%20Oak%20Bowery%20Bourbon%20Label_Batch2_sizeproofs_rev90225.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1324,
+      "h": 1534
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=25-7%20Brewzle%20Oak%20Bowery%20Bourbon%20Label_Batch2_sizeproofs_rev902252.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 553,
+      "h": 1171
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=25-7%20Brewzle%20Oak%20Bowery%20Bourbon%20Label_Batch2_sizeproofs_rev90225.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1324,
+    "h": 1534
+  }
+}

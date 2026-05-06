@@ -1,0 +1,32 @@
+{
+  "ttbid": "25252001000340",
+  "brand": "TWISTED TAP DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20084",
+  "serialNumber": "250007",
+  "approvalDate": "09/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TwistedTap_Bourbon6Years_6x4.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 919,
+      "h": 619
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TwistedTap_CapLabel.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1050,
+      "h": 300
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TwistedTap_Bourbon6Years_6x4.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 919,
+    "h": 619
+  }
+}

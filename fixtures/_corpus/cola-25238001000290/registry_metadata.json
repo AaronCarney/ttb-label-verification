@@ -1,0 +1,38 @@
+{
+  "ttbid": "25238001000290",
+  "brand": "LOCKE + CO DISTILLING",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20105",
+  "serialNumber": "25LCDU",
+  "approvalDate": "09/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DU_front_fixed.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 747,
+      "h": 976
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DU-whiskey-neck.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 787,
+      "h": 328
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=du-back-corrected.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 694,
+      "h": 976
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DU_front_fixed.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 747,
+    "h": 976
+  }
+}

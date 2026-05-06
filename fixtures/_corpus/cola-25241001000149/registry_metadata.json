@@ -1,0 +1,38 @@
+{
+  "ttbid": "25241001000149",
+  "brand": "FIREHOUSE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21176",
+  "serialNumber": "250815",
+  "approvalDate": "09/04/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Firehouse%20Blue%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1184,
+      "h": 819
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Firehouse%20Blue%20lower%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 968,
+      "h": 707
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Firehouse%20blue%20brand.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1078,
+      "h": 731
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Firehouse%20Blue%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1184,
+    "h": 819
+  }
+}

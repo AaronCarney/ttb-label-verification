@@ -1,0 +1,32 @@
+{
+  "ttbid": "25241001000046",
+  "brand": "MODERN ALCHEMIST CO",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21174",
+  "serialNumber": "250006",
+  "approvalDate": "09/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WhiskeyMeera750ml-02.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 642,
+      "h": 751
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WhiskeyMeera750ml-01.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 826,
+      "h": 863
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WhiskeyMeera750ml-02.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 642,
+    "h": 751
+  }
+}

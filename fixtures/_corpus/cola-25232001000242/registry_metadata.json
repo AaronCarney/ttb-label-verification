@@ -1,0 +1,38 @@
+{
+  "ttbid": "25232001000242",
+  "brand": "KEEPER'S HERITAGE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20085",
+  "serialNumber": "25SS02",
+  "approvalDate": "09/03/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CORRECTED_%20KH%20_%20BOURBON_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1206,
+      "h": 1744
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Keeper%20Heritage%20Bourbon%20Strip.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1800,
+      "h": 4843
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Corrected%20_%20KH%20_%20BOURBON_BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1149,
+      "h": 1595
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CORRECTED_%20KH%20_%20BOURBON_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1206,
+    "h": 1744
+  }
+}

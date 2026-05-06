@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25239001000237
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25239001000237
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=B32_SB-14_Front_COLA.jpg&filetype=l
+fetched_at: 2026-05-06T02:10:54Z

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25245001000619",
+  "brand": "BROWNE",
+  "fancyName": "OAXACAN CORN",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21105",
+  "serialNumber": "250008",
+  "approvalDate": "09/04/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_OaxacanCorn_BourbonWhiskey_FL.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2539,
+      "h": 1564
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Browne_OaxacanCorn_BourbonWhiskey_FL.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2539,
+    "h": 1564
+  }
+}

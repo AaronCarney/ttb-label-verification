@@ -1,0 +1,32 @@
+{
+  "ttbid": "25254001000551",
+  "brand": "STITZEL RESERVE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-15007",
+  "serialNumber": "25SR31",
+  "approvalDate": "09/16/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Stitzel%20Reserve%20Limited%20Edition%20Special%20Release%20Front%20.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 927,
+      "h": 772
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Stitzel%20Reserve%20Back%20Label%20.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 480,
+      "h": 801
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Stitzel%20Reserve%20Limited%20Edition%20Special%20Release%20Front%20.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 927,
+    "h": 772
+  }
+}

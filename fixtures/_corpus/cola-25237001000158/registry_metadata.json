@@ -1,0 +1,26 @@
+{
+  "ttbid": "25237001000158",
+  "brand": "FAIRWAY RESERVE BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20102",
+  "serialNumber": "25X005",
+  "approvalDate": "08/27/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=xgolf%20label%202.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 675,
+      "h": 432
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=xgolf%20label%202.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 675,
+    "h": 432
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "ttbid": "25237001000356",
+  "brand": "FLARE",
+  "fancyName": "STAGGERWING",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-GA-20007",
+  "serialNumber": "250825",
+  "approvalDate": "09/02/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2048,
+      "h": 1604
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Staggerwing_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1000,
+      "h": 398
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BACK.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 525,
+      "h": 1128
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CORK.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 355,
+      "h": 1666
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2048,
+    "h": 1604
+  }
+}

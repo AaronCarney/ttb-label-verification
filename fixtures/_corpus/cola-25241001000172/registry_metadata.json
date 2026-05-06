@@ -1,0 +1,38 @@
+{
+  "ttbid": "25241001000172",
+  "brand": "WEBFOOT",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20129",
+  "serialNumber": "251123",
+  "approvalDate": "09/11/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WEBFOOT_bourbon_front_100x110mm-lines.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1135,
+      "h": 1248
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WEBFOOT_bourbon_neck_wrap_110x25mm.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1248,
+      "h": 284
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WEBFOOT_bourbon_back_60x74mm-lines.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 682,
+      "h": 840
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WEBFOOT_bourbon_front_100x110mm-lines.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1135,
+    "h": 1248
+  }
+}

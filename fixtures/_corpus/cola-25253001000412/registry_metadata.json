@@ -1,0 +1,32 @@
+{
+  "ttbid": "25253001000412",
+  "brand": "COEUR D'ALENE CASINO RESORT HOTEL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "18",
+  "permitNo": "DSP-ID-21028",
+  "serialNumber": "25CAS1",
+  "approvalDate": "09/12/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CDACRH%20Front%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 5625,
+      "h": 6750
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CDACRH%20Back%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1125,
+      "h": 1350
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CDACRH%20Front%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 5625,
+    "h": 6750
+  }
+}
