@@ -1,0 +1,32 @@
+{
+  "ttbid": "24357001000012",
+  "brand": "WILDFLOWER HOLLER DISTILLERY",
+  "fancyName": "TONGANOXIE THUNDER BOURBON WHISKEY 750 ML 50% ABV 100 PROOF",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "21",
+  "permitNo": "DSP-KS-21034",
+  "serialNumber": "240002",
+  "approvalDate": "12/26/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wildflower%20Holler%20Distillery_Tonganoxie%20Thunder_bourbon%20whiskey_front%20label_12-22.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 958,
+      "h": 789
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wildflower%20Holler%20Distillery_Tonganoxie%20Thunder_bourbon%20whiskey_back%20label_12-22.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 958,
+      "h": 629
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wildflower%20Holler%20Distillery_Tonganoxie%20Thunder_bourbon%20whiskey_front%20label_12-22.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 958,
+    "h": 789
+  }
+}

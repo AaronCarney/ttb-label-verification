@@ -1,0 +1,32 @@
+{
+  "ttbid": "24354001000043",
+  "brand": "INTERURBAN BOURBON",
+  "fancyName": "SWITCH",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20290",
+  "serialNumber": "240036",
+  "approvalDate": "12/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Interurban%20Bourbon%20-%20Howe%20The%20Switch%20Up%20200mL%20low%20res.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1820,
+      "h": 910
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LidSticker%20Regular.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1000,
+      "h": 4000
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Interurban%20Bourbon%20-%20Howe%20The%20Switch%20Up%20200mL%20low%20res.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1820,
+    "h": 910
+  }
+}

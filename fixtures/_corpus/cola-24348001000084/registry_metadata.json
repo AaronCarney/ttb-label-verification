@@ -1,0 +1,32 @@
+{
+  "ttbid": "24348001000084",
+  "brand": "BLUE MESA",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20013",
+  "serialNumber": "241214",
+  "approvalDate": "12/16/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blue%20Mesa%20Bottle%20Label%20Front%20REVIEW.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 563,
+      "h": 1063
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blue%20Mesa%20Bottle%20Label%20Back%20REVIEW.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 450,
+      "h": 850
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blue%20Mesa%20Bottle%20Label%20Front%20REVIEW.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 563,
+    "h": 1063
+  }
+}

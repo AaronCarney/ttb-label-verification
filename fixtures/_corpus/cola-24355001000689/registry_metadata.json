@@ -1,0 +1,32 @@
+{
+  "ttbid": "24355001000689",
+  "brand": "STARLIGHT DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-31",
+  "serialNumber": "240049",
+  "approvalDate": "01/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DO_Bourbon_American_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 384,
+      "h": 598
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DO_Bourbon_American_Back_Edit.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 510,
+      "h": 554
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DO_Bourbon_American_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 384,
+    "h": 598
+  }
+}

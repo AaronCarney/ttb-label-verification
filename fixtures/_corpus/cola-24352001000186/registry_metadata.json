@@ -1,0 +1,26 @@
+{
+  "ttbid": "24352001000186",
+  "brand": "DISMAL HARMONY DISTILLING",
+  "fancyName": "MIXOLOGY SERIES",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "03",
+  "permitNo": "DSP-NJ-21065",
+  "serialNumber": "240008",
+  "approvalDate": "12/20/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%201L%20Label_editable6-01.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1730,
+      "h": 1576
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%201L%20Label_editable6-01.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1730,
+    "h": 1576
+  }
+}

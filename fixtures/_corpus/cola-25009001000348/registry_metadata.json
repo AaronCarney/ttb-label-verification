@@ -1,0 +1,44 @@
+{
+  "ttbid": "25009001000348",
+  "brand": "SOCIETY",
+  "fancyName": "B9.1",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-15097",
+  "serialNumber": "250005",
+  "approvalDate": "01/10/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=A%20Big%20Bold%20Burst%20B91.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1526,
+      "h": 1109
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BACK%20Kentucky%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1021,
+      "h": 931
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Neck%20label.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 579,
+      "h": 155
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SMWS%20Monogram.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 376,
+      "h": 358
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=A%20Big%20Bold%20Burst%20B91.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1526,
+    "h": 1109
+  }
+}

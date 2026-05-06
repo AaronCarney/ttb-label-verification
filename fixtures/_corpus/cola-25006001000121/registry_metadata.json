@@ -1,0 +1,32 @@
+{
+  "ttbid": "25006001000121",
+  "brand": "BOSS SPIRITS",
+  "fancyName": "SINGLE BARREL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20243",
+  "serialNumber": "250001",
+  "approvalDate": "01/15/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BSL%20Bourbon%20Single%20Barrel.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1202,
+      "h": 1050
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bourbon%20back%208-20.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 480,
+      "h": 640
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BSL%20Bourbon%20Single%20Barrel.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1202,
+    "h": 1050
+  }
+}

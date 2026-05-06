@@ -1,0 +1,32 @@
+{
+  "ttbid": "23052001000032",
+  "brand": "NOW WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20134",
+  "serialNumber": "230005",
+  "approvalDate": "02/27/2023",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=now%20bourbon%20front%20png.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1170,
+      "h": 938
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=NOW%20bourbon%202_22.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1170,
+      "h": 938
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=now%20bourbon%20front%20png.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1170,
+    "h": 938
+  }
+}

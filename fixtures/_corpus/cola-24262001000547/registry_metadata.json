@@ -1,0 +1,32 @@
+{
+  "ttbid": "24262001000547",
+  "brand": "MOSSY HORN",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20161",
+  "serialNumber": "240005",
+  "approvalDate": "09/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MH%20UU%20Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 934,
+      "h": 998
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonWhiskey_Label_KBack.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1200,
+      "h": 1275
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MH%20UU%20Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 934,
+    "h": 998
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24353001001052",
+  "brand": "IRISH",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21113",
+  "serialNumber": "240013",
+  "approvalDate": "12/19/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IRISH-BourbonWhiskey-Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1171,
+      "h": 1628
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IRISH-BourbonWhiskey-Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1100,
+      "h": 1628
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IRISH-BourbonWhiskey-Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1171,
+    "h": 1628
+  }
+}

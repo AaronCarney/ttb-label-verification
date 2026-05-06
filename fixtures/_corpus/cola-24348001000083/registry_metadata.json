@@ -1,0 +1,32 @@
+{
+  "ttbid": "24348001000083",
+  "brand": "PMG CONSTRUCTION",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20013",
+  "serialNumber": "241213",
+  "approvalDate": "12/16/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PMG%20Label%20FRONT%20Review.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 450,
+      "h": 850
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PMG%20Label%20BACK%20for%20Review.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 563,
+      "h": 1063
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PMG%20Label%20FRONT%20Review.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 450,
+    "h": 850
+  }
+}

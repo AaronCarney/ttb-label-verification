@@ -1,0 +1,32 @@
+{
+  "ttbid": "25009001000041",
+  "brand": "FORBIDDEN HARVEST",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "41",
+  "permitNo": "DSP-SC-21006",
+  "serialNumber": "250001",
+  "approvalDate": "01/10/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FH%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 863,
+      "h": 1417
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FH%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 863,
+      "h": 1417
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FH%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 863,
+    "h": 1417
+  }
+}

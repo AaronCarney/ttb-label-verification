@@ -1,0 +1,32 @@
+{
+  "ttbid": "24346001000703",
+  "brand": "CULINARY COCKTAILS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "34",
+  "permitNo": "DSP-NM-21053",
+  "serialNumber": "24PDWH",
+  "approvalDate": "12/19/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front%20bourbon-02%20corrected.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 361,
+      "h": 640
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back%20bourbon-02%20corrected.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 396,
+      "h": 640
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front%20bourbon-02%20corrected.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 361,
+    "h": 640
+  }
+}

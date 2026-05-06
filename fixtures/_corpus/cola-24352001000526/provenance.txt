@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24352001000526
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24352001000526
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=EML%20750%20KY%20Straight%20Bourbon%20Label%20Front.PNG&filetype=l
+fetched_at: 2026-05-06T01:34:18Z

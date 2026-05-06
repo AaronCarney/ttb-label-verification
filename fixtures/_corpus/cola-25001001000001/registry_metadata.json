@@ -1,0 +1,32 @@
+{
+  "ttbid": "25001001000001",
+  "brand": "GLENNS CREEK",
+  "fancyName": "FLIPPIN' THE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20018",
+  "serialNumber": "250001",
+  "approvalDate": "01/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Flipping%20The%20revised%20Jan%2020%202025.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 467,
+      "h": 527
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=New%20Flipping%20back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 384,
+      "h": 441
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Flipping%20The%20revised%20Jan%2020%202025.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 467,
+    "h": 527
+  }
+}

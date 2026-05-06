@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25007001000325
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25007001000325
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MH%20UU%20Front.png&filetype=l
+fetched_at: 2026-05-06T01:36:43Z

@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24327001000219
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24327001000219
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=13th%20Century%20Label%20Die%20Line%20CIGAR%20BOURBON%20RESERVE%20Front%20UPDATE.jpg&filetype=l
+fetched_at: 2026-05-06T01:36:01Z

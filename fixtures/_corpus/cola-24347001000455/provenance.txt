@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24347001000455
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24347001000455
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Clocktower%20Bourbon_label_Barrel_proof_rev3.jpg&filetype=l
+fetched_at: 2026-05-06T01:33:46Z

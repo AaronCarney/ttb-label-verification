@@ -1,0 +1,32 @@
+{
+  "ttbid": "24345001000015",
+  "brand": "GIANCARELLI FARM DISTILLERY",
+  "fancyName": "DOG SPIRIT",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21221",
+  "serialNumber": "242001",
+  "approvalDate": "12/13/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=dog%20spirits%20bourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1050,
+      "h": 1050
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=dogspirits%20bourbon%20back%20label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 750,
+      "h": 750
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=dog%20spirits%20bourbon.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1050,
+    "h": 1050
+  }
+}

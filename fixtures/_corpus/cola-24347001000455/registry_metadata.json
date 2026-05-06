@@ -1,0 +1,26 @@
+{
+  "ttbid": "24347001000455",
+  "brand": "CLOCKTOWER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21282",
+  "serialNumber": "240002",
+  "approvalDate": "12/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Clocktower%20Bourbon_label_Barrel_proof_rev3.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 4480,
+      "h": 1680
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Clocktower%20Bourbon_label_Barrel_proof_rev3.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 4480,
+    "h": 1680
+  }
+}

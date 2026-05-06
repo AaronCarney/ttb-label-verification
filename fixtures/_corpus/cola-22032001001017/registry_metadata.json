@@ -1,0 +1,26 @@
+{
+  "ttbid": "22032001001017",
+  "brand": "BARREL & BANTER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20161",
+  "serialNumber": "220010",
+  "approvalDate": "02/07/2022",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Barrel%20Strength%20Bourbon%20117.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1575,
+      "h": 585
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%20Barrel%20Strength%20Bourbon%20117.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1575,
+    "h": 585
+  }
+}

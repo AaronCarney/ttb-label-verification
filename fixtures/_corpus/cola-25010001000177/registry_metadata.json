@@ -1,0 +1,38 @@
+{
+  "ttbid": "25010001000177",
+  "brand": "S.N. PIKE'S MAGNOLIA BOURBON",
+  "fancyName": "DOUBLE OAKED",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20002",
+  "serialNumber": "250101",
+  "approvalDate": "01/13/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Mag%20front%201%2010.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 529,
+      "h": 564
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MAGNOLIA%20WT199698TCF_LowRes.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 579,
+      "h": 4552
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MAGNOLIA%20WT199698BCF_Working_LowRes.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 939,
+      "h": 1275
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Mag%20front%201%2010.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 529,
+    "h": 564
+  }
+}

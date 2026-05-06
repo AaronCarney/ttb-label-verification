@@ -1,0 +1,32 @@
+{
+  "ttbid": "24353001000546",
+  "brand": "HEAR.SAY BREWING + THEATER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20257",
+  "serialNumber": "241005",
+  "approvalDate": "12/20/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 825,
+      "h": 2325
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 825,
+      "h": 2325
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 825,
+    "h": 2325
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "24363001000031",
+  "brand": "SMOKIN TAILS DISTILLERY",
+  "fancyName": "HONEY WHEATED",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21185",
+  "serialNumber": "242460",
+  "approvalDate": "01/14/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Honey%20Wheated.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2029,
+      "h": 1279
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Honey%20Wheated.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2029,
+    "h": 1279
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24356001000063",
+  "brand": "GENTLEMAN'S JOURNEY MILE MARKER 1",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20125",
+  "serialNumber": "24GJ01",
+  "approvalDate": "12/31/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GJ%20front_panel.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1050,
+      "h": 1350
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_0300.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1050,
+      "h": 1350
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GJ%20front_panel.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1050,
+    "h": 1350
+  }
+}

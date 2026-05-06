@@ -1,0 +1,26 @@
+{
+  "ttbid": "24019001000519",
+  "brand": "EVERNORTH SPIRITS CO.",
+  "fancyName": "NIGHTSTALKER",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20227",
+  "serialNumber": "24NS01",
+  "approvalDate": "02/08/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=NS_EDIT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2588,
+      "h": 2308
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=NS_EDIT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2588,
+    "h": 2308
+  }
+}

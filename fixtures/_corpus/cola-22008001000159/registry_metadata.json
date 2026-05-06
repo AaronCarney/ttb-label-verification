@@ -1,0 +1,32 @@
+{
+  "ttbid": "22008001000159",
+  "brand": "LOCKWOOD",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20161",
+  "serialNumber": "220002",
+  "approvalDate": "02/07/2022",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LockwoodFront-375.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 750,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lockwood-BarrelProof-750-118.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2700,
+      "h": 300
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LockwoodFront-375.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 750,
+    "h": 1200
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24355001000702",
+  "brand": "STARLIGHT DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-31",
+  "serialNumber": "240051",
+  "approvalDate": "01/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DO_Bourbon_Hungarian_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 383,
+      "h": 598
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DO_Bourbon_Hungarian_Back_Edit.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 506,
+      "h": 552
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DO_Bourbon_Hungarian_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 383,
+    "h": 598
+  }
+}

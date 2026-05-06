@@ -1,0 +1,26 @@
+{
+  "ttbid": "24355001000410",
+  "brand": "CINCINNATI DISTILLING",
+  "fancyName": "VICTORY PARKWAY RESERVE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20043",
+  "serialNumber": "240047",
+  "approvalDate": "12/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VictoryPkwy_PRINT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 545
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VictoryPkwy_PRINT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 545
+  }
+}
