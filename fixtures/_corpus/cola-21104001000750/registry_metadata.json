@@ -1,14 +1,14 @@
 {
   "ttbid": "21104001000750",
-  "brand": null,
-  "fancyName": null,
-  "classType": null,
+  "brand": "SOLDIER VALLEY",
+  "fancyName": "TRUE AMERICAN SIGNATURE",
+  "classType": "141",
   "abv": null,
   "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-15007",
+  "serialNumber": "21SVBW",
+  "approvalDate": "05/03/2021",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonFR.jpg&filetype=l",

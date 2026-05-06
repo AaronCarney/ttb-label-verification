@@ -1,14 +1,14 @@
 {
   "ttbid": "20183001000168",
-  "brand": null,
-  "fancyName": null,
-  "classType": null,
+  "brand": "LONERIDER SPIRITS",
+  "fancyName": "SIDEWINDER",
+  "classType": "141",
   "abv": null,
   "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21054",
+  "serialNumber": "200018",
+  "approvalDate": "07/07/2020",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Lonerider_Sidewinder_Label_Front_06302020.jpg&filetype=l",

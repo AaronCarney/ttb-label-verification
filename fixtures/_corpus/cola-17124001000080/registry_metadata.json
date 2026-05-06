@@ -1,14 +1,14 @@
 {
   "ttbid": "17124001000080",
-  "brand": null,
+  "brand": "COTTON HOLLOW",
   "fancyName": null,
-  "classType": null,
+  "classType": "141",
   "abv": null,
   "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "origin": "44",
+  "permitNo": "DSP-KY-15007",
+  "serialNumber": "170049",
+  "approvalDate": "05/14/2017",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CH%20Texas%20Bourbon%20Front%20label.jpg&filetype=l",

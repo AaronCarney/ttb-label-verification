@@ -1,14 +1,14 @@
 {
   "ttbid": "19302001001122",
-  "brand": null,
+  "brand": "SHADOW RIDGE SPIRITS COMPANY",
   "fancyName": null,
-  "classType": null,
+  "classType": "141",
   "abv": null,
   "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20117",
+  "serialNumber": "190020",
+  "approvalDate": "11/13/2019",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SR%20Bourbon%20Oceanside%20Distiller%20ABV%20on%20Front.jpg&filetype=l",

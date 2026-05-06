@@ -1,14 +1,14 @@
 {
   "ttbid": "21088001000311",
-  "brand": null,
+  "brand": "DIGGS BOYS",
   "fancyName": null,
-  "classType": null,
+  "classType": "141",
   "abv": null,
   "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20028",
+  "serialNumber": "210008",
+  "approvalDate": "03/31/2021",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DIGGS%20WT168267CF.jpg&filetype=l",

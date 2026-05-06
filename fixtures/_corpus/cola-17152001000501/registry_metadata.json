@@ -1,14 +1,14 @@
 {
   "ttbid": "17152001000501",
-  "brand": null,
+  "brand": "MIC.DROP.",
   "fancyName": null,
-  "classType": null,
+  "classType": "141",
   "abv": null,
   "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-15007",
+  "serialNumber": "170058",
+  "approvalDate": "06/27/2017",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MicDrop_3_Str_Hero-page-001.jpg&filetype=l",

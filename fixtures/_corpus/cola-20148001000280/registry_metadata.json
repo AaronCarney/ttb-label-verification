@@ -1,14 +1,14 @@
 {
   "ttbid": "20148001000280",
-  "brand": null,
-  "fancyName": null,
-  "classType": null,
+  "brand": "LONERIDER SPIRITS",
+  "fancyName": "OUTLAW'S STASH 1",
+  "classType": "141",
   "abv": null,
   "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21054",
+  "serialNumber": "200016",
+  "approvalDate": "06/03/2020",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OutlawsStash6Monthsbigger1.jpg&filetype=l",

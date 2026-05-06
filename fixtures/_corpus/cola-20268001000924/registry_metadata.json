@@ -1,14 +1,14 @@
 {
   "ttbid": "20268001000924",
-  "brand": null,
+  "brand": "LO DUCA BROS.",
   "fancyName": null,
-  "classType": null,
+  "classType": "141",
   "abv": null,
   "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21033",
+  "serialNumber": "200018",
+  "approvalDate": "09/30/2020",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LoDuca-bourbonfront-04.jpg&filetype=l",

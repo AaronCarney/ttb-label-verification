@@ -1,14 +1,14 @@
 {
   "ttbid": "17237001000070",
-  "brand": null,
-  "fancyName": null,
-  "classType": null,
+  "brand": "THE AMBASSADOR",
+  "fancyName": "BARREL PROOF",
+  "classType": "141",
   "abv": null,
   "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-15007",
+  "serialNumber": "17AMBS",
+  "approvalDate": "08/27/2017",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ambassador%20new%20front.jpg&filetype=l",

@@ -1,14 +1,14 @@
 {
   "ttbid": "17123001000355",
-  "brand": null,
+  "brand": "MERCA",
   "fancyName": null,
-  "classType": null,
+  "classType": "141",
   "abv": null,
   "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-15007",
+  "serialNumber": "170050",
+  "approvalDate": "05/14/2017",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Merca%20Front.jpg&filetype=l",

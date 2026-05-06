@@ -1,14 +1,14 @@
 {
   "ttbid": "19077001000891",
-  "brand": null,
+  "brand": "BROUGH BROTHERS",
   "fancyName": null,
-  "classType": null,
+  "classType": "141",
   "abv": null,
   "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20039",
+  "serialNumber": "199888",
+  "approvalDate": "03/22/2019",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Brough%20Brothers%20Correct%20Front%20Label.jpg&filetype=l",

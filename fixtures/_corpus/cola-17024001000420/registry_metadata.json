@@ -1,14 +1,14 @@
 {
   "ttbid": "17024001000420",
-  "brand": null,
+  "brand": "WARM",
   "fancyName": null,
-  "classType": null,
+  "classType": "141",
   "abv": null,
   "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-15007",
+  "serialNumber": "170007",
+  "approvalDate": "02/22/2017",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JacobWarm.jpg&filetype=l",

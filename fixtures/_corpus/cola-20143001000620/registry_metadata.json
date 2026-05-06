@@ -1,14 +1,14 @@
 {
   "ttbid": "20143001000620",
-  "brand": null,
-  "fancyName": null,
-  "classType": null,
+  "brand": "DISOBEDIENT SPIRITS",
+  "fancyName": "FORT NECESSITY",
+  "classType": "141",
   "abv": null,
   "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20011",
+  "serialNumber": "201002",
+  "approvalDate": "06/09/2020",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FortNec.jpg&filetype=l",

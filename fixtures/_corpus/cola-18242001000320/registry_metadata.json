@@ -1,14 +1,14 @@
 {
   "ttbid": "18242001000320",
-  "brand": null,
+  "brand": "\"A\"",
   "fancyName": null,
-  "classType": null,
+  "classType": "141",
   "abv": null,
   "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20037",
+  "serialNumber": "188303",
+  "approvalDate": "09/07/2018",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Amavida%20Bourbon-01.jpg&filetype=l",

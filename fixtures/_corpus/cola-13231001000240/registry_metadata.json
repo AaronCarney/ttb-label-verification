@@ -1,14 +1,14 @@
 {
   "ttbid": "13231001000240",
-  "brand": null,
+  "brand": "COTTON HOLLOW",
   "fancyName": null,
-  "classType": null,
-  "abv": null,
-  "netContents": null,
-  "origin": null,
-  "permitNo": null,
-  "applicant": null,
-  "approvalDate": null,
+  "classType": "141",
+  "abv": "46.5",
+  "netContents": "750 MILLILITERS",
+  "origin": "22",
+  "permitNo": "DSP-KY-15007",
+  "serialNumber": "130029",
+  "approvalDate": "10/17/2013",
   "allLabelImages": [
     {
       "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CH%20Tenn%20Bourbon%20-%201.jpg&filetype=l",
