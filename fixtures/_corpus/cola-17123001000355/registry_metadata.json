@@ -1,0 +1,32 @@
+{
+  "ttbid": "17123001000355",
+  "brand": null,
+  "fancyName": null,
+  "classType": null,
+  "abv": null,
+  "netContents": null,
+  "origin": null,
+  "permitNo": null,
+  "applicant": null,
+  "approvalDate": null,
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Merca%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 756,
+      "h": 1188
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Merca%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 756,
+      "h": 1188
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Merca%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 756,
+    "h": 1188
+  }
+}

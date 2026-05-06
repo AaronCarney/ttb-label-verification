@@ -1,0 +1,32 @@
+{
+  "ttbid": "21088001000311",
+  "brand": null,
+  "fancyName": null,
+  "classType": null,
+  "abv": null,
+  "netContents": null,
+  "origin": null,
+  "permitNo": null,
+  "applicant": null,
+  "approvalDate": null,
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DIGGS%20WT168267CF.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 473,
+      "h": 638
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DIGGS%20WT168267BCF-01.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 344,
+      "h": 640
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DIGGS%20WT168267CF.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 473,
+    "h": 638
+  }
+}

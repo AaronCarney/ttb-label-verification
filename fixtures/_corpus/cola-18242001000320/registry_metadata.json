@@ -1,0 +1,38 @@
+{
+  "ttbid": "18242001000320",
+  "brand": null,
+  "fancyName": null,
+  "classType": null,
+  "abv": null,
+  "netContents": null,
+  "origin": null,
+  "permitNo": null,
+  "applicant": null,
+  "approvalDate": null,
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Amavida%20Bourbon-01.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 448,
+      "h": 640
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Amavida%20Bourbon%20neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 640,
+      "h": 145
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Amavida%20Bourbon%20Back-02.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 640,
+      "h": 427
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Amavida%20Bourbon-01.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 448,
+    "h": 640
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "20268001000924",
+  "brand": null,
+  "fancyName": null,
+  "classType": null,
+  "abv": null,
+  "netContents": null,
+  "origin": null,
+  "permitNo": null,
+  "applicant": null,
+  "approvalDate": null,
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LoDuca-bourbonfront-04.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 939,
+      "h": 1546
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LoDuca-bourbonback-02.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 938,
+      "h": 1546
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=LoDuca-bourbonfront-04.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 939,
+    "h": 1546
+  }
+}

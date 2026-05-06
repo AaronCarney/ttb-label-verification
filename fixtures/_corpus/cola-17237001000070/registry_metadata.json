@@ -1,0 +1,32 @@
+{
+  "ttbid": "17237001000070",
+  "brand": null,
+  "fancyName": null,
+  "classType": null,
+  "abv": null,
+  "netContents": null,
+  "origin": null,
+  "permitNo": null,
+  "applicant": null,
+  "approvalDate": null,
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ambassador%20new%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 756,
+      "h": 1026
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ambassador%20new%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 288,
+      "h": 379
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ambassador%20new%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 756,
+    "h": 1026
+  }
+}

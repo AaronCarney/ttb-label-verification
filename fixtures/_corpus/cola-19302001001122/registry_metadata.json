@@ -1,0 +1,38 @@
+{
+  "ttbid": "19302001001122",
+  "brand": null,
+  "fancyName": null,
+  "classType": null,
+  "abv": null,
+  "netContents": null,
+  "origin": null,
+  "permitNo": null,
+  "applicant": null,
+  "approvalDate": null,
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SR%20Bourbon%20Oceanside%20Distiller%20ABV%20on%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 756,
+      "h": 488
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBON%20W%20BLUE%20%202019%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1173,
+      "h": 1095
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBON%20W%20BLUE%20%202019%20Topper.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1513,
+      "h": 312
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SR%20Bourbon%20Oceanside%20Distiller%20ABV%20on%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 756,
+    "h": 488
+  }
+}

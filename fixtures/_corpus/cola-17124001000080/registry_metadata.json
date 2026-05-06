@@ -1,0 +1,44 @@
+{
+  "ttbid": "17124001000080",
+  "brand": null,
+  "fancyName": null,
+  "classType": null,
+  "abv": null,
+  "netContents": null,
+  "origin": null,
+  "permitNo": null,
+  "applicant": null,
+  "approvalDate": null,
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CH%20Texas%20Bourbon%20Front%20label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 676,
+      "h": 676
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CH%20Texas%20Bourbon%20Back%20label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 678,
+      "h": 675
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CH%20Texas%20Bourbon%20Bottle%20Band.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 2000,
+      "h": 220
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CH%20Texas%20Bourbon%20Cork%20Strap.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1600,
+      "h": 301
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CH%20Texas%20Bourbon%20Front%20label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 676,
+    "h": 676
+  }
+}
