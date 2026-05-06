@@ -1,0 +1,32 @@
+{
+  "ttbid": "26029001000934",
+  "brand": "OLD PUEBLO",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "11",
+  "permitNo": "DSP-AZ-20045",
+  "serialNumber": "26OP04",
+  "approvalDate": "02/19/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old%20Pueblo%20Bourbon%20-%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 675,
+      "h": 1091
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old%20Pueblo%20Bourbon%20-%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1002,
+      "h": 1852
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old%20Pueblo%20Bourbon%20-%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 675,
+    "h": 1091
+  }
+}

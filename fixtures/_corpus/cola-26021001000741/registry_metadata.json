@@ -1,0 +1,26 @@
+{
+  "ttbid": "26021001000741",
+  "brand": "SKREWBALL",
+  "fancyName": "PB&J WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20250",
+  "serialNumber": "260051",
+  "approvalDate": "01/29/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Skrewball_100mlCan-%20VGM%20COLA%20submit.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2115,
+      "h": 673
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Skrewball_100mlCan-%20VGM%20COLA%20submit.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2115,
+    "h": 673
+  }
+}

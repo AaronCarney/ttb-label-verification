@@ -1,0 +1,44 @@
+{
+  "ttbid": "26027001000594",
+  "brand": "ROAMING ROADS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20037",
+  "serialNumber": "260037",
+  "approvalDate": "01/28/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%2010.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1193,
+      "h": 733
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=medallion.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 515,
+      "h": 517
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back%20Label%20Kentucky.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1038,
+      "h": 525
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Neck%20Label.jpeg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1446,
+      "h": 542
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%2010.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1193,
+    "h": 733
+  }
+}

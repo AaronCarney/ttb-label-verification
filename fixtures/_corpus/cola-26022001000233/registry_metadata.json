@@ -1,0 +1,32 @@
+{
+  "ttbid": "26022001000233",
+  "brand": "OLD RICK",
+  "fancyName": "DOUBLE OAKED RARE CASK BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20134",
+  "serialNumber": "262607",
+  "approvalDate": "01/26/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OldRick11yrKentuckyBourbonGTFRONTTTB.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 956,
+      "h": 956
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OldRick11yrKentuckyBourbonGTBackTTB.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 956,
+      "h": 956
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OldRick11yrKentuckyBourbonGTFRONTTTB.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 956,
+    "h": 956
+  }
+}

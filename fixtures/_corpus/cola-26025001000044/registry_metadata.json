@@ -1,0 +1,32 @@
+{
+  "ttbid": "26025001000044",
+  "brand": "HARVEST OAK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20035",
+  "serialNumber": "260002",
+  "approvalDate": "01/27/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HarvestOakBourbon%20TTB%20Front%202.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 900,
+      "h": 1351
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Harvest%20Oak%20Bourbon%20TTB%20Back%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 901,
+      "h": 976
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HarvestOakBourbon%20TTB%20Front%202.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 900,
+    "h": 1351
+  }
+}

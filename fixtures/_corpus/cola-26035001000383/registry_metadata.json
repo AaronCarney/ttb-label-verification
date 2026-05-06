@@ -1,0 +1,38 @@
+{
+  "ttbid": "26035001000383",
+  "brand": "GREEN RIVER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20037",
+  "serialNumber": "260049",
+  "approvalDate": "02/10/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Distillery%20Select%20Face.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 519,
+      "h": 839
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Distillery%20Select%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 481,
+      "h": 811
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Distillery%20Select%20Strip.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1417,
+      "h": 294
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Distillery%20Select%20Face.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 519,
+    "h": 839
+  }
+}

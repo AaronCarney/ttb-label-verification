@@ -1,0 +1,32 @@
+{
+  "ttbid": "26027001000468",
+  "brand": "BLUE BOLT BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20112",
+  "serialNumber": "260001",
+  "approvalDate": "02/09/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BBFront.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1091,
+      "h": 1182
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1074,
+      "h": 1182
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BBFront.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1091,
+    "h": 1182
+  }
+}

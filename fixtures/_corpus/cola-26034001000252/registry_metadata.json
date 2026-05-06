@@ -1,0 +1,38 @@
+{
+  "ttbid": "26034001000252",
+  "brand": "OAKLORE DISTILLING CO.",
+  "fancyName": "FOUR GRAIN BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21122",
+  "serialNumber": "264GDT",
+  "approvalDate": "02/10/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=4GDT%20Main.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 942,
+      "h": 1318
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=4GDT%20Neck%20v2.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1336,
+      "h": 686
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Distribution%20Label%20Final.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1884,
+      "h": 376
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=4GDT%20Main.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 942,
+    "h": 1318
+  }
+}

@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 26026001000425
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=26026001000425
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Seelbachs%20Echo%20Front%20COLA%20V2.jpg&filetype=l
+fetched_at: 2026-05-06T02:28:07Z

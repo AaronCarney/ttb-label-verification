@@ -1,0 +1,32 @@
+{
+  "ttbid": "26027001000715",
+  "brand": "COLORADO WHEATED",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20004",
+  "serialNumber": "262507",
+  "approvalDate": "02/04/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CO%20Wheated%20Label%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 908,
+      "h": 402
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CO%20Wheated%20Label%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 883,
+      "h": 395
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CO%20Wheated%20Label%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 908,
+    "h": 402
+  }
+}

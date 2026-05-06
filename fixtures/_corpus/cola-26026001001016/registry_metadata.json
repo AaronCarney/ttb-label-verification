@@ -1,0 +1,32 @@
+{
+  "ttbid": "26026001001016",
+  "brand": "RED LIGHT BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20164",
+  "serialNumber": "260002",
+  "approvalDate": "01/27/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Red-Light-Bourbon-5-Year-Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 825,
+      "h": 2063
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Red-Light-Bourbon-5-Year-Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 825,
+      "h": 1274
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Red-Light-Bourbon-5-Year-Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 825,
+    "h": 2063
+  }
+}

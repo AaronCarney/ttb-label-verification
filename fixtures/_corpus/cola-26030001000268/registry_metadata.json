@@ -1,0 +1,32 @@
+{
+  "ttbid": "26030001000268",
+  "brand": "EXPERIMENTAL COLLECTION",
+  "fancyName": "BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20042",
+  "serialNumber": "26EXPE",
+  "approvalDate": "02/06/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ExpFront.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 901,
+      "h": 1201
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ExpBack.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 901,
+      "h": 1201
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ExpFront.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 901,
+    "h": 1201
+  }
+}

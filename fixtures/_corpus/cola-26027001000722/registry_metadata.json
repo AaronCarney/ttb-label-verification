@@ -1,0 +1,26 @@
+{
+  "ttbid": "26027001000722",
+  "brand": "MAD ANGLER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20053",
+  "serialNumber": "26SBHB",
+  "approvalDate": "02/04/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Mad%20Angler%20Heriloom%20Label%20Corrected.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2322,
+      "h": 366
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Mad%20Angler%20Heriloom%20Label%20Corrected.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2322,
+    "h": 366
+  }
+}

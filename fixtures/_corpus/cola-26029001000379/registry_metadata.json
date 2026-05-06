@@ -1,0 +1,32 @@
+{
+  "ttbid": "26029001000379",
+  "brand": "PATRIOT EAGLE",
+  "fancyName": "THE COLLECTION",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "00",
+  "permitNo": "TX-I-1277",
+  "serialNumber": "261046",
+  "approvalDate": "01/30/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PATRIOT%20EAGLE%20THE%20COLLECTION%20FRONT%20LABEL.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 739,
+      "h": 285
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PATRIOT%20EAGLE%20THE%20COLLECTION%20BACK%20LABEL.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 605,
+      "h": 400
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PATRIOT%20EAGLE%20THE%20COLLECTION%20FRONT%20LABEL.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 739,
+    "h": 285
+  }
+}

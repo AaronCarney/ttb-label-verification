@@ -1,0 +1,32 @@
+{
+  "ttbid": "26036001000189",
+  "brand": "KOVAL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-15005",
+  "serialNumber": "260206",
+  "approvalDate": "02/11/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2026%20Front%20Label%20Bourbon.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 877,
+      "h": 1041
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KovalNew2026Whiskey_Preprint_TTB-08.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 377,
+      "h": 385
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2026%20Front%20Label%20Bourbon.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 877,
+    "h": 1041
+  }
+}

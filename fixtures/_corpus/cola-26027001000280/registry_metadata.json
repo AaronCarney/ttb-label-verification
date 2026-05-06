@@ -1,0 +1,32 @@
+{
+  "ttbid": "26027001000280",
+  "brand": "BEN DICKWATER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-83",
+  "serialNumber": "26BEND",
+  "approvalDate": "01/28/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ben%20Dickwater-Front%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1067,
+      "h": 1575
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ben%20Dickwater-Back%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 974,
+      "h": 1119
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ben%20Dickwater-Front%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1067,
+    "h": 1575
+  }
+}

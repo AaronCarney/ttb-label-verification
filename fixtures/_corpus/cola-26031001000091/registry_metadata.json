@@ -1,0 +1,32 @@
+{
+  "ttbid": "26031001000091",
+  "brand": "REVERENCE",
+  "fancyName": "BLACK LABEL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21127",
+  "serialNumber": "260003",
+  "approvalDate": "02/05/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black%20Label%20Bourbon%20back%20label%20FLIGHT%20750ml.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1050,
+      "h": 1425
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black%20Label%20Bourbon%20front%20label%20750ml.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1050,
+      "h": 1425
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black%20Label%20Bourbon%20back%20label%20FLIGHT%20750ml.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1050,
+    "h": 1425
+  }
+}

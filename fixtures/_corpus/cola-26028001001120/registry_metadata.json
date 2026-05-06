@@ -1,0 +1,32 @@
+{
+  "ttbid": "26028001001120",
+  "brand": "A TAVOLA BY MANCINI",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-15026",
+  "serialNumber": "260007",
+  "approvalDate": "01/30/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tavola%20B%20Sub%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1658,
+      "h": 2207
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tavola%20B%20Sub%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1653,
+      "h": 2197
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tavola%20B%20Sub%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1658,
+    "h": 2207
+  }
+}

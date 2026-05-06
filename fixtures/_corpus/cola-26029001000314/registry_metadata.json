@@ -1,0 +1,26 @@
+{
+  "ttbid": "26029001000314",
+  "brand": "ROUND BARN DISTILLERY",
+  "fancyName": "SENTINEL BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-29",
+  "serialNumber": "260008",
+  "approvalDate": "01/30/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RBDsentinelBourbon2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1103,
+      "h": 614
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RBDsentinelBourbon2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1103,
+    "h": 614
+  }
+}

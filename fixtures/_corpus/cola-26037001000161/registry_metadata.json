@@ -1,0 +1,32 @@
+{
+  "ttbid": "26037001000161",
+  "brand": "ORDER OF THE RED EAGLE MISSOURI BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20069",
+  "serialNumber": "260001",
+  "approvalDate": "02/23/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OOD_ORE_V4.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 908,
+      "h": 686
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OOD_ORE_Back_V4.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 907,
+      "h": 683
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OOD_ORE_V4.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 908,
+    "h": 686
+  }
+}

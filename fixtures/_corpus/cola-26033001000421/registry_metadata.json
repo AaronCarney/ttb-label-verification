@@ -1,0 +1,26 @@
+{
+  "ttbid": "26033001000421",
+  "brand": "BALLISTIC DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21122",
+  "serialNumber": "260041",
+  "approvalDate": "02/06/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MOAB%20-FINAL.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1800,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MOAB%20-FINAL.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1800,
+    "h": 1200
+  }
+}

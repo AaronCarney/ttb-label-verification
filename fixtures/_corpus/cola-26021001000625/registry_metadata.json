@@ -1,0 +1,32 @@
+{
+  "ttbid": "26021001000625",
+  "brand": "FRED J. FORD",
+  "fancyName": "EXCLUSIVE BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20042",
+  "serialNumber": "26FFBO",
+  "approvalDate": "01/23/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Frontlabel.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 901,
+      "h": 1201
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Backlabel.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 901,
+      "h": 1201
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Frontlabel.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 901,
+    "h": 1201
+  }
+}

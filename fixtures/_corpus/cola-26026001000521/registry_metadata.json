@@ -1,0 +1,38 @@
+{
+  "ttbid": "26026001000521",
+  "brand": "JACOB'S PARDON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20125",
+  "serialNumber": "260001",
+  "approvalDate": "01/27/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JP_Labels_Front_TTB.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1275,
+      "h": 1650
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JP_Labels_Back_TTB.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1275,
+      "h": 1650
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JP_Labels_Wrap_TTB.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1350,
+      "h": 1050
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=JP_Labels_Front_TTB.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1275,
+    "h": 1650
+  }
+}

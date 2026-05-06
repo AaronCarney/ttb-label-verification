@@ -1,0 +1,32 @@
+{
+  "ttbid": "26027001000839",
+  "brand": "TAPS BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "21",
+  "permitNo": "DSP-KS-21003",
+  "serialNumber": "260127",
+  "approvalDate": "01/28/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Taps%20Bourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 425,
+      "h": 678
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TurkeyBack.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 433,
+      "h": 433
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Taps%20Bourbon.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 425,
+    "h": 678
+  }
+}

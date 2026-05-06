@@ -1,0 +1,38 @@
+{
+  "ttbid": "26033001000157",
+  "brand": "WHISKEY TREE",
+  "fancyName": "KING OF MIAMI BARREL 905",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "23",
+  "permitNo": "DSP-LA-20018",
+  "serialNumber": "260069",
+  "approvalDate": "02/06/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=King%20of%20Miami%20Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 428,
+      "h": 481
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=king%20of%20miami%20strip.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1452,
+      "h": 476
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=king%20of%20miami%20back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1462,
+      "h": 488
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=King%20of%20Miami%20Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 428,
+    "h": 481
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "26029001000947",
+  "brand": "HIGHWIRE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "11",
+  "permitNo": "DSP-AZ-20045",
+  "serialNumber": "26HW04",
+  "approvalDate": "02/19/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Highwire%20Bourbon%20-%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 619,
+      "h": 1219
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Highwire%20Bourbon%20-%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1238,
+      "h": 2438
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Highwire%20Bourbon%20-%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 619,
+    "h": 1219
+  }
+}

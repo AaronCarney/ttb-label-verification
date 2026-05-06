@@ -1,0 +1,26 @@
+{
+  "ttbid": "26034001000265",
+  "brand": "WILDFETHER DISTILLING",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "03",
+  "permitNo": "DSP-NJ-21068",
+  "serialNumber": "260002",
+  "approvalDate": "02/20/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WD_BarrelRyeBourbonWhiskey0226-2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2235,
+      "h": 413
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WD_BarrelRyeBourbonWhiskey0226-2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2235,
+    "h": 413
+  }
+}
