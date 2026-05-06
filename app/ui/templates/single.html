@@ -2,25 +2,39 @@
 {% block title %}Review label — TTB Label Verification{% endblock %}
 {% block bundle_name_script %}single{% endblock %}
 {% block content %}
-  {% if fixture_slug %}
-  <nav class="fixture-picker" aria-label="Demo fixture navigation">
-    <a href="/?fixture={{ prev_fixture }}" rel="prev">← Prev (FIX-{{ prev_fixture }})</a>
-    <span>Fixture FIX-{{ fixture_slug }}</span>
-    <a href="/?fixture={{ next_fixture }}" rel="next">Next (FIX-{{ next_fixture }}) →</a>
-  </nav>
-  {% endif %}
-  {% if image_url %}
-  <figure class="label-preview">
-    <img src="{{ image_url }}" alt="The label image being reviewed" />
-    <figcaption>Source label image — what the extractor saw.</figcaption>
-  </figure>
+  {% if envelope_json %}
+    {% if image_url %}
+    <figure class="label-preview">
+      <img src="{{ image_url }}" alt="The label image being reviewed" />
+      <figcaption>Source label image — what the extractor saw.</figcaption>
+    </figure>
+    {% endif %}
+  {% else %}
+    {# Demo metaphor: a reviewer arrives at the start of a shift; the inbox
+       is empty until labels are dropped in. No pre-loaded fixtures. #}
+    <section class="empty-inbox" aria-labelledby="empty-inbox-heading">
+      <h2 id="empty-inbox-heading">Your inbox is empty</h2>
+      <p class="empty-inbox-lead">Drop new labels here to begin reviewing.</p>
+    </section>
   {% endif %}
   <form action="/" method="post" enctype="multipart/form-data" class="upload-form" aria-label="Upload a label for evaluation">
-    <label for="label-upload">Upload your own label (PNG or JPEG)</label>
-    <input id="label-upload" type="file" name="label" accept="image/png,image/jpeg" required />
-    <button type="submit">Evaluate</button>
-    <a href="/batches" class="bulk-link">Bulk upload (multiple labels) →</a>
+    <label for="label-upload" class="upload-form-label">Upload a label (PNG or JPEG)</label>
+    <div class="dropzone">
+      <input id="label-upload" type="file" name="label" accept="image/png,image/jpeg" required />
+    </div>
+    <div class="upload-form-actions">
+      <button type="submit" class="primary-button">Evaluate</button>
+      <a href="/batches" class="secondary-link bulk-link">Bulk upload (multiple labels) →</a>
+    </div>
   </form>
+  {% if not envelope_json %}
+  <p class="sample-batch-hint">
+    Don&rsquo;t have label images?
+    <a href="/batches/sample.zip" download>Try a starter pack</a>
+    pulled from the TTB Public COLA Registry (CC0). Unzip and drop above to
+    exercise the full evaluation pipeline.
+  </p>
+  {% endif %}
   {% if upload_error %}
   <div role="alert" class="upload-error">{{ upload_error }}</div>
   {% endif %}

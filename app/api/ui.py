@@ -27,21 +27,6 @@ from app.config import Settings
 _TEMPLATE_DIR = Path(__file__).resolve().parent.parent / "ui" / "templates"
 templates = Jinja2Templates(directory=str(_TEMPLATE_DIR))
 
-# Pre-rendered demo envelopes so a grader visiting `/` (or stepping through
-# `?fixture=NN`) immediately sees a populated reviewer console rather than a
-# placeholder. Generated offline by `scripts/build_demo_envelopes.py` against
-# the cloud-vision evaluator; the React island reads the JSON-encoded
-# envelope from the page shell at mount time. The Docker image's
-# `COPY demo ./demo` puts these on the running container.
-_DEMO_DIR = Path(__file__).resolve().parent.parent.parent / "demo"
-
-# Sequence excludes 05 (batch fixture). Wraparound: ...07 -> 01 -> 02 -> ... -> 07 -> 01...
-_FIXTURE_SEQUENCE: tuple[str, ...] = ("01", "02", "03", "04", "06", "07")
-_DEFAULT_FIXTURE = "01"
-
-_DEMO_ENVELOPE_CACHE: dict[str, str] = {}
-_DEMO_ENVELOPE_CACHED = False
-
 # Per-process cache of upload bytes keyed by synthesized evaluation_id. Bounded
 # so a long-running Space doesn't grow without limit. The value is (mime, bytes);
 # bytes are GC'd when the entry is evicted.
@@ -59,65 +44,6 @@ def _stash_upload_image(eval_id: str, mime: str, body: bytes) -> None:
         )
 
 
-# Fixture image directory — mirrors the on-disk layout under fixtures/.
-_FIXTURE_IMAGE_ROOT = Path(__file__).resolve().parent.parent.parent / "fixtures"
-_FIXTURE_DIR_BY_SLUG = {
-    "01": "01-spirits-clean",
-    "02": "02-bourbon-stones-throw",
-    "03": "03-warning-title-case",
-    "04": "04-low-res-blurry",
-    "06": "06-abv-out-of-tolerance",
-    "07": "07-borderline-confidence",
-}
-
-
-def _populate_envelope_cache() -> None:
-    """Load every per-fixture envelope from disk once per process."""
-    global _DEMO_ENVELOPE_CACHED
-    if _DEMO_ENVELOPE_CACHED:
-        return
-    for slug in _FIXTURE_SEQUENCE:
-        path = _DEMO_DIR / f"sample-envelope-{slug}.json"
-        try:
-            _DEMO_ENVELOPE_CACHE[slug] = path.read_text()
-        except OSError:
-            pass
-    # Backwards compat: legacy `sample-envelope.json` fills the default slot
-    # if the per-fixture file is missing. Lets older deployments serve `/`
-    # without the new envelopes during a partial rollout.
-    if _DEFAULT_FIXTURE not in _DEMO_ENVELOPE_CACHE:
-        legacy = _DEMO_DIR / "sample-envelope.json"
-        try:
-            _DEMO_ENVELOPE_CACHE[_DEFAULT_FIXTURE] = legacy.read_text()
-        except OSError:
-            pass
-    _DEMO_ENVELOPE_CACHED = True
-
-
-def _resolve_fixture(requested: str | None) -> str:
-    """Pick the slug to serve. Unknown ids fall back to the default so a
-    hand-edited URL still produces a usable page rather than a 404."""
-    _populate_envelope_cache()
-    if requested and requested in _DEMO_ENVELOPE_CACHE:
-        return requested
-    return _DEFAULT_FIXTURE
-
-
-def _read_demo_envelope(slug: str) -> str | None:
-    _populate_envelope_cache()
-    return _DEMO_ENVELOPE_CACHE.get(slug)
-
-
-def _neighbours(slug: str) -> tuple[str, str]:
-    """Return (prev, next) slugs with wraparound around _FIXTURE_SEQUENCE."""
-    try:
-        idx = _FIXTURE_SEQUENCE.index(slug)
-    except ValueError:
-        idx = 0
-    n = len(_FIXTURE_SEQUENCE)
-    return _FIXTURE_SEQUENCE[(idx - 1) % n], _FIXTURE_SEQUENCE[(idx + 1) % n]
-
-
 router = APIRouter(tags=["ui"])
 
 
@@ -128,26 +54,19 @@ def _get_settings() -> Settings:
 @router.get("/", response_class=HTMLResponse)
 async def single_page_shell(
     request: Request,
-    fixture: str | None = None,
     settings: Settings = Depends(_get_settings),
 ) -> HTMLResponse:
-    """Render the single-label review shell. The React island handles all
-    reviewer interaction client-side; the shell is a static document.
-
-    `?fixture=NN` swaps the embedded envelope so a grader can step through
-    the demo set (FIX-01..04, 06, 07) without uploading anything."""
-    slug = _resolve_fixture(fixture)
-    prev_slug, next_slug = _neighbours(slug)
+    """Render the empty-inbox single-label landing. No pre-loaded fixtures;
+    the grader sees a drop-zone CTA and either uploads their own labels or
+    pulls a starter pack from `/batches/sample.zip`. The React island mounts
+    on `<div id="root" data-mode="single">` and renders an envelope only
+    after a real upload returns one."""
     return templates.TemplateResponse(
         request=request,
         name="single.html",
         context={
-            "envelope_json": _read_demo_envelope(slug),
+            "envelope_json": None,
             "dev_mode": settings.dev_mode,
-            "fixture_slug": slug,
-            "prev_fixture": prev_slug,
-            "next_fixture": next_slug,
-            "image_url": f"/fixtures/{slug}/label.png",
         },
     )
 
@@ -227,33 +146,9 @@ async def single_label_upload(
         context={
             "envelope_json": envelope.model_dump_json(),
             "dev_mode": settings.dev_mode,
-            "fixture_slug": None,  # suppress prev/next nav for live uploads
             "image_url": f"/labels/{envelope.evaluation_id}/image",
         },
     )
-
-
-@router.get("/fixtures/{slug}/label.png")
-async def fixture_label_image(slug: str) -> Response:
-    """Serve the PNG for one of the shipped demo fixtures."""
-    from fastapi import HTTPException
-
-    dirname = _FIXTURE_DIR_BY_SLUG.get(slug)
-    if dirname is None:
-        raise HTTPException(status_code=404, detail=f"unknown fixture {slug!r}")
-    path = _FIXTURE_IMAGE_ROOT / dirname / "label.png"
-    try:
-        body = path.read_bytes()
-    except OSError as e:
-        # Most likely cause: the Docker image's `COPY fixtures/ ./fixtures/`
-        # missed this slug, or the fixture set was renamed without updating
-        # _FIXTURE_DIR_BY_SLUG. Log path so ops can diagnose.
-        _logger.warning(
-            "fixture_image_read_failed",
-            extra={"slug": slug, "path": str(path), "error_class": type(e).__name__},
-        )
-        raise HTTPException(status_code=404, detail=f"fixture image missing: {slug}")
-    return Response(content=body, media_type="image/png")
 
 
 @router.get("/labels/{eval_id}/image")
