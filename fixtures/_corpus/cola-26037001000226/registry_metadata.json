@@ -1,0 +1,38 @@
+{
+  "ttbid": "26037001000226",
+  "brand": "WYOMING WHISKEY",
+  "fancyName": "PRIVATE STOCK 117.2",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "49",
+  "permitNo": "DSP-WY-15004",
+  "serialNumber": "260004",
+  "approvalDate": "03/11/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PS%20Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 295,
+      "h": 443
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PS%20Strip.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1451,
+      "h": 325
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WW%20PS%20Back%20Revised.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 442,
+      "h": 516
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=PS%20Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 295,
+    "h": 443
+  }
+}

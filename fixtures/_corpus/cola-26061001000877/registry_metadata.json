@@ -1,0 +1,26 @@
+{
+  "ttbid": "26061001000877",
+  "brand": "HERITAGE DISTILLING CO. CASK CLUB RESERVE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-20154",
+  "serialNumber": "263026",
+  "approvalDate": "03/04/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KKS%20CCR%20Bourbon.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1360,
+      "h": 623
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KKS%20CCR%20Bourbon.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1360,
+    "h": 623
+  }
+}

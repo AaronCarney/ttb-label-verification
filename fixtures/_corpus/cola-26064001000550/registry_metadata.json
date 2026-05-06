@@ -1,0 +1,26 @@
+{
+  "ttbid": "26064001000550",
+  "brand": "ARTHUR WHEELER SPIRITS COMPANY",
+  "fancyName": "AMERICANA BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20070",
+  "serialNumber": "260004",
+  "approvalDate": "03/06/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=unnamed.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 4394,
+      "h": 1194
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=unnamed.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 4394,
+    "h": 1194
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "26043001000546",
+  "brand": "JAMES",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20180",
+  "serialNumber": "26WBSB",
+  "approvalDate": "02/25/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CASK%20Wheated%20Bourbon_0223%20%20FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1081,
+      "h": 1079
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CASK%20Wheated%20Bourbon_0223%20%20BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1081,
+      "h": 1079
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CASK%20Wheated%20Bourbon_0223%20%20FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1081,
+    "h": 1079
+  }
+}

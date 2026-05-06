@@ -1,0 +1,32 @@
+{
+  "ttbid": "26051001000461",
+  "brand": "HILLTOP BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "11",
+  "permitNo": "DSP-AZ-20069",
+  "serialNumber": "26B001",
+  "approvalDate": "03/06/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Hilltop%20Bourbon%20Front%20B.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 709,
+      "h": 814
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Back%20A.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 736,
+      "h": 833
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Hilltop%20Bourbon%20Front%20B.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 709,
+    "h": 814
+  }
+}

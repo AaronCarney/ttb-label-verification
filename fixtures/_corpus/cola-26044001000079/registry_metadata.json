@@ -1,0 +1,32 @@
+{
+  "ttbid": "26044001000079",
+  "brand": "STARLIGHT DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-31",
+  "serialNumber": "260010",
+  "approvalDate": "02/18/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TerroirSeries_Palantina_Front_EDIT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 370,
+      "h": 582
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TerroirSeries_Palantina_Back_EDIT.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 487,
+      "h": 529
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TerroirSeries_Palantina_Front_EDIT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 370,
+    "h": 582
+  }
+}

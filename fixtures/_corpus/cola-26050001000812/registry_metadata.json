@@ -1,0 +1,44 @@
+{
+  "ttbid": "26050001000812",
+  "brand": "RARE PERFECTION",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20040",
+  "serialNumber": "260219",
+  "approvalDate": "02/20/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RP%2010yr%20-%20FACE2.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 785,
+      "h": 1110
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RP%2010yr%20-%20Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 2487,
+      "h": 1077
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RP%2010yr%20-%20BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 828,
+      "h": 1229
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RP%2010yr%20-UPC.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 902,
+      "h": 513
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RP%2010yr%20-%20FACE2.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 785,
+    "h": 1110
+  }
+}

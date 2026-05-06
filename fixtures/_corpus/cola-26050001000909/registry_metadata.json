@@ -1,0 +1,32 @@
+{
+  "ttbid": "26050001000909",
+  "brand": "REVERENCE",
+  "fancyName": "KING GEORGE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21127",
+  "serialNumber": "260018",
+  "approvalDate": "02/20/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=original.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 902,
+      "h": 1502
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=R%20B%20King%20Geroge.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2990,
+      "h": 4830
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=original.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 902,
+    "h": 1502
+  }
+}

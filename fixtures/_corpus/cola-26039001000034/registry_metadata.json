@@ -1,0 +1,38 @@
+{
+  "ttbid": "26039001000034",
+  "brand": "HOLLERHORN DISTILLING",
+  "fancyName": "HOLLERHORN SPIRIT SOCIETY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21157",
+  "serialNumber": "26SSBO",
+  "approvalDate": "02/10/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SSBO%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1950,
+      "h": 1911
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Neck%20JPG.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1375,
+      "h": 313
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SSBO%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 825,
+      "h": 1350
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SSBO%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1950,
+    "h": 1911
+  }
+}

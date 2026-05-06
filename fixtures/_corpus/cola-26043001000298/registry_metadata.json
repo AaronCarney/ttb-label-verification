@@ -1,0 +1,26 @@
+{
+  "ttbid": "26043001000298",
+  "brand": "BITLEY CREEK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20213",
+  "serialNumber": "269984",
+  "approvalDate": "02/12/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bitley1.PNG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1096,
+      "h": 734
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bitley1.PNG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1096,
+    "h": 734
+  }
+}

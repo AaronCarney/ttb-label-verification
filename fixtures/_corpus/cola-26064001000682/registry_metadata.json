@@ -1,0 +1,26 @@
+{
+  "ttbid": "26064001000682",
+  "brand": "GREAT PLAINS DISTILLERY",
+  "fancyName": "BLUFFS BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "31",
+  "permitNo": "DSP-NE-21006",
+  "serialNumber": "263625",
+  "approvalDate": "03/09/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BluffsBourbon_1stPass_lowres.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1238,
+      "h": 750
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BluffsBourbon_1stPass_lowres.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1238,
+    "h": 750
+  }
+}

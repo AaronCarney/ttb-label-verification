@@ -1,0 +1,26 @@
+{
+  "ttbid": "26062001000389",
+  "brand": "TWO BROTHERS ARTISAN SPIRITS COMPANY",
+  "fancyName": "ROUNDHOUSE SMALL BATCH BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20035",
+  "serialNumber": "260005",
+  "approvalDate": "03/05/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Roundhouse%20Small%20Batch%20Bourbon%20Label%20Final.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2964,
+      "h": 1515
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Roundhouse%20Small%20Batch%20Bourbon%20Label%20Final.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2964,
+    "h": 1515
+  }
+}

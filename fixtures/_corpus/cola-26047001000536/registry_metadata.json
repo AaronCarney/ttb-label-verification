@@ -1,0 +1,32 @@
+{
+  "ttbid": "26047001000536",
+  "brand": "FORDHAM LEE DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20037",
+  "serialNumber": "260001",
+  "approvalDate": "02/24/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black-Label-6Years-TTB-01.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 969,
+      "h": 1316
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black-Label-6Years-TTB-BLACK.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 812,
+      "h": 998
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Black-Label-6Years-TTB-01.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 969,
+    "h": 1316
+  }
+}

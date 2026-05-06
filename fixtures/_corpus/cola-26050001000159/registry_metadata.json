@@ -1,0 +1,38 @@
+{
+  "ttbid": "26050001000159",
+  "brand": "OAKLORE DISTILLING CO.",
+  "fancyName": "WHITE WINTER WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21122",
+  "serialNumber": "26WWWW",
+  "approvalDate": "03/12/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=White%20Winter%20Main.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 562,
+      "h": 624
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=White%20Winter%20Neck.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 768,
+      "h": 254
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=White%20Winter%20Bottom%20v2.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 2600,
+      "h": 660
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=White%20Winter%20Main.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 562,
+    "h": 624
+  }
+}

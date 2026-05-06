@@ -1,0 +1,32 @@
+{
+  "ttbid": "26043001000559",
+  "brand": "JAMES",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20180",
+  "serialNumber": "26EMPB",
+  "approvalDate": "02/27/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Emporium%20Wheated%20Bourbon_0222_FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 774,
+      "h": 1382
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Emporium%20Wheated%20Bourbon_0223%20BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 696,
+      "h": 1160
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Emporium%20Wheated%20Bourbon_0222_FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 774,
+    "h": 1382
+  }
+}

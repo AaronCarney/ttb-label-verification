@@ -1,0 +1,32 @@
+{
+  "ttbid": "26053001000023",
+  "brand": "21AD",
+  "fancyName": "DOUBLE OAK BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20128",
+  "serialNumber": "260011",
+  "approvalDate": "02/23/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=21AD%20-%20Doubl%20Oak%20Bourbon%20Whiskey%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 911,
+      "h": 987
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=21AD%20-%20Double%20Oak%20Bourbon%20W%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 901,
+      "h": 976
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=21AD%20-%20Doubl%20Oak%20Bourbon%20Whiskey%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 911,
+    "h": 987
+  }
+}

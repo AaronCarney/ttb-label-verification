@@ -1,0 +1,26 @@
+{
+  "ttbid": "26042001000487",
+  "brand": "PRAIRIE OAK CRAFT DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20126",
+  "serialNumber": "260004",
+  "approvalDate": "02/12/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=prairelabelwhiskey.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1008,
+      "h": 687
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=prairelabelwhiskey.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1008,
+    "h": 687
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "26055001000861",
+  "brand": "PORCHLIGHT DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20329",
+  "serialNumber": "2660SS",
+  "approvalDate": "03/03/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=50mlSize-SingleBarrelBourbon-2ndCOLA.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1333,
+      "h": 544
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=50mlSize-SingleBarrelBourbon-2ndCOLA.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1333,
+    "h": 544
+  }
+}

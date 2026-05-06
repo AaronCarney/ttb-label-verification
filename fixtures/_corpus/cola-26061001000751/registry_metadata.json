@@ -1,0 +1,32 @@
+{
+  "ttbid": "26061001000751",
+  "brand": "CENTENNIAL BOURBON",
+  "fancyName": "BIRTHPLACE OF ROUTE 66",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-15018",
+  "serialNumber": "260002",
+  "approvalDate": "03/09/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TID_CentennialBourbon_FrontTTB.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1053,
+      "h": 1950
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TID_CentennialBourbon_BackTTB.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1050,
+      "h": 1951
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TID_CentennialBourbon_FrontTTB.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1053,
+    "h": 1950
+  }
+}

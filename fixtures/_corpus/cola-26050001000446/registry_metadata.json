@@ -1,0 +1,32 @@
+{
+  "ttbid": "26050001000446",
+  "brand": "BOXER BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-15007",
+  "serialNumber": "26BSBB",
+  "approvalDate": "02/20/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Boxer%20Bourbon%20Single%20Barrel%20Front%20.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 482,
+      "h": 832
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Boxer%20Bourbon%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 492,
+      "h": 831
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Boxer%20Bourbon%20Single%20Barrel%20Front%20.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 482,
+    "h": 832
+  }
+}

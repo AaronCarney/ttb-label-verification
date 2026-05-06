@@ -1,0 +1,32 @@
+{
+  "ttbid": "26042001000071",
+  "brand": "AMERICA 250 BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "03",
+  "permitNo": "DSP-NJ-21073",
+  "serialNumber": "260001",
+  "approvalDate": "02/12/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front%20delroy.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1011,
+      "h": 985
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back%20delroy.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 946,
+      "h": 950
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=front%20delroy.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1011,
+    "h": 985
+  }
+}

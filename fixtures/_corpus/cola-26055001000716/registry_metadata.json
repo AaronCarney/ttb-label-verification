@@ -1,0 +1,32 @@
+{
+  "ttbid": "26055001000716",
+  "brand": "BIRCH LAKE SPIRITS",
+  "fancyName": "BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20054",
+  "serialNumber": "26BLBO",
+  "approvalDate": "02/25/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bourbon-main.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1566,
+      "h": 823
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bourbon-top.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 94,
+      "h": 864
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bourbon-main.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1566,
+    "h": 823
+  }
+}

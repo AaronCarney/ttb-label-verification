@@ -1,0 +1,32 @@
+{
+  "ttbid": "26060001000021",
+  "brand": "BRETHREN OF FOOLS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20106",
+  "serialNumber": "26SM01",
+  "approvalDate": "03/02/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bottle%20Label%20IN%20and%20KY-01.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1050,
+      "h": 1875
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bottle%20Label%20KY.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1050,
+      "h": 1875
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bottle%20Label%20IN%20and%20KY-01.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1050,
+    "h": 1875
+  }
+}

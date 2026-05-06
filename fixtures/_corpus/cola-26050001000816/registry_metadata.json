@@ -1,0 +1,50 @@
+{
+  "ttbid": "26050001000816",
+  "brand": "VERY OLDE ST. NICK",
+  "fancyName": "SUPERFREAK",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20040",
+  "serialNumber": "260220",
+  "approvalDate": "02/20/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VOSN-%20Superfreak-%20Face.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1060,
+      "h": 877
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VOSN-%20Superfreak%20-Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 936,
+      "h": 888
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VOSN%20Superfreak-Neck.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1843,
+      "h": 345
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OSN-superfreak-%20UPC.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 891,
+      "h": 485
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Pick%20Label.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1184,
+      "h": 384
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=VOSN-%20Superfreak-%20Face.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1060,
+    "h": 877
+  }
+}

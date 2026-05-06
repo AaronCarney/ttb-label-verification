@@ -1,0 +1,26 @@
+{
+  "ttbid": "26048001000737",
+  "brand": "TIN CITY DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20083",
+  "serialNumber": "26GEN1",
+  "approvalDate": "02/26/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20whiskey%20generic%20label%20corrected.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 1500
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20whiskey%20generic%20label%20corrected.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 1500
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "26051001000334",
+  "brand": "CASH BUTTE DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21106",
+  "serialNumber": "260001",
+  "approvalDate": "02/20/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Updated%20Bourbon%20Label%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1304,
+      "h": 1426
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Updated%20Bourbon%20Label%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 724,
+      "h": 696
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Updated%20Bourbon%20Label%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1304,
+    "h": 1426
+  }
+}

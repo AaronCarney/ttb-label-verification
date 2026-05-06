@@ -1,0 +1,38 @@
+{
+  "ttbid": "26040001000271",
+  "brand": "REDWOOD EMPIRE",
+  "fancyName": "THE PIPE DREAM",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-15097",
+  "serialNumber": "260014",
+  "approvalDate": "02/10/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=The%20Pipe%20Dream%20Front%2020260209.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 470,
+      "h": 630
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=The%20Pipe%20Dream%20Back%2020260209.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 658,
+      "h": 931
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=The%20Pipe%20Dream%20Neck%2020260209.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 977,
+      "h": 144
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=The%20Pipe%20Dream%20Front%2020260209.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 470,
+    "h": 630
+  }
+}

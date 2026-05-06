@@ -1,0 +1,32 @@
+{
+  "ttbid": "26051001000586",
+  "brand": "UNCLE BOOJIE'S",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20172",
+  "serialNumber": "260001",
+  "approvalDate": "02/26/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KYBBNFRONT.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 564,
+      "h": 548
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KYBBNBACK.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1337,
+      "h": 720
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KYBBNFRONT.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 564,
+    "h": 548
+  }
+}

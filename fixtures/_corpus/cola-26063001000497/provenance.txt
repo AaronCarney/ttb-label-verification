@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 26063001000497
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=26063001000497
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Stitzel%20Reserve%2031%20YO%20Front.png&filetype=l
+fetched_at: 2026-05-06T02:34:19Z

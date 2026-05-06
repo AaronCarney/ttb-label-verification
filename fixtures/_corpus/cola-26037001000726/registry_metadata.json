@@ -1,0 +1,32 @@
+{
+  "ttbid": "26037001000726",
+  "brand": "LITTLE BIT",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-20060",
+  "serialNumber": "260002",
+  "approvalDate": "02/20/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBON%20FRONT%20LABEL%20FINAL.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1214,
+      "h": 1658
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2026-SEND-OUT-BACKLABEL-BOURBON-COMPRESSED.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1400,
+      "h": 2256
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BOURBON%20FRONT%20LABEL%20FINAL.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1214,
+    "h": 1658
+  }
+}
