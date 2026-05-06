@@ -1,0 +1,32 @@
+{
+  "ttbid": "25204001000391",
+  "brand": "A.R. WHITEHEAD DISTILLERY",
+  "fancyName": "BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20161",
+  "serialNumber": "250001",
+  "approvalDate": "07/28/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon_Whisky_COLA_1.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1200,
+      "h": 720
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=COLA_Submission_ARWhitehead_Distillery_back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1000,
+      "h": 604
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon_Whisky_COLA_1.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1200,
+    "h": 720
+  }
+}

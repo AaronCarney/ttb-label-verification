@@ -1,0 +1,26 @@
+{
+  "ttbid": "25190001000005",
+  "brand": "JETTYWAVE",
+  "fancyName": "SMALL BATCH BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20327",
+  "serialNumber": "250023",
+  "approvalDate": "07/10/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Jettywave%20Mini%20Bottles-14.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1867,
+      "h": 937
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Jettywave%20Mini%20Bottles-14.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1867,
+    "h": 937
+  }
+}

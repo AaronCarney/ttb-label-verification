@@ -1,0 +1,32 @@
+{
+  "ttbid": "25197001000268",
+  "brand": "VOLIERE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "27",
+  "permitNo": "DSP-MN-20010",
+  "serialNumber": "250002",
+  "approvalDate": "07/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon-Voliere-label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3876,
+      "h": 763
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon-ducttape.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 900,
+      "h": 563
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon-Voliere-label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3876,
+    "h": 763
+  }
+}

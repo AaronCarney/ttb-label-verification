@@ -1,0 +1,26 @@
+{
+  "ttbid": "25188001000491",
+  "brand": "CROOKED CREEK DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20090",
+  "serialNumber": "250110",
+  "approvalDate": "07/14/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Straight.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 482,
+      "h": 807
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20Straight.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 482,
+    "h": 807
+  }
+}

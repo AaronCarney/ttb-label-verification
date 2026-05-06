@@ -1,0 +1,26 @@
+{
+  "ttbid": "25198001000270",
+  "brand": "JACK WAGON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "GA-I-21200",
+  "serialNumber": "25093L",
+  "approvalDate": "07/23/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Jackwagon%20FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 513,
+      "h": 1153
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Jackwagon%20FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 513,
+    "h": 1153
+  }
+}

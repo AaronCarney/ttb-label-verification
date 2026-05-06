@@ -1,0 +1,32 @@
+{
+  "ttbid": "25202001000355",
+  "brand": "ELMA",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21002",
+  "serialNumber": "25EL02",
+  "approvalDate": "07/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ElmaForge_Label_Feb25_V3-2-images-1.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 942,
+      "h": 2157
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ElmaForge_Label_Feb25_V3-2-images-0.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 942,
+      "h": 2157
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ElmaForge_Label_Feb25_V3-2-images-1.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 942,
+    "h": 2157
+  }
+}

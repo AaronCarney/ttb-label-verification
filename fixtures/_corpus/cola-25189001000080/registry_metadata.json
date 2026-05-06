@@ -1,0 +1,38 @@
+{
+  "ttbid": "25189001000080",
+  "brand": "ON THIS HILL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20089",
+  "serialNumber": "250003",
+  "approvalDate": "07/11/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HSC%20Label%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2652,
+      "h": 3741
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HSC%20Strap.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 2282,
+      "h": 871
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HSC%20Label%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2642,
+      "h": 3219
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=HSC%20Label%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2652,
+    "h": 3741
+  }
+}

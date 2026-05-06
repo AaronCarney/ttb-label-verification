@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25196001000665
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25196001000665
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ransom%20Bourbon%2016%20Year%20Label%20125%20Proof.jpg&filetype=l
+fetched_at: 2026-05-06T02:04:05Z

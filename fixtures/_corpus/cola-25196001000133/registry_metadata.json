@@ -1,0 +1,32 @@
+{
+  "ttbid": "25196001000133",
+  "brand": "LIBERTY LEGACIES",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "GA-I-21200",
+  "serialNumber": "25087L",
+  "approvalDate": "07/23/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=American%20Cowboy%20FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 801,
+      "h": 548
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=American%20Cowboy%20BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 782,
+      "h": 567
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=American%20Cowboy%20FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 801,
+    "h": 548
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "25195001000601",
+  "brand": "OREGON SPIRIT DISTILLERS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-OR-15028",
+  "serialNumber": "250003",
+  "approvalDate": "07/15/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2477,
+      "h": 910
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Necker.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1541,
+      "h": 467
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 879,
+      "h": 732
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2477,
+    "h": 910
+  }
+}

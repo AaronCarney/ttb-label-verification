@@ -1,0 +1,32 @@
+{
+  "ttbid": "25204001000165",
+  "brand": "MELROSE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20007",
+  "serialNumber": "250723",
+  "approvalDate": "07/24/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Melrose%20Bourbon%20Whiskey%20.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1000,
+      "h": 470
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Melrose%20Strip.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1000,
+      "h": 133
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Melrose%20Bourbon%20Whiskey%20.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1000,
+    "h": 470
+  }
+}

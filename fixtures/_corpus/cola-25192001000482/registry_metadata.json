@@ -1,0 +1,32 @@
+{
+  "ttbid": "25192001000482",
+  "brand": "BONETREE DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-20263",
+  "serialNumber": "250016",
+  "approvalDate": "07/28/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Endless%20Night.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1200,
+      "h": 225
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Generic%20Whiskey%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 751,
+      "h": 604
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Endless%20Night.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1200,
+    "h": 225
+  }
+}

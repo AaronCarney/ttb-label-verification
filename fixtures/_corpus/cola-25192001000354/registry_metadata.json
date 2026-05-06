@@ -1,0 +1,26 @@
+{
+  "ttbid": "25192001000354",
+  "brand": "RIVER ROOTS BARREL COMPANY",
+  "fancyName": "WHEATED BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20137",
+  "serialNumber": "250017",
+  "approvalDate": "07/14/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RiRo%20Wheated%20Bourbon.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 704,
+      "h": 501
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RiRo%20Wheated%20Bourbon.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 704,
+    "h": 501
+  }
+}

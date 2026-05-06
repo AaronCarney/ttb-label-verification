@@ -1,0 +1,32 @@
+{
+  "ttbid": "25202001000287",
+  "brand": "DOMER NATION",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21001",
+  "serialNumber": "250013",
+  "approvalDate": "07/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Domer%20Nation%20Gameday%20Bourbon%20Front%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1200,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Domer%20Nation%202025%20Pitt%20Back%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1200,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Domer%20Nation%20Gameday%20Bourbon%20Front%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1200,
+    "h": 1200
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25191001000288",
+  "brand": "SCHMENDRICKS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20111",
+  "serialNumber": "25SCHB",
+  "approvalDate": "07/14/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=sbf.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 690,
+      "h": 1008
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=sbb.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 622,
+      "h": 932
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=sbf.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 690,
+    "h": 1008
+  }
+}

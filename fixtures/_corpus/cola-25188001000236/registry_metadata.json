@@ -1,0 +1,38 @@
+{
+  "ttbid": "25188001000236",
+  "brand": "LITTLE ROUND STILL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "27",
+  "permitNo": "DSP-MN-20058",
+  "serialNumber": "25COX1",
+  "approvalDate": "07/10/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cox-Whiskey-Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1150,
+      "h": 1375
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cox%20tamper.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1846,
+      "h": 202
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cox%20back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 679,
+      "h": 835
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cox-Whiskey-Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1150,
+    "h": 1375
+  }
+}

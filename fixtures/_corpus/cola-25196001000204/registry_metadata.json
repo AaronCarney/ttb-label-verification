@@ -1,0 +1,32 @@
+{
+  "ttbid": "25196001000204",
+  "brand": "BUZZARD'S ROOST",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20037",
+  "serialNumber": "250153",
+  "approvalDate": "07/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BR%20Cigar%20BW%20F.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 440,
+      "h": 842
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BR%20Cigar%20BW%20B.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 405,
+      "h": 786
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BR%20Cigar%20BW%20F.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 440,
+    "h": 842
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "ttbid": "25204001000866",
+  "brand": "OUTLAW BOURBON WHISKEY REAL BOURBON FROM KENTUCKY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20040",
+  "serialNumber": "251112",
+  "approvalDate": "08/15/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Outlaw--Face.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 573,
+      "h": 602
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wild%20Bill%20Hickok-%20BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1229,
+      "h": 879
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Outlaw-Barrel%20Pick.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 1786,
+      "h": 553
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=UPC-%20OUTLAW.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 871,
+      "h": 484
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Outlaw--Face.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 573,
+    "h": 602
+  }
+}

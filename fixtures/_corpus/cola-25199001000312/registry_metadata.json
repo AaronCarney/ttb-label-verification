@@ -1,0 +1,26 @@
+{
+  "ttbid": "25199001000312",
+  "brand": "WINGLORE SPIRITS",
+  "fancyName": "BOURBON WHISKEY SINGLE BARREL EDITION",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20002",
+  "serialNumber": "25BWSB",
+  "approvalDate": "07/21/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Single%20Barrel%20Bourbon%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2575,
+      "h": 477
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Single%20Barrel%20Bourbon%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2575,
+    "h": 477
+  }
+}

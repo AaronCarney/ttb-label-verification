@@ -1,0 +1,38 @@
+{
+  "ttbid": "25188001000227",
+  "brand": "GOOD TROUBLE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20125",
+  "serialNumber": "250003",
+  "approvalDate": "07/15/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GT_Good%20Trouble_Trouble%20in%20Blues%20Front%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 630,
+      "h": 733
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GT_Good%20Trouble_Trouble%20in%20Blues%20Back%20Label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 442,
+      "h": 657
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GT_Good%20Trouble_Trouble%20in%20Blues%20Neck%20Label.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 726,
+      "h": 176
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GT_Good%20Trouble_Trouble%20in%20Blues%20Front%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 630,
+    "h": 733
+  }
+}

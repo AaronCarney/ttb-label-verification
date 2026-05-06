@@ -1,0 +1,32 @@
+{
+  "ttbid": "25197001000681",
+  "brand": "LIBERTY LEGACIES",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "GA-I-21200",
+  "serialNumber": "25092L",
+  "approvalDate": "07/23/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Liberty%20Legacies%20Union%20Soldier%20FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 804,
+      "h": 554
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Liberty%20Legacies%20Union%20Soldier%20BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 654,
+      "h": 470
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Liberty%20Legacies%20Union%20Soldier%20FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 804,
+    "h": 554
+  }
+}

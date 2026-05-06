@@ -1,0 +1,32 @@
+{
+  "ttbid": "25188001000307",
+  "brand": "CHATTERMARK DISTILLERS",
+  "fancyName": "FIVE YEAR CASK STRENGTH STRAIGHT BOURBON WHISKEY - LIMITED RELEASE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "26",
+  "permitNo": "DSP-MA-21033",
+  "serialNumber": "25FCB2",
+  "approvalDate": "07/14/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=5%20yr%20Brbn%20-%20Final%202%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1004,
+      "h": 898
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=5%20yr%20Brbn%20-%20Final%202%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1015,
+      "h": 1888
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=5%20yr%20Brbn%20-%20Final%202%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1004,
+    "h": 898
+  }
+}

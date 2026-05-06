@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 25202001000355
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=25202001000355
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=ElmaForge_Label_Feb25_V3-2-images-1.jpg&filetype=l
+fetched_at: 2026-05-06T02:05:26Z
