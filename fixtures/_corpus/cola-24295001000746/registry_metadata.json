@@ -1,0 +1,32 @@
+{
+  "ttbid": "24295001000746",
+  "brand": "TALL GRANDPA",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20282",
+  "serialNumber": "241021",
+  "approvalDate": "10/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FrontwithProof.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1040,
+      "h": 1272
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BackwithAge.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1040,
+      "h": 1272
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=FrontwithProof.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1040,
+    "h": 1272
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24287001000021",
+  "brand": "BLUE TRUCK",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20282",
+  "serialNumber": "241014",
+  "approvalDate": "10/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BTFrontProof.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1015,
+      "h": 1242
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BTBackAge.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1020,
+      "h": 1240
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BTFrontProof.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1015,
+    "h": 1242
+  }
+}

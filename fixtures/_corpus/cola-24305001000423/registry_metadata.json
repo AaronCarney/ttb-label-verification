@@ -1,0 +1,32 @@
+{
+  "ttbid": "24305001000423",
+  "brand": "BLACKLAND",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20135",
+  "serialNumber": "240068",
+  "approvalDate": "11/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%2083_50ML_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1784,
+      "h": 1192
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%2083_50ML_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1844,
+      "h": 918
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%2083_50ML_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1784,
+    "h": 1192
+  }
+}

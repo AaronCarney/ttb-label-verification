@@ -1,0 +1,32 @@
+{
+  "ttbid": "24282001000950",
+  "brand": "OLD TOWN PUB",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-15026",
+  "serialNumber": "240116",
+  "approvalDate": "10/10/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OTP%20B%20Sub%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 842,
+      "h": 1124
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OTP%20B%20Sub%20Back%201.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 841,
+      "h": 1124
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=OTP%20B%20Sub%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 842,
+    "h": 1124
+  }
+}

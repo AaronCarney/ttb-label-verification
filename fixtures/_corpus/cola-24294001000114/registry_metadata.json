@@ -1,0 +1,26 @@
+{
+  "ttbid": "24294001000114",
+  "brand": "SPURSTRIDE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21161",
+  "serialNumber": "240002",
+  "approvalDate": "11/07/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Spurstride_50mlA.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 528,
+      "h": 358
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Spurstride_50mlA.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 528,
+    "h": 358
+  }
+}

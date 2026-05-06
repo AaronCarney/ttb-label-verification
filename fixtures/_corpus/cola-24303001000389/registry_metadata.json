@@ -1,0 +1,26 @@
+{
+  "ttbid": "24303001000389",
+  "brand": "CROOKED CREEK DISTILLERY",
+  "fancyName": "SIGNATURE BOURBON WHISKEY",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20090",
+  "serialNumber": "240031",
+  "approvalDate": "11/22/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CCSignatureBourbon%20750%20241120.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 6900,
+      "h": 5700
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CCSignatureBourbon%20750%20241120.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 6900,
+    "h": 5700
+  }
+}

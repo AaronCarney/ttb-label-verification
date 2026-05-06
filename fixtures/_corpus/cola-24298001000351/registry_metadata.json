@@ -1,0 +1,38 @@
+{
+  "ttbid": "24298001000351",
+  "brand": "HORSESHOE BARREL COMPANY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20002",
+  "serialNumber": "241011",
+  "approvalDate": "10/25/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Horseshoe%20Barrel%20Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 832,
+      "h": 628
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Horseshoe%20BBL%20Back.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1017,
+      "h": 1146
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Single%20BBL%20Front.png&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1244,
+      "h": 614
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Horseshoe%20Barrel%20Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 832,
+    "h": 628
+  }
+}

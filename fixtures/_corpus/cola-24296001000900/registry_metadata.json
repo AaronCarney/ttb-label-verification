@@ -1,0 +1,32 @@
+{
+  "ttbid": "24296001000900",
+  "brand": "RIDGE RIVER",
+  "fancyName": "BARREL PROOF",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20158",
+  "serialNumber": "240024",
+  "approvalDate": "10/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RR%20-%20Holiday%20Front%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 830,
+      "h": 1344
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RR-%20Holiday%20Back%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 822,
+      "h": 1154
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RR%20-%20Holiday%20Front%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 830,
+    "h": 1344
+  }
+}

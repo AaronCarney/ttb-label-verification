@@ -1,0 +1,44 @@
+{
+  "ttbid": "24285001000581",
+  "brand": "TOBACCO BAN DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20013",
+  "serialNumber": "240025",
+  "approvalDate": "10/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tobacco%20Barn%20Distillery%20Bottled%20In%20Bond%20CENTER%2028%20APR%2023.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1165,
+      "h": 2063
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=NEW%20Tobacco%20Barn%20Distillery%20%20LEFT%20%2003%20MAY%2023.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 612,
+      "h": 2091
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tobacco%20Barn%20Distillery%20Bottled%20In%20Bond%20RIGHT%2028%20APR%2023.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 662,
+      "h": 2117
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=NSA%20BIB%2011%20OCT%2024.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 823,
+      "h": 1161
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tobacco%20Barn%20Distillery%20Bottled%20In%20Bond%20CENTER%2028%20APR%2023.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1165,
+    "h": 2063
+  }
+}

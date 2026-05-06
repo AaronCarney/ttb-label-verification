@@ -1,0 +1,32 @@
+{
+  "ttbid": "24298001000372",
+  "brand": "FORDHAM LEE DISTILLERY",
+  "fancyName": "BARREL SELECT",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20037",
+  "serialNumber": "240004",
+  "approvalDate": "10/25/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Fordham_Lee_Barrell_Select_Label_102324_TTB_COLA_front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 488,
+      "h": 774
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Fordham_Lee_Barrell_Select_Label_102324_TTB_COLA_back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 602,
+      "h": 753
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Fordham_Lee_Barrell_Select_Label_102324_TTB_COLA_front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 488,
+    "h": 774
+  }
+}

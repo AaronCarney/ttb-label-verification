@@ -1,0 +1,32 @@
+{
+  "ttbid": "24303001000123",
+  "brand": "MOREA",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21132",
+  "serialNumber": "240017",
+  "approvalDate": "10/29/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=24443%20D-Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 1208
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=24468%20D-Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1500,
+      "h": 1260
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=24443%20D-Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 1208
+  }
+}

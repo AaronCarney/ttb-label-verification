@@ -1,0 +1,32 @@
+{
+  "ttbid": "24303001000759",
+  "brand": "ALUMNI SELECT",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20106",
+  "serialNumber": "24ASBW",
+  "approvalDate": "10/30/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AlumniSelect-FRONT-1stCOLA.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1031,
+      "h": 2263
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AlumniSelect-BACK-1stCOLA.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 775,
+      "h": 1698
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=AlumniSelect-FRONT-1stCOLA.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1031,
+    "h": 2263
+  }
+}

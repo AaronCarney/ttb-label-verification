@@ -1,0 +1,26 @@
+{
+  "ttbid": "24305001000080",
+  "brand": "FURNACE STREET DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20156",
+  "serialNumber": "240005",
+  "approvalDate": "11/01/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bourbon.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1353,
+      "h": 1023
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=bourbon.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1353,
+    "h": 1023
+  }
+}

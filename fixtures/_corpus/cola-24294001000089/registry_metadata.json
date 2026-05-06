@@ -1,0 +1,32 @@
+{
+  "ttbid": "24294001000089",
+  "brand": "DOWNING'S",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-15026",
+  "serialNumber": "240124",
+  "approvalDate": "10/21/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Downings%20B%20Sub%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1656,
+      "h": 2204
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Downings%20B%20Sub%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1657,
+      "h": 2201
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Downings%20B%20Sub%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1656,
+    "h": 2204
+  }
+}

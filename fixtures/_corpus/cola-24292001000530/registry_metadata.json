@@ -1,0 +1,32 @@
+{
+  "ttbid": "24292001000530",
+  "brand": "WHISKEY MASH BILL #1",
+  "fancyName": "WHEATED BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20078",
+  "serialNumber": "241007",
+  "approvalDate": "10/29/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20draft%20number%201.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 4134,
+      "h": 4135
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=High%20End%20Back%20Label%20375ml.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 503,
+      "h": 724
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20draft%20number%201.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 4134,
+    "h": 4135
+  }
+}

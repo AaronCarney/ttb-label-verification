@@ -1,0 +1,26 @@
+{
+  "ttbid": "24290001000493",
+  "brand": "POLLINATOR SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "02",
+  "permitNo": "DSP-NY-21148",
+  "serialNumber": "242024",
+  "approvalDate": "10/17/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Catskill_SmalBottleLabels_SingleBourbon.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2521,
+      "h": 1034
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Catskill_SmalBottleLabels_SingleBourbon.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2521,
+    "h": 1034
+  }
+}

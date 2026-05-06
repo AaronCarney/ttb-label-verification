@@ -1,0 +1,32 @@
+{
+  "ttbid": "24291001000443",
+  "brand": "TRADECRAFT SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21024",
+  "serialNumber": "24TCSP",
+  "approvalDate": "10/29/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TCS_PackDesign%20Label%20TTB%2002.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2233,
+      "h": 1685
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TCS%20PackDesign%20Closure%20TTB%2001.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 504,
+      "h": 1774
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TCS_PackDesign%20Label%20TTB%2002.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2233,
+    "h": 1685
+  }
+}

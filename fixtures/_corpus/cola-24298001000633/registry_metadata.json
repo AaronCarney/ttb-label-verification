@@ -1,0 +1,32 @@
+{
+  "ttbid": "24298001000633",
+  "brand": "BLACKLAND",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20135",
+  "serialNumber": "240063",
+  "approvalDate": "10/31/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blackland_BourbonWhiskey_New_Print.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1023,
+      "h": 653
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%2083_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1474,
+      "h": 934
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Blackland_BourbonWhiskey_New_Print.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1023,
+    "h": 653
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "24298001000251",
+  "brand": "REBECCA CREEK DISTILLER'S COLLECTION BOURBON WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-15023",
+  "serialNumber": "240001",
+  "approvalDate": "10/24/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RCW%20Distillers%20Collection%20front%20label.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 776,
+      "h": 871
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RCW%20Distillers%20Collection%20back%20label.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 727,
+      "h": 860
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RCW%20Distillers%20Collection%20front%20label.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 776,
+    "h": 871
+  }
+}

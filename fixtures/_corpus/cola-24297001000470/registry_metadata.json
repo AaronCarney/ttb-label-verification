@@ -1,0 +1,26 @@
+{
+  "ttbid": "24297001000470",
+  "brand": "GRAY WOLF",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20004",
+  "serialNumber": "24GWB1",
+  "approvalDate": "10/28/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GW_V2Bottle%20Labels_Bourbon750_Final.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3900,
+      "h": 600
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GW_V2Bottle%20Labels_Bourbon750_Final.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3900,
+    "h": 600
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ttbid": "24293001000072",
+  "brand": "SERGEANT'S VALOR",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "35",
+  "permitNo": "DSP-NC-21147",
+  "serialNumber": "240001",
+  "approvalDate": "10/28/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BHALLING_SV_2024XMAS750_COLA_FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1053,
+      "h": 1599
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BHALLING_SV_2024XMAS750_COLA_BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 993,
+      "h": 971
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=SV_SelectBourbon_Neck_Label_750_COLA.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1464,
+      "h": 284
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BHALLING_SV_2024XMAS750_COLA_FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1053,
+    "h": 1599
+  }
+}

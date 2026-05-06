@@ -1,0 +1,38 @@
+{
+  "ttbid": "24305001000057",
+  "brand": "BLACKWOOD DISTILLING CO",
+  "fancyName": "TOASTED 105",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20113",
+  "serialNumber": "240003",
+  "approvalDate": "11/05/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20toasted%20105%20bourbon%20front%20label%20.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1472,
+      "h": 1715
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20toasted%20105%20bourbon%20tax%20strip%20.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 487,
+      "h": 2283
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20toasted%20105%20bourbon%20corrected%20.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 692,
+      "h": 1632
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=TTB%20toasted%20105%20bourbon%20front%20label%20.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1472,
+    "h": 1715
+  }
+}

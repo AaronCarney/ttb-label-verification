@@ -1,0 +1,38 @@
+{
+  "ttbid": "24305001000727",
+  "brand": "IRON MIKE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20011",
+  "serialNumber": "241031",
+  "approvalDate": "11/05/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IronMike-Front-Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2200,
+      "h": 1980
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=image.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 599,
+      "h": 640
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=backlabel.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 2000,
+      "h": 1800
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IronMike-Front-Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2200,
+    "h": 1980
+  }
+}

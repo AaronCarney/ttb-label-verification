@@ -1,0 +1,44 @@
+{
+  "ttbid": "24295001000171",
+  "brand": "STATESIDE",
+  "fancyName": "BLACK LABEL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20025",
+  "serialNumber": "241021",
+  "approvalDate": "10/22/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2023_Bourbon_Label-04.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1410,
+      "h": 792
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2023_Bourbon_Label-05.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1035,
+      "h": 792
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon_Whiskey_Strip2.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 2306,
+      "h": 369
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Updated750mL_bourbonAug13-06.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 169,
+      "h": 1275
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2023_Bourbon_Label-04.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1410,
+    "h": 792
+  }
+}

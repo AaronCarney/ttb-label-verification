@@ -1,0 +1,26 @@
+{
+  "ttbid": "24292001000137",
+  "brand": "MINE HILL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "14",
+  "permitNo": "DSP-CT-21015",
+  "serialNumber": "24BPB1",
+  "approvalDate": "11/01/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MHD_Barrel_Proof_Label_6.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3075,
+      "h": 1548
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MHD_Barrel_Proof_Label_6.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3075,
+    "h": 1548
+  }
+}

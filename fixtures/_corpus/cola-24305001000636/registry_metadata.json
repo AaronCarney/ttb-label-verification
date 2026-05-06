@@ -1,0 +1,32 @@
+{
+  "ttbid": "24305001000636",
+  "brand": "REDHAWK WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-21014",
+  "serialNumber": "240001",
+  "approvalDate": "11/06/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=redhawk-front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1024,
+      "h": 1290
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=redhawk-back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1024,
+      "h": 1290
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=redhawk-front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1024,
+    "h": 1290
+  }
+}

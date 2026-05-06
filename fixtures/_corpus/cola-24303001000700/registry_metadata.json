@@ -1,0 +1,32 @@
+{
+  "ttbid": "24303001000700",
+  "brand": "JOURNEYMAN DISTILLERY",
+  "fancyName": "HIGH RYE BOURBON WHISKEY AGED 7 YEARS",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-15027",
+  "serialNumber": "240022",
+  "approvalDate": "11/04/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=High%20Rye%20Aged%20Front.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1790,
+      "h": 1950
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=High%20Rye%20Aged%20Back%20.jpeg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1790,
+      "h": 1950
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=High%20Rye%20Aged%20Front.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1790,
+    "h": 1950
+  }
+}

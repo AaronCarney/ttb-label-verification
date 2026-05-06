@@ -1,0 +1,5 @@
+source: TTB Public COLA Registry (CC0; data.gov 015-TTB-54)
+ttbid: 24295001000487
+detail_url: https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicFormDisplay&ttbid=24295001000487
+image_url: https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tobacco%20Barn%20Distillery%20Bottled%20In%20Bond%20CENTER%2028%20APR%2023.jpg&filetype=l
+fetched_at: 2026-05-06T01:28:24Z

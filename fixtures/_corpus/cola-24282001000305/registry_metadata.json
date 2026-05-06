@@ -1,0 +1,44 @@
+{
+  "ttbid": "24282001000305",
+  "brand": "SOCIETY",
+  "fancyName": "B3.15",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-15097",
+  "serialNumber": "240063",
+  "approvalDate": "10/09/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=B3-15%20Arkansas%20front%20label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1517,
+      "h": 1120
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=B3%20Arkansas%20back%20label.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1149,
+      "h": 1059
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Necklabel%2020240723.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 579,
+      "h": 155
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=NEW%20-%20SMWS_Monogram%20-%20LOGO.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 376,
+      "h": 358
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=B3-15%20Arkansas%20front%20label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1517,
+    "h": 1120
+  }
+}

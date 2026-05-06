@@ -1,0 +1,44 @@
+{
+  "ttbid": "24289001000054",
+  "brand": "GERVASI SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "09",
+  "permitNo": "DSP-OH-20058",
+  "serialNumber": "241124",
+  "approvalDate": "10/18/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1-Bourbon_Single%20Barrel-Front%20RS.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1286,
+      "h": 1600
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Back-Label-Sunray.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 322,
+      "h": 430
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Single%20Barrel%20Strip.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 1506,
+      "h": 305
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2-Bourbon_Single%20Barrel-Back%20RS.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1286,
+      "h": 1600
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=1-Bourbon_Single%20Barrel-Front%20RS.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1286,
+    "h": 1600
+  }
+}

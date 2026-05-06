@@ -1,0 +1,26 @@
+{
+  "ttbid": "24289001000052",
+  "brand": "LEATHERWOOD DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21110",
+  "serialNumber": "24..14",
+  "approvalDate": "10/16/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ricks-Boatyard-label-LWD.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1200,
+      "h": 738
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ricks-Boatyard-label-LWD.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1200,
+    "h": 738
+  }
+}

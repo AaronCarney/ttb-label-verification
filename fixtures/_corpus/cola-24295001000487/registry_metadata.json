@@ -1,0 +1,44 @@
+{
+  "ttbid": "24295001000487",
+  "brand": "TOBACCO BARN DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "25",
+  "permitNo": "DSP-MD-20013",
+  "serialNumber": "240026",
+  "approvalDate": "10/23/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tobacco%20Barn%20Distillery%20Bottled%20In%20Bond%20CENTER%2028%20APR%2023.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1165,
+      "h": 2063
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=NEW%20Tobacco%20Barn%20Distillery%20Bottled%20In%20Bond%20LEFT%20%2003%20MAY%2023.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 612,
+      "h": 2091
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tobacco%20Barn%20Distillery%20Bottled%20In%20Bond%20RIGHT%2028%20APR%2023.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 662,
+      "h": 2117
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=DIA%20Whistleblower%2019%20OCT%2024%20BLACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 717,
+      "h": 1169
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Tobacco%20Barn%20Distillery%20Bottled%20In%20Bond%20CENTER%2028%20APR%2023.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1165,
+    "h": 2063
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "24282001000117",
+  "brand": "WT CONNER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "19",
+  "permitNo": "DSP-IN-21003",
+  "serialNumber": "24M008",
+  "approvalDate": "10/08/2024",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WTConner_Bourbon_V1.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2700,
+      "h": 1538
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WTConner_Bourbon_V1.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2700,
+    "h": 1538
+  }
+}
