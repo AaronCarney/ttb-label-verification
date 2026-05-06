@@ -1,0 +1,44 @@
+{
+  "ttbid": "25342001000548",
+  "brand": "OLD PRENTICE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "01",
+  "permitNo": "DSP-CA-15097",
+  "serialNumber": "250107",
+  "approvalDate": "01/14/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old%20Prentice%20Bourbon%20Label%2020260114.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1579,
+      "h": 573
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old%20Prentice%20Special%20Release%20Bourbon%20Strip.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 2080,
+      "h": 305
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old%20Prentice%20Coin%20Label.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 492,
+      "h": 493
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old%20Prentice%20Bourbon%20Label%2020260108.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 948,
+      "h": 556
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Old%20Prentice%20Bourbon%20Label%2020260114.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1579,
+    "h": 573
+  }
+}

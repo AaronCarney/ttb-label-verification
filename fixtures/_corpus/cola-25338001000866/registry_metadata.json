@@ -1,0 +1,32 @@
+{
+  "ttbid": "25338001000866",
+  "brand": "THE MADHATTER DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20326",
+  "serialNumber": "25WB25",
+  "approvalDate": "12/10/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_3367.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1170,
+      "h": 1247
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_3368.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 668,
+      "h": 1043
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_3367.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1170,
+    "h": 1247
+  }
+}

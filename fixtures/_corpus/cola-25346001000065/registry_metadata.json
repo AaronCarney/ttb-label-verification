@@ -1,0 +1,32 @@
+{
+  "ttbid": "25346001000065",
+  "brand": "COPPERFIELD DISTILLING",
+  "fancyName": "BLUE TRUCK",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20282",
+  "serialNumber": "25BTB3",
+  "approvalDate": "12/12/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BLUE%20TRUCK%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1050,
+      "h": 1275
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BLUE%20TRUCK%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1051,
+      "h": 1275
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BLUE%20TRUCK%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1050,
+    "h": 1275
+  }
+}

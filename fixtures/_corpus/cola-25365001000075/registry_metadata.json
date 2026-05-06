@@ -1,0 +1,26 @@
+{
+  "ttbid": "25365001000075",
+  "brand": "THE WORLD'S MOST DANGEROUS BAR BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-15011",
+  "serialNumber": "251999",
+  "approvalDate": "01/13/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rail%20Bourbon%20Med.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1879,
+      "h": 1836
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Rail%20Bourbon%20Med.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1879,
+    "h": 1836
+  }
+}

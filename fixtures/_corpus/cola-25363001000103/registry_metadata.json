@@ -1,0 +1,32 @@
+{
+  "ttbid": "25363001000103",
+  "brand": "GOOD EARTH",
+  "fancyName": "BOTTLED IN BOND",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "23",
+  "permitNo": "DSP-LA-20028",
+  "serialNumber": "251996",
+  "approvalDate": "01/02/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Good%20Earth%20BIB%2012282025.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2946,
+      "h": 1238
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=INSIDE%20LABEL%20MAP.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 5394,
+      "h": 2474
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Good%20Earth%20BIB%2012282025.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2946,
+    "h": 1238
+  }
+}

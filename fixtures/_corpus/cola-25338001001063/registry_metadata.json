@@ -1,0 +1,26 @@
+{
+  "ttbid": "25338001001063",
+  "brand": "ESPY HOUSE",
+  "fancyName": "SINGLE BARREL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20194",
+  "serialNumber": "250003",
+  "approvalDate": "12/08/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2025%20Espy%20House%20Single%20Barrel%20Bourbon%20Whiskey.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2100,
+      "h": 1415
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=2025%20Espy%20House%20Single%20Barrel%20Bourbon%20Whiskey.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2100,
+    "h": 1415
+  }
+}

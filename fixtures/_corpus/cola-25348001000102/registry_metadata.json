@@ -1,0 +1,26 @@
+{
+  "ttbid": "25348001000102",
+  "brand": "BLACKHAT DISTILLERY BARREL STRENGTH BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "13",
+  "permitNo": "DSP-CO-20051",
+  "serialNumber": "251206",
+  "approvalDate": "12/29/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Barrel%20Strength%20Bourbon%20Label-FA-16.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3000,
+      "h": 1500
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Barrel%20Strength%20Bourbon%20Label-FA-16.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3000,
+    "h": 1500
+  }
+}

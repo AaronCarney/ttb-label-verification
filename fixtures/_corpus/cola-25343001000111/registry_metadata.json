@@ -1,0 +1,44 @@
+{
+  "ttbid": "25343001000111",
+  "brand": "WILD TURKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "LA-I-21080",
+  "serialNumber": "25WT17",
+  "approvalDate": "12/09/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Untitled%20design-4.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 3000,
+      "h": 4636
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_2066.jpg&filetype=l",
+      "alt": "Label Image: Strip",
+      "w": 2917,
+      "h": 1539
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_2063.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1492,
+      "h": 1462
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_2064-2.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1000,
+      "h": 270
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Untitled%20design-4.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 3000,
+    "h": 4636
+  }
+}

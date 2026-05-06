@@ -1,0 +1,38 @@
+{
+  "ttbid": "25361001000058",
+  "brand": "DREAM MACHINE",
+  "fancyName": "WHEATED BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20178",
+  "serialNumber": "250006",
+  "approvalDate": "01/27/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Bourbon%20-%20front%20label.jpeg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 780,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bourbon%20-%20side%20label.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 2000,
+      "h": 500
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Bourbon%20-%20neck%20label.jpeg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 460,
+      "h": 260
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Bourbon%20-%20front%20label.jpeg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 780,
+    "h": 1200
+  }
+}

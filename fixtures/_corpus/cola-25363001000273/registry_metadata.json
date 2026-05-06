@@ -1,0 +1,26 @@
+{
+  "ttbid": "25363001000273",
+  "brand": "RNOW RARE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20014",
+  "serialNumber": "250014",
+  "approvalDate": "12/31/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RnowTTB.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1349,
+      "h": 628
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=RnowTTB.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1349,
+    "h": 628
+  }
+}

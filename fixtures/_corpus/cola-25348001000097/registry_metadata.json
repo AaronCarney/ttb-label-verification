@@ -1,0 +1,32 @@
+{
+  "ttbid": "25348001000097",
+  "brand": "LEGACY SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "06",
+  "permitNo": "DSP-MI-20280",
+  "serialNumber": "250002",
+  "approvalDate": "01/13/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KSBW-1.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1024,
+      "h": 1024
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=back-label-s.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 603,
+      "h": 1802
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=KSBW-1.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1024,
+    "h": 1024
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ttbid": "25351001000778",
+  "brand": "KING GEORGE III",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21028",
+  "serialNumber": "250040",
+  "approvalDate": "12/18/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Reverence%20Bourbon%20-%20King%20George%20Front%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 879,
+      "h": 1470
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Reverence%20Bourbon%20-%20King%20George%20Back%20Label.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1060,
+      "h": 1770
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Reverence%20Bourbon%20-%20King%20George%20Front%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 879,
+    "h": 1470
+  }
+}

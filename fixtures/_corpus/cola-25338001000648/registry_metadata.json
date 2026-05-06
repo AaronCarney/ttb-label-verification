@@ -1,0 +1,38 @@
+{
+  "ttbid": "25338001000648",
+  "brand": "STATE LINE DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20034",
+  "serialNumber": "250002",
+  "approvalDate": "12/09/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonWhiskeyLabel-FRONT.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 938,
+      "h": 1416
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Neck%20Band.JPG&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1387,
+      "h": 753
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonWhiskeyLabel-BACK.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 900,
+      "h": 1336
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BourbonWhiskeyLabel-FRONT.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 938,
+    "h": 1416
+  }
+}

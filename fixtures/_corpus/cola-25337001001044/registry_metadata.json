@@ -1,0 +1,26 @@
+{
+  "ttbid": "25337001001044",
+  "brand": "ESPY HOUSE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20194",
+  "serialNumber": "250005",
+  "approvalDate": "12/09/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=EH%20WBW%20Next%20Whiskey%20Bar%20REV.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2109,
+      "h": 1424
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=EH%20WBW%20Next%20Whiskey%20Bar%20REV.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2109,
+    "h": 1424
+  }
+}

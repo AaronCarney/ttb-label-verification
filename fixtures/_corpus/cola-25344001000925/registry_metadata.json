@@ -1,0 +1,26 @@
+{
+  "ttbid": "25344001000925",
+  "brand": "REVERENCE",
+  "fancyName": "BLACK LABEL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21127",
+  "serialNumber": "251211",
+  "approvalDate": "12/11/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_6576.PNG&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1123,
+      "h": 600
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=IMG_6576.PNG&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1123,
+    "h": 600
+  }
+}

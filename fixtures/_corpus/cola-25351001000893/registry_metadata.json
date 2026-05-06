@@ -1,0 +1,38 @@
+{
+  "ttbid": "25351001000893",
+  "brand": "REVERENCE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "43",
+  "permitNo": "DSP-TN-21028",
+  "serialNumber": "250041",
+  "approvalDate": "02/04/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Reverence%20Use%20Up.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1209,
+      "h": 1812
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Reverence%20Use%20Up%20Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1046,
+      "h": 1549
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Reverence%20Use%20Up%20Neck.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1057,
+      "h": 376
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Reverence%20Use%20Up.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1209,
+    "h": 1812
+  }
+}

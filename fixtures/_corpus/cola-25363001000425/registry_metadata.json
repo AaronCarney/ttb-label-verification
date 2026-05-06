@@ -1,0 +1,26 @@
+{
+  "ttbid": "25363001000425",
+  "brand": "HERITAGE DISTILLING CO.",
+  "fancyName": "CASK CLUB RESERVE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "38",
+  "permitNo": "DSP-WA-21003",
+  "serialNumber": "251205",
+  "approvalDate": "01/05/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CC%20Reserve%20Bourbon%20750ml%20Label.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 5400,
+      "h": 2388
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=CC%20Reserve%20Bourbon%20750ml%20Label.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 5400,
+    "h": 2388
+  }
+}

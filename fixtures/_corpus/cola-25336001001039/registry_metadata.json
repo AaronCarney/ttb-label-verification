@@ -1,0 +1,38 @@
+{
+  "ttbid": "25336001001039",
+  "brand": "MONSON RANCH DISTILLERS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "07",
+  "permitNo": "DSP-WA-15042",
+  "serialNumber": "251124",
+  "approvalDate": "12/04/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MRD%20Bourbon%203yr%20Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1152,
+      "h": 1387
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MRD%20Bourbon%203yr%20%20Tax%20Strap.jpg&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 857,
+      "h": 164
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MRD%20Bourbon%203yr%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1106,
+      "h": 628
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=MRD%20Bourbon%203yr%20Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1152,
+    "h": 1387
+  }
+}

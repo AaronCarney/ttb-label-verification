@@ -1,0 +1,38 @@
+{
+  "ttbid": "25342001000422",
+  "brand": "SNAKE CREEK",
+  "fancyName": "SINGLE BARREL",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "05",
+  "permitNo": "DSP-VA-20107",
+  "serialNumber": "251208",
+  "approvalDate": "12/29/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Snake%20Creek%20Bourbon%20Front%20Label%202%20x%207%205%202.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2326,
+      "h": 676
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Snake%20Creek%20Bourbon%20Inside%20Back%20Label%205%205%20x%202%2025.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 750,
+      "h": 1725
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Snake%20Creek%20Bourbon%20Outside%20Back%20Label%2055%20x%20225-5.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 750,
+      "h": 1726
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Snake%20Creek%20Bourbon%20Front%20Label%202%20x%207%205%202.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2326,
+    "h": 676
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ttbid": "25343001000122",
+  "brand": "PUBLIC BARREL",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "08",
+  "permitNo": "DSP-GA-20073",
+  "serialNumber": "25056L",
+  "approvalDate": "12/10/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Public%20Barrel.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1500,
+      "h": 1019
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Public%20Barrel.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1500,
+    "h": 1019
+  }
+}

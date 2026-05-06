@@ -1,0 +1,44 @@
+{
+  "ttbid": "25346001000137",
+  "brand": "GARRISON BROTHERS",
+  "fancyName": "CASK STRENGTH LAGUNA MADRE",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-15013",
+  "serialNumber": "250006",
+  "approvalDate": "12/12/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GB-750ML-LM-SINGLE-BARREL-CASK-R2_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 739,
+      "h": 1715
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GB-750ML-LM-SINGLE-BARREL-CASK-R2_Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 752,
+      "h": 1715
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GB-750ML-LM-SINGLE-BARREL-CASK-R2_Right.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 485,
+      "h": 1715
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GB-750ML-LM-SINGLE-BARREL-CASK-R2_Left.jpg&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 488,
+      "h": 1715
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=GB-750ML-LM-SINGLE-BARREL-CASK-R2_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 739,
+    "h": 1715
+  }
+}

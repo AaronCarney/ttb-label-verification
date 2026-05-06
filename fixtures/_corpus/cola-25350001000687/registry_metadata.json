@@ -1,0 +1,32 @@
+{
+  "ttbid": "25350001000687",
+  "brand": "CAPTAIN'S ROOM",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "04",
+  "permitNo": "DSP-IL-15026",
+  "serialNumber": "250083",
+  "approvalDate": "01/20/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cr%20Bourbon%20Front%20JPEG.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1125,
+      "h": 1500
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cr%20Bourbon%20Back%20JPEG.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1125,
+      "h": 1500
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Cr%20Bourbon%20Front%20JPEG.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1125,
+    "h": 1500
+  }
+}

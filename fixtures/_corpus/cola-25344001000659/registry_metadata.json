@@ -1,0 +1,26 @@
+{
+  "ttbid": "25344001000659",
+  "brand": "570 WHISKEY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20189",
+  "serialNumber": "25570W",
+  "approvalDate": "12/11/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=570W1.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1372,
+      "h": 787
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=570W1.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1372,
+    "h": 787
+  }
+}

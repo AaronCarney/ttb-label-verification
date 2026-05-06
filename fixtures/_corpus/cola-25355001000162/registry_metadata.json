@@ -1,0 +1,32 @@
+{
+  "ttbid": "25355001000162",
+  "brand": "LUCKY GUYS DISTILLERY",
+  "fancyName": "FIGHTING SISTERS BOURBON",
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "48",
+  "permitNo": "DSP-WI-20072",
+  "serialNumber": "250008",
+  "approvalDate": "01/15/2026",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Fighting%20Sisters%20Bourbon%20Proof%20v3%20small%20copy.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1008,
+      "h": 1009
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Fighting%20Sisters%20Back%20Proof%20-%20large.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1728,
+      "h": 1728
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Fighting%20Sisters%20Bourbon%20Proof%20v3%20small%20copy.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1008,
+    "h": 1009
+  }
+}

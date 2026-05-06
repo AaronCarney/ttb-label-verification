@@ -1,0 +1,44 @@
+{
+  "ttbid": "25336001000614",
+  "brand": "MONK'S ROAD",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-47",
+  "serialNumber": "251202",
+  "approvalDate": "12/04/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Front%20Label.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1135,
+      "h": 1607
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Left%20Side%20Label.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 673,
+      "h": 1571
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Right%20Side%20Label.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 685,
+      "h": 1581
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Neck%20Label.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 1449,
+      "h": 365
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Front%20Label.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1135,
+    "h": 1607
+  }
+}

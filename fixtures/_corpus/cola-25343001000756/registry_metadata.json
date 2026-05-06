@@ -1,0 +1,38 @@
+{
+  "ttbid": "25343001000756",
+  "brand": "BENDING BRANCH 1840",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "44",
+  "permitNo": "DSP-TX-20217",
+  "serialNumber": "250001",
+  "approvalDate": "12/10/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%201840%20Four%20Grain_Front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1064,
+      "h": 1419
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%201840%20Four%20Grain_Back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 594,
+      "h": 786
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%201840%20Four%20Grain_Neck.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 215,
+      "h": 1285
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=BB%201840%20Four%20Grain_Front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1064,
+    "h": 1419
+  }
+}

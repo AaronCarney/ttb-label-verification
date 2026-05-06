@@ -1,0 +1,32 @@
+{
+  "ttbid": "25357001000278",
+  "brand": "THE 12TH SPICE",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20016",
+  "serialNumber": "250010",
+  "approvalDate": "12/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Salts-12thSpice-BourbonBottle-Final-100_strength-otl-01.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 966,
+      "h": 1200
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Salts-12thSpice-BourbonBottle-Final-100_strength-otl-02.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 966,
+      "h": 1200
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Salts-12thSpice-BourbonBottle-Final-100_strength-otl-01.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 966,
+    "h": 1200
+  }
+}

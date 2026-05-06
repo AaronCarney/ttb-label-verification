@@ -1,0 +1,38 @@
+{
+  "ttbid": "25344001000112",
+  "brand": "MARZULLO WEDDING BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "4",
+  "permitNo": "DSP-DC-20006",
+  "serialNumber": "25RE03",
+  "approvalDate": "12/15/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Marzullo%20Wedding%20Bourbon%20Front.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 657,
+      "h": 841
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Marzullo_Wedding_Bourbon_back.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 576,
+      "h": 842
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Marzullo%20Wedding%20Bourbon%20v5%20-%20Bottle%20Top.png&filetype=l",
+      "alt": "Label Image: Other",
+      "w": 493,
+      "h": 564
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Marzullo%20Wedding%20Bourbon%20Front.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 657,
+    "h": 841
+  }
+}

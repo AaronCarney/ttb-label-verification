@@ -1,0 +1,32 @@
+{
+  "ttbid": "25330001000681",
+  "brand": "REVOLUTIONARY SPIRITS",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "39",
+  "permitNo": "DSP-PA-20304",
+  "serialNumber": "25HRB1",
+  "approvalDate": "12/04/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=High-Rye-Front-Rev0-ttb-png.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 519,
+      "h": 590
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=High-Rye-Back-Rev0-ttb-png.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 500,
+      "h": 576
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=High-Rye-Front-Rev0-ttb-png.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 519,
+    "h": 590
+  }
+}

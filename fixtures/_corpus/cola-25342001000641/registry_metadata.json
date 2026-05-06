@@ -1,0 +1,26 @@
+{
+  "ttbid": "25342001000641",
+  "brand": "GOOD NEWS BREWING COMPANY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "29",
+  "permitNo": "DSP-MO-20124",
+  "serialNumber": "250016",
+  "approvalDate": "12/09/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ruso.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1497,
+      "h": 984
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ruso.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1497,
+    "h": 984
+  }
+}

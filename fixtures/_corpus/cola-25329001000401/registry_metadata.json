@@ -1,0 +1,32 @@
+{
+  "ttbid": "25329001000401",
+  "brand": "PURPLE TOAD DISTILLERY",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20161",
+  "serialNumber": "250125",
+  "approvalDate": "12/02/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WHEATED%20BOURBON%20%20front.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 1920,
+      "h": 3141
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Wheated%20Bourbon%20Back.jpg&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 1920,
+      "h": 2743
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=WHEATED%20BOURBON%20%20front.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 1920,
+    "h": 3141
+  }
+}

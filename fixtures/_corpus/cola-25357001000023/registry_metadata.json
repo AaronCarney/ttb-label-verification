@@ -1,0 +1,32 @@
+{
+  "ttbid": "25357001000023",
+  "brand": "BALD CYPRESS BOURBON",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "16",
+  "permitNo": "DSP-FL-20170",
+  "serialNumber": "250040",
+  "approvalDate": "12/30/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bald%20Cypress%20updated.jpg&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 2837,
+      "h": 2031
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Ball%20Cypress%20necl.png&filetype=l",
+      "alt": "Label Image: Neck",
+      "w": 131,
+      "h": 582
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=Bald%20Cypress%20updated.jpg&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 2837,
+    "h": 2031
+  }
+}

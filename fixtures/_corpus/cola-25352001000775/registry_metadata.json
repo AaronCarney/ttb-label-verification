@@ -1,0 +1,32 @@
+{
+  "ttbid": "25352001000775",
+  "brand": "ROCKETEER",
+  "fancyName": null,
+  "classType": "141",
+  "abv": null,
+  "netContents": null,
+  "origin": "22",
+  "permitNo": "DSP-KY-20111",
+  "serialNumber": "25RCKW",
+  "approvalDate": "12/22/2025",
+  "allLabelImages": [
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=wheatfront.png&filetype=l",
+      "alt": "Label Image: Brand (front) or keg collar",
+      "w": 880,
+      "h": 1274
+    },
+    {
+      "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=wheatback.png&filetype=l",
+      "alt": "Label Image: Back",
+      "w": 768,
+      "h": 1270
+    }
+  ],
+  "frontLabelImage": {
+    "src": "https://www.ttbonline.gov/colasonline/publicViewAttachment.do?filename=wheatfront.png&filetype=l",
+    "alt": "Label Image: Brand (front) or keg collar",
+    "w": 880,
+    "h": 1274
+  }
+}
